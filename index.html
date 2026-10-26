@@ -320,6 +320,52 @@ input[type=file]{display:none}
 .g-khilaf{color:var(--rose);border-color:rgba(217,139,139,.45)}
 .hx{font-size:12.5px;color:var(--fg2);margin-top:8px;padding-inline-start:10px;border-inline-start:2px solid var(--line)}
 
+
+.nav button{min-width:0}
+.nav button span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+@media(max-width:420px){.nav button{font-size:9px}.nav button svg{width:20px;height:20px}}
+.jd-loc{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.jd-loc b{font-size:15px}
+.jd-date{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.jd-date .hj{font-size:18px;color:var(--gold2);font-weight:700}
+.jd-strip{display:flex;gap:6px;overflow-x:auto;padding:4px 0;scrollbar-width:none}
+.jd-strip button{flex:1 0 46px;border:1px solid var(--line);background:var(--glass);color:var(--fg2);border-radius:14px;padding:8px 4px;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.jd-strip button b{font-size:16px}.jd-strip button small{font-size:10px;opacity:.75}
+.jd-strip button.on{background:rgba(217,184,106,.18);border-color:var(--line2);color:var(--gold2)}
+.jd-strip button.today b{text-decoration:underline}
+.jd-next{text-align:center}.jd-next .nm{font-size:22px;font-weight:700;color:var(--gold2)}.jd-next .cd{font-size:13px;color:var(--fg2)}
+.jd-list{display:flex;flex-direction:column;gap:8px}
+.jd-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);background:var(--glass);border-radius:16px}
+.jd-row .n{flex:1;font-weight:700}.jd-row .t{font-variant-numeric:tabular-nums;font-size:17px;font-weight:700;direction:ltr}
+.jd-row.now{border-color:var(--gold);background:rgba(217,184,106,.13)}
+.jd-row.sun{opacity:.75}.jd-row.sun .n{font-weight:500}
+.jd-badge{font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--gold);color:#111;letter-spacing:.04em}
+.jd-tick{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line2);background:none;color:var(--gold2);cursor:pointer;font-size:15px;display:grid;place-items:center}
+.jd-tick.on{background:var(--gold);color:#111;border-color:var(--gold)}
+.jd-set{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.jd-set label{font-size:12px;color:var(--fg2);display:flex;flex-direction:column;gap:4px}
+.jd-set select,.jd-in{font:inherit;padding:9px 10px;border-radius:12px;border:1px solid var(--line);background:var(--bg2);color:inherit;min-width:0}
+.jd-res{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.jd-res button{text-align:start;font:inherit;font-size:13px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--glass);color:inherit;cursor:pointer}
+.qb-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+.qb-dial{position:relative;width:260px;height:260px}
+.qb-dial svg{width:100%;height:100%;display:block}
+#qbRose{transition:transform .25s ease-out;transform-origin:130px 130px}
+.qb-ind{display:flex;align-items:center;gap:8px;font-weight:700;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--glass)}
+.qb-ind.ok{background:rgba(60,190,110,.18);border-color:#3cbe6e;color:#6fe39a}
+.qb-ind svg{width:22px;height:22px}
+.qb-deg{font-size:30px;font-weight:800;color:var(--gold2);direction:ltr}
+.qb-dial.ok circle.rim{stroke:#3cbe6e}
+[data-theme=light] .jd-set select,[data-theme=light] .jd-in{background:#fff}
+[data-theme=light] .jd-badge,[data-theme=light] .jd-tick.on{color:#fff}
+
+.az-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.az-opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:var(--glass);cursor:pointer;font-size:13.5px}
+.az-opt.on{border-color:var(--gold);background:rgba(217,184,106,.13)}
+.az-opt span{flex:1}.az-opt small{display:block;color:var(--fg3);font-size:11px}
+.az-play{width:32px;height:32px;border-radius:50%;border:1px solid var(--line2);background:none;color:var(--gold2);cursor:pointer;flex:none}
+.az-play.on{background:var(--gold);color:#111}
+
 </style>
 <div class="app" id="app">
   <div class="pattern" aria-hidden="true"><svg><defs><pattern id="star8" width="72" height="72" patternUnits="userSpaceOnUse"><g fill="none" stroke="#d9b86a" stroke-width="1"><path d="M36 6l8 22 22 8-22 8-8 22-8-22-22-8 22-8z"/><path d="M36 14l5 17 17 5-17 5-5 17-5-17-17-5 17-5z"/><circle cx="36" cy="36" r="4"/><circle cx="0" cy="0" r="6"/><circle cx="72" cy="0" r="6"/><circle cx="0" cy="72" r="6"/><circle cx="72" cy="72" r="6"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#star8)"/></svg></div>
@@ -339,6 +385,60 @@ input[type=file]{display:none}
   <main class="view" id="view">
 
 
+
+    <!-- ================= JADWAL SALAT + KIBLAT (baru) ================= -->
+    <section class="page" id="page-jadwal">
+      <div class="stack">
+        <div><div class="eyebrow" data-jd="eyebrow"></div><h1 data-jd="title"></h1></div>
+        <div class="card lit">
+          <div class="jd-loc"><span>📍</span><b id="jdPlace">—</b><span class="dim" id="jdCoord" dir="ltr"></span></div>
+          <div class="row" style="margin-top:10px;gap:8px;flex-wrap:wrap"><button class="btn sm gold" id="jdGps" type="button" data-jd="useGps"></button><button class="btn sm" id="jdManBtn" type="button" data-jd="manual"></button></div>
+          <div id="jdMan" hidden style="margin-top:10px">
+            <div class="row" style="gap:6px"><input class="jd-in" id="jdQ" style="flex:1" data-jdph="cityPh"><button class="btn sm" id="jdSearch" type="button" data-jd="search"></button></div>
+            <div class="jd-res" id="jdRes"></div>
+            <div class="row" style="gap:6px;margin-top:8px"><input class="jd-in" id="jdLat" style="flex:1" placeholder="Lat -8.13" inputmode="decimal" dir="ltr"><input class="jd-in" id="jdLng" style="flex:1" placeholder="Lng 113.22" inputmode="decimal" dir="ltr"><button class="btn sm" id="jdSetLL" type="button" data-jd="set"></button></div>
+          </div>
+          <p class="dim" id="jdMsg" style="font-size:12px;margin-top:6px"></p>
+        </div>
+        <div class="card"><div class="jd-date"><div><div class="hj" id="jdHijri"></div><div class="dim" id="jdGreg"></div></div><div class="dim" id="jdTz" dir="ltr" style="font-size:12px"></div></div>
+          <div class="jd-strip" id="jdStrip" style="margin-top:10px"></div></div>
+        <div class="card lit jd-next" id="jdNext"></div>
+        <div class="jd-list" id="jdList"></div>
+        <div class="card"><div class="eyebrow" data-jd="settings"></div>
+          <div class="jd-set" style="margin-top:8px"><label><span data-jd="method"></span><select id="jdMethod"></select></label><label><span data-jd="asr"></span><select id="jdAsr"></select></label></div>
+          <label class="row" style="gap:8px;margin-top:12px;align-items:center;font-size:13px"><input type="checkbox" id="jdNotif"><span data-jd="notif"></span></label>
+          <p class="dim" style="font-size:11.5px;margin-top:4px" data-jd="notifNote"></p>
+          <div class="eyebrow" style="margin-top:14px" data-jd="azanT"></div>
+          <div class="az-list" id="azList"></div>
+          <label style="display:flex;flex-direction:row;gap:8px;margin-top:10px;align-items:center;font-size:13px"><input type="checkbox" id="azSubuh" style="flex:none"><span data-jd="azSubuh" style="flex:1;min-width:0"></span><button type="button" class="az-play" data-prev="subuh" aria-label="Preview">▶</button></label>
+          <p class="dim" style="font-size:11.5px;margin-top:6px" data-jd="azNote"></p>
+          <p class="dim" style="font-size:11.5px;margin-top:6px" data-jd="calcNote"></p>
+        </div>
+        <div class="card lit"><div class="eyebrow" data-jd="qibla"></div>
+          <div class="qb-wrap" style="margin-top:8px">
+            <div class="qb-deg" id="qbDeg">—</div><div class="dim" style="font-size:12px;margin-top:-8px" data-jd="fromN"></div>
+            <div class="qb-dial" id="qbDial"><svg viewBox="0 0 260 260" aria-hidden="true">
+              <g id="qbRose">
+                <circle class="rim" cx="130" cy="130" r="118" fill="none" stroke="var(--line2)" stroke-width="3"/>
+                <circle cx="130" cy="130" r="100" fill="var(--glass)" stroke="var(--line)"/>
+                <g id="qbTicks" stroke="var(--fg3)"></g>
+                <text x="130" y="44" text-anchor="middle" fill="#e5534b" font-weight="800" font-size="18">N</text>
+                <text x="222" y="136" text-anchor="middle" fill="var(--fg2)" font-size="14">E</text>
+                <text x="130" y="228" text-anchor="middle" fill="var(--fg2)" font-size="14">S</text>
+                <text x="38" y="136" text-anchor="middle" fill="var(--fg2)" font-size="14">W</text>
+                <g id="qbKaaba"><line x1="130" y1="130" x2="130" y2="34" stroke="var(--gold)" stroke-width="3" stroke-linecap="round"/>
+                  <g transform="translate(115,0)"><rect x="0" y="2" width="30" height="28" rx="2" fill="#111" stroke="var(--gold)" stroke-width="1.2"/><rect x="0" y="9" width="30" height="5" fill="#d9b86a"/><rect x="11" y="18" width="8" height="12" fill="#d9b86a" opacity=".85"/></g></g>
+              </g>
+              <path d="M130 8 l-8 14 h16z" fill="var(--gold2)"/>
+              <circle cx="130" cy="130" r="6" fill="var(--gold)"/>
+            </svg></div>
+            <div class="qb-ind" id="qbInd"><svg viewBox="0 0 30 30"><rect x="1" y="3" width="28" height="25" rx="2" fill="#111" stroke="#d9b86a"/><rect x="1" y="9" width="28" height="5" fill="#d9b86a"/></svg><span id="qbIndTx"></span></div>
+            <button class="btn sm gold" id="qbStart" type="button" data-jd="startCompass"></button>
+            <p class="dim" style="font-size:12px;text-align:center" id="qbNote"></p>
+            <p class="dim" style="font-size:11.5px;text-align:center" data-jd="calib"></p>
+          </div></div>
+      </div>
+    </section>
     <!-- ================= HARIAN (baru) ================= -->
     <section class="page" id="page-harian">
       <div class="stack">
@@ -541,6 +641,7 @@ input[type=file]{display:none}
   </main>
 
   <nav class="nav" id="nav">
+    <button data-p="jadwal"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V11l7-6 7 6v10"/><path d="M12 2v3M10 21v-5h4v5"/></svg><span>Jadwal</span></button>
     <button data-p="harian"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M8 12l2.5 2.5L16 9"/></svg><span data-i18n="harian">Harian</span></button>
     <button data-p="persiapan"><svg viewBox="0 0 24 24"><path d="M12 3v3M5 12H3m18 0h-2M6.3 6.3l-1.4-1.4m14.2 0-1.4 1.4"/><circle cx="12" cy="13" r="4"/><path d="M8 21h8"/></svg><span data-i="nav.persiapan"></span></button>
     <button data-p="bacaan"><svg viewBox="0 0 24 24"><path d="M4 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg><span data-i="nav.bacaan"></span></button>
@@ -1227,7 +1328,7 @@ const t=k=>UI[k]?L(UI[k]):k;
 const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:g==="hasan"?`<span class="pill gold">${t("g.hasan")}</span>`:g==="dhaif"?`<span class="pill rose">${t("g.dhaif")}</span>`:`<span class="pill rose">${t("g.khilaf")}</span>`;
 
 /* ---------------- Router ---------------- */
-const PAGES=["harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
+const PAGES=["jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
 function go(p){ if(!PAGES.includes(p)) p="persiapan";
   $$(".page").forEach(s=>s.classList.toggle("on",s.id==="page-"+p)); $$("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.p===p));
   $("#view").scrollTop=0; try{history.replaceState(null,"","#"+p);}catch(e){}
@@ -1728,6 +1829,173 @@ function boot(){
     Theme.init(); Harian.init(); Tilawah.init(); applyLang();
 }
 document.readyState==="loading"?document.addEventListener("DOMContentLoaded",boot):boot();
+})();
+
+</script>
+<script>
+/* ===== ADD-ON v3 — Jadwal Salat (offline, praytimes-style) + Kiblat ===== */
+(function(){
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+const dkey=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+/* ---- astronomy ---- */
+const R=Math.PI/180, sin=d=>Math.sin(d*R), cos=d=>Math.cos(d*R), tan=d=>Math.tan(d*R);
+const asin=x=>Math.asin(x)/R, acos=x=>Math.acos(x)/R, atan2=(y,x)=>Math.atan2(y,x)/R, acot=x=>Math.atan(1/x)/R;
+const fix=(a,b)=>{a=a-b*Math.floor(a/b);return a<0?a+b:a;};
+function julian(y,m,d){ if(m<=2){y-=1;m+=12;} const A=Math.floor(y/100),B=2-A+Math.floor(A/4); return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5; }
+function sunPos(jd){ const D=jd-2451545, g=fix(357.529+.98560028*D,360), q=fix(280.459+.98564736*D,360), L=fix(q+1.915*sin(g)+.02*sin(2*g),360), e=23.439-.00000036*D;
+  const RA=fix(atan2(cos(e)*sin(L),cos(L))/15,24); return {decl:asin(sin(e)*sin(L)), eqt:q/15-RA}; }
+const METHODS={
+ kemenag:{n:"Kemenag RI",fajr:20,isha:18,iht:2},
+ mwl:{n:"Muslim World League",fajr:18,isha:17},
+ makkah:{n:"Umm al-Qura (Makkah)",fajr:18.5,ishaMin:90},
+ isna:{n:"ISNA (N. America)",fajr:15,isha:15},
+ egypt:{n:"Egyptian General Authority",fajr:19.5,isha:17.5},
+ karachi:{n:"Univ. Islamic Sciences, Karachi",fajr:18,isha:18}};
+function compute(date,lat,lng,mk,asrF){
+  const M=METHODS[mk]||METHODS.mwl, tz=-date.getTimezoneOffset()/60;
+  const jd0=julian(date.getFullYear(),date.getMonth()+1,date.getDate())-lng/(15*24);
+  const noon=t=>fix(12-sunPos(jd0+t/24).eqt,24);
+  const angT=(a,t,ccw)=>{const p=sunPos(jd0+t/24),T=acos((-sin(a)-sin(p.decl)*sin(lat))/(cos(p.decl)*cos(lat)))/15;return noon(t)+(ccw?-T:T);};
+  const asrT=(f,t)=>{const p=sunPos(jd0+t/24);return angT(-acot(f+tan(Math.abs(lat-p.decl))),t);};
+  let t={fajr:5,sunrise:6,dhuhr:12,asr:13,sunset:18,isha:18};
+  for(let i=0;i<2;i++){ t={fajr:angT(M.fajr,t.fajr,1),sunrise:angT(.833,t.sunrise,1),dhuhr:noon(t.dhuhr),asr:asrT(asrF,t.asr),sunset:angT(.833,t.sunset),isha:M.ishaMin?t.sunset:angT(M.isha,t.isha)}; }
+  // high-latitude fallback (angle-based)
+  const night=24-(t.sunset-t.sunrise);
+  if(isNaN(t.fajr)||(t.sunrise-t.fajr)>M.fajr/60*night) t.fajr=t.sunrise-M.fajr/60*night;
+  if(M.ishaMin) t.isha=t.sunset+M.ishaMin/60; else if(isNaN(t.isha)||(t.isha-t.sunset)>M.isha/60*night) t.isha=t.sunset+M.isha/60*night;
+  const iht=(M.iht||0)/60, adj=x=>x+tz-lng/15;
+  const out={fajr:adj(t.fajr)+iht,sunrise:adj(t.sunrise)-iht,dhuhr:adj(t.dhuhr)+iht,asr:adj(t.asr)+iht,maghrib:adj(t.sunset)+iht,isha:adj(t.isha)+iht};
+  const res={}; for(const k in out){ const m=Math.round(fix(out[k],24)*60); res[k]=new Date(date.getFullYear(),date.getMonth(),date.getDate(),0,m); } return res;
+}
+function qibla(lat,lng){ const kl=21.4225,kg=39.8262; return fix(atan2(sin(kg-lng),cos(lat)*tan(kl)-sin(lat)*cos(kg-lng)),360); }
+window.RKPray={compute,qibla,METHODS};
+if(typeof document==="undefined"||!document.getElementById) return;
+/* ---- i18n ---- */
+const T={
+ id:{azanT:"Suara azan",az_makkah:"Azan Makkah",az_makkahS:"Masjidil Haram",az_madinah:"Azan Madinah",az_madinahS:"Masjid Nabawi",az_notif:"Notifikasi saja",az_notifS:"Tanpa suara azan",az_silent:"Senyap",az_silentS:"Tanpa suara & notifikasi",azSubuh:"Azan Subuh khusus (lebih lembut, dengan \"ash-shalatu khairun minan naum\")",azNote:"Azan berbunyi tepat waktu selama aplikasi ini terbuka. Azan saat aplikasi ditutup akan hadir di versi aplikasi Android/iOS.",azBlocked:"Ketuk layar sekali agar browser mengizinkan suara azan.",nav:"Jadwal",eyebrow:"Di mana pun Anda berada",title:"Jadwal salat & arah kiblat",useGps:"Gunakan lokasi saya",manual:"Atur manual",cityPh:"Cari kota, mis. Lumajang",search:"Cari",set:"Pakai",settings:"Pengaturan perhitungan",method:"Metode",asr:"Asar",shafii:"Syafi'i (standar)",hanafi:"Hanafi",
+  fajr:"Subuh",sunrise:"Terbit",dhuhr:"Dzuhur",asr_:"Asar",maghrib:"Maghrib",isha:"Isya",now:"SEKARANG",next:"Berikutnya",inn:"dalam",h:"j",m:"m",done:"salat tertunaikan",
+  notif:"Pengingat waktu salat",notifNote:"Pengingat hanya berbunyi saat aplikasi ini sedang terbuka (versi web). Notifikasi latar belakang butuh aplikasi terpasang.",notifDenied:"Izin notifikasi ditolak browser.",
+  calcNote:"Dihitung offline dengan algoritma astronomis (gaya praytimes.org). Kemenag: Subuh 20°, Isya 18°, ihtiyat +2 menit. Selisih 1–3 menit dengan jadwal resmi wajar; ikuti jadwal masjid setempat.",
+  qibla:"Arah kiblat",fromN:"derajat dari Utara (searah jarum jam)",startCompass:"Aktifkan kompas",aligned:"Menghadap kiblat ✓",turn:"Putar perangkat ke arah Ka'bah",
+  noSensor:"Sensor kompas tidak tersedia. Gunakan sudut di atas dengan kompas fisik: Utara di atas, Ka'bah menunjukkan arah kiblat.",live:"Kompas aktif. Pegang perangkat mendatar.",
+  calib:"Tips kalibrasi: gerakkan ponsel membentuk angka 8 beberapa kali, jauhkan dari magnet/logam.",locating:"Mencari lokasi…",locErr:"Lokasi tidak bisa diambil. Silakan atur manual.",noLoc:"Belum ada lokasi. Ketuk \"Gunakan lokasi saya\" atau atur manual.",noRes:"Tidak ditemukan.",reminder:"Waktunya salat"},
+ en:{azanT:"Azan sound",az_makkah:"Makkah Azan",az_makkahS:"Masjid al-Haram",az_madinah:"Madinah Azan",az_madinahS:"Masjid an-Nabawi",az_notif:"Notification only",az_notifS:"No azan sound",az_silent:"Silent",az_silentS:"No sound, no notification",azSubuh:"Special Fajr azan (gentler, with \"as-salatu khayrun minan-nawm\")",azNote:"The azan plays on time while this app is open. Azan while the app is closed is coming in the Android/iOS app version.",azBlocked:"Tap the screen once so your browser allows the azan sound.",nav:"Prayer Times",eyebrow:"Wherever you are",title:"Prayer times & Qibla",useGps:"Use my location",manual:"Set manually",cityPh:"Search a city, e.g. London",search:"Search",set:"Use",settings:"Calculation settings",method:"Method",asr:"Asr",shafii:"Shafi'i (standard)",hanafi:"Hanafi",
+  fajr:"Fajr",sunrise:"Sunrise",dhuhr:"Dhuhr",asr_:"Asr",maghrib:"Maghrib",isha:"Isha",now:"NOW",next:"Next",inn:"in",h:"h",m:"m",done:"prayers done",
+  notif:"Prayer time reminders",notifNote:"Reminders only fire while this app is open (web version). Background notifications need the installed app.",notifDenied:"Notification permission was denied.",
+  calcNote:"Calculated offline with an astronomical algorithm (praytimes.org style). Kemenag: Fajr 20°, Isha 18°, +2 min ihtiyat. A 1–3 minute difference from official timetables is normal; follow your local mosque.",
+  qibla:"Qibla direction",fromN:"degrees from North (clockwise)",startCompass:"Enable compass",aligned:"Facing the Qibla ✓",turn:"Turn your device toward the Ka'bah",
+  noSensor:"No compass sensor available. Use the angle above with a physical compass: North at the top, the Ka'bah marks the Qibla.",live:"Compass active. Hold your device flat.",
+  calib:"Calibration tip: move your phone in a figure-8 a few times, away from magnets/metal.",locating:"Locating…",locErr:"Could not get your location. Please set it manually.",noLoc:"No location yet. Tap \"Use my location\" or set it manually.",noRes:"Nothing found.",reminder:"It is time to pray"},
+ ar:{azanT:"صوت الأذان",az_makkah:"أذان مكة",az_makkahS:"المسجد الحرام",az_madinah:"أذان المدينة",az_madinahS:"المسجد النبوي",az_notif:"إشعار فقط",az_notifS:"بدون صوت الأذان",az_silent:"صامت",az_silentS:"بدون صوت أو إشعار",azSubuh:"أذان خاص للفجر (أهدأ، مع «الصلاة خير من النوم»)",azNote:"يُرفع الأذان في وقته ما دام التطبيق مفتوحًا. الأذان والتطبيق مغلق سيتوفر في نسخة تطبيق أندرويد وiOS.",azBlocked:"المس الشاشة مرة ليسمح المتصفح بصوت الأذان.",nav:"مواقيت الصلاة",eyebrow:"أينما كنت",title:"مواقيت الصلاة واتجاه القبلة",useGps:"استخدم موقعي",manual:"تحديد يدوي",cityPh:"ابحث عن مدينة",search:"بحث",set:"استخدم",settings:"إعدادات الحساب",method:"طريقة الحساب",asr:"العصر",shafii:"الشافعي (الجمهور)",hanafi:"الحنفي",
+  fajr:"الفجر",sunrise:"الشروق",dhuhr:"الظهر",asr_:"العصر",maghrib:"المغرب",isha:"العشاء",now:"الآن",next:"التالية",inn:"بعد",h:"س",m:"د",done:"صلوات أُدّيت",
+  notif:"تذكير بأوقات الصلاة",notifNote:"يعمل التذكير فقط أثناء فتح التطبيق (نسخة الويب). الإشعارات في الخلفية تحتاج التطبيق المثبّت.",notifDenied:"رفض المتصفح إذن الإشعارات.",
+  calcNote:"تُحسب دون اتصال بخوارزمية فلكية (على طريقة praytimes.org). وزارة الشؤون الدينية الإندونيسية: الفجر ٢٠°، العشاء ١٨°، احتياط +٢ دقيقة. فرق ١–٣ دقائق طبيعي؛ اتبع مسجدك المحلي.",
+  qibla:"اتجاه القبلة",fromN:"درجة من الشمال (باتجاه عقارب الساعة)",startCompass:"تفعيل البوصلة",aligned:"أنت مستقبل القبلة ✓",turn:"أدر جهازك نحو الكعبة",
+  noSensor:"لا يوجد مستشعر بوصلة. استخدم الزاوية أعلاه مع بوصلة حقيقية: الشمال للأعلى، والكعبة تشير إلى القبلة.",live:"البوصلة تعمل. أمسك الجهاز أفقيًا.",
+  calib:"نصيحة المعايرة: حرّك الهاتف على شكل الرقم 8 عدة مرات بعيدًا عن المغناطيس والمعادن.",locating:"جارٍ تحديد الموقع…",locErr:"تعذّر تحديد الموقع. حدّده يدويًا.",noLoc:"لا يوجد موقع بعد. اضغط «استخدم موقعي» أو حدّده يدويًا.",noRes:"لا نتائج.",reminder:"حان وقت الصلاة"}};
+const getLang=()=>{const l=store.get("rk_lang","id");return T[l]?l:"id";};
+const t=k=>T[getLang()][k]||T.en[k]||k;
+const loc_=()=>({id:"id-ID",en:"en-GB",ar:"ar-SA"})[getLang()];
+const NAMES=["fajr","sunrise","dhuhr","asr","maghrib","isha"], FARD=["fajr","dhuhr","asr","maghrib","isha"];
+let sel=new Date(), heading=null, notified={};
+const fmt=d=>d.toLocaleTimeString(getLang()==="ar"?"ar-SA-u-nu-latn":loc_(),{hour:"2-digit",minute:"2-digit",hour12:false});
+function method(){ const l=store.get("rk_loc",null); return store.get("rk_pt_method",l&&l.cc==="id"?"kemenag":(l&&l.cc==="sa"?"makkah":"mwl")); }
+function times(d){ const l=store.get("rk_loc",null); if(!l) return null; return compute(d,l.lat,l.lng,method(),store.get("rk_pt_asr",1)); }
+function msg(s){ const e=$("#jdMsg"); if(e) e.textContent=s||""; }
+async function reverse(lat,lng){ try{ const r=await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=10&lat=${lat}&lon=${lng}&accept-language=${getLang()}`); const j=await r.json(); const a=j.address||{};
+  return {name:[a.city||a.town||a.county||a.village||a.state_district,a.state,a.country].filter(Boolean).join(", ")||j.display_name, cc:(a.country_code||"").toLowerCase()}; }catch(e){ return {name:"",cc:""}; } }
+async function setLoc(lat,lng,name,cc){ lat=+lat; lng=+lng; if(!isFinite(lat)||!isFinite(lng)||Math.abs(lat)>90||Math.abs(lng)>180) return;
+  const l={lat,lng,name:name||(lat.toFixed(3)+", "+lng.toFixed(3)),cc:cc||""}; store.set("rk_loc",l); render();
+  if(!name||!cc){ const g=await reverse(lat,lng); if(g.name||g.cc){ l.name=g.name||l.name; l.cc=g.cc; store.set("rk_loc",l); render(); } } }
+function gps(){ if(!navigator.geolocation){ msg(t("locErr")); return; } msg(t("locating"));
+  navigator.geolocation.getCurrentPosition(p=>{ msg(""); setLoc(p.coords.latitude,p.coords.longitude); },()=>{ msg(t("locErr")); $("#jdMan").hidden=false; },{enableHighAccuracy:false,timeout:15000,maximumAge:600000}); }
+async function search(){ const q=$("#jdQ").value.trim(); if(!q) return; const box=$("#jdRes"); box.innerHTML="…";
+  try{ const r=await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=6&q=${encodeURIComponent(q)}&accept-language=${getLang()}`); const j=await r.json();
+   box.innerHTML=j.length?j.map((x,i)=>`<button type="button" data-i="${i}">${esc(x.display_name)}</button>`).join(""):`<span class="dim">${t("noRes")}</span>`;
+   box.querySelectorAll("button").forEach(b=>b.onclick=()=>{ const x=j[+b.dataset.i]; box.innerHTML=""; $("#jdMan").hidden=true; setLoc(x.lat,x.lon,x.display_name.split(",").slice(0,3).join(","),(x.address&&x.address.country_code)||""); });
+  }catch(e){ box.innerHTML=`<span class="dim">${t("noRes")}</span>`; } }
+function hijri(d){ try{ return new Intl.DateTimeFormat((getLang()==="ar"?"ar-SA":loc_())+"-u-ca-islamic-umalqura",{day:"numeric",month:"long",year:"numeric"}).format(d); }catch(e){ return ""; } }
+function render(){
+  if(!$("#page-jadwal")) return; const L=getLang();
+  $$("[data-jd]").forEach(e=>e.textContent=t(e.dataset.jd)); $$("[data-jdph]").forEach(e=>e.placeholder=t(e.dataset.jdph));
+  const nb=$('#nav button[data-p="jadwal"] span'); if(nb) nb.textContent=t("nav");
+  const ms=$("#jdMethod"), cur=method(); ms.innerHTML=Object.entries(METHODS).map(([k,v])=>`<option value="${k}"${k===cur?" selected":""}>${esc(v.n)}</option>`).join("");
+  const af=store.get("rk_pt_asr",1); $("#jdAsr").innerHTML=`<option value="1"${af===1?" selected":""}>${t("shafii")}</option><option value="2"${af===2?" selected":""}>${t("hanafi")}</option>`;
+  $("#jdNotif").checked=store.get("rk_pt_notif",false)&&("Notification" in window)&&Notification.permission==="granted";
+  const today=new Date(); let st=""; for(let i=-3;i<=3;i++){ const d=new Date(today); d.setDate(d.getDate()+i);
+    st+=`<button type="button" data-k="${dkey(d)}" class="${dkey(d)===dkey(sel)?"on":""} ${i===0?"today":""}"><small>${esc(d.toLocaleDateString(loc_(),{weekday:"short"}))}</small><b>${d.toLocaleDateString(L==="ar"?"ar-SA-u-nu-latn":loc_(),{day:"numeric"})}</b></button>`; }
+  $("#jdStrip").innerHTML=st; $$("#jdStrip button").forEach(b=>b.onclick=()=>{ const [y,m,dd]=b.dataset.k.split("-").map(Number); sel=new Date(y,m-1,dd); render(); });
+  $("#jdHijri").textContent=hijri(sel); $("#jdGreg").textContent=sel.toLocaleDateString(loc_(),{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  $("#jdTz").textContent=(Intl.DateTimeFormat().resolvedOptions().timeZone||"")+" · UTC"+(today.getTimezoneOffset()<=0?"+":"-")+Math.abs(today.getTimezoneOffset()/60);
+  const l=store.get("rk_loc",null);
+  $("#jdPlace").textContent=l?l.name:"—"; $("#jdCoord").textContent=l?`(${l.lat.toFixed(3)}, ${l.lng.toFixed(3)})`:"";
+  if(!l){ $("#jdList").innerHTML=`<div class="card dim">${t("noLoc")}</div>`; $("#jdNext").hidden=true; $("#qbDeg").textContent="—"; return; }
+  const tm=times(sel), k="rk_salat_"+dkey(sel), done=new Set(store.get(k,[]));
+  const isToday=dkey(sel)===dkey(today), now=new Date(); let curP=null;
+  if(isToday){ for(const n of FARD){ if(tm[n]<=now) curP=n; } if(curP==="fajr"&&tm.sunrise<=now) curP=null; if(!curP&&now<tm.fajr) curP="isha"; }
+  $("#jdList").innerHTML=NAMES.map(n=>{ const sun=n==="sunrise"; return `<div class="jd-row${sun?" sun":""}${n===curP?" now":""}"><span class="n">${t(n==="asr"?"asr_":n)}</span>${n===curP?`<span class="jd-badge">${t("now")}</span>`:""}<span class="t">${fmt(tm[n])}</span>${sun?'<span style="width:30px"></span>':`<button type="button" class="jd-tick${done.has(n)?" on":""}" data-n="${n}" aria-label="${t(n==="asr"?"asr_":n)}">✓</button>`}</div>`; }).join("")
+    +`<p class="dim" style="font-size:12px;text-align:center">${done.size}/5 ${t("done")}</p>`;
+  $$("#jdList .jd-tick").forEach(b=>b.onclick=()=>{ const s=new Set(store.get(k,[])); s.has(b.dataset.n)?s.delete(b.dataset.n):s.add(b.dataset.n); store.set(k,[...s]); render(); });
+  // next
+  let nx=null,nt=null; const tt=times(today); for(const n of FARD){ if(tt[n]>now){ nx=n; nt=tt[n]; break; } }
+  if(!nx){ const tm2=new Date(today); tm2.setDate(tm2.getDate()+1); nx="fajr"; nt=times(tm2).fajr; }
+  const diff=Math.max(0,Math.round((nt-now)/60000)); $("#jdNext").hidden=false;
+  $("#jdNext").innerHTML=`<div class="eyebrow">${t("next")}</div><div class="nm">${t(nx==="asr"?"asr_":nx)} · <span dir="ltr">${fmt(nt)}</span></div><div class="cd">${t("inn")} <span dir="ltr">${Math.floor(diff/60)}${t("h")} ${diff%60}${t("m")}</span></div>`;
+  qbRender(); azRender();
+}
+/* ---- Qibla ---- */
+function qbRender(){ const l=store.get("rk_loc",null); if(!l||!$("#qbDial")) return; const q=qibla(l.lat,l.lng);
+  $("#qbDeg").textContent=q.toFixed(1)+"°"; $("#qbKaaba").setAttribute("transform",`rotate(${q} 130 130)`);
+  const h=heading; $("#qbRose").style.transform=`rotate(${h==null?0:-h}deg)`;
+  const ok=h!=null&&Math.abs(((q-h+540)%360)-180)<=5; $("#qbInd").classList.toggle("ok",ok); $("#qbDial").classList.toggle("ok",ok);
+  $("#qbIndTx").textContent=h==null?(q.toFixed(0)+"° "+t("fromN").split(" (")[0]):(ok?t("aligned"):t("turn")+" ("+Math.round(((q-h+540)%360)-180)+"°)");
+  if(ok&&navigator.vibrate&&!qbRender.v){ navigator.vibrate(60); qbRender.v=1; } if(!ok) qbRender.v=0; }
+let gotSensor=false;
+function onOri(e){ let h=null; if(typeof e.webkitCompassHeading==="number") h=e.webkitCompassHeading; else if(e.absolute&&e.alpha!=null) h=360-e.alpha;
+  if(h==null) return; gotSensor=true; heading=fix(h,360); $("#qbNote").textContent=t("live"); qbRender(); }
+async function startCompass(){
+  try{ if(typeof DeviceOrientationEvent!=="undefined"&&typeof DeviceOrientationEvent.requestPermission==="function"){ const p=await DeviceOrientationEvent.requestPermission(); if(p!=="granted"){ $("#qbNote").textContent=t("noSensor"); return; } } }catch(e){}
+  if(typeof DeviceOrientationEvent==="undefined"){ $("#qbNote").textContent=t("noSensor"); return; }
+  if("ondeviceorientationabsolute" in window) window.addEventListener("deviceorientationabsolute",onOri,true); else window.addEventListener("deviceorientation",onOri,true);
+  setTimeout(()=>{ if(!gotSensor) $("#qbNote").textContent=t("noSensor"); },2500); }
+/* ---- azan + notifications ---- */
+const AZ_SRC={makkah:"audio/azan-makkah.mp3",madinah:"audio/azan-madinah.mp3",subuh:"audio/azan-subuh.mp3"};
+const azCfg=()=>Object.assign({voice:"makkah",subuh:true},store.get("rk_azan",{}));
+let azAudio=null, azPrev=null;
+function azStop(){ if(azAudio){ azAudio.pause(); azAudio=null; } azPrev=null; $$(".az-play").forEach(b=>{b.classList.remove("on");b.textContent="▶";}); }
+function azPlay(key,btn){ azStop(); const src=AZ_SRC[key]; if(!src) return; azAudio=new Audio(src); azAudio.volume=1; azAudio.onended=azStop;
+  const pr=azAudio.play(); if(pr&&pr.catch) pr.catch(()=>{ msg(t("azBlocked")); azStop(); }); if(btn){ azPrev=key; btn.classList.add("on"); btn.textContent="■"; } }
+function azRender(){ const box=$("#azList"); if(!box) return; const c=azCfg();
+  box.innerHTML=["makkah","madinah","notif","silent"].map(k=>`<div class="az-opt${c.voice===k?" on":""}" data-v="${k}" role="radio" aria-checked="${c.voice===k}" tabindex="0"><span>${t("az_"+k)}<small>${t("az_"+k+"S")}</small></span>${AZ_SRC[k]?`<button type="button" class="az-play${azPrev===k?" on":""}" data-prev="${k}" aria-label="Preview">${azPrev===k?"■":"▶"}</button>`:""}</div>`).join("");
+  $("#azSubuh").checked=!!c.subuh; const sp=document.querySelector('.az-play[data-prev="subuh"]'); if(sp){ sp.classList.toggle("on",azPrev==="subuh"); sp.textContent=azPrev==="subuh"?"■":"▶"; }
+  box.querySelectorAll(".az-opt").forEach(o=>o.onclick=async e=>{ if(e.target.closest(".az-play")) return; const v=o.dataset.v; store.set("rk_azan",Object.assign(azCfg(),{voice:v}));
+    if(v!=="silent"&&("Notification" in window)&&Notification.permission==="default"){ try{ await Notification.requestPermission(); }catch(_){} } azRender(); });
+  $$(".az-play").forEach(b=>b.onclick=e=>{ e.preventDefault(); e.stopPropagation(); const k=b.dataset.prev; if(azPrev===k) azStop(); else azPlay(k,b); }); }
+function tickNotif(){ const tm=times(new Date()); if(!tm) return; const c=azCfg(), now=Date.now();
+  for(const n of FARD){ const d=tm[n]-now, id=dkey(new Date())+n; if(d<=0&&d>-120000&&!notified[id]){ notified[id]=1;
+    if(c.voice==="silent") continue;
+    if(c.voice==="makkah"||c.voice==="madinah") azPlay(n==="fajr"&&c.subuh?"subuh":c.voice);
+    const wantN=c.voice!=="silent"||store.get("rk_pt_notif",false);
+    if(wantN&&("Notification" in window)&&Notification.permission==="granted"){ try{ const nn=new Notification(t("reminder")+" · "+t(n==="asr"?"asr_":n),{body:fmt(tm[n])+" — "+(store.get("rk_loc",{}).name||""),icon:"icon-192.png",tag:id}); nn.onclick=()=>{ window.focus(); azStop(); }; }catch(e){} } } } }
+function init(){
+  const ticks=$("#qbTicks"); if(ticks){ let s=""; for(let a=0;a<360;a+=15){ const L=a%90===0?14:a%45===0?9:5; s+=`<line x1="130" y1="${30}" x2="130" y2="${30+L}" transform="rotate(${a} 130 130)" stroke-width="${a%90===0?2:1}"/>`; } ticks.innerHTML=s; }
+  $("#jdGps").onclick=gps; $("#jdManBtn").onclick=()=>{ $("#jdMan").hidden=!$("#jdMan").hidden; };
+  $("#jdSearch").onclick=search; $("#jdQ").addEventListener("keydown",e=>{ if(e.key==="Enter") search(); });
+  $("#jdSetLL").onclick=()=>{ setLoc(String($("#jdLat").value).replace(",","."),String($("#jdLng").value).replace(",",".")); $("#jdMan").hidden=true; };
+  $("#jdMethod").onchange=e=>{ store.set("rk_pt_method",e.target.value); render(); };
+  $("#jdAsr").onchange=e=>{ store.set("rk_pt_asr",+e.target.value); render(); };
+  $("#jdNotif").onchange=async e=>{ if(e.target.checked){ if(!("Notification" in window)){ e.target.checked=false; return; } const p=await Notification.requestPermission(); if(p!=="granted"){ e.target.checked=false; msg(t("notifDenied")); store.set("rk_pt_notif",false); return; } } store.set("rk_pt_notif",e.target.checked); };
+  $("#qbStart").onclick=startCompass;
+  $("#azSubuh").onchange=e=>{ store.set("rk_azan",Object.assign(azCfg(),{subuh:e.target.checked})); };
+  document.addEventListener("rk:lang",()=>setTimeout(render,0));
+  const nbtn=$('#nav button[data-p="jadwal"]'); if(nbtn) nbtn.addEventListener("click",()=>setTimeout(render,0));
+  render(); azRender(); if(!store.get("rk_loc",null)) msg(t("noLoc"));
+  setInterval(()=>{ if(dkey(sel)!==dkey(new Date())&&!render.userSel){} if($("#page-jadwal").classList.contains("on")) render(); },30000); setInterval(tickNotif,10000);
+}
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
 })();
 
 </script>
