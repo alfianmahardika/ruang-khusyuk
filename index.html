@@ -699,6 +699,12 @@ input[type=file]{display:none}
 .h-top>span{display:flex;gap:4px;align-items:center}
 .pk-tabs{position:static}
 #page-quran:has(#qReader:not([hidden])) #pkTabs,#page-quran:has(#hReader:not([hidden])) #pkTabs,#page-quran:has(#sReader:not([hidden])) #pkTabs{display:none}
+.h-id{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(201,162,74,.3)}
+.h-id-lb{font-size:11px;letter-spacing:.02em;color:var(--gold,#c9a24a);margin-bottom:4px}
+.h-id p{margin:0;font-size:15px;line-height:1.65;color:var(--fg,#f3ead8)}
+.h-snip-id{display:block;font-size:13px;line-height:1.5;color:var(--fg2)}
+.pk-clip3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pk-draft{display:block;font-size:10.5px;color:var(--gold,#c9a24a);opacity:.85}
 
 
 .ks-card{margin-top:4px}.ks-streak{font-size:20px;color:#e6c77a}.ks-acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
@@ -3383,7 +3389,7 @@ const T={
  hSearch:["Cari nomor hadis, nama kitab, atau teks Arab","Hadith number, book name or Arabic text","رقم الحديث أو اسم الكتاب أو نص عربي"],
  tKitab:["Kitab","Books","الكتب"], tMarks:["Penanda","Bookmarks","العلامات"], hadis:["hadis","hadith","حديث"], no:["No.","No.","رقم"],
  cont:["Lanjutkan membaca","Continue reading","تابع القراءة"], start:["Mulai dari hadis pertama","Start from the first hadith","ابدأ من الحديث الأول"], startSub:["Kitab Permulaan Wahyu","Book of Revelation","كتاب بدء الوحي"],
- trNote:["Terjemahan Indonesia dan Inggris sedang menunggu izin penerbit, jadi saat ini hanya teks Arab yang ditampilkan.","Indonesian and English translations are awaiting publisher permission; the Arabic text is shown for now.","الترجمات بانتظار إذن الناشرين؛ يُعرض النص العربي الآن."],
+ trDraft:["Terjemahan draf Kusyu · menunggu tinjauan ustadz","Kusyu draft Indonesian translation · awaiting scholar review","ترجمة إندونيسية مسودة · بانتظار مراجعة"], trIdNote:["Terjemahan Indonesia (draf Kusyu, menunggu tinjauan ustadz) baru tersedia untuk sebagian kitab. Kitab ini sementara menampilkan teks Arab.","A draft Indonesian translation is available for some books only; this book shows the Arabic text for now.","الترجمة متاحة لبعض الكتب فقط."], hIdRes:["Hadis (terjemahan draf)","Hadiths (draft translation)","أحاديث (ترجمة)"], trNote:["Terjemahan Indonesia dan Inggris sedang menunggu izin penerbit, jadi saat ini hanya teks Arab yang ditampilkan.","Indonesian and English translations are awaiting publisher permission; the Arabic text is shown for now.","الترجمات بانتظار إذن الناشرين؛ يُعرض النص العربي الآن."],
  empty:["(Teks hadis nomor ini belum tersedia di sumber data.)","(Text for this number is not yet in the source data.)","(نص هذا الرقم غير متوفر في المصدر بعد.)"],
  mark:["Tandai","Bookmark","علامة"], unmark:["Hapus tanda","Remove","إزالة"], marked:["Hadis ditandai","Bookmarked","تمت الإضافة"], copy:["Salin","Copy","نسخ"], copied:["Disalin","Copied","تم النسخ"],
  noMarks:["Belum ada penanda. Ketuk ☆ pada sebuah hadis.","No bookmarks yet. Tap ☆ on a hadith.","لا علامات بعد."], noRes:["Tidak ditemukan.","No results.","لا نتائج."],
@@ -3409,6 +3415,8 @@ const lat=s=>String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g
 const H={meta:null,kc:{},idx:null,tab:"k",cur:null};
 const loadMeta=()=>H.meta?Promise.resolve(H.meta):getJSON("hadis/kitab.json").then(m=>(H.meta=m));
 const loadK=k=>H.kc[k]?Promise.resolve(H.kc[k]):getJSON("hadis/k/"+k+".json").then(d=>(H.kc[k]=d));
+const loadIdx=()=>H.idI?Promise.resolve(H.idI):getJSON("hadis/id/index.json").then(m=>(H.idI=m)).catch(()=>(H.idI={k:{}}));
+const loadId=async k=>{ if(H.ic&&H.ic[k]) return H.ic[k]; H.ic=H.ic||{}; const ix=await loadIdx(); if(!ix.k[k]) return null; try{ return (H.ic[k]=await getJSON("hadis/id/"+k+".json")); }catch(e){ return null; } };
 const K=k=>H.meta.k[k-1]; // [no, ar, id, en, first, last, count]
 const kName=k=>lang()==="ar"?k[1]:(lang()==="en"?"Book of "+k[3]:"Kitab "+k[2]);
 const kitabOf=n=>{ n=+n; const ks=H.meta.k; for(let i=0;i<ks.length;i++) if(n>=ks[i][4]&&n<Math.floor(ks[i][5])+1) return ks[i][0]; return null; };
@@ -3433,15 +3441,19 @@ async function hSearch(q,el){ const my=++sSeq; const out=[];
     if(my!==sSeq) return; const res=[]; for(const r of H.idx){ const p=r[2].indexOf(aq); if(p>=0){ res.push([r,p]); if(res.length>=40) break; } }
     if(res.length) out.push(`<div class="eyebrow">${t("hadis")} (${NUM(res.length)}${res.length>=40?"+":""})</div>`+res.map(([r,p])=>{ const a=Math.max(0,p-50), sn=r[2].slice(a,p)+"<mark>"+esc(r[2].substr(p,aq.length))+"</mark>"+esc(r[2].slice(p+aq.length,p+aq.length+80));
       return `<button class="q-row h-sr" type="button" data-hopen="${r[1]}:${r[0]}">${star(Math.floor(r[0]))}<span class="q-row-tx"><small>${esc(kName(K(r[1])))} · ${t("no")} ${NUM(r[0])}</small><span class="h-snip" lang="ar" dir="rtl">${a?"…":""}${sn}…</span></span></button>`; }).join(""));
+  } else if(!/^\d/.test(q)&&lq.length>=3){ let ix=null; try{ if(!H.sid) H.sid=(await getJSON("hadis/search-id.json")).map(r=>[r[0],r[1],r[2],lat(r[2])]); ix=H.sid; }catch(e){}
+    if(my!==sSeq) return; const res=[]; if(ix) for(const r of ix){ const p=r[3].indexOf(lq); if(p>=0){ res.push(r); if(res.length>=40) break; } }
+    if(res.length) out.push(`<div class="eyebrow">${t("hIdRes")} (${NUM(res.length)}${res.length>=40?"+":""})</div>`+res.map(r=>{ const lo=r[2].toLowerCase(), w=lq.split(" ")[0], p=Math.max(0,lo.indexOf(w)), a=Math.max(0,p-50); return `<button class="q-row h-sr" type="button" data-hopen="${r[1]}:${r[0]}">${star(Math.floor(r[0]))}<span class="q-row-tx"><small>${esc(kName(K(r[1])))} · ${t("no")} ${NUM(r[0])}</small><span class="h-snip h-snip-id">${a?"…":""}${esc(r[2].slice(a,p))}<mark>${esc(r[2].substr(p,w.length))}</mark>${esc(r[2].slice(p+w.length,p+w.length+90))}…</span></span></button>`; }).join(""));
+    out.push(`<p class="dim ks-small">${t("latinNote")}</p>`);
   } else if(!/^\d/.test(q)) out.push(`<p class="dim ks-small">${t("latinNote")}</p>`);
   if(my!==sSeq) return; el.innerHTML=out.join("")||`<p class="dim q-empty">${t("noRes")}</p>`; }
 async function hOpen(k,n){ k=+k; await loadMeta(); const r=$("#hReader"), body=$("#hBody"); $("#hIndex").hidden=true; r.hidden=false; H.cur={k};
   const km=K(k); $("#hTitle").textContent=kName(km); $("#hSub").textContent=lang()==="ar"?"":km[1]; body.innerHTML=`<p class="dim">${t("loading")}</p>`; const vw=$("#view"); if(vw) vw.scrollTop=0; window.scrollTo(0,0);
   let d; try{ d=await loadK(k); }catch(e){ body.innerHTML=`<p class="dim">${t("offline")}</p>`; return; }
-  const bm=new Set(bms().map(b=>String(b.n)));
+  const bm=new Set(bms().map(b=>String(b.n))); const tid=lang()==="ar"?null:await loadId(k);
   body.innerHTML=`<div class="h-khead"><div class="h-kar" lang="ar" dir="rtl">${esc(km[1])}</div><small class="dim">${t("no")} ${NUM(km[4])}–${NUM(Math.floor(km[5]))} · ${NUM(km[6])} ${t("hadis")}</small></div>
-   <p class="h-note">${t("trNote")}</p>`+d.map(([no,tx])=>`<article class="h-card" id="h-${String(no).replace(".","_")}" data-n="${no}"><div class="h-top"><span class="h-no">${t("hEy")} · ${NUM(no)}</span><span><button class="q-ib h-bm${bm.has(String(no))?" on":""}" type="button" data-hbm="${no}" aria-label="${t("mark")}">${bm.has(String(no))?"★":"☆"}</button><button class="q-ib" type="button" data-hcp="${no}" aria-label="${t("copy")}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></span></div>
-   <div class="h-ar" lang="ar" dir="rtl">${tx?esc(tx):`<span class="dim">${t("empty")}</span>`}</div></article>`).join("")+
+   <p class="h-note">${tid?t("trDraft")+".":t(lang()==="ar"?"trNote":"trIdNote")}</p>`+d.map(([no,tx])=>`<article class="h-card" id="h-${String(no).replace(".","_")}" data-n="${no}"><div class="h-top"><span class="h-no">${t("hEy")} · ${NUM(no)}</span><span><button class="q-ib h-bm${bm.has(String(no))?" on":""}" type="button" data-hbm="${no}" aria-label="${t("mark")}">${bm.has(String(no))?"★":"☆"}</button><button class="q-ib" type="button" data-hcp="${no}" aria-label="${t("copy")}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></span></div>
+   <div class="h-ar" lang="ar" dir="rtl">${tx?esc(tx):`<span class="dim">${t("empty")}</span>`}</div>${tid&&tid[no]?`<div class="h-id"><div class="h-id-lb">${t("trDraft")}</div><p>${esc(tid[no])}</p></div>`:""}</article>`).join("")+
    `<div class="h-nav">${k>1?`<button class="btn ghost" type="button" data-hopen="${k-1}">← ${t("prevK")}</button>`:"<span></span>"}${k<97?`<button class="btn gold" type="button" data-hopen="${k+1}">${t("nextK")} →</button>`:""}</div><p class="dim q-attr">${t("hAttr")}</p>`;
   if(n){ const e=document.getElementById("h-"+String(n).replace(".","_")); if(e){ e.scrollIntoView({block:"start"}); e.classList.add("flash"); setTimeout(()=>e.classList.remove("flash"),1800); } }
   store.set("rk_h_last",{k,n:n||d[0][0],ts:Date.now()}); hObs(); }
@@ -3485,7 +3497,9 @@ const QM=()=>getJSON("quran/meta.json");
 async function todayData(){ const sd=seed(); const out={};
   try{ const m=await QM(); const tot=m.s.reduce((a,s)=>a+s[6],0); let x=(sd*7919)%tot, s=0; while(x>=m.s[s][6]){ x-=m.s[s][6]; s++; } const sm=m.s[s]; const d=await getJSON("quran/s/"+String(s+1).padStart(3,"0")+".json");
     out.a={s:s+1,a:x+1,ar:d.ar[x].replace(/^بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ /,s===0?"$&":""),tr:lang()==="en"?d.en[x]:d.id[x],name:lang()==="ar"?sm[1]:(lang()==="en"?sm[4]:sm[2])}; }catch(e){}
-  try{ await loadMeta(); const n=H.meta.d[(sd*104729)%H.meta.d.length], k=kitabOf(n), d=await loadK(k); const full=(d.find(r=>r[0]===n)||[0,""])[1]; out.h={n,k,ar:matn(full)}; }catch(e){}
+  try{ await loadMeta(); let n=H.meta.d[(sd*104729)%H.meta.d.length], k=kitabOf(n), id=null;
+    if(lang()!=="ar"){ const ix=await loadIdx(), tk=Object.keys(ix.k); if(tk.length){ k=+tk[sd%tk.length]; const m=await loadId(k), ns=Object.keys(m); const c=ns[(sd*104729)%ns.length]; n=+c||c; id=m[c]; } }
+    const d=await loadK(k); const full=(d.find(r=>String(r[0])===String(n))||[0,""])[1]; out.h={n,k,ar:matn(full),id}; }catch(e){}
   try{ await loadSI(); const av=SR.idx.ch.filter(c=>c[4]); const c=av[sd%av.length]; out.s={n:c[0],title:cT(c)}; }catch(e){}
   return out; }
 async function homeCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#pkToday");
@@ -3495,7 +3509,7 @@ async function homeCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; l
   c.dir=lang()==="ar"?"rtl":"ltr";
   c.innerHTML=`<div class="row v2-sb"><div><div class="eyebrow">☀️ ${t("today")}</div><small class="dim">${t("todayLead")}</small></div><div class="pk-prog"><b>${NUM(n)}</b>/${NUM(3)}</div></div>
    ${D.a?row("hi_ayat","📖",t("ayat"),`<span class="pk-ar" lang="ar" dir="rtl">${esc(D.a.ar)}</span>${D.a.tr&&lang()!=="ar"?`<span class="pk-tr">${esc(D.a.tr)}</span>`:""}<em>QS. ${esc(D.a.name)} ${NUM(D.a.s)}:${NUM(D.a.a)}</em>`,`data-hiq="${D.a.s}:${D.a.a}"`):""}
-   ${D.h?row("hi_hadis","📜",t("hd"),`<span class="pk-ar pk-clip" lang="ar" dir="rtl">${esc(D.h.ar)}</span><em>${t("hEy")} ${NUM(D.h.n)}</em>`,`data-hopen="${D.h.k}:${D.h.n}" data-hihub="h"`):""}
+   ${D.h?row("hi_hadis","📜",t("hd"),`<span class="pk-ar pk-clip" lang="ar" dir="rtl">${esc(D.h.ar)}</span>${D.h.id?`<span class="pk-tr pk-clip3">${esc(D.h.id)}</span><small class="pk-draft">${t("trDraft")}</small>`:""}<em>${t("hEy")} ${NUM(D.h.n)}</em>`,`data-hopen="${D.h.k}:${D.h.n}" data-hihub="h"`):""}
    ${D.s?row("hi_sirah","🌙",t("sr"),`<b>${esc(D.s.title)}</b><em>${t("sEy")} · ${t("ch")} ${NUM(D.s.n)}</em>`,`data-sopen="${D.s.n}" data-hihub="s"`):""}
    ${n===3?`<div class="pk-done">🎉 ${t("allDone")}</div>`:""}`; }
 
