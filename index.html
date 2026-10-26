@@ -548,6 +548,20 @@ input[type=file]{display:none}
 .ticks.gk-ticks span em{font-style:normal;white-space:nowrap}
 .ticks.gk-ticks span:nth-child(even){padding-top:20px}
 
+
+.ks-card{margin-top:4px}.ks-streak{font-size:20px;color:#e6c77a}.ks-acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
+.ks-small{font-size:11.5px}.ks-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}.ks-stats div{background:rgba(230,199,122,.08);border-radius:12px;padding:8px 4px;text-align:center}
+.ks-stats b{display:block;font-size:18px;color:#e6c77a}.ks-stats small{font-size:10.5px;opacity:.75}.ks-bonus{font-size:12px;color:#e6c77a;margin-bottom:6px}
+.ks-items{display:flex;flex-direction:column;gap:6px}.ks-it{border:1px solid rgba(230,199,122,.18);border-radius:12px;padding:6px 10px}.ks-it.on{background:rgba(230,199,122,.12);border-color:rgba(230,199,122,.5)}
+.ks-tg{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;width:100%}.ks-tg em{margin-inline-start:auto;font-style:normal;font-size:12px;opacity:.7}
+.ks-ck{width:22px;height:22px;border-radius:50%;border:1.5px solid #e6c77a;display:inline-grid;place-items:center;color:#140f09;font-weight:700}.ks-it.on .ks-ck{background:#e6c77a}
+.ks-it details{font-size:11.5px;opacity:.8;margin-top:2px}.ks-it summary{cursor:pointer}.ks-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.ks-bd{font-size:11.5px;padding:4px 9px;border-radius:20px;border:1px solid rgba(255,255,255,.15);opacity:.5}.ks-bd.on{opacity:1;border-color:#e6c77a;color:#e6c77a}
+.ks-motto{font-size:12.5px;font-style:italic;margin:12px 0 4px}
+.ks-sheet{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:flex-end}.ks-sheet[hidden]{display:none}
+.ks-sbox{background:#1c150d;width:100%;border-radius:20px 20px 0 0;padding:22px 18px 28px;display:flex;flex-direction:column;gap:10px}
+.ks-g{background:#fff!important;color:#222!important}.ks-a{background:#000!important;color:#fff!important}
+
 </style>
 <div class="app" id="app">
   <div class="pattern" aria-hidden="true"><svg><defs><pattern id="star8" width="72" height="72" patternUnits="userSpaceOnUse"><g fill="none" stroke="#d9b86a" stroke-width="1"><path d="M36 6l8 22 22 8-22 8-8 22-8-22-22-8 22-8z"/><path d="M36 14l5 17 17 5-17 5-5 17-5-17-17-5 17-5z"/><circle cx="36" cy="36" r="4"/><circle cx="0" cy="0" r="6"/><circle cx="72" cy="0" r="6"/><circle cx="0" cy="72" r="6"/><circle cx="72" cy="72" r="6"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#star8)"/></svg></div>
@@ -2942,3 +2956,120 @@ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded"
 })();
 
 </script>
+<script>window.KUSYU_CONFIG={loginEnabled:false,adapter:"supabase",supabaseUrl:"",supabaseAnonKey:"",redirectTo:"https://kusyu.ai"};</script>
+<script>
+/* ===== Kusyu — Log Ibadah + Gamifikasi (local-first) + Login opsional ===== */
+(function(){
+"use strict";
+const CFG=window.KUSYU_CONFIG||{}; // {loginEnabled:false, adapter:"supabase"|"mock", supabaseUrl, supabaseAnonKey, redirectTo}
+const $=s=>document.querySelector(s);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includes(l)?l:"id";};
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const dk=(d=new Date())=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const T={
+ title:["Log Ibadah","Worship Log","سجل العبادة"], ey:["Amalan sunnah harian","Daily sunnah practices","السنن اليومية"],
+ today:["Hari ini","Today","اليوم"], week:["7 hari","7 days","٧ أيام"], total:["Total poin","Total points","مجموع النقاط"],
+ streak:["Hari beruntun","Day streak","أيام متتالية"], badges:["Lencana","Badges","الأوسمة"], pts:["poin","pts","نقطة"],
+ priv:["Catatan ini pribadi, hanya untuk Anda. Poin bukan hadiah uang — sekadar pengingat agar istiqamah; ikhlaskan niat karena Allah.","Private to you only. Points are not cash rewards — just a reminder to stay consistent; keep your intention for Allah.","هذا السجل خاص بك. النقاط ليست مكافأة مالية، بل تذكير بالمداومة؛ أخلص النية لله."],
+ guest:["Mode tamu — tersimpan di perangkat ini","Guest mode — saved on this device","وضع الضيف — محفوظ على هذا الجهاز"],
+ login:["Masuk untuk sinkron","Sign in to sync","سجّل الدخول للمزامنة"], logout:["Keluar","Sign out","خروج"],
+ sheetT:["Masuk ke Kusyu","Sign in to Kusyu","الدخول إلى كوسيو"],
+ sheetL:["Opsional. Tanpa kata sandi. Progres Anda di perangkat ini akan digabung ke akun dan tersinkron antar perangkat.","Optional. No password. Your progress on this device is merged into your account and synced across devices.","اختياري، بلا كلمة مرور. يُدمج تقدمك على هذا الجهاز في حسابك ويُزامن بين الأجهزة."],
+ google:["Lanjut dengan Google","Continue with Google","المتابعة عبر Google"], apple:["Lanjut dengan Apple","Continue with Apple","المتابعة عبر Apple"],
+ later:["Nanti saja","Not now","لاحقًا"], as:["Masuk sebagai","Signed in as","مسجّل باسم"], merged:["Progres digabung ke akun","Progress merged into account","تم دمج التقدم في الحساب"],
+ bonus:["Bonus istiqamah","Consistency bonus","مكافأة المداومة"], dalil:["Dalil","Evidence","الدليل"]
+};
+const t=k=>T[k][{id:0,en:1,ar:2}[lang()]];
+// Dalil: hanya sahih/hasan. Rujukan nomor perlu diverifikasi ulang oleh ustadz sebelum rilis toko.
+const ITEMS=[
+ {k:"jamaah",p:10,n:["Sholat berjamaah","Congregational prayer","صلاة الجماعة"],d:["Sholat berjamaah lebih utama 27 derajat dari sholat sendirian. (HR. Bukhari 645, Muslim 650 — sahih)","Congregational prayer is 27 degrees better than praying alone. (Bukhari 645, Muslim 650 — sahih)","صلاة الجماعة تفضل صلاة الفذ بسبع وعشرين درجة. (البخاري ٦٤٥، مسلم ٦٥٠ — صحيح)"]},
+ {k:"rawatib",p:6,n:["Sholat rawatib","Rawatib prayers","السنن الرواتب"],d:["Siapa sholat 12 rakaat sehari semalam, dibangunkan rumah di surga. (HR. Muslim 728 — sahih)","Whoever prays 12 rak'ahs a day, a house is built for him in Paradise. (Muslim 728 — sahih)","من صلى اثنتي عشرة ركعة في يوم وليلة بني له بيت في الجنة. (مسلم ٧٢٨ — صحيح)"]},
+ {k:"dhuha",p:5,n:["Sholat dhuha","Duha prayer","صلاة الضحى"],d:["Dua rakaat dhuha mencukupi sedekah seluruh persendian. (HR. Muslim 720 — sahih)","Two rak'ahs of Duha suffice for the charity due on every joint. (Muslim 720 — sahih)","ويجزئ من ذلك ركعتان يركعهما من الضحى. (مسلم ٧٢٠ — صحيح)"]},
+ {k:"tahajjud",p:8,n:["Tahajjud / qiyamul lail","Night prayer","قيام الليل"],d:["Sholat paling utama setelah fardhu adalah sholat malam. (HR. Muslim 1163 — sahih)","The best prayer after the obligatory is the night prayer. (Muslim 1163 — sahih)","أفضل الصلاة بعد الفريضة صلاة الليل. (مسلم ١١٦٣ — صحيح)"]},
+ {k:"tilawah",p:5,n:["Tilawah Al-Qur'an","Quran recitation","تلاوة القرآن"],d:["Satu huruf Al-Qur'an satu kebaikan, dilipatkan sepuluh. (HR. Tirmidzi 2910 — hasan sahih)","Each letter of the Quran is a good deed, multiplied tenfold. (Tirmidhi 2910 — hasan sahih)","من قرأ حرفا من كتاب الله فله به حسنة والحسنة بعشر أمثالها. (الترمذي ٢٩١٠ — حسن صحيح)"]},
+ {k:"dzikirpagi",p:3,n:["Dzikir pagi","Morning adhkar","أذكار الصباح"],d:["“Berdzikirlah kepada Allah dengan dzikir yang banyak, dan bertasbihlah pagi dan petang.” (QS. Al-Ahzab 33:41–42)","“Remember Allah often and glorify Him morning and evening.” (Quran 33:41–42)","﴿اذكروا الله ذكرا كثيرا وسبحوه بكرة وأصيلا﴾ (الأحزاب ٤١–٤٢)"]},
+ {k:"dzikirpetang",p:3,n:["Dzikir petang","Evening adhkar","أذكار المساء"],d:["(QS. Al-Ahzab 33:41–42)","(Quran 33:41–42)","(الأحزاب ٤١–٤٢)"]},
+ {k:"puasa",p:8,n:["Puasa sunnah","Voluntary fast","صيام التطوع"],d:["Amal diperlihatkan pada Senin dan Kamis, aku suka amalku diperlihatkan saat berpuasa. (HR. Tirmidzi 747 — hasan)","Deeds are presented on Monday and Thursday; I love mine presented while fasting. (Tirmidhi 747 — hasan)","تعرض الأعمال يوم الاثنين والخميس فأحب أن يعرض عملي وأنا صائم. (الترمذي ٧٤٧ — حسن)"]},
+ {k:"sedekah",p:5,n:["Sedekah","Charity","الصدقة"],d:["Sedekah tidak mengurangi harta. (HR. Muslim 2588 — sahih)","Charity does not decrease wealth. (Muslim 2588 — sahih)","ما نقصت صدقة من مال. (مسلم ٢٥٨٨ — صحيح)"]}
+];
+const MOTTO=["“Amalan yang paling dicintai Allah adalah yang paling kontinu walaupun sedikit.” (HR. Bukhari 6464, Muslim 783 — sahih)","“The most beloved deeds to Allah are the most consistent, even if small.” (Bukhari 6464, Muslim 783 — sahih)","«أحب الأعمال إلى الله أدومها وإن قل» (البخاري ٦٤٦٤، مسلم ٧٨٣ — صحيح)"];
+const BADGES=[{id:"first",n:["Langkah pertama","First step","الخطوة الأولى"],ok:s=>s.total>0},{id:"s3",n:["3 hari istiqamah","3-day streak","٣ أيام"],ok:s=>s.best>=3},{id:"s7",n:["7 hari istiqamah","7-day streak","٧ أيام"],ok:s=>s.best>=7},{id:"s30",n:["30 hari istiqamah","30-day streak","٣٠ يومًا"],ok:s=>s.best>=30},{id:"p100",n:["100 poin","100 points","١٠٠ نقطة"],ok:s=>s.total>=100},{id:"p500",n:["500 poin","500 points","٥٠٠ نقطة"],ok:s=>s.total>=500}];
+const ix=()=>({id:0,en:1,ar:2}[lang()]);
+// ---- Log model: {"YYYY-MM-DD":{item:ts,...}} ----
+const KEY="ks_ibadah_log";
+const Log={
+ all(){return store.get(KEY,{});}, save(o){store.set(KEY,o); store.set("ks_ibadah_dirty",Date.now()); Sync.push();},
+ toggle(k,day=dk()){const o=this.all(); o[day]=o[day]||{}; if(o[day][k]) delete o[day][k]; else o[day][k]=Date.now(); if(!Object.keys(o[day]).length) delete o[day]; this.save(o);},
+ merge(a,b){const o=JSON.parse(JSON.stringify(a||{})); for(const d in (b||{})){o[d]=o[d]||{}; for(const k in b[d]) o[d][k]=Math.min(o[d][k]||Infinity,b[d][k]);} return o;}
+};
+const PT=Object.fromEntries(ITEMS.map(i=>[i.k,i.p]));
+function dayPts(o,d){const e=o[d]; return e?Object.keys(e).reduce((s,k)=>s+(PT[k]||0),0):0;}
+function stats(o=Log.all(),now=new Date()){
+ const days=Object.keys(o).filter(d=>Object.keys(o[d]).length).sort();
+ // streak bonus: hari ke-n beruntun dapat +min(n,7)*2
+ let total=0,run=0,best=0,prev=null,bonus=0;
+ for(const d of days){const dt=new Date(d+"T12:00:00"); run=(prev&&Math.round((dt-prev)/864e5)===1)?run+1:1; prev=dt; best=Math.max(best,run); const b=run>1?Math.min(run,7)*2:0; bonus+=b; total+=dayPts(o,d)+b;}
+ const y=new Date(now); y.setDate(y.getDate()-1);
+ let streak=0; if(o[dk(now)]||o[dk(y)]){ let c=new Date(o[dk(now)]?now:y); while(o[dk(c)]){streak++; c.setDate(c.getDate()-1);} }
+ let week=0; for(let i=0;i<7;i++){const c=new Date(now); c.setDate(c.getDate()-i); week+=dayPts(o,dk(c));}
+ return {today:dayPts(o,dk(now)),week,total,streak,best,bonus,todayBonus:streak>1&&o[dk(now)]?Math.min(streak,7)*2:0};
+}
+// ---- Sync adapters ----
+const Adapters={
+ none:{name:"none",async session(){return null;}},
+ mock:{name:"mock",async signIn(p){const u={id:"mock-"+p,email:"pak.alfian@"+(p==="apple"?"privaterelay.appleid.com":"gmail.com"),provider:p}; store.set("ks_mock_session",u); return u;},
+  async session(){return store.get("ks_mock_session",null);}, async signOut(){localStorage.removeItem("ks_mock_session");},
+  async pull(){return store.get("ks_mock_remote",{});}, async put(o){store.set("ks_mock_remote",o);}},
+ supabase:{name:"supabase",_c:null,
+  async client(){ if(this._c) return this._c; if(!window.supabase){await new Promise((r,j)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";s.onload=r;s.onerror=j;document.head.appendChild(s);});}
+   this._c=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseAnonKey); return this._c;},
+  async signIn(p){const c=await this.client(); await c.auth.signInWithOAuth({provider:p,options:{redirectTo:CFG.redirectTo||location.origin}}); return null;},
+  async session(){const c=await this.client(); const {data}=await c.auth.getSession(); const u=data&&data.session&&data.session.user; return u?{id:u.id,email:u.email,provider:(u.app_metadata||{}).provider}:null;},
+  async signOut(){const c=await this.client(); await c.auth.signOut();},
+  async pull(){const c=await this.client(); const {data}=await c.from("ibadah_log").select("day,item,ts"); const o={}; (data||[]).forEach(r=>{(o[r.day]=o[r.day]||{})[r.item]=r.ts;}); return o;},
+  async put(o){const c=await this.client(); const u=await this.session(); if(!u) return; const rows=[]; for(const d in o) for(const k in o[d]) rows.push({user_id:u.id,day:d,item:k,ts:o[d][k]});
+   if(rows.length) await c.from("ibadah_log").upsert(rows,{onConflict:"user_id,day,item"});
+   // hapus yang di-untoggle
+   const {data}=await c.from("ibadah_log").select("day,item"); const del=(data||[]).filter(r=>!(o[r.day]&&o[r.day][r.item])); for(const r of del) await c.from("ibadah_log").delete().match({day:r.day,item:r.item}); }}
+};
+const ready=CFG.loginEnabled&&(CFG.adapter==="mock"||(CFG.adapter==="supabase"&&CFG.supabaseUrl&&CFG.supabaseAnonKey));
+const A=ready?Adapters[CFG.adapter]:Adapters.none;
+const Sync={user:null,
+ async init(){ try{this.user=await A.session(); if(this.user) await this.firstMerge();}catch(e){} render(); },
+ async firstMerge(){ const mk="ks_merged_"+this.user.id; const remote=await A.pull(); const m=Log.merge(remote,Log.all()); store.set(KEY,m); await A.put(m); if(!store.get(mk,0)){store.set(mk,Date.now()); toast(t("merged"));} },
+ push(){ if(this.user&&A.put){clearTimeout(this._t); this._t=setTimeout(()=>A.put(Log.all()).catch(()=>{}),400);} },
+ async signIn(p){ const u=await A.signIn(p); if(u){this.user=u; await this.firstMerge();} closeSheet(); render(); },
+ async signOut(){ await A.signOut(); this.user=null; render(); }
+};
+function toast(m){const x=$("#toast"); if(!x) return; x.textContent=m; x.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(()=>x.classList.remove("on"),2600);}
+// ---- UI ----
+function mount(){ if($("#ksIbadah")) return; const pg=$("#page-beranda .stack")||$("#page-beranda"); if(!pg) return;
+ const c=document.createElement("div"); c.className="card ks-card"; c.id="ksIbadah"; pg.appendChild(c);
+ const sh=document.createElement("div"); sh.className="ks-sheet"; sh.id="ksSheet"; sh.hidden=true; document.body.appendChild(sh); }
+function closeSheet(){const s=$("#ksSheet"); if(s) s.hidden=true;}
+function openSheet(){ if(!ready) return; const s=$("#ksSheet"); const isIOS=/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent)||CFG.showApple;
+ s.innerHTML=`<div class="ks-sbox" dir="${lang()==="ar"?"rtl":"ltr"}"><h2>${t("sheetT")}</h2><p class="dim">${t("sheetL")}</p>
+ <button class="btn ks-g" id="ksG" type="button"><b>G</b> ${t("google")}</button>${isIOS?`<button class="btn ks-a" id="ksA" type="button"> ${t("apple")}</button>`:""}
+ <button class="btn ghost" id="ksLater" type="button">${t("later")}</button><p class="dim ks-small">${t("priv")}</p></div>`;
+ s.hidden=false; $("#ksG").onclick=()=>Sync.signIn("google"); const a=$("#ksA"); if(a) a.onclick=()=>Sync.signIn("apple"); $("#ksLater").onclick=closeSheet; s.onclick=e=>{if(e.target===s) closeSheet();}; }
+function render(){ mount(); const c=$("#ksIbadah"); if(!c) return; const o=Log.all(), td=o[dk()]||{}, s=stats(o), i=ix();
+ const acct=!ready?`<span class="dim ks-small">${t("guest")}</span>`:Sync.user?`<span class="dim ks-small">${t("as")} ${esc(Sync.user.email||"")}</span> <button class="btn sm ghost" id="ksOut" type="button">${t("logout")}</button>`:`<span class="dim ks-small">${t("guest")}</span> <button class="btn sm gold" id="ksIn" type="button">${t("login")}</button>`;
+ c.dir=lang()==="ar"?"rtl":"ltr";
+ c.innerHTML=`<div class="row v2-sb"><div><div class="eyebrow">${t("ey")}</div><h3 style="margin:2px 0">${t("title")}</h3></div><div class="ks-streak" title="${t("streak")}">🔥 <b id="ksStreak">${s.streak}</b></div></div>
+ <div class="ks-acct">${acct}</div>
+ <div class="ks-stats"><div><b id="ksToday">${s.today+s.todayBonus}</b><small>${t("today")}</small></div><div><b id="ksWeek">${s.week}</b><small>${t("week")}</small></div><div><b id="ksTotal">${s.total}</b><small>${t("total")}</small></div><div><b>${s.streak}</b><small>${t("streak")}</small></div></div>
+ ${s.todayBonus?`<div class="ks-bonus">+${s.todayBonus} ${t("pts")} · ${t("bonus")}</div>`:""}
+ <div class="ks-items">${ITEMS.map(it=>`<div class="ks-it${td[it.k]?" on":""}"><button type="button" class="ks-tg" data-k="${it.k}" aria-pressed="${!!td[it.k]}"><span class="ks-ck">${td[it.k]?"✓":""}</span><span>${it.n[i]}</span><em>+${it.p}</em></button><details><summary>${t("dalil")}</summary><p>${it.d[i]}</p></details></div>`).join("")}</div>
+ <div class="eyebrow" style="margin-top:12px">${t("badges")}</div><div class="ks-badges">${BADGES.map(b=>`<span class="ks-bd${b.ok(s)?" on":""}" data-b="${b.id}">${b.ok(s)?"★":"☆"} ${b.n[i]}</span>`).join("")}</div>
+ <p class="ks-motto">${MOTTO[i]}</p><p class="dim ks-small">${t("priv")}</p>`;
+ c.querySelectorAll(".ks-tg").forEach(b=>b.onclick=()=>{Log.toggle(b.dataset.k); render();});
+ const bi=$("#ksIn"); if(bi) bi.onclick=openSheet; const bo=$("#ksOut"); if(bo) bo.onclick=()=>Sync.signOut(); }
+window.KusyuIbadah={Log,stats,Sync,render,openSheet,ITEMS,ready,version:"ks-ibadah-v1"};
+document.addEventListener("rk:lang",()=>setTimeout(render,0));
+const boot=()=>{render(); Sync.init(); setTimeout(render,1200);}; window.addEventListener("load",()=>setTimeout(render,0)); window.addEventListener("hashchange",()=>setTimeout(render,0));
+document.readyState==="loading"?document.addEventListener("DOMContentLoaded",boot):boot();
+})();
+
+</script>
+<!-- ks-ibadah-v1-prod -->
