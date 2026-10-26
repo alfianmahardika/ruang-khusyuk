@@ -793,6 +793,204 @@ input[type=file]{display:none}
 [data-theme=pink] .bl-node.done .bl-dot{background:#c98b98}
 
 
+/* ===== Kusyu Duo ===== */
+:root{--duo-g:#58cc02;--duo-gd:#46a302;--duo-r:#ff4b4b;--duo-rd:#d33131;--duo-a:var(--gold,#e0a83a);--duo-ad:#a8741c;--duo-bg:#16110b;--duo-fg:#f6efe2;--duo-card:rgba(255,255,255,.06);--duo-line:rgba(255,255,255,.14)}
+:is(:is([data-theme=light],[data-theme=pink]),[data-theme=pink]){--duo-bg:#fffaf2;--duo-fg:#2b2117;--duo-card:rgba(0,0,0,.04);--duo-line:rgba(0,0,0,.12)}
+[data-theme=pink]{--duo-a:#d48a9a;--duo-ad:#a65f70;--duo-bg:#fff5f6}
+[data-theme=dark]{--duo-bg:#0f1115}
+html.duo-lock,html.duo-lock body{overflow:hidden}
+/* stat bar */
+.duo-stat{display:flex;gap:8px;align-items:center;margin:6px 0 10px;flex-wrap:wrap}
+.duo-s{display:inline-flex;align-items:center;gap:4px;padding:5px 11px;border-radius:999px;background:var(--duo-card);border:1px solid var(--duo-line);font-size:14px;color:inherit;font:inherit;font-size:14px}
+.duo-s b{font-weight:800}.duo-s.fire.on b{color:#ff9600}.duo-s.gold b{color:var(--duo-a)}
+.duo-s.mute{margin-inline-start:auto;cursor:pointer}
+.duo-s.fire.on{animation:duoFl 2.4s ease-in-out infinite}
+@keyframes duoFl{50%{box-shadow:0 0 0 3px rgba(255,150,0,.18)}}
+/* banner */
+.pp-stage>summary.duo-banner{background:linear-gradient(135deg,var(--duo-a),var(--duo-ad));color:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 4px 0 rgba(0,0,0,.22);list-style:none;cursor:pointer}
+.pp-stage>summary.duo-banner .dim,.pp-stage>summary.duo-banner .bl-cnt{color:#fff;opacity:.92}
+.pp-stage>summary.duo-banner.b2{background:linear-gradient(135deg,#1cb0f6,#1386c2)}
+[data-theme=pink] .pp-stage>summary.duo-banner.b2{background:linear-gradient(135deg,#b98fc4,#8f6a9c)}
+/* path */
+.bl-path.duo-path{border:0!important;padding:14px 0 8px!important;display:flex;flex-direction:column;align-items:center;gap:2px}
+.duo-path>.bl-node{width:100%;margin:0;display:flex;flex-direction:column;align-items:center;position:relative}
+.duo-path .bl-nb{width:auto;flex-direction:column;gap:4px;padding:4px;transform:translateX(calc(var(--off,0)*46px));transition:transform .35s cubic-bezier(.3,1.4,.5,1);text-align:center;cursor:pointer}
+[dir=rtl] .duo-path .bl-nb{transform:translateX(calc(var(--off,0)*-46px))}
+.duo-path .bl-node.cur .bl-nb{transform:none}
+.duo-path .bl-nb:disabled{opacity:1}
+.duo-path .bl-dot{position:relative;width:66px;height:62px;margin:0!important;font-size:27px;border-radius:50%;background:#4b4b4b;color:#fff;box-shadow:0 7px 0 #333,inset 0 -4px 0 rgba(0,0,0,.12);transition:transform .12s,box-shadow .12s}
+:is(:is([data-theme=light],[data-theme=pink]),[data-theme=pink]) .duo-path .bl-dot{background:#e5e5e5;box-shadow:0 7px 0 #c4c4c4}
+.duo-path .bl-node.av .bl-dot{background:linear-gradient(180deg,#ffcf5a,var(--duo-a));box-shadow:0 7px 0 var(--duo-ad),inset 0 -4px 0 rgba(0,0,0,.08)}
+.duo-path .bl-node.done .bl-dot{background:linear-gradient(180deg,#7ee23a,var(--duo-g))!important;box-shadow:0 7px 0 var(--duo-gd)!important}
+[data-theme=pink] .duo-path .bl-node.done .bl-dot{background:linear-gradient(180deg,#eab0bd,#d48a9a)!important;box-shadow:0 7px 0 #a65f70!important}
+.duo-path .bl-nb:not(:disabled):active .bl-dot{transform:translateY(6px);box-shadow:0 1px 0 var(--duo-ad)}
+.duo-path .bl-node.nx.av .bl-dot{animation:duoBob 1.8s ease-in-out infinite}
+@keyframes duoBob{50%{transform:translateY(-5px) scale(1.04)}}
+.duo-ring{position:absolute;inset:-10px;width:calc(100% + 20px);height:calc(100% + 20px);transform:rotate(-90deg);pointer-events:none}
+.duo-ring circle{fill:none;stroke:var(--duo-a);stroke-width:5;stroke-dasharray:60 226;stroke-linecap:round;animation:duoRing 2.4s linear infinite;opacity:.9}
+@keyframes duoRing{to{stroke-dashoffset:-226}}
+.duo-go{position:absolute;top:-30px;left:50%;transform:translateX(-50%);font-family:inherit;font-weight:800;font-size:11px;line-height:1;font-style:normal;letter-spacing:.06em;color:var(--duo-a);background:var(--duo-bg);border:2px solid var(--duo-line);padding:6px 9px;border-radius:10px;animation:duoBob 1.8s ease-in-out infinite;white-space:nowrap}
+.duo-path .bl-nt{align-items:center;max-width:150px}.duo-path .bl-nt b{font-size:13px;line-height:1.2}.duo-path .bl-nt small{font-size:11px;opacity:.7}
+.duo-path .bl-ch{display:none}
+.duo-path .bl-node>small{text-align:center;transform:translateX(calc(var(--off,0)*46px))}
+.duo-path .bl-panel{width:100%;box-sizing:border-box;animation:duoIn .35s cubic-bezier(.2,1.2,.4,1)}
+.duo-pm-n{position:absolute;top:8px;display:flex;flex-direction:column;align-items:center;pointer-events:none;z-index:1;width:150px}.duo-pm-n.r{right:0}.duo-pm-n.l{left:0}.duo-pm-n .duo-bub.sm::after{right:auto;left:50%;margin-left:-8px}
+.pp-t1 .duo-stat~.pp-top{display:none}
+.duo-path .bl-node.cur .duo-pm-n{display:none}
+.duo-chestli{list-style:none;display:flex;justify-content:center;width:100%;margin:6px 0}
+.duo-pchest{background:none;border:0;padding:0;cursor:pointer;transform:translateX(calc(var(--off,0)*46px))}
+.duo-pchest svg{width:62px;height:54px;filter:grayscale(.9) opacity(.6);transition:filter .3s}
+.duo-chestli.ready .duo-pchest svg{filter:none;animation:duoWig 2.6s ease-in-out infinite}
+.duo-pchest.nope{animation:duoShake .4s}
+@keyframes duoWig{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-8deg)}90%{transform:rotate(8deg)}95%{transform:rotate(-4deg)}}
+.duo-start{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:0;border-radius:16px;font-family:inherit;font-weight:800;font-size:16px;line-height:1;letter-spacing:.03em;color:#fff;background:var(--duo-g);box-shadow:0 5px 0 var(--duo-gd);cursor:pointer;transition:transform .1s,box-shadow .1s}
+.duo-start.again{background:#1cb0f6;box-shadow:0 5px 0 #1386c2}
+.duo-start:active{transform:translateY(4px);box-shadow:0 1px 0 var(--duo-gd)}
+.duo-start span{font-size:14px}
+/* tahap 2 mini path */
+.duo-t2{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0 4px}
+.duo-t2p{display:flex;align-items:center;gap:12px;flex:1;padding:12px 4px 10px}
+.duo-t2n{flex:none;background:none;border:0;padding:0;cursor:pointer;transform:translateY(calc(var(--off)*8px))}
+.duo-t2n .bl-dot{margin:0!important;position:relative;display:grid;place-items:center;width:50px;height:47px;border-radius:50%;font-size:21px;color:#fff;background:linear-gradient(180deg,#ffcf5a,var(--duo-a));box-shadow:0 6px 0 var(--duo-ad)}
+.duo-t2n.done .bl-dot{background:linear-gradient(180deg,#7ee23a,var(--duo-g));box-shadow:0 6px 0 var(--duo-gd)}
+.duo-t2n.nx .bl-dot{animation:duoBob 1.8s ease-in-out infinite}
+.duo-t2n .duo-ring{inset:-11px}
+.duo-t2m{display:flex;align-items:center;gap:4px;flex:1;min-width:0}.duo-t2m .duo-bub.sm{max-width:none}.duo-t2m .duo-bub.sm::after{display:none}
+.duo-flash{animation:duoFlash 1.2s}
+@keyframes duoFlash{30%{box-shadow:0 0 0 4px var(--duo-a)}}
+/* speech bubble */
+.duo-bub{position:relative;background:var(--duo-bg);color:var(--duo-fg);border:2px solid var(--duo-line);border-radius:16px;padding:10px 13px;font-weight:700;font-size:15px;line-height:1.35;animation:duoIn .4s cubic-bezier(.2,1.3,.4,1)}
+.duo-bub.sm{font-size:12px;padding:7px 10px;max-width:150px;margin-bottom:4px;font-weight:600}
+.duo-bub.sm::after{content:"";position:absolute;bottom:-8px;right:24px;border:8px solid transparent;border-top-color:var(--duo-line);border-bottom:0}
+/* ===== mascot Nur ===== */
+.nur{display:inline-block;width:var(--nz);height:calc(var(--nz)*1.25);flex:none}
+.nur svg{width:100%;height:100%;overflow:visible}
+.nur-body{transform-origin:60px 140px;animation:nurBob 2.6s ease-in-out infinite}
+@keyframes nurBob{50%{transform:translateY(-5px) rotate(-2deg)}}
+.nur-eyes{transform-origin:60px 66px;animation:nurBlink 4.2s infinite}
+@keyframes nurBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.nur-flame{transform-origin:60px 100px;animation:nurFlick .9s ease-in-out infinite alternate}
+@keyframes nurFlick{to{transform:scale(1.08,.94) translateY(1px)}}
+.nur-glow{transform-origin:60px 82px;animation:nurGlow 2.6s ease-in-out infinite}
+@keyframes nurGlow{50%{opacity:.6;transform:scale(1.06)}}
+.nur-frown{opacity:0}
+.nur.happy .nur-body{animation:nurJump .7s cubic-bezier(.3,1.6,.5,1) 2}
+.nur.happy .nur-glow{animation:nurBright .7s 2}
+@keyframes nurJump{40%{transform:translateY(-22px) scale(1.05,.95) rotate(4deg)}70%{transform:translateY(0) scale(1.08,.9)}}
+@keyframes nurBright{50%{transform:scale(1.35);opacity:1}}
+.nur.sad .nur-body{animation:nurDroop 1.4s ease forwards}
+.nur.sad .nur-smile{opacity:0}.nur.sad .nur-frown{opacity:1}
+.nur.sad .nur-glow{opacity:.15;animation:none}
+.nur.sad .nur-flame{animation:nurFlick .3s infinite alternate;transform:scale(.7)}
+@keyframes nurDroop{20%{transform:rotate(-10deg) translateX(-4px)}40%{transform:rotate(8deg)}60%{transform:rotate(-5deg) translateY(4px)}100%{transform:translateY(5px) rotate(-3deg)}}
+.nur.cheer .nur-body{animation:nurCheer 1.1s cubic-bezier(.3,1.5,.5,1) infinite}
+.nur.cheer .nur-glow{animation:nurBright 1.1s infinite}
+@keyframes nurCheer{0%,100%{transform:translateY(0)}30%{transform:translateY(-26px) rotate(-8deg)}55%{transform:translateY(0) scale(1.08,.92)}75%{transform:translateY(-12px) rotate(8deg)}}
+.nur.cheer .nur-shadow,.nur.happy .nur-shadow{animation:nurSh 1.1s infinite}
+@keyframes nurSh{30%{transform:scaleX(.6);opacity:.08}}
+.nur-shadow{transform-origin:60px 145px}
+/* ===== overlay ===== */
+.duo-ov{position:fixed;inset:0;z-index:9000;background:var(--duo-bg);color:var(--duo-fg);display:flex;flex-direction:column;opacity:0;transform:translateY(24px);transition:opacity .25s,transform .3s cubic-bezier(.2,1,.3,1);overflow:hidden}
+.duo-ov.on{opacity:1;transform:none}
+.duo-ov .ar{font-family:var(--font-arab,"Amiri",serif)}
+.duo-top{display:flex;align-items:center;gap:12px;padding:calc(env(safe-area-inset-top) + 14px) 16px 8px}
+.duo-x{background:none;border:0;color:inherit;font-size:22px;opacity:.6;cursor:pointer;padding:4px}
+.duo-pb{flex:1;height:16px;border-radius:99px;background:var(--duo-line);overflow:hidden}
+.duo-pb i{display:block;height:100%;border-radius:99px;background:var(--duo-g);transition:width .5s cubic-bezier(.3,1.3,.5,1);position:relative}
+.duo-pb i s{position:absolute;left:8px;right:8px;top:3px;height:4px;border-radius:9px;background:rgba(255,255,255,.35)}
+.duo-cmb{font-weight:800;color:#ff9600;opacity:.25;transition:opacity .3s;min-width:34px}
+.duo-cmb.on{opacity:1}.duo-cmb.pop{animation:duoPop .45s}
+@keyframes duoPop{40%{transform:scale(1.5)}}
+.duo-body{flex:1;overflow:auto;padding:10px 18px 120px;display:flex;flex-direction:column;gap:16px}
+.duo-in{animation:duoIn .4s cubic-bezier(.2,1.2,.4,1)}
+@keyframes duoIn{from{opacity:0;transform:translateX(30px)}}
+.duo-body.shake{animation:duoShake .4s}
+@keyframes duoShake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.duo-hd{display:flex;align-items:flex-end;gap:8px}
+.duo-hd .duo-bub::before{content:"";position:absolute;left:-9px;bottom:16px;border:8px solid transparent;border-right-color:var(--duo-line);border-left:0}
+[dir=rtl] .duo-hd .duo-bub::before{left:auto;right:-9px;border-left-color:var(--duo-line);border-right:8px solid transparent;border-left-width:8px;border-right-width:0}
+.duo-pm{opacity:.65}
+.duo-tile,.duo-opt,.duo-chip,.duo-big{font:inherit;color:inherit;background:var(--duo-bg);border:2px solid var(--duo-line);border-bottom-width:5px;border-radius:14px;cursor:pointer;transition:transform .08s,border-color .15s,background .15s,opacity .3s}
+.duo-tile:active,.duo-opt:active,.duo-chip:active{transform:translateY(3px);border-bottom-width:2px}
+.duo-pairs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.duo-col{display:flex;flex-direction:column;gap:12px}
+.duo-tile{min-height:60px;padding:8px;font-size:15px;font-weight:600}
+.duo-tile.ar{font-size:23px}
+.duo-tile.sel,.duo-opt.sel,.duo-chip.sel{border-color:#1cb0f6;background:rgba(28,176,246,.14);color:#1cb0f6}
+.duo-tile.matched{border-color:var(--duo-g);background:rgba(88,204,2,.14);color:var(--duo-g);opacity:.45;pointer-events:none}
+.duo-tile.pop{animation:duoPop .4s}
+.duo-tile.nope{border-color:var(--duo-r);background:rgba(255,75,75,.14);color:var(--duo-r);animation:duoShake .4s}
+.duo-big{align-self:center;font-size:40px;padding:14px 26px;line-height:1.7}
+.duo-big small{font-size:18px;opacity:.6}
+.duo-big.pulse,.duo-spkb.pulse{animation:duoPop .4s}
+.duo-qq{font-size:18px;font-weight:700;margin:0}
+.duo-opts{display:flex;flex-direction:column;gap:10px}
+.duo-opt{display:flex;align-items:center;gap:12px;padding:14px;text-align:start;font-size:16px;font-weight:600}
+.duo-opt.ar{justify-content:center;font-size:26px}
+.duo-opt kbd{font-family:inherit;font-weight:700;font-size:12px;line-height:1;border:2px solid var(--duo-line);border-radius:8px;padding:4px 7px;opacity:.7}
+.duo-opt.right{border-color:var(--duo-g);background:rgba(88,204,2,.15);color:var(--duo-g)}
+.duo-opt.wrong{border-color:var(--duo-r);background:rgba(255,75,75,.14);color:var(--duo-r)}
+.duo-sent{font-size:28px;line-height:2.2;text-align:center;padding:12px;border-radius:16px;background:var(--duo-card)}
+.duo-gap{display:inline-block;min-width:90px;border-bottom:3px solid var(--duo-a);margin:0 4px;transition:all .2s}
+.duo-gap.fill{color:#1cb0f6;animation:duoPop .3s}
+.duo-gl{text-align:center;opacity:.8;margin:0;font-style:italic}
+.duo-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.duo-chip{padding:8px 14px;font-size:22px}
+.duo-chip.used{opacity:.15;pointer-events:none;border-color:transparent}
+.duo-chip.in{animation:duoPop .25s}
+.duo-line{min-height:64px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;padding:10px 4px;border-bottom:2px solid var(--duo-line);border-top:2px solid var(--duo-line);background:repeating-linear-gradient(transparent 0 62px,var(--duo-line) 62px 64px)}
+.duo-spk{display:flex;justify-content:center;gap:14px;align-items:flex-end}
+.duo-spkb{width:110px;height:110px;border-radius:28px;border:0;background:#1cb0f6;box-shadow:0 6px 0 #1386c2;font-size:46px;cursor:pointer;color:#fff}
+.duo-spkb.sm{width:64px;height:64px;font-size:26px;border-radius:18px}
+.duo-spkb:active{transform:translateY(5px);box-shadow:0 1px 0 #1386c2}
+.duo-foot{position:absolute;left:0;right:0;bottom:0;display:flex;gap:12px;align-items:center;padding:16px 18px calc(env(safe-area-inset-bottom) + 18px);border-top:2px solid var(--duo-line);background:var(--duo-bg);transition:opacity .2s}
+.duo-foot.gone{opacity:0;pointer-events:none}
+.duo-skip{background:none;border:2px solid var(--duo-line);border-bottom-width:4px;border-radius:14px;color:inherit;font-family:inherit;font-weight:700;font-size:14px;line-height:1;padding:13px 16px;opacity:.75;cursor:pointer}
+.duo-btn{flex:1;padding:15px;border:0;border-radius:16px;font-family:inherit;font-weight:800;font-size:16px;line-height:1;letter-spacing:.06em;color:#fff;background:var(--duo-g);box-shadow:0 5px 0 var(--duo-gd);cursor:pointer;transition:transform .1s,box-shadow .1s,background .2s}
+.duo-btn:disabled{background:var(--duo-line);box-shadow:0 5px 0 rgba(0,0,0,.15);color:rgba(127,127,127,.9);cursor:default}
+.duo-btn:not(:disabled):active{transform:translateY(4px);box-shadow:0 1px 0 var(--duo-gd)}
+.duo-btn.bad{background:var(--duo-r);box-shadow:0 5px 0 var(--duo-rd)}
+.duo-sheet{position:absolute;left:0;right:0;bottom:0;transform:translateY(110%);transition:transform .35s cubic-bezier(.2,1.2,.4,1);z-index:2}
+.duo-sheet.on{transform:none}
+.duo-sheet.ok{background:#d7ffb8;color:#58a700}.duo-sheet.bad{background:#ffdfe0;color:#ea2b2b}
+[data-theme=gold] .duo-sheet.ok,[data-theme=dark] .duo-sheet.ok{background:#1f3a0f;color:#89e219}
+[data-theme=gold] .duo-sheet.bad,[data-theme=dark] .duo-sheet.bad{background:#3d1416;color:#ff7878}
+.duo-sh-in{display:flex;flex-direction:column;gap:6px;padding:18px 18px calc(env(safe-area-inset-bottom) + 18px)}
+.duo-sh-in b{font-size:20px}.duo-sh-in .ar{font-size:22px}.duo-sh-in .duo-btn{margin-top:8px}
+.duo-burst{position:absolute;left:50%;top:22px;pointer-events:none}
+.duo-spark{position:absolute;width:8px;height:8px;border-radius:50%;background:#ffd54a;transform:rotate(var(--a)) translateY(0);animation:duoSpark .8s ease-out var(--d) forwards}
+@keyframes duoSpark{to{transform:rotate(var(--a)) translateY(-60px) scale(.2);opacity:0}}
+/* complete */
+.duo-end{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px 18px 120px;text-align:center;overflow:auto}
+.duo-end h2{margin:0;font-size:28px;font-weight:900;color:var(--duo-a);animation:duoPop .6s .2s both}
+.duo-end-n{margin:0;opacity:.8}
+.duo-stats{display:flex;gap:10px;width:100%;max-width:380px}
+.duo-st{flex:1;border-radius:16px;border:2px solid;overflow:hidden;display:flex;flex-direction:column;animation:duoUp .5s cubic-bezier(.2,1.3,.4,1) both}
+.duo-st:nth-child(2){animation-delay:.12s}.duo-st:nth-child(3){animation-delay:.24s}
+@keyframes duoUp{from{opacity:0;transform:translateY(30px) scale(.8)}}
+.duo-st small{color:#fff;font-weight:800;font-size:11px;padding:5px 2px;text-transform:uppercase;letter-spacing:.04em}
+.duo-st b{font-size:22px;padding:10px 4px}
+.duo-st.gold{border-color:#ffc800}.duo-st.gold small{background:#ffc800}.duo-st.gold b{color:#ffc800}
+.duo-st.green{border-color:var(--duo-g)}.duo-st.green small{background:var(--duo-g)}.duo-st.green b{color:var(--duo-g)}
+.duo-st.fire{border-color:#ff9600}.duo-st.fire small{background:#ff9600}.duo-st.fire b{color:#ff9600}
+.duo-flame{display:inline-block;animation:duoFlame .8s ease-in-out infinite alternate}
+@keyframes duoFlame{from{transform:scale(1) rotate(-6deg)}to{transform:scale(1.25) rotate(6deg)}}
+.duo-chestb{position:relative;background:none;border:0;cursor:pointer;margin-top:6px;padding:0}
+.duo-chestb svg{width:96px;height:84px}
+.duo-chest:not(.open){animation:duoWig 1.8s ease-in-out infinite}
+.duo-chest .lid{transform-origin:10px 30px;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.duo-chest.open .lid{transform:rotate(-28deg) translate(-4px,-6px)}
+.duo-chest .rays{opacity:0}.duo-chest.open .rays{opacity:1;animation:duoPop .6s}
+.duo-hk{max-width:380px;border-radius:16px;padding:12px 14px;background:var(--duo-card);border:2px solid var(--duo-a);animation:duoUp .5s cubic-bezier(.2,1.3,.4,1)}
+.duo-hk p{margin:4px 0 0;font-weight:600;line-height:1.5}
+.duo-conf{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.duo-cf{position:absolute;top:-20px;left:var(--x);width:9px;height:14px;background:var(--c);border-radius:2px;animation:duoFall var(--t) cubic-bezier(.3,.6,.6,1) var(--d) forwards}
+@keyframes duoFall{to{transform:translateY(105vh) rotate(var(--r));opacity:.7}}
+@media (prefers-reduced-motion:reduce){.nur *,.duo-ov *,.duo-path *{animation:none!important;transition:none!important}}
+
+.duo-path .bl-node.nx>.bl-nb{background:none!important}
+
+
 /* ===== Kusyu — Hafalan Al-Qur'an AI ===== */
 .hq{display:flex;flex-direction:column;gap:14px}
 .hq-focus>:not(#hqRoot){display:none!important}
@@ -4017,6 +4215,190 @@ function init(){ inject(); if(!$("#pkTabs")) return;
   window.KusyuPustaka={bComplete,t2Open:()=>t2Open(pGet()),BU,H,SR,setTab,hOpen,sOpen,homeCard,todayData,pRender,pStats:()=>pStats(pGet()),prog:pGet};
 }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
+})();
+
+</script>
+<script>
+/* Kusyu Duo — gamifikasi ala Duolingo untuk Program (Tahap 1 & 2). Maskot "Nur" (lentera, bukan makhluk bernyawa). Tanpa file/jaringan luar: suara WebAudio + speechSynthesis bawaan perangkat. */
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includes(l)?l:"id";};
+const L=()=>({id:0,en:1,ar:2}[lang()]);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const NUM=n=>lang()==="ar"?String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]):String(n);
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const T={start:["Mulai Pelajaran","Start Lesson","ابدأ الدرس"],practice:["Latihan Lagi","Practise Again","تدرّب مجددًا"],check:["PERIKSA","CHECK","تحقّق"],cont:["LANJUT","CONTINUE","متابعة"],skip:["Lewati","Skip","تخطَّ"],
+ pairs:["Ketuk pasangan yang cocok","Tap the matching pairs","اختر الأزواج المتطابقة"],mean:["Pilih arti yang benar","Choose the correct meaning","اختر المعنى الصحيح"],blank:["Isi bagian yang kosong","Fill in the blank","أكمل الفراغ"],
+ order:["Susun bacaan sesuai urutan","Arrange the words in order","رتّب الكلمات"],listen:["Dengarkan, lalu pilih","Listen, then choose","استمع ثم اختر"],quiz:["Pilih jawaban yang benar","Choose the right answer","اختر الإجابة الصحيحة"],
+ ok:["Benar!","Correct!","صحيح!"],bad:["Belum tepat","Not quite","ليس تمامًا"],ans:["Jawaban benar:","Correct answer:","الإجابة الصحيحة:"],done:["Pelajaran selesai!","Lesson complete!","اكتمل الدرس!"],
+ light:["Cahaya","Light","نور"],acc:["Ketepatan","Accuracy","الدقة"],streak:["Hari beruntun","Day streak","أيام متتالية"],chest:["Ketuk peti untuk membuka hikmah","Tap the chest to open a gem of wisdom","اضغط الصندوق لتفتح حكمة"],
+ hikmah:["Hikmah hari ini","Today's wisdom","حكمة اليوم"],quitQ:["Keluar dari pelajaran? Progres latihan ini tidak disimpan.","Quit the lesson? This session's progress won't be saved.","الخروج من الدرس؟"],
+ mute:["Suara","Sound","الصوت"],badges:["Lencana","Badges","الأوسمة"],stage1:["Tahap 1 · Hafal Bacaan Salat","Stage 1 · Prayer Recitations","المرحلة ١ · أذكار الصلاة"],stage2:["Tahap 2 · 1 Ayat · 1 Hadis · 1 Sirah","Stage 2 · Verse · Hadith · Seerah","المرحلة ٢ · آية · حديث · سيرة"],
+ hi:["Assalamu'alaikum! Yuk lanjut satu langkah hari ini 🌙","Assalamu alaikum! One small step today 🌙","السلام عليكم! خطوة صغيرة اليوم 🌙"],allDone:["Masya Allah, semua sudah selesai hari ini!","Masha Allah, all done today!","ما شاء الله، أتممت اليوم!"],
+ t2hi:["Hari ini: 1 ayat, 1 hadis, 1 halaman sirah ✨","Today: 1 verse, 1 hadith, 1 seerah page ✨","اليوم: آية وحديث وصفحة ✨"],chestLock:["Selesaikan pelajaran sampai sini untuk membuka peti","Finish lessons up to here to open the chest","أكمل الدروس حتى هنا لتفتح الصندوق"],
+ again:["Coba lagi soal ini nanti 💪","We'll try this one again 💪","سنعيد هذا لاحقًا 💪"],combo:["beruntun benar!","in a row!","متتالية!"],tapSpk:["Ketuk untuk mendengar","Tap to listen","اضغط للاستماع"],
+ practiceNote:["Mode latihan — pelajaran ini sudah selesai.","Practice mode — lesson already completed.","وضع التدريب"]};
+const tt=k=>{const a=T[k];return a?(a[L()]||a[0]):k;};
+const PRAISE={id:["Masya Allah, benar!","Barakallahu fiik!","Hebat, lanjutkan!","Alhamdulillah, tepat!","Keren sekali!","Mantap, terus semangat!"],en:["Masha Allah, correct!","Barakallahu feek!","Great, keep going!","Alhamdulillah, spot on!","Excellent!","Wonderful!"],ar:["ما شاء الله، صحيح!","بارك الله فيك!","أحسنت، واصل!","الحمد لله، إجابة صحيحة!","رائع!","ممتاز!"]};
+const ENC={id:["Tidak apa-apa, coba lagi ya","Hampir benar, semangat!","Pelan-pelan saja, insya Allah bisa"],en:["That's okay, try again","Almost, keep going!","Take it slowly, you'll get it"],ar:["لا بأس، حاول مرة أخرى","قريب، واصل!","على مهلك، ستتقنه إن شاء الله"]};
+const DONE={id:["Masya Allah tabarakallah, pelajaran selesai!","Alhamdulillah, kamu luar biasa!"],en:["Masha Allah, lesson complete!","Alhamdulillah, amazing work!"],ar:["ما شاء الله تبارك الله، اكتمل الدرس!","الحمد لله، عمل رائع!"]};
+
+/* ---------- Suara ---------- */
+const MK="ks_duo_mute"; const muted=()=>!!store.get(MK,false);
+let AC=null; const ac=()=>{ try{ if(!AC){ const C=window.AudioContext||window.webkitAudioContext; if(!C) return null; AC=new C(); } if(AC.state==="suspended") AC.resume(); }catch(e){ return null; } return AC; };
+function tone(f,t0,d,type,vol,f2){ const c=ac(); if(!c) return; const o=c.createOscillator(), g=c.createGain(); o.type=type||"sine"; const s=c.currentTime+t0; o.frequency.setValueAtTime(f,s); if(f2) o.frequency.exponentialRampToValueAtTime(f2,s+d);
+  g.gain.setValueAtTime(0.0001,s); g.gain.exponentialRampToValueAtTime(vol||0.18,s+0.015); g.gain.exponentialRampToValueAtTime(0.0001,s+d); o.connect(g); g.connect(c.destination); o.start(s); o.stop(s+d+0.05); }
+const SFX={ tap(){ tone(660,0,.06,"triangle",.07); }, ok(){ tone(784,0,.12,"sine",.2); tone(1175,.09,.22,"sine",.18); tone(1568,.18,.25,"triangle",.06); },
+  bad(){ tone(220,0,.22,"sawtooth",.07,150); tone(196,.12,.25,"square",.04,120); }, pair(){ tone(988,0,.09,"sine",.15); tone(1319,.06,.14,"sine",.12); },
+  done(){ [523,659,784,1047,1319].forEach((f,i)=>tone(f,i*.11,.35,"triangle",.14)); tone(1568,.6,.6,"sine",.1); }, chest(){ [392,523,659,784,1047,1319,1568].forEach((f,i)=>tone(f,i*.05,.18,"sine",.09)); } };
+const sfx=k=>{ if(muted()) return; try{ SFX[k](); }catch(e){} };
+const buzz=p=>{ if(muted()) return; try{ navigator.vibrate&&navigator.vibrate(p); }catch(e){} };
+let VO=[]; const loadV=()=>{ try{ VO=speechSynthesis.getVoices()||[]; }catch(e){} }; if("speechSynthesis" in window){ loadV(); try{ speechSynthesis.onvoiceschanged=loadV; }catch(e){} }
+const hasAr=()=>VO.some(v=>/^ar/i.test(v.lang));
+function speak(text,lg,force){ if((muted()&&!force)||!("speechSynthesis" in window)||!text) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); const code={id:"id-ID",en:"en-US",ar:"ar-SA"}[lg]||"id-ID"; u.lang=code;
+  const v=VO.find(v=>v.lang===code)||VO.find(v=>v.lang&&v.lang.slice(0,2)===code.slice(0,2)); if(v) u.voice=v; u.rate=lg==="ar"?0.8:1; u.pitch=1.1; speechSynthesis.speak(u); }catch(e){} }
+
+/* ---------- Maskot Nur (lentera) ---------- */
+let NID=0;
+function nur(cls,size){ const i=++NID; return `<span class="nur ${cls||""}" style="--nz:${size||84}px" aria-hidden="true"><svg viewBox="0 0 120 150">
+<defs><linearGradient id="nG${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe7a3"/><stop offset=".55" stop-color="#f2b84b"/><stop offset="1" stop-color="#c8862a"/></linearGradient>
+<radialGradient id="nL${i}" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#fff8dc"/><stop offset=".6" stop-color="#ffe9a8"/><stop offset="1" stop-color="#ffcf6b"/></radialGradient>
+<radialGradient id="nF${i}" cx=".5" cy=".7" r=".6"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#ffd54a"/><stop offset="1" stop-color="#ff8a1f"/></radialGradient></defs>
+<g class="nur-glow"><circle cx="60" cy="82" r="56" fill="#ffd36b" opacity=".22"/></g>
+<g class="nur-body">
+<path d="M60 4c6 0 9 4 9 8s-3 6-9 6-9-2-9-6 3-8 9-8z" fill="none" stroke="#c8862a" stroke-width="4"/>
+<path d="M34 34Q60 10 86 34Z" fill="url(#nG${i})" stroke="#9c6418" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="60" cy="20" r="4" fill="#f2b84b" stroke="#9c6418" stroke-width="2"/>
+<rect x="28" y="33" width="64" height="9" rx="4.5" fill="url(#nG${i})" stroke="#9c6418" stroke-width="2.5"/>
+<path d="M32 42h56l4 70H28z" fill="url(#nL${i})" stroke="#9c6418" stroke-width="3" stroke-linejoin="round"/>
+<path d="M46 42l-4 70M74 42l4 70" stroke="#e0a344" stroke-width="2" opacity=".55"/>
+<g class="nur-flame"><path d="M60 107c-6 0-9-4-8-9 1-4 5-6 6-11 4 3 9 8 9 13-1 4-3 7-7 7z" fill="url(#nF${i})"/></g>
+<g class="nur-face"><g class="nur-eyes"><ellipse cx="47" cy="66" rx="5" ry="6.5" fill="#3b2410"/><ellipse cx="73" cy="66" rx="5" ry="6.5" fill="#3b2410"/><circle cx="48.8" cy="63.5" r="1.8" fill="#fff"/><circle cx="74.8" cy="63.5" r="1.8" fill="#fff"/></g>
+<path class="nur-smile" d="M51 76q9 8 18 0" fill="none" stroke="#3b2410" stroke-width="3" stroke-linecap="round"/>
+<path class="nur-frown" d="M52 80q8 -6 16 0" fill="none" stroke="#3b2410" stroke-width="3" stroke-linecap="round"/>
+<ellipse cx="40" cy="76" rx="5" ry="3" fill="#ff9aa2" opacity=".6"/><ellipse cx="80" cy="76" rx="5" ry="3" fill="#ff9aa2" opacity=".6"/></g>
+<rect x="24" y="110" width="72" height="10" rx="5" fill="url(#nG${i})" stroke="#9c6418" stroke-width="2.5"/>
+<path d="M38 120h44l-6 12H44z" fill="url(#nG${i})" stroke="#9c6418" stroke-width="2.5" stroke-linejoin="round"/>
+</g><ellipse class="nur-shadow" cx="60" cy="145" rx="26" ry="4" fill="#000" opacity=".18"/></svg></span>`; }
+const mood=(el,m,ms)=>{ if(!el) return; el.classList.remove("happy","sad","cheer"); void el.offsetWidth; el.classList.add(m); clearTimeout(el._t); if(ms) el._t=setTimeout(()=>el.classList.remove(m),ms); };
+
+/* ---------- Data latihan ---------- */
+const BC=()=>window.KusyuBacaan||[];
+const HD=id=>((window.RKV2DATA&&window.RKV2DATA.H)||[]).find(x=>x.id===id)||null;
+const gl=w=>L()===0?w[1]:w[2];
+const pool=()=>[].concat(...BC().map(y=>y.w||[]));
+function distract(right,n,get,src){ const out=[], seen=new Set([get(right)]); for(const c of shuf(src)){ const v=get(c); if(v&&!seen.has(v)){ seen.add(v); out.push(v);} if(out.length>=n) break; } return out; }
+function build(x){ const W=(x.w||[]).filter(w=>w[0]&&gl(w)), P=pool(), ex=[];
+  if(W.length>=2){ ex.push({t:"pairs",items:shuf(W).slice(0,Math.min(4,W.length))}); }
+  shuf(W).slice(0,2).forEach(w=>{ const local=W.length>=4?W:P; ex.push({t:"mean",ar:w[0],c:gl(w),o:shuf([gl(w)].concat(distract(w,2,gl,local.concat(P))))}); });
+  if(W.length>=3){ const n=Math.min(5,W.length), s0=Math.floor(Math.random()*(W.length-n+1)), seg=W.slice(s0,s0+n), k=Math.floor(Math.random()*seg.length);
+    ex.push({t:"blank",toks:seg.map(w=>w[0]),k,gl:seg.map(gl).join(" "),c:seg[k][0],o:shuf([seg[k][0]].concat(distract(seg[k],2,w=>w[0],W.concat(P))))}); }
+  if(W.length>=2){ const n=Math.min(W.length>=5?5:W.length,5), s0=Math.floor(Math.random()*(W.length-n+1)), seg=W.slice(s0,s0+n);
+    ex.push({t:"order",toks:seg.map(w=>w[0]),gl:seg.map(gl).join(" "),bank:shuf(seg.map((w,i)=>({w:w[0],i})))}); }
+  if(W.length&&("speechSynthesis" in window)){ const w=rnd(W); ex.push({t:"listen",ar:w[0],c:w[0],o:shuf([w[0]].concat(distract(w,2,w2=>w2[0],W.concat(P)))),g:gl(w)}); }
+  (x.q||[]).forEach(q=>{ const o=L()===0?q[2]:q[3]; ex.push({t:"quiz",q:L()===0?q[0]:q[1],c:o[0],o:shuf(o.slice())}); });
+  if(!ex.length){ const h=x.hk; ex.push({t:"quiz",q:(x.n[L()]||x.n[0])+"?",c:"✓",o:["✓"]}); }
+  return ex; }
+
+/* ---------- Pelajaran layar penuh ---------- */
+let S=null;
+function open(id){ const x=BC().find(y=>y.id===id); if(!x) return; const P=window.KusyuPustaka&&KusyuPustaka.prog(); const done=!!(P&&P.b&&P.b.d&&P.b.d[id]);
+  S={x,q:build(x),i:0,n:0,mist:0,combo:0,best:0,retried:new Set(),done,sel:null,ord:[],pr:{a:null,b:null,ok:new Set()}}; S.n=S.q.length;
+  let o=$("#duoOv"); if(!o){ o=document.createElement("div"); o.id="duoOv"; o.className="duo-ov"; document.body.appendChild(o); o.addEventListener("click",ovClick); }
+  o.dir=lang()==="ar"?"rtl":"ltr"; o.hidden=false; document.documentElement.classList.add("duo-lock"); requestAnimationFrame(()=>o.classList.add("on")); ac(); draw(); }
+function close(){ const o=$("#duoOv"); if(!o) return; o.classList.remove("on"); document.documentElement.classList.remove("duo-lock"); try{ speechSynthesis.cancel(); }catch(e){} setTimeout(()=>{ o.hidden=true; o.innerHTML=""; },260); S=null; }
+const top=()=>`<div class="duo-top"><button type="button" class="duo-x" data-dx="1" aria-label="close">✕</button><div class="duo-pb"><i style="width:${Math.max(4,S.i*100/S.n)}%"><s></s></i></div><span class="duo-cmb${S.combo>=2?" on":""}">🔥${NUM(S.combo)}</span></div>`;
+function draw(){ const o=$("#duoOv"); if(!o||!S) return; const e=S.q[S.i]; S.sel=null; S.ord=[]; S.pr={a:null,b:null,ok:new Set()}; let h="", bub="";
+  if(e.t==="pairs"){ const L1=shuf(e.items), R1=shuf(e.items); bub=tt("pairs");
+    h=`<div class="duo-pairs"><div class="duo-col" lang="ar" dir="rtl">${L1.map(w=>`<button type="button" class="duo-tile ar" data-pa="${esc(w[0])}">${esc(w[0])}</button>`).join("")}</div><div class="duo-col">${R1.map(w=>`<button type="button" class="duo-tile" data-pb="${esc(w[0])}">${esc(gl(w))}</button>`).join("")}</div></div>`; }
+  else if(e.t==="mean"){ bub=tt("mean"); h=`<button type="button" class="duo-big ar" lang="ar" dir="rtl" data-dspk="${esc(e.ar)}">${esc(e.ar)} <small>🔊</small></button><div class="duo-opts">${e.o.map((v,k)=>`<button type="button" class="duo-opt" data-op="${k}"><kbd>${NUM(k+1)}</kbd>${esc(v)}</button>`).join("")}</div>`; }
+  else if(e.t==="quiz"){ bub=tt("quiz"); h=`<p class="duo-qq">${esc(e.q)}</p><div class="duo-opts">${e.o.map((v,k)=>`<button type="button" class="duo-opt" data-op="${k}"><kbd>${NUM(k+1)}</kbd>${esc(v)}</button>`).join("")}</div>`; }
+  else if(e.t==="blank"){ bub=tt("blank"); h=`<div class="duo-sent ar" lang="ar" dir="rtl">${e.toks.map((w,k)=>k===e.k?`<span class="duo-gap" id="duoGap">&nbsp;</span>`:`<span>${esc(w)}</span>`).join(" ")}</div><p class="duo-gl">“${esc(e.gl)}”</p><div class="duo-chips" lang="ar" dir="rtl">${e.o.map((v,k)=>`<button type="button" class="duo-chip ar" data-op="${k}">${esc(v)}</button>`).join("")}</div>`; }
+  else if(e.t==="order"){ bub=tt("order"); h=`<p class="duo-gl">“${esc(e.gl)}”</p><div class="duo-line ar" id="duoLine" lang="ar" dir="rtl"></div><div class="duo-chips" lang="ar" dir="rtl">${e.bank.map((b,k)=>`<button type="button" class="duo-chip ar" data-ob="${k}">${esc(b.w)}</button>`).join("")}</div>`; }
+  else if(e.t==="listen"){ bub=tt("listen"); h=`<div class="duo-spk"><button type="button" class="duo-spkb" data-dspk="${esc(e.ar)}" aria-label="${tt("tapSpk")}">🔊</button><button type="button" class="duo-spkb sm" data-dspk="${esc(e.ar)}" data-slow="1" aria-label="slow">🐢</button></div><p class="duo-gl">${hasAr()?"":"“"+esc(e.g)+"”"}</p><div class="duo-opts">${e.o.map((v,k)=>`<button type="button" class="duo-opt ar" lang="ar" dir="rtl" data-op="${k}">${esc(v)}</button>`).join("")}</div>`; }
+  const mustCheck=e.t!=="pairs";
+  o.innerHTML=top()+`<div class="duo-body duo-in"><div class="duo-hd">${nur("idle",70)}<div class="duo-bub">${esc(bub)}</div></div>${S.done&&S.i===0?`<small class="duo-pm">${tt("practiceNote")}</small>`:""}${h}</div>
+   <div class="duo-foot"><button type="button" class="duo-skip" data-dskip="1">${tt("skip")}</button>${mustCheck?`<button type="button" class="duo-btn" data-dchk="1" disabled>${tt("check")}</button>`:""}</div><div class="duo-sheet" id="duoSheet"></div>`;
+  if(e.t==="listen") setTimeout(()=>{ if(S&&S.q[S.i]===e) speak(e.ar,"ar",true); },450); }
+const mascot=()=>$("#duoOv .duo-hd .nur");
+function setCheck(on){ const b=$("#duoOv [data-dchk]"); if(b) b.disabled=!on; }
+function feedback(ok,right){ const sh=$("#duoSheet"); const e=S.q[S.i]; S.answered=true; const lg=lang();
+  if(ok){ S.combo++; S.best=Math.max(S.best,S.combo); sfx("ok"); buzz(30); mood(mascot(),"happy",1400); const ph=rnd(PRAISE[lg]); setTimeout(()=>speak(ph,lg),250);
+    sh.className="duo-sheet ok on"; sh.innerHTML=`<div class="duo-sh-in"><b>✔ ${esc(ph)}</b>${S.combo>=3?`<small>🔥 ${NUM(S.combo)} ${tt("combo")}</small>`:""}<button type="button" class="duo-btn ok" data-dnext="1">${tt("cont")}</button></div>`; burst(sh); }
+  else { S.combo=0; S.mist++; sfx("bad"); buzz([60,40,60]); mood(mascot(),"sad",1600); const ph=rnd(ENC[lg]); setTimeout(()=>speak(ph,lg),250); if(!S.retried.has(S.i)){ S.retried.add(S.i); S.q.push(Object.assign({},e,{bank:e.bank?shuf(e.bank):e.bank,o:e.o?shuf(e.o):e.o})); S.n=S.q.length; }
+    sh.className="duo-sheet bad on"; sh.innerHTML=`<div class="duo-sh-in"><b>✖ ${tt("bad")}</b><small>${tt("ans")} <span lang="ar" dir="auto" class="${/[\u0600-\u06ff]/.test(right)?"ar":""}">${esc(right)}</span></small><small class="dim">${esc(ph)} · ${tt("again")}</small><button type="button" class="duo-btn bad" data-dnext="1">${tt("cont")}</button></div>`; $("#duoOv .duo-body").classList.add("shake"); }
+  const f=$("#duoOv .duo-foot"); if(f) f.classList.add("gone"); const pb=$("#duoOv .duo-pb i"); if(pb&&ok) pb.style.width=Math.max(4,(S.i+1)*100/S.n)+"%"; const c=$("#duoOv .duo-cmb"); if(c){ c.textContent="🔥"+NUM(S.combo); c.classList.toggle("on",S.combo>=2); if(ok&&S.combo>=2){c.classList.remove("pop"); void c.offsetWidth; c.classList.add("pop");} } }
+function check(){ const e=S.q[S.i];
+  if(e.t==="order"){ const got=S.ord.map(k=>e.bank[k].w).join(" "), want=e.toks.join(" "); return feedback(got===want,want); }
+  if(S.sel==null) return; const v=e.o[S.sel]; const ok=v===e.c; const btn=$(`#duoOv [data-op="${S.sel}"]`); if(btn) btn.classList.add(ok?"right":"wrong");
+  if(!ok){ const k=e.o.indexOf(e.c); const r=$(`#duoOv [data-op="${k}"]`); r&&r.classList.add("right"); }
+  feedback(ok,e.c); }
+function next(){ S.i++; if(S.i>=S.q.length) return finish(); draw(); }
+function burst(host){ const n=10; let s=""; for(let i=0;i<n;i++) s+=`<i class="duo-spark" style="--a:${i*36}deg;--d:${(i%3)*40}ms"></i>`; const d=document.createElement("div"); d.className="duo-burst"; d.innerHTML=s; host.appendChild(d); setTimeout(()=>d.remove(),900); }
+function finish(){ const o=$("#duoOv"); const x=S.x, acc=Math.round(100*Math.max(0,S.n-S.mist)/S.n); const wasDone=S.done;
+  if(!wasDone&&window.KusyuPustaka){ try{ KusyuPustaka.bComplete(x.id,0,S.mist===0?3:2); }catch(e){} }
+  let st={cur:0}; try{ st=KusyuPustaka.pStats(); }catch(e){}
+  const all=BC().map(y=>y.hk&&(y.hk[L()]||y.hk[0])).filter(Boolean); const hk=rnd(all);
+  sfx("done"); buzz([40,60,40,60,120]); const lg=lang(); setTimeout(()=>speak(rnd(DONE[lg]),lg),400);
+  const conf=Array.from({length:46},(_,i)=>`<i class="duo-cf" style="--x:${Math.random()*100}%;--r:${Math.random()*720-360}deg;--d:${Math.random()*0.8}s;--t:${2.2+Math.random()*1.6}s;--c:${rnd(["#ffd54a","#58cc02","#1cb0f6","#ff86d0","#ff9600","#ce82ff"])}"></i>`).join("");
+  o.innerHTML=`<div class="duo-conf">${conf}</div><div class="duo-end duo-in">${nur("cheer",150)}<h2>${tt("done")}</h2><p class="duo-end-n">${esc(x.ic)} ${esc(x.n[L()]||x.n[0])}</p>
+   <div class="duo-stats"><div class="duo-st gold"><small>✨ ${tt("light")}</small><b data-count="${wasDone?0:3}">+0</b></div><div class="duo-st green"><small>🎯 ${tt("acc")}</small><b>${NUM(acc)}%</b></div><div class="duo-st fire"><small>${tt("streak")}</small><b><span class="duo-flame">🔥</span> ${NUM(st.cur)}</b></div></div>
+   <button type="button" class="duo-chestb" data-dchest="1" aria-label="chest">${chestSvg()}</button><small class="dim duo-chtx">${tt("chest")}</small><div class="duo-hk" id="duoHk" hidden><div class="eyebrow">🌿 ${tt("hikmah")}</div><p>${esc(hk)}</p></div>
+   </div><div class="duo-foot end"><button type="button" class="duo-btn" data-dx="2">${tt("cont")}</button></div>`;
+  const b=o.querySelector("[data-count]"); const to=+b.dataset.count; let k=0; const iv=setInterval(()=>{ b.textContent="+"+NUM(Math.min(k,to)); if(k++>=to) clearInterval(iv); },180); }
+const chestSvg=(op)=>`<svg class="duo-chest${op?" open":""}" viewBox="0 0 80 70"><g class="lid"><path d="M8 30Q8 10 40 10T72 30z" fill="#e9a23b" stroke="#8a5a14" stroke-width="3"/><rect x="35" y="22" width="10" height="10" rx="2" fill="#ffd54a" stroke="#8a5a14" stroke-width="2"/></g><rect x="8" y="30" width="64" height="34" rx="5" fill="#d68a2a" stroke="#8a5a14" stroke-width="3"/><path d="M8 40h64" stroke="#8a5a14" stroke-width="3"/><rect x="34" y="34" width="12" height="12" rx="2" fill="#ffd54a" stroke="#8a5a14" stroke-width="2"/><g class="rays"><path d="M40 8V0M22 14l-6-6M58 14l6-6" stroke="#ffd54a" stroke-width="4" stroke-linecap="round"/></g></svg>`;
+function ovClick(ev){ const g=s=>ev.target.closest(s); let a; if(!S&&!g("[data-dx]")&&!g("[data-dchest]")) return;
+  if((a=g("[data-dx]"))){ if(a.dataset.dx==="1"&&S&&S.i>0&&!confirm(tt("quitQ"))) return; close(); return; }
+  if((a=g("[data-dchest]"))){ if(a.classList.contains("opened")) return; a.classList.add("opened"); a.innerHTML=chestSvg(1); sfx("chest"); buzz(50); const h=$("#duoHk"); if(h){ h.hidden=false; } const t=$("#duoOv .duo-chtx"); t&&t.remove(); burst(a); return; }
+  if(!S) return; const e=S.q[S.i];
+  if((a=g("[data-dspk]"))){ speak(a.dataset.dspk,"ar",true); if(a.dataset.slow){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(a.dataset.dspk); u.lang="ar-SA"; const v=VO.find(v=>/^ar/i.test(v.lang)); if(v)u.voice=v; u.rate=.5; speechSynthesis.speak(u);}catch(_){} } a.classList.remove("pulse"); void a.offsetWidth; a.classList.add("pulse"); return; }
+  if((a=g("[data-dnext]"))){ sfx("tap"); next(); return; }
+  if((a=g("[data-dskip]"))){ feedback(false,e.t==="order"?e.toks.join(" "):(e.t==="pairs"?"—":e.c)); return; }
+  if((a=g("[data-dchk]"))){ if(!a.disabled) check(); return; }
+  if($("#duoSheet.on")) return;
+  if((a=g("[data-op]"))){ sfx("tap"); buzz(8); $$("#duoOv [data-op]").forEach(b=>b.classList.remove("sel")); a.classList.add("sel"); S.sel=+a.dataset.op; setCheck(true);
+    if(e.t==="blank"){ const gp=$("#duoGap"); gp.textContent=e.o[S.sel]; gp.classList.add("fill"); } if(e.t==="mean"||e.t==="quiz"){} return; }
+  if((a=g("[data-ob]"))){ const k=+a.dataset.ob; if(a.classList.contains("used")) return; sfx("tap"); buzz(8); a.classList.add("used"); S.ord.push(k);
+    const line=$("#duoLine"); const c=document.createElement("button"); c.type="button"; c.className="duo-chip ar in"; c.dataset.orm=k; c.textContent=e.bank[k].w; line.appendChild(c); setCheck(S.ord.length===e.bank.length); return; }
+  if((a=g("[data-orm]"))){ const k=+a.dataset.orm; S.ord=S.ord.filter(v=>v!==k); a.remove(); const b=$(`#duoOv [data-ob="${k}"]`); b&&b.classList.remove("used"); setCheck(S.ord.length===e.bank.length); return; }
+  if((a=g("[data-pa],[data-pb]"))){ if(a.classList.contains("matched")) return; sfx("tap"); const side=a.dataset.pa!=null?"a":"b"; $$(`#duoOv [data-p${side}]`).forEach(b=>b.classList.remove("sel")); a.classList.add("sel"); S.pr[side]=a;
+    if(S.pr.a&&S.pr.b){ const A=S.pr.a,B=S.pr.b; S.pr.a=S.pr.b=null; if(A.dataset.pa===B.dataset.pb){ [A,B].forEach(b=>{ b.classList.remove("sel"); b.classList.add("matched","pop"); }); S.pr.ok.add(A.dataset.pa); sfx("pair"); buzz(20); mood(mascot(),"happy",900); speak(A.dataset.pa,"ar");
+        if(S.pr.ok.size===e.items.length) setTimeout(()=>{ if(S&&S.q[S.i]===e) feedback(true,""); },500); }
+      else { [A,B].forEach(b=>{ b.classList.remove("sel"); b.classList.add("nope"); setTimeout(()=>b.classList.remove("nope"),500); }); S.combo=0; S.mistP=(S.mistP||0)+1; if(S.mistP===2) S.mist++; sfx("bad"); buzz([40,30,40]); mood(mascot(),"sad",900); } }
+    return; } }
+document.addEventListener("keydown",ev=>{ if(!S||$("#duoOv").hidden) return; if(ev.key==="Escape") close(); if(ev.key==="Enter"){ const n=$("#duoOv [data-dnext]"); if(n) return n.click(); const c=$("#duoOv [data-dchk]"); c&&!c.disabled&&c.click(); } const d=+ev.key; if(d>=1&&d<=4){ const b=$(`#duoOv [data-op="${d-1}"]`); b&&b.click(); } });
+
+/* ---------- Dekorasi jalur (path) pada kartu Program ---------- */
+function pts(){ try{ const s=window.KusyuIbadah&&KusyuIbadah.stats&&KusyuIbadah.stats(); if(s&&s.total!=null) return s.total; }catch(e){} return null; }
+function statBar(){ let st={cur:0}; try{ st=KusyuPustaka.pStats(); }catch(e){} const bd=(window.KusyuBadges&&KusyuBadges.list().filter(b=>b.on).length)||0, p=pts();
+  return `<div class="duo-stat"><span class="duo-s fire${st.cur?" on":""}" title="streak">🔥 <b>${NUM(st.cur)}</b></span>${p!=null?`<span class="duo-s gold" title="${tt("light")}">✨ <b>${NUM(p)}</b></span>`:""}<span class="duo-s badge" title="${tt("badges")}">🏅 <b>${NUM(bd)}</b></span><button type="button" class="duo-s mute" data-dmute="1" aria-pressed="${muted()}" aria-label="${tt("mute")}">${muted()?"🔇":"🔊"}</button></div>`; }
+const OFF=[0,1,1.6,1,0,-1,-1.6,-1];
+function decorate(){ const pp=$("#pkProg"); if(!pp||pp._duoBusy) return; pp._duoBusy=true; try{
+  const stage=pp.querySelector(".pp-s1"), path=pp.querySelector(".bl-path");
+  if(!pp.querySelector(".duo-stat")&&(path||pp.querySelector(".pp-s2"))){ const head=pp.querySelector(".pp-head"); const d=document.createElement("div"); d.innerHTML=statBar(); head?head.after(d.firstChild):pp.prepend(d.firstChild); }
+  if(path&&!path.classList.contains("duo-path")){ path.classList.add("duo-path"); const nodes=[...path.querySelectorAll(":scope>.bl-node")]; const C=BC(); const P=KusyuPustaka.prog()||{}; const D=(P.b&&P.b.d)||{};
+    nodes.forEach((li,i)=>{ li.style.setProperty("--off",OFF[i%8]); const b=li.querySelector(".bl-nb"); if(b&&!b.querySelector(".duo-ring")&&li.classList.contains("nx")&&li.classList.contains("av")){ b.querySelector(".bl-dot").insertAdjacentHTML("beforeend",`<svg class="duo-ring" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36"/></svg><em class="duo-go">${tt("start").split(" ")[0].toUpperCase()}</em>`); }
+      const pn=li.querySelector(".bl-panel"); if(pn&&!pn.querySelector(".duo-start")){ const id=b&&b.dataset.bl; const dn=!!D[id]; pn.insertAdjacentHTML("afterbegin",`<button type="button" class="duo-start${dn?" again":""}" data-duo="${id}"><span>▶</span> ${dn?tt("practice"):tt("start")}</button>`); }
+      if((i+1)%5===0){ const reached=C.slice(0,i+1).every(y=>D[y.id]); const ch=document.createElement("li"); ch.className="duo-chestli"+(reached?" ready":""); ch.style.setProperty("--off",OFF[(i+4)%8]*-1); ch.innerHTML=`<button type="button" class="duo-pchest" data-pchest="${i}" aria-label="chest">${chestSvg(store.get("ks_duo_ch",{})[i])}</button>`; li.after(ch); } });
+    const cur=path.querySelector(".bl-node.nx")||path.querySelector(".bl-node.av:last-of-type"); if(cur&&!path.querySelector(".duo-pm-n")){ const m=document.createElement("div"); m.className="duo-pm-n "+((+cur.style.getPropertyValue("--off")||0)>0?"l":"r"); m.style.setProperty("--off",(+cur.style.getPropertyValue("--off")||0)); m.innerHTML=`<div class="duo-bub sm">${esc(tt("hi"))}</div>${nur("idle",62)}`; cur.querySelector(".bl-nb").after(m); } }
+  if(stage&&!stage.querySelector(".duo-banner")){ const sm=stage.querySelector("summary"); sm&&sm.classList.add("duo-banner"); }
+  const s2=pp.querySelector("details.pp-s2"); if(s2&&!s2.querySelector(".duo-t2")){ const P=KusyuPustaka.prog()||{}, td=(P.done||{})[P.day]||{}; const sm=s2.querySelector("summary"); sm&&sm.classList.add("duo-banner","b2");
+    const items=[["a","📖"],["h","📜"],["s","🌙"]]; const nx=items.findIndex(([k])=>!td[k]); const box=document.createElement("div"); box.className="duo-t2";
+    box.innerHTML=`<div class="duo-t2p">${items.map(([k,ic],i)=>`<button type="button" class="duo-t2n${td[k]?" done":""}${i===nx?" nx":""}" data-dt2="${k}" style="--off:${[-.9,0,.9][i]}"><span class="bl-dot">${td[k]?"✓":ic}${i===nx?`<svg class="duo-ring" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36"/></svg>`:""}</span></button>`).join("")}</div><div class="duo-t2m"><div class="duo-bub sm">${esc(nx<0?tt("allDone"):tt("t2hi"))}</div>${nur(nx<0?"cheer":"idle",44)}</div>`;
+    sm.after(box); }
+ }catch(e){ console.warn("duo",e); } finally{ pp._duoBusy=false; } }
+document.addEventListener("click",ev=>{ const g=s=>ev.target.closest(s); let a;
+  if((a=g("[data-duo]"))){ ev.stopPropagation(); open(a.dataset.duo); return; }
+  if((a=g("[data-dmute]"))){ ev.stopPropagation(); store.set(MK,!muted()); a.textContent=muted()?"🔇":"🔊"; a.setAttribute("aria-pressed",muted()); if(!muted()){ sfx("ok"); } else { try{speechSynthesis.cancel();}catch(e){} } return; }
+  if((a=g("[data-pchest]"))){ ev.stopPropagation(); const li=a.closest(".duo-chestli"); if(!li.classList.contains("ready")){ a.classList.remove("nope"); void a.offsetWidth; a.classList.add("nope"); sfx("bad"); const t=$("#toast"); if(t){ t.textContent="🔒 "+tt("chestLock"); t.classList.add("on"); setTimeout(()=>t.classList.remove("on"),2400);} return; }
+    const o=store.get("ks_duo_ch",{}); o[a.dataset.pchest]=1; store.set("ks_duo_ch",o); a.innerHTML=chestSvg(1); sfx("chest"); buzz(50); burst(li); const all=BC().map(y=>y.hk&&(y.hk[L()]||y.hk[0])).filter(Boolean); const t=$("#toast"); if(t){ t.textContent="🌿 "+rnd(all); t.classList.add("on"); clearTimeout(t._d); t._d=setTimeout(()=>t.classList.remove("on"),6000);} return; }
+  if((a=g("[data-dt2]"))){ const it=$(`#pkProg [data-ppk="${a.dataset.dt2}"]`); if(it){ it.scrollIntoView({behavior:"smooth",block:"center"}); it.classList.remove("duo-flash"); void it.offsetWidth; it.classList.add("duo-flash"); } return; }
+},true);
+function boot(){ const pp=$("#pkProg"); if(!pp) return setTimeout(boot,300); new MutationObserver(()=>{ if(!pp._duoBusy) decorate(); }).observe(pp,{childList:true,subtree:true}); decorate(); }
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
+window.KusyuDuo={open,close,build,speak,sfx,state:()=>S,decorate};
 })();
 
 </script>
