@@ -2650,7 +2650,7 @@ const V={
  todayTimes:["Jadwal salat hari ini","Today's prayer times","مواقيت اليوم"], detail:["Detail","Details","التفاصيل"],
  qiblaT:["Kompas Kiblat","Qibla Compass","بوصلة القبلة"], qiblaEy:["Arah Ka'bah","Direction of the Ka'bah","اتجاه الكعبة"], openCompass:["Buka kompas →","Open compass →","افتح البوصلة ←"], fromNorth:["dari utara","from north","من الشمال"],
  masjidT:["Masjid Terdekat","Nearby Mosques","المساجد القريبة"], find:["Cari","Find","ابحث"], masjidLead:["Cari masjid dan musala dalam radius 3 km dari lokasi Anda.","Find mosques and prayer rooms within 3 km of your location.","ابحث عن المساجد ضمن 3 كم من موقعك."],
- searching:["Mencari…","Searching…","جارٍ البحث…"], none:["Tidak ditemukan dalam 3 km.","None found within 3 km.","لا توجد مساجد ضمن 3 كم."], mErr:["Gagal memuat data peta. Coba lagi.","Could not load map data. Try again.","تعذّر تحميل البيانات."], route:["Rute","Route","المسار"], noName:["Masjid/Musala (tanpa nama)","Mosque (unnamed)","مسجد"], needLoc:["Atur lokasi dulu di Jadwal.","Set your location in Jadwal first.","حدّد موقعك أولًا."],
+ searching:["Mencari…","Searching…","جارٍ البحث…"], none:["Tidak ditemukan dalam 3 km.","None found within 3 km.","لا توجد مساجد ضمن 3 كم."], mErr:["Gagal memuat data peta. Coba lagi.","Could not load map data. Try again.","تعذّر تحميل البيانات."], mErr2:["Server peta sedang sibuk atau tidak terjangkau. Periksa internet lalu coba lagi.","Map servers are busy or unreachable. Check your connection and try again.","خوادم الخريطة مشغولة أو غير متاحة. تحقّق من الاتصال وحاول مجددًا."], retry:["Coba lagi","Try again","أعد المحاولة"], none10:["Tidak ada masjid tercatat di peta dalam 10 km.","No mosques mapped within 10 km.","لا توجد مساجد مسجّلة ضمن 10 كم."], mWide:["Diperluas ke radius","Widened to radius","وُسِّع البحث إلى"], mFb:["Hasil dari pencarian alternatif (bisa kurang lengkap).","Results from fallback search (may be incomplete).","نتائج من بحث بديل (قد تكون ناقصة)."], locating2:["Mengambil lokasi…","Getting location…","جارٍ تحديد الموقع…"], route:["Rute","Route","المسار"], noName:["Masjid/Musala (tanpa nama)","Mosque (unnamed)","مسجد"], needLoc:["Atur lokasi dulu di Jadwal.","Set your location in Jadwal first.","حدّد موقعك أولًا."],
  progT:["Progres hari ini","Today's progress","تقدّم اليوم"], pSalat:["salat","prayers","صلوات"], pHarian:["checklist","checklist","المهام"], pHaf:["hari hafalan","memorize streak","أيام الحفظ"],
  more:["Lainnya","More","المزيد"], moreEy:["Semua menu","All menus","كل القوائم"], premium:["Premium","Premium","بريميوم"], settings:["Pengaturan","Settings","الإعدادات"],
  nBeranda:["Beranda","Home","الرئيسية"], nHafalan:["Hafalan","Memorize","الحفظ"], nJadwal:["Jadwal","Times","المواقيت"], nKiblat:["Kiblat","Qibla","القبلة"], nLainnya:["Lainnya","More","المزيد"],
@@ -2729,17 +2729,40 @@ function renderHafMini(){ const el=$("#v2HafMini"); if(!el) return; const st=Haf
 
 /* ---------- Masjid (Overpass) ---------- */
 function hav(a,b,c,d){const R=6371000,r=x=>x*Math.PI/180,dl=r(c-a),dg=r(d-b),h=Math.sin(dl/2)**2+Math.cos(r(a))*Math.cos(r(c))*Math.sin(dg/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
-const Masjid={ list:null, busy:false,
-  async find(){ const l=loc(), box=$("#v2Masjid"); if(!l){ box.innerHTML=`<p class="dim">${v("needLoc")}</p>`; return; } if(this.busy) return; this.busy=true; box.innerHTML=`<p class="dim">${v("searching")}</p>`;
-    const q=`[out:json][timeout:25];(nwr["amenity"="place_of_worship"]["religion"="muslim"](around:3000,${l.lat},${l.lng}););out center 60;`;
-    const eps=["https://overpass-api.de/api/interpreter","https://overpass.private.coffee/api/interpreter","https://overpass.kumi.systems/api/interpreter"]; let js=null;
-    for(const ep of eps){ try{ const ctl=new AbortController(); const tm=setTimeout(()=>ctl.abort(),20000); const r=await fetch(ep,{method:"POST",body:"data="+encodeURIComponent(q),headers:{"Content-Type":"application/x-www-form-urlencoded"},signal:ctl.signal}); clearTimeout(tm); if(r.ok){ js=await r.json(); break; } }catch(e){} }
-    this.busy=false; if(!js){ box.innerHTML=`<p class="dim">${v("mErr")}</p>`; return; }
-    this.list=js.elements.map(e=>{const la=e.lat??(e.center&&e.center.lat), lo=e.lon??(e.center&&e.center.lon); return la==null?null:{name:(e.tags&&(e.tags["name:"+lang()]||e.tags.name))||"",lat:la,lng:lo,d:hav(l.lat,l.lng,la,lo)};}).filter(Boolean).sort((a,b)=>a.d-b.d).slice(0,15);
-    store.set("rk_masjid_cache",{ts:Date.now(),lat:l.lat,lng:l.lng,list:this.list}); this.render(); },
-  render(){ const box=$("#v2Masjid"); if(!box||!this.list) return; if(!this.list.length){ box.innerHTML=`<p class="dim">${v("none")}</p>`; return; }
-    box.innerHTML=this.list.map(m=>`<div class="v2-m"><span>🕌</span><div class="n"><b>${esc(m.name||v("noName"))}</b><span dir="ltr">${m.d<1000?Math.round(m.d)+" m":(m.d/1000).toFixed(1)+" km"}</span></div><a href="https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking" target="_blank" rel="noopener">${v("route")} ↗</a></div>`).join(""); },
-  init(){ const c=store.get("rk_masjid_cache",null), l=loc(); if(c&&l&&Math.abs(c.lat-l.lat)<.01&&Math.abs(c.lng-l.lng)<.01&&Date.now()-c.ts<864e5){ this.list=c.list; } $("#v2MasjidBtn").addEventListener("click",()=>this.find()); } };
+const Masjid={ list:null, busy:false, note:"", at:null, pend:false,
+  same(a,b){ return a&&b&&Math.abs(a.lat-b.lat)<.001&&Math.abs(a.lng-b.lng)<.001; },
+  /* follow the prayer-time location (rk_loc): when it changes, drop old results and search again */
+  sync(){ const l=loc(); if(!l||this.same(this.at,l)) return; const had=!!this.list||!!this.at; this.list=null; this.note=""; this.at=null;
+    const c=store.get("rk_masjid_cache",null); if(c&&c.list&&c.list.length&&this.same(c,l)&&Date.now()-c.ts<6*36e5){ this.list=c.list; this.note=c.note||""; this.at={lat:l.lat,lng:l.lng}; this.render(); return; }
+    if(had){ if(this.busy) this.pend=true; else this.find(); } },
+  EPS:["https://overpass-api.de/api/interpreter","https://overpass.private.coffee/api/interpreter","https://overpass.kumi.systems/api/interpreter"],
+  tfetch(url,opt,ms){ const ctl=new AbortController(), tm=setTimeout(()=>ctl.abort(),ms); return fetch(url,Object.assign({},opt,{signal:ctl.signal})).then(r=>{ clearTimeout(tm); if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); },e=>{ clearTimeout(tm); throw e; }); },
+  /* race all Overpass mirrors in parallel; first valid JSON wins */
+  overpass(lat,lng,rad){ const q=`[out:json][timeout:15];nwr["amenity"="place_of_worship"]["religion"="muslim"](around:${rad},${lat},${lng});out center 80;`;
+    const ctls=[]; const one=ep=>this.tfetch(ep,{method:"POST",body:"data="+encodeURIComponent(q),headers:{"Content-Type":"application/x-www-form-urlencoded"}},18000).then(j=>{ if(!j||!Array.isArray(j.elements)) throw new Error("bad"); if(j.remark&&/runtime error|timed out/i.test(j.remark)&&!j.elements.length) throw new Error(j.remark); return j.elements; });
+    return Promise.any(this.EPS.map(one)).then(els=>els.map(e=>{ const la=e.lat??(e.center&&e.center.lat), lo=e.lon??(e.center&&e.center.lon); return la==null?null:{name:(e.tags&&(e.tags["name:"+lang()]||e.tags.name))||"",lat:la,lng:lo}; }).filter(Boolean)); },
+  /* fallback: Photon + Nominatim text search for "masjid"/"mosque" near coords */
+  async textSearch(lat,lng){ const d=.09, out=[]; const add=(n,la,lo)=>{ if(la!=null&&!out.some(m=>Math.abs(m.lat-la)<1e-4&&Math.abs(m.lng-lo)<1e-4)) out.push({name:n||"",lat:+la,lng:+lo}); };
+    const jobs=[ this.tfetch(`https://photon.komoot.io/api/?q=masjid&lat=${lat}&lon=${lng}&limit=40&osm_tag=amenity:place_of_worship`,{},10000).then(j=>(j.features||[]).forEach(f=>add(f.properties&&f.properties.name,f.geometry.coordinates[1],f.geometry.coordinates[0]))),
+      this.tfetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&q=masjid&limit=40&bounded=1&viewbox=${lng-d},${lat+d},${lng+d},${lat-d}`,{headers:{"Accept-Language":lang()}},10000).then(j=>(j||[]).forEach(e=>add(e.name||(e.display_name||"").split(",")[0],e.lat,e.lon))) ];
+    await Promise.allSettled(jobs); return out; },
+  here(){ return new Promise(res=>{ if(!navigator.geolocation) return res(null); navigator.geolocation.getCurrentPosition(p=>res({lat:p.coords.latitude,lng:p.coords.longitude}),()=>res(null),{enableHighAccuracy:false,timeout:12000,maximumAge:600000}); }); },
+  async find(){ const box=$("#v2Masjid"); if(this.busy) return; this.busy=true; this.pend=false; let l=loc();
+    try{
+      if(!l){ box.innerHTML=`<p class="dim">${v("locating2")}</p>`; l=await this.here(); if(!l){ box.innerHTML=`<p class="dim">${v("needLoc")}</p><div class="meta"><button type="button" data-go="jadwal">${v("setLocBtn")}</button></div>`; return; } }
+      let res=null, rad=0, fb=false, opFail=false;
+      for(const r of [3000,5000,10000]){ box.innerHTML=`<p class="dim">${v("searching")} <span dir="ltr">(${r/1000} km)</span></p>`;
+        try{ const els=(await this.overpass(l.lat,l.lng,r)).map(m=>Object.assign(m,{d:hav(l.lat,l.lng,m.lat,m.lng)})).filter(m=>m.d<=r); if(els.length){ res=els; rad=r; break; } }catch(e){ opFail=true; break; } }
+      if(!res){ box.innerHTML=`<p class="dim">${v("searching")}</p>`; const t=(await this.textSearch(l.lat,l.lng)).map(m=>Object.assign(m,{d:hav(l.lat,l.lng,m.lat,m.lng)})).filter(m=>m.d<=10000); if(t.length){ res=t; fb=true; } }
+      if(!res){ if(opFail){ box.innerHTML=`<p class="dim">${v("mErr2")}</p><div class="meta"><button type="button" class="btn sm" id="v2MRetry">${v("retry")}</button></div>`; const b=$("#v2MRetry"); b&&b.addEventListener("click",()=>this.find()); } else { this.list=[]; this.note=""; this.at={lat:l.lat,lng:l.lng}; this.render(); } return; }
+      if(!this.same(l,loc()||l)){ this.pend=true; return; }
+      this.list=res.sort((a,b)=>a.d-b.d).slice(0,15); this.note=fb?v("mFb"):(rad>3000?v("mWide")+" "+rad/1000+" km":"");
+      this.at={lat:l.lat,lng:l.lng}; store.set("rk_masjid_cache",{ts:Date.now(),lat:l.lat,lng:l.lng,list:this.list,note:this.note}); this.render();
+    } finally { this.busy=false; if(this.pend){ this.pend=false; setTimeout(()=>this.find(),0); } } },
+  render(){ const box=$("#v2Masjid"); if(!box||!this.list) return; const pl=loc(), lb=pl&&pl.name?`<p class="dim" style="font-size:12px;margin-bottom:4px">📍 ${esc(pl.name)}</p>`:""; if(!this.list.length){ box.innerHTML=`<p class="dim">${v("none10")}</p>`; return; }
+    box.innerHTML=lb+(this.note?`<p class="dim" style="font-size:12px;margin-bottom:6px">${esc(this.note)}</p>`:"")+this.list.map(m=>`<div class="v2-m"><span>🕌</span><div class="n"><b>${esc(m.name||v("noName"))}</b><span dir="ltr">${m.d<1000?Math.round(m.d)+" m":(m.d/1000).toFixed(1)+" km"}</span></div><a href="https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=walking" target="_blank" rel="noopener">${v("route")} ↗</a></div>`).join(""); },
+  init(){ const c=store.get("rk_masjid_cache",null), l=loc(); if(c&&l&&c.list&&c.list.length&&Math.abs(c.lat-l.lat)<.01&&Math.abs(c.lng-l.lng)<.01&&Date.now()-c.ts<6*36e5){ this.list=c.list; this.note=c.note||""; this.at={lat:c.lat,lng:c.lng}; } $("#v2MasjidBtn").addEventListener("click",()=>this.find());
+    window.addEventListener("storage",e=>{ if(e.key==="rk_loc") this.sync(); }); window.addEventListener("hashchange",()=>this.sync()); setInterval(()=>this.sync(),1500); } };
 
 /* ---------- Hafalan AI ---------- */
 const AR_DIAC=/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g;
