@@ -1,4 +1,5 @@
-<!doctype html><html lang="id" data-theme="gold"><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="id" data-theme="gold"><head>
+<script>/* AUTO-LANG: first visit only; manual choice saved in rk_lang always wins */(function(){try{if(localStorage.getItem("rk_lang")!=null)return;var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(function(x){return String(x).toLowerCase();});var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var p=(ls[0]||"").slice(0,2),l;var AR=/^Asia\/(Riyadh|Dubai|Qatar|Kuwait|Bahrain|Muscat|Aden|Baghdad|Amman|Damascus|Beirut|Gaza|Hebron)$|^Africa\/(Cairo|Tripoli|Tunis|Algiers|Casablanca|Khartoum|Nouakchott)$/;if(p==="id"||p==="ms")l="id";else if(p==="ar")l="ar";else if(p==="en"&&!/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz)&&!AR.test(tz))l="en";else if(/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz))l="id";else if(AR.test(tz))l="ar";else if(ls.some(function(x){return /^(id|ms)/.test(x)}))l="id";else if(ls.some(function(x){return /^ar/.test(x)}))l="ar";else l="en";localStorage.setItem("rk_lang",JSON.stringify(l));localStorage.setItem("rk_lang_auto","1");}catch(e){}})();</script><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Kusyu</title>
 <meta name="description" content="Kusyu — checklist ibadah harian & kehadiran hati dalam salat">
 <meta name="theme-color" content="#140f09">
@@ -557,6 +558,16 @@ input[type=file]{display:none}
 .v2-mprog-ft{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px}
 .v2-tag{font-style:normal;font-size:10.5px;font-weight:700;color:var(--gold2);border:1px solid var(--line2);border-radius:999px;padding:1px 7px;margin-right:4px}
 
+/* hero CTA */
+.v2-hero{position:relative;transition:transform .15s ease,box-shadow .3s ease;animation:v2HeroGlow 3.2s ease-in-out infinite}
+.v2-hero:active{transform:scale(.98)}
+.v2-cta{margin-top:12px;display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:999px;background:rgba(20,15,9,.88);color:#f3d98b;font-weight:800;font-size:15px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.v2-cta i{font-style:normal;display:inline-block;animation:v2Nudge 1.6s ease-in-out infinite}
+[dir=rtl] .v2-cta i{transform:scaleX(-1);animation:none}
+@keyframes v2Nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+@keyframes v2HeroGlow{0%,100%{box-shadow:0 0 0 0 rgba(230,199,122,0)}50%{box-shadow:0 0 22px 2px rgba(230,199,122,.28)}}
+@media (prefers-reduced-motion:reduce){.v2-hero,.v2-cta i{animation:none}}
+
 /* ===== Al-Qur'an reader ===== */
 @font-face{font-family:"Amiri Quran";src:url(quran/fonts/AmiriQuran.woff2) format("woff2");font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+25CC}
 .q-hero{text-align:center;padding:6px 0 2px}
@@ -649,6 +660,46 @@ input[type=file]{display:none}
 .q-flash{animation:qflash 2.4s ease}
 @keyframes qflash{0%,40%{background:rgba(230,199,122,.3)}100%{background:transparent}}
 
+/* Pustaka hub */
+.pk-tabs{margin:0 0 12px;position:sticky;top:0;z-index:5;backdrop-filter:blur(10px)}
+#page-quran .pk-pane{display:none}
+#page-quran[data-pk="h"] #qIndex,#page-quran[data-pk="h"] #qReader,#page-quran[data-pk="s"] #qIndex,#page-quran[data-pk="s"] #qReader{display:none!important}
+#page-quran[data-pk="h"] #pkHadis,#page-quran[data-pk="s"] #pkSirah{display:block}
+.h-hero-ar{font-family:"Amiri Quran","Amiri",serif}
+.q-row-ar{margin-inline-start:auto;font-family:"Amiri Quran","Amiri",serif;font-size:15px;color:var(--gold2,#e6c77a);max-width:42%;text-align:end;line-height:1.5}
+.h-reader{display:block}
+.h-khead{text-align:center;margin:6px 0 10px}
+.h-kar{font-family:"Amiri Quran","Amiri",serif;font-size:28px;line-height:1.8;color:var(--gold2,#e6c77a);text-align:center}
+.h-note,.s-draft{font-size:12.5px;line-height:1.5;padding:9px 12px;border-radius:12px;background:rgba(201,162,74,.10);border:1px solid rgba(201,162,74,.28);color:var(--fg2);margin:0 0 12px}
+.h-card{padding:14px 14px 16px;margin:0 0 12px;border-radius:18px;background:var(--glass,rgba(255,255,255,.04));border:1px solid var(--line,rgba(255,255,255,.08));transition:box-shadow .4s}
+.h-card.flash{box-shadow:0 0 0 2px var(--gold2,#e6c77a)}
+.h-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.h-no{font-size:12px;font-weight:800;color:var(--gold2,#e6c77a);letter-spacing:.02em}
+.h-bm.on{color:var(--gold2,#e6c77a)}
+.h-ar{font-family:"Amiri Quran","Amiri",serif;font-size:22px;line-height:2.05;text-align:justify;color:var(--fg,#f3ead8)}
+.h-nav{display:flex;justify-content:space-between;gap:8px;margin:14px 0}
+.h-snip{display:block;font-family:"Amiri Quran","Amiri",serif;font-size:16px;line-height:1.8;text-align:right}
+.h-sr .q-row-tx{min-width:0}
+.s-soon{opacity:.5;cursor:default}
+.s-text p{font-size:16px;line-height:1.75;margin:0 0 12px}
+.s-src{font-size:12.5px;color:var(--fg2);border-top:1px solid var(--line);padding-top:10px}
+/* Hari Ini */
+.pk-today .pk-prog{font-size:13px;color:var(--fg2)}.pk-today .pk-prog b{font-size:20px;color:var(--gold2,#e6c77a)}
+.pk-it{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line,rgba(255,255,255,.08))}
+.pk-ck{flex:0 0 28px;height:28px;border-radius:50%;border:2px solid rgba(201,162,74,.6);background:transparent;color:#140f09;font-weight:900;cursor:pointer;margin-top:4px}
+.pk-it.on .pk-ck{background:var(--gold2,#e6c77a);border-color:var(--gold2,#e6c77a)}
+.pk-bd{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.pk-bd small{font-size:11.5px;font-weight:800;color:var(--gold2,#e6c77a);text-transform:uppercase;letter-spacing:.04em}
+.pk-ar{font-family:"Amiri Quran","Amiri",serif;font-size:19px;line-height:1.9;text-align:right}
+.pk-clip{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pk-tr{font-size:13.5px;line-height:1.5;color:var(--fg2)}
+.pk-bd em{font-style:normal;font-size:12px;color:var(--fg2)}
+.pk-it.on .pk-bd{opacity:.65}
+.pk-done{margin-top:8px;text-align:center;font-weight:800;color:var(--gold2,#e6c77a)}
+.h-top>span{display:flex;gap:4px;align-items:center}
+.pk-tabs{position:static}
+#page-quran:has(#qReader:not([hidden])) #pkTabs,#page-quran:has(#hReader:not([hidden])) #pkTabs,#page-quran:has(#sReader:not([hidden])) #pkTabs{display:none}
+
 
 .ks-card{margin-top:4px}.ks-streak{font-size:20px;color:#e6c77a}.ks-acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
 .ks-small{font-size:11.5px}.ks-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}.ks-stats div{background:rgba(230,199,122,.08);border-radius:12px;padding:8px 4px;text-align:center}
@@ -690,6 +741,7 @@ input[type=file]{display:none}
         <button class="v2-hero" id="v2Start" type="button">
           <span class="v2-hero-ic" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="20" cy="20" r="4.5" fill="currentColor"/></svg></span>
           <b data-v="startBtn"></b><span class="v2-tag" data-v="tagline"></span><small data-v="startSub"></small>
+          <span class="v2-cta" aria-hidden="true"><span data-v="startGo"></span> <i>→</i></span>
         </button>
         <div class="card v2-click" id="v2HafCard"><div class="row v2-sb"><div class="eyebrow" data-v="hafTitle"></div><span><span class="v2-beta">Beta</span> <span class="v2-pro">PRO</span></span></div>
           <p class="dim" style="margin-top:6px" data-v="hafLead"></p><div class="v2-hafmini" id="v2HafMini"></div>
@@ -2738,7 +2790,7 @@ const MUK={ar:"قَدْ أَفْلَحَ ٱلْمُؤْمِنُونَ ﴿١﴾ �
  m:X("Sungguh beruntung orang-orang yang beriman, (yaitu) orang yang khusyuk dalam salatnya.","Successful indeed are the believers — those who are humble and attentive in their prayer.","قد فاز المؤمنون الذين هم في صلاتهم خاضعون متذللون."),lbl:X("QS. Al-Mu'minun: 1–2","QS. Al-Mu'minun: 1–2","سورة المؤمنون: ١–٢")};
 function verseHTML(cls){ return `<div class="rk-ayah ${cls||""}"><div class="ar" dir="rtl" lang="ar">${MUK.ar}</div><div class="tr">${esc(MUK.tr)}</div><div class="mn">${esc(L(MUK.m))}</div><div class="lb">${esc(L(MUK.lbl))}</div></div>`; }
 function placeVerse(){ const sp=document.getElementById("v2SplashVerse"); if(sp) sp.innerHTML=verseHTML("sp");
-  const hero=document.getElementById("v2Start"); if(hero){ let b=document.getElementById("v2HeroVerse"); if(!b){ b=document.createElement("span"); b.id="v2HeroVerse"; const ic=hero.querySelector(".v2-hero-ic"); (ic||hero.firstChild).after(b); } b.innerHTML=verseHTML("hero"); } }
+  const ob=document.getElementById("v2HeroVerse"); if(ob) ob.remove(); /* ayat hero dihapus atas permintaan: sudah ada di splash */ }
 
 window.RKGerak={GK,P,MZ,MZK,mzGet,mzSet,figOf,patchFigure,setupPage,iftSection,iftList,verseHTML,placeVerse,MUK};
 function init(){ patchFigure(); setupPage(); patchBacaan(); placeVerse(); document.addEventListener("rk:lang",()=>{ GK.paint(); placeVerse(); }); }
@@ -2770,9 +2822,10 @@ const D=window.RKV2DATA;
 const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includes(l)?l:"id";};
 const L=o=>o==null?"":(typeof o==="string"?o:(o[lang()]||o.id||""));
 const V={
- nQuran:["Al-Qur'an","Qur'an","القرآن"], quranT:["Al-Qur'an","Al-Qur'an","القرآن الكريم"],
+ nQuran:["Pustaka","Library","المكتبة"], quranT:["Al-Qur'an","Al-Qur'an","القرآن الكريم"],
  tagline:["Tempat hati bertemu Allah","Where the heart meets Allah","حيث يلقى القلب الله"],
  skip:["Ketuk untuk lanjut","Tap to continue","انقر للمتابعة"],
+ startGo:["Mulai sekarang","Start now","ابدأ الآن"],
  startBtn:["Mulai Salat Khusyuk","Begin Mindful Prayer","ابدأ صلاة خاشعة"],
  startSub:["Persiapan → Gerakan → Makna → Dzikir → Surah → Refleksi","Prepare → Postures → Meaning → Dhikr → Surah → Reflect","تهيئة ← حركات ← معاني ← ذكر ← سورة ← تأمل"],
  hafTitle:["Hafalan Bacaan Salat (AI)","Prayer Recitation Memorization (AI)","حفظ أذكار الصلاة (ذكاء اصطناعي)"],
@@ -3313,6 +3366,172 @@ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded"
 })();
 
 </script>
+<script>
+/* ===== Kusyu — Pustaka: Hadis Shahih al-Bukhari (teks Arab) + Sirah Nabawiyah (draf) + kartu "Hari Ini". ===== */
+(function(){
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includes(l)?l:"id";};
+const L=()=>({id:0,en:1,ar:2}[lang()]);
+const AD=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]); const NUM=n=>lang()==="ar"?AD(n):String(n);
+const toast=m=>{const t=$("#toast");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2600);};
+const T={
+ tabQ:["Al-Qur'an","Qur'an","القرآن"], tabH:["Hadis Bukhari","Bukhari","البخاري"], tabS:["Sirah","Seerah","السيرة"],
+ hEy:["Shahih al-Bukhari","Sahih al-Bukhari","صحيح البخاري"], hLead:["Kitab hadis paling sahih setelah Al-Qur'an. Urut nomor 1 sampai akhir, dalam 97 kitab.","The most authentic book after the Qur'an, numbered from 1 to the end in 97 books.","أصح كتاب بعد كتاب الله، مرتبًا من الحديث الأول إلى آخره في ٩٧ كتابًا."],
+ hSearch:["Cari nomor hadis, nama kitab, atau teks Arab","Hadith number, book name or Arabic text","رقم الحديث أو اسم الكتاب أو نص عربي"],
+ tKitab:["Kitab","Books","الكتب"], tMarks:["Penanda","Bookmarks","العلامات"], hadis:["hadis","hadith","حديث"], no:["No.","No.","رقم"],
+ cont:["Lanjutkan membaca","Continue reading","تابع القراءة"], start:["Mulai dari hadis pertama","Start from the first hadith","ابدأ من الحديث الأول"], startSub:["Kitab Permulaan Wahyu","Book of Revelation","كتاب بدء الوحي"],
+ trNote:["Terjemahan Indonesia dan Inggris sedang menunggu izin penerbit, jadi saat ini hanya teks Arab yang ditampilkan.","Indonesian and English translations are awaiting publisher permission; the Arabic text is shown for now.","الترجمات بانتظار إذن الناشرين؛ يُعرض النص العربي الآن."],
+ empty:["(Teks hadis nomor ini belum tersedia di sumber data.)","(Text for this number is not yet in the source data.)","(نص هذا الرقم غير متوفر في المصدر بعد.)"],
+ mark:["Tandai","Bookmark","علامة"], unmark:["Hapus tanda","Remove","إزالة"], marked:["Hadis ditandai","Bookmarked","تمت الإضافة"], copy:["Salin","Copy","نسخ"], copied:["Disalin","Copied","تم النسخ"],
+ noMarks:["Belum ada penanda. Ketuk ☆ pada sebuah hadis.","No bookmarks yet. Tap ☆ on a hadith.","لا علامات بعد."], noRes:["Tidak ditemukan.","No results.","لا نتائج."],
+ prevK:["Kitab sebelumnya","Previous book","الكتاب السابق"], nextK:["Kitab berikutnya","Next book","الكتاب التالي"], loading:["Memuat…","Loading…","جارٍ التحميل…"], idxLoad:["Menyiapkan pencarian teks hadis…","Preparing hadith search…","جارٍ تجهيز البحث…"],
+ offline:["Gagal memuat. Periksa koneksi, lalu coba lagi.","Could not load. Check your connection.","تعذر التحميل."], back:["Kembali","Back","رجوع"], latinNote:["Pencarian isi hadis saat ini memakai teks Arab (mis. النيات).","Hadith text search currently uses Arabic (e.g. النيات).","البحث في نص الحديث بالعربية."],
+ hAttr:['Teks Arab: Shahih al-Bukhari, data <a href="https://github.com/fawazahmed0/hadith-api" target="_blank" rel="noopener">fawazahmed0/hadith-api</a> (Unlicense / domain publik). Penomoran mengikuti sumber tersebut. Nama kitab dari sunnah.com. Khat: Amiri (SIL OFL).','Arabic text: Sahih al-Bukhari via <a href="https://github.com/fawazahmed0/hadith-api" target="_blank" rel="noopener">fawazahmed0/hadith-api</a> (Unlicense / public domain). Numbering follows that source. Book names from sunnah.com. Font: Amiri (SIL OFL).','النص العربي: صحيح البخاري عبر fawazahmed0/hadith-api (ملكية عامة). الخط: أميري.'],
+ sEy:["Sirah Nabawiyah","The Prophet's Seerah","السيرة النبوية"], sLead:["Perjalanan hidup Rasulullah ﷺ, satu halaman sehari, urut kronologis.","The life of the Messenger ﷺ, one page a day, in chronological order.","سيرة الرسول ﷺ، صفحة كل يوم، بالترتيب الزمني."],
+ draft:["Draf, menunggu tinjauan ustadz. Ringkasan ini kami tulis sendiri dari hadis sahih. Teks kitab Ar-Rahiq al-Makhtum akan tampil setelah izin penerbit didapat.","Draft, awaiting review by a scholar. These are our own summaries from sahih hadith; the text of Ar-Raheeq al-Makhtum will appear once publisher permission is granted.","مسودة بانتظار مراجعة عالم. ملخصات من الأحاديث الصحيحة؛ سيُعرض نص «الرحيق المختوم» بعد إذن الناشر."],
+ soon:["segera","soon","قريبًا"], src:["Sumber","Sources","المصادر"], ch:["Bab","Chapter","الباب"], prevC:["Bab sebelumnya","Previous","السابق"], nextC:["Bab berikutnya","Next","التالي"],
+ arNote:["","","(النص بالإندونيسية/الإنجليزية مؤقتًا)"],
+ today:["Hari Ini","Today","اليوم"], todayLead:["1 ayat · 1 hadis · 1 halaman sirah","1 verse · 1 hadith · 1 seerah page","آية · حديث · صفحة سيرة"], ayat:["Ayat hari ini","Verse of the day","آية اليوم"], hd:["Hadis hari ini","Hadith of the day","حديث اليوم"], sr:["Sirah hari ini","Seerah of the day","سيرة اليوم"],
+ done:["Selesai","Done","تم"], allDone:["MasyaAllah, program hari ini tuntas!","MashaAllah, today's programme is complete!","ما شاء الله، أتممت برنامج اليوم!"], read:["Baca","Read","اقرأ"]
+};
+const t=k=>{const a=T[k];return a?(a[L()]||a[0]):k;};
+const CACHE="kusyu-pustaka-v1";
+async function getJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); const c=r.clone(); try{ if(window.caches) caches.open(CACHE).then(ca=>ca.put(url,c)).catch(()=>{}); }catch(e){} return await r.json(); }
+  catch(e){ if(window.caches){ const m=await caches.match(url); if(m) return m.json(); } throw e; } }
+const star=n=>`<span class="q-star" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 3l4.9 7.2 8.5-1.6-1.6 8.5L39 20l-7.2 4.9 1.6 8.5-8.5-1.6L20 37l-4.9-7.2-8.5 1.6 1.6-8.5L1 20l7.2-4.9-1.6-8.5 8.5 1.6z"/></svg><b>${NUM(n)}</b></span>`;
+const normAr=s=>String(s).replace(/[\u064B-\u0652\u0670\u0640]/g,"").replace(/[إأآٱ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه");
+const lat=s=>String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
+
+/* ---------- Hadis ---------- */
+const H={meta:null,kc:{},idx:null,tab:"k",cur:null};
+const loadMeta=()=>H.meta?Promise.resolve(H.meta):getJSON("hadis/kitab.json").then(m=>(H.meta=m));
+const loadK=k=>H.kc[k]?Promise.resolve(H.kc[k]):getJSON("hadis/k/"+k+".json").then(d=>(H.kc[k]=d));
+const K=k=>H.meta.k[k-1]; // [no, ar, id, en, first, last, count]
+const kName=k=>lang()==="ar"?k[1]:(lang()==="en"?"Book of "+k[3]:"Kitab "+k[2]);
+const kitabOf=n=>{ n=+n; const ks=H.meta.k; for(let i=0;i<ks.length;i++) if(n>=ks[i][4]&&n<Math.floor(ks[i][5])+1) return ks[i][0]; return null; };
+const bms=()=>store.get("rk_h_bm",[]);
+function hContCard(){ const l=store.get("rk_h_last",null);
+  if(l&&H.meta){ const k=K(l.k); return `<button class="q-cont" type="button" data-hopen="${l.k}:${l.n}">${star(Math.floor(l.n))}<span class="q-cont-tx"><small>${t("cont")}</small><b>${esc(kName(k))}</b><em>${t("no")} ${NUM(l.n)}</em></span><span aria-hidden="true">→</span></button>`; }
+  return `<button class="q-cont" type="button" data-hopen="1:1">${star(1)}<span class="q-cont-tx"><small>${t("start")}</small><b>${t("startSub")}</b></span><span aria-hidden="true">→</span></button>`; }
+function kRow(k){ return `<button class="q-row" type="button" data-hopen="${k[0]}">${star(k[0])}<span class="q-row-tx"><b>${esc(lang()==="en"?k[3]:k[2])}</b><small>${t("no")} ${NUM(k[4])}–${NUM(Math.floor(k[5]))} · ${NUM(k[6])} ${t("hadis")}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${esc(k[1])}</span></button>`; }
+async function hList(){ const el=$("#hList"); if(!el) return; try{ await loadMeta(); }catch(e){ el.innerHTML=`<p class="dim">${t("offline")}</p>`; return; }
+  $("#hCont").innerHTML=hContCard(); const q=($("#hSearch").value||"").trim();
+  if(q) return hSearch(q,el);
+  if(H.tab==="b"){ const b=bms(); el.innerHTML=b.length?b.map(x=>{const k=K(x.k);return `<button class="q-row" type="button" data-hopen="${x.k}:${x.n}">${star(x.n)}<span class="q-row-tx"><b>${esc(kName(k))}</b><small>${esc(x.s||"")}</small></span></button>`;}).join(""):`<p class="dim q-empty">${t("noMarks")}</p>`; return; }
+  el.innerHTML=H.meta.k.map(kRow).join(""); }
+let sSeq=0;
+async function hSearch(q,el){ const my=++sSeq; const out=[];
+  if(/^\d+(\.\d+)?$/.test(q)){ const k=kitabOf(q); if(k) out.push(`<div class="eyebrow">${t("no")} ${NUM(q)}</div><button class="q-row" type="button" data-hopen="${k}:${q}">${star(Math.floor(q))}<span class="q-row-tx"><b>${t("hEy")} ${NUM(q)}</b><small>${esc(kName(K(k)))}</small></span></button>`); }
+  const lq=lat(q), aq=normAr(q).trim();
+  const ks=H.meta.k.filter(k=>(lq&&(lat(k[2]).includes(lq)||lat(k[3]).includes(lq)))||(aq&&/[\u0600-\u06FF]/.test(aq)&&normAr(k[1]).includes(aq)));
+  if(ks.length) out.push(`<div class="eyebrow">${t("tKitab")}</div>`+ks.map(kRow).join(""));
+  if(/[\u0600-\u06FF]/.test(q)&&aq.length>=2){ el.innerHTML=out.join("")+`<p class="dim">${t("idxLoad")}</p>`;
+    try{ if(!H.idx) H.idx=(await getJSON("hadis/search-ar.json")).map(r=>[r[0],r[1],normAr(r[2])]); }catch(e){ if(my===sSeq) el.innerHTML=out.join("")+`<p class="dim">${t("offline")}</p>`; return; }
+    if(my!==sSeq) return; const res=[]; for(const r of H.idx){ const p=r[2].indexOf(aq); if(p>=0){ res.push([r,p]); if(res.length>=40) break; } }
+    if(res.length) out.push(`<div class="eyebrow">${t("hadis")} (${NUM(res.length)}${res.length>=40?"+":""})</div>`+res.map(([r,p])=>{ const a=Math.max(0,p-50), sn=r[2].slice(a,p)+"<mark>"+esc(r[2].substr(p,aq.length))+"</mark>"+esc(r[2].slice(p+aq.length,p+aq.length+80));
+      return `<button class="q-row h-sr" type="button" data-hopen="${r[1]}:${r[0]}">${star(Math.floor(r[0]))}<span class="q-row-tx"><small>${esc(kName(K(r[1])))} · ${t("no")} ${NUM(r[0])}</small><span class="h-snip" lang="ar" dir="rtl">${a?"…":""}${sn}…</span></span></button>`; }).join(""));
+  } else if(!/^\d/.test(q)) out.push(`<p class="dim ks-small">${t("latinNote")}</p>`);
+  if(my!==sSeq) return; el.innerHTML=out.join("")||`<p class="dim q-empty">${t("noRes")}</p>`; }
+async function hOpen(k,n){ k=+k; await loadMeta(); const r=$("#hReader"), body=$("#hBody"); $("#hIndex").hidden=true; r.hidden=false; H.cur={k};
+  const km=K(k); $("#hTitle").textContent=kName(km); $("#hSub").textContent=lang()==="ar"?"":km[1]; body.innerHTML=`<p class="dim">${t("loading")}</p>`; const vw=$("#view"); if(vw) vw.scrollTop=0; window.scrollTo(0,0);
+  let d; try{ d=await loadK(k); }catch(e){ body.innerHTML=`<p class="dim">${t("offline")}</p>`; return; }
+  const bm=new Set(bms().map(b=>String(b.n)));
+  body.innerHTML=`<div class="h-khead"><div class="h-kar" lang="ar" dir="rtl">${esc(km[1])}</div><small class="dim">${t("no")} ${NUM(km[4])}–${NUM(Math.floor(km[5]))} · ${NUM(km[6])} ${t("hadis")}</small></div>
+   <p class="h-note">${t("trNote")}</p>`+d.map(([no,tx])=>`<article class="h-card" id="h-${String(no).replace(".","_")}" data-n="${no}"><div class="h-top"><span class="h-no">${t("hEy")} · ${NUM(no)}</span><span><button class="q-ib h-bm${bm.has(String(no))?" on":""}" type="button" data-hbm="${no}" aria-label="${t("mark")}">${bm.has(String(no))?"★":"☆"}</button><button class="q-ib" type="button" data-hcp="${no}" aria-label="${t("copy")}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></span></div>
+   <div class="h-ar" lang="ar" dir="rtl">${tx?esc(tx):`<span class="dim">${t("empty")}</span>`}</div></article>`).join("")+
+   `<div class="h-nav">${k>1?`<button class="btn ghost" type="button" data-hopen="${k-1}">← ${t("prevK")}</button>`:"<span></span>"}${k<97?`<button class="btn gold" type="button" data-hopen="${k+1}">${t("nextK")} →</button>`:""}</div><p class="dim q-attr">${t("hAttr")}</p>`;
+  if(n){ const e=document.getElementById("h-"+String(n).replace(".","_")); if(e){ e.scrollIntoView({block:"start"}); e.classList.add("flash"); setTimeout(()=>e.classList.remove("flash"),1800); } }
+  store.set("rk_h_last",{k,n:n||d[0][0],ts:Date.now()}); hObs(); }
+let hio=null;
+function hObs(){ if(hio) hio.disconnect(); if(!("IntersectionObserver" in window)) return; hio=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting&&H.cur){ clearTimeout(hObs.t); const n=e.target.dataset.n; hObs.t=setTimeout(()=>store.set("rk_h_last",{k:H.cur.k,n:+n||n,ts:Date.now()}),400);} }); },{rootMargin:"-30% 0px -60% 0px"}); $$("#hBody .h-card").forEach(c=>hio.observe(c)); }
+function hClose(){ $("#hReader").hidden=true; $("#hIndex").hidden=false; if(hio) hio.disconnect(); H.cur=null; hList(); }
+function hBm(no){ const b=bms(), i=b.findIndex(x=>String(x.n)===String(no)); const btn=$(`[data-hbm="${no}"]`);
+  if(i>=0){ b.splice(i,1); toast(t("unmark")); } else { const tx=(H.kc[H.cur.k].find(x=>String(x[0])===String(no))||[0,""])[1]; b.unshift({k:H.cur.k,n:+no||no,s:normAr(tx).replace(/\s+/g," ").slice(0,70)+"…"}); toast(t("marked")); }
+  store.set("rk_h_bm",b.slice(0,300)); if(btn){ btn.classList.toggle("on",i<0); btn.textContent=i<0?"★":"☆"; } }
+function hCopy(no){ const tx=(H.kc[H.cur.k].find(x=>String(x[0])===String(no))||[0,""])[1]; const s=tx+"\n\n— "+"صحيح البخاري "+AD(no)+" · Shahih al-Bukhari "+no; (navigator.clipboard?navigator.clipboard.writeText(s):Promise.reject()).then(()=>toast(t("copied"))).catch(()=>toast(t("copied"))); }
+
+/* ---------- Sirah ---------- */
+const SR={idx:null,pc:{}};
+const loadSI=()=>SR.idx?Promise.resolve(SR.idx):getJSON("sirah/index.json").then(d=>(SR.idx=d));
+const loadSP=n=>SR.pc[n]?Promise.resolve(SR.pc[n]):getJSON("sirah/"+n+".json").then(d=>(SR.pc[n]=d));
+const cT=c=>c[1+L()]||c[1];
+async function sList(){ const el=$("#sList"); if(!el) return; try{ await loadSI(); }catch(e){ el.innerHTML=`<p class="dim">${t("offline")}</p>`; return; }
+  el.innerHTML=SR.idx.ch.map(c=>c[4]?`<button class="q-row" type="button" data-sopen="${c[0]}">${star(c[0])}<span class="q-row-tx"><b>${esc(cT(c))}</b><small>${t("ch")} ${NUM(c[0])}</small></span><span aria-hidden="true">→</span></button>`:`<div class="q-row s-soon">${star(c[0])}<span class="q-row-tx"><b>${esc(cT(c))}</b><small>${t("ch")} ${NUM(c[0])} · ${t("soon")}</small></span></div>`).join(""); }
+async function sOpen(n){ n=+n; await loadSI(); const r=$("#sReader"), body=$("#sBody"); $("#sIndex").hidden=true; r.hidden=false; body.innerHTML=`<p class="dim">${t("loading")}</p>`; window.scrollTo(0,0); const vw=$("#view"); if(vw) vw.scrollTop=0;
+  let p; try{ p=await loadSP(n); }catch(e){ body.innerHTML=`<p class="dim">${t("offline")}</p>`; return; }
+  const tx=lang()==="en"?p.en:(lang()==="ar"?p.en:p.id); const av=SR.idx.ch.filter(c=>c[4]).map(c=>c[0]), i=av.indexOf(n);
+  $("#sTitle").textContent=p.t[L()]||p.t[0]; $("#sSub").textContent=t("ch")+" "+NUM(n);
+  body.innerHTML=`<div class="s-draft">⚠️ ${t("draft")}</div><div class="h-kar" lang="ar" dir="rtl">${esc(p.t[2])}</div>${lang()==="ar"?`<p class="dim ks-small">${t("arNote")}</p>`:""}
+   <div class="s-text" dir="ltr">${tx.split("\n\n").map(x=>`<p>${esc(x)}</p>`).join("")}</div>
+   <div class="s-src"><b>${t("src")}:</b> ${p.src.map(esc).join(" · ")}</div>
+   <div class="h-nav">${i>0?`<button class="btn ghost" type="button" data-sopen="${av[i-1]}">← ${t("prevC")}</button>`:"<span></span>"}${i<av.length-1?`<button class="btn gold" type="button" data-sopen="${av[i+1]}">${t("nextC")} →</button>`:""}</div>`;
+  store.set("rk_s_last",{n,ts:Date.now()}); }
+function sClose(){ $("#sReader").hidden=true; $("#sIndex").hidden=false; sList(); }
+
+/* ---------- Hub ---------- */
+function setTab(x){ const pg=$("#page-quran"); if(!pg) return; pg.dataset.pk=x; store.set("rk_pk_tab",x); $$("#pkTabs button").forEach(b=>b.classList.toggle("on",b.dataset.pk===x)); if(x==="h") hList(); if(x==="s") sList(); }
+function applyT(){ $$("[data-pt]").forEach(e=>e.textContent=t(e.dataset.pt)); $$("[data-pph]").forEach(e=>{e.placeholder=t(e.dataset.pph); e.setAttribute("aria-label",t(e.dataset.pph));}); const a=$("#hAttr"); if(a) a.innerHTML=t("hAttr"); }
+
+/* ---------- Hari Ini ---------- */
+const dk=(d=new Date())=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const seed=()=>{ const d=new Date(); return Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/864e5); };
+const logAll=()=>store.get("ks_ibadah_log",{});
+function logToggle(k){ const I=window.KusyuIbadah; if(I&&I.Log){ I.Log.toggle(k); try{I.render();}catch(e){} return; } const o=logAll(), d=dk(); o[d]=o[d]||{}; if(o[d][k]) delete o[d][k]; else o[d][k]=Date.now(); if(!Object.keys(o[d]).length) delete o[d]; store.set("ks_ibadah_log",o); }
+const matn=tx=>{ const m=normAr(tx); const keys=["صلي الله عليه وسلم","رسول الله"]; for(const k of keys){ const i=m.lastIndexOf(k); if(i>0&&m.length-i>60){ let c=0,j=0; for(;j<tx.length&&c<i+k.length;j++){ if(!/[\u064B-\u0652\u0670\u0640]/.test(tx[j])) c++; } return "… "+tx.slice(j).replace(/^[\s،,:"]+/,""); } } return tx; };
+const QM=()=>getJSON("quran/meta.json");
+async function todayData(){ const sd=seed(); const out={};
+  try{ const m=await QM(); const tot=m.s.reduce((a,s)=>a+s[6],0); let x=(sd*7919)%tot, s=0; while(x>=m.s[s][6]){ x-=m.s[s][6]; s++; } const sm=m.s[s]; const d=await getJSON("quran/s/"+String(s+1).padStart(3,"0")+".json");
+    out.a={s:s+1,a:x+1,ar:d.ar[x].replace(/^بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ /,s===0?"$&":""),tr:lang()==="en"?d.en[x]:d.id[x],name:lang()==="ar"?sm[1]:(lang()==="en"?sm[4]:sm[2])}; }catch(e){}
+  try{ await loadMeta(); const n=H.meta.d[(sd*104729)%H.meta.d.length], k=kitabOf(n), d=await loadK(k); const full=(d.find(r=>r[0]===n)||[0,""])[1]; out.h={n,k,ar:matn(full)}; }catch(e){}
+  try{ await loadSI(); const av=SR.idx.ch.filter(c=>c[4]); const c=av[sd%av.length]; out.s={n:c[0],title:cT(c)}; }catch(e){}
+  return out; }
+async function homeCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#pkToday");
+  if(!c){ c=document.createElement("div"); c.id="pkToday"; c.className="card lit pk-today"; const a=$("#qHomeCard")||$("#v2HafCard"); if(a) a.before(c); else pg.prepend(c); }
+  const D=await todayData(); const td=(logAll()[dk()])||{}; const n=["hi_ayat","hi_hadis","hi_sirah"].filter(k=>td[k]).length;
+  const row=(k,ic,lab,body,open)=>`<div class="pk-it${td[k]?" on":""}"><button type="button" class="pk-ck" data-hik="${k}" aria-pressed="${!!td[k]}" aria-label="${t("done")}">${td[k]?"✓":""}</button><button type="button" class="pk-bd" ${open}><small>${ic} ${lab}</small>${body}</button></div>`;
+  c.dir=lang()==="ar"?"rtl":"ltr";
+  c.innerHTML=`<div class="row v2-sb"><div><div class="eyebrow">☀️ ${t("today")}</div><small class="dim">${t("todayLead")}</small></div><div class="pk-prog"><b>${NUM(n)}</b>/${NUM(3)}</div></div>
+   ${D.a?row("hi_ayat","📖",t("ayat"),`<span class="pk-ar" lang="ar" dir="rtl">${esc(D.a.ar)}</span>${D.a.tr&&lang()!=="ar"?`<span class="pk-tr">${esc(D.a.tr)}</span>`:""}<em>QS. ${esc(D.a.name)} ${NUM(D.a.s)}:${NUM(D.a.a)}</em>`,`data-hiq="${D.a.s}:${D.a.a}"`):""}
+   ${D.h?row("hi_hadis","📜",t("hd"),`<span class="pk-ar pk-clip" lang="ar" dir="rtl">${esc(D.h.ar)}</span><em>${t("hEy")} ${NUM(D.h.n)}</em>`,`data-hopen="${D.h.k}:${D.h.n}" data-hihub="h"`):""}
+   ${D.s?row("hi_sirah","🌙",t("sr"),`<b>${esc(D.s.title)}</b><em>${t("sEy")} · ${t("ch")} ${NUM(D.s.n)}</em>`,`data-sopen="${D.s.n}" data-hihub="s"`):""}
+   ${n===3?`<div class="pk-done">🎉 ${t("allDone")}</div>`:""}`; }
+
+function inject(){ const pg=$("#page-quran"); if(!pg||$("#pkTabs")) return;
+  const tabs=document.createElement("div"); tabs.className="v2-seg pk-tabs"; tabs.id="pkTabs"; tabs.setAttribute("role","tablist");
+  tabs.innerHTML=`<button data-pk="q" class="on" data-pt="tabQ"></button><button data-pk="h" data-pt="tabH"></button><button data-pk="s" data-pt="tabS"></button>`; pg.prepend(tabs);
+  const h=document.createElement("div"); h.id="pkHadis"; h.className="pk-pane"; h.innerHTML=`<div class="stack" id="hIndex"><div class="q-hero"><div class="eyebrow" data-pt="hEy"></div><div class="q-hero-ar h-hero-ar" lang="ar" dir="rtl">صَحِيحُ الْبُخَارِيِّ</div><p class="muted" data-pt="hLead"></p></div>
+   <div id="hCont"></div><div class="q-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="hSearch" type="search" autocomplete="off" data-pph="hSearch"></div>
+   <div class="v2-seg q-tabs" id="hTabs"><button data-t="k" class="on" data-pt="tKitab"></button><button data-t="b" data-pt="tMarks"></button></div><div id="hList" class="q-list"></div><p class="dim q-attr" id="hAttr"></p></div>
+   <div id="hReader" class="q-reader h-reader" hidden><div class="q-bar"><button class="q-ib" id="hBack" type="button">←</button><div class="q-bt"><b id="hTitle"></b><small id="hSub" dir="auto"></small></div><span></span></div><div id="hBody" class="q-body h-body"></div></div>`;
+  const s=document.createElement("div"); s.id="pkSirah"; s.className="pk-pane"; s.innerHTML=`<div class="stack" id="sIndex"><div class="q-hero"><div class="eyebrow" data-pt="sEy"></div><div class="q-hero-ar h-hero-ar" lang="ar" dir="rtl">السِّيرَةُ النَّبَوِيَّةُ</div><p class="muted" data-pt="sLead"></p></div><div class="s-draft" data-pt="draft"></div><div id="sList" class="q-list"></div></div>
+   <div id="sReader" class="q-reader h-reader" hidden><div class="q-bar"><button class="q-ib" id="sBack" type="button">←</button><div class="q-bt"><b id="sTitle"></b><small id="sSub"></small></div><span></span></div><div id="sBody" class="q-body s-body"></div></div>`;
+  pg.append(h,s); applyT(); }
+function init(){ inject(); if(!$("#pkTabs")) return;
+  $("#pkTabs").addEventListener("click",e=>{ const b=e.target.closest("[data-pk]"); if(b) setTab(b.dataset.pk); });
+  $("#hTabs").addEventListener("click",e=>{ const b=e.target.closest("[data-t]"); if(!b) return; H.tab=b.dataset.t; $$("#hTabs button").forEach(x=>x.classList.toggle("on",x===b)); hList(); });
+  $("#hSearch").addEventListener("input",()=>{ clearTimeout(hList.t); hList.t=setTimeout(hList,250); });
+  $("#hBack").onclick=hClose; $("#sBack").onclick=sClose;
+  document.addEventListener("click",e=>{ const ck=e.target.closest("[data-hik]"); if(ck){ logToggle(ck.dataset.hik); homeCard(); return; }
+    const hub=e.target.closest("[data-hihub]"); if(hub){ window.go&&window.go("quran"); setTab(hub.dataset.hihub); }
+    const q=e.target.closest("[data-hiq]"); if(q){ window.go&&window.go("quran"); setTab("q"); const [s,a]=q.dataset.hiq.split(":"); const btn=document.createElement("button"); btn.dataset.open=s+":"+a; btn.hidden=true; $("#qIndex").appendChild(btn); btn.click(); btn.remove(); return; }
+    const o=e.target.closest("[data-hopen]"); if(o){ const [k,n]=o.dataset.hopen.split(":"); hOpen(k,n); return; }
+    const so=e.target.closest("[data-sopen]"); if(so){ sOpen(so.dataset.sopen); return; }
+    const bm=e.target.closest("[data-hbm]"); if(bm){ hBm(bm.dataset.hbm); return; } const cp=e.target.closest("[data-hcp]"); if(cp){ hCopy(cp.dataset.hcp); return; } });
+  setTab(store.get("rk_pk_tab","q")==="q"?"q":store.get("rk_pk_tab","q"));
+  homeCard();
+  document.addEventListener("rk:lang",()=>setTimeout(()=>{ applyT(); homeCard(); const pk=$("#page-quran").dataset.pk; if(pk==="h"&&!$("#hReader").hidden&&H.cur) hOpen(H.cur.k); else if(pk==="h") hList(); if(pk==="s") sList(); },30));
+  const _go=window.go; if(_go) window.go=function(p){ _go(p); if(p==="beranda") homeCard(); };
+  window.addEventListener("hashchange",()=>{ if(location.hash==="#beranda") homeCard(); });
+  $$("#nav button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.p==="beranda") homeCard(); }));
+  window.KusyuPustaka={H,SR,setTab,hOpen,sOpen,homeCard,todayData};
+}
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
+})();
+
+</script>
 <script>window.KUSYU_CONFIG={loginEnabled:false,adapter:"supabase",supabaseUrl:"",supabaseAnonKey:"",redirectTo:"https://kusyu.ai"};</script>
 <script>
 /* ===== Kusyu — Log Ibadah + Gamifikasi (local-first) + Login opsional ===== */
@@ -3360,7 +3579,7 @@ const Log={
  toggle(k,day=dk()){const o=this.all(); o[day]=o[day]||{}; if(o[day][k]) delete o[day][k]; else o[day][k]=Date.now(); if(!Object.keys(o[day]).length) delete o[day]; this.save(o);},
  merge(a,b){const o=JSON.parse(JSON.stringify(a||{})); for(const d in (b||{})){o[d]=o[d]||{}; for(const k in b[d]) o[d][k]=Math.min(o[d][k]||Infinity,b[d][k]);} return o;}
 };
-const PT=Object.fromEntries(ITEMS.map(i=>[i.k,i.p]));
+const PT=Object.assign(Object.fromEntries(ITEMS.map(i=>[i.k,i.p])),{hi_ayat:3,hi_hadis:3,hi_sirah:3}); // program "Hari Ini" (Pustaka)
 function dayPts(o,d){const e=o[d]; return e?Object.keys(e).reduce((s,k)=>s+(PT[k]||0),0):0;}
 function stats(o=Log.all(),now=new Date()){
  const days=Object.keys(o).filter(d=>Object.keys(o[d]).length).sort();
