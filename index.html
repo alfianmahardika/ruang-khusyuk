@@ -622,6 +622,23 @@ input[type=file]{display:none}
 .q-close{width:100%;margin-top:14px}
 @media (prefers-reduced-motion:reduce){.q-prog i,.q-sheet-in,.q-a{transition:none}}
 .q-a,.q-ay{scroll-margin-top:66px}
+/* content search */
+.q-gh{margin:14px 4px 4px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2,#e6c77a);font-weight:600}
+.q-gh small{text-transform:none;letter-spacing:0;opacity:.7;font-weight:400}
+.q-res{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:6px;width:100%;padding:12px 12px;border-bottom:1px solid var(--line,rgba(255,255,255,.08));cursor:pointer;border-radius:12px;-webkit-tap-highlight-color:transparent}
+.q-res:hover,.q-res:focus-visible{background:var(--glass2,rgba(255,255,255,.06))}
+.q-res:focus-visible{outline:2px solid var(--gold2,#e6c77a);outline-offset:2px}
+.q-res-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.q-res-h b{color:var(--gold2,#e6c77a);font-size:.9rem}.q-res-h small{opacity:.6;font-size:.75rem}
+.q-res-ar{font-family:"Amiri Quran","Amiri",serif;font-size:1.25rem;line-height:2;text-align:right;opacity:.92}
+.q-res-tr{font-size:.9rem;line-height:1.55;opacity:.88}
+.q-res mark{background:rgba(230,199,122,.28);color:inherit;border-radius:4px;padding:0 2px}
+.q-topic{margin:10px 0;border:1px solid rgba(230,199,122,.35);border-radius:16px;padding:6px 4px;background:linear-gradient(180deg,rgba(230,199,122,.08),transparent)}
+.q-topic-h{display:flex;align-items:center;gap:8px;padding:6px 10px}
+.q-topic-h b{flex:1}.q-topic-h small{opacity:.65;font-size:.75rem}
+.q-tag{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;background:var(--gold2,#e6c77a);color:#1b1408;border-radius:999px;padding:2px 8px;font-weight:700}
+.q-flash{animation:qflash 2.4s ease}
+@keyframes qflash{0%,40%{background:rgba(230,199,122,.3)}100%{background:transparent}}
 
 
 .ks-card{margin-top:4px}.ks-streak{font-size:20px;color:#e6c77a}.ks-acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
@@ -3063,7 +3080,8 @@ const AD=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const NUM=n=>lang()==="ar"?AD(n):String(n);
 const T={
  eyebrow:["Kalamullah","The Word of Allah","كلام الله"], lead:["Bacalah dengan tenang. Setiap huruf bernilai kebaikan.","Read calmly. Every letter carries reward.","اقرأ بطمأنينة، فكل حرف بحسنة."],
- search:["Cari surah: nama, arti, atau nomor","Search surah: name, meaning, or number","ابحث عن سورة: الاسم أو المعنى أو الرقم"],
+ search:["Cari surah, ayat, atau topik (mis. sabar)","Search surah, verse text, or topic","ابحث عن سورة أو آية أو موضوع"],
+ gSurah:["Surah","Surah","السور"], gTopic:["Topik","Topic","موضوع"], gAyat:["Ayat","Verses","الآيات"], idxLoad:["Menyiapkan pencarian isi Al-Qur'an…","Preparing Qur'an search…","جارٍ تجهيز البحث…"],
  tSurah:["Surah","Surah","السور"], tJuz:["Juz","Juz","الأجزاء"], tMarks:["Penanda","Bookmarks","العلامات"],
  ayat:["ayat","verses","آية"], mk:["Makkiyah","Meccan","مكية"], md:["Madaniyah","Medinan","مدنية"], juz:["Juz","Juz","الجزء"], hizb:["Hizb","Hizb","الحزب"], page:["Hal.","p.","ص"],
  cont:["Lanjutkan membaca","Continue reading","تابع القراءة"], start:["Mulai membaca Al-Qur'an","Start reading the Qur'an","ابدأ قراءة القرآن"], startSub:["Buka dari Al-Fatihah","Open from Al-Fatihah","افتح من الفاتحة"],
@@ -3110,9 +3128,71 @@ const norm=x=>String(x).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f\u
 function renderList(){ const el=$("#qList"); if(!el||!META) return; const q=norm(($("#qSearch")||{}).value||"");
   $("#qCont").innerHTML=contCard(); $(".q-search").hidden=tab!=="s";
   if(tab==="s"){ const rows=META.s.filter(s=>!q||[s[0],s[1],s[2],s[3],s[4],s[5]].some(x=>norm(x).includes(q)));
-    el.innerHTML=rows.length?rows.map(s=>`<button class="q-row" type="button" data-open="${s[0]}:1">${star(s[0])}<span class="q-row-tx"><b>${esc(sName(s))}</b><small>${mid(s)}${t(s[7]==="M"?"mk":"md")} · ${NUM(s[6])} ${t("ayat")}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`).join(""):`<p class="dim">${t("noRes")}</p>`; }
+    const rowH=s=>`<button class="q-row" type="button" data-open="${s[0]}:1">${star(s[0])}<span class="q-row-tx"><b>${esc(sName(s))}</b><small>${mid(s)}${t(s[7]==="M"?"mk":"md")} · ${NUM(s[6])} ${t("ayat")}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;
+    const raw=(($("#qSearch")||{}).value||"").trim();
+    if(!raw){ srchSeq++; el.innerHTML=rows.map(rowH).join(""); }
+    else { const nr=/^\d+$/.test(raw)?META.s.filter(s=>String(s[0])===raw):rows; renderSearch(raw,el,nr.slice(0,8).map(rowH)); } }
   else if(tab==="j"){ el.innerHTML=META.j.map((x,i)=>{const s=S(x[0]);return `<button class="q-row" type="button" data-open="${x[0]}:${x[1]}">${star(i+1)}<span class="q-row-tx"><b>${t("juz")} ${NUM(i+1)}</b><small>${esc(sName(s))} · ${t("verse")} ${NUM(x[1])}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;}).join(""); }
   else { const bm=store.get("rk_q_bm",[]); el.innerHTML=bm.length?bm.slice().reverse().map(b=>{const s=S(b.s);return `<button class="q-row" type="button" data-open="${b.s}:${b.a}">${star(b.s)}<span class="q-row-tx"><b>${esc(sName(s))} · ${NUM(b.a)}</b><small>${t("juz")} ${NUM(juzOf(b.s,b.a))}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;}).join(""):`<p class="dim q-empty">${t("noMarks")}</p>`; } }
+
+
+/* ---------- Content search (offline index, lazy) ---------- */
+const QS={idx:null,loading:null,topics:null};
+const arNorm=x=>String(x).replace(/[\u0648\u064A\u0649]\u0670/g,"ا").replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g,"").replace(/[ٱأإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/ؤ/g,"و").replace(/ئ/g,"ي").replace(/[^\u0621-\u064A\s]/g," ").replace(/ا/g,"").replace(/\s+/g," ").trim();
+const VAR={sholat:"shalat",solat:"shalat",salat:"shalat",sembahyang:"shalat",khusyuk:"khusyu",kekhusyukan:"khusyu",zikir:"zikir",dzikir:"zikir",zdikir:"zikir",rizki:"rezeki",rejeki:"rezeki",tobat:"taubat",bapak:"bapa",ayah:"bapa",shaum:"puasa",infaq:"infak",sodaqoh:"sedekah",shodaqoh:"sedekah",shalawat:"shalawat",sholawat:"shalawat",quran:"quran",tawakkal:"tawakal",ikhlash:"ikhlas"};
+const lat=x=>String(x).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/['’`‘]/g,"").replace(/[^a-z0-9]+/g," ").trim();
+const idStem=w=>{ if(w.length<5) return w; let s=w;
+  s=s.replace(/(lah|kah|nya|ku|mu)$/,""); if(s.length>5) s=s.replace(/(kan|an|i)$/,"");
+  s=s.replace(/^(meng|meny|mem|men|me|ber|be|ter|per|pe|di|ke|se)(?=[a-z]{4,})/,""); return s; };
+const enStem=w=>w.length<5?w:w.replace(/(ness|ence|ent|ings?|ed|es|ly|s)$/,"");
+const canon=w=>VAR[w]||w;
+function prepIdx(raw){ const n=raw.id.t.length, A=[], I=[], E=[], IS=[], ES=[];
+  for(let i=0;i<n;i++){ const li=" "+lat(raw.id.t[i]).split(" ").map(canon).join(" ")+" ", le=" "+lat(raw.en.t[i])+" ";
+    I.push(li); E.push(le); IS.push(" "+li.trim().split(" ").map(w=>canon(idStem(w))).join(" ")+" "); ES.push(" "+le.trim().split(" ").map(enStem).join(" ")+" "); A.push(" "+arNorm(raw.ar.t[i])+" "); }
+  const off=[0]; META.s.forEach(s=>off.push(off[off.length-1]+s[6]));
+  return {raw,I,E,IS,ES,A,off,n}; }
+function loadIdx(){ if(QS.idx) return Promise.resolve(QS.idx);
+  if(!QS.loading) QS.loading=Promise.all([loadMeta(),getJSON("search-id.json"),getJSON("search-en.json"),getJSON("search-ar.json")]).then(([m,id,en,ar])=>(QS.idx=prepIdx({id,en,ar}))).catch(e=>{QS.loading=null;throw e;});
+  return QS.loading; }
+const loadTopics=()=>QS.topics?Promise.resolve(QS.topics):getJSON("topics.json").then(x=>(QS.topics=x));
+const refOf=(X,i)=>{ let s=1; while(X.off[s]<=i) s++; return [s,i-X.off[s-1]+1]; };
+const idxOf=(X,s,a)=>X.off[s-1]+a-1;
+function matchTopics(q){ const T=QS.topics; if(!T) return []; const ws=lat(q).split(" ").filter(Boolean).map(canon); if(!ws.length) return [];
+  const sc=T.map(tp=>{ const al=tp.al.map(lat).map(canon); let ok=0; ws.forEach(w=>{ if(al.some(a=>a===w||(w.length>=4&&a.startsWith(w))||(a.length>=4&&w.startsWith(a)))) ok++; }); return {tp,ok}; });
+  return sc.filter(x=>x.ok===ws.length).map(x=>x.tp); }
+function contentSearch(q,X,limit){ limit=limit||40; const res=[];
+  if(/[\u0600-\u06FF]/.test(q)){ const nq=arNorm(q); if(nq.length<2) return res;
+    for(let i=0;i<X.n;i++){ const p=X.A[i].indexOf(nq); if(p>=0) res.push({i,sc:(X.A[i].indexOf(" "+nq+" ")>=0?3:1)+(X.A[i].indexOf(" "+nq)>=0?1:0),f:"ar"}); }
+  } else { const ws=lat(q).split(" ").filter(w=>w.length>=2).map(canon); if(!ws.length) return res; const phrase=" "+ws.join(" ");
+    const scan=(T,S,stem,f)=>{ for(let i=0;i<X.n;i++){ const t=T[i]; let tot=0, all=true;
+        for(const w of ws){ let s=0; if(t.indexOf(" "+w+" ")>=0) s=3; else if(S[i].indexOf(" "+stem(w)+" ")>=0) s=2.5; else if(w.length>=4&&t.indexOf(" "+w)>=0) s=1.5; else if(w.length>=4&&S[i].indexOf(" "+stem(w))>=0) s=1;
+          if(!s){ all=false; break; } tot+=s; }
+        if(all){ if(ws.length>1&&t.indexOf(phrase)>=0) tot+=4; tot+=Math.max(0,1-t.length/1500); res.push({i,sc:tot,f}); } } };
+    scan(X.I,X.IS,idStem,"id"); const seen=new Set(res.map(r=>r.i)); const en=[]; const keep=res.splice(0); scan(X.E,X.ES,enStem,"en"); res.forEach(r=>{ if(!seen.has(r.i)) en.push(r); }); res.length=0; res.push(...keep,...en); }
+  res.sort((a,b)=>b.sc-a.sc||a.i-b.i); return res.slice(0,limit); }
+function hl(text,q,f){ let h=esc(text); if(f==="ar") return h;
+  const ws=lat(q).split(" ").filter(w=>w.length>=3); const st=f==="en"?enStem:idStem;
+  const pats=[...new Set(ws.flatMap(w=>[w,canon(w),st(canon(w))]).filter(w=>w.length>=3))].map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"));
+  if(pats.length) h=h.replace(new RegExp("([\\p{L}'’-]*(?:"+pats.join("|")+")[\\p{L}'’-]*)","giu"),"<mark>$1</mark>");
+  return h; }
+function snip(h,max){ max=max||220; const p=h.indexOf("<mark>"); if(h.length<=max||p<0) return h.length>max&&p<0?h.slice(0,max).replace(/<[^>]*$/,"").replace(/&[a-z]*$/,"")+"…":h;
+  let st=Math.max(0,p-70); while(st>0&&h[st]!==" ") st--; let out=h.slice(st); if(out.length>max){ let e=max; const lastClose=out.lastIndexOf("</mark>",max); if(lastClose>max-30) e=lastClose+7; while(e<out.length&&out[e]!==" ") e++; out=out.slice(0,e)+"…"; } if(/<mark>[^<]*$/.test(out)) out+="</mark>"; return (st>0?"…":"")+out; }
+function ayRow(X,i,q,f){ const [s,a]=refOf(X,i), sm=S(s); const trL=lang()==="en"?"en":"id"; const ff=f==="ar"?trL:(f||trL);
+  const tx=X.raw[ff].t[i]; let art=X.raw.ar.t[i]; if(a===1&&s!==1&&META.bis&&art.startsWith(META.bis)) art=art.slice(META.bis.length).trim(); return `<button class="q-res" type="button" data-open="${s}:${a}" data-hl="1"><span class="q-res-h"><b>${esc(sName(sm))} ${NUM(s)}:${NUM(a)}</b><small>${t("juz")} ${NUM(juzOf(s,a))}</small></span><span class="q-res-ar" lang="ar" dir="rtl">${esc(art.length>160?art.slice(0,160).replace(/\s\S*$/,"")+" …":art)}</span><span class="q-res-tr">${snip(hl(tx,q,ff))}</span></button>`; }
+let srchSeq=0;
+async function renderSearch(qRaw,el,nameRows){ const my=++srchSeq; const q=qRaw.trim();
+  const isNum=/^\d+$/.test(q), useContent=!isNum&&q.replace(/\s/g,"").length>=3;
+  let h=nameRows.length?`<h3 class="q-gh">${t("gSurah")}</h3>`+nameRows.join(""):"";
+  if(!useContent){ el.innerHTML=h||`<p class="dim">${t("noRes")}</p>`; return; }
+  el.innerHTML=h+`<p class="dim q-load" id="qSrLoad">${QS.idx?"":t("idxLoad")}</p>`;
+  let X; try{ [X]=await Promise.all([loadIdx(),loadTopics()]); }catch(e){ if(my!==srchSeq) return; const l=$("#qSrLoad"); if(l) l.textContent=t("offline"); return; }
+  if(my!==srchSeq) return;
+  const tps=matchTopics(q).slice(0,3); const shown=new Set(); let th="";
+  tps.forEach(tp=>{ th+=`<div class="q-topic"><div class="q-topic-h"><span class="q-tag">${t("gTopic")}</span><b>${esc(lang()==="en"?tp.en:tp.id)}</b><small>${NUM(tp.r.length)} ${t("ayat")}</small></div>`+tp.r.slice(0,8).map(([s,a])=>{ const i=idxOf(X,s,a); shown.add(i); return ayRow(X,i,tp.kw.join(" ")+" "+q,lang()==="en"?"en":"id"); }).join("")+`</div>`; });
+  let res=contentSearch(q,X,40); if(!res.length&&tps.length) res=contentSearch(tps[0].kw[0],X,30);
+  res=res.filter(r=>!shown.has(r.i));
+  const ah=res.length?`<h3 class="q-gh">${t("gAyat")} <small>(${NUM(res.length)}${res.length>=40?"+":""})</small></h3>`+res.map(r=>ayRow(X,r.i,q,r.f)).join(""):"";
+  el.innerHTML=(h+th+ah)||`<p class="dim">${t("noRes")}</p>`; }
 
 /* ---------- Reader ---------- */
 function applyPref(){ const p=pref(), r=$("#qReader"); if(!r) return; r.dataset.qm=p.mode; r.dataset.layout=p.layout; r.style.setProperty("--qs",p.size+"px"); r.dataset.tr=p.tr; }
@@ -3123,7 +3203,7 @@ async function open(s,a,opts){ s=+s; a=+a||1; const r=$("#qReader"); if(!r) retu
   $("#qTitle").textContent=sName(sm); $("#qSub").textContent=`${t(sm[7]==="M"?"mk":"md")} · ${NUM(sm[6])} ${t("ayat")}`;
   let d; try{ d=await getJSON("s/"+String(s).padStart(3,"0")+".json"); }catch(e){ body.innerHTML=`<div class="q-err"><p>${t("offline")}</p><button class="btn gold" type="button" id="qRetry">${t("retry")}</button></div>`; $("#qRetry").onclick=()=>open(s,a); return; }
   cur={s,d}; render(); const vw=$("#view")||document.scrollingElement;
-  requestAnimationFrame(()=>{ if(a>1){ const el=document.getElementById("qa-"+s+"-"+a); if(el) el.scrollIntoView({block:"start"}); } else vw.scrollTop=0; });
+  requestAnimationFrame(()=>{ if(a>1){ const el=document.getElementById("qa-"+s+"-"+a); if(el){ el.scrollIntoView({block:"start"}); if(opts&&opts.flash){ el.classList.add("q-flash"); setTimeout(()=>el.classList.remove("q-flash"),2400); } } } else vw.scrollTop=0; });
   if(!(opts&&opts.noSave)) saveLast(s,a); }
 function render(){ const {s,d}=cur, sm=S(s), p=pref(), body=$("#qBody"); const bis=META.bis, bm=new Set(store.get("rk_q_bm",[]).map(b=>b.s+":"+b.a));
   const qStart=new Map(META.q.map((x,i)=>[x[0]+":"+x[1],i])), pStart=new Map(META.p.map((x,i)=>[x[0]+":"+x[1],i+1])), sj=new Set(META.sj.map(x=>x[0]+":"+x[1]));
@@ -3180,13 +3260,13 @@ function berandaCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let 
   loadMeta().then(()=>{ c.innerHTML=`<div class="row v2-sb"><div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm ghost" type="button" data-qgo="1">${t("tSurah")} →</button></div>${contCard()}`; }).catch(()=>{ c.innerHTML=`<div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm gold" type="button" data-qgo="1">${t("open")}</button>`; }); }
 
 function init(){ if(!$("#page-quran")) return; const sh=$("#qSheet"); if(sh) document.body.appendChild(sh); applyT();
-  document.addEventListener("click",e=>{ const o=e.target.closest("[data-open]"); if(o&&(o.closest("#page-quran")||o.closest("#qHomeCard"))){ const [s,a]=o.dataset.open.split(":"); unsheet(); open(s,a); return; }
+  document.addEventListener("click",e=>{ const o=e.target.closest("[data-open]"); if(o&&(o.closest("#page-quran")||o.closest("#qHomeCard"))){ const [s,a]=o.dataset.open.split(":"); unsheet(); open(s,a,o.dataset.hl?{flash:1,noSave:1}:undefined); return; }
     if(e.target.closest("[data-qgo]")){ window.go&&window.go("quran"); return; }
     const sg=e.target.closest(".q-seg [data-v2]"); if(sg){ const nm=sg.parentNode.dataset.pref; setPref({[nm]:sg.dataset.v2}); sg.parentNode.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b===sg)); applyPref(); if(cur&&(nm==="tr"||nm==="layout")) render(); return; }
     const ay=e.target.closest("#qBody .q-a, #qBody .q-ay, #qBody .q-end"); if(ay&&cur&&!window.getSelection().toString()){ ayahSheet(ay.dataset.k); } });
   document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("#qSheet").hidden) unsheet(); else if(e.key==="Enter"){ const ay=e.target.closest&&e.target.closest("#qBody [data-k]"); if(ay) ayahSheet(ay.dataset.k); } });
   $("#qBack").onclick=close; $("#qAa").onclick=settings; $("#qSheetX").onclick=unsheet; $("#qSheet").addEventListener("click",e=>{ if(e.target.id==="qSheet") unsheet(); });
-  $("#qSearch").addEventListener("input",renderList);
+  $("#qSearch").addEventListener("input",()=>{ clearTimeout(renderList.t); renderList.t=setTimeout(renderList,220); });
   $("#qTabs").addEventListener("click",e=>{ const b=e.target.closest("[data-t]"); if(!b) return; tab=b.dataset.t; $$("#qTabs button").forEach(x=>x.classList.toggle("on",x===b)); renderList(); });
   loadMeta().then(renderList).catch(()=>{ $("#qList").innerHTML=`<p class="dim">${t("offline")}</p>`; });
   berandaCard();
