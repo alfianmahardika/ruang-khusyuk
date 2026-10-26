@@ -803,6 +803,16 @@ input[type=file]{display:none}
 .hq-mic.on{animation:hqp 1.2s infinite}@keyframes hqp{50%{box-shadow:0 0 0 12px rgba(208,71,58,.15)}}
 
 
+#pvStack .pv-promise{border:1px solid var(--gold2,#d9b86a)}
+#pvStack .pv-promise b{display:block;font-size:17px;margin:6px 0}
+#pvStack ul.pv{margin:8px 0 0;padding-inline-start:18px;font-size:13.5px;line-height:1.55}
+#pvStack ul.pv li{margin-bottom:6px}
+#pvStack code{font-size:11.5px;opacity:.8;direction:ltr;unicode-bidi:embed}
+#pvStack .pv-del{background:#8b2b2b;color:#fff;border:0}
+.pv-foot{text-align:center;font-size:12px;margin:6px 0 2px}
+.pv-foot a{color:var(--gold2,#d9b86a);text-decoration:underline;cursor:pointer}
+
+
 /* ===== Tema Dusty Pink (✿) — token mengikuti struktur tema light; aksen mawar/plum lembut ===== */
 [data-theme=pink]{--bg:#F3E6E4;--bg2:#EBDAD8;--bg3:#E8D3D1;--glass:rgba(255,250,249,.62);--glass2:rgba(110,74,84,.07);--line:rgba(110,74,84,.16);--line2:rgba(110,74,84,.34);--fg:#3b262d;--fg2:#5e434a;--fg3:#6f4f57;--gold:#9E6B6F;--gold2:#7d4f57;--jade:#6E4A54;--jade2:#5a3a44;color-scheme:light}
 [data-theme=pink] body::before{background:var(--bg)}
@@ -977,6 +987,10 @@ input[type=file]{display:none}
         <div id="qBody" class="q-body"></div>
       </div>
       <div class="q-sheet" id="qSheet" hidden><div class="q-sheet-in" role="dialog" aria-modal="true"><div id="qSheetBody"></div><button class="btn ghost q-close" type="button" id="qSheetX" data-qt="close"></button></div></div>
+    </section>
+    <!-- ================= PRIVASI ================= -->
+    <section class="page" id="page-privasi">
+      <div class="stack" id="pvStack"></div>
     </section>
     <!-- ================= JADWAL SALAT + KIBLAT (baru) ================= -->
     <section class="page" id="page-jadwal">
@@ -1920,7 +1934,7 @@ const t=k=>UI[k]?L(UI[k]):k;
 const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:g==="hasan"?`<span class="pill gold">${t("g.hasan")}</span>`:g==="dhaif"?`<span class="pill rose">${t("g.dhaif")}</span>`:`<span class="pill rose">${t("g.khilaf")}</span>`;
 
 /* ---------------- Router ---------------- */
-const PAGES=["beranda","quran","hafalan","kiblat","lainnya","premium","settings","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
+const PAGES=["beranda","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
 function go(p){ if(!PAGES.includes(p)) p="beranda";
   $$(".page").forEach(s=>s.classList.toggle("on",s.id==="page-"+p)); $$("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.p===p));
   $("#view").scrollTop=0; try{history.replaceState(null,"","#"+p);}catch(e){}
@@ -2974,6 +2988,7 @@ const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includ
 const L=o=>o==null?"":(typeof o==="string"?o:(o[lang()]||o.id||""));
 const V={
  nQuran:["Pustaka","Library","المكتبة"], quranT:["Al-Qur'an","Al-Qur'an","القرآن الكريم"],
+ privT:["Privasi","Privacy","الخصوصية"],
  tagline:["Tempat hati bertemu Allah","Where the heart meets Allah","حيث يلقى القلب الله"],
  skip:["Ketuk untuk lanjut","Tap to continue","انقر للمتابعة"],
  startGo:["Mulai sekarang","Start now","ابدأ الآن"],
@@ -3242,7 +3257,7 @@ const Flow={ i:0, pose:0, chair:false, dz:0, dzi:0, bT:null,
 
 /* ---------- Lainnya ---------- */
 function renderLainnya(){ const g=$("#lnGrid"); if(!g) return;
-  const T=[["📖","quranT","quran"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["✦","premium","premium"],["⚙","settings","settings"]];
+  const T=[["📖","quranT","quran"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
   g.innerHTML=T.map(([i,k,p])=>`<button class="v2-tile" type="button" data-tile="${p}"><i>${i}</i><b>${v(k)}</b></button>`).join("");
   const ck=new Set(store.get("rk_doa_check",[]));
   $("#lnDoaList").innerHTML=D.H.filter(h=>h.step!=="surah").map(h=>`<details><summary><input type="checkbox" data-doa="${h.id}"${ck.has(h.id)?" checked":""} onclick="event.stopPropagation()"><span style="flex:1">${esc(L(h.name))}</span><span class="dim">▾</span></summary><div class="ar" dir="rtl" lang="ar">${esc(h.ar)}</div><div class="tr">${esc(h.tr)}</div><p style="font-size:13.5px;margin-top:4px">${esc(L(h.m))}</p><div class="src">${esc(h.src)}</div></details>`).join("");
@@ -4080,6 +4095,77 @@ function init(){ if(!$("#page-hafalan")) return; document.addEventListener("clic
 window.KusyuHifz={norm,loose,sim,alignNW,score,tajwid,sm2,juzAyat,pathOrder,badges:()=>badgeList(),stats:()=>{const S=st();return Object.assign(counts(S),{streak:streak(S),week:weekProg(S)});},state:st,open:openS,home,evaluate:(txt,an)=>evaluate(txt,an,"test"),Rec,WH,get U(){return U;},
   setLangRefresh:()=>U.cur?openS(U.cur.s,U.cur.a1,U.cur.a2):home()};
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
+})();
+
+</script>
+<script>
+/* ===== Kusyu — halaman Privasi (isi sesuai hasil audit kode, lihat izin/network-audit.md) ===== */
+(function(){
+"use strict";
+const lg=()=>{try{const l=JSON.parse(localStorage.getItem("rk_lang")||'"id"');return ["id","en","ar"].includes(l)?l:"id";}catch(e){return "id";}};
+const t=o=>o[{id:0,en:1,ar:2}[lg()]];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const X={
+ title:["Privasi","Privacy","الخصوصية"],
+ lead:["Penjelasan jujur tentang data Anda, sesuai kode aplikasi saat ini.","An honest account of your data, matching the app's current code.","شرح صادق لبياناتك وفق الشيفرة الحالية للتطبيق."],
+ promT:["Komitmen kami","Our commitment","التزامنا"],
+ prom:["Tidak pernah menjual data, tanpa iklan pihak ketiga.","We never sell your data. No third-party ads.","لا نبيع بياناتك أبدًا، ولا إعلانات من أطراف ثالثة."],
+ prom2:["Kusyu tidak memakai akun, pelacak, atau analitik. Tidak ada server Kusyu yang menyimpan data pribadi Anda.","Kusyu uses no accounts, trackers or analytics. No Kusyu server stores your personal data.","لا يستخدم Kusyu حسابات أو أدوات تتبع أو تحليلات، ولا يحفظ أي خادم لـKusyu بياناتك الشخصية."],
+ locT:["Disimpan hanya di HP ini","Stored only on this phone","محفوظ على هذا الهاتف فقط"],
+ locL:["Semua ini tersimpan di penyimpanan browser (localStorage) HP Anda dan tidak pernah dikirim ke server Kusyu (koordinat hanya dikirim ke layanan peta di bawah saat Anda mencari kota/masjid):","All of this lives in your phone's browser storage (localStorage) and is never sent to a Kusyu server (coordinates go only to the map services below when you search for a city/mosque):","كل ذلك محفوظ في تخزين المتصفح (localStorage) على هاتفك ولا يُرسل أبدًا إلى خادم Kusyu (تُرسل الإحداثيات فقط إلى خدمات الخرائط أدناه عند البحث عن مدينة/مسجد):"],
+ netT:["Koneksi internet yang dilakukan aplikasi","Network requests the app makes","اتصالات الإنترنت التي يجريها التطبيق"],
+ netL:["Aplikasi tetap perlu menghubungi beberapa layanan luar. Layanan tersebut bisa melihat alamat IP Anda, seperti saat membuka situs web biasa:","The app still contacts a few outside services. They can see your IP address, as with any website:","لا يزال التطبيق يتصل ببعض الخدمات الخارجية، ويمكنها رؤية عنوان IP كأي موقع ويب:"],
+ delT:["Hapus data","Delete data","حذف البيانات"],
+ delL:["Menghapus semua catatan, progres, hafalan, lokasi dan pengaturan Kusyu di HP ini. Tidak bisa dibatalkan.","Erases all Kusyu records, progress, memorisation, location and settings on this phone. This cannot be undone.","يمسح كل سجلات Kusyu وتقدمك وحفظك وموقعك وإعداداتك على هذا الهاتف. لا يمكن التراجع."],
+ delB:["Hapus semua data di HP ini","Delete all data on this phone","احذف كل البيانات على هذا الهاتف"],
+ conf:["Yakin hapus semua data Kusyu di HP ini? Progres dan hafalan akan hilang permanen.","Delete all Kusyu data on this phone? Progress and memorisation will be lost permanently.","هل تريد حذف كل بيانات Kusyu على هذا الهاتف؟ سيضيع التقدم والحفظ نهائيًا."],
+ done:["Data sudah dihapus.","Data deleted.","تم حذف البيانات."],
+ upd:["Terakhir diperbarui: 26 Oktober 2026","Last updated: 26 October 2026","آخر تحديث: 26 أكتوبر 2026"],
+ back:["← Pengaturan","← Settings","← الإعدادات"],
+ foot:["Privasi","Privacy","الخصوصية"]
+};
+const LOCAL=[
+ [["Lokasi (kota/koordinat) untuk jadwal salat & kiblat","Location (city/coordinates) for prayer times & qibla","الموقع (المدينة/الإحداثيات) لمواقيت الصلاة والقبلة"],"rk_loc"],
+ [["Bahasa & tema","Language & theme","اللغة والمظهر"],"rk_lang, rk_lang_auto, rk_theme"],
+ [["Catatan ibadah & poin","Worship log & points","سجل العبادة والنقاط"],"ks_ibadah_log, rk_harian_*, rk_salat_*, rk_tasbih_*"],
+ [["Program harian (opsional)","Daily program (optional)","البرنامج اليومي (اختياري)"],"ks_prog"],
+ [["Hafalan Al-Qur'an & AI hafalan","Qur'an memorisation & AI","حفظ القرآن والذكاء الاصطناعي"],"ks_hifz, rk_hafalan"],
+ [["Penanda & bacaan terakhir (Qur'an, hadis, sirah), jurnal","Bookmarks & last read (Qur'an, hadith, sirah), journal","العلامات وآخر قراءة، والمذكرات"],"rk_q_bm, rk_q_last, rk_h_bm, rk_h_last, rk_s_last, rk_journal"],
+ [["Pengaturan azan, metode & cache masjid","Azan settings, method & mosque cache","إعدادات الأذان والطريقة وذاكرة المساجد"],"rk_azan, rk_pt_*, rk_masjid_cache"],
+ [["Rekaman suara saat hafalan diproses langsung di HP dan tidak diunggah","Voice recordings during memorisation are processed on the phone and never uploaded","تُعالج التسجيلات الصوتية على الهاتف ولا تُرفع"],""]
+];
+const NET=[
+ ["Nominatim (OpenStreetMap)",["Mencari nama kota & mengubah koordinat jadi nama tempat; koordinat dikirim","City search & turning coordinates into a place name; coordinates are sent","البحث عن المدن وتحويل الإحداثيات إلى اسم مكان؛ تُرسل الإحداثيات"]],
+ ["Overpass API, Photon (OpenStreetMap)",["Mencari masjid terdekat saat Anda menekan Cari; koordinat dikirim","Finding nearby mosques when you tap Find; coordinates are sent","البحث عن المساجد القريبة عند الضغط على بحث؛ تُرسل الإحداثيات"]],
+ ["Google Fonts (fonts.googleapis.com, fonts.gstatic.com)",["Memuat huruf (Amiri, Manrope, dll.)","Loading fonts (Amiri, Manrope, etc.)","تحميل الخطوط"]],
+ ["mp3quran.net, quranicaudio.com",["Audio murattal, hanya saat Anda menekan putar","Recitation audio, only when you press play","صوت التلاوة عند الضغط على تشغيل فقط"]],
+ ["everyayah.com",["Audio per ayat di Hafalan, hanya saat Anda menekan putar","Per-ayah audio in Memorisation, only when you press play","صوت الآيات في الحفظ عند التشغيل فقط"]],
+ ["cdn.jsdelivr.net, huggingface.co",["Mengunduh pustaka & model AI hafalan (sekali, ±233 MB) hanya jika Anda mengaktifkannya. Suara Anda tidak dikirim","Downloading the memorisation AI library & model (once, ~233 MB) only if you enable it. Your voice is not sent","تنزيل مكتبة ونموذج الحفظ (مرة واحدة ~233MB) عند التفعيل فقط. لا يُرسل صوتك"]],
+ ["Kusyu.vercel.app (Vercel)",["Hosting aplikasi & data Qur'an/hadis/sirah. Tanpa Vercel Analytics","App hosting & Qur'an/hadith/sirah data. No Vercel Analytics","استضافة التطبيق وبيانات القرآن والحديث والسيرة. بدون تحليلات"]],
+ ["Google Maps",["Hanya jika Anda menekan tautan peta","Only if you tap a map link","فقط عند الضغط على رابط الخريطة"]]
+];
+function render(){ const el=document.getElementById("pvStack"); if(!el) return;
+ el.innerHTML=`<div><button class="btn sm ghost" type="button" data-go="settings">${t(X.back)}</button><div class="eyebrow" style="margin-top:10px">🔒</div><h1>${t(X.title)}</h1><p class="muted" style="margin-top:8px">${t(X.lead)}</p></div>
+ <div class="card pv-promise"><div class="eyebrow">${t(X.promT)}</div><b>${t(X.prom)}</b><p class="dim" style="font-size:13px">${t(X.prom2)}</p></div>
+ <div class="card"><div class="eyebrow">${t(X.locT)}</div><p class="dim" style="font-size:13px;margin-top:6px">${t(X.locL)}</p><ul class="pv">${LOCAL.map(r=>`<li>${esc(t(r[0]))}${r[1]?` <code>${esc(r[1])}</code>`:""}</li>`).join("")}</ul></div>
+ <div class="card"><div class="eyebrow">${t(X.netT)}</div><p class="dim" style="font-size:13px;margin-top:6px">${t(X.netL)}</p><ul class="pv" id="pvNet">${NET.map(r=>`<li><b dir="ltr">${esc(r[0])}</b>: ${esc(t(r[1]))}</li>`).join("")}</ul></div>
+ <div class="card"><div class="eyebrow">${t(X.delT)}</div><p class="dim" style="font-size:13px;margin-top:6px">${t(X.delL)}</p><button class="btn sm pv-del" type="button" id="pvDel" style="margin-top:10px">${t(X.delB)}</button></div>
+ <p class="dim" style="font-size:11.5px;text-align:center">${t(X.upd)}</p>`;
+ document.getElementById("pvDel").onclick=wipe; }
+async function wipe(){ if(!window.confirm(t(X.conf))) return; const msg=t(X.done);
+ try{ localStorage.clear(); }catch(e){} try{ sessionStorage.clear(); }catch(e){}
+ try{ if(window.caches){ const ks=await caches.keys(); await Promise.all(ks.map(k=>caches.delete(k))); } }catch(e){}
+ try{ if(indexedDB&&indexedDB.databases){ const d=await indexedDB.databases(); d.forEach(x=>x.name&&indexedDB.deleteDatabase(x.name)); } }catch(e){}
+ alert(msg); location.hash="#beranda"; location.reload(); }
+function addLinks(){
+ const st=document.getElementById("stStack"); if(st&&!document.getElementById("stPriv")){ const c=document.createElement("div"); c.className="card"; c.id="stPriv"; st.appendChild(c); }
+ const sp=document.getElementById("stPriv"); if(sp) sp.innerHTML=`<div class="eyebrow">🔒 ${t(X.title)}</div><p class="dim" style="font-size:13px;margin-top:6px">${t(X.prom)}</p><button class="btn sm gold" type="button" data-go="privasi" style="margin-top:8px">${t(X.title)} →</button>`;
+ const bs=document.querySelector("#page-beranda .stack"); if(bs&&!document.getElementById("pvFoot")){ const f=document.createElement("p"); f.className="pv-foot dim"; f.id="pvFoot"; bs.appendChild(f); }
+ const pf=document.getElementById("pvFoot"); if(pf) pf.innerHTML=`🔒 <a data-go="privasi" href="#privasi">${t(X.foot)}</a> · ${esc(t(X.prom))}`; }
+function sync(){ addLinks(); render(); }
+window.KusyuPrivasi={render,wipe,NET,LOCAL};
+document.addEventListener("DOMContentLoaded",sync); if(document.readyState!=="loading") setTimeout(sync,0);
+window.addEventListener("hashchange",sync); document.addEventListener("click",e=>{ if(e.target.closest("[data-l]")) setTimeout(sync,50); });
 })();
 
 </script>
