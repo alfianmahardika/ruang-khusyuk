@@ -1,6 +1,6 @@
 <!doctype html><html lang="id" data-theme="gold"><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Ruang Khusyuk</title>
-<meta name="description" content="Ruang Khusyuk — checklist ibadah harian & kehadiran hati dalam salat">
+<title>Kusyu</title>
+<meta name="description" content="Kusyu — checklist ibadah harian & kehadiran hati dalam salat">
 <meta name="theme-color" content="#140f09">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -391,7 +391,7 @@ input[type=file]{display:none}
 [data-theme=gold] .jd-row.now{background:rgba(201,162,74,.16);border-color:#c9a24a}
 [data-theme=gold] .themebtn-label{color:var(--gold2)}
 
-/* ===== Ruang Khusyuk v2 ===== */
+/* ===== Kusyu v2 ===== */
 .nav button{flex:1}
 .v2-sb{justify-content:space-between;align-items:center;gap:8px}
 .v2-click{cursor:pointer}
@@ -661,7 +661,7 @@ input[type=file]{display:none}
   <header class="hdr">
     <div class="brand">
       <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f0d79a"/><stop offset="1" stop-color="#b8933f"/></linearGradient></defs><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="none" stroke="url(#lg)" stroke-width="1.6"/><circle cx="20" cy="20" r="4.5" fill="url(#lg)"/></svg>
-      <div class="tx"><b>Ruang Khusyuk</b><span data-i="brand.sub"></span><div class="hijri" id="hijri"></div></div>
+      <div class="tx"><b>Kusyu</b><span data-i="brand.sub"></span><div class="hijri" id="hijri"></div></div>
     </div>
     <div class="right">
       <div class="langseg" id="langseg" role="group" aria-label="Language"><button data-l="id">ID</button><button data-l="en">EN</button><button data-l="ar">AR</button></div>
@@ -1028,7 +1028,7 @@ input[type=file]{display:none}
     <button data-p="kiblat"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span data-v="nKiblat"></span></button>
     <button data-p="lainnya"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg><span data-v="nLainnya"></span></button>
   </nav>
-  <div class="v2-splash" id="v2Splash"><svg viewBox="0 0 40 40" width="84" height="84"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="none" stroke="#e6c77a" stroke-width="1.4"/><circle cx="20" cy="20" r="4.5" fill="#e6c77a"/></svg><b>Ruang Khusyuk</b><div id="v2SplashVerse"></div><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
+  <div class="v2-splash" id="v2Splash"><svg viewBox="0 0 40 40" width="84" height="84"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="none" stroke="#e6c77a" stroke-width="1.4"/><circle cx="20" cy="20" r="4.5" fill="#e6c77a"/></svg><b>Kusyu</b><div id="v2SplashVerse"></div><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
   <div class="v2-flow" id="v2Flow" hidden><div class="v2-flowhd"><button class="btn sm ghost" id="flX" type="button">✕</button><div class="v2-steps" id="flSteps"></div><span class="dim" id="flCount" dir="ltr"></span></div><div class="v2-flowbody" id="flBody"></div><div class="v2-flowft"><button class="btn" id="flPrev" type="button"></button><button class="btn gold" id="flNextB" type="button"></button></div></div>
 
   <!-- Murattal sheet -->
@@ -1961,19 +1961,19 @@ const dkey=(d=new Date())=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2
 
 /* ---------------- UI dictionary ---------------- */
 const UI={
- id:{brand:"Ruang Khusyuk",tag:"Kehadiran jiwa dalam salat",harian:"Harian",persiapan:"Persiapan",bacaan:"Bacaan",sunnah:"Sunnah",gerakan:"Gerakan",tasbih:"Tasbih",setelah:"Setelah",
+ id:{brand:"Kusyu",tag:"Kehadiran jiwa dalam salat",harian:"Harian",persiapan:"Persiapan",bacaan:"Bacaan",sunnah:"Sunnah",gerakan:"Gerakan",tasbih:"Tasbih",setelah:"Setelah",
   hEyebrow:"Dari bangun hingga tidur",hTitle:"Checklist ibadah harian",hLead:"Setiap amalan disertai dalil Al-Qur'an atau hadits sahih/hasan. Ketuk untuk menandai, ketuk ikon dalil untuk membaca sumbernya. Tersimpan per tanggal dan otomatis mulai baru setiap hari.",
   done:"selesai",streak:"hari beruntun",best:"rekor",today:"hari ini",dalil:"Dalil",reset:"Ulang hari ini",expand:"Buka semua dalil",collapse:"Tutup semua",filterAll:"Semua",filterTodo:"Belum",optional:"opsional",streakNote:"Hari dihitung beruntun bila ≥ 60% amalan tercentang.",
   allDone:"MasyaAllah, semua amalan hari ini tuntas.",fardhuDone:"Lima salat fardhu hari ini sudah tertunaikan.",week:"7 hari terakhir",
   audio:"Suara latar",off:"Hening",sea:"Ombak pelan",q1:"Tilawah · Al-Fatihah",q67:"Tilawah · Al-Mulk",q55:"Tilawah · Ar-Rahman",q36:"Tilawah · Yasin",tilTitle:"Tilawah streaming (Mishary Alafasy)",tilNote:"Butuh internet. Diputar berulang.",vol:"Volume",audioErr:"Tilawah gagal dimuat (cek koneksi). Kembali ke hening.",lang:"Bahasa",theme:"Tema",
   g_bangun:"Bangun tidur & sepertiga malam",g_subuh:"Subuh & pagi buta",g_pagi:"Pagi (Dhuha)",g_siang:"Siang",g_sore:"Sore",g_maghrib:"Maghrib & Isya",g_tidur:"Sebelum tidur",g_sepanjang:"Sepanjang hari",g_mingguan:"Mingguan & bulanan",weekly:"mingguan",openHarian:"Buka checklist Harian",movedNote:"Checklist harian kini digabung dalam satu tab Harian, lengkap dengan dalil.",weeklyNote:"Amalan mingguan/bulanan tidak dihitung dalam persentase harian."},
- en:{brand:"Ruang Khusyuk",tag:"Presence of the soul in prayer",harian:"Daily",persiapan:"Prepare",bacaan:"Recitations",sunnah:"Sunnah",gerakan:"Postures",tasbih:"Tasbih",setelah:"After",
+ en:{brand:"Kusyu",tag:"Presence of the soul in prayer",harian:"Daily",persiapan:"Prepare",bacaan:"Recitations",sunnah:"Sunnah",gerakan:"Postures",tasbih:"Tasbih",setelah:"After",
   hEyebrow:"From waking to sleeping",hTitle:"Daily worship checklist",hLead:"Every deed comes with evidence from the Qur'an or an authentic (sahih/hasan) hadith. Tap to check, tap the evidence icon to read the source. Saved per date and starts fresh every day.",
   done:"done",streak:"day streak",best:"best",today:"today",dalil:"Evidence",reset:"Reset today",expand:"Open all evidence",collapse:"Collapse all",filterAll:"All",filterTodo:"To do",optional:"optional",streakNote:"A day counts toward the streak when ≥ 60% is checked.",
   allDone:"MashaAllah, every deed for today is complete.",fardhuDone:"All five obligatory prayers are done today.",week:"Last 7 days",
   audio:"Background audio",off:"Silence",sea:"Gentle waves",q1:"Recitation · Al-Fatihah",q67:"Recitation · Al-Mulk",q55:"Recitation · Ar-Rahman",q36:"Recitation · Yasin",tilTitle:"Streaming recitation (Mishary Alafasy)",tilNote:"Needs internet. Plays on loop.",vol:"Volume",audioErr:"Recitation failed to load (check connection). Back to silence.",lang:"Language",theme:"Theme",
   g_bangun:"Waking & the last third of night",g_subuh:"Fajr & early morning",g_pagi:"Morning (Duha)",g_siang:"Midday",g_sore:"Afternoon",g_maghrib:"Maghrib & Isha",g_tidur:"Before sleep",g_sepanjang:"Throughout the day",g_mingguan:"Weekly & monthly",weekly:"weekly",openHarian:"Open Daily checklist",movedNote:"The daily checklist is now merged into one Daily tab, with evidence.",weeklyNote:"Weekly/monthly deeds are not counted in the daily percentage."},
- ar:{brand:"رُوانغ خُشوع",tag:"حضور القلب في الصلاة",harian:"اليومي",persiapan:"الاستعداد",bacaan:"الأذكار",sunnah:"السنن",gerakan:"الحركات",tasbih:"التسبيح",setelah:"بعد الصلاة",
+ ar:{brand:"Kusyu",tag:"حضور القلب في الصلاة",harian:"اليومي",persiapan:"الاستعداد",bacaan:"الأذكار",sunnah:"السنن",gerakan:"الحركات",tasbih:"التسبيح",setelah:"بعد الصلاة",
   hEyebrow:"من الاستيقاظ إلى النوم",hTitle:"قائمة العبادات اليومية",hLead:"كل عمل مقرون بدليل من القرآن أو حديث صحيح أو حسن. اضغط لوضع علامة، واضغط أيقونة الدليل لقراءة المصدر. تُحفظ حسب التاريخ وتبدأ من جديد كل يوم.",
   done:"مُنجز",streak:"أيام متتالية",best:"الأفضل",today:"اليوم",dalil:"الدليل",reset:"إعادة اليوم",expand:"فتح كل الأدلة",collapse:"طي الكل",filterAll:"الكل",filterTodo:"المتبقي",optional:"اختياري",streakNote:"يُحتسب اليوم في السلسلة إذا أُنجز ٦٠٪ أو أكثر.",
   allDone:"ما شاء الله، اكتملت أعمال اليوم كلها.",fardhuDone:"أُدّيت الصلوات الخمس اليوم.",week:"آخر ٧ أيام",
@@ -2381,7 +2381,7 @@ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded"
 
 </script>
 <script>
-/* ===== Ruang Khusyuk v2 — data (hafalan, doa, physio, surah reminders) ===== */
+/* ===== Kusyu v2 — data (hafalan, doa, physio, surah reminders) ===== */
 window.RKV2DATA=(function(){
 const H=[
  {id:"takbir",step:"takbir",name:{id:"Takbiratul Ihram",en:"Opening Takbir",ar:"تكبيرة الإحرام"},
@@ -2470,7 +2470,7 @@ return {H,POSES,SURAH};
 
 </script>
 <script>
-/* ===== Ruang Khusyuk v2 — Gerakan Holistik (5 tingkat ilmu) + Iftitah lengkap + Al-Mu'minun 1–2 ===== */
+/* ===== Kusyu v2 — Gerakan Holistik (5 tingkat ilmu) + Iftitah lengkap + Al-Mu'minun 1–2 ===== */
 (function(){
 "use strict";
 const O=()=>window.RKOld||{};
@@ -2750,7 +2750,7 @@ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded"
 
 </script>
 <script>
-/* ===== Ruang Khusyuk v2 — Beranda, Alur Khusyuk, Hafalan AI, Masjid, Lainnya, Premium, Settings ===== */
+/* ===== Kusyu v2 — Beranda, Alur Khusyuk, Hafalan AI, Masjid, Lainnya, Premium, Settings ===== */
 (function(){
 "use strict";
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
