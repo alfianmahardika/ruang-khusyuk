@@ -300,21 +300,21 @@ input[type=file]{display:none}
 [dir=rtl] .eyebrow{letter-spacing:0}
 [dir=rtl] .htx .t{font-size:16px}
 /* Light theme */
-[data-theme=light]{--bg:#f6f1e7;--bg2:#efe8da;--glass:rgba(255,255,255,.65);--glass2:rgba(0,0,0,.06);--line:rgba(60,45,20,.14);--fg:#221d14;--fg2:#4d4535;--fg3:#7d7461;--gold:#a8812c;--gold2:#8a6514;--jade:#2f8f6d;--jade2:#1f7356;color-scheme:light}
-[data-theme=light] body::before{background:var(--bg)}
-[data-theme=light] .app{background:radial-gradient(900px 500px at 50% -10%,rgba(168,129,44,.14),transparent 60%),radial-gradient(600px 400px at 100% 100%,rgba(47,143,109,.08),transparent 60%),var(--bg)}
-[data-theme=light] .hdr{background:rgba(246,241,231,.75)}
-[data-theme=light] .nav{background:rgba(246,241,231,.85)}
-[data-theme=light] .toast{background:#fff;color:var(--fg)}
-[data-theme=light] .btn:hover{background:rgba(0,0,0,.06)}
-[data-theme=light] .g-quran{color:#6a4fb0}
-[data-theme=light] select,[data-theme=light] input,[data-theme=light] textarea{color:var(--fg)}
+:is([data-theme=light],[data-theme=pink]){--bg:#f6f1e7;--bg2:#efe8da;--glass:rgba(255,255,255,.65);--glass2:rgba(0,0,0,.06);--line:rgba(60,45,20,.14);--fg:#221d14;--fg2:#4d4535;--fg3:#7d7461;--gold:#a8812c;--gold2:#8a6514;--jade:#2f8f6d;--jade2:#1f7356;color-scheme:light}
+:is([data-theme=light],[data-theme=pink]) body::before{background:var(--bg)}
+:is([data-theme=light],[data-theme=pink]) .app{background:radial-gradient(900px 500px at 50% -10%,rgba(168,129,44,.14),transparent 60%),radial-gradient(600px 400px at 100% 100%,rgba(47,143,109,.08),transparent 60%),var(--bg)}
+:is([data-theme=light],[data-theme=pink]) .hdr{background:rgba(246,241,231,.75)}
+:is([data-theme=light],[data-theme=pink]) .nav{background:rgba(246,241,231,.85)}
+:is([data-theme=light],[data-theme=pink]) .toast{background:#fff;color:var(--fg)}
+:is([data-theme=light],[data-theme=pink]) .btn:hover{background:rgba(0,0,0,.06)}
+:is([data-theme=light],[data-theme=pink]) .g-quran{color:#6a4fb0}
+:is([data-theme=light],[data-theme=pink]) select,:is([data-theme=light],[data-theme=pink]) input,:is([data-theme=light],[data-theme=pink]) textarea{color:var(--fg)}
 
 
-[data-theme=light] .pattern{opacity:.08}
-[data-theme=light] .sheet .panel{background:#fbf7ef}
-[data-theme=light] .langseg button.on{background:rgba(168,129,44,.18)}
-[data-theme=light]{--bg3:#e9e1d0;--line2:rgba(168,129,44,.35);--gold3:#8a6514;--rose2:#a04848}
+:is([data-theme=light],[data-theme=pink]) .pattern{opacity:.08}
+:is([data-theme=light],[data-theme=pink]) .sheet .panel{background:#fbf7ef}
+:is([data-theme=light],[data-theme=pink]) .langseg button.on{background:rgba(168,129,44,.18)}
+:is([data-theme=light],[data-theme=pink]){--bg3:#e9e1d0;--line2:rgba(168,129,44,.35);--gold3:#8a6514;--rose2:#a04848}
 .hdr .brand{min-width:0;overflow:hidden}.hdr .brand .tx{min-width:0}.brand .tx b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}@media (max-width:440px){.brand .tx b{font-size:17px}.hdr .right{gap:5px}.iconbtn{width:30px;height:30px}}
 .app[dir=rtl] .brand .tx b{direction:ltr;unicode-bidi:isolate}
 
@@ -357,8 +357,8 @@ input[type=file]{display:none}
 .qb-ind svg{width:22px;height:22px}
 .qb-deg{font-size:30px;font-weight:800;color:var(--gold2);direction:ltr}
 .qb-dial.ok circle.rim{stroke:#3cbe6e}
-[data-theme=light] .jd-set select,[data-theme=light] .jd-in{background:#fff}
-[data-theme=light] .jd-badge,[data-theme=light] .jd-tick.on{color:#fff}
+:is([data-theme=light],[data-theme=pink]) .jd-set select,:is([data-theme=light],[data-theme=pink]) .jd-in{background:#fff}
+:is([data-theme=light],[data-theme=pink]) .jd-badge,:is([data-theme=light],[data-theme=pink]) .jd-tick.on{color:#fff}
 
 .az-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
 .az-opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:var(--glass);cursor:pointer;font-size:13.5px}
@@ -514,9 +514,9 @@ input[type=file]{display:none}
 .v2-sur{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--glass)}
 .v2-sur.hi{border-color:var(--gold);background:rgba(201,162,74,.12)}
 .v2-sur small{display:block;color:var(--fg3);font-size:11.5px;margin-top:3px}
-[data-theme=light] .v2-hero{color:#1a1208}
-[data-theme=light] .v2-w.g{color:#1f7a56}[data-theme=light] .v2-w.y{color:#8a6a00}[data-theme=light] .v2-w.r{color:#b3392b}
-[data-theme=light] .v2-splash{}
+:is([data-theme=light],[data-theme=pink]) .v2-hero{color:#1a1208}
+:is([data-theme=light],[data-theme=pink]) .v2-w.g{color:#1f7a56}:is([data-theme=light],[data-theme=pink]) .v2-w.y{color:#8a6a00}:is([data-theme=light],[data-theme=pink]) .v2-w.r{color:#b3392b}
+:is([data-theme=light],[data-theme=pink]) .v2-splash{}
 
 .v2-var button{flex:1 1 45%;font-size:12px}
 
@@ -705,6 +705,151 @@ input[type=file]{display:none}
 .h-snip-id{display:block;font-size:13px;line-height:1.5;color:var(--fg2)}
 .pk-clip3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pk-draft{display:block;font-size:10.5px;color:var(--gold,#c9a24a);opacity:.85}
+/* Program Harian "Satu Hari Satu Langkah" */
+#pkProg{margin:0 0 14px}
+.pp-h{margin:6px 0 2px;font-size:19px}
+.pp-inv{border:1px dashed rgba(230,199,122,.45)}
+.pp-inv-tx{margin:10px 0 12px;font-size:14px;line-height:1.55}
+.pp-row{display:flex;gap:10px;flex-wrap:wrap}
+.pp-head{align-items:flex-start}
+.pp-menu{position:relative}
+.pp-menu summary{list-style:none;cursor:pointer;font-size:22px;line-height:1;padding:2px 10px;border-radius:10px;color:var(--gold2,#e6c77a)}
+.pp-menu summary::-webkit-details-marker{display:none}
+.pp-mbox{position:absolute;inset-inline-end:0;top:30px;z-index:9;background:#1d160d;border:1px solid rgba(230,199,122,.35);border-radius:12px;padding:6px;min-width:190px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.pp-mbox button{display:block;width:100%;text-align:start;background:none;border:0;color:inherit;padding:10px 12px;border-radius:8px;font:inherit;cursor:pointer}
+.pp-mbox button:hover{background:rgba(230,199,122,.12)}
+.pp-top{display:flex;align-items:center;gap:14px;margin:12px 0}
+.pp-ringw{position:relative;width:64px;height:64px;flex:none}
+.pp-ring{width:64px;height:64px;transform:rotate(-90deg)}
+.pp-ring circle{fill:none;stroke-width:6}.pp-ring .bg{stroke:rgba(230,199,122,.15)}.pp-ring .fg{stroke:var(--gold2,#e6c77a);stroke-linecap:round;transition:stroke-dasharray .6s}
+.pp-ring-n{position:absolute;inset:0;display:grid;place-items:center;font-size:14px}
+.pp-streak{font-size:17px}.pp-remind{color:#f0c36a}
+.pp-it{display:flex;gap:10px;padding:10px 0;border-top:1px solid rgba(255,255,255,.07)}
+.pp-it.on .pp-bd{opacity:.8}
+.pp-bd{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.pp-bd em{font-size:12px;opacity:.7;font-style:normal}
+.pp-acts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.pp-sm{padding:6px 12px;font-size:13px;min-height:0}
+.pp-link{background:none;border:0;color:var(--gold2,#e6c77a);font:inherit;font-size:13px;cursor:pointer;padding:4px}
+.pp-bars{display:grid;gap:6px;margin:12px 0 4px}
+.pp-bar{display:grid;grid-template-columns:110px 1fr 46px;gap:8px;align-items:center;font-size:12px}
+.pp-bar i,.s-prog i{display:block;height:6px;border-radius:6px;background:rgba(230,199,122,.15);overflow:hidden}
+.pp-bar i b,.s-prog i b{display:block;height:100%;background:linear-gradient(90deg,#c9a24a,#f3d98b);border-radius:6px}
+.pp-bar em{font-style:normal;text-align:end;opacity:.8}
+.pp-bdh{margin-top:10px}
+.pp-badges{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 8px}
+.pp-bdg{font-size:12px;padding:5px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.12);opacity:.55}
+.pp-bdg.on{opacity:1;border-color:rgba(230,199,122,.6);background:rgba(230,199,122,.12)}
+.pp-all{box-shadow:0 0 0 1px rgba(230,199,122,.5),0 0 24px rgba(230,199,122,.18)}
+.pp-hrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pp-hk{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:12px;border:1px solid rgba(230,199,122,.25);background:rgba(255,255,255,.03);color:inherit;font:inherit;cursor:pointer}
+.pp-hk.on{background:rgba(230,199,122,.14);border-color:rgba(230,199,122,.6)}
+.pp-hk b{font-size:12px}.pp-go{width:100%}
+.pp-cel{position:fixed;inset:0;z-index:9999;pointer-events:none;display:grid;place-items:center;background:rgba(10,7,3,.55);overflow:hidden}
+.pp-cel-in{background:#1d160d;border:1px solid rgba(230,199,122,.6);border-radius:18px;padding:22px 26px;text-align:center;max-width:300px;animation:ppPop .5s ease-out both}
+.pp-cel-big{font-size:44px}.pp-cel-bd{margin-top:8px}
+.pp-cel i{position:absolute;top:-20px;left:var(--x);color:#f3d98b;font-style:normal;animation:ppFall 2.6s var(--d) ease-in forwards}
+@keyframes ppPop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+@keyframes ppFall{to{transform:translateY(105vh) rotate(360deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){.pp-cel-in,.pp-cel i{animation:none}.pp-cel i{display:none}.pp-ring .fg{transition:none}}
+/* Sirah per halaman */
+.s-prog{display:grid;gap:4px;margin:0 0 12px}.s-prog small{opacity:.7}
+.s-pnav{display:flex;gap:8px;align-items:center;justify-content:space-between;margin:18px 0}
+.s-jump{display:flex;flex-direction:column;font-size:11px;opacity:.85;align-items:center}
+.s-jump select{background:#1d160d;color:inherit;border:1px solid rgba(230,199,122,.35);border-radius:8px;padding:6px}
+.pp-head{flex-wrap:nowrap;gap:8px}.pp-head>div{min-width:0}
+/* sembunyikan kartu program saat pembaca terbuka, agar area baca bersih */
+#page-quran:has(#qReader:not([hidden])) #pkProg,#page-quran:has(#hReader:not([hidden])) #pkProg,#page-quran:has(#sReader:not([hidden])) #pkProg{display:none}
+
+
+/* ===== Kusyu — Hafalan Al-Qur'an AI ===== */
+.hq{display:flex;flex-direction:column;gap:14px}
+.hq-focus>:not(#hqRoot){display:none!important}
+.hq-head h1{margin-top:4px}.hq-head p{margin-top:6px}
+.hq-onb p{margin:6px 0 10px;line-height:1.55}
+.hq-sumr{display:flex;gap:14px;align-items:center}.hq-sumt{display:flex;flex-direction:column;gap:3px}.hq-sumt small{color:var(--fg2);font-size:12.5px}
+.hq-ring{width:64px;height:64px;flex:none}.hq-ring circle{fill:none;stroke-width:5}.hq-ring .bg{stroke:var(--line2,rgba(128,128,128,.25))}.hq-ring .fg{stroke:var(--gold);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .6s}.hq-ring text{font-size:11px;text-anchor:middle;fill:var(--fg);font-weight:700}
+.hq-tg{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px;font-size:12px}.hq-tg button,.hq-eng button{border:1px solid var(--line2,var(--line));background:transparent;color:var(--fg2);border-radius:999px;padding:5px 10px;font:inherit;font-size:12px;cursor:pointer}
+.hq-tg button.on,.hq-eng button.on{background:var(--gold);color:#1a1208;border-color:var(--gold)}.hq-eng button:disabled{opacity:.35}
+.hq-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.hq-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}.hq-chip{border:1px solid var(--line2,var(--line));background:var(--glass,transparent);color:var(--fg);border-radius:999px;padding:5px 11px;font:inherit;font-size:12.5px;cursor:pointer}
+.hq-chip.done{background:rgba(46,160,110,.18);border-color:rgba(46,160,110,.5)}.hq-chip.nx{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,162,74,.25)}
+.hq-tabs{overflow-x:auto}
+.hq-list{display:flex;flex-direction:column;gap:6px}
+.hq-row{display:flex;gap:10px;align-items:center;text-align:start;width:100%;background:var(--glass,rgba(128,128,128,.06));border:1px solid var(--line);border-radius:14px;padding:10px 12px;color:var(--fg);font:inherit;cursor:pointer}
+.hq-row .n{min-width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:12px;font-weight:700;background:rgba(201,162,74,.15);color:var(--gold);padding:0 4px}
+.hq-row .t{flex:1;display:flex;flex-direction:column;gap:3px;min-width:0}.hq-row .t small{color:var(--fg2);font-size:11.5px}.hq-row .ar{font-family:var(--font-arab);font-size:19px}
+.hq-bar{display:flex;height:5px;border-radius:9px;background:var(--line);overflow:hidden;margin-top:2px}.hq-bar i{background:#2ea06e}.hq-bar b{background:var(--gold);opacity:.7}
+.hq-prac h2{margin-top:10px}.hq-rng{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0;font-size:13px;align-items:center}.hq-rng select,.hq-mur select{background:var(--bg2,transparent);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:4px 6px;font:inherit}
+.hq-mask{margin:6px 0}.hq-tjt{display:flex;gap:6px;align-items:center;font-size:13px;margin:6px 0}
+.hq-text,.hq-mtext{font-family:"Amiri Quran",var(--font-arab);font-size:28px;line-height:2.25;text-align:justify;margin:10px 0;word-spacing:2px}
+.hq-w{border-radius:6px;padding:0 2px;transition:background .2s}.hq-w.hid{color:var(--fg3);letter-spacing:2px}.hq-w.hid i{font-style:normal;opacity:.6}
+.hq-ok{color:#1f9d63;background:rgba(46,160,110,.12)}.hq-wrong{color:#d0473a;background:rgba(208,71,58,.13);text-decoration:underline wavy rgba(208,71,58,.6)}.hq-miss{color:var(--fg3);background:rgba(128,128,128,.15);text-decoration:line-through}.hq-peek{color:#b8860b;background:rgba(201,162,74,.15)}
+.hq-extra{font-size:18px;margin-top:4px}.hq-x{color:#8a5cd0;background:rgba(138,92,208,.13);border-radius:6px;padding:0 3px}
+.hq-end{color:var(--gold);font-size:.8em}
+.tj-gh{color:#e3802c}.tj-id{color:#2f8fd8}.tj-idn{color:#7a8ea6}.tj-ik{color:#c0469b}.tj-iq{color:#17a2a2}.tj-qq{color:#2e9e4f}.tj-md{color:#d23c3c}
+:is([data-theme=light],[data-theme=pink]) .tj-gh{color:#b85e12}:is([data-theme=light],[data-theme=pink]) .tj-id{color:#1765a8}:is([data-theme=light],[data-theme=pink]) .tj-ik{color:#9a2a7a}:is([data-theme=light],[data-theme=pink]) .tj-iq{color:#0d7a7a}:is([data-theme=light],[data-theme=pink]) .tj-qq{color:#1d7a38}:is([data-theme=light],[data-theme=pink]) .tj-md{color:#b3261e}
+.hq-leg{font-size:11.5px;color:var(--fg2);line-height:1.7}.hq-leg span{font-size:14px}
+.hq-muta{font-size:12.5px;background:rgba(201,162,74,.1);border:1px dashed rgba(201,162,74,.5);border-radius:10px;padding:8px 10px;margin:8px 0;line-height:1.7}.hq-lnk{background:none;border:0;color:var(--gold);text-decoration:underline;font:inherit;cursor:pointer;padding:0}
+.hq-eng{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 4px;font-size:12px}
+.hq-dlb p{font-size:12.5px;margin-bottom:6px}.hq-pg{position:relative;height:20px;border-radius:10px;background:var(--line);overflow:hidden;margin-top:8px}.hq-pg i{position:absolute;inset:0 auto 0 0;width:0;background:var(--gold);transition:width .3s}.hq-pg span{position:relative;font-size:11.5px;padding-inline:8px;line-height:20px;color:var(--fg)}
+.hq-acts{gap:6px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.hq-res{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}.hq-sc{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}.hq-sc div{display:flex;flex-direction:column;align-items:center;background:var(--glass,rgba(128,128,128,.06));border-radius:12px;padding:8px 4px;text-align:center}.hq-sc b{font-size:17px}.hq-sc small{font-size:10.5px;color:var(--fg2)}
+.hq-g5 b,.n.hq-g5{color:#1f9d63}.hq-g4 b,.n.hq-g4{color:#2f8fd8}.hq-g3 b,.n.hq-g3{color:var(--gold)}.hq-g2 b,.n.hq-g2{color:#d0473a}
+.hq-cel{font-weight:700;color:var(--gold);margin-top:6px}.hq-exp{font-size:11.5px}
+.hq-errs{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--font-arab);font-size:20px;margin-top:6px}.hq-errs small{font-family:var(--font-body);font-size:11px;color:var(--fg3)}
+.hq-mur{display:flex;flex-direction:column;gap:8px}.hq-ma{border-radius:8px;transition:background .3s}.hq-ma.on{background:rgba(201,162,74,.22)}
+.hq-priv{font-size:12px}.hq-attr{font-size:11px}
+.hq-mic.on{animation:hqp 1.2s infinite}@keyframes hqp{50%{box-shadow:0 0 0 12px rgba(208,71,58,.15)}}
+
+
+/* ===== Tema Dusty Pink (✿) — token mengikuti struktur tema light; aksen mawar/plum lembut ===== */
+[data-theme=pink]{--bg:#F3E6E4;--bg2:#EBDAD8;--bg3:#E8D3D1;--glass:rgba(255,250,249,.62);--glass2:rgba(110,74,84,.07);--line:rgba(110,74,84,.16);--line2:rgba(110,74,84,.34);--fg:#3b262d;--fg2:#5e434a;--fg3:#6f4f57;--gold:#9E6B6F;--gold2:#7d4f57;--jade:#6E4A54;--jade2:#5a3a44;color-scheme:light}
+[data-theme=pink] body::before{background:var(--bg)}
+[data-theme=pink] .app{background:
+ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' fill='none' stroke='%237d4f57' stroke-width='1.1' stroke-linecap='round' opacity='.07'%3E%3Cg transform='translate(30 34)'%3E%3Ccircle r='2.2'/%3E%3Cpath d='M0-3c-3-6 3-6 0 0M3 0c6-3 6 3 0 0M0 3c3 6-3 6 0 0M-3 0c-6 3-6-3 0 0'/%3E%3Cpath d='M0 8q2 10 10 14M6 15q5-2 6 2'/%3E%3C/g%3E%3Cg transform='translate(128 110) rotate(25)'%3E%3Ccircle r='1.8'/%3E%3Cpath d='M0-2.6c-2.6-5 2.6-5 0 0M2.6 0c5-2.6 5 2.6 0 0M0 2.6c2.6 5-2.6 5 0 0M-2.6 0c-5 2.6-5-2.6 0 0'/%3E%3C/g%3E%3Cpath d='M95 30q8 6 6 16M98 38q-5 0-6 4M100 44q5-1 7 3'/%3E%3Cpath d='M40 140q-6 8-2 16M38 147q-5-1-7 2'/%3E%3C/svg%3E") 0 0/180px 180px,
+ radial-gradient(900px 520px at 50% -12%,rgba(158,107,111,.16),transparent 62%),radial-gradient(700px 420px at 100% 105%,rgba(110,74,84,.08),transparent 60%),var(--bg)}
+[data-theme=pink] .hdr{background:rgba(243,230,228,.84);border-bottom-color:rgba(110,74,84,.16)}
+[data-theme=pink] .nav{background:rgba(243,230,228,.92);border-top-color:rgba(110,74,84,.16)}
+[data-theme=pink] .nav button{color:#6f4f57}[data-theme=pink] .nav button.on{color:#6E4A54}[data-theme=pink] .nav button.on::after{background:#9E6B6F}
+[data-theme=pink] .card{border-color:var(--line);background:rgba(255,250,249,.66)}
+[data-theme=pink] .card.lit{background:linear-gradient(160deg,rgba(158,107,111,.16),rgba(255,250,249,.7));border-color:var(--line2)}
+[data-theme=pink] .btn.gold,[data-theme=pink] .jd-badge,[data-theme=pink] .jd-tick.on,[data-theme=pink] .az-play.on{background:linear-gradient(180deg,#8a5a62,#6E4A54);color:#fff;border-color:#6E4A54}
+[data-theme=pink] .btn.ghost{color:#5a3a44;border-color:rgba(110,74,84,.34)}
+[data-theme=pink] .eyebrow{color:#7d4f57}
+[data-theme=pink] h1,[data-theme=pink] h2,[data-theme=pink] h3{color:#3b262d}
+[data-theme=pink] .langseg button.on,[data-theme=pink] .v2-seg button.on{background:rgba(110,74,84,.14);color:#5a3a44}
+[data-theme=pink] .toast{background:#6E4A54;color:#fff;border:0}
+[data-theme=pink] .sheet .panel,[data-theme=pink] dialog,[data-theme=pink] .pp-mbox,[data-theme=pink] .pp-cel-in{background:#F8EEEC;color:var(--fg);border-color:rgba(110,74,84,.3)}
+[data-theme=pink] select,[data-theme=pink] input,[data-theme=pink] textarea,[data-theme=pink] .jd-set select,[data-theme=pink] .jd-in,[data-theme=pink] .s-jump select{background:#FBF4F3;color:var(--fg);border-color:rgba(110,74,84,.3)}
+[data-theme=pink] .qb-dial circle.rim{stroke:#9E6B6F}
+[data-theme=pink] .jd-row.now{background:rgba(158,107,111,.16);border-color:#9E6B6F}
+[data-theme=pink] .v2-hero,[data-theme=pink] .v2-flow{color:#3b262d}
+[data-theme=pink] .v2-flow{background:radial-gradient(700px 420px at 50% -10%,rgba(158,107,111,.18),transparent 60%),#F3E6E4}
+[data-theme=pink] .q-star{color:#9E6B6F}[data-theme=pink] .q-star b{color:#5a3a44}
+[data-theme=pink] .q-row-ar,[data-theme=pink] .h-kar,[data-theme=pink] .q-hero-ar{color:#6E4A54}
+[data-theme=pink] .pk-ar,[data-theme=pink] .h-ar{color:#3b262d}
+[data-theme=pink] .pp-ring .bg{stroke:rgba(110,74,84,.15)}[data-theme=pink] .pp-ring .fg{stroke:#9E6B6F}
+[data-theme=pink] .pp-bar i b,[data-theme=pink] .s-prog i b{background:linear-gradient(90deg,#9E6B6F,#6E4A54)}
+[data-theme=pink] .pp-bar i,[data-theme=pink] .s-prog i{background:rgba(110,74,84,.14)}
+[data-theme=pink] .pp-remind{color:#8a3f4c}[data-theme=pink] .pp-link,[data-theme=pink] .pp-menu summary{color:#6E4A54}
+[data-theme=pink] .pp-bdg.on,[data-theme=pink] .pp-hk.on{background:rgba(158,107,111,.16);border-color:#9E6B6F}
+[data-theme=pink] .pp-cel i{color:#9E6B6F}[data-theme=pink] .pp-cel{background:rgba(59,38,45,.28)}
+[data-theme=pink] .s-draft{color:#5e434a}
+/* area baca tetap bersih: lapisan padat di atas motif bunga */
+[data-theme=pink] .q-reader,[data-theme=pink] .q-body,[data-theme=pink] .h-body,[data-theme=pink] .s-body{background:rgba(247,238,236,.97)}
+[data-theme=pink] .q-bar{background:rgba(243,230,228,.95)}
+/* mode light & pink: elemen gelap khusus Pustaka */
+[data-theme=light] .pp-mbox,[data-theme=light] .pp-cel-in,[data-theme=light] .s-jump select{background:#fffaf0;color:var(--fg)}
+/* kartu utama "Mulai Salat Khusyuk": versi mawar (pengganti emas) */
+[data-theme=pink] .v2-hero{background:linear-gradient(160deg,#EBCFCF 0%,#D9B3B5 55%,#C49396 100%)!important;color:#3b262d!important;border-color:#9E6B6F!important;animation-name:v2HeroGlowP}
+[data-theme=pink] .v2-hero .v2-tag{color:#5a3a44;border-color:rgba(110,74,84,.45)}
+[data-theme=pink] .v2-hero-ic svg *{stroke:#5a3a44}
+[data-theme=pink] .v2-cta{background:#6E4A54;color:#fff}
+@keyframes v2HeroGlowP{0%,100%{box-shadow:0 0 0 0 rgba(158,107,111,0)}50%{box-shadow:0 0 22px 2px rgba(158,107,111,.30)}}
+[data-theme=pink] .pk-ck{border-color:rgba(110,74,84,.55);color:#fff}
+[data-theme=pink] .pk-it.on .pk-ck,[data-theme=pink] .pp-it.on .pk-ck,[data-theme=pink] .pp-hk.on .pk-ck{background:#6E4A54;border-color:#6E4A54}
+[data-theme=pink] .pk-draft{color:#7d4f57}
 
 
 .ks-card{margin-top:4px}.ks-streak{font-size:20px;color:#e6c77a}.ks-acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
@@ -811,7 +956,7 @@ input[type=file]{display:none}
       <div class="stack" id="stStack">
         <div><div class="eyebrow">⚙</div><h1 data-v="settings"></h1></div>
         <div class="card"><div class="eyebrow" data-v="lang"></div><div class="v2-seg" id="stLang" style="margin-top:8px"><button data-l="id">Indonesia</button><button data-l="en">English</button><button data-l="ar">العربية</button></div></div>
-        <div class="card"><div class="eyebrow" data-v="theme"></div><div class="v2-seg" id="stTheme" style="margin-top:8px"><button data-t="gold" data-v="thGold"></button><button data-t="dark" data-v="thDark"></button><button data-t="light" data-v="thLight"></button></div></div>
+        <div class="card"><div class="eyebrow" data-v="theme"></div><div class="v2-seg" id="stTheme" style="margin-top:8px"><button data-t="gold" data-v="thGold"></button><button data-t="dark" data-v="thDark"></button><button data-t="light" data-v="thLight"></button><button data-t="pink" data-v="thPink"></button></div></div>
         <div class="card"><div class="eyebrow" data-v="location"></div><p id="stLoc" style="margin-top:6px"></p><button class="btn sm gold" type="button" data-go="jadwal" data-v="setLoc" style="margin-top:8px"></button></div>
         <div class="card"><div class="eyebrow" data-v="imamT"></div><div id="stImam" class="v2-imam"></div><p class="dim" style="font-size:11.5px;margin-top:6px" data-v="imamNote"></p></div>
       </div>
@@ -2865,7 +3010,7 @@ const V={
  premH:["Gratis & Premium","Free & Premium","مجاني وبريميوم"], premLead:["Fitur inti selamanya gratis. Premium mendukung pengembangan — saat ini semua fitur masih terbuka.","Core features are free forever. Premium funds development — all features are currently unlocked.","الميزات الأساسية مجانية دائمًا؛ وكل الميزات مفتوحة حاليًا."],
  freeT:["Gratis","Free","مجاني"], premNote:["Pembayaran belum tersedia. Tombol hanya mencatat minat Anda di perangkat ini; tidak ada tagihan. Harga promo dapat berubah.","Payments aren't available yet. Buttons only record your interest on this device; no charge. Promo prices may change.","الدفع غير متاح بعد؛ يتم تسجيل اهتمامك فقط."],
  interest:["Segera hadir · Daftar minat","Coming soon · Register interest","قريبًا · سجّل اهتمامك"], interested:["✓ Minat tercatat","✓ Interest saved","✓ تم التسجيل"],
- lang:["Bahasa","Language","اللغة"], theme:["Tema","Theme","المظهر"], thGold:["✦ Emas","✦ Gold","✦ ذهبي"], thDark:["Gelap","Dark","داكن"], thLight:["Terang","Light","فاتح"], location:["Lokasi","Location","الموقع"], setLoc:["Ubah lokasi di Jadwal","Change in Prayer Times","غيّر الموقع"],
+ lang:["Bahasa","Language","اللغة"], theme:["Tema","Theme","المظهر"], thGold:["✦ Emas","✦ Gold","✦ ذهبي"], thDark:["Gelap","Dark","داكن"], thLight:["Terang","Light","فاتح"], thPink:["✿ Dusty Pink","✿ Dusty Pink","✿ وردي هادئ"], location:["Lokasi","Location","الموقع"], setLoc:["Ubah lokasi di Jadwal","Change in Prayer Times","غيّر الموقع"],
  imamT:["Suara imam / muadzin","Imam / muezzin voices","أصوات المؤذنين"], imamNote:["Al-Aqsa & Istiqlal menunggu rekaman berlisensi.","Al-Aqsa & Istiqlal await licensed recordings.","الأقصى والاستقلال بانتظار تسجيلات مرخّصة."], audAttr:["Atribusi audio","Audio attribution","نسب الصوت"], soon:["segera","soon","قريبًا"], avail:["tersedia","available","متاح"],
  jdSet:["⚙ Metode, Ashar & Azan","⚙ Method, Asr & Adhan","⚙ الحساب والأذان"],
  fl1:["Persiapan","Preparation","التهيئة"], fl2:["Gerakan","Postures","الحركات"], fl3:["Makna bacaan","Meaning","المعاني"], fl4:["Dzikir","Dhikr","الذكر"], fl5:["Surah setelah salat","After-prayer surah","سور بعد الصلاة"], fl6:["Refleksi","Reflection","التأمل"],
@@ -3118,7 +3263,7 @@ function renderPremium(){ const f=$("#prFree"); if(!f) return; f.innerHTML=["pf1
   $$("#prPlans [data-plan]").forEach(b=>b.onclick=()=>{ const o=store.get("rk_premium_interest",{}); o[b.dataset.plan]={ts:Date.now(),lang:lang()}; store.set("rk_premium_interest",o); toast(v("interested")); renderPremium(); }); }
 
 /* ---------- Settings ---------- */
-function setTheme(t){ if(!["gold","dark","light"].includes(t)) t="gold"; document.documentElement.dataset.theme=t; store.set("rk_theme",t); const m=document.querySelector('meta[name=theme-color]'); if(m) m.content=t==="light"?"#f6f1e7":t==="gold"?"#140f09":"#090c12"; const b=$("#themeBtn"); if(b) b.textContent={gold:"✦",dark:"☀",light:"☾"}[t]; renderSettings(); }
+function setTheme(t){ if(!["gold","dark","light","pink"].includes(t)) t="gold"; document.documentElement.dataset.theme=t; store.set("rk_theme",t); const m=document.querySelector('meta[name=theme-color]'); if(m) m.content=t==="light"?"#f6f1e7":t==="pink"?"#F3E6E4":t==="gold"?"#140f09":"#090c12"; const b=$("#themeBtn"); if(b) b.textContent={gold:"✦",dark:"☀",light:"☾",pink:"✿"}[t]; renderSettings(); }
 function renderSettings(){ $$("#stLang button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang())); $$("#stTheme button").forEach(b=>b.classList.toggle("on",b.dataset.t===(document.documentElement.dataset.theme||"gold")));
   const l=loc(); const sl=$("#stLoc"); if(sl) sl.textContent=l?("📍 "+(l.name||"")+" ("+l.lat.toFixed(3)+", "+l.lng.toFixed(3)+")"):v("needLoc");
   const im=$("#stImam"); if(im){ const I=[["vMakkah",1],["vMadinah",1],[{id:"Masjid Al-Aqsa",en:"Al-Aqsa Mosque",ar:"المسجد الأقصى"},0],[{id:"Mesir (Kairo)",en:"Egypt (Cairo)",ar:"مصر (القاهرة)"},1],[{id:"Turki (Istanbul)",en:"Turkey (Istanbul)",ar:"تركيا (إسطنبول)"},1],[{id:"Indonesia (Masjid Istiqlal)",en:"Indonesia (Istiqlal Mosque)",ar:"إندونيسيا (مسجد الاستقلال)"},0]];
@@ -3131,7 +3276,7 @@ function initSettings(){
   $("#stLang").addEventListener("click",e=>{ const b=e.target.closest("[data-l]"); if(!b) return; const old=document.querySelector('#langseg [data-l="'+b.dataset.l+'"]'); if(old) old.click(); else if(window.I18N) I18N.set(b.dataset.l); });
   $("#stTheme").addEventListener("click",e=>{ const b=e.target.closest("[data-t]"); if(b) setTheme(b.dataset.t); });
   // header theme button: cycle gold → dark → light (replaces older handlers)
-  const old=$("#themeBtn"); if(old){ const nb=old.cloneNode(true); old.replaceWith(nb); nb.addEventListener("click",()=>{ const o=["gold","dark","light"], c=document.documentElement.dataset.theme; setTheme(o[(o.indexOf(c)+1)%3]); }); }
+  const old=$("#themeBtn"); if(old){ const nb=old.cloneNode(true); old.replaceWith(nb); nb.addEventListener("click",()=>{ const o=["gold","dark","light","pink"], c=document.documentElement.dataset.theme; setTheme(o[(o.indexOf(c)+1)%4]); }); }
   if(!store.get("rk_theme_gold_v1",false)){ store.set("rk_theme_gold_v1",true); store.set("rk_theme","gold"); }
   setTheme(store.get("rk_theme","gold")); }
 
@@ -3399,6 +3544,7 @@ const T={
  sEy:["Sirah Nabawiyah","The Prophet's Seerah","السيرة النبوية"], sLead:["Perjalanan hidup Rasulullah ﷺ, satu halaman sehari, urut kronologis.","The life of the Messenger ﷺ, one page a day, in chronological order.","سيرة الرسول ﷺ، صفحة كل يوم، بالترتيب الزمني."],
  draft:["Draf, menunggu tinjauan ustadz. Ringkasan ini kami tulis sendiri dari hadis sahih. Teks kitab Ar-Rahiq al-Makhtum akan tampil setelah izin penerbit didapat.","Draft, awaiting review by a scholar. These are our own summaries from sahih hadith; the text of Ar-Raheeq al-Makhtum will appear once publisher permission is granted.","مسودة بانتظار مراجعة عالم. ملخصات من الأحاديث الصحيحة؛ سيُعرض نص «الرحيق المختوم» بعد إذن الناشر."],
  soon:["segera","soon","قريبًا"], src:["Sumber","Sources","المصادر"], ch:["Bab","Chapter","الباب"], prevC:["Bab sebelumnya","Previous","السابق"], nextC:["Bab berikutnya","Next","التالي"],
+ pgN:["Halaman","Page","صفحة"], prevP:["Sebelumnya","Previous","السابقة"], nextP:["Berikutnya","Next","التالية"], jump:["Ke halaman","Go to page","انتقل إلى صفحة"], ofP:["dari","of","من"], written:["halaman ditulis","pages written","صفحات مكتوبة"], enSoon:["(English version coming; showing Indonesian)","(English version coming; showing Indonesian)",""], draftTag:["Draf · menunggu tinjauan ustadz","Draft · awaiting scholar review","مسودة · بانتظار المراجعة"], words:["kata","words","كلمة"],
  arNote:["","","(النص بالإندونيسية/الإنجليزية مؤقتًا)"],
  today:["Hari Ini","Today","اليوم"], todayLead:["1 ayat · 1 hadis · 1 halaman sirah","1 verse · 1 hadith · 1 seerah page","آية · حديث · صفحة سيرة"], ayat:["Ayat hari ini","Verse of the day","آية اليوم"], hd:["Hadis hari ini","Hadith of the day","حديث اليوم"], sr:["Sirah hari ini","Seerah of the day","سيرة اليوم"],
  done:["Selesai","Done","تم"], allDone:["MasyaAllah, program hari ini tuntas!","MashaAllah, today's programme is complete!","ما شاء الله، أتممت برنامج اليوم!"], read:["Baca","Read","اقرأ"]
@@ -3471,20 +3617,22 @@ const loadSI=()=>SR.idx?Promise.resolve(SR.idx):getJSON("sirah/index.json").then
 const loadSP=n=>SR.pc[n]?Promise.resolve(SR.pc[n]):getJSON("sirah/"+n+".json").then(d=>(SR.pc[n]=d));
 const cT=c=>c[1+L()]||c[1];
 async function sList(){ const el=$("#sList"); if(!el) return; try{ await loadSI(); }catch(e){ el.innerHTML=`<p class="dim">${t("offline")}</p>`; return; }
-  el.innerHTML=SR.idx.ch.map(c=>c[4]?`<button class="q-row" type="button" data-sopen="${c[0]}">${star(c[0])}<span class="q-row-tx"><b>${esc(cT(c))}</b><small>${t("ch")} ${NUM(c[0])}</small></span><span aria-hidden="true">→</span></button>`:`<div class="q-row s-soon">${star(c[0])}<span class="q-row-tx"><b>${esc(cT(c))}</b><small>${t("ch")} ${NUM(c[0])} · ${t("soon")}</small></span></div>`).join(""); }
+  const tot=SR.idx.pages||SR.idx.ch.length, wr=SR.idx.written||SR.idx.ch.filter(c=>c[4]).length, last=(store.get("rk_s_last",null)||{}).n;
+  el.innerHTML=`<p class="dim ks-small">${NUM(wr)} ${t("ofP")} ${NUM(tot)} ${t("written")}</p>`+(last?`<button class="q-cont" type="button" data-sopen="${last}">${star(last)}<span class="q-cont-tx"><small>${t("cont")}</small><b>${t("pgN")} ${NUM(last)}</b></span><span aria-hidden="true">→</span></button>`:"")+SR.idx.ch.map(c=>c[4]?`<button class="q-row" type="button" data-sopen="${c[0]}">${star(c[0])}<span class="q-row-tx"><b>${esc(cT(c))}</b><small>${t("pgN")} ${NUM(c[0])}</small></span><span aria-hidden="true">→</span></button>`:`<div class="q-row s-soon">${star(c[0])}<span class="q-row-tx"><b>${esc(cT(c))}</b><small>${t("pgN")} ${NUM(c[0])} · ${t("soon")}</small></span></div>`).join(""); }
 async function sOpen(n){ n=+n; await loadSI(); const r=$("#sReader"), body=$("#sBody"); $("#sIndex").hidden=true; r.hidden=false; body.innerHTML=`<p class="dim">${t("loading")}</p>`; window.scrollTo(0,0); const vw=$("#view"); if(vw) vw.scrollTop=0;
   let p; try{ p=await loadSP(n); }catch(e){ body.innerHTML=`<p class="dim">${t("offline")}</p>`; return; }
-  const tx=lang()==="en"?p.en:(lang()==="ar"?p.en:p.id); const av=SR.idx.ch.filter(c=>c[4]).map(c=>c[0]), i=av.indexOf(n);
-  $("#sTitle").textContent=p.t[L()]||p.t[0]; $("#sSub").textContent=t("ch")+" "+NUM(n);
-  body.innerHTML=`<div class="s-draft">⚠️ ${t("draft")}</div><div class="h-kar" lang="ar" dir="rtl">${esc(p.t[2])}</div>${lang()==="ar"?`<p class="dim ks-small">${t("arNote")}</p>`:""}
+  const useEn=lang()!=="id"&&p.en, tx=useEn?p.en:p.id; const tot=SR.idx.pages||SR.idx.ch.length, wr=SR.idx.written||tot;
+  $("#sTitle").textContent=p.t[L()]||p.t[0]; $("#sSub").textContent=t("pgN")+" "+NUM(n)+" "+t("ofP")+" "+NUM(tot);
+  const nav=`<div class="s-pnav"><button class="btn ghost" type="button" ${n>1?`data-sopen="${n-1}"`:"disabled"}>← ${t("prevP")}</button><label class="s-jump"><span>${t("jump")}</span><select id="sJump" aria-label="${t("jump")}">${SR.idx.ch.map(c=>`<option value="${c[0]}"${c[0]===n?" selected":""}${c[4]?"":" disabled"}>${NUM(c[0])}${c[4]?"":" · "+t("soon")}</option>`).join("")}</select></label><button class="btn gold" type="button" ${n<wr?`data-sopen="${n+1}"`:"disabled"}>${n<wr?t("nextP"):t("soon")} →</button></div>`;
+  body.innerHTML=`<div class="s-prog"><i><b style="width:${(n*100/tot).toFixed(1)}%"></b></i><small>${t("pgN")} ${NUM(n)} / ${NUM(tot)}</small></div><div class="s-draft">⚠️ ${t("draftTag")}. ${t("draft")}</div><div class="h-kar" lang="ar" dir="rtl">${esc(p.t[2])}</div>${lang()==="ar"?`<p class="dim ks-small">${t("arNote")}</p>`:""}${lang()==="en"&&!p.en?`<p class="dim ks-small">${t("enSoon")}</p>`:""}
    <div class="s-text" dir="ltr">${tx.split("\n\n").map(x=>`<p>${esc(x)}</p>`).join("")}</div>
-   <div class="s-src"><b>${t("src")}:</b> ${p.src.map(esc).join(" · ")}</div>
-   <div class="h-nav">${i>0?`<button class="btn ghost" type="button" data-sopen="${av[i-1]}">← ${t("prevC")}</button>`:"<span></span>"}${i<av.length-1?`<button class="btn gold" type="button" data-sopen="${av[i+1]}">${t("nextC")} →</button>`:""}</div>`;
+   <div class="s-src"><b>${t("src")}:</b> ${p.src.map(esc).join(" · ")}</div>${nav}`;
+  const sj=$("#sJump"); if(sj) sj.onchange=()=>sOpen(sj.value);
   store.set("rk_s_last",{n,ts:Date.now()}); }
 function sClose(){ $("#sReader").hidden=true; $("#sIndex").hidden=false; sList(); }
 
 /* ---------- Hub ---------- */
-function setTab(x){ const pg=$("#page-quran"); if(!pg) return; pg.dataset.pk=x; store.set("rk_pk_tab",x); $$("#pkTabs button").forEach(b=>b.classList.toggle("on",b.dataset.pk===x)); if(x==="h") hList(); if(x==="s") sList(); }
+function setTab(x){ pRender();  const pg=$("#page-quran"); if(!pg) return; pg.dataset.pk=x; store.set("rk_pk_tab",x); $$("#pkTabs button").forEach(b=>b.classList.toggle("on",b.dataset.pk===x)); if(x==="h") hList(); if(x==="s") sList(); }
 function applyT(){ $$("[data-pt]").forEach(e=>e.textContent=t(e.dataset.pt)); $$("[data-pph]").forEach(e=>{e.placeholder=t(e.dataset.pph); e.setAttribute("aria-label",t(e.dataset.pph));}); const a=$("#hAttr"); if(a) a.innerHTML=t("hAttr"); }
 
 /* ---------- Hari Ini ---------- */
@@ -3504,18 +3652,115 @@ async function todayData(){ const sd=seed(); const out={};
   return out; }
 async function homeCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#pkToday");
   if(!c){ c=document.createElement("div"); c.id="pkToday"; c.className="card lit pk-today"; const a=$("#qHomeCard")||$("#v2HafCard"); if(a) a.before(c); else pg.prepend(c); }
+  const PP=pGet(); if(PP&&PP.st!=="off") return pHome(c); c.className="card lit pk-today";
   const D=await todayData(); const td=(logAll()[dk()])||{}; const n=["hi_ayat","hi_hadis","hi_sirah"].filter(k=>td[k]).length;
   const row=(k,ic,lab,body,open)=>`<div class="pk-it${td[k]?" on":""}"><button type="button" class="pk-ck" data-hik="${k}" aria-pressed="${!!td[k]}" aria-label="${t("done")}">${td[k]?"✓":""}</button><button type="button" class="pk-bd" ${open}><small>${ic} ${lab}</small>${body}</button></div>`;
   c.dir=lang()==="ar"?"rtl":"ltr";
   c.innerHTML=`<div class="row v2-sb"><div><div class="eyebrow">☀️ ${t("today")}</div><small class="dim">${t("todayLead")}</small></div><div class="pk-prog"><b>${NUM(n)}</b>/${NUM(3)}</div></div>
    ${D.a?row("hi_ayat","📖",t("ayat"),`<span class="pk-ar" lang="ar" dir="rtl">${esc(D.a.ar)}</span>${D.a.tr&&lang()!=="ar"?`<span class="pk-tr">${esc(D.a.tr)}</span>`:""}<em>QS. ${esc(D.a.name)} ${NUM(D.a.s)}:${NUM(D.a.a)}</em>`,`data-hiq="${D.a.s}:${D.a.a}"`):""}
    ${D.h?row("hi_hadis","📜",t("hd"),`<span class="pk-ar pk-clip" lang="ar" dir="rtl">${esc(D.h.ar)}</span>${D.h.id?`<span class="pk-tr pk-clip3">${esc(D.h.id)}</span><small class="pk-draft">${t("trDraft")}</small>`:""}<em>${t("hEy")} ${NUM(D.h.n)}</em>`,`data-hopen="${D.h.k}:${D.h.n}" data-hihub="h"`):""}
-   ${D.s?row("hi_sirah","🌙",t("sr"),`<b>${esc(D.s.title)}</b><em>${t("sEy")} · ${t("ch")} ${NUM(D.s.n)}</em>`,`data-sopen="${D.s.n}" data-hihub="s"`):""}
+   ${D.s?row("hi_sirah","🌙",t("sr"),`<b>${esc(D.s.title)}</b><em>${t("sEy")} · ${t("pgN")} ${NUM(D.s.n)}</em>`,`data-sopen="${D.s.n}" data-hihub="s"`):""}
    ${n===3?`<div class="pk-done">🎉 ${t("allDone")}</div>`:""}`; }
+
+/* ---------- Program Harian "Satu Hari Satu Langkah" (opsional; default mati) ---------- */
+const PT_={
+ pName:["Satu Hari Satu Langkah","One Day, One Step","يوم واحد، خطوة واحدة"], pSub:["Program Harian Muslim: 1 Ayat · 1 Hadis · 1 Halaman Sirah","Daily Muslim Programme: 1 Verse · 1 Hadith · 1 Seerah Page","البرنامج اليومي: آية · حديث · صفحة سيرة"],
+ pInvite:["Ikuti Program Harian","Join the Daily Programme","انضم إلى البرنامج اليومي"], pInvTx:["Baca berurutan dari awal: Al-Qur'an dari Al-Fatihah, Shahih Bukhari dari hadis no. 1, dan Sirah dari halaman 1. Cukup beberapa menit sehari. Boleh dijeda atau dihentikan kapan saja.","Read in order from the start: the Qur'an from Al-Fatihah, Bukhari from hadith 1, the Seerah from page 1. A few minutes a day; pause or stop any time.","اقرأ بالترتيب: القرآن من الفاتحة، والبخاري من الحديث الأول، والسيرة من الصفحة الأولى. دقائق يوميًا، ويمكنك الإيقاف متى شئت."],
+ pStart:["Mulai","Start","ابدأ"], pLater:["Nanti saja","Maybe later","لاحقًا"],
+ tA:["Ayat","Verse","آية"], tH:["Hadis","Hadith","حديث"], tS:["Sirah","Seerah","سيرة"],
+ streak:["hari beruntun","day streak","أيام متتالية"], notYet:["Hari ini belum, yuk satu langkah dulu 🌱","Not yet today — one small step 🌱","لم تبدأ اليوم بعد 🌱"], keep:["Teruskan, tinggal sedikit lagi","Keep going, almost there","واصل، اقتربت"],
+ doneAll:["MasyaAllah, tiga langkah hari ini tuntas!","MashaAllah, all three steps done today!","ما شاء الله، أتممت الخطوات الثلاث!"],
+ mark:["Tandai selesai","Mark done","تم"], undo:["Batalkan","Undo","تراجع"], openR:["Baca","Read","اقرأ"], more:["Baca lagi (bonus)","Read more (bonus)","اقرأ المزيد"], moreTx:["Bacaan tambahan: posisi maju, streak tetap dihitung 1 per hari.","Extra reading moves your position; streak still counts once a day.","قراءة إضافية تُقدِّم موضعك."],
+ badges:["Lencana","Badges","الأوسمة"], menu:["Pengaturan program","Programme settings","إعدادات البرنامج"], pause:["Jeda","Pause","إيقاف مؤقت"], resume:["Lanjutkan program","Resume","استئناف"], stop:["Berhenti","Stop","إيقاف"], reset:["Ulang dari awal","Reset progress","إعادة الضبط"],
+ paused:["Program sedang dijeda. Progres tersimpan dan streak tidak terputus selama jeda.","Programme paused. Progress is kept and the streak is frozen.","البرنامج متوقف مؤقتًا. التقدم محفوظ."],
+ stopped:["Program dihentikan. Progres tetap tersimpan jika ingin mulai lagi.","Programme stopped. Progress is kept if you rejoin.","تم الإيقاف. التقدم محفوظ."], resetQ:["Hapus semua progres program dan mulai dari awal?","Erase all programme progress?","حذف كل التقدم؟"],
+ rejoin:["Lanjutkan dari posisi terakhir","Continue where you left","تابع من حيث توقفت"], sirahSoon:["Halaman berikutnya segera hadir","Next page coming soon","الصفحة التالية قريبًا"], toPk:["Buka program","Open programme","افتح البرنامج"], pts:["poin","pts","نقطة"]
+};
+Object.assign(T,PT_);
+const BD=[
+ {id:"p_first",ic:"🌱",n:["Langkah Pertama","First Step","الخطوة الأولى"],ok:s=>s.days>=1},
+ {id:"p_trio",ic:"🌟",n:["Tiga Serangkai","Trio","الثلاثي"],ok:s=>s.trio>=1},
+ {id:"p_s7",ic:"🔥",n:["7 Hari Istiqamah","7-Day Streak","٧ أيام"],ok:s=>s.best>=7},
+ {id:"p_s30",ic:"🏅",n:["30 Hari Istiqamah","30-Day Streak","٣٠ يومًا"],ok:s=>s.best>=30},
+ {id:"p_juz",ic:"📖",n:["Juz Pertama Tuntas","First Juz Done","أتممت الجزء الأول"],ok:s=>s.a>148},
+ {id:"p_kitab",ic:"📜",n:["Kitab Pertama Bukhari","First Book of Bukhari","الكتاب الأول من البخاري"],ok:s=>s.h>7},
+ {id:"p_sirah10",ic:"🌙",n:["Sirah 10 Halaman","Seerah: 10 Pages","١٠ صفحات سيرة"],ok:s=>s.s>10},
+ {id:"p_hijrah",ic:"🐪",n:["Sampai Hijrah","Reached the Hijrah","بلغت الهجرة"],ok:s=>s.s>25}
+];
+/* Koleksi lencana bersama: modul lain (mis. hafalan-ai) dapat mendaftarkan lencananya. Lihat BADGES.md */
+const XB={}; window.KusyuBadges={ register(src,items){ XB[src]=(items||[]).map(b=>({id:String(b.id),ic:b.ic||"🏅",n:b.n,on:!!b.on})); try{pRender();}catch(e){} },
+ list(){ const P=pGet(), st=P?pStats(P):null; return BD.map(b=>({src:"prog",id:b.id,ic:b.ic,n:b.n,on:!!(st&&b.ok(st))})).concat(...Object.keys(XB).map(k=>XB[k].map(b=>Object.assign({src:k},b)))); } };
+const TOT={a:6236,h:7563};
+const PK="ks_prog", TK={a:"hi_ayat",h:"hi_hadis",s:"hi_sirah"};
+const pGet=()=>store.get(PK,null), pSet=v=>store.set(PK,v);
+const pNew=()=>({st:"on",a:{p:1,t:1},h:{p:1,t:1},s:{p:1,t:1},day:dk(),done:{},pz:[],extra:0,since:dk()});
+const dAdd=(d,n)=>{const x=new Date(d+"T12:00:00");x.setDate(x.getDate()+n);return dk(x);};
+function pRoll(P){ const d=dk(); if(P.day!==d){ ["a","h","s"].forEach(k=>{P[k].t=P[k].p;}); if(P.st==="pause"&&P.pzFrom) {} P.day=d; pSet(P);} return P; }
+const inPz=(P,d)=>(P.pz||[]).some(r=>d>=r[0]&&d<=(r[1]||"9999"));
+function pStats(P){ const D=P.done||{}, ks=Object.keys(D).filter(d=>Object.keys(D[d]).length); const days=ks.length, trio=ks.filter(d=>Object.keys(D[d]).length>=3).length;
+  const any=d=>D[d]&&Object.keys(D[d]).length; let cur=0, d=dk(); if(!any(d)) d=dAdd(d,-1); let guard=0;
+  while(guard++<4000){ if(any(d)){cur++; d=dAdd(d,-1);} else if(inPz(P,d)) d=dAdd(d,-1); else break; }
+  let best=0,run=0,prev=null; ks.sort().forEach(x=>{ if(prev){ let y=dAdd(prev,1); while(y<x&&inPz(P,y)) y=dAdd(y,1); run=(y===x)?run+1:1; } else run=1; best=Math.max(best,run); prev=x; });
+  return {days,trio,cur,best:Math.max(best,cur),a:P.a.p,h:P.h.p,s:P.s.p}; }
+function logSet(key,on){ const o=logAll(), d=dk(); o[d]=o[d]||{}; if(on) o[d][key]=o[d][key]||Date.now(); else delete o[d][key]; if(!Object.keys(o[d]).length) delete o[d]; store.set("ks_ibadah_log",o); try{ window.KusyuIbadah&&window.KusyuIbadah.render&&window.KusyuIbadah.render(); }catch(e){} }
+function pMark(k){ const P=pRoll(pGet()); if(!P||P.st!=="on") return; const d=dk(); P.done[d]=P.done[d]||{};
+  const before=pStats(P);
+  if(P.done[d][k]){ delete P.done[d][k]; P[k].p=P[k].t; if(!Object.keys(P.done[d]).length) delete P.done[d]; logSet(TK[k],false); pSet(P); return pRender(); }
+  P.done[d][k]=1; P[k].p=Math.max(P[k].p,P[k].t+1); pSet(P); logSet(TK[k],true);
+  const af=pStats(P), nb=BD.filter(b=>b.ok(af)&&!b.ok(before)); const all=Object.keys(P.done[d]).length>=3;
+  pRender(); if(all||nb.length) pCelebrate(all,nb); }
+function pMore(k){ const P=pRoll(pGet()); if(!P||P.st!=="on") return; if(k==="s"&&P.s.p>(SR.idx?SR.idx.written:27)) return toast(t("sirahSoon")); P[k].p++; toast(t("moreTx")); P.extra=(P.extra||0)+1; pSet(P); pRender(); }
+function pState(st){ const P=pGet()||pNew(); const d=dk(); if(st==="on"&&P.st==="pause"){ const r=P.pz[P.pz.length-1]; if(r&&!r[1]) r[1]=dAdd(d,-1); }
+  if(st==="pause"&&P.st==="on") P.pz.push([d,null]); if(st==="off"&&P.st==="pause"){ const r=P.pz[P.pz.length-1]; if(r&&!r[1]) r[1]=dAdd(d,-1); }
+  P.st=st; pSet(P); pRender(); homeCard(); }
+function pCelebrate(all,nb){ const o=document.createElement("div"); o.className="pp-cel"; o.setAttribute("role","status");
+  o.innerHTML=`<div class="pp-cel-in">${all?`<div class="pp-cel-big">✨</div><b>${t("doneAll")}</b>`:""}${nb.map(b=>`<div class="pp-cel-bd">${b.ic} <b>${esc(b.n[L()])}</b></div>`).join("")}</div>${Array.from({length:14},(_,i)=>`<i style="--x:${(i*37)%100}%;--d:${(i%5)*0.15}s">✦</i>`).join("")}`;
+  document.body.appendChild(o); o.onclick=()=>o.remove(); setTimeout(()=>o.remove(),3600); }
+async function ayahAt(g){ const m=await QM(); let s=0,x=g-1; while(s<m.s.length&&x>=m.s[s][6]){ x-=m.s[s][6]; s++; } const sm=m.s[s]; const d=await getJSON("quran/s/"+String(s+1).padStart(3,"0")+".json");
+  return {s:s+1,a:x+1,ar:d.ar[x],tr:lang()==="en"?d.en[x]:(lang()==="ar"?"":d.id[x]),name:lang()==="ar"?sm[1]:(lang()==="en"?sm[4]:sm[2])}; }
+async function hadAt(n){ await loadMeta(); const k=kitabOf(n)||97; const d=await loadK(k); const r=d.find(x=>Math.floor(+x[0])===n)||[n,""]; const id=lang()==="ar"?null:await loadId(k); return {n,k,ar:r[1]?matn(r[1]):"",id:id?(id[r[0]]||id[n]||null):null,kn:kName(K(k))}; }
+async function sirAt(n){ await loadSI(); const c=SR.idx.ch[n-1]; return c?{n,title:cT(c),w:!!c[4],tot:SR.idx.pages}:{n,title:"",w:false,tot:SR.idx.pages}; }
+const pct=(p,tot)=>Math.min(100,Math.floor((p-1)*1000/tot)/10);
+const ring=(n)=>{ const c=2*Math.PI*26, f=c*(n/3); return `<svg class="pp-ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" class="bg"/><circle cx="32" cy="32" r="26" class="fg" stroke-dasharray="${f} ${c}"/></svg><b class="pp-ring-n">${NUM(n)}/${NUM(3)}</b>`; };
+let pSeq=0;
+async function pRender(){ const el=$("#pkProg"); if(!el) return; const my=++pSeq; el.dir=lang()==="ar"?"rtl":"ltr"; let P=pGet();
+  if(!P||P.st==="off"){ el.className="card pp pp-inv"; el.innerHTML=`<div class="eyebrow">🌱 ${t("pName")}</div><h3 class="pp-h">${t("pInvite")}</h3><small class="dim">${t("pSub")}</small><p class="muted pp-inv-tx">${t("pInvTx")}</p><div class="pp-row"><button class="btn gold" type="button" data-pp="join">${P?t("rejoin"):t("pStart")}</button></div>`; return; }
+  P=pRoll(P); const st=pStats(P), td=(P.done||{})[dk()]||{}, n=Object.keys(td).length;
+  const menu=`<details class="pp-menu"><summary aria-label="${t("menu")}">⋯</summary><div class="pp-mbox">${P.st==="on"?`<button type="button" data-pp="pause">⏸ ${t("pause")}</button>`:`<button type="button" data-pp="resume">▶ ${t("resume")}</button>`}<button type="button" data-pp="stop">⏹ ${t("stop")}</button><button type="button" data-pp="reset">↺ ${t("reset")}</button></div></details>`;
+  const head=`<div class="row v2-sb pp-head"><div><div class="eyebrow">🌱 ${t("pName")}</div><small class="dim">${t("pSub")}</small></div>${menu}</div>`;
+  if(P.st==="pause"){ el.className="card pp pp-paused"; el.innerHTML=head+`<p class="muted">⏸ ${t("paused")}</p><div class="pp-bars">${["a","h","s"].map(k=>pBar(k,P)).join("")}</div><button class="btn gold" type="button" data-pp="resume">▶ ${t("resume")}</button>`; return; }
+  el.className="card lit pp"+(n>=3?" pp-all":""); el.innerHTML=head+`<p class="dim">${t("loading")}</p>`;
+  let A,Hh,S; try{ [A,Hh,S]=await Promise.all([ayahAt(Math.min(P.a.t,TOT.a)),hadAt(Math.min(P.h.t,TOT.h)),sirAt(P.s.t)]); }catch(e){ if(my===pSeq) el.innerHTML=head+`<p class="dim">${t("offline")}</p>`; return; }
+  if(my!==pSeq) return;
+  const it=(k,ic,lab,pos,body,open)=>`<div class="pp-it${td[k]?" on":""}" data-ppk="${k}"><button type="button" class="pk-ck" data-ppm="${k}" aria-pressed="${!!td[k]}" aria-label="${td[k]?t("undo"):t("mark")}">${td[k]?"✓":""}</button><div class="pp-bd"><small>${ic} ${lab} · <b>${pos}</b></small>${body}<div class="pp-acts"><button type="button" class="btn ghost pp-sm" ${open}>${t("openR")} →</button>${td[k]?`<button type="button" class="pp-link" data-ppx="${k}">+ ${t("more")}</button>`:""}</div></div></div>`;
+  el.innerHTML=head+`<div class="pp-top"><div class="pp-ringw">${ring(n)}</div><div class="pp-st"><div class="pp-streak">🔥 <b>${NUM(st.cur)}</b> ${t("streak")}</div><small class="${n?"dim":"pp-remind"}">${n>=3?t("doneAll"):(n?t("keep"):t("notYet"))}</small></div></div>
+   ${it("a","📖",t("tA"),`${NUM(P.a.t)}/${NUM(TOT.a)}`,`<span class="pk-ar" lang="ar" dir="rtl">${esc(A.ar)}</span>${A.tr?`<span class="pk-tr">${esc(A.tr)}</span>`:""}<em>QS. ${esc(A.name)} ${NUM(A.s)}:${NUM(A.a)}</em>`,`data-hiq="${A.s}:${A.a}"`)}
+   ${it("h","📜",t("tH"),`${NUM(P.h.t)}/${NUM(TOT.h)}`,`${Hh.id?`<span class="pk-tr pk-clip3">${esc(Hh.id)}</span><small class="pk-draft">${t("trDraft")}</small>`:`<span class="pk-ar pk-clip" lang="ar" dir="rtl">${esc(Hh.ar||t("empty"))}</span>`}<em>${t("hEy")} ${NUM(Hh.n)} · ${esc(Hh.kn)}</em>`,`data-hopen="${Hh.k}:${Hh.n}" data-hihub="h"`)}
+   ${S.w?it("s","🌙",t("tS"),`${NUM(P.s.t)}/${NUM(S.tot)}`,`<b>${esc(S.title)}</b><em>${t("sEy")} · ${t("pgN")} ${NUM(S.n)}</em>`,`data-sopen="${S.n}" data-hihub="s"`):`<div class="pp-it"><div class="pp-bd"><small>🌙 ${t("tS")} · ${NUM(P.s.t)}/${NUM(S.tot)}</small><span class="dim">${t("sirahSoon")}</span></div></div>`}
+   <div class="pp-bars">${["a","h","s"].map(k=>pBar(k,P)).join("")}</div>
+   <div class="eyebrow pp-bdh">${t("badges")}</div><div class="pp-badges">${window.KusyuBadges.list().map(b=>`<span class="pp-bdg${b.on?" on":""}" data-b="${esc(b.id)}" data-src="${esc(b.src)}" title="${esc(b.n[L()]||b.n[0])}">${b.on?b.ic:"🔒"} ${esc(b.n[L()]||b.n[0])}</span>`).join("")}</div>
+   <small class="dim ks-small">+3 ${t("pts")} / ${t("tA").toLowerCase()}, ${t("tH").toLowerCase()}, ${t("tS").toLowerCase()} · ${t("moreTx")}</small>`; }
+function pBar(k,P){ const tot=k==="s"?((SR.idx&&SR.idx.pages)||49):TOT[k]; const v=pct(P[k].p,tot); return `<div class="pp-bar"><span>${t({a:"tA",h:"tH",s:"tS"}[k])} ${NUM(P[k].p-1)}/${NUM(tot)}</span><i><b style="width:${Math.max(v,0.6)}%"></b></i><em>${NUM(v)}%</em></div>`; }
+async function pHome(c){ /* versi ringkas Beranda untuk peserta */ const P=pRoll(pGet()); const st=pStats(P), td=(P.done||{})[dk()]||{}, n=Object.keys(td).length;
+  c.className="card lit pk-today pp-home"; c.dir=lang()==="ar"?"rtl":"ltr";
+  if(P.st==="pause"){ c.innerHTML=`<div class="row v2-sb"><div><div class="eyebrow">🌱 ${t("pName")}</div><small class="dim">⏸ ${t("pause")}</small></div><button class="btn ghost pp-sm" type="button" data-pp="goto">${t("toPk")} →</button></div>`; return; }
+  const ck=(k,ic,lab,pos)=>`<button type="button" class="pp-hk${td[k]?" on":""}" data-ppm="${k}" aria-pressed="${!!td[k]}"><span class="pk-ck">${td[k]?"✓":""}</span><small>${ic} ${lab}</small><b>${pos}</b></button>`;
+  await loadSI().catch(()=>{});
+  c.innerHTML=`<div class="row v2-sb"><div><div class="eyebrow">🌱 ${t("pName")}</div><small class="${n?"dim":"pp-remind"}">🔥 ${NUM(st.cur)} ${t("streak")} · ${n>=3?t("doneAll"):(n?t("keep"):t("notYet"))}</small></div><div class="pk-prog"><b>${NUM(n)}</b>/${NUM(3)}</div></div>
+   <div class="pp-hrow">${ck("a","📖",t("tA"),`${NUM(P.a.t)}/${NUM(TOT.a)}`)}${ck("h","📜",t("tH"),`${NUM(P.h.t)}/${NUM(TOT.h)}`)}${ck("s","🌙",t("tS"),`${NUM(P.s.t)}/${NUM((SR.idx&&SR.idx.pages)||49)}`)}</div>
+   <button class="btn gold pp-go" type="button" data-pp="goto">${t("toPk")} →</button>`; }
+function pClick(e){ const a=e.target.closest("[data-pp]"); if(a){ const v=a.dataset.pp; const det=a.closest("details"); if(det) det.open=false;
+    if(v==="join"){ const P=pGet(); if(P){ P.st="on"; pSet(P); pRender(); homeCard(); } else { pSet(pNew()); pRender(); homeCard(); } }
+    else if(v==="pause") pState("pause"); else if(v==="resume") pState("on"); else if(v==="stop") pState("off");
+    else if(v==="reset"){ if(confirm(t("resetQ"))){ pSet(Object.assign(pNew(),{st:(pGet()||{}).st==="pause"?"on":"on"})); pRender(); homeCard(); } }
+    else if(v==="goto"){ window.go&&window.go("quran"); setTab("q"); setTimeout(()=>{ const p=$("#pkProg"); p&&p.scrollIntoView({block:"start"}); },60); }
+    return true; }
+  const m=e.target.closest("[data-ppm]"); if(m){ pMark(m.dataset.ppm); if(m.closest("#pkToday")) homeCard(); return true; }
+  const x=e.target.closest("[data-ppx]"); if(x){ pMore(x.dataset.ppx); return true; } return false; }
 
 function inject(){ const pg=$("#page-quran"); if(!pg||$("#pkTabs")) return;
   const tabs=document.createElement("div"); tabs.className="v2-seg pk-tabs"; tabs.id="pkTabs"; tabs.setAttribute("role","tablist");
-  tabs.innerHTML=`<button data-pk="q" class="on" data-pt="tabQ"></button><button data-pk="h" data-pt="tabH"></button><button data-pk="s" data-pt="tabS"></button>`; pg.prepend(tabs);
+  tabs.innerHTML=`<button data-pk="q" class="on" data-pt="tabQ"></button><button data-pk="h" data-pt="tabH"></button><button data-pk="s" data-pt="tabS"></button>`; pg.prepend(tabs); const pp=document.createElement("div"); pp.id="pkProg"; pp.className="card pp"; tabs.after(pp);
   const h=document.createElement("div"); h.id="pkHadis"; h.className="pk-pane"; h.innerHTML=`<div class="stack" id="hIndex"><div class="q-hero"><div class="eyebrow" data-pt="hEy"></div><div class="q-hero-ar h-hero-ar" lang="ar" dir="rtl">صَحِيحُ الْبُخَارِيِّ</div><p class="muted" data-pt="hLead"></p></div>
    <div id="hCont"></div><div class="q-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="hSearch" type="search" autocomplete="off" data-pph="hSearch"></div>
    <div class="v2-seg q-tabs" id="hTabs"><button data-t="k" class="on" data-pt="tKitab"></button><button data-t="b" data-pt="tMarks"></button></div><div id="hList" class="q-list"></div><p class="dim q-attr" id="hAttr"></p></div>
@@ -3528,20 +3773,312 @@ function init(){ inject(); if(!$("#pkTabs")) return;
   $("#hTabs").addEventListener("click",e=>{ const b=e.target.closest("[data-t]"); if(!b) return; H.tab=b.dataset.t; $$("#hTabs button").forEach(x=>x.classList.toggle("on",x===b)); hList(); });
   $("#hSearch").addEventListener("input",()=>{ clearTimeout(hList.t); hList.t=setTimeout(hList,250); });
   $("#hBack").onclick=hClose; $("#sBack").onclick=sClose;
-  document.addEventListener("click",e=>{ const ck=e.target.closest("[data-hik]"); if(ck){ logToggle(ck.dataset.hik); homeCard(); return; }
+  document.addEventListener("click",e=>{ if(pClick(e)) return; const ck=e.target.closest("[data-hik]"); if(ck){ logToggle(ck.dataset.hik); homeCard(); return; }
     const hub=e.target.closest("[data-hihub]"); if(hub){ window.go&&window.go("quran"); setTab(hub.dataset.hihub); }
     const q=e.target.closest("[data-hiq]"); if(q){ window.go&&window.go("quran"); setTab("q"); const [s,a]=q.dataset.hiq.split(":"); const btn=document.createElement("button"); btn.dataset.open=s+":"+a; btn.hidden=true; $("#qIndex").appendChild(btn); btn.click(); btn.remove(); return; }
     const o=e.target.closest("[data-hopen]"); if(o){ const [k,n]=o.dataset.hopen.split(":"); hOpen(k,n); return; }
     const so=e.target.closest("[data-sopen]"); if(so){ sOpen(so.dataset.sopen); return; }
     const bm=e.target.closest("[data-hbm]"); if(bm){ hBm(bm.dataset.hbm); return; } const cp=e.target.closest("[data-hcp]"); if(cp){ hCopy(cp.dataset.hcp); return; } });
   setTab(store.get("rk_pk_tab","q")==="q"?"q":store.get("rk_pk_tab","q"));
-  homeCard();
-  document.addEventListener("rk:lang",()=>setTimeout(()=>{ applyT(); homeCard(); const pk=$("#page-quran").dataset.pk; if(pk==="h"&&!$("#hReader").hidden&&H.cur) hOpen(H.cur.k); else if(pk==="h") hList(); if(pk==="s") sList(); },30));
+  homeCard(); pRender();
+  document.addEventListener("rk:lang",()=>setTimeout(()=>{ applyT(); homeCard(); pRender(); const pk=$("#page-quran").dataset.pk; if(pk==="h"&&!$("#hReader").hidden&&H.cur) hOpen(H.cur.k); else if(pk==="h") hList(); if(pk==="s") sList(); },30));
   const _go=window.go; if(_go) window.go=function(p){ _go(p); if(p==="beranda") homeCard(); };
   window.addEventListener("hashchange",()=>{ if(location.hash==="#beranda") homeCard(); });
   $$("#nav button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.p==="beranda") homeCard(); }));
-  window.KusyuPustaka={H,SR,setTab,hOpen,sOpen,homeCard,todayData};
+  window.KusyuPustaka={H,SR,setTab,hOpen,sOpen,homeCard,todayData,pRender,pStats:()=>pStats(pGet()),prog:pGet};
 }
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
+})();
+
+</script>
+<script>
+/* ===== Kusyu — Hafalan Al-Qur'an AI (self-contained module). Text: Tanzil Uthmani (CC BY 3.0).
+   ASR: (1) Whisper "tarteel-ai/whisper-base-ar-quran" (Apache-2.0, Tarteel AI) via transformers.js, on-device, opt-in download;
+        (2) Web Speech API ar-SA fallback (browser/OS service); (3) self-check without mic.
+   State: localStorage ks_hifz. Points: ks_ibadah_log key "hifz". Exposes window.KusyuHifz. ===== */
+(function(){
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includes(l)?l:"id";};
+const LI=()=>({id:0,en:1,ar:2}[lang()]);
+const AD=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]); const NUM=n=>lang()==="ar"?AD(n):String(n);
+const dk=(d=new Date())=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const dAdd=(d,n)=>{const x=new Date(d+"T12:00:00");x.setDate(x.getDate()+n);return dk(x);};
+const toast=m=>{const t=$("#toast");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2600);};
+const BASE=(()=>{const b=document.querySelector("base");return b?b.href:"";})();
+const T={
+ ey:["Hafalan Al-Qur'an","Qur'an Memorization","حفظ القرآن"],
+ title:["Hafalan Al-Qur'an (AI)","Qur'an Memorization (AI)","حفظ القرآن (ذكاء اصطناعي)"],
+ lead:["Setor bacaan per ayat, dapat koreksi kata per kata, ulangi yang salah, dan pantau progres per surah & juz. Opsional, sesuai ritme Anda.","Recite ayah by ayah, get word-by-word correction, repeat mistakes, and track progress by surah & juz. Optional, at your own pace.","سمّع آية آية، واحصل على تصحيح كلمة بكلمة، وراجع الأخطاء، وتابع تقدّمك."],
+ privacy:["🔒 Privasi: dengan Mode AI di perangkat, suara diproses di HP Anda dan tidak diunggah. Mode cepat (pengenal suara browser) memakai layanan suara bawaan HP/Google — gunakan Mode AI bila ingin sepenuhnya offline.","🔒 Privacy: with On-device AI mode, audio is processed on your phone and never uploaded. Quick mode (browser speech) uses your phone/Google speech service — use AI mode to stay fully on-device.","🔒 الخصوصية: في وضع الذكاء على الجهاز يُعالج الصوت في هاتفك ولا يُرفع. الوضع السريع يستخدم خدمة الكلام في المتصفح."],
+ path:["Jalur Hafalan","Memorization Path","مسار الحفظ"], next:["Saran berikutnya","Suggested next","المقترح التالي"], start:["Mulai","Start","ابدأ"],
+ onbT:["Mulai dari yang ringan","Start light","ابدأ بالأيسر"], onb:["Kami sarankan mulai dari An-Nas (Juz 30, paling ringan), lalu naik bertahap: Al-Falaq → Al-Ikhlas → … sampai seluruh Juz 30, kemudian surah yang lebih panjang.","We suggest starting with An-Nas (Juz 30, the lightest), then step up: Al-Falaq → Al-Ikhlas → … through Juz 30, then longer surahs.","نقترح البدء بسورة الناس ثم الفلق ثم الإخلاص… حتى جزء عمّ ثم السور الأطول."],
+ onbGo:["Mulai dengan An-Nas","Start with An-Nas","ابدأ بسورة الناس"], onbLater:["Nanti saja","Maybe later","لاحقًا"],
+ week:["Target pekan ini","This week's target","هدف الأسبوع"], tgt:["Ubah target","Change target","تغيير الهدف"], tOff:["Tanpa target","No target","بلا هدف"],
+ ayat:["ayat","ayahs","آيات"], surah:["surah","surah","سورة"], streak:["hari hafalan beruntun","day hifz streak","أيام متتالية"], pts:["poin","pts","نقطة"],
+ tabS:["Surah","Surah","السور"], tabJ:["Juz","Juz","الأجزاء"], tabQ:["Antrian ulang","Review queue","المراجعة"], tabH:["Riwayat","History","السجل"], tabM:["Murattal","Murattal","المرتّل"],
+ mem:["Hafal","Memorized","محفوظ"], rev:["Murajaah","Reviewing","مراجعة"], neu:["Baru","New","جديد"],
+ badges:["Lencana Hafalan","Hifz Badges","أوسمة الحفظ"],
+ eng:["Pengenal suara","Recognizer","التعرّف على الصوت"], eW:["AI di perangkat (Whisper Qur'an)","On-device AI (Qur'an Whisper)","ذكاء على الجهاز"], eS:["Cepat (browser, ar-SA)","Quick (browser, ar-SA)","سريع (المتصفح)"], eC:["Cek mandiri (tanpa mic)","Self-check (no mic)","تحقق ذاتي"],
+ dl:["Unduh model AI (±233 MB, sekali saja, simpan di HP). Disarankan pakai Wi-Fi.","Download AI model (~233 MB, once, cached on device). Wi-Fi recommended.","تنزيل النموذج (~٢٣٣ م.ب، مرة واحدة)."], dlBtn:["Unduh model","Download model","تنزيل"], ready:["Model siap ✓","Model ready ✓","النموذج جاهز ✓"], loading:["Memuat model","Loading model","تحميل النموذج"],
+ noSR:["Browser ini tidak punya pengenal suara. Pakai Mode AI atau Cek mandiri.","This browser has no speech recognition. Use AI mode or Self-check.","لا يدعم المتصفح التعرف على الكلام."],
+ micAsk:["Ketuk mic lalu izinkan mikrofon. Suara hanya dipakai untuk mengoreksi bacaan Anda.","Tap the mic and allow microphone access. Audio is used only to check your recitation.","اضغط الميكروفون واسمح بالوصول."],
+ micDenied:["Izin mikrofon ditolak. Buka pengaturan situs › Mikrofon › Izinkan, atau pakai Cek mandiri.","Microphone blocked. Open site settings › Microphone › Allow, or use Self-check.","تم رفض الميكروفون."],
+ rec:["Merekam… ketuk lagi bila selesai","Recording… tap again when done","جارٍ التسجيل… اضغط عند الانتهاء"], tapRec:["Ketuk untuk mulai setoran","Tap to start reciting","اضغط للبدء"], proc:["Menganalisis bacaan","Analysing recitation","جارٍ التحليل"],
+ mask:["Sembunyikan","Hide","إخفاء"], m0:["Tampil","Show","إظهار"], m1:["Sebagian","Partial","جزئي"], m2:["Huruf awal","First letter","الحرف الأول"], m3:["Hafalan","Hidden","مخفي"],
+ tajwid:["Warna tajwid","Tajwid colours","ألوان التجويد"], tjNote:["Pewarnaan tajwid dibuat otomatis dari teks sebagai alat bantu belajar, bukan penilaian tajwid. Mohon tetap talaqqi dengan ustadz/qari.","Tajwid colouring is generated from the text as a learning aid, not a tajwid assessment. Please still learn with a teacher.","تلوين التجويد آلي للتعلّم وليس تقييمًا."],
+ peek:["Intip kata","Peek word","إظهار كلمة"], peekA:["Awal ayat berikut","Next ayah start","بداية الآية التالية"], retry:["Ulangi","Retry","أعد"], listen:["Dengar","Listen","استمع"], back:["← Kembali","← Back","→ رجوع"],
+ res:["Hasil setoran","Recitation result","نتيجة التسميع"], acc:["Ketepatan kata","Word accuracy","دقة الكلمات"], comp:["Kelengkapan","Completeness","الاكتمال"], flu:["Kelancaran","Fluency","الطلاقة"], grade:["Nilai","Grade","التقدير"],
+ g5:["Mumtaz","Excellent","ممتاز"], g4:["Jayyid Jiddan","Very good","جيد جدًا"], g3:["Jayyid","Good","جيد"], g2:["Perlu diulang","Needs repeat","يحتاج إعادة"],
+ lg:["Hijau benar · Merah salah · Abu-abu terlewat · Ungu tambahan","Green correct · Red wrong · Grey missed · Purple extra","أخضر صحيح · أحمر خطأ · رمادي فائت · بنفسجي زائد"],
+ heard:["Terdengar","Heard","المسموع"], nextRev:["Murajaah berikutnya","Next review","المراجعة التالية"], days:["hari lagi","days","أيام"],
+ drill:["Ulangi ayat yang salah","Repeat wrong ayahs","أعد الآيات الخاطئة"], qEmpty:["Belum ada ayat yang perlu diulang. Bagus!","Nothing to review. Great!","لا شيء للمراجعة."], due:["jatuh tempo","due","مستحقة"],
+ hEmpty:["Belum ada riwayat setoran.","No recitation history yet.","لا يوجد سجل."], errs:["Kata yang sering salah","Frequently missed words","كلمات يكثر الخطأ فيها"],
+ muta:["Mirip dengan","Similar to","متشابه مع"], mutaN:["⚠ Ayat mutasyabihat — hati-hati tertukar","⚠ Mutashabihat — easy to mix up","⚠ آية متشابهة"],
+ expT:["Eksperimental: perkiraan panjang mad dari energi suara (bukan penilaian tajwid)","Experimental: madd length estimate from audio energy (not a tajwid assessment)","تجريبي: تقدير طول المد"],
+ from:["Dari ayat","From ayah","من آية"], to:["sampai","to","إلى"], rep:["Ulang tiap ayat","Repeat each","تكرار"], loop:["Ulang rentang A–B","Loop A–B","تكرار المقطع"], speed:["Kecepatan","Speed","السرعة"], play:["▶ Putar","▶ Play","▶ تشغيل"], stop:["■ Stop","■ Stop","■ إيقاف"],
+ qari:["Qari: Mishary Rashid Alafasy (audio: EveryAyah.com, diputar langsung dari server mereka)","Reciter: Mishary Rashid Alafasy (audio: EveryAyah.com, streamed)","القارئ: مشاري العفاسي (EveryAyah.com)"],
+ doneS:["Masya Allah! Surah ini tuntas dihafal 🎉","Masha'Allah! Surah memorized 🎉","ما شاء الله! أتممت السورة 🎉"], newB:["Lencana baru","New badge","وسام جديد"],
+ all:["Semua","All","الكل"], juz:["Juz","Juz","جزء"], opt:["Semua fitur ini opsional — tidak ada pengingat yang mengganggu.","All optional — no nagging reminders.","كل ذلك اختياري."],
+ attr:["Model AI: tarteel-ai/whisper-base-ar-quran © Tarteel AI, Apache-2.0. Teks: Tanzil Uthmani, CC BY 3.0.","AI model: tarteel-ai/whisper-base-ar-quran © Tarteel AI, Apache-2.0. Text: Tanzil Uthmani, CC BY 3.0.","النموذج: Tarteel AI (Apache-2.0). النص: تنزيل."]
+};
+const t=k=>(T[k]||[k])[LI()];
+const HK="ks_hifz";
+const S0=()=>({v:1,ay:{},hist:[],days:[],target:{k:"ayat",n:5},badges:{},onb:0,eng:null,mask:0,tj:1,err:{}});
+const st=()=>Object.assign(S0(),store.get(HK,{})), save=s=>store.set(HK,s);
+
+/* ---------- Arabic normalisation & alignment (exported for unit tests) ---------- */
+const DIA=/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640\u08F0-\u08F3]/g;
+function norm(w){ return String(w).replace(DIA,"").replace(/[أإآٱ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/ؤ/g,"و").replace(/ئ/g,"ي").replace(/[^\u0621-\u064A]/g,""); }
+// looser key for ASR comparison: drop hamza/alef/ya/waw spelling differences between Uthmani & imla'i
+function loose(w){ return norm(w).replace(/[ءا]/g,"").replace(/ي/g,"").replace(/و/g,"").replace(/ه$/,""); }
+function lev(a,b){ if(a===b) return 0; const m=a.length,n=b.length; if(!m) return n; if(!n) return m; let p=Array.from({length:n+1},(_,i)=>i); for(let i=1;i<=m;i++){ const c=[i]; for(let j=1;j<=n;j++) c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1)); p=c; } return p[n]; }
+function sim(a,b){ if(!a&&!b) return 1; if(!a||!b) return 0; const x=1-lev(a,b)/Math.max(a.length,b.length); const la=loose(a),lb=loose(b); const y=la&&lb?1-lev(la,lb)/Math.max(la.length,lb.length):0; return Math.max(x,y); }
+/* Needleman–Wunsch at word level. exp/got: normalised words. returns ops [{t:'ok'|'wrong'|'miss'|'extra', e:idx|null, g:idx|null, s:sim}] */
+function alignNW(exp,got,okT=0.75){ got=got.filter(Boolean); const n=exp.length,m=got.length, G=-0.6;
+  const S=Array.from({length:n+1},()=>new Float64Array(m+1)), B=Array.from({length:n+1},()=>new Uint8Array(m+1));
+  for(let i=1;i<=n;i++){S[i][0]=i*G;B[i][0]=1;} for(let j=1;j<=m;j++){S[0][j]=j*G;B[0][j]=2;}
+  for(let i=1;i<=n;i++) for(let j=1;j<=m;j++){ const s=sim(exp[i-1],got[j-1]); const d=S[i-1][j-1]+(s>=okT?1:s>=0.5?0:-0.5)*(1)+ (s>=okT?s-1:0);
+    const u=S[i-1][j]+G, l=S[i][j-1]+G; if(d>=u&&d>=l){S[i][j]=d;B[i][j]=0;} else if(u>=l){S[i][j]=u;B[i][j]=1;} else {S[i][j]=l;B[i][j]=2;} }
+  const ops=[]; let i=n,j=m; while(i>0||j>0){ const b=(i>0&&j>0)?B[i][j]:(i>0?1:2);
+    if(b===0){ const s=sim(exp[i-1],got[j-1]); ops.push({t:s>=okT?"ok":"wrong",e:i-1,g:j-1,s}); i--; j--; }
+    else if(b===1){ ops.push({t:"miss",e:i-1,g:null,s:0}); i--; } else { ops.push({t:"extra",e:null,g:j-1,s:0}); j--; } }
+  // merge: a recognised token that glues two expected words (common in ASR)
+  return ops.reverse(); }
+function score(ops,nExp,pauses){ const ok=ops.filter(o=>o.t==="ok").length, wr=ops.filter(o=>o.t==="wrong").length, ex=ops.filter(o=>o.t==="extra").length;
+  const acc=nExp?Math.round(ok/nExp*100):0, comp=nExp?Math.round((ok+wr)/nExp*100):0; const flu=Math.max(0,Math.min(100,100-(pauses||0)*10-ex*5));
+  const tot=Math.round(acc*0.7+comp*0.15+flu*0.15); const g=tot>=95?5:tot>=85?4:tot>=70?3:2; return {acc,comp,flu,tot,g,ok,wr,ex,miss:ops.filter(o=>o.t==="miss").length}; }
+
+/* ---------- Tajwid colouring (rule-based, from Uthmani text) ---------- */
+const HAR=/[\u064B-\u0652\u0653-\u0655\u0670\u06DC\u06DF-\u06E8\u06EA-\u06ED\u08F0-\u08F3]/;
+const TANWIN=/[\u064B-\u064D\u08F0-\u08F2]/, SUK="\u0652", SUKU="\u06E1", SHAD="\u0651";
+function clusters(w){ const out=[]; for(const ch of w){ if(out.length&&HAR.test(ch)||out.length&&ch==="\u0651") out[out.length-1]+=ch; else out.push(ch); } return out; }
+const baseOf=c=>c.replace(/[^\u0621-\u064A\u0671]/g,"")[0]||"";
+function tajwid(words){ // returns per word array of {c,cls}
+  const W=words.map(w=>clusters(w).map(c=>({c,cls:""}))); const flat=[]; W.forEach((w,wi)=>w.forEach((x,ci)=>flat.push({wi,ci,x})));
+  const nextBase=k=>{ for(let q=k+1;q<flat.length;q++){ const b=baseOf(flat[q].x.c); if(b&&!/[اٱى]/.test(b)||b&&HAR.test(flat[q].x.c)) return flat[q]; if(b&&/[اٱى]/.test(b)&&!HAR.test(flat[q].x.c)) continue; } return null; };
+  flat.forEach((f,k)=>{ const c=f.x.c, b=baseOf(c); const lastOfAyah=k===flat.length-1||(k===flat.length-2&&!baseOf(flat[k+1].x.c));
+    if((b==="ن"||b==="م")&&c.includes(SHAD)){ f.x.cls="tj-gh"; return; }
+    if("قطبجد".includes(b)&&b&&(c.includes(SUK)||c.includes(SUKU)||lastOfAyah)){ f.x.cls="tj-qq"; return; }
+    if(c.includes("\u0653")){ f.x.cls="tj-md"; return; }
+    const nunSak=b==="ن"&&(c.includes(SUKU)||c.includes(SUK)||!HAR.test(c)), tan=TANWIN.test(c);
+    if(nunSak||tan){ const nx=nextBase(k); if(!nx) return; const nb=baseOf(nx.x.c); const sameWord=nx.wi===f.wi;
+      if(c.includes("\u06E2")||c.includes("\u06ED")||nb==="ب"){ f.x.cls="tj-iq"; return; }
+      if(!sameWord&&"ينمو".includes(nb)){ f.x.cls="tj-id"; nx.x.cls=nx.x.cls||"tj-id"; return; }
+      if(!sameWord&&"لر".includes(nb)){ f.x.cls="tj-idn"; return; }
+      if("تثجدذزسشصضطظفقك".includes(nb)){ f.x.cls="tj-ik"; return; } }
+    if(b==="م"&&(c.includes(SUKU)||!HAR.test(c))){ const nx=nextBase(k); if(nx&&nx.wi!==f.wi){ const nb=baseOf(nx.x.c); if(nb==="ب") f.x.cls="tj-ik"; else if(nb==="م") f.x.cls="tj-gh"; } }
+  }); return W; }
+const TJL=[["tj-gh",["Ghunnah","Ghunnah","غنّة"]],["tj-id",["Idgham bighunnah","Idgham w/ ghunnah","إدغام بغنة"]],["tj-idn",["Idgham bilaghunnah","Idgham no ghunnah","إدغام بلا غنة"]],["tj-ik",["Ikhfa'","Ikhfa'","إخفاء"]],["tj-iq",["Iqlab","Iqlab","إقلاب"]],["tj-qq",["Qalqalah","Qalqalah","قلقلة"]],["tj-md",["Mad (4–6 harakat)","Madd (4–6 counts)","مدّ"]]];
+
+/* ---------- data ---------- */
+let META=null, MUTA=null; const SUR={};
+async function getJSON(p){ const url=BASE+p; try{ const r=await fetch(url); if(!r.ok) throw 0; return await r.json(); }catch(e){ if(window.caches){ const m=await caches.match(url); if(m) return m.json(); } throw e; } }
+async function meta(){ if(!META) META=await getJSON("quran/meta.json"); return META; }
+async function sur(s){ if(SUR[s]) return SUR[s]; const d=await getJSON("quran/s/"+String(s).padStart(3,"0")+".json"); const M=await meta();
+  d.ar=d.ar.map((x,i)=>i===0&&s!==1&&s!==9&&x.startsWith(M.bis+" ")?x.slice(M.bis.length+1):x); return SUR[s]=d; }
+async function muta(){ if(!MUTA) try{ MUTA=await getJSON("hafalan-ai/mutasyabihat.json"); }catch(e){ MUTA={}; } return MUTA; }
+const sName=s=>{ const m=META.s[s-1]; return lang()==="ar"?m[1]:lang()==="en"?m[4]:m[2]; };
+function juzOf(s,a){ const J=META.j; let j=0; for(let i=0;i<J.length;i++){ if(J[i][0]<s||(J[i][0]===s&&J[i][1]<=a)) j=i; } return j+1; }
+function juzAyat(j){ const J=META.j, a=J[j-1], b=J[j]||[115,1]; const out=[]; for(let s=a[0];s<=Math.min(b[0],114);s++){ const n=META.s[s-1][6]; for(let x=(s===a[0]?a[1]:1);x<=n;x++){ if(s===b[0]&&x>=b[1]) break; out.push([s,x]); } } return out; }
+function pathOrder(){ const j30=[];for(let s=114;s>=78;s--) j30.push(s); const j29=[];for(let s=77;s>=67;s--) j29.push(s); const rest=[]; for(let s=1;s<=66;s++) rest.push(s); rest.sort((a,b)=>META.s[a-1][6]-META.s[b-1][6]); return j30.concat(j29,rest); }
+
+/* ---------- progress / SM-2 ---------- */
+const key=(s,a)=>s+":"+a;
+function ayStat(S,s,a){ const x=S.ay[key(s,a)]; return x?x.st:0; }
+function surPct(S,s){ const n=META.s[s-1][6]; let m=0,r=0; for(let a=1;a<=n;a++){ const x=ayStat(S,s,a); if(x===2)m++; else if(x===1)r++; } return {n,m,r,p:Math.round(m/n*100)}; }
+function sm2(it,q){ it=Object.assign({ef:2.5,int:0,reps:0,best:0,tries:0,st:0},it); if(q>=3){ it.reps++; it.int=it.reps===1?1:it.reps===2?6:Math.round(it.int*it.ef); } else { it.reps=0; it.int=1; }
+  it.ef=Math.max(1.3,it.ef+(0.1-(5-q)*(0.08+(5-q)*0.02))); it.due=dAdd(dk(),it.int); it.tries++; return it; }
+function streak(S){ const d=new Set(S.days); let n=0,x=dk(); if(!d.has(x)) x=dAdd(x,-1); while(d.has(x)){ n++; x=dAdd(x,-1); } return n; }
+function weekStart(){ const d=new Date(); const k=(d.getDay()+6)%7; d.setDate(d.getDate()-k); return dk(d); }
+function weekProg(S){ const ws=weekStart(); const tg=S.target||{k:"off"}; if(tg.k==="off") return null;
+  if(tg.k==="ayat"){ const set=new Set(); S.hist.forEach(h=>{ if(h.d>=ws&&h.g>=4) for(let a=h.a1;a<=h.a2;a++) set.add(key(h.s,a)); }); return {v:set.size,n:tg.n,u:t("ayat")}; }
+  const done=new Set(Object.keys(S.badges).filter(k=>/^s\d+$/.test(k)&&S.badges[k]>=ws)); return {v:done.size,n:tg.n,u:t("surah")}; }
+const BD=[{id:"first5",ic:"🌱",n:["5 Surah Pertama","First 5 Surahs","أول ٥ سور"],ok:c=>c.sur>=5},{id:"halfj30",ic:"🌗",n:["Setengah Juz 30","Half of Juz 30","نصف جزء عمّ"],ok:c=>c.j30>=19},{id:"j30",ic:"🌕",n:["Juz 30 Tuntas","Juz 30 Complete","أتممت جزء عمّ"],ok:c=>c.j30>=37},{id:"st7",ic:"🔥",n:["7 Hari Hafalan","7-Day Hifz Streak","٧ أيام حفظ"],ok:c=>c.best>=7},{id:"ay100",ic:"📗",n:["100 Ayat Hafal","100 Ayahs Memorized","١٠٠ آية"],ok:c=>c.ay>=100}];
+function counts(S){ let sur=0,j30=0,ay=0; for(let s=1;s<=114;s++){ const p=surPct(S,s); ay+=p.m; if(p.m===p.n){ sur++; if(s>=78) j30++; } } const ds=[...new Set(S.days)].sort(); let best=0,r=0,pv=null; ds.forEach(d=>{ r=pv&&dAdd(pv,1)===d?r+1:1; best=Math.max(best,r); pv=d; }); return {sur,j30,ay,best}; }
+function badgeList(S){ S=S||st(); const c=counts(S); const L=BD.map(b=>({id:"hifz_"+b.id,ic:b.ic,n:b.n,on:b.ok(c)}));
+  for(let s=1;s<=114;s++) if(S.badges["s"+s]) L.push({id:"hifz_s"+s,ic:"🏅",n:["Hafal "+META.s[s-1][2],"Memorized "+META.s[s-1][4],"حفظ "+META.s[s-1][1]],on:true}); return L; }
+function logPoints(){ try{ const I=window.KusyuIbadah, d=dk(); const o=store.get("ks_ibadah_log",{}); if(o[d]&&o[d].hifz) return; if(I&&I.Log){ I.Log.toggle("hifz"); try{I.render();}catch(e){} } else { o[d]=o[d]||{}; o[d].hifz=Date.now(); store.set("ks_ibadah_log",o); } }catch(e){} }
+
+/* ---------- ASR engines ---------- */
+const WH={ model:"Oa-4/whisper-base-ar-quran-ONNX-tjs-v2", // ONNX export of tarteel-ai/whisper-base-ar-quran (Apache-2.0)
+  lib:"https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.2", pipe:null, loading:null, pct:0,
+  async load(onp){ if(this.pipe) return this.pipe; if(this.loading) return this.loading; this.loading=(async()=>{ const tf=await import(this.lib); tf.env.allowLocalModels=false; tf.env.useBrowserCache=true;
+      if(window.KUSYU_HIFZ_MODEL_HOST) tf.env.remoteHost=window.KUSYU_HIFZ_MODEL_HOST;
+      const files={}; const p=await tf.pipeline("automatic-speech-recognition",window.KUSYU_HIFZ_MODEL||this.model,{dtype:{encoder_model:"q8",decoder_model_merged:"q8"},device:"wasm",
+        progress_callback:x=>{ if(x.status==="progress"&&x.total){ files[x.file]=[x.loaded,x.total]; let a=0,b=0; Object.values(files).forEach(v=>{a+=v[0];b+=v[1];}); this.pct=Math.round(a/b*100); onp&&onp(this.pct); } } });
+      this.pipe=p; store.set("ks_hifz_model","1"); onp&&onp(100); return p; })(); try{ return await this.loading; }finally{ this.loading=null; } },
+  async run(pcm){ const p=await this.load(); const r=await p(pcm,{chunk_length_s:30,stride_length_s:5}); return r.text||""; } };
+// Recorder: raw 16 kHz PCM + energy envelope (for pauses + experimental madd hints). All local.
+const Rec={ ctx:null, src:null, node:null, stream:null, buf:[], env:[], t0:0,
+  async start(){ this.stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,channelCount:1}}); const C=window.AudioContext||window.webkitAudioContext;
+    this.ctx=new C(); this.src=this.ctx.createMediaStreamSource(this.stream); this.node=this.ctx.createScriptProcessor(4096,1,1); this.buf=[]; this.env=[]; this.sr=this.ctx.sampleRate;
+    this.node.onaudioprocess=e=>{ const d=e.inputBuffer.getChannelData(0); this.buf.push(new Float32Array(d)); for(let i=0;i<d.length;i+=Math.round(this.sr/50)){ let s=0,n=0; for(let k=i;k<Math.min(d.length,i+this.sr/50);k++){s+=d[k]*d[k];n++;} this.env.push(Math.sqrt(s/n)); } };
+    this.src.connect(this.node); this.node.connect(this.ctx.destination); },
+  async stop(){ try{ this.node&&this.node.disconnect(); this.src&&this.src.disconnect(); this.stream&&this.stream.getTracks().forEach(x=>x.stop()); }catch(e){} const sr=this.sr||48000; const n=this.buf.reduce((a,b)=>a+b.length,0); const all=new Float32Array(n); let o=0; this.buf.forEach(b=>{all.set(b,o);o+=b.length;});
+    try{ await this.ctx.close(); }catch(e){} this.ctx=null; const r=sr/16000, m=Math.floor(n/r), out=new Float32Array(m); for(let i=0;i<m;i++) out[i]=all[Math.floor(i*r)]; return out; },
+  analyse(env){ env=env||this.env; if(!env.length) return {pauses:0,longVoiced:0,dur:0}; const sorted=[...env].sort((a,b)=>a-b); const thr=Math.max(0.01,sorted[Math.floor(sorted.length*.3)]*2.2);
+    let pauses=0,run=0,vr=0,longV=0,started=false,trail=0; env.forEach(e=>{ if(e>=thr){ if(started&&run>=100) pauses++; run=0; vr++; started=true; trail=0; } else { run++; if(vr>=60) longV++; vr=0; trail++; } }); if(vr>=60) longV++; return {pauses,longVoiced:longV,dur:env.length/50}; } };
+
+/* ---------- UI ---------- */
+const U={ tab:"s", cur:null, eng:null, live:"", sr:null, busy:false, peekN:0, drill:null };
+function engAvail(){ const ws=!!(window.SpeechRecognition||window.webkitSpeechRecognition); const mic=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia); return {w:mic&&typeof WebAssembly==="object",s:ws&&mic,c:true}; }
+function defEng(){ const S=st(), a=engAvail(); if(S.eng&&a[S.eng]) return S.eng; if(a.w&&store.get("ks_hifz_model",null)) return "w"; return a.s?"s":a.w?"w":"c"; }
+function ring(v,n){ const p=n?Math.min(1,v/n):0, C=2*Math.PI*22; return `<svg class="hq-ring" viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="bg"/><circle cx="26" cy="26" r="22" class="fg" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p)}"/><text x="26" y="30">${NUM(v)}/${NUM(n)}</text></svg>`; }
+function bar(p,r){ return `<span class="hq-bar"><i style="width:${p}%"></i><b style="width:${r||0}%"></b></span>`; }
+function mount(){ const pg=$("#page-hafalan .stack"); if(!pg||$("#hqRoot")) return; const d=document.createElement("div"); d.id="hqRoot"; d.className="hq"; pg.prepend(d); }
+async function home(){ mount(); await meta(); const S=st(), R=$("#hqRoot"); if(!R) return; U.cur=null; R.parentElement.classList.remove("hq-focus"); const c=counts(S), wp=weekProg(S), po=pathOrder(); const nx=po.find(s=>surPct(S,s).m<META.s[s-1][6])||1; const pts=Object.values(store.get("ks_ibadah_log",{})).filter(d=>d.hifz).length*5;
+  const bl=badgeList(S);
+  R.innerHTML=`<div class="hq-head"><div class="eyebrow">${t("ey")} <span class="v2-beta">Beta</span></div><h1>${t("title")}</h1><p class="muted">${t("lead")}</p></div>
+  ${!S.onb?`<div class="card lit hq-onb"><div class="eyebrow">${t("onbT")}</div><p>${t("onb")}</p><div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn gold" data-hq="onbgo">${t("onbGo")}</button><button class="btn ghost sm" data-hq="onbno">${t("onbLater")}</button></div></div>`:""}
+  <div class="card hq-sum"><div class="hq-sumr">${wp?ring(wp.v,wp.n):ring(0,0)}<div class="hq-sumt"><b>${t("week")}</b><small>${wp?NUM(wp.v)+" / "+NUM(wp.n)+" "+wp.u:t("tOff")}</small><small>🔥 ${NUM(streak(S))} ${t("streak")} · ⭐ ${NUM(pts)} ${t("pts")}</small><small>📗 ${NUM(c.ay)} ${t("ayat")} · 🏅 ${NUM(c.sur)} ${t("surah")}</small></div></div>
+   <div class="hq-tg"><span class="dim">${t("tgt")}:</span>${[["ayat",3],["ayat",5],["ayat",10],["surah",1],["off",0]].map(([k,n])=>`<button class="${(S.target||{}).k===k&&(k==="off"||S.target.n===n)?"on":""}" data-tg="${k}:${n}">${k==="off"?t("tOff"):NUM(n)+" "+(k==="ayat"?t("ayat"):t("surah"))}</button>`).join("")}</div>
+   <div class="eyebrow" style="margin-top:10px">${t("badges")}</div><div class="pp-badges hq-badges">${bl.map(b=>`<span class="pp-bdg${b.on?" on":""}" data-b="${b.id}">${b.on?b.ic:"🔒"} ${esc(b.n[LI()])}</span>`).join("")}</div></div>
+  <div class="card hq-path"><div class="row v2-sb"><div class="eyebrow">${t("path")}</div><small class="dim">${t("opt")}</small></div><div class="hq-chips">${po.slice(0,12).map(s=>{const p=surPct(S,s);return `<button class="hq-chip${p.m===p.n?" done":s===nx?" nx":""}" data-open="${s}">${p.m===p.n?"✓ ":""}${esc(sName(s))}</button>`;}).join("")}<span class="dim">…</span></div>
+   <div class="row v2-sb" style="margin-top:8px"><span>${t("next")}: <b>${esc(sName(nx))}</b> <small class="dim">(${NUM(META.s[nx-1][6])} ${t("ayat")})</small></span><button class="btn gold sm" data-open="${nx}">${t("start")}</button></div></div>
+  <div class="v2-seg hq-tabs">${[["s","tabS"],["j","tabJ"],["q","tabQ"],["h","tabH"],["m","tabM"]].map(([k,l])=>`<button data-tab="${k}" class="${U.tab===k?"on":""}">${t(l)}</button>`).join("")}</div>
+  <div id="hqBody"></div><p class="v2-note hq-priv">${t("privacy")}</p><p class="dim hq-attr">${t("attr")}</p>`;
+  body(); }
+function body(){ const S=st(), B=$("#hqBody"); if(!B) return;
+  if(U.tab==="s"){ const ord=[]; for(let s=114;s>=1;s--) ord.push(s); B.innerHTML=`<div class="hq-list">${ord.map(s=>{const p=surPct(S,s);return `<button class="hq-row" data-open="${s}"><span class="n">${NUM(s)}</span><span class="t"><b>${esc(sName(s))}</b><small>${NUM(p.n)} ${t("ayat")} · ${t("juz")} ${NUM(juzOf(s,1))} · ${p.m?NUM(p.m)+" "+t("mem"):""}${p.r?" · "+NUM(p.r)+" "+t("rev"):""}${!p.m&&!p.r?t("neu"):""}</small>${bar(p.p,Math.round(p.r/p.n*100))}</span><span class="ar" lang="ar">${esc(META.s[s-1][1])}</span></button>`;}).join("")}</div>`; }
+  else if(U.tab==="j"){ let h=""; for(let j=30;j>=1;j--){ const A=juzAyat(j); let m=0,r=0; A.forEach(([s,a])=>{const x=ayStat(S,s,a); if(x===2)m++; else if(x===1)r++;}); const p=Math.round(m/A.length*100); h+=`<div class="hq-row hq-jz"><span class="n">${NUM(j)}</span><span class="t"><b>${t("juz")} ${NUM(j)}</b><small>${NUM(m)}/${NUM(A.length)} ${t("ayat")} · ${NUM(p)}% ${t("mem")}${r?" · "+NUM(r)+" "+t("rev"):""}</small>${bar(p,Math.round(r/A.length*100))}</span></div>`; } B.innerHTML=`<div class="hq-list">${h}</div>`; }
+  else if(U.tab==="q"){ const q=queue(S); B.innerHTML=q.length?`<button class="btn gold" data-hq="drill" style="width:100%;margin-bottom:8px">🔁 ${t("drill")} (${NUM(q.length)})</button><div class="hq-list">${q.map(x=>`<button class="hq-row" data-open="${x.s}" data-a="${x.a}"><span class="n">${NUM(x.a)}</span><span class="t"><b>${esc(sName(x.s))} ${NUM(x.s)}:${NUM(x.a)}</b><small>${x.why} · ${NUM(x.best)}%</small></span></button>`).join("")}</div>`:`<p class="dim">${t("qEmpty")}</p>`; }
+  else if(U.tab==="h"){ const H=S.hist.slice(-60).reverse(); const E=Object.entries(S.err||{}).sort((a,b)=>b[1].n-a[1].n).slice(0,12);
+    B.innerHTML=H.length?`${E.length?`<div class="card"><div class="eyebrow">${t("errs")}</div><div class="hq-errs" lang="ar" dir="rtl">${E.map(([k,v])=>`<span title="${esc(k)}">${esc(v.w)} <small>×${NUM(v.n)}</small></span>`).join("")}</div></div>`:""}<div class="hq-list">${H.map(h=>`<button class="hq-row" data-open="${h.s}" data-a="${h.a1}"><span class="n hq-g${h.g}">${t("g"+h.g).split(" ")[0]}</span><span class="t"><b>${esc(sName(h.s))} ${NUM(h.a1)}${h.a2>h.a1?"–"+NUM(h.a2):""}</b><small>${h.d} · ${t("acc")} ${NUM(h.acc)}% · ${t("comp")} ${NUM(h.comp)}% · ${t("flu")} ${NUM(h.flu)}% · ${{w:"AI",s:"Web",c:"✋"}[h.e]||""}</small></span></button>`).join("")}</div>`:`<p class="dim">${t("hEmpty")}</p>`; }
+  else if(U.tab==="m"){ murattalUI(B); } }
+function queue(S){ const today=dk(), out=[]; Object.entries(S.ay).forEach(([k,x])=>{ const [s,a]=k.split(":").map(Number); const due=x.due&&x.due<=today; if(x.last<85||due) out.push({s,a,best:x.best||0,last:x.last,why:x.last<85?"✗ "+NUM(x.last)+"%":"⏰ "+t("due"),pri:(x.last<85?0:1)}); }); return out.sort((a,b)=>a.pri-b.pri||a.last-b.last); }
+
+/* --- practice --- */
+async function openS(s,a1,a2,drill){ await meta(); const d=await sur(s); a1=a1||1; const n=META.s[s-1][6]; if(!a2) a2=Math.min(n,a1+(n<=8?n:4)); a2=Math.min(a2,n);
+  const R=$("#hqRoot"); R.parentElement.classList.add("hq-focus"); U.cur={s,a1,a2,d,ops:null,res:null}; U.drill=drill||null; U.eng=defEng(); U.peekN=0; const S=st(); const M=await muta();
+  const mk=[]; for(let a=a1;a<=a2;a++){ const m=M[key(s,a)]; if(m) mk.push([a,m]); }
+  R.innerHTML=`<div class="card lit hq-prac"><div class="row v2-sb"><button class="btn sm ghost" data-hq="home">${t("back")}</button>${drill?`<span class="dim">🔁 ${NUM(drill.i+1)}/${NUM(drill.list.length)}</span>`:""}</div>
+   <h2>${esc(sName(s))} <small class="dim">${NUM(s)}:${NUM(a1)}–${NUM(a2)}</small></h2>
+   <div class="hq-rng"><label>${t("from")} <select id="hqA1">${Array.from({length:n},(_,i)=>`<option ${i+1===a1?"selected":""}>${i+1}</option>`).join("")}</select></label><label>${t("to")} <select id="hqA2">${Array.from({length:n},(_,i)=>`<option ${i+1===a2?"selected":""}>${i+1}</option>`).join("")}</select></label></div>
+   <div class="v2-seg hq-mask" id="hqMask">${[0,1,2,3].map(m=>`<button data-m="${m}" class="${S.mask===m?"on":""}">${t("m"+m)}</button>`).join("")}</div>
+   <label class="hq-tjt"><input type="checkbox" id="hqTj" ${S.tj?"checked":""}> ${t("tajwid")}</label>
+   <div id="hqText" class="hq-text" lang="ar" dir="rtl"></div>
+   ${S.tj?`<div class="hq-leg">${TJL.map(([c,n])=>`<span class="${c}">●</span> ${n[LI()]}`).join(" · ")}<p class="dim">${t("tjNote")}</p></div>`:""}
+   ${mk.length?`<div class="hq-muta">${t("mutaN")}<br>${mk.map(([a,m])=>`${NUM(a)} ↔ ${m.map(x=>`<button class="hq-lnk" data-qopen="${x[0]}:${x[1]}">${esc(sName(x[0]))} ${NUM(x[0])}:${NUM(x[1])}</button>`).join(", ")}`).join("<br>")}</div>`:""}
+   <div class="hq-eng"><span class="dim">${t("eng")}:</span>${["w","s","c"].map(e=>`<button data-eng="${e}" class="${U.eng===e?"on":""}" ${engAvail()[e]?"":"disabled"}>${t({w:"eW",s:"eS",c:"eC"}[e])}</button>`).join("")}</div>
+   <div id="hqDl"></div>
+   <div class="v2-micwrap"><button class="v2-mic hq-mic" id="hqMic" type="button" aria-label="Mic"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><div class="v2-mictx" id="hqMicTx">${t("tapRec")}</div></div>
+   <div class="row hq-acts"><button class="btn sm" data-hq="peek">👁 ${t("peek")}</button><button class="btn sm" data-hq="peekA">⤵ ${t("peekA")}</button><button class="btn sm ghost" data-hq="listen">🔊 ${t("listen")}</button><button class="btn sm ghost" data-hq="retry">↺ ${t("retry")}</button></div>
+   <div id="hqSelf" class="hq-self" hidden></div><div id="hqHeard" class="v2-heard" dir="rtl"></div><div id="hqRes"></div></div>
+   <div class="card"><p class="dim" id="hqTr"></p></div>`;
+  $("#hqTr").textContent=Array.from({length:a2-a1+1},(_,i)=>"("+(a1+i)+") "+(lang()==="en"?d.en[a1+i-1]:d.id[a1+i-1])).join(" ");
+  U.words=[]; for(let a=a1;a<=a2;a++) d.ar[a-1].split(/\s+/).filter(w=>norm(w)).forEach((w,i)=>U.words.push({w,a,i})); U.exp=U.words.map(x=>norm(x.w)); U.state=new Array(U.words.length).fill(""); U.peek=new Set();
+  renderText(); engUI(); $("#view")&&($("#view").scrollTop=0); }
+function renderText(){ const S=st(), el=$("#hqText"); if(!el||!U.cur) return; const tj=S.tj?tajwid(U.words.map(x=>x.w)):null; let h="", lastA=0;
+  U.words.forEach((x,i)=>{ const st_=U.state[i]; const hidden=!st_&&!U.peek.has(i)&&(S.mask===3||(S.mask===1&&i%2===1)||S.mask===2); const fl=[...x.w].find(c=>/[\u0621-\u064A\u0671]/.test(c))||"";
+    const inner=hidden?(S.mask===2?esc(fl)+"<i>…</i>":"<i>⋯</i>"):(tj&&!st_?tj[i].map(c=>c.cls?`<span class="${c.cls}">${esc(c.c)}</span>`:esc(c.c)).join(""):esc(x.w));
+    h+=`<span class="hq-w ${st_?"hq-"+st_:""}${hidden?" hid":""}" data-i="${i}">${inner}</span> `;
+    const nx=U.words[i+1]; if(!nx||nx.a!==x.a) h+=`<span class="hq-end">﴿${AD(x.a)}﴾</span> `; });
+  if(U.cur.ops) U.cur.ops.filter(o=>o.t==="extra").length&&(h+=`<div class="hq-extra">+ ${U.cur.ops.filter(o=>o.t==="extra").map(o=>`<span class="hq-x">${esc(U.got[o.g])}</span>`).join(" ")}</div>`);
+  el.innerHTML=h; }
+function engUI(){ const dl=$("#hqDl"); if(!dl) return; $$(".hq-eng button").forEach(b=>b.classList.toggle("on",b.dataset.eng===U.eng));
+  if(U.eng==="w"&&!WH.pipe){ dl.innerHTML=`<div class="hq-dlb"><p class="dim">${t("dl")}</p><button class="btn sm gold" data-hq="dl">⬇ ${t("dlBtn")}</button><div class="hq-pg" hidden><i></i><span></span></div></div>`; }
+  else if(U.eng==="w") dl.innerHTML=`<p class="dim">${t("ready")}</p>`; else if(U.eng==="s") dl.innerHTML=`<p class="dim">${t("micAsk")}</p>`; else dl.innerHTML="";
+  $("#hqMic").style.display=U.eng==="c"?"none":""; $("#hqMicTx").textContent=U.eng==="c"?"":t("tapRec"); selfUI(); }
+async function dlModel(){ const g=$(".hq-pg"); if(g){ g.hidden=false; } try{ await WH.load(p=>{ const g=$(".hq-pg"); if(g){ g.querySelector("i").style.width=p+"%"; g.querySelector("span").textContent=t("loading")+" "+NUM(p)+"%"; } }); engUI(); }catch(e){ const g=$(".hq-pg span"); if(g) g.textContent="✗ "+(e.message||e); } }
+function selfUI(){ const el=$("#hqSelf"); if(!el) return; if(U.eng!=="c"){ el.hidden=true; return; } el.hidden=false; const p=U.state.findIndex(x=>!x);
+  el.innerHTML=p<0?`<button class="btn gold sm" data-hq="selfdone">✓ ${t("res")}</button>`:`<p class="dim">${t("m2")}: <b lang="ar">${esc(([...U.words[p].w].find(c=>/[\u0621-\u064A\u0671]/.test(c))||""))}…</b></p><div class="row" style="gap:8px;justify-content:center"><button class="btn gold sm" data-self="ok">✓</button><button class="btn sm ghost" data-self="bad">✗</button></div>`; }
+async function micToggle(){ if(U.busy) return; if(U.rec){ return finishRec(); }
+  if(U.eng==="w"&&!WH.pipe){ await dlModel(); if(!WH.pipe) return; }
+  try{ await Rec.start(); }catch(e){ $("#hqMicTx").textContent=t("micDenied"); return; }
+  U.rec=true; U.live=""; U.state.fill(""); U.cur.ops=null; $("#hqRes").innerHTML=""; renderText(); $("#hqMic").classList.add("on"); $("#hqMicTx").textContent=t("rec");
+  if(U.eng==="s"){ const SR=window.SpeechRecognition||window.webkitSpeechRecognition; const r=new SR(); r.lang="ar-SA"; r.continuous=true; r.interimResults=true; U.final=""; U.sr=r;
+    r.onresult=e=>{ let it=""; for(let i=e.resultIndex;i<e.results.length;i++){ const x=e.results[i][0].transcript; if(e.results[i].isFinal) U.final+=" "+x; else it+=" "+x; } liveFeed((U.final+" "+it).trim()); };
+    r.onerror=e=>{ if(/not-allowed|service/.test(e.error)) $("#hqMicTx").textContent=t("micDenied"); };
+    r.onend=()=>{ if(U.rec&&U.sr===r){ try{ r.start(); }catch(e){} } }; try{ r.start(); }catch(e){} } }
+function liveFeed(txt){ $("#hqHeard").textContent=txt.split(/\s+/).slice(-8).join(" "); const got=txt.split(/\s+/).map(norm).filter(Boolean); const ops=alignNW(U.exp,got); let last=-1; ops.forEach(o=>{ if(o.e!=null&&o.t!=="miss") last=Math.max(last,o.e); });
+  U.state.fill(""); ops.forEach(o=>{ if(o.e!=null&&o.e<=last) U.state[o.e]=o.t==="ok"?"ok":o.t==="wrong"?"wrong":"miss"; }); renderText(); }
+async function finishRec(){ U.rec=false; $("#hqMic").classList.remove("on"); const sr=U.sr; U.sr=null; if(sr) try{ sr.stop(); }catch(e){} const env=Rec.env.slice(); const pcm=await Rec.stop(); const an=Rec.analyse(env);
+  let txt=""; if(U.eng==="w"){ U.busy=true; $("#hqMicTx").textContent=t("proc")+"…"; try{ txt=await WH.run(pcm); }catch(e){ $("#hqMicTx").textContent="✗ "+e.message; U.busy=false; return; } U.busy=false; }
+  else { await new Promise(r=>setTimeout(r,700)); txt=(U.final||"").trim(); }
+  evaluate(txt,an); }
+function evaluate(txt,an,eng){ an=an||{pauses:0,longVoiced:0}; U.got=String(txt).split(/\s+/).filter(w=>norm(w)); const got=U.got.map(norm); const ops=alignNW(U.exp,got); U.cur.ops=ops; U.state.fill("");
+  ops.forEach(o=>{ if(o.e!=null) U.state[o.e]=o.t==="ok"?(U.peek.has(o.e)?"peek":"ok"):o.t; }); const sc=score(ops,U.exp.length,an.pauses); U.cur.res=sc; record(sc,eng||U.eng,txt); renderText();
+  $("#hqHeard").textContent=txt?t("heard")+": "+txt:""; $("#hqMicTx").textContent=t("tapRec"); showRes(sc,an); return sc; }
+function record(sc,eng,txt){ const S=st(), {s,a1,a2}=U.cur; const perA={}; U.words.forEach((w,i)=>{ const o=perA[w.a]=perA[w.a]||{n:0,ok:0}; o.n++; if(U.state[i]==="ok") o.ok++; else if(U.state[i]==="peek") o.ok+=.5; else { const k=norm(w.w); S.err[k]=S.err[k]||{w:w.w,n:0,r:[]}; S.err[k].n++; if(S.err[k].r.length<5&&!S.err[k].r.includes(s+":"+w.a)) S.err[k].r.push(s+":"+w.a); } });
+  const masked=S.mask>=2; const before=badgeList(S).filter(b=>b.on).map(b=>b.id); U.newDone=[];
+  for(let a=a1;a<=a2;a++){ const p=perA[a]; if(!p) continue; const acc=Math.round(p.ok/p.n*100); const q=acc>=95?5:acc>=85?4:acc>=70?3:acc>=50?2:1; const it=sm2(S.ay[key(s,a)],q); it.best=Math.max(it.best||0,acc); it.last=acc; it.st=(acc>=90&&(it.reps>=2||masked))?2:Math.max(it.st===2&&acc>=85?2:1,1); S.ay[key(s,a)]=it; }
+  S.hist.push({d:dk(),ts:Date.now(),s,a1,a2,acc:sc.acc,comp:sc.comp,flu:sc.flu,g:sc.g,e:eng,tx:String(txt).slice(0,300)}); S.hist=S.hist.slice(-500);
+  if(!S.days.includes(dk())) S.days.push(dk()); S.days=S.days.slice(-800);
+  const n=META.s[s-1][6]; let all=true; for(let a=1;a<=n;a++) if(!S.ay[key(s,a)]||S.ay[key(s,a)].st!==2){ all=false; break; } if(all&&!S.badges["s"+s]){ S.badges["s"+s]=dk(); U.newDone.push(s); }
+  save(S); if(sc.acc>=70) logPoints(); const after=badgeList(S).filter(b=>b.on&&!before.includes(b.id)); U.newB=after; try{ window.dispatchEvent(new CustomEvent("kusyu:badges",{detail:{source:"hifz",badges:after}})); }catch(e){} }
+function showRes(sc,an){ const S=st(), {s,a1}=U.cur, it=S.ay[key(s,a1)]||{};
+  $("#hqRes").innerHTML=`<div class="hq-res"><div class="eyebrow">${t("res")}</div><div class="hq-sc"><div><b>${NUM(sc.acc)}%</b><small>${t("acc")}</small></div><div><b>${NUM(sc.comp)}%</b><small>${t("comp")}</small></div><div><b>${NUM(sc.flu)}%</b><small>${t("flu")}</small></div><div class="hq-g${sc.g}"><b>${t("g"+sc.g)}</b><small>${t("grade")}</small></div></div>
+   <p class="dim">${t("lg")}</p><p class="dim">${t("nextRev")}: ${NUM(it.int||1)} ${t("days")}</p>
+   ${an&&an.dur?`<p class="dim hq-exp">🧪 ${t("expT")}: ${NUM(an.longVoiced)} × ≥1,2 s · ${NUM(Math.round(an.dur))} s</p>`:""}
+   ${U.newDone&&U.newDone.length?`<p class="hq-cel">${t("doneS")}</p>`:""}${U.newB&&U.newB.length?`<p class="hq-cel">${t("newB")}: ${U.newB.map(b=>b.ic+" "+esc(b.n[LI()])).join(", ")}</p>`:""}
+   ${U.drill?`<button class="btn gold sm" data-hq="drillnext">→</button>`:""}</div>`; }
+function peek(){ const p=U.state.findIndex(x=>!x); const i=p<0?0:p; let j=i; const S=st(); while(j<U.words.length&&(U.peek.has(j)||!(S.mask))) { if(!S.mask){ toast(t("m0")); return; } j++; } U.peek.add(j<U.words.length?j:i); renderText(); }
+function peekA(){ const p=Math.max(0,U.state.findIndex(x=>!x)); const a=U.words[p]?U.words[p].a:U.cur.a1; const nx=U.words.findIndex(w=>w.a>a); const i=nx<0?U.words.findIndex(w=>w.a===a):nx; [i,i+1].forEach(k=>k>=0&&k<U.words.length&&U.peek.add(k)); renderText(); }
+
+/* --- murattal --- */
+const AU={ el:null, q:[], i:0, rep:0, on:false };
+const ayUrl=(s,a)=>(window.KUSYU_RECITER_BASE||"https://everyayah.com/data/Alafasy_128kbps/")+String(s).padStart(3,"0")+String(a).padStart(3,"0")+".mp3";
+function murattalUI(B,s){ s=s||(U.mS||(store.get("rk_q_last",{})||{}).s||1); U.mS=s; const n=META.s[s-1][6]; const o=store.get("ks_hifz_mur",{rep:3,loop:1,spd:1});
+  B.innerHTML=`<div class="card hq-mur"><label>${t("tabS")} <select id="hqMs">${META.s.map(m=>`<option value="${m[0]}" ${m[0]===s?"selected":""}>${m[0]}. ${esc(lang()==="ar"?m[1]:m[2])}</option>`).join("")}</select></label>
+   <div class="hq-rng"><label>A <select id="hqMa">${Array.from({length:n},(_,i)=>`<option>${i+1}</option>`).join("")}</select></label><label>B <select id="hqMb">${Array.from({length:n},(_,i)=>`<option ${i+1===Math.min(n,7)?"selected":""}>${i+1}</option>`).join("")}</select></label></div>
+   <div class="hq-rng"><label>${t("rep")} <select id="hqMr">${[1,2,3,5,7,10,20].map(x=>`<option ${x===o.rep?"selected":""}>${x}</option>`).join("")}</select></label><label><input type="checkbox" id="hqMl" ${o.loop?"checked":""}> ${t("loop")}</label><label>${t("speed")} <select id="hqMv">${[0.5,0.75,1,1.25,1.5].map(x=>`<option ${x===o.spd?"selected":""}>${x}</option>`).join("")}</select></label></div>
+   <div class="row" style="gap:8px"><button class="btn gold" data-hq="play">${t("play")}</button><button class="btn ghost" data-hq="mstop">${t("stop")}</button><span id="hqMst" class="dim"></span></div>
+   <div id="hqMt" class="hq-mtext" lang="ar" dir="rtl"></div><p class="dim">${t("qari")}</p></div>`;
+  sur(s).then(d=>{ const el=$("#hqMt"); if(el) el.innerHTML=d.ar.map((x,i)=>`<span class="hq-ma" data-ma="${i+1}">${esc(x)} <span class="hq-end">﴿${AD(i+1)}﴾</span></span>`).join(" "); }); }
+function mPlay(){ const s=+$("#hqMs").value, a=+$("#hqMa").value, b=Math.max(a,+$("#hqMb").value); const o={rep:+$("#hqMr").value,loop:$("#hqMl").checked?1:0,spd:+$("#hqMv").value}; store.set("ks_hifz_mur",o);
+  AU.q=[]; for(let x=a;x<=b;x++) AU.q.push(x); AU.s=s; AU.i=0; AU.rep=0; AU.o=o; AU.on=true; if(!AU.el){ AU.el=new Audio(); AU.el.preload="none"; AU.el.addEventListener("ended",mNext); AU.el.addEventListener("error",()=>{ const m=$("#hqMst"); if(m) m.textContent="✗ audio"; }); } mCur(); }
+function mCur(){ if(!AU.on) return; const a=AU.q[AU.i]; AU.el.src=ayUrl(AU.s,a); AU.el.playbackRate=AU.o.spd; AU.el.play().catch(()=>{}); $$(".hq-ma").forEach(e=>e.classList.toggle("on",+e.dataset.ma===a)); const c=$(`.hq-ma[data-ma="${a}"]`); c&&c.scrollIntoView({block:"nearest",behavior:"smooth"}); const m=$("#hqMst"); if(m) m.textContent=`${NUM(AU.s)}:${NUM(a)} · ${NUM(AU.rep+1)}/${NUM(AU.o.rep)}`; }
+function mNext(){ if(!AU.on) return; AU.rep++; if(AU.rep>=AU.o.rep){ AU.rep=0; AU.i++; if(AU.i>=AU.q.length){ if(AU.o.loop) AU.i=0; else return mStop(); } } mCur(); }
+function mStop(){ AU.on=false; if(AU.el){ AU.el.pause(); } $$(".hq-ma").forEach(e=>e.classList.remove("on")); const m=$("#hqMst"); if(m) m.textContent=""; }
+function listen(){ const {s,a1,a2}=U.cur; if(!AU.el){ AU.el=new Audio(); AU.el.addEventListener("ended",mNext); } AU.q=[]; for(let x=a1;x<=a2;x++) AU.q.push(x); AU.s=s; AU.i=0; AU.rep=0; AU.o={rep:1,loop:0,spd:1}; AU.on=true; AU.el.src=ayUrl(s,a1); AU.el.play().catch(()=>{}); }
+
+/* --- events --- */
+function onClick(e){ const R=$("#hqRoot"); if(!R||!R.contains(e.target)) return; const g=k=>e.target.closest(k);
+  let b; if((b=g("[data-tab]"))){ U.tab=b.dataset.tab; $$(".hq-tabs button").forEach(x=>x.classList.toggle("on",x===b)); mStop(); return body(); }
+  if((b=g("[data-open]"))){ mStop(); const a=+b.dataset.a||1; return openS(+b.dataset.open,a,b.dataset.a?a:0); }
+  if((b=g("[data-tg]"))){ const [k,n]=b.dataset.tg.split(":"); const S=st(); S.target={k,n:+n}; save(S); return home(); }
+  if((b=g("[data-eng]"))){ U.eng=b.dataset.eng; const S=st(); S.eng=U.eng; save(S); return engUI(); }
+  if((b=g("[data-m]"))){ const S=st(); S.mask=+b.dataset.m; save(S); $$("#hqMask button").forEach(x=>x.classList.toggle("on",x===b)); return renderText(); }
+  if((b=g("[data-self]"))){ const p=U.state.findIndex(x=>!x); if(p>=0) U.state[p]=b.dataset.self==="ok"?(U.peek.has(p)?"peek":"ok"):"wrong"; renderText(); return selfUI(); }
+  if((b=g("[data-qopen]"))){ const [s,a]=b.dataset.qopen.split(":"); window.RKQuran&&window.RKQuran.open(s,a); return; }
+  if(g("#hqMic")) return micToggle();
+  if((b=g("[data-hq]"))){ const k=b.dataset.hq;
+    if(k==="home"){ mStop(); return home(); } if(k==="onbgo"){ const S=st(); S.onb=1; save(S); return openS(114,1,6); } if(k==="onbno"){ const S=st(); S.onb=1; save(S); return home(); }
+    if(k==="dl") return dlModel(); if(k==="peek") return peek(); if(k==="peekA") return peekA(); if(k==="listen") return listen(); if(k==="retry"){ const c=U.cur; return openS(c.s,c.a1,c.a2,U.drill); }
+    if(k==="selfdone"){ const ops=U.state.map((x,i)=>({t:x==="ok"||x==="peek"?"ok":"wrong",e:i})); U.cur.ops=null; const sc=score(ops,U.exp.length,0); U.cur.res=sc; record(sc,"c",""); renderText(); return showRes(sc,null); }
+    if(k==="drill"){ const q=queue(st()); if(!q.length) return; U.drill={list:q,i:0}; return openS(q[0].s,q[0].a,q[0].a,U.drill); }
+    if(k==="drillnext"){ const d=U.drill; d.i++; if(d.i>=d.list.length){ U.drill=null; U.tab="q"; return home(); } const x=d.list[d.i]; return openS(x.s,x.a,x.a,d); }
+    if(k==="play") return mPlay(); if(k==="mstop") return mStop(); } }
+function onChange(e){ const id=e.target.id; if(id==="hqA1"||id==="hqA2"){ const a=+$("#hqA1").value, b=Math.max(a,+$("#hqA2").value); return openS(U.cur.s,a,b); } if(id==="hqTj"){ const S=st(); S.tj=e.target.checked?1:0; save(S); const c=U.cur; return openS(c.s,c.a1,c.a2,U.drill); } if(id==="hqMs") return murattalUI($("#hqBody"),+e.target.value); }
+function init(){ if(!$("#page-hafalan")) return; document.addEventListener("click",onClick); document.addEventListener("change",onChange);
+  meta().then(home).catch(()=>{}); const _go=window.go; if(_go) window.go=function(p){ _go(p); if(p!=="hafalan"){ mStop(); if(U.rec) finishRec(); } else if(!U.cur) home(); };
+  window.addEventListener("storage",e=>{ if(e.key==="rk_lang"&&!U.cur) home(); });
+  let LG=lang(); document.addEventListener("click",e=>{ if(e.target.closest("[data-l]")) setTimeout(()=>{ if(lang()!==LG){ LG=lang(); if(U.rec) return; U.cur?openS(U.cur.s,U.cur.a1,U.cur.a2,U.drill):home(); } },60); },true); }
+window.KusyuHifz={norm,loose,sim,alignNW,score,tajwid,sm2,juzAyat,pathOrder,badges:()=>badgeList(),stats:()=>{const S=st();return Object.assign(counts(S),{streak:streak(S),week:weekProg(S)});},state:st,open:openS,home,evaluate:(txt,an)=>evaluate(txt,an,"test"),Rec,WH,get U(){return U;},
+  setLangRefresh:()=>U.cur?openS(U.cur.s,U.cur.a1,U.cur.a2):home()};
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
 })();
 
@@ -3593,7 +4130,7 @@ const Log={
  toggle(k,day=dk()){const o=this.all(); o[day]=o[day]||{}; if(o[day][k]) delete o[day][k]; else o[day][k]=Date.now(); if(!Object.keys(o[day]).length) delete o[day]; this.save(o);},
  merge(a,b){const o=JSON.parse(JSON.stringify(a||{})); for(const d in (b||{})){o[d]=o[d]||{}; for(const k in b[d]) o[d][k]=Math.min(o[d][k]||Infinity,b[d][k]);} return o;}
 };
-const PT=Object.assign(Object.fromEntries(ITEMS.map(i=>[i.k,i.p])),{hi_ayat:3,hi_hadis:3,hi_sirah:3}); // program "Hari Ini" (Pustaka)
+const PT=Object.assign(Object.fromEntries(ITEMS.map(i=>[i.k,i.p])),{hifz:5,hi_ayat:3,hi_hadis:3,hi_sirah:3}); // program "Hari Ini" (Pustaka)
 function dayPts(o,d){const e=o[d]; return e?Object.keys(e).reduce((s,k)=>s+(PT[k]||0),0):0;}
 function stats(o=Log.all(),now=new Date()){
  const days=Object.keys(o).filter(d=>Object.keys(o[d]).length).sort();
