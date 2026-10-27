@@ -586,6 +586,19 @@ input[type=file]{display:none}
 @keyframes v2HeroGlow{0%,100%{box-shadow:0 0 0 0 rgba(230,199,122,0)}50%{box-shadow:0 0 22px 2px rgba(230,199,122,.28)}}
 @media (prefers-reduced-motion:reduce){.v2-hero,.v2-cta i{animation:none}}
 
+/* Kiblat: tombol bundar di kartu Salat berikutnya */
+.v2-next.has-nq>.eyebrow,.v2-next.has-nq>.nm,.v2-next.has-nq>.cd,.v2-next.has-nq>p.dim{padding-inline-end:74px}
+.v2-nq{position:absolute;top:14px;inset-inline-end:14px;display:flex;flex-direction:column;align-items:center;gap:4px;border:0;background:none;padding:0;margin:0;font:inherit;cursor:pointer;color:var(--gold2,#d9b86a);-webkit-tap-highlight-color:transparent;z-index:1}
+.v2-nq i{display:grid;place-items:center;width:60px;height:60px;border-radius:50%;font-style:normal;color:var(--gold2,#d9b86a);
+ background:radial-gradient(110% 110% at 30% 18%,rgba(230,199,122,.30),rgba(201,162,74,.08) 58%,transparent),var(--glass2);
+ border:1.5px solid var(--gold2,#d9b86a);box-shadow:0 0 0 4px rgba(217,184,106,.09),0 6px 18px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.10);transition:transform .15s ease,box-shadow .2s ease}
+.v2-nq i svg{width:40px;height:40px;--nq-ink:var(--bg,#140f09)}
+.v2-nq span{font-size:11.5px;font-weight:700;letter-spacing:.02em;line-height:1;color:var(--gold2,#d9b86a)}
+.v2-nq:active i{transform:scale(.94)}
+.v2-nq:focus-visible{outline:none} .v2-nq:focus-visible i{box-shadow:0 0 0 3px var(--gold2,#d9b86a)}
+@media (hover:hover){.v2-nq:hover i{box-shadow:0 0 0 5px rgba(217,184,106,.18),0 6px 18px rgba(0,0,0,.28)}}
+:is([data-theme=light],[data-theme=pink]) .v2-nq i{box-shadow:0 0 0 4px rgba(201,162,74,.12),0 4px 12px rgba(120,90,30,.18)}
+
 /* ===== Al-Qur'an reader ===== */
 @font-face{font-family:"Amiri Quran";src:url(quran/fonts/AmiriQuran.woff2) format("woff2");font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+25CC}
 .q-hero{text-align:center;padding:6px 0 2px}
@@ -3521,7 +3534,7 @@ const V={
  progT:["Progres hari ini","Today's progress","تقدّم اليوم"], pSalat:["salat","prayers","صلوات"], pHarian:["checklist","checklist","المهام"], pHaf:["hari hafalan","memorize streak","أيام الحفظ"],
  more:["Lainnya","More","المزيد"], moreEy:["Semua menu","All menus","كل القوائم"], premium:["Premium","Premium","بريميوم"], settings:["Pengaturan","Settings","الإعدادات"],
  nBeranda:["Beranda","Home","الرئيسية"], nHafalan:["Hafalan","Memorize","الحفظ"], nJadwal:["Jadwal","Times","المواقيت"], nKiblat:["Kiblat","Qibla","القبلة"], nLainnya:["Lainnya","More","المزيد"],
- next:["Salat berikutnya","Next prayer","الصلاة القادمة"], inn:["dalam","in","بعد"], azVoice:["Azan","Adhan","الأذان"], setLocBtn:["📍 Atur lokasi","📍 Set location","📍 حدّد الموقع"], autoLoc:["Lokasi otomatis","Auto location","موقع تلقائي"],
+ next:["Salat berikutnya","Next prayer","الصلاة القادمة"], nqLbl:["Kiblat","Qibla","القبلة"], nqAria:["Buka kompas kiblat","Open Qibla compass","افتح بوصلة القبلة"], inn:["dalam","in","بعد"], azVoice:["Azan","Adhan","الأذان"], setLocBtn:["📍 Atur lokasi","📍 Set location","📍 حدّد الموقع"], autoLoc:["Lokasi otomatis","Auto location","موقع تلقائي"],
  fajr:["Subuh","Fajr","الفجر"], sunrise:["Terbit","Sunrise","الشروق"], dhuhr:["Dzuhur","Dhuhr","الظهر"], asr:["Ashar","Asr","العصر"], maghrib:["Maghrib","Maghrib","المغرب"], isha:["Isya","Isha","العشاء"],
  vMakkah:["Makkah","Makkah","مكة"], vMadinah:["Madinah","Madinah","المدينة"], vMesir:["Mesir","Egypt","مصر"], vTurki:["Turki","Turkey","تركيا"], vNotif:["Notifikasi saja","Notification only","إشعار فقط"], vSilent:["Senyap","Silent","صامت"],
  back:["← Kembali","← Back","رجوع →"], lvFull:["Teks penuh","Full","كامل"], lvFaded:["Samar","Faded","باهت"], lvHidden:["Tanpa teks","Hidden","مخفي"],
@@ -3581,10 +3594,13 @@ function splash(){ const s=$("#v2Splash"); if(!s) return; const hide=()=>{s.clas
 
 /* ---------- Beranda ---------- */
 function azLabel(){const c=Object.assign({voice:"makkah"},store.get("rk_azan",{}));return v({makkah:"vMakkah",madinah:"vMadinah",mesir:"vMesir",turki:"vTurki",notif:"vNotif",silent:"vSilent"}[c.voice]||"vMakkah");}
-function renderNext(){ const el=$("#v2Next"); if(!el) return; const l=loc(), np=nextPrayer();
-  if(!l||!np){ el.innerHTML=`<div class="eyebrow">${v("next")}</div><p class="dim" style="margin-top:6px">${v("needLoc")}</p><div class="meta"><button type="button" data-go="jadwal">${v("setLocBtn")}</button></div>`; return; }
+/* Tombol Kiblat bundar di kartu Salat berikutnya (pojok kanan atas; kiri atas di AR) */
+const NQ_SVG=`<svg viewBox="0 0 48 48" width="40" height="40" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="20.6" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="15.6" stroke="currentColor" stroke-width="1" opacity=".5"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M24 3.4v4.4M24 40.2v4.4M3.4 24h4.4M40.2 24h4.4"/></g><g stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".6"><path d="M38.6 9.4l-2.2 2.2M9.4 38.6l2.2-2.2M9.4 9.4l2.2 2.2M38.6 38.6l-2.2-2.2"/></g><path d="M24 24l6.4-10.4-2.1 12.2z" fill="currentColor"/><path d="M24 24l-6.4 10.4 2.1-12.2z" fill="currentColor" opacity=".4"/><g transform="translate(31.4 10.6) scale(1.25)"><path d="M-3.2 -1.6l3.2-1.6 3.2 1.6v4.2l-3.2 1.6-3.2-1.6z" fill="currentColor"/><path d="M-3.2 -.1l3.2 1.6 3.2-1.6" stroke="var(--nq-ink,#1a1208)" stroke-width=".9"/></g><circle cx="24" cy="24" r="2.6" fill="currentColor"/><circle cx="24" cy="24" r="1" fill="var(--nq-ink,#1a1208)"/></svg>`;
+const nqBtn=()=>`<button type="button" class="v2-nq" id="v2NextQibla" data-go="kiblat" aria-label="${v("nqAria")}" title="${v("nqAria")}"><i>${NQ_SVG}</i><span>${v("nqLbl")}</span></button>`;
+function renderNext(){ const el=$("#v2Next"); if(!el) return; const l=loc(), np=nextPrayer(); el.classList.add("has-nq");
+  if(!l||!np){ el.innerHTML=nqBtn()+`<div class="eyebrow">${v("next")}</div><p class="dim" style="margin-top:6px">${v("needLoc")}</p><div class="meta"><button type="button" data-go="jadwal">${v("setLocBtn")}</button></div>`; return; }
   const diff=Math.max(0,Math.round((np.t-new Date())/60000));
-  el.innerHTML=`<div class="eyebrow">${v("next")}</div><div class="nm">${v(np.n)} · <span dir="ltr">${fmt(np.t)}</span></div><div class="cd">${v("inn")} <span dir="ltr">${Math.floor(diff/60)}h ${diff%60}m</span></div>
+  el.innerHTML=nqBtn()+`<div class="eyebrow">${v("next")}</div><div class="nm">${v(np.n)} · <span dir="ltr">${fmt(np.t)}</span></div><div class="cd">${v("inn")} <span dir="ltr">${Math.floor(diff/60)}h ${diff%60}m</span></div>
    <div class="meta"><span>📍 ${esc(l.name||"")}</span><button type="button" data-go="settings">🔊 ${v("azVoice")}: ${esc(azLabel())}</button></div>`; }
 function renderTimes(){ const el=$("#v2Times"); if(!el) return; const tt=times(new Date()); if(!tt){el.innerHTML=`<p class="dim" style="grid-column:1/-1">${v("needLoc")}</p>`;return;}
   const done=new Set(store.get("rk_salat_"+dkey(),[])), np=nextPrayer();
