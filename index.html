@@ -100,6 +100,10 @@ const I={
  /* Masjid terdekat: pin lokasi berkubah */
  lokasi:SH(13,58)+`<path d="M32 4a19 19 0 0 0-19 19c0 13 19 32 19 32s19-19 19-32A19 19 0 0 0 32 4z" fill="${G("ruby")}"/><circle cx="32" cy="23" r="12" fill="${G("cream")}"/>
  <path d="M24 30h16v-4H24z" fill="${G("em")}"/><path d="M25 26c0-5 3.5-7.6 7-9.4 3.5 1.8 7 4.4 7 9.4z" fill="${G("gold")}"/><path d="M32 16.6v-3" stroke="${G("goldd")}" stroke-width="1.4"/>`+HI(22,15,4,6,30),
+ /* Jadwal salat: jam weker emas dengan muka krem dan bulan sabit */
+ jadwal:SH(19)+`<path d="M14 15l7-7M50 15l-7-7" stroke="${G("goldd")}" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="33" r="22" fill="${G("emh")}"/><circle cx="32" cy="33" r="17.5" fill="${G("cream")}"/>
+ <path d="M32 18.5v2.6M32 44.9v2.6M17.5 33h2.6M43.9 33h2.6" stroke="#a37a30" stroke-width="1.6" stroke-linecap="round"/><path d="M32 33V23.5M32 33l7 4.2" stroke="${G("goldd")}" stroke-width="2.6" stroke-linecap="round"/><circle cx="32" cy="33" r="2.4" fill="${G("gold")}"/>
+ <path d="M24 52l-3 5M40 52l3 5" stroke="${G("goldd")}" stroke-width="3" stroke-linecap="round"/><path d="M45.5 3.5a6 6 0 1 0 5 9.5 4.8 4.8 0 1 1-5-9.5z" fill="${G("gold")}"/>`+HI(23,21,7,3,-35),
  /* Kompas kiblat */
  kiblat:SH(19)+`<circle cx="32" cy="31" r="23" fill="${G("goldh")}"/><circle cx="32" cy="31" r="18.5" fill="${G("cream")}"/><circle cx="32" cy="31" r="18.5" fill="none" stroke="#c9a24a" stroke-width="1"/>
  <path d="M32 14.5v3M32 44.5v3M15.5 31h3M45.5 31h3" stroke="#a37a30" stroke-width="1.6" stroke-linecap="round"/><path d="M39.5 21.5L34.6 33.6 24.5 40.5 29.4 28.4z" fill="${G("ruby")}"/><path d="M24.5 40.5l4.9-12.1 5.2 5.2z" fill="${G("navy")}"/><circle cx="32" cy="31" r="2.4" fill="${G("gold")}"/>
@@ -131,6 +135,7 @@ const TL={
  setelah:["setelah",["Setelah Salat","After Prayer","بعد الصلاة"],["Dzikir & jurnal","Dhikr & journal","أذكار ومذكرات"]],
  mur:["mur",["Murattal","Murattal","التلاوة"],["Dengar tilawah","Listen & recite","استماع وتلاوة"]],
  "beranda#v2MasjidCard":["lokasi",["Masjid","Mosques","المساجد"],["Masjid terdekat","Nearby mosques","الأقرب إليك"]],
+ jadwal:["jadwal",["Jadwal Salat","Prayer Times","المواقيت"],["Waktu & kiblat","Times & qibla","الأوقات والقبلة"]],
  kiblat:["kiblat",["Kiblat","Qibla","القبلة"],["Kompas kiblat","Qibla compass","بوصلة القبلة"]],
  zakat:["zakat",["Zakat","Zakat","الزكاة"],["Hitung zakat","Zakat calculator","حاسبة الزكاة"]],
  belanja:["belanja",["Belanja Berkah","Blessed Shop","تسوّق مبارك"],["Voucher & amal","Vouchers & charity","قسائم وصدقات"]],
@@ -746,6 +751,9 @@ input[type=file]{display:none}
 .v2-nq:focus-visible{outline:none} .v2-nq:focus-visible i{box-shadow:0 0 0 3px var(--gold2,#d9b86a)}
 @media (hover:hover){.v2-nq:hover i{box-shadow:0 0 0 5px rgba(217,184,106,.18),0 6px 18px rgba(0,0,0,.28)}}
 :is([data-theme=light],[data-theme=pink]) .v2-nq i{box-shadow:0 0 0 4px rgba(201,162,74,.12),0 4px 12px rgba(120,90,30,.18)}
+
+/* t48: tombol "← Kembali" di halaman Jadwal */
+#jdBack{align-self:flex-start;margin-bottom:-6px}
 
 /* ===== Al-Qur'an reader ===== */
 @font-face{font-family:"Amiri Quran";src:url(quran/fonts/AmiriQuran.woff2) format("woff2");font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+25CC}
@@ -1944,7 +1952,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
     <button data-p="beranda"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg><span data-v="nBeranda"></span></button>
     <button data-p="quran"><svg viewBox="0 0 24 24"><path d="M12 6c-2-1.6-5-2-8-1.6V19c3-.4 6 0 8 1.6 2-1.6 5-2 8-1.6V4.4C17 4 14 4.4 12 6z"/><path d="M12 6v14.6"/></svg><span data-v="nQuran"></span></button>
     <button data-p="hafalan"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span data-v="nHafalan"></span></button>
-    <button data-p="jadwal"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg><span data-v="nJadwal"></span></button>
+    <!-- t48: tab Jadwal dihapus dari menu bawah; halaman Jadwal dibuka dari kartu "Salat berikutnya", ikon Rukun Salat, dan ubin Lainnya -->
     <button data-p="belanja"><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.6 10.2a2 2 0 0 1-2 1.8H7.6a2 2 0 0 1-2-1.8z"/><path d="M8.5 9l3.5-5 3.5 5"/><path d="M9.5 13.5v3M14.5 13.5v3"/></svg><span data-v="nBelanja"></span></button>
     <button data-p="lainnya"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg><span data-v="nLainnya"></span></button>
   </nav>
@@ -3294,7 +3302,7 @@ function init(){
   $("#qbStart").onclick=startCompass;
   $("#azSubuh").onchange=e=>{ store.set("rk_azan",Object.assign(azCfg(),{subuh:e.target.checked})); };
   document.addEventListener("rk:lang",()=>setTimeout(render,0));
-  const nbtn=$('#nav button[data-p="jadwal"]'); if(nbtn) nbtn.addEventListener("click",()=>setTimeout(render,0));
+  { const jp=$("#page-jadwal"); if(jp&&window.MutationObserver){ let was=jp.classList.contains("on"); new MutationObserver(()=>{ const on=jp.classList.contains("on"); if(on&&!was) setTimeout(render,0); was=on; }).observe(jp,{attributes:true,attributeFilter:["class"]}); } }
   render(); azRender(); if(!store.get("rk_loc",null)) msg(t("noLoc"));
   setInterval(()=>{ if(dkey(sel)!==dkey(new Date())&&!render.userSel){} if($("#page-jadwal").classList.contains("on")) render(); },30000); setInterval(tickNotif,10000);
 }
@@ -3967,7 +3975,7 @@ const Flow={ i:0, pose:0, chair:false, dz:0, dzi:0, bT:null,
 
 /* ---------- Lainnya ---------- */
 function renderLainnya(){ const g=$("#lnGrid"); if(!g) return;
-  const T=[["📖","quranT","quran"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["🧭","nKiblat","kiblat"],["💰","zakatT","zakat"],["🛍️","belanjaT","belanja"],["🌙","puasaT","puasa"],["🕋","umrahT","umrah"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
+  const T=[["📖","quranT","quran"],["🕰️","nJadwal","jadwal"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["🧭","nKiblat","kiblat"],["💰","zakatT","zakat"],["🛍️","belanjaT","belanja"],["🌙","puasaT","puasa"],["🕋","umrahT","umrah"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
   if(!T.some(x=>x[2]==="hafalan")) T.push(["🎙️","nHafalan","hafalan"]); /* t46: Hafalan AI juga di Lainnya */
   g.classList.toggle("k3-grid",!!window.K3D);
   g.innerHTML=T.map(([i,k,p])=>{ const m=window.K3D&&K3D.tile(p,lang()); if(!m) return `<button class="v2-tile" type="button" data-tile="${p}"><i>${i}</i><b>${v(k)}</b></button>`;
@@ -3999,7 +4007,7 @@ function renderSettings(){ $$("#stLang button").forEach(b=>b.classList.toggle("o
 function initSettings(){
   // Move existing Jadwal settings card (method, asr, notif, azan voices) into Settings — same nodes/IDs, handlers kept
   const m=$("#jdMethod"); const card=m&&m.closest(".card"); const st=$("#stStack");
-  if(card&&st){ st.appendChild(card); const jd=$("#page-jadwal .stack"); if(jd){ const b=document.createElement("button"); b.className="btn sm ghost"; b.type="button"; b.dataset.go="settings"; b.dataset.v="jdSet"; jd.appendChild(b); } }
+  if(card&&st){ st.appendChild(card); const jd=$("#page-jadwal .stack"); if(jd&&!$("#jdBack")){ const k=document.createElement("button"); k.className="btn sm ghost v2-back"; k.type="button"; k.id="jdBack"; k.dataset.go="beranda"; k.dataset.v="back"; jd.prepend(k); /* t48: tab Jadwal tidak ada lagi di menu bawah → tombol kembali ke Beranda */ } if(jd){ const b=document.createElement("button"); b.className="btn sm ghost"; b.type="button"; b.dataset.go="settings"; b.dataset.v="jdSet"; jd.appendChild(b); } }
   const im=$("#stImam"); if(im&&card) st.appendChild(im.closest(".card"));
   $("#stLang").addEventListener("click",e=>{ const b=e.target.closest("[data-l]"); if(!b) return; const old=document.querySelector('#langseg [data-l="'+b.dataset.l+'"]'); if(old) old.click(); else if(window.I18N) I18N.set(b.dataset.l); });
   $("#stTheme").addEventListener("click",e=>{ const b=e.target.closest("[data-t]"); if(b) setTheme(b.dataset.t); });
