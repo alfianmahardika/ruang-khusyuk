@@ -920,6 +920,66 @@ input[type=file]{display:none}
 .q-tag{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;background:var(--gold2,#e6c77a);color:#1b1408;border-radius:999px;padding:2px 8px;font-weight:700}
 .q-flash{animation:qflash 2.4s ease}
 @keyframes qflash{0%,40%{background:rgba(230,199,122,.3)}100%{background:transparent}}
+/* ===== t54: indeks Surat/Halaman/Juz/Hizib/Ruku', Terakhir dibaca, Akses cepat ===== */
+.q-tabs{flex-wrap:nowrap!important;display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.q-tabs::-webkit-scrollbar{display:none}
+.q-tabs button{flex:1 0 auto;min-width:0;padding-left:7px!important;padding-right:7px!important;font-size:12.5px;white-space:nowrap}
+.q-chipsw{display:flex;flex-direction:column;gap:6px}.q-chipsw:empty{display:none}
+.q-chl{font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--fg2,#d9ccb0);margin-top:2px}
+.q-chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.q-chips::-webkit-scrollbar{display:none}
+.q-chip2{all:unset;box-sizing:border-box;flex:none;cursor:pointer;padding:8px 14px;border-radius:999px;border:1px solid var(--line2,rgba(230,199,122,.38));color:var(--gold2,#e6c77a);font-size:12.5px;font-weight:600;letter-spacing:.03em;white-space:nowrap;background:var(--glass,rgba(255,255,255,.04))}
+.q-chip2:focus-visible{outline:2px solid var(--gold2,#e6c77a);outline-offset:2px}
+/* toggle mushaf + info bar */
+.q-vw svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.q-vw[aria-pressed=true]{background:rgba(201,162,74,.16)}
+.q-info{position:sticky;top:44px;z-index:2;margin:0 -16px;padding:7px 16px;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--qacc);background:var(--qbar);border-bottom:1px solid var(--qline);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-info[hidden]{display:none}
+.q-pos{font-size:12px;margin:-4px 0 6px}.q-sheet-tr{font-size:14px;line-height:1.6;margin:6px 0 2px;color:var(--fg2,#d9ccb0)}
+/* halaman mushaf */
+.qm{--qmink:var(--qink);padding:6px 0 10px}
+.qm-hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:12.5px;color:var(--qtr);padding:6px 4px 10px;border-bottom:1px solid var(--qline);margin-bottom:12px}
+.qm-hd b{font-weight:600;color:var(--qink)}.qm-hj{white-space:nowrap}
+.qm-frame{position:relative}
+.qm-in{font-family:"Amiri Quran",serif;font-size:clamp(19px,5.6vw,26px);line-height:2.15;color:var(--qink);text-align:justify;text-align-last:center;word-spacing:1px;padding:0 2px}
+.qm-tx .q-ay{cursor:pointer;border-radius:6px}.qm-tx .q-ay.bm{background:rgba(201,162,74,.16)}
+.qm-in .q-end{font-family:"Amiri Quran",serif;color:var(--qacc);cursor:pointer;white-space:nowrap}
+.qm-hz{color:var(--qacc)}
+.qm-sh{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0 4px;padding:4px 10px;border:1.5px solid var(--qacc);border-radius:12px;background:linear-gradient(90deg,rgba(201,162,74,.10),rgba(201,162,74,.22),rgba(201,162,74,.10));box-shadow:inset 0 0 0 3px var(--qbg,transparent),inset 0 0 0 4px rgba(201,162,74,.45)}
+.qm-sh span{font-size:1.05em;line-height:1.8;color:var(--qacc)}
+.qm-rose{width:20px;height:20px;flex:none;fill:none;stroke:var(--qacc);stroke-width:1.6}
+.qm-bis{text-align:center;text-align-last:center;color:var(--qink);margin:0 0 2px}
+.qm-ft{text-align:center;font-size:14px;color:var(--qtr);margin:14px 0 6px;font-variant-numeric:tabular-nums}
+.qm-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}.qm-nav small{font-size:11px;text-align:center;flex:1}
+.qm-nav .btn{white-space:nowrap}
+/* bingkai hias halaman 1-2 (geometris, tanpa makhluk bernyawa) */
+.qm-orn{margin:4px 0;padding:22px;border:14px solid transparent;border-radius:6px;
+ border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42' viewBox='0 0 42 42'%3E%3Crect width='42' height='42' fill='%23123b2e'/%3E%3Cg fill='none' stroke='%23d4a843' stroke-width='1.4'%3E%3Cpath d='M21 3l5 8 9-2-2 9 8 3-8 3 2 9-9-2-5 8-5-8-9 2 2-9-8-3 8-3-2-9 9 2z'/%3E%3Ccircle cx='21' cy='21' r='5' fill='%23b8323a'/%3E%3C/g%3E%3Crect x='1' y='1' width='40' height='40' fill='none' stroke='%23d4a843'/%3E%3C/svg%3E") 14 round;
+ background:radial-gradient(circle at 50% 50%,rgba(201,162,74,.10),transparent 70%);box-shadow:inset 0 0 0 2px var(--qacc),inset 0 0 0 6px transparent,inset 0 0 0 7px rgba(201,162,74,.5)}
+.qm-orn .qm-in{text-align:center;text-align-last:center;line-height:2.35;padding:6px 0}
+.qm-first .qm-sh{margin-top:0}
+/* t54: geser horizontal di mushaf tidak memicu navigasi riwayat peramban */
+html,body{overscroll-behavior-x:none}
+/* ===== t56: warna tajwid (gaya mushaf tajwid Madinah) — palet gelap (default) & terang (sepia/terang, tema terang/pink) ===== */
+.q-reader,#qSheet{--tj-m6:#ff5a5f;--tj-m5:#ff7cc0;--tj-m4:#ffa040;--tj-m2:#e9c24a;--tj-gh:#46d17f;--tj-x:#9a948c;--tj-qq:#5cc6ff}
+.q-reader[data-qm=sepia],.q-reader[data-qm=light],:is([data-theme=light],[data-theme=pink]) .q-reader,:is([data-theme=light],[data-theme=pink]) #qSheet{--tj-m6:#a3001b;--tj-m5:#b30f55;--tj-m4:#9a4800;--tj-m2:#755400;--tj-gh:#08692d;--tj-x:#7c7770;--tj-qq:#0a609b}
+.tjw-m6{color:var(--tj-m6)}.tjw-m5{color:var(--tj-m5)}.tjw-m4{color:var(--tj-m4)}.tjw-m2{color:var(--tj-m2)}.tjw-gh{color:var(--tj-gh)}.tjw-x{color:var(--tj-x)}.tjw-qq{color:var(--tj-qq)}
+.tjd{display:inline-block;width:10px;height:10px;border-radius:50%;flex:none;background:currentColor;box-shadow:0 0 0 1.5px rgba(255,255,255,.25)}
+/* legenda ringkas di bawah halaman */
+.qm-lg{margin:12px 0 2px;padding:8px 8px 6px;border-top:1px solid var(--qline);font-size:11.5px;color:var(--qtr)}
+.qm-lg.off{border-top:0;padding-top:0}
+.qm-lgg{all:unset;box-sizing:border-box;display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;width:100%;cursor:pointer;padding:2px}
+.qm-lgg span{display:flex;align-items:center;gap:6px;line-height:1.35;min-width:0}
+.qm-lgg:focus-visible{outline:2px solid var(--qacc);outline-offset:2px;border-radius:8px}
+.qm-lgb{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.qm-lgb .btn{font-size:12px;padding:6px 12px;min-height:34px}
+.qm-orn .qm-lg{margin:14px -6px 0}
+.q-lgv{margin:0 0 14px;border:1px solid var(--qline);border-radius:12px}
+[dir=rtl] .qm-lgg,[lang=ar] .qm-lgg{direction:rtl}
+/* legenda lengkap */
+.tj-full section{margin:10px 0 12px}
+.tj-full h4{display:flex;align-items:center;gap:8px;margin:0 0 4px;font-size:14px}
+.tj-full p{margin:0 0 6px;font-size:13px;line-height:1.55}
+.tj-ex{font-family:"Amiri Quran",serif;font-size:17px;white-space:nowrap}
+.tj-note{font-size:12px;margin:8px 0}
 
 /* Pustaka hub */
 .pk-tabs{margin:0 0 12px;position:sticky;top:0;z-index:5;backdrop-filter:blur(10px)}
@@ -2042,14 +2102,16 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
       <div class="stack" id="qIndex">
         <div class="q-hero"><div class="eyebrow" data-qt="eyebrow"></div><div class="q-hero-ar" lang="ar" dir="rtl">ٱلْقُرْءَانُ ٱلْكَرِيمُ</div><p class="muted" data-qt="lead"></p></div>
         <div id="qCont"></div>
+        <div id="qChips" class="q-chipsw"></div>
         <div class="q-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="qSearch" type="search" autocomplete="off" data-qph="search"></div>
-        <div class="v2-seg q-tabs" id="qTabs" role="tablist"><button data-t="s" class="on" data-qt="tSurah"></button><button data-t="j" data-qt="tJuz"></button><button data-t="b" data-qt="tMarks"></button></div>
+        <div class="v2-seg q-tabs" id="qTabs" role="tablist"><button data-t="s" class="on" data-qt="tSurat"></button><button data-t="p" data-qt="tPage"></button><button data-t="j" data-qt="tJuz"></button><button data-t="z" data-qt="tHizb"></button><button data-t="r" data-qt="tRuku"></button><button data-t="b" data-qt="tMarks"></button></div>
         <div id="qList" class="q-list"></div>
         <p class="dim q-attr" id="qAttr"></p>
       </div>
       <div id="qReader" class="q-reader" hidden data-qm="night">
-        <div class="q-bar"><button class="q-ib" id="qBack" type="button" data-qa="back">←</button><div class="q-bt"><b id="qTitle"></b><small id="qSub" dir="auto"></small></div><button class="q-ib" id="qAa" type="button" data-qa="settings">Aa</button></div>
+        <div class="q-bar"><button class="q-ib" id="qBack" type="button" data-qa="back">←</button><div class="q-bt"><b id="qTitle"></b><small id="qSub" dir="auto"></small></div><button class="q-ib q-vw" id="qView" type="button" aria-label="Mushaf"></button><button class="q-ib" id="qAa" type="button" data-qa="settings">Aa</button></div>
         <div class="q-prog"><i id="qProg"></i></div>
+        <div class="q-info" id="qInfo" aria-live="polite"></div>
         <div id="qBody" class="q-body"></div>
       </div>
       <div class="q-sheet" id="qSheet" hidden><div class="q-sheet-in" role="dialog" aria-modal="true"><div id="qSheetBody"></div><button class="btn ghost q-close" type="button" id="qSheetX" data-qt="close"></button></div></div>
@@ -3018,7 +3080,7 @@ const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:
 const PAGES=["beranda","puasa","umrah","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
 function go(p){ if(!PAGES.includes(p)) p="beranda";
   $$(".page").forEach(s=>s.classList.toggle("on",s.id==="page-"+p)); $$("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.p===p));
-  $("#view").scrollTop=0; try{history.replaceState(null,"","#"+p);}catch(e){}
+  $("#view").scrollTop=0; try{history.replaceState(history.state,"","#"+p);}catch(e){}
   if(p==="gerakan") Figure.ensure(); if(p==="setelah") Jurnal.refresh(); }
 $$("#nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.p))); window.go=p=>go(p);
 
@@ -3248,7 +3310,7 @@ const Murattal={ db:null, tracks:[], curId:null, url:null,
 /* ---------------- Boot ---------------- */
 window.RKOld={get Figure(){return Figure;},get Bacaan(){return Bacaan;}};
 const App={ rerender(){ Persiapan.render(); Planner.render(); Bacaan.render(); Sunnah.render(); Figure.render(); Tasbih.render(); Jurnal.render(); Murattal.renderList(); } };
-function start(){ I18N.init(); Persiapan.init(); Planner.init(); Bacaan.init(); Sunnah.init(); Tasbih.init(); Jurnal.init(); Murattal.init(); const h=(location.hash||"").replace("#",""); go("beranda"); /* t45: always open on Beranda */ try{ const dl=new URLSearchParams(location.search).get("doa-azan")!=null||h==="doa-azan"; if(!dl) history.replaceState(null,"",location.pathname+"#beranda"); }catch(e){}; }
+function start(){ I18N.init(); Persiapan.init(); Planner.init(); Bacaan.init(); Sunnah.init(); Tasbih.init(); Jurnal.init(); Murattal.init(); const h=(location.hash||"").replace("#",""); go("beranda"); /* t45: always open on Beranda */ try{ const dl=new URLSearchParams(location.search).get("doa-azan")!=null||h==="doa-azan"; if(!dl) history.replaceState(history.state,"",location.pathname+"#beranda"); }catch(e){}; }
 document.readyState==="loading"?document.addEventListener("DOMContentLoaded",start):start();
 })();
 </script>
@@ -4466,11 +4528,19 @@ const T={
  setLast:["Jadikan terakhir dibaca","Set as last read","اجعلها آخر قراءة"], saved:["Tersimpan","Saved","تم الحفظ"],
  prev:["Surah sebelumnya","Previous surah","السورة السابقة"], next:["Surah berikutnya","Next surah","السورة التالية"],
  loading:["Memuat…","Loading…","جارٍ التحميل…"], offline:["Gagal memuat. Periksa koneksi, lalu coba lagi.","Could not load. Check your connection and try again.","تعذر التحميل. تحقق من الاتصال."], retry:["Coba lagi","Retry","إعادة"],
+ tSurat:["Surat","Surah","السور"], tPage:["Halaman","Page","الصفحات"], tHizb:["Hizib","Hizb","الأحزاب"], tRuku:["Ruku'","Ruku'","الركوعات"],
+ pageN:["Halaman","Page","الصفحة"], hizbN:["Hizib","Hizb","الحزب"], rukuN:["Ruku'","Ruku'","الركوع"], quick:["Akses cepat","Quick access","وصول سريع"],
+ toMushaf:["Tampilan mushaf (per halaman)","Mushaf page view","عرض المصحف (صفحة صفحة)"], toAyah:["Tampilan per ayat","Verse-by-verse view","عرض آية آية"],
+ nextPg:["Halaman berikutnya","Next page","الصفحة التالية"], prevPg:["Halaman sebelumnya","Previous page","الصفحة السابقة"], swipe:["Geser kanan = halaman berikutnya","Swipe right = next page","اسحب يمينًا للصفحة التالية"],
+ mushafNote:["Batas halaman mengikuti Mushaf Madinah 604 halaman (metadata Tanzil). Susunan baris dapat sedikit berbeda dari cetakan.","Page boundaries follow the 604-page Madinah Mushaf (Tanzil metadata). Line layout may differ slightly from print.","حدود الصفحات وفق مصحف المدينة (٦٠٤ صفحات) من بيانات تنزيل، وقد يختلف توزيع الأسطر قليلًا عن المطبوع."],
+ tjT:["Warna tajwid","Tajweed colours","ألوان التجويد"], tjOn:["Aktif","On","مفعّلة"], tjOff:["Mati","Off","معطّلة"], tjAll:["Mushaf + per ayat","Mushaf + by verse","المصحف والآيات"], tjPage:["Mushaf saja","Mushaf only","المصحف فقط"],
+ tjMore:["Keterangan warna","Colour guide","دليل الألوان"], tjNote:["Warna hanyalah alat bantu; belajarlah tajwid dengan guru (talaqqi).","Colours are only an aid; learn tajweed with a teacher (talaqqi).","الألوان وسيلة مساعدة؛ تعلّم التجويد بالتلقي عن معلّم."],
+ tjSrc:["Anotasi tajwid: cpfair/quran-tajweed (CC BY 4.0), dipetakan ke teks Tanzil oleh Best Muslim.","Tajweed annotations: cpfair/quran-tajweed (CC BY 4.0), mapped to the Tanzil text by Best Muslim.","توسيم التجويد: cpfair/quran-tajweed (CC BY 4.0)، مطابق لنص تنزيل."],
  sajda:["Ayat sajdah","Prostration verse","آية سجدة"], verse:["Ayat","Verse","آية"],
  sadaqa:["صَدَقَ ٱللَّهُ ٱلْعَظِيمُ","صَدَقَ ٱللَّهُ ٱلْعَظِيمُ","صَدَقَ ٱللَّهُ ٱلْعَظِيمُ"],
- attr:['Teks: <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a> (Utsmani, CC BY 3.0, tanpa perubahan) · Terjemahan Indonesia: Kementerian Agama RI (via Tanzil) · English: M. M. Pickthall (1930, domain publik) · Khat: Amiri Quran (SIL OFL 1.1)',
-       'Text: <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a> (Uthmani, CC BY 3.0, unmodified) · Indonesian: Ministry of Religious Affairs RI (via Tanzil) · English: M. M. Pickthall (1930, public domain) · Font: Amiri Quran (SIL OFL 1.1)',
-       'النص: <a href="https://tanzil.net" target="_blank" rel="noopener">مشروع تنزيل</a> (الرسم العثماني، CC BY 3.0) · الترجمة الإندونيسية: وزارة الشؤون الدينية · الإنجليزية: بكتال (ملكية عامة) · الخط: أميري قرآن (OFL)']
+ attr:['Teks: <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a> (Utsmani, CC BY 3.0, tanpa perubahan) · Terjemahan Indonesia: Kementerian Agama RI (via Tanzil) · English: M. M. Pickthall (1930, domain publik) · Metadata halaman/juz/hizib/ruku\': Tanzil (CC BY 3.0) · Khat: Amiri Quran (SIL OFL 1.1) · Tajwid: cpfair/quran-tajweed (CC BY 4.0)',
+       'Text: <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a> (Uthmani, CC BY 3.0, unmodified) · Indonesian: Ministry of Religious Affairs RI (via Tanzil) · English: M. M. Pickthall (1930, public domain) · Page/juz/hizb/ruku\' metadata: Tanzil (CC BY 3.0) · Font: Amiri Quran (SIL OFL 1.1) · Tajweed: cpfair/quran-tajweed (CC BY 4.0)',
+       'النص: <a href="https://tanzil.net" target="_blank" rel="noopener">مشروع تنزيل</a> (الرسم العثماني، CC BY 3.0) · الترجمة الإندونيسية: وزارة الشؤون الدينية · الإنجليزية: بكتال (ملكية عامة) · بيانات الصفحات والأجزاء والأحزاب والركوعات: تنزيل (CC BY 3.0) · الخط: أميري قرآن (OFL) · التجويد: cpfair/quran-tajweed (CC BY 4.0)']
 };
 const t=k=>{const a=T[k];if(!a)return k;return a[{id:0,en:1,ar:2}[lang()]]||a[0];};
 const BASE="quran/";
@@ -4484,9 +4554,65 @@ const S=i=>META.s[i-1]; // [no,arName,latinId,meaningId,tnameEn,meaningEn,ayas,M
 const sName=s=>lang()==="ar"?s[1]:(lang()==="en"?s[4]:s[2]);
 const sMean=s=>lang()==="en"?s[5]:(lang()==="ar"?"":s[3]);
 const mid=s=>sMean(s)?esc(sMean(s))+" · ":"";
-const pref=()=>Object.assign({size:30,tr:lang()==="en"?"en":(lang()==="ar"?"off":"id"),mode:"night",layout:"ayah"},store.get("rk_q_pref",{}));
+const pref=()=>Object.assign({size:30,tr:lang()==="en"?"en":(lang()==="ar"?"off":"id"),mode:"night",layout:"ayah",view:"ayah",tj:"page"},store.get("rk_q_pref",{}));
 const setPref=o=>{store.set("rk_q_pref",Object.assign(pref(),o));};
-const juzOf=(s,a)=>{let j=1;META.j.forEach((x,i)=>{if(x[0]<s||(x[0]===s&&x[1]<=a))j=i+1;});return j;};
+/* t54: posisi Mushaf Madinah (metadata Tanzil): halaman 1-604, juz, hizib (¼), ruku' */
+let OFF=null; const offs=()=>{ if(!OFF){ OFF=[0]; META.s.forEach(x=>OFF.push(OFF[OFF.length-1]+x[6])); } return OFF; };
+const gi=(s,a)=>offs()[s-1]+a-1;
+const findIdx=(arr,s,a)=>{ const g=gi(s,a); let lo=0,hi=arr.length-1; while(lo<hi){ const m=(lo+hi+1)>>1; if(gi(arr[m][0],arr[m][1])<=g) lo=m; else hi=m-1; } return lo; };
+const juzOf=(s,a)=>findIdx(META.j,s,a)+1;
+const pageOf=(s,a)=>findIdx(META.p,s,a)+1;
+const qtrOf=(s,a)=>findIdx(META.q,s,a);
+const hizbOf=(s,a)=>Math.floor(qtrOf(s,a)/4)+1;
+const rukuOf=(s,a)=>META.r?findIdx(META.r,s,a)+1:0;
+const posTxt=(s,a)=>`${t("juz")} ${NUM(juzOf(s,a))} · ${t("hizbN")} ${NUM(hizbOf(s,a))} · ${t("pageN")} ${NUM(pageOf(s,a))}`+(META.r?` · ${t("rukuN")} ${NUM(rukuOf(s,a))}`:"");
+const SD={}; const loadS=s=>SD[s]?Promise.resolve(SD[s]):getJSON("s/"+String(s).padStart(3,"0")+".json").then(d=>(SD[s]=d));
+/* ---------- t56: warna tajwid (anotasi cpfair/quran-tajweed CC BY 4.0, dipetakan ke teks Tanzil 1.1; data/tj/NNN.json, dimuat per surah) ---------- */
+const TJD={}; const loadTJ=s=>TJD[s]?Promise.resolve(TJD[s]):getJSON("tj/"+String(s).padStart(3,"0")+".json").then(d=>(TJD[s]=d)).catch(()=>({}));
+/* kode -> kelompok warna (mengikuti mushaf tajwid Madinah/Dar al-Ma'rifah) */
+const TJG={e:"m6",c:"m5",d:"m5",b:"m4",a:"m2",g:"gh",f:"gh",h:"gh",i:"gh",o:"gh",q:"gh",n:"x",j:"x",p:"x",w:"x",l:"x",s:"x",k:"qq"};
+const TJL=[["m6",["Mad lazim 6 harakat","Necessary madd · 6","مد ٦ حركات لزومًا"]],["m5",["Mad wajib/jaiz 4–5","Madd 4–5 (connected/separated)","مد واجب أو جائز ٤ أو ٥"]],["m4",["Mad 2/4/6 (jaiz)","Madd 2, 4 or 6","مد ٢ أو ٤ أو ٦ جوازًا"]],["m2",["Mad 2 harakat","Madd · 2 counts","مد حركتان"]],
+ ["gh",["Ghunnah · ikhfa' · iqlab","Ghunnah · ikhfa · iqlab","إخفاء ومواقع الغنة"]],["x",["Idgham · tidak dibaca","Idgham · not pronounced","إدغام وما لا يُلفظ"]],["qq",["Qalqalah","Qalqalah","قلقلة"]]];
+const TJR=[ /* [kode, nama(ID,EN,AR), penjelasan(ID,EN,AR), contoh] */
+ ["e",["Mad lazim","Madd lazim (necessary)","المد اللازم"],["Huruf mad bertemu sukun/tasydid asli: dibaca 6 harakat.","A madd letter followed by an original sukun/shaddah: 6 counts.","حرف مد بعده سكون أصلي: ست حركات."],"ٱلضَّآلِّينَ · الٓمٓ"],
+ ["c",["Mad wajib muttasil","Madd muttasil (connected)","المد الواجب المتصل"],["Huruf mad bertemu hamzah dalam satu kata: 4–5 harakat.","Madd letter followed by hamzah in the same word: 4–5 counts.","حرف مد بعده همزة في كلمة واحدة: ٤ أو ٥ حركات."],"جَآءَ · ٱلسَّمَآءِ"],
+ ["d",["Mad jaiz munfasil","Madd munfasil (separated)","المد الجائز المنفصل"],["Huruf mad di akhir kata bertemu hamzah di awal kata berikutnya: 4–5 harakat.","Madd letter at a word's end, hamzah at the next word's start: 4–5 counts.","حرف مد آخر الكلمة وهمزة أول التالية: ٤ أو ٥ حركات."],"بِمَآ أُنزِلَ"],
+ ["b",["Mad 'aridh lissukun / lin","Madd 'arid / leen","المد العارض للسكون واللين"],["Mad sebelum huruf yang disukunkan karena berhenti (waqaf): 2, 4 atau 6 harakat.","Madd before a letter made silent by stopping: 2, 4 or 6 counts.","مد قبل حرف سُكّن للوقف: ٢ أو ٤ أو ٦ حركات."],"ٱلرَّحِيمِ"],
+ ["a",["Mad thabi'i","Natural madd","المد الطبيعي"],["Mad asli (termasuk alif/ya/waw kecil): 2 harakat.","Natural prolongation (incl. small alif/ya/waw): 2 counts.","المد الأصلي: حركتان."],"مَٰلِكِ"],
+ ["g",["Ghunnah","Ghunnah (nasalisation)","الغنة"],["Nun atau mim bertasydid didengungkan ±2 harakat.","Doubled nun or mim is nasalised for about 2 counts.","النون والميم المشددتان: غنة بمقدار حركتين."],"إِنَّ · ثُمَّ"],
+ ["f",["Ikhfa'","Ikhfa (concealment)","الإخفاء"],["Nun sukun/tanwin bertemu salah satu 15 huruf ikhfa': dibaca samar dengan dengung.","Nun sakinah/tanween before one of the 15 ikhfa letters: concealed with ghunnah.","النون الساكنة والتنوين قبل حروف الإخفاء: إخفاء مع غنة."],"مِن قَبْلِ"],
+ ["h",["Ikhfa' syafawi","Ikhfa shafawi","الإخفاء الشفوي"],["Mim sukun bertemu ba': dibaca samar dengan dengung.","Mim sakinah before ba: concealed with ghunnah.","الميم الساكنة قبل الباء: إخفاء شفوي مع غنة."],"هُم بِهِ"],
+ ["i",["Idgham bighunnah","Idgham with ghunnah","الإدغام بغنة"],["Nun sukun/tanwin bertemu ي ن م و: dilebur dengan dengung.","Nun sakinah/tanween before ي ن م و: merged with ghunnah.","النون الساكنة والتنوين قبل (ينمو): إدغام بغنة."],"مَن يَقُولُ"],
+ ["o",["Idgham mimi (mitslain)","Idgham shafawi (mim into mim)","الإدغام الشفوي"],["Mim sukun bertemu mim: dilebur dengan dengung.","Mim sakinah before mim: merged with ghunnah.","الميم الساكنة قبل الميم: إدغام بغنة."],"لَهُم مَّا"],
+ ["q",["Iqlab","Iqlab (conversion)","الإقلاب"],["Nun sukun/tanwin bertemu ba': nun dibaca mim dengan dengung.","Nun sakinah/tanween before ba: pronounced as mim with ghunnah.","النون الساكنة والتنوين قبل الباء: تُقلب ميمًا مع غنة."],"مِنۢ بَعْدِ"],
+ ["n",["Idgham bilaghunnah","Idgham without ghunnah","الإدغام بغير غنة"],["Nun sukun/tanwin bertemu ل atau ر: dilebur tanpa dengung, nun tidak dibaca.","Nun sakinah/tanween before ل or ر: merged without ghunnah.","النون الساكنة والتنوين قبل اللام والراء: إدغام بلا غنة."],"مِن رَّبِّهِمْ"],
+ ["j",["Idgham mutajanisain","Idgham mutajanisayn","إدغام المتجانسين"],["Dua huruf satu makhraj beda sifat: huruf pertama dilebur.","Two letters of one articulation point, different traits: the first merges.","حرفان اتحدا مخرجًا واختلفا صفة: يُدغم الأول."],"قَد تَّبَيَّنَ"],
+ ["p",["Idgham mutaqaribain","Idgham mutaqaribayn","إدغام المتقاربين"],["Dua huruf berdekatan makhraj/sifat: huruf pertama dilebur.","Two letters close in articulation/traits: the first merges.","حرفان تقاربا مخرجًا وصفة: يُدغم الأول."],"نَخْلُقكُّم"],
+ ["w",["Hamzah washal","Hamzat al-wasl","همزة الوصل"],["Tidak dibaca bila disambung dengan kata sebelumnya.","Not pronounced when joined to the previous word.","لا تُنطق في الوصل."],"بِسْمِ ٱللَّهِ"],
+ ["l",["Lam syamsiyah","Lam shamsiyyah","اللام الشمسية"],["Lam pada al- tidak dibaca, lebur ke huruf syamsiyah sesudahnya.","The lam of al- is silent, merged into the following sun letter.","لام التعريف لا تُنطق وتُدغم فيما بعدها."],"ٱلرَّحْمَٰنِ"],
+ ["s",["Huruf tidak dibaca","Silent letter","حرف لا يُلفظ"],["Huruf tertulis tetapi tidak dilafalkan.","Written but not pronounced.","يُكتب ولا يُلفظ."],"أُو۟لَٰٓئِكَ"],
+ ["k",["Qalqalah","Qalqalah (echo)","القلقلة"],["Huruf ق ط ب ج د bersukun dipantulkan.","ق ط ب ج د with sukun are pronounced with a slight echo.","حروف (قطب جد) الساكنة تُقلقل."],"يَخْلُقْ · أَحَدٌ"]];
+const L3=a=>a[{id:0,en:1,ar:2}[lang()]]||a[0];
+const tjParse=str=>{ const out=[]; let pos=0; String(str||"").split(" ").forEach(tk=>{ const m=/^(\d+)([a-z])(\d*)$/.exec(tk); if(!m) return; pos+=+m[1]; out.push([pos,pos+(m[3]?+m[3]:1),m[2]]); }); return out; };
+/* teks -> HTML berwarna; off = jumlah karakter yang dipotong dari awal teks ayat utuh (mis. basmalah) */
+function tjHTML(text,str,off){ off=off||0; if(!str) return esc(text); let h="", i=0;
+  for(const [a0,a1,c] of tjParse(str)){ let s0=a0-off, s1=Math.min(a1-off,text.length); if(s1<=0) continue; if(s0<0) s0=0; if(s0<i||s0>=text.length) continue;
+    h+=esc(text.slice(i,s0))+`<span class="tj tjw-${TJG[c]||"x"}" data-tj="${c}">${esc(text.slice(s0,s1))}</span>`; i=s1; }
+  return h+esc(text.slice(i)); }
+const tjMode=()=>{ const v=pref().tj; return v==="off"||v==="all"?v:"page"; };
+const tjOnFor=vm=>{ const m=tjMode(); return m==="all"||(m==="page"&&vm==="page"); };
+function tjLegend(inner){ const on=tjOnFor(inner?"ayah":"page");
+  const body=`${on?`<button class="qm-lgg" type="button" data-tjinfo="1" aria-label="${t("tjMore")}">${TJL.map(([g,l])=>`<span><i class="tjd tjw-${g}" aria-hidden="true"></i>${esc(L3(l))}</span>`).join("")}</button>`:""}
+   <div class="qm-lgb"><button class="btn sm${on?"":" gold"}" type="button" data-tjtog="1" ${inner?"":`id="qmTj"`} aria-pressed="${on}">${t("tjT")}: ${t(on?"tjOn":"tjOff")}</button>${on?`<button class="btn sm ghost" type="button" data-tjinfo="1">ⓘ ${t("tjMore")}</button>`:""}</div>`;
+  return `<div class="qm-lg${on?"":" off"}${inner?" q-lgv":""}" ${inner?"":`id="qmLg"`}>${body}</div>`; }
+function tjSheet(){
+  sheet(`<h3>${t("tjT")}</h3><div class="tj-full">${TJL.map(([gr,l])=>`<section><h4><i class="tjd tjw-${gr}" aria-hidden="true"></i>${esc(L3(l))}</h4>${TJR.filter(r=>TJG[r[0]]===gr).map(r=>`<p><b>${esc(L3(r[1]))}</b>${lang()==="ar"?"":` <span class="dim" lang="ar">· ${esc(r[1][2])}</span>`} — ${esc(L3(r[2]))} <span class="tj-ex" lang="ar" dir="rtl">${esc(r[3])}</span></p>`).join("")}</section>`).join("")}</div>
+   <p class="dim tj-note">${t("tjNote")}<br>${t("tjSrc")}</p>
+   <div class="q-lbl">${t("tjT")}</div>${seg("tj",[["page",t("tjPage")],["all",t("tjAll")],["off",t("tjOff")]],tjMode())}`);
+  const sb=$("#qSheet .q-sheet")||$("#qSheet"); }
+async function tjToggle(){ const on=tjOnFor(vmode); setPref({tj:on?"off":(vmode==="page"?"page":"all")}); await tjReload(); }
+async function tjReload(){ if(vmode==="page"&&pgData){ if(tjOnFor("page")) await Promise.all(pgData.ss.concat([1]).map(loadTJ)); renderPage(); }
+  else if(cur){ const y=($("#view")||document.scrollingElement).scrollTop; if(tjOnFor("ayah")) await Promise.all([loadTJ(cur.s),loadTJ(1)]); render(); ($("#view")||document.scrollingElement).scrollTop=y; } }
 const star=n=>`<span class="q-star" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 3l4.9 7.2 8.5-1.6-1.6 8.5L39 20l-7.2 4.9 1.6 8.5-8.5-1.6L20 37l-4.9-7.2-8.5 1.6 1.6-8.5L1 20l7.2-4.9-1.6-8.5 8.5 1.6z"/></svg><b>${NUM(n)}</b></span>`;
 
 /* ---------- Index ---------- */
@@ -4494,19 +4620,28 @@ let tab="s";
 function applyT(){ $$("[data-qt]").forEach(e=>e.textContent=t(e.dataset.qt)); $$("[data-qph]").forEach(e=>{e.placeholder=t(e.dataset.qph);e.setAttribute("aria-label",t(e.dataset.qph));}); $$("[data-qa]").forEach(e=>e.setAttribute("aria-label",t(e.dataset.qa))); const a=$("#qAttr"); if(a) a.innerHTML=t("attr"); }
 function contCard(compact){ const L=store.get("rk_q_last",null);
   if(!META) return "";
-  if(!L){ return `<button class="q-cont" type="button" data-open="1:1">${star(1)}<span class="q-cont-tx"><small>${t("start")}</small><b>${esc(sName(S(1)))}</b><em>${t("startSub")}</em></span><span class="q-cont-ar" lang="ar">${S(1)[1]}</span></button>`; }
+  if(!L){ return `<button class="q-cont" type="button" data-open="1:1" data-auto="1">${star(1)}<span class="q-cont-tx"><small>${t("start")}</small><b>${esc(sName(S(1)))}</b><em>${t("startSub")}</em></span><span class="q-cont-ar" lang="ar">${S(1)[1]}</span></button>`; }
   const s=S(L.s), pct=Math.round(100*L.a/s[6]);
-  return `<button class="q-cont" type="button" data-open="${L.s}:${L.a}">${star(L.s)}<span class="q-cont-tx"><small>${t("cont")}</small><b>${esc(sName(s))} · ${t("verse")} ${NUM(L.a)}</b><em>${t("juz")} ${NUM(juzOf(L.s,L.a))} · ${NUM(pct)}%</em><span class="q-bar2"><i style="width:${pct}%"></i></span></span><span class="q-cont-ar" lang="ar">${s[1]}</span></button>`; }
+  return `<button class="q-cont" type="button" data-open="${L.s}:${L.a}" data-auto="1">${star(L.s)}<span class="q-cont-tx"><small>${t("cont")}</small><b>${esc(sName(s))} · ${t("verse")} ${NUM(L.a)}</b><em>${t("juz")} ${NUM(juzOf(L.s,L.a))} · ${NUM(pct)}%</em><span class="q-bar2"><i style="width:${pct}%"></i></span></span><span class="q-cont-ar" lang="ar">${s[1]}</span></button>`; }
+/* t54: Terakhir dibaca (riwayat per surah) + Akses cepat */
+const QUICK=[67,32,18,36,56,55];
+function chips(){ if(!META) return ""; const H=store.get("rk_q_hist",[]).filter(h=>h&&h.s>=1&&h.s<=114).slice(0,8);
+  const c=(s,a,cls)=>`<button class="q-chip2${cls||""}" type="button" data-open="${s}:${a}" data-auto="1">${esc(sName(S(s))).toUpperCase()} ${NUM(s)}:${NUM(a)}</button>`;
+  return (H.length?`<div class="q-chl" data-qt="lastAt">${t("lastAt")}</div><div class="q-chips" id="qRecent">${H.map(h=>c(h.s,h.a)).join("")}</div>`:"")
+   +`<div class="q-chl">${t("quick")}</div><div class="q-chips" id="qQuick">${QUICK.map(n=>`<button class="q-chip2" type="button" data-open="${n}:1" data-auto="1">${esc(sName(S(n))).toUpperCase()}</button>`).join("")}</div>`; }
 const norm=x=>String(x).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f\u064b-\u065f\u0670\u06d6-\u06ed]/g,"").replace(/[^a-z0-9\u0600-\u06ff]/g,"").replace(/ٱ/g,"ا");
 function renderList(){ const el=$("#qList"); if(!el||!META) return; const q=norm(($("#qSearch")||{}).value||"");
-  $("#qCont").innerHTML=contCard(); $(".q-search").hidden=tab!=="s";
+  $("#qCont").innerHTML=contCard(); $(".q-search").hidden=tab!=="s"; const ch=$("#qChips"); if(ch) ch.innerHTML=chips();
   if(tab==="s"){ const rows=META.s.filter(s=>!q||[s[0],s[1],s[2],s[3],s[4],s[5]].some(x=>norm(x).includes(q)));
-    const rowH=s=>`<button class="q-row" type="button" data-open="${s[0]}:1">${star(s[0])}<span class="q-row-tx"><b>${esc(sName(s))}</b><small>${mid(s)}${t(s[7]==="M"?"mk":"md")} · ${NUM(s[6])} ${t("ayat")}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;
+    const rowH=s=>`<button class="q-row" type="button" data-open="${s[0]}:1" data-auto="1">${star(s[0])}<span class="q-row-tx"><b>${esc(sName(s))}</b><small>${mid(s)}${t(s[7]==="M"?"mk":"md")} · ${NUM(s[6])} ${t("ayat")}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;
     const raw=(($("#qSearch")||{}).value||"").trim();
     if(!raw){ srchSeq++; el.innerHTML=rows.map(rowH).join(""); }
     else { const nr=/^\d+$/.test(raw)?META.s.filter(s=>String(s[0])===raw):rows; renderSearch(raw,el,nr.slice(0,8).map(rowH)); } }
-  else if(tab==="j"){ el.innerHTML=META.j.map((x,i)=>{const s=S(x[0]);return `<button class="q-row" type="button" data-open="${x[0]}:${x[1]}">${star(i+1)}<span class="q-row-tx"><b>${t("juz")} ${NUM(i+1)}</b><small>${esc(sName(s))} · ${t("verse")} ${NUM(x[1])}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;}).join(""); }
-  else { const bm=store.get("rk_q_bm",[]); el.innerHTML=bm.length?bm.slice().reverse().map(b=>{const s=S(b.s);return `<button class="q-row" type="button" data-open="${b.s}:${b.a}">${star(b.s)}<span class="q-row-tx"><b>${esc(sName(s))} · ${NUM(b.a)}</b><small>${t("juz")} ${NUM(juzOf(b.s,b.a))}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;}).join(""):`<p class="dim q-empty">${t("noMarks")}</p>`; } }
+  else if(tab==="p"){ el.innerHTML=META.p.map((x,i)=>{const s=S(x[0]);return `<button class="q-row" type="button" data-qpg="${i+1}">${star(i+1)}<span class="q-row-tx"><b>${t("pageN")} ${NUM(i+1)}</b><small>${esc(sName(s))} ${NUM(x[0])}:${NUM(x[1])} · ${t("juz")} ${NUM(juzOf(x[0],x[1]))}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;}).join(""); }
+  else if(tab==="z"){ el.innerHTML=META.q.filter((x,i)=>i%4===0).map((x,i)=>{const s=S(x[0]);return `<button class="q-row" type="button" data-open="${x[0]}:${x[1]}" data-auto="1">${star(i+1)}<span class="q-row-tx"><b>${t("hizbN")} ${NUM(i+1)}</b><small>${esc(sName(s))} ${NUM(x[0])}:${NUM(x[1])} · ${t("juz")} ${NUM(Math.floor(i/2)+1)} · ${t("pageN")} ${NUM(pageOf(x[0],x[1]))}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;}).join(""); }
+  else if(tab==="r"){ const R=META.r||[]; el.innerHTML=R.map((x,i)=>{const s=S(x[0]);return `<button class="q-row" type="button" data-open="${x[0]}:${x[1]}" data-auto="1">${star(i+1)}<span class="q-row-tx"><b>${t("rukuN")} ${NUM(i+1)}</b><small>${esc(sName(s))} ${NUM(x[0])}:${NUM(x[1])} · ${t("juz")} ${NUM(juzOf(x[0],x[1]))} · ${t("pageN")} ${NUM(pageOf(x[0],x[1]))}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;}).join(""); }
+  else if(tab==="j"){ el.innerHTML=META.j.map((x,i)=>{const s=S(x[0]);return `<button class="q-row" type="button" data-open="${x[0]}:${x[1]}" data-auto="1">${star(i+1)}<span class="q-row-tx"><b>${t("juz")} ${NUM(i+1)}</b><small>${esc(sName(s))} · ${t("verse")} ${NUM(x[1])}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;}).join(""); }
+  else { const bm=store.get("rk_q_bm",[]); el.innerHTML=bm.length?bm.slice().reverse().map(b=>{const s=S(b.s);return `<button class="q-row" type="button" data-open="${b.s}:${b.a}" data-auto="1">${star(b.s)}<span class="q-row-tx"><b>${esc(sName(s))} · ${NUM(b.a)}</b><small>${t("juz")} ${NUM(juzOf(b.s,b.a))}</small></span><span class="q-row-ar" lang="ar" dir="rtl">${s[1]}</span></button>`;}).join(""):`<p class="dim q-empty">${t("noMarks")}</p>`; } }
 
 
 /* ---------- Content search (offline index, lazy) ---------- */
@@ -4568,47 +4703,95 @@ async function renderSearch(qRaw,el,nameRows){ const my=++srchSeq; const q=qRaw.
   el.innerHTML=(h+th+ah)||`<p class="dim">${t("noRes")}</p>`; }
 
 /* ---------- Reader ---------- */
-function applyPref(){ const p=pref(), r=$("#qReader"); if(!r) return; r.dataset.qm=p.mode; r.dataset.layout=p.layout; r.style.setProperty("--qs",p.size+"px"); r.dataset.tr=p.tr; }
-async function open(s,a,opts){ s=+s; a=+a||1; const r=$("#qReader"); if(!r) return;
+let vmode="ayah", pgCur=null, pgData=null, seen=null;
+const BOOK=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 7.2 4.4 3.5 4.6v13.2c3.7-.2 6.5.4 8.5 1.9 2-1.5 4.8-2.1 8.5-1.9V4.6C16.8 4.4 14 5 12 6.5z"/><path d="M12 6.5v13.2"/></svg>`;
+const LISTI=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1.2"/><circle cx="4" cy="12" r="1.2"/><circle cx="4" cy="18" r="1.2"/></svg>`;
+function applyPref(){ const p=pref(), r=$("#qReader"); if(!r) return; r.dataset.qm=p.mode; r.dataset.layout=p.layout; r.style.setProperty("--qs",p.size+"px"); r.dataset.tr=p.tr; r.dataset.view=vmode; }
+function updMode(){ const b=$("#qView"), r=$("#qReader"); if(r) r.dataset.view=vmode; if(b){ const toP=vmode!=="page"; b.innerHTML=toP?BOOK:LISTI; b.setAttribute("aria-label",t(toP?"toMushaf":"toAyah")); b.title=t(toP?"toMushaf":"toAyah"); b.setAttribute("aria-pressed",String(!toP)); }
+  const inf=$("#qInfo"); if(inf) inf.hidden=vmode==="page"; }
+function updInfo(s,a){ seen={s,a}; const inf=$("#qInfo"); if(!inf||!META) return; inf.textContent=posTxt(s,a); inf.dataset.k=s+":"+a; }
+async function open(s,a,opts){ opts=opts||{}; s=+s; a=+a||1; const r=$("#qReader"); if(!r) return;
   if(location.hash!=="#quran" && window.go) window.go("quran");
-  await loadMeta(); $("#qIndex").hidden=true; r.hidden=false; applyPref();
+  await loadMeta();
+  if(opts.auto&&pref().view==="page") return openPage(pageOf(s,a),{noSave:opts.noSave});
+  vmode="ayah"; pgCur=null; $("#qIndex").hidden=true; r.hidden=false; applyPref(); updMode();
   const body=$("#qBody"); body.innerHTML=`<p class="dim q-load">${t("loading")}</p>`; const sm=S(s);
-  $("#qTitle").textContent=sName(sm); $("#qSub").textContent=`${t(sm[7]==="M"?"mk":"md")} · ${NUM(sm[6])} ${t("ayat")}`;
-  let d; try{ d=await getJSON("s/"+String(s).padStart(3,"0")+".json"); }catch(e){ body.innerHTML=`<div class="q-err"><p>${t("offline")}</p><button class="btn gold" type="button" id="qRetry">${t("retry")}</button></div>`; $("#qRetry").onclick=()=>open(s,a); return; }
+  $("#qTitle").textContent=sName(sm); $("#qSub").textContent=`${t(sm[7]==="M"?"mk":"md")} · ${NUM(sm[6])} ${t("ayat")}`; updInfo(s,a);
+  let d; try{ d=await loadS(s); if(tjOnFor("ayah")) await Promise.all([loadTJ(s),loadTJ(1)]); }catch(e){ body.innerHTML=`<div class="q-err"><p>${t("offline")}</p><button class="btn gold" type="button" id="qRetry">${t("retry")}</button></div>`; $("#qRetry").onclick=()=>open(s,a,opts); return; }
+  if(vmode!=="ayah") return;
   cur={s,d}; render(); const vw=$("#view")||document.scrollingElement;
-  requestAnimationFrame(()=>{ if(a>1){ const el=document.getElementById("qa-"+s+"-"+a); if(el){ el.scrollIntoView({block:"start"}); if(opts&&opts.flash){ el.classList.add("q-flash"); setTimeout(()=>el.classList.remove("q-flash"),2400); } } } else vw.scrollTop=0; });
-  if(!(opts&&opts.noSave)) saveLast(s,a); }
-function render(){ const {s,d}=cur, sm=S(s), p=pref(), body=$("#qBody"); const bis=META.bis, bm=new Set(store.get("rk_q_bm",[]).map(b=>b.s+":"+b.a));
+  requestAnimationFrame(()=>{ if(a>1){ const el=document.getElementById("qa-"+s+"-"+a); if(el){ el.scrollIntoView({block:"start"}); if(opts.flash){ el.classList.add("q-flash"); setTimeout(()=>el.classList.remove("q-flash"),2400); } } } else vw.scrollTop=0; });
+  if(!opts.noSave) saveLast(s,a); }
+function render(){ if(vmode==="page"){ renderPage(); return; } const {s,d}=cur, sm=S(s), p=pref(), body=$("#qBody"); const bis=META.bis, bm=new Set(store.get("rk_q_bm",[]).map(b=>b.s+":"+b.a));
   const qStart=new Map(META.q.map((x,i)=>[x[0]+":"+x[1],i])), pStart=new Map(META.p.map((x,i)=>[x[0]+":"+x[1],i+1])), sj=new Set(META.sj.map(x=>x[0]+":"+x[1]));
   let h=`<header class="q-shead"><svg class="q-frame" viewBox="0 0 360 100" preserveAspectRatio="none" aria-hidden="true"><rect x="3" y="3" width="354" height="94" rx="14"/><rect x="10" y="10" width="340" height="80" rx="10" class="in"/><path d="M3 50l7-9 7 9-7 9z M357 50l-7-9-7 9 7 9z M60 3l6 5-6 5-6-5z M300 3l6 5-6 5-6-5z M60 97l6-5-6-5-6 5z M300 97l6-5-6-5-6 5z" class="dm"/></svg>
     <div class="q-shead-in"><small>${t(sm[7]==="M"?"mk":"md")} · ${NUM(sm[6])} ${t("ayat")}</small><div class="q-sname" lang="ar" dir="rtl">سُورَةُ ${sm[1]}</div><small>${esc(sName(sm))}${sMean(sm)&&sMean(sm)!==sName(sm)?" — "+esc(sMean(sm)):""}</small></div></header>`;
   const strip=(s!==1&&s!==9&&d.ar[0].startsWith(bis+" "));
-  if(strip) h+=`<div class="q-bis" lang="ar" dir="rtl">${bis}</div>`;
+  const TJ=tjOnFor("ayah")?(TJD[s]||null):null, tj1=TJ&&TJD[1]?TJD[1]["1"]:null;
+  if(strip) h+=`<div class="q-bis" lang="ar" dir="rtl">${tj1?tjHTML(bis,tj1,0):bis}</div>`;
+  if(TJ) h+=tjLegend(1);
   const tr=p.tr==="off"?null:d[p.tr];
   const ayahs=d.ar.map((ar,i)=>{ const n=i+1, k=s+":"+n; let pre="";
     if(qStart.has(k)&&!(s===1&&n===1)){ const qi=qStart.get(k), ju=Math.floor(qi/8)+1, hz=Math.floor(qi/4)+1, qq=qi%4;
       pre+=`<div class="q-chip" role="note">${qq===0&&qi%8===0?`${t("juz")} ${NUM(ju)}`:`${t("hizb")} ${NUM(hz)}${qq?" · "+["","¼","½","¾"][qq]:""}`}</div>`; }
     if(pStart.has(k)&&p.layout==="ayah") pre+=`<div class="q-page" aria-hidden="true"><span>${t("page")} ${NUM(pStart.get(k))}</span></div>`;
-    const txt=(n===1&&strip)?ar.slice(bis.length+1):ar;
-    return {n,k,pre,txt,tr:tr?tr[i]:null}; });
+    const cut=(n===1&&strip)?bis.length+1:0, txt=ar.slice(cut);
+    return {n,k,pre,txt,tr:tr?tr[i]:null,hx:TJ?tjHTML(txt,TJ[n],cut):esc(txt)}; });
   if(p.layout==="mushaf"){
-    h+=`<div class="q-mushaf" lang="ar" dir="rtl">`+ayahs.map(x=>`${x.pre?`<span class="q-inl">${x.pre.replace(/<\/?div[^>]*>/g,"")}</span> `:""}<span class="q-ay${bm.has(x.k)?" bm":""}" id="qa-${x.k.replace(":","-")}" data-k="${x.k}" tabindex="0">${esc(x.txt)}${sj.has(x.k)?" ۩":""}</span> <span class="q-end" data-k="${x.k}">\u06DD${AD(x.n)}</span> `).join("")+`</div>`;
+    h+=`<div class="q-mushaf" lang="ar" dir="rtl">`+ayahs.map(x=>`${x.pre?`<span class="q-inl">${x.pre.replace(/<\/?div[^>]*>/g,"")}</span> `:""}<span class="q-ay${bm.has(x.k)?" bm":""}" id="qa-${x.k.replace(":","-")}" data-k="${x.k}" tabindex="0">${x.hx}${sj.has(x.k)&&!x.txt.includes("۩")?" ۩":""}</span> <span class="q-end" data-k="${x.k}">\u06DD${AD(x.n)}</span> `).join("")+`</div>`;
     if(tr) h+=`<details class="q-trall"><summary>${t("tr")}</summary>${ayahs.map(x=>`<p><b>${NUM(x.n)}.</b> ${esc(x.tr)}</p>`).join("")}</details>`;
   } else {
     h+=ayahs.map(x=>`${x.pre}<article class="q-a${bm.has(x.k)?" bm":""}" id="qa-${x.k.replace(":","-")}" data-k="${x.k}" tabindex="0" aria-label="${t("verse")} ${x.n}">
-      <div class="q-ar" lang="ar" dir="rtl">${esc(x.txt)} <span class="q-end">\u06DD${AD(x.n)}</span></div>
+      <div class="q-ar" lang="ar" dir="rtl">${x.hx} <span class="q-end">\u06DD${AD(x.n)}</span></div>
       ${x.tr?`<p class="q-tr" lang="${p.tr}"><span class="q-n">${x.n}</span>${esc(x.tr)}</p>`:""}${sj.has(x.k)?`<div class="q-sj">۩ ${t("sajda")}</div>`:""}</article>`).join("");
   }
   h+=`<div class="q-endsec">
     <div class="q-nav">${s>1?`<button class="btn" type="button" data-open="${s-1}:1">→ ${esc(sName(S(s-1)))}</button>`:"<span></span>"}${s<114?`<button class="btn gold" type="button" data-open="${s+1}:1">${esc(sName(S(s+1)))} ←</button>`:""}</div>
     <p class="dim q-attr">${t("attr")}</p></div>`;
   body.innerHTML=h; obs(); }
+
+/* ---------- t54: Mushaf (halaman Madinah 604) ---------- */
+const pgRange=n=>{ const st=META.p[n-1], en=n<604?META.p[n]:null; const lastS=en?(en[1]===1?en[0]-1:en[0]):114; return {st,en,lastS}; };
+const ORN=`<svg class="qm-rose" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2l5 8.5 9.5-2.5-2.5 9.5L40 20l-8 3.5 2.5 9.5-9.5-2.5L20 38l-5-7.5-9.5 2.5 2.5-9.5L0 20l8-3.5-2.5-9.5 9.5 2.5z"/><circle cx="20" cy="20" r="6"/></svg>`;
+async function openPage(n,opts){ opts=opts||{}; n=Math.max(1,Math.min(604,Math.round(+n)||1)); const r=$("#qReader"); if(!r) return;
+  if(location.hash!=="#quran" && window.go) window.go("quran");
+  await loadMeta(); vmode="page"; pgCur=n; $("#qIndex").hidden=true; r.hidden=false; applyPref(); updMode(); if(io) io.disconnect();
+  const {st,lastS}=pgRange(n), body=$("#qBody");
+  $("#qTitle").textContent=sName(S(st[0])); $("#qSub").textContent=`${t("pageN")} ${NUM(n)} · ${t("juz")} ${NUM(juzOf(st[0],st[1]))}`;
+  if(!pgData||pgData.n!==n) body.innerHTML=`<p class="dim q-load">${t("loading")}</p>`;
+  const ss=[]; for(let s=st[0];s<=lastS;s++) ss.push(s);
+  try{ await Promise.all(ss.map(loadS)); if(tjOnFor("page")) await Promise.all(ss.concat([1]).map(loadTJ)); }catch(e){ if(pgCur!==n) return; body.innerHTML=`<div class="q-err"><p>${t("offline")}</p><button class="btn gold" type="button" id="qRetry">${t("retry")}</button></div>`; $("#qRetry").onclick=()=>openPage(n,opts); return; }
+  if(pgCur!==n||vmode!=="page") return;
+  pgData={n,ss}; cur={s:st[0],d:SD[st[0]]}; renderPage();
+  const vw=$("#view")||document.scrollingElement; vw.scrollTop=0;
+  if(!opts.noSave){ saveLast(st[0],st[1]); store.set("rk_q_lastpg",n); } }
+function renderPage(){ if(!pgData) return; const n=pgData.n, {st,en,lastS}=pgRange(n), body=$("#qBody"), bis=META.bis;
+  const bm=new Set(store.get("rk_q_bm",[]).map(b=>b.s+":"+b.a)), sj=new Set(META.sj.map(x=>x[0]+":"+x[1])), qS=new Set(META.q.map(x=>x[0]+":"+x[1]));
+  const hz=hizbOf(st[0],st[1]), ju=juzOf(st[0],st[1]), TJon=tjOnFor("page"), tj1=TJon&&TJD[1]?TJD[1]["1"]:null;
+  let h=`<div class="qm${n<=2?" qm-first":""}" id="qmPage" data-page="${n}">
+   <div class="qm-hd"><span class="qm-hs"><b>${esc(sName(S(st[0])))}</b>${lastS>st[0]?` – ${esc(sName(S(lastS)))}`:""}</span><span class="qm-hj">${t("juz")} ${NUM(ju)}, ${t("hizbN")} ${NUM(hz)}</span></div>
+   <div class="qm-frame${n<=2?" qm-orn":""}"><div class="qm-in" lang="ar" dir="rtl">`;
+  for(let s=st[0];s<=lastS;s++){ const d=SD[s], sm=S(s); const a0=s===st[0]?st[1]:1, a1=(en&&en[0]===s)?en[1]-1:sm[6];
+    if(a0===1){ h+=`<div class="qm-sh" data-s="${s}">${ORN}<span>سُورَةُ ${sm[1]}</span>${ORN}</div>`; if(s!==1&&s!==9) h+=`<div class="qm-bis">${tj1?tjHTML(bis,tj1,0):esc(bis)}</div>`; }
+    h+=`<div class="qm-tx">`;
+    const TJs=TJon?TJD[s]:null;
+    for(let a=a0;a<=a1;a++){ const k=s+":"+a; let tx=d.ar[a-1], cut=0; if(a===1&&s!==1&&s!==9&&tx.startsWith(bis+" ")){ cut=bis.length+1; tx=tx.slice(cut); }
+      h+=`${qS.has(k)&&k!=="1:1"&&!tx.startsWith("۞")?`<span class="qm-hz" aria-hidden="true">۞</span> `:""}<span class="q-ay${bm.has(k)?" bm":""}" id="qa-${s}-${a}" data-k="${k}" tabindex="0">${TJs?tjHTML(tx,TJs[a],cut):esc(tx)}${sj.has(k)&&!tx.includes("۩")?" ۩":""}</span> <span class="q-end" data-k="${k}">\u06DD${AD(a)}</span> `; }
+    h+=`</div>`; }
+  h+=`</div>${TJon?tjLegend():""}</div>${TJon?"":tjLegend()}<div class="qm-ft" aria-label="${t("pageN")} ${n}">${NUM(n)}</div>
+   <div class="qm-nav" dir="ltr">${n<604?`<button class="btn gold" type="button" data-qpg="${n+1}" id="qmNext" aria-label="${t("nextPg")}">← ${t("page")} ${NUM(n+1)}</button>`:"<span></span>"}<small class="dim">${t("swipe")}</small>${n>1?`<button class="btn" type="button" data-qpg="${n-1}" id="qmPrev" aria-label="${t("prevPg")}">${t("page")} ${NUM(n-1)} →</button>`:"<span></span>"}</div>
+   <p class="dim q-attr">${t("mushafNote")}<br>${t("attr")}</p></div>`;
+  body.innerHTML=h; }
+function toggleView(){ if(!META) return; if(vmode==="page"){ const {st}=pgRange(pgCur||1); setPref({view:"ayah"}); open(st[0],st[1]); }
+  else { const k=seen||(cur?{s:cur.s,a:1}:{s:1,a:1}); setPref({view:"page"}); openPage(pageOf(k.s,k.a)); } }
+function rerender(){ if(vmode==="page") renderPage(); else if(cur) render(); }
 let io=null;
 function obs(){ if(io) io.disconnect(); if(!("IntersectionObserver" in window)) return;
-  io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ const k=e.target.dataset.k; if(!k) return; const [s,a]=k.split(":").map(Number); clearTimeout(saveT); saveT=setTimeout(()=>saveLast(s,a),700); const pg=$("#qProg"); if(pg&&cur) pg.style.width=(100*a/S(s)[6])+"%"; } }); },{rootMargin:"-30% 0px -60% 0px"});
+  io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting&&vmode==="ayah"){ const k=e.target.dataset.k; if(!k) return; const [s,a]=k.split(":").map(Number); updInfo(s,a); clearTimeout(saveT); saveT=setTimeout(()=>saveLast(s,a),700); const pg=$("#qProg"); if(pg&&cur) pg.style.width=(100*a/S(s)[6])+"%"; } }); },{rootMargin:"-30% 0px -60% 0px"});
   $$("#qBody [data-k].q-a, #qBody span.q-ay").forEach(el=>io.observe(el)); }
-function saveLast(s,a){ store.set("rk_q_last",{s,a,ts:Date.now()}); }
-function close(){ const r=$("#qReader"); if(r) r.hidden=true; $("#qIndex").hidden=false; if(io) io.disconnect(); cur=null; renderList(); const vw=$("#view"); if(vw) vw.scrollTop=0; }
+function saveLast(s,a){ store.set("rk_q_last",{s,a,ts:Date.now()});
+  try{ const H=store.get("rk_q_hist",[]).filter(h=>h&&h.s!==s); H.unshift({s,a,ts:Date.now()}); store.set("rk_q_hist",H.slice(0,8)); }catch(e){} }
+function close(){ const r=$("#qReader"); if(r) r.hidden=true; $("#qIndex").hidden=false; if(io) io.disconnect(); cur=null; pgCur=null; pgData=null; renderList(); const vw=$("#view"); if(vw) vw.scrollTop=0; }
 function sheet(html){ $("#qSheetBody").innerHTML=html; $("#qSheet").hidden=false; requestAnimationFrame(()=>$("#qSheet").classList.add("on")); }
 function unsheet(){ const s=$("#qSheet"); s.classList.remove("on"); s.hidden=true; }
 const seg=(name,opts,val)=>`<div class="v2-seg q-seg" data-pref="${name}">${opts.map(([v,l])=>`<button type="button" data-v2="${v}" class="${String(val)===String(v)?"on":""}">${l}</button>`).join("")}</div>`;
@@ -4617,14 +4800,15 @@ function settings(){ const p=pref();
    <label class="q-lbl">${t("size")} <span id="qSzV">${p.size}</span></label><div class="q-szrow"><span lang="ar" style="font-size:18px">ب</span><input type="range" min="22" max="48" step="2" value="${p.size}" id="qSz" aria-label="${t("size")}"><span lang="ar" style="font-size:30px">ب</span></div>
    <div class="q-lbl">${t("tr")}</div>${seg("tr",[["id","Indonesia"],["en","English"],["off",t("off")]],p.tr)}
    <div class="q-lbl">${t("mode")}</div>${seg("mode",[["night","☾ "+t("night")],["sepia",t("sepia")],["light","☀ "+t("light")]],p.mode)}
-   <div class="q-lbl">${t("layout")}</div>${seg("layout",[["ayah",t("perAyah")],["mushaf",t("mushaf")]],p.layout)}`);
+   <div class="q-lbl">${t("layout")}</div>${seg("layout",[["ayah",t("perAyah")],["mushaf",t("mushaf")]],p.layout)}
+   <div class="q-lbl">${t("tjT")}</div>${seg("tj",[["page",t("tjPage")],["all",t("tjAll")],["off",t("tjOff")]],tjMode())}`);
   $("#qSz").oninput=e=>{ setPref({size:+e.target.value}); $("#qSzV").textContent=e.target.value; applyPref(); }; }
 function ayahSheet(k){ const [s,a]=k.split(":").map(Number), sm=S(s), bm=store.get("rk_q_bm",[]), has=bm.some(b=>b.s===s&&b.a===a);
-  const ar=cur.d.ar[a-1], p=pref(), tr=cur.d[p.tr==="off"?(lang()==="en"?"en":"id"):p.tr][a-1];
-  sheet(`<h3>${esc(sName(sm))} · ${t("verse")} ${NUM(a)}</h3><div class="q-sheet-ar" lang="ar" dir="rtl">${esc(ar)}</div>
+  const d=SD[s]||cur.d, ar=d.ar[a-1], p=pref(), tr=d[p.tr==="off"?(lang()==="en"?"en":"id"):p.tr][a-1];
+  sheet(`<h3>${esc(sName(sm))} · ${t("verse")} ${NUM(a)}</h3><p class="dim q-pos">${posTxt(s,a)}</p><div class="q-sheet-ar" lang="ar" dir="rtl">${esc(ar)}</div>${vmode==="page"&&tr?`<p class="q-sheet-tr">${esc(tr)}</p>`:""}
    <div class="q-acts"><button class="btn" type="button" id="qCopy">⧉ ${t("copy")}</button><button class="btn ${has?"":"gold"}" type="button" id="qMark">🔖 ${t(has?"unmark":"mark")}</button><button class="btn ghost" type="button" id="qLast">✓ ${t("setLast")}</button></div>`);
   $("#qCopy").onclick=async()=>{ const txt=`${ar}\n\n${tr}\n(QS. ${sm[2]} ${s}:${a})\n— Teks: Tanzil.net`; try{ await navigator.clipboard.writeText(txt); }catch(e){ const ta=document.createElement("textarea"); ta.value=txt; document.body.appendChild(ta); ta.select(); try{document.execCommand("copy");}catch(_){} ta.remove(); } toast(t("copied")); unsheet(); };
-  $("#qMark").onclick=()=>{ let b=store.get("rk_q_bm",[]); if(has) b=b.filter(x=>!(x.s===s&&x.a===a)); else b.push({s,a,ts:Date.now()}); store.set("rk_q_bm",b); toast(t(has?"saved":"marked")); unsheet(); render(); };
+  $("#qMark").onclick=()=>{ let b=store.get("rk_q_bm",[]); if(has) b=b.filter(x=>!(x.s===s&&x.a===a)); else b.push({s,a,ts:Date.now()}); store.set("rk_q_bm",b); toast(t(has?"saved":"marked")); unsheet(); rerender(); };
   $("#qLast").onclick=()=>{ saveLast(s,a); toast(t("saved")); unsheet(); }; }
 
 /* ---------- Beranda card ---------- */
@@ -4633,22 +4817,32 @@ function berandaCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let 
   loadMeta().then(()=>{ c.innerHTML=`<div class="row v2-sb"><div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm ghost" type="button" data-qgo="1">${t("tSurah")} →</button></div>${contCard()}`; }).catch(()=>{ c.innerHTML=`<div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm gold" type="button" data-qgo="1">${t("open")}</button>`; }); }
 
 function init(){ if(!$("#page-quran")) return; const sh=$("#qSheet"); if(sh) document.body.appendChild(sh); applyT();
-  document.addEventListener("click",e=>{ const o=e.target.closest("[data-open]"); if(o&&(o.closest("#page-quran")||o.closest("#qHomeCard"))){ const [s,a]=o.dataset.open.split(":"); unsheet(); open(s,a,o.dataset.hl?{flash:1,noSave:1}:undefined); return; }
+  document.addEventListener("click",e=>{ const o=e.target.closest("[data-open]"); if(o&&(o.closest("#page-quran")||o.closest("#qHomeCard"))){ const [s,a]=o.dataset.open.split(":"); unsheet(); open(s,a,o.dataset.hl?{flash:1,noSave:1}:{auto:!!o.dataset.auto}); return; }
+    const pb=e.target.closest("[data-qpg]"); if(pb&&pb.closest("#page-quran")){ unsheet(); setPref({view:"page"}); openPage(+pb.dataset.qpg); return; }
     if(e.target.closest("[data-qgo]")){ window.go&&window.go("quran"); return; }
-    const sg=e.target.closest(".q-seg [data-v2]"); if(sg){ const nm=sg.parentNode.dataset.pref; setPref({[nm]:sg.dataset.v2}); sg.parentNode.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b===sg)); applyPref(); if(cur&&(nm==="tr"||nm==="layout")) render(); return; }
+    const sg=e.target.closest(".q-seg [data-v2]"); if(sg){ const nm=sg.parentNode.dataset.pref; setPref({[nm]:sg.dataset.v2}); sg.parentNode.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b===sg)); applyPref(); if(cur&&(nm==="tr"||nm==="layout")) rerender(); if(nm==="tj") tjReload(); return; }
+    if(e.target.closest("#page-quran [data-tjinfo]")){ tjSheet(); return; }
+    if(e.target.closest("#page-quran [data-tjtog]")){ tjToggle(); return; }
     const ay=e.target.closest("#qBody .q-a, #qBody .q-ay, #qBody .q-end"); if(ay&&cur&&!window.getSelection().toString()){ ayahSheet(ay.dataset.k); } });
-  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("#qSheet").hidden) unsheet(); else if(e.key==="Enter"){ const ay=e.target.closest&&e.target.closest("#qBody [data-k]"); if(ay) ayahSheet(ay.dataset.k); } });
-  $("#qBack").onclick=close; $("#qAa").onclick=settings; $("#qSheetX").onclick=unsheet; $("#qSheet").addEventListener("click",e=>{ if(e.target.id==="qSheet") unsheet(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("#qSheet").hidden) unsheet();
+    else if((e.key==="ArrowLeft"||e.key==="ArrowRight")&&vmode==="page"&&pgCur&&!$("#qReader").hidden&&$("#qSheet").hidden&&!/INPUT|TEXTAREA|SELECT/.test((e.target&&e.target.tagName)||"")){ const n=pgCur+(e.key==="ArrowLeft"?1:-1); if(n>=1&&n<=604){ e.preventDefault(); openPage(n); } }
+    else if(e.key==="Enter"){ const ay=e.target.closest&&e.target.closest("#qBody [data-k]"); if(ay) ayahSheet(ay.dataset.k); } });
+  $("#qBack").onclick=close; $("#qAa").onclick=settings; $("#qView").onclick=toggleView; updMode();
+  /* t54: geser halaman mushaf (RTL: geser ke kanan = halaman berikutnya) */
+  { let x0=null,y0=0,t0=0; const qb=$("#qBody");
+    qb.addEventListener("touchstart",e=>{ if(vmode!=="page"||e.touches.length!==1){ x0=null; return; } x0=e.touches[0].clientX; y0=e.touches[0].clientY; t0=Date.now(); },{passive:true});
+    qb.addEventListener("touchend",e=>{ if(x0==null||vmode!=="page"||!pgCur) return; const c=e.changedTouches[0], dx=c.clientX-x0, dy=c.clientY-y0; x0=null;
+      if(Math.abs(dx)>60&&Math.abs(dx)>1.6*Math.abs(dy)&&Date.now()-t0<900){ const n=pgCur+(dx>0?1:-1); if(n>=1&&n<=604) openPage(n); } },{passive:true}); } $("#qSheetX").onclick=unsheet; $("#qSheet").addEventListener("click",e=>{ if(e.target.id==="qSheet") unsheet(); });
   $("#qSearch").addEventListener("input",()=>{ clearTimeout(renderList.t); renderList.t=setTimeout(renderList,220); });
   $("#qTabs").addEventListener("click",e=>{ const b=e.target.closest("[data-t]"); if(!b) return; tab=b.dataset.t; $$("#qTabs button").forEach(x=>x.classList.toggle("on",x===b)); renderList(); });
   loadMeta().then(renderList).catch(()=>{ $("#qList").innerHTML=`<p class="dim">${t("offline")}</p>`; });
   berandaCard();
-  document.addEventListener("rk:lang",()=>setTimeout(()=>{ applyT(); renderList(); berandaCard(); if(cur&&!$("#qReader").hidden){ const sm=S(cur.s); $("#qTitle").textContent=sName(sm); render(); } },0));
+  document.addEventListener("rk:lang",()=>setTimeout(()=>{ applyT(); renderList(); berandaCard(); if(cur&&!$("#qReader").hidden){ if(vmode==="page"&&pgCur) openPage(pgCur,{noSave:1}); else { const sm=S(cur.s); $("#qTitle").textContent=sName(sm); render(); if(seen) updInfo(seen.s,seen.a); } } updMode(); },0));
   $$("#nav button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.p==="beranda") berandaCard(); if(b.dataset.p==="quran"&&cur) close(); }));
   const _go=window.go; if(_go) window.go=function(p){ _go(p); if(p==="beranda") berandaCard(); if(p==="quran") renderList(); };
   window.addEventListener("hashchange",()=>{ if(location.hash==="#beranda") berandaCard(); });
 }
-window.RKQuran={open,close,settings,renderList,berandaCard,get cur(){return cur;}};
+window.RKQuran={open,close,tjSheet,tjToggle,get tj(){return tjMode();},settings,renderList,berandaCard,openPage,toggleView,get cur(){return cur;},get view(){return vmode;},get page(){return pgCur;},pos:(s,a)=>META?{juz:juzOf(s,a),hizb:hizbOf(s,a),page:pageOf(s,a),ruku:rukuOf(s,a)}:null};
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
 })();
 
@@ -4868,14 +5062,14 @@ function sClose(){ $("#sReader").hidden=true; $("#sIndex").hidden=false; sList()
 /* Tampilan Pustaka: "home" (3 ikon + program) | "q" | "h" | "s". Riwayat browser/Android: masuk sub-tampilan = pushState, tombol Kembali = history.back(). */
 const VW=()=>{ const pg=$("#page-quran"); return (pg&&pg.dataset.pk)||"home"; };
 const qOn=()=>{ const pg=$("#page-quran"); return !!(pg&&pg.classList.contains("on")); };
-function hpush(st){ try{ const s=history.state; if(s&&s.pk) history.replaceState(st,"",location.href); else history.pushState(st,"",location.href); }catch(e){} }
+function hpush(st){ /* t55: riwayat kini dikelola global oleh src/back/back.js */ }
 function closeReaders(){ const q=$("#qReader"); if(q&&!q.hidden){ try{ window.RKQuran&&window.RKQuran.close(); }catch(e){} } if($("#hReader")&&!$("#hReader").hidden) hClose(); if($("#sReader")&&!$("#sReader").hidden) sClose(); }
 function setTab(x,o){ o=o||{}; const pg=$("#page-quran"); if(!pg) return; if(!["home","q","h","s"].includes(x)) x="home"; const prev=pg.dataset.pk;
   if(x==="home"){ pmEnd(); closeReaders(); }
   pg.dataset.pk=x; if(x==="home") pRender(); if(x==="h") hList(); if(x==="s") sList();
   if(x!=="home"&&o.push!==false) hpush({pk:x,pm:o.pm?1:0});
   if(prev!==x){ const vw=$("#view"); if(vw) vw.scrollTop=0; } }
-function pkBack(){ const s=history.state; if(s&&s.pk){ try{ history.back(); return; }catch(e){} } setTab("home",{push:false}); }
+function pkBack(){ setTab("home",{push:false}); }
 
 /* ---------- Mode Program: pembaca dibuka dari tugas Tahap 2 (centang otomatis + manual) ---------- */
 const PMCFG={a:20000,h:30000,s:60000};
@@ -5139,15 +5333,10 @@ function init(){ inject(); if(!$("#pkHome")) return;
   $("#pkHome").addEventListener("click",e=>{ const b=e.target.closest("[data-pk]"); if(b) setTab(b.dataset.pk); });
   $("#pkBack").addEventListener("click",e=>{ if(e.target.closest("[data-pkback]")) pkBack(); });
   /* tombol ← di pembaca: dalam mode program kembali ke program; selain itu ikut riwayat bila ada */
-  document.addEventListener("click",e=>{ const b=e.target.closest("#qBack,#hBack,#sBack"); if(!b) return; const s=history.state;
-    if(PM){ e.stopPropagation(); e.preventDefault(); pmEnd(); pkBack(); return; }
-    if(s&&s.r){ e.stopPropagation(); e.preventDefault(); try{ history.back(); }catch(_){} } },true);
-  window.addEventListener("popstate",()=>{ if(!qOn()) return; const s=history.state;
-    if(!s||!s.pk){ if(VW()!=="home") setTab("home",{push:false}); return; }
-    if(!s.r){ pmEnd(); closeReaders(); setTab(s.pk,{push:false}); } });
+  document.addEventListener("click",e=>{ const b=e.target.closest("#qBack,#hBack,#sBack"); if(!b) return; 
+    if(PM){ e.stopPropagation(); e.preventDefault(); pmEnd(); pkBack(); return; } },true);
   const RV={qReader:"q",hReader:"h",sReader:"s"};
-  new MutationObserver(ms=>{ ms.forEach(m=>{ const el=m.target, k=RV[el.id]; if(!k||el.hidden||m.oldValue===null) return; const pg=$("#page-quran"); if(pg.dataset.pk!==k) pg.dataset.pk=k;
-    if(PM) return; const s=history.state; if(!(s&&s.r)){ try{ history.pushState({pk:k,r:1},"",location.href); }catch(e){} } }); }).observe($("#page-quran"),{attributes:true,attributeFilter:["hidden"],attributeOldValue:true,subtree:true});
+  new MutationObserver(ms=>{ ms.forEach(m=>{ const el=m.target, k=RV[el.id]; if(!k||el.hidden||m.oldValue===null) return; const pg=$("#page-quran"); if(pg.dataset.pk!==k) pg.dataset.pk=k; }); }).observe($("#page-quran"),{attributes:true,attributeFilter:["hidden"],attributeOldValue:true,subtree:true});
   $("#hTabs").addEventListener("click",e=>{ const b=e.target.closest("[data-t]"); if(!b) return; H.tab=b.dataset.t; $$("#hTabs button").forEach(x=>x.classList.toggle("on",x===b)); hList(); });
   $("#hSearch").addEventListener("input",()=>{ clearTimeout(hList.t); hList.t=setTimeout(hList,250); });
   $("#hBack").onclick=hClose; $("#sBack").onclick=sClose;
@@ -7073,7 +7262,7 @@ function checkReturn(){ if(!vis()) return; const now=Date.now();
   if(el>=ADHAN_MS&&el<LATE&&!seen()[key]&&!(pend&&pend.key===key)&&azVoice()!=="silent"){ show({key,n,time:fmtT(tm[n])}); return; } } }
 const fmtT=d=>{ try{ return d.toLocaleTimeString(lg()==="ar"?"ar-SA-u-nu-latn":({id:"id-ID",en:"en-GB"})[lg()],{hour:"2-digit",minute:"2-digit",hour12:false}); }catch(e){ return ""; } };
 function fromUrl(){ const q=new URLSearchParams(location.search), k=q.get("doa-azan"); const h=location.hash==="#doa-azan";
- if(k==null&&!h) return false; try{ history.replaceState(null,"",location.pathname+"#beranda"); }catch(e){}
+ if(k==null&&!h) return false; try{ history.replaceState(history.state,"",location.pathname+"#beranda"); }catch(e){}
  const n=(k||"").replace(/^\d{4}-\d\d-\d\d/,""); show({key:k||"",n:PN[n]?n:"",time:""}); return true; }
 const URL0=location.search+location.hash;
 /* ---------- Notification Triggers API (eksperimental; hanya jika browser mendukung) ---------- */
@@ -7100,7 +7289,7 @@ window.RKDoaAzan={take,started,ended,blocked,show,hide,tick,cfg,checkReturn,prep
  _state:()=>({pend,returnPopup}),_fire:fire,ADHAN_MS};
 function init(){ swInit(); settings();
  const q=new URLSearchParams(URL0.split("#")[0]); const fromTap=q.get("doa-azan")!=null||URL0.endsWith("#doa-azan");
- if(fromTap){ const k=q.get("doa-azan")||""; try{ history.replaceState(null,"",location.pathname+"#beranda"); }catch(e){} const n=k.replace(/^\d{4}-\d\d-\d\d/,""); setTimeout(()=>show({key:k,n:PN[n]?n:"",time:""}),400); }
+ if(fromTap){ const k=q.get("doa-azan")||""; try{ history.replaceState(history.state,"",location.pathname+"#beranda"); }catch(e){} const n=k.replace(/^\d{4}-\d\d-\d\d/,""); setTimeout(()=>show({key:k,n:PN[n]?n:"",time:""}),400); }
  else setTimeout(checkReturn,1500);
  setInterval(tick,5000);
  document.addEventListener("visibilitychange",()=>{ if(vis()){ tick(); checkReturn(); } else scheduleTriggers(); });
@@ -7229,3 +7418,73 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",boo
 
 </script>
 <!-- ks-ibadah-v1-prod -->
+<script>
+/* ===== Best Muslim — tombol Kembali Android/peramban (History API) — t55 =====
+   Setiap layar/sub-tampilan/lembar/modal/langkah alur yang terbuka = satu entri riwayat (pushState).
+   Tombol Kembali (popstate) menutup lapisan teratas / kembali ke layar sebelumnya. Hanya di Beranda
+   (tanpa apa pun terbuka) tombol Kembali keluar dari aplikasi. Menutup lewat tombol di UI ikut
+   "mengonsumsi" entri riwayatnya (history.go(-n)) sehingga riwayat tidak menumpuk. Tanpa jaringan. */
+(function(){
+"use strict";
+if(!window.history||!history.pushState) return;
+const $=s=>document.querySelector(s);
+const SID=Math.random().toString(36).slice(2,10);
+const vis=el=>{ if(!el||el.hidden||el.closest("[hidden]")) return false; if(!el.getClientRects().length) return false; const cs=getComputedStyle(el); return cs.display!=="none"&&cs.visibility!=="hidden"; };
+/* sub-tampilan di dalam halaman: [kunci, selektor tombol kembali yang terlihat] (urutan = kedalaman) */
+const SUB=[["pk","#pkBack [data-pkback]"],["q","#qBack"],["h","#hBack"],["s","#sBack"],["hf","#hfBack"],["hq",'#hqRoot .hq-prac [data-hq="home"]'],["bb","#bbBack"]];
+/* lapisan menutupi layar: [kunci, elemen, perlu kelas "on", penutup] */
+const OV=[
+ ["ov","#overlay",1,"#overlayX"],["mur","#murSheet",1,"#murClose"],["flow","#v2Flow",0,"#flX"],["qs","#qSheet",0,"#qSheetX"],
+ ["duo","#duoOv",1,"#duoOv [data-dx]"],["pqs","#pqSheet",0,"#pqSheet [data-pqx]"],["pqc","#pqCel",0,"#pqCelX"],["srs","#srSheet",0,"#srShX"],
+ ["aktk","#akTk",0,"#akTk [data-akx]"],["akqz","#akQz",0,"#akQz [data-qend]"],["akg","#akGame",0,"#akGame [data-gx]"],
+ ["bbs","#bbSheet",0,"#bbSheet [data-bbclose]"],["rks","#rkSheet",0,"#rkSheet [data-rkclose]"],["da","#daPop",0,"#daX"],["ks","#ksSheet",0,"#ksLater"]];
+const curPage=()=>{ const p=document.querySelector(".page.on"); return p?p.id.replace(/^page-/,""):"beranda"; };
+function sig(){ const out=[], pg=curPage();
+  if(pg!=="beranda") out.push("p:"+pg);
+  const P=document.getElementById("page-"+pg);
+  if(P) SUB.forEach(([k,sel])=>{ const b=P.querySelector(sel); if(b&&vis(b)) out.push("v:"+k); });
+  const ovs=[]; OV.forEach(([k,sel,on],i)=>{ const el=$(sel); if(!el||!vis(el)) return; if(on&&!el.classList.contains("on")) return;
+    const z=parseInt(getComputedStyle(el).zIndex,10)||0; ovs.push({k,z,i}); });
+  ovs.sort((a,b)=>a.z-b.z||a.i-b.i).forEach(o=>{ out.push("o:"+o.k);
+    if(o.k==="flow"){ const m=/^(\d+)\//.exec((($("#flCount")||{}).textContent||"").trim()); const n=m?+m[1]:1; for(let j=2;j<=n;j++) out.push("fs:"+j); } });
+  return out; }
+const eq=(a,b)=>a.length===b.length&&a.every((x,i)=>x===b[i]);
+const pageIn=g=>{ const p=g.find(x=>x.startsWith("p:")); return p?p.slice(2):"beranda"; };
+const url=g=>location.pathname+location.search+"#"+pageIn(g);
+let expT=0, S=[[]], d=0, restoring=false, expect=null, tmr=null, ready=false;
+function closeKey(k){ try{
+  if(k.startsWith("fs:")){ const b=$("#flPrev"); if(b) b.click(); return; }
+  if(k.startsWith("o:")){ const o=OV.find(x=>x[0]===k.slice(2)); if(!o) return; const el=$(o[1]); if(!el) return; const c=$(o[3]);
+    if(c){ c.click(); } else if(o[0]==="akqz"){ el.remove(); } else { el.click(); }
+    if(vis(el)&&(!o[2]||el.classList.contains("on"))&&o[0]!=="duo"){ document.dispatchEvent(new KeyboardEvent("keydown",{key:"Escape",bubbles:true})); }
+    return; }
+  if(k.startsWith("v:")){ const sb=SUB.find(x=>x[0]===k.slice(2)); const P=document.getElementById("page-"+curPage()); const b=P&&P.querySelector(sb[1]); if(b&&vis(b)) b.click(); return; }
+ }catch(e){} }
+function restore(T){ const C=sig(); let cp=0; while(cp<C.length&&cp<T.length&&C[cp]===T[cp]) cp++;
+  for(let i=C.length-1;i>=cp;i--){ if(!C[i].startsWith("p:")) closeKey(C[i]); }
+  const want=pageIn(T); if(curPage()!==want&&window.go) window.go(want); }
+function sync(){ tmr=null; if(!ready||restoring) return; const N=sig(); if(eq(N,S[d])) return;
+  let k=-1; for(let j=d-1;j>=0;j--) if(eq(S[j],N)){ k=j; break; }
+  if(k>=0){ expect=k; expT=Date.now(); const n=d-k; d=k; try{ history.go(-n); }catch(e){} return; }
+  if(expect!=null){ if(Date.now()-expT<1500) return; expect=null; } /* menunggu popstate yang diharapkan */
+  try{ history.replaceState({rkb:d,sid:SID},"",url(S[d])); }catch(e){}
+  d++; S.length=d; S[d]=N; try{ history.pushState({rkb:d,sid:SID},"",url(N)); }catch(e){} }
+const kick=()=>{ if(!tmr) tmr=setTimeout(sync,80); };
+window.addEventListener("popstate",e=>{ const st=e.state; if(!ready) return;
+  if(st&&st.sid===SID&&typeof st.rkb==="number"){ const k=Math.min(st.rkb,S.length-1);
+    if(expect!=null&&k===expect){ expect=null; d=k; kick(); return; }
+    if(k>d&&expect==null){ /* "Maju" tidak didukung (Android tidak punya): kembali ke posisi semula */ expect=d; expT=Date.now(); try{ history.go(d-k); }catch(_){} return; }
+    expect=null; d=k; restoring=true; restore(S[k]||[]);
+    setTimeout(()=>{ restore(S[k]||[]); setTimeout(()=>{ restoring=false; kick(); },160); },140); return; }
+  /* entri asing: hash manual (#...) atau riwayat sebelum muat ulang */
+  if(!st){ const N=sig(); d++; S.length=d; S[d]=N; try{ history.replaceState({rkb:d,sid:SID},"",location.href); }catch(_){} return; }
+  if(eq(sig(),[])){ try{ history.back(); }catch(_){} return; }
+  d=0; restoring=true; restore([]); setTimeout(()=>{ restoring=false; try{ history.replaceState({rkb:0,sid:SID},"",url([])); }catch(_){} S=[[]]; kick(); },300); });
+function init(){ const N=sig(); S=[N]; d=0; try{ history.replaceState({rkb:0,sid:SID},"",location.href); }catch(e){} ready=true;
+  if(N.length){ /* awal selalu Beranda (t45); bila sesuatu sudah terbuka (mis. popup doa azan), dasar = Beranda */ S=[[]]; try{ history.pushState({rkb:1,sid:SID},"",location.href); }catch(e){} S[1]=N; d=1; }
+  new MutationObserver(kick).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:["class","hidden","style","data-pk","data-view","open"]}); }
+window.RKBack={get depth(){return d;}, get stack(){return S.map(x=>x.slice());}, sig, sync:()=>sync()};
+if(document.readyState==="complete") setTimeout(init,0); else window.addEventListener("load",()=>setTimeout(init,0));
+})();
+
+</script>
