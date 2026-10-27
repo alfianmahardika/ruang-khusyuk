@@ -36,7 +36,13 @@ text above, unchanged (split per surah; JSON field "ar"), plus:
   needs permission from the translator/publisher (Kemenag / LPMQ).
 - "en": English translation by Mohammed Marmaduke Pickthall (1930),
   public domain, text as distributed by Tanzil (en.pickthall).
-- meta.json: surah/juz/hizb/page/sajdah metadata from Tanzil
-  quran-data.xml; Indonesian surah names/meanings written by Kusyu.
+- meta.json: surah/juz/hizb/page/ruku/sajdah metadata from Tanzil
+  Quran Metadata (quran-data.xml v1.0, (C) Tanzil Project, CC BY 3.0,
+  https://tanzil.net/docs/quran_metadata); page boundaries follow the
+  Madinah mushaf (604 pages). Indonesian surah names/meanings written
+  by Best Muslim.
 Font: fonts/AmiriQuran.woff2 = Amiri Quran 1.000 (aliftype/amiri),
 SIL Open Font License 1.1 (fonts/OFL-AmiriQuran.txt), WOFF2 conversion only.
+
+Tajweed colour annotations (quran/tj/*.json): cpfair/quran-tajweed, CC BY 4.0 (https://github.com/cpfair/quran-tajweed),
+re-mapped onto this Tanzil Uthmani 1.1 text by Best Muslim (60,023/60,057 mapped; 34 dropped). See LICENSE-tajweed.txt.

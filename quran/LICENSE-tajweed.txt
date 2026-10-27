@@ -1,0 +1,11 @@
+Tajweed annotations (data/tj/NNN.json)
+Source: cpfair/quran-tajweed — https://github.com/cpfair/quran-tajweed
+License: Creative Commons Attribution 4.0 International (CC BY 4.0) — https://creativecommons.org/licenses/by/4.0/
+Original annotations: Unicode code-point offsets into the Tanzil.net Uthmani text (copy of ca. April 2017).
+Changes by Best Muslim: offsets re-mapped (character diff) onto the bundled Tanzil Uthmani 1.1 text; rule names
+encoded as one-letter codes and offsets delta-encoded for size (60,023 of 60,057 annotations mapped exactly;
+34 dropped where the underlying characters changed between Tanzil versions). Script: tools/tajweed_align.py.
+Codes: w hamzat al-wasl, l lam shamsiyyah, s silent, a madd 2, b madd 2/4/6, c madd muttasil, d madd munfasil,
+e madd lazim 6, g ghunnah, f ikhfa, h ikhfa shafawi, i idgham with ghunnah, n idgham without ghunnah,
+o idgham shafawi, j idgham mutajanisayn, p idgham mutaqaribayn, q iqlab, k qalqalah.
+Quran text: Tanzil Project (CC BY 3.0), see LICENSE-tanzil.txt.
