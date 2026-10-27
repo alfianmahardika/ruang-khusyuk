@@ -1232,6 +1232,32 @@ html.duo-lock,html.duo-lock body{overflow:hidden}
 [data-theme=pink] .bb-tag{background:rgba(110,74,84,.12);color:#6e4a54}
 
 
+/* ===== Doa setelah azan (popup) ===== */
+.da-ov{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);animation:daFade .25s ease}
+.da-ov[hidden]{display:none}
+@keyframes daFade{from{opacity:0}to{opacity:1}}
+@keyframes daUp{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
+.da-in{width:100%;max-width:560px;max-height:90vh;overflow:auto;background:var(--bg2,#1c150d);color:var(--fg);border-radius:24px 24px 0 0;border-top:1px solid var(--line2,var(--line));padding:18px 18px calc(18px + env(safe-area-inset-bottom));animation:daUp .3s ease}
+.da-hd{display:flex;align-items:center;gap:10px}
+.da-hd .ic{font-size:30px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:var(--glass2);border:1px solid var(--line);flex:none}
+.da-hd h2{font-size:19px;line-height:1.2;margin:0}
+.da-hd small{display:block;color:var(--fg3);font-size:12.5px;margin-top:2px}
+.da-x{margin-inline-start:auto;border:1px solid var(--line);background:transparent;color:var(--fg2);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;flex:none}
+.da-step{margin-top:12px;border:1px solid var(--line);border-radius:16px;padding:12px 13px;background:var(--glass)}
+.da-step .no{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--gold2);text-transform:uppercase}
+.da-step p{font-size:13.5px;line-height:1.55;margin:6px 0 0}
+.da-ar{font-family:var(--font-arab);font-size:25px;line-height:2;text-align:center;color:var(--fg);margin:8px 0 2px}
+.da-ar.sm{font-size:21px}
+.da-tr{font-style:italic;font-size:13.5px;line-height:1.55;color:var(--fg2);text-align:center}
+.da-mn{font-size:14px;line-height:1.6;margin-top:8px}
+.da-src{font-size:12px;color:var(--gold2);font-weight:700;margin-top:8px;text-align:center}
+.da-note{font-size:11.5px;color:var(--fg3);line-height:1.5;margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.da-ok{width:100%;margin-top:14px;padding:13px;justify-content:center}
+.da-set label{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:10px}
+.da-set input{flex:none}
+.da-set .btn{margin-top:10px}
+
+
 .ks-card{margin-top:4px}.ks-streak{font-size:20px;color:#e6c77a}.ks-acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
 .ks-small{font-size:11.5px}.ks-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}.ks-stats div{background:rgba(230,199,122,.08);border-radius:12px;padding:8px 4px;text-align:center}
 .ks-stats b{display:block;font-size:18px;color:#e6c77a}.ks-stats small{font-size:10.5px;opacity:.75}.ks-bonus{font-size:12px;color:#e6c77a;margin-bottom:6px}
@@ -2951,20 +2977,22 @@ const AZ_SRC={makkah:"audio/azan-makkah.mp3",madinah:"audio/azan-madinah.mp3",me
 const azCfg=()=>Object.assign({voice:"makkah",subuh:true},store.get("rk_azan",{}));
 let azAudio=null, azPrev=null;
 function azStop(){ if(azAudio){ azAudio.pause(); azAudio=null; } azPrev=null; $$(".az-play").forEach(b=>{b.classList.remove("on");b.textContent="▶";}); }
-function azPlay(key,btn){ azStop(); const src=AZ_SRC[key]; if(!src) return; azAudio=new Audio(src); azAudio.volume=1; azAudio.onended=azStop;
-  const pr=azAudio.play(); if(pr&&pr.catch) pr.catch(()=>{ msg(t("azBlocked")); azStop(); }); if(btn){ azPrev=key; btn.classList.add("on"); btn.textContent="■"; } }
+function azPlay(key,btn){ azStop(); const src=AZ_SRC[key]; if(!src) return; azAudio=new Audio(src); azAudio.volume=1; const _da=!btn&&window.RKDoaAzan; azAudio.onended=()=>{ azStop(); if(_da) RKDoaAzan.ended(); }; if(_da) RKDoaAzan.started(azAudio);
+  const pr=azAudio.play(); if(pr&&pr.catch) pr.catch(()=>{ msg(t("azBlocked")); azStop(); if(!btn&&window.RKDoaAzan) RKDoaAzan.blocked(); }); if(btn){ azPrev=key; btn.classList.add("on"); btn.textContent="■"; } }
 function azRender(){ const box=$("#azList"); if(!box) return; const c=azCfg();
   box.innerHTML=["makkah","madinah","mesir","turki","notif","silent"].map(k=>`<div class="az-opt${c.voice===k?" on":""}" data-v="${k}" role="radio" aria-checked="${c.voice===k}" tabindex="0"><span>${t("az_"+k)}<small>${t("az_"+k+"S")}</small></span>${AZ_SRC[k]?`<button type="button" class="az-play${azPrev===k?" on":""}" data-prev="${k}" aria-label="Preview">${azPrev===k?"■":"▶"}</button>`:""}</div>`).join("");
   $("#azSubuh").checked=!!c.subuh; const sp=document.querySelector('.az-play[data-prev="subuh"]'); if(sp){ sp.classList.toggle("on",azPrev==="subuh"); sp.textContent=azPrev==="subuh"?"■":"▶"; }
   box.querySelectorAll(".az-opt").forEach(o=>o.onclick=async e=>{ if(e.target.closest(".az-play")) return; const v=o.dataset.v; store.set("rk_azan",Object.assign(azCfg(),{voice:v}));
     if(v!=="silent"&&("Notification" in window)&&Notification.permission==="default"){ try{ await Notification.requestPermission(); }catch(_){} } azRender(); });
   $$(".az-play").forEach(b=>b.onclick=e=>{ e.preventDefault(); e.stopPropagation(); const k=b.dataset.prev; if(azPrev===k) azStop(); else azPlay(k,b); }); }
+window.RKPT={times:d=>times(d),FARD:FARD};
 function tickNotif(){ const tm=times(new Date()); if(!tm) return; const c=azCfg(), now=Date.now();
   for(const n of FARD){ const d=tm[n]-now, id=dkey(new Date())+n; if(d<=0&&d>-120000&&!notified[id]){ notified[id]=1;
     if(c.voice==="silent") continue;
-    if(AZ_SRC[c.voice]&&c.voice!=="subuh") azPlay(n==="fajr"&&c.subuh?"subuh":c.voice);
-    const wantN=c.voice!=="silent"||store.get("rk_pt_notif",false);
-    if(wantN&&("Notification" in window)&&Notification.permission==="granted"){ try{ const nn=new Notification(t("reminder")+" · "+t(n==="asr"?"asr_":n),{body:fmt(tm[n])+" — "+(store.get("rk_loc",{}).name||""),icon:"icon-192.png",tag:id}); nn.onclick=()=>{ window.focus(); azStop(); }; }catch(e){} } } } }
+    const wantN=c.voice!=="silent"||store.get("rk_pt_notif",false), _hasA=!!(AZ_SRC[c.voice]&&c.voice!=="subuh");
+    const _da=window.RKDoaAzan&&RKDoaAzan.take(n,+tm[n],wantN,fmt(tm[n])+" — "+(store.get("rk_loc",{}).name||""),_hasA);
+    if(_hasA) azPlay(n==="fajr"&&c.subuh?"subuh":c.voice);
+    if(!_da&&wantN&&("Notification" in window)&&Notification.permission==="granted"){ try{ const nn=new Notification(t("reminder")+" · "+t(n==="asr"?"asr_":n),{body:fmt(tm[n])+" — "+(store.get("rk_loc",{}).name||""),icon:"icon-192.png",tag:id}); nn.onclick=()=>{ window.focus(); azStop(); }; }catch(e){} } } } }
 function init(){
   const ticks=$("#qbTicks"); if(ticks){ let s=""; for(let a=0;a<360;a+=15){ const L=a%90===0?14:a%45===0?9:5; s+=`<line x1="130" y1="${30}" x2="130" y2="${30+L}" transform="rotate(${a} 130 130)" stroke-width="${a%90===0?2:1}"/>`; } ticks.innerHTML=s; }
   $("#jdGps").onclick=gps; $("#jdManBtn").onclick=()=>{ $("#jdMan").hidden=!$("#jdMan").hidden; };
@@ -5248,6 +5276,174 @@ document.addEventListener("click",e=>{ if(!e.target.closest) return;
 window.KusyuBelanja={render,view:()=>view,open(v){ view=v||"home"; render(); }};
 function init(){ render(); homeRow(); }
 document.addEventListener("DOMContentLoaded",init); if(document.readyState!=="loading") setTimeout(init,0);
+})();
+
+</script>
+<script>
+/* ===== Kusyu — Doa setelah azan (popup + satu notifikasi gabungan) + notifikasi persiapan 10 menit =====
+   Dalil: HR. Bukhari 614 (Jabir bin Abdillah) — doa; HR. Muslim 384 (Abdullah bin 'Amr) — jawab azan, shalawat, lalu minta al-wasilah.
+   Tambahan penutup dari riwayat al-Baihaqi (dinilai syadz) SENGAJA tidak dicantumkan.
+   Tanpa jaringan pihak ketiga. Pengaturan: rk_doa_azan; riwayat tampil: rk_doa_azan_seen. */
+(function(){
+"use strict";
+const S={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+const lg=()=>{const l=S.get("rk_lang","id");return ["id","en","ar"].includes(l)?l:"id";};
+const t=o=>o[{id:0,en:1,ar:2}[lg()]];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ADHAN_MS=3*60000, MAX_WAIT=10*60000, LATE=15*60000, PREP=10*60000;
+const cfg=()=>Object.assign({on:true,sound:true,prep:true},S.get("rk_doa_azan",{}));
+const dkey=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const DOA_AR="اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ، وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ، وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ";
+const DOA_TR="Allāhumma rabba hādzihid-da'watit-tāmmah, wash-shalātil-qā'imah, āti Muḥammadanil-wasīlata wal-faḍīlah, wab'atshu maqāmam maḥmūdanil-ladzī wa'adtah.";
+const SH_AR="اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ";
+const SH_TR="Allāhumma shalli 'alā Muḥammad wa 'alā āli Muḥammad.";
+const X={
+ title:["Doa Setelah Azan","Supplication After the Adhan","الدعاء بعد الأذان"],
+ doneP:["Azan {p} telah selesai","The {p} adhan has finished","انتهى أذان {p}"],
+ manual:["Dibaca setiap selesai mendengar azan","Read each time the adhan ends","يُقال كلما انتهى الأذان"],
+ s1:["Langkah 1 · Jawab azan & bershalawat","Step 1 · Answer the adhan & send salawat","الخطوة ١ · إجابة المؤذن والصلاة على النبي ﷺ"],
+ s1p:["Nabi ﷺ bersabda: “Apabila kalian mendengar muadzin, ucapkanlah seperti yang ia ucapkan, kemudian bershalawatlah kepadaku… kemudian mintalah kepada Allah al-wasilah untukku.” Bacalah shalawat, misalnya:","The Prophet ﷺ said: “When you hear the muadhdhin, say what he says, then send salawat upon me… then ask Allah to grant me al-Wasilah.” Send salawat, for example:","قال النبي ﷺ: «إذا سمعتم المؤذن فقولوا مثل ما يقول، ثم صلّوا عليّ… ثم سلوا الله لي الوسيلة». فصلِّ على النبي ﷺ، ومن ذلك:"],
+ s1src:["HR. Muslim no. 384, dari Abdullah bin 'Amr bin al-'Ash","Sahih Muslim no. 384, from 'Abdullah ibn 'Amr ibn al-'As","صحيح مسلم، رقم ٣٨٤، عن عبد الله بن عمرو بن العاص رضي الله عنهما"],
+ s1n:["Lebih utama shalawat Ibrahimiyah lengkap (HR. Bukhari 3370, Muslim 406).","The full Ibrahimi salawat is better (Bukhari 3370, Muslim 406).","والأكمل الصلاة الإبراهيمية (البخاري ٣٣٧٠، مسلم ٤٠٦)."],
+ s2:["Langkah 2 · Baca doa ini","Step 2 · Recite this supplication","الخطوة ٢ · ادعُ بهذا الدعاء"],
+ mean:["Ya Allah, Rabb pemilik seruan yang sempurna ini dan salat yang akan didirikan, berikanlah kepada Muhammad al-wasilah dan keutamaan, dan bangkitkanlah beliau ke kedudukan terpuji yang telah Engkau janjikan kepadanya.","O Allah, Lord of this perfect call and of the prayer about to be established, grant Muhammad al-Wasilah and virtue, and raise him to the praiseworthy station that You have promised him.",""],
+ src:["Shahih Bukhari nomor 614, dari Jabir bin Abdillah","Sahih al-Bukhari no. 614, from Jabir ibn 'Abdillah","صحيح البخاري، رقم ٦١٤، عن جابر بن عبد الله رضي الله عنهما"],
+ fad:["Keutamaan: “…ia berhak mendapat syafaatku pada hari kiamat.” (HR. Bukhari 614)","Virtue: “…my intercession becomes due for him on the Day of Resurrection.” (Bukhari 614)","فضله: «حلّت له شفاعتي يوم القيامة» (البخاري ٦١٤)"],
+ note:["Redaksi di atas sesuai Shahih Bukhari. Tambahan yang populer di akhir doa tidak terdapat dalam Bukhari maupun Muslim, sehingga tidak kami cantumkan.","The wording above follows Sahih al-Bukhari. A popular ending addition is not found in Bukhari or Muslim, so it is not included.","اللفظ أعلاه لفظ صحيح البخاري، وأما الزيادة المشهورة في آخره فليست في الصحيحين فلم نذكرها."],
+ ok:["Aamiin · Tutup","Ameen · Close","آمين · إغلاق"],
+ close:["Tutup","Close","إغلاق"],
+ setT:["Doa setelah azan","Supplication after the adhan","الدعاء بعد الأذان"],
+ setOn:["Tampilkan doa setelah azan selesai (popup & notifikasi)","Show the supplication when the adhan ends (popup & notification)","اعرض الدعاء عند انتهاء الأذان (نافذة وإشعار)"],
+ setSnd:["Bunyi lembut saat doa muncul","Gentle chime when it appears","نغمة لطيفة عند ظهوره"],
+ setPrep:["Notifikasi persiapan 10 menit sebelum salat","Preparation notification 10 minutes before prayer","إشعار التهيؤ قبل الصلاة بعشر دقائق"],
+ setView:["Lihat doa","View supplication","عرض الدعاء"],
+ setNote:["Notifikasi butuh izin notifikasi dan suara azan selain “Senyap”. Versi web: andal saat aplikasi terbuka atau di latar belakang; saat aplikasi ditutup penuh, notifikasi belum bisa dijamin.","Notifications need notification permission and an azan sound other than “Silent”. Web version: reliable while the app is open or in the background; when fully closed, notifications cannot be guaranteed.","تحتاج الإشعارات إلى الإذن وصوت أذان غير «صامت». في نسخة الويب: موثوقة والتطبيق مفتوح أو في الخلفية؛ أما عند إغلاقه تمامًا فلا يمكن ضمانها."],
+ nTitle:["Azan {p} selesai · Doa setelah azan","{p} adhan finished · Supplication after the adhan","انتهى أذان {p} · الدعاء بعد الأذان"],
+ nSrc:["(Shahih Bukhari no. 614) · Ketuk untuk shalawat & doa lengkap","(Sahih al-Bukhari 614) · Tap for salawat & the full supplication","(صحيح البخاري ٦١٤) · اضغط للصلاة على النبي ﷺ والدعاء كاملًا"],
+ pTitle:["Sepuluh menit lagi salat. Siapkan dirimu bertemu Allah.","Ten minutes until prayer. Prepare yourself to meet Allah.","بقيت عشر دقائق على الصلاة. تهيّأ للقاء الله."],
+ pList:[["Siwak","Wudhu yang sempurna","Pakai pakaian terbaik","Perbaiki niat"],["Siwak","A complete wudu","Wear your best clothes","Renew your intention"],["السواك","إسباغ الوضوء","البس أحسن ثيابك","أصلح نيتك"]]
+};
+const PN={fajr:["Subuh","Fajr","الفجر"],dhuhr:["Dzuhur","Dhuhr","الظهر"],asr:["Ashar","Asr","العصر"],maghrib:["Maghrib","Maghrib","المغرب"],isha:["Isya","Isha","العشاء"]};
+const pn=n=>PN[n]?t(PN[n]):"";
+const sub=(s,p)=>s.replace("{p}",p);
+/* ---------- state ---------- */
+let pend=null;            /* {key,n,at,info,audio,wantN} — azan yang sedang ditunggu selesai */
+let aRef=null, aStarted=false;
+let returnPopup=null;     /* popup yang menunggu aplikasi dibuka kembali */
+const seen=()=>S.get("rk_doa_azan_seen",{});
+function markSeen(key){ const o=seen(); o[key]=Date.now(); const ks=Object.keys(o).sort((a,b)=>o[b]-o[a]).slice(0,30); const r={}; ks.forEach(k=>r[k]=o[k]); S.set("rk_doa_azan_seen",r); }
+const vis=()=>document.visibilityState==="visible"&&!document.hidden;
+const log=(type,o)=>{ try{ (window.__daLog=window.__daLog||[]).push(Object.assign({type,at:Date.now()},o||{})); }catch(e){} };
+/* ---------- service worker (hanya notificationclick; tanpa cache) ---------- */
+let swReg=null;
+function swInit(){ try{ if(!("serviceWorker" in navigator)||!window.isSecureContext) return;
+  navigator.serviceWorker.register("sw.js").then(r=>{ swReg=r; }).catch(()=>{});
+  navigator.serviceWorker.addEventListener("message",e=>{ if(e.data&&e.data.type==="doa-azan") openFromTap(e.data.key); }); }catch(e){} }
+async function getReg(){ if(swReg&&swReg.active) return swReg; try{ if("serviceWorker" in navigator){ const r=await Promise.race([navigator.serviceWorker.getRegistration(),new Promise(z=>setTimeout(()=>z(null),1500))]); if(r&&r.showNotification) return r; } }catch(e){} return null; }
+const canNotify=()=>("Notification" in window)&&Notification.permission==="granted";
+async function notify(title,opt,onTap){ if(!canNotify()) return false;
+  const o=Object.assign({icon:"icon-192.png",badge:"icon-192.png",lang:lg(),dir:lg()==="ar"?"rtl":"ltr",silent:false,renotify:true,requireInteraction:true,vibrate:[300,120,300,120,600]},opt);
+  const reg=await getReg();
+  if(reg){ try{ await reg.showNotification(title,o); log("notify",{title,tag:o.tag,via:"sw",opt:o}); return true; }catch(e){} }
+  try{ const n=new Notification(title,o); n.onclick=()=>{ try{window.focus();}catch(_){} n.close(); onTap&&onTap(); }; log("notify",{title,tag:o.tag,via:"page",opt:o}); return true; }catch(e){ return false; }
+}
+/* ---------- chime (WebAudio, lembut; hormati mute & pengaturan) ---------- */
+let ac=null;
+function chime(){ const c=cfg(); if(!c.sound||S.get("ks_duo_mute",false)) return false;
+  try{ const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false; ac=ac||new AC(); if(ac.state==="suspended") ac.resume().catch(()=>{});
+   const now=ac.currentTime; [[659.25,0],[880,.18],[1318.5,.36]].forEach(([f,d])=>{ const o=ac.createOscillator(), g=ac.createGain(); o.type="sine"; o.frequency.value=f;
+    g.gain.setValueAtTime(0,now+d); g.gain.linearRampToValueAtTime(.14,now+d+.03); g.gain.exponentialRampToValueAtTime(.0008,now+d+1.4); o.connect(g); g.connect(ac.destination); o.start(now+d); o.stop(now+d+1.5); });
+   log("chime"); return true; }catch(e){ return false; } }
+/* ---------- popup ---------- */
+function html(info){ const L=lg(), p=info&&info.n?pn(info.n):"";
+ return `<div class="da-in" role="dialog" aria-modal="true" aria-labelledby="daTitle" dir="${L==="ar"?"rtl":"ltr"}">
+  <div class="da-hd"><div class="ic" aria-hidden="true">🤲</div><div><h2 id="daTitle">${esc(t(X.title))}</h2><small>${esc(p?sub(t(X.doneP),p)+(info.time?" · "+info.time:""):t(X.manual))}</small></div><button type="button" class="da-x" id="daX" aria-label="${esc(t(X.close))}">✕</button></div>
+  <div class="da-step" id="daShalawat"><span class="no">${esc(t(X.s1))}</span><p>${esc(t(X.s1p))}</p>
+   <div class="da-ar sm" lang="ar" dir="rtl">${SH_AR}</div>${L==="ar"?"":`<div class="da-tr">${esc(SH_TR)}</div>`}
+   <div class="da-src">${esc(t(X.s1src))}</div><p class="dim" style="font-size:11.5px;text-align:center">${esc(t(X.s1n))}</p></div>
+  <div class="da-step" id="daDoa"><span class="no">${esc(t(X.s2))}</span>
+   <div class="da-ar" lang="ar" dir="rtl" id="daAr">${DOA_AR}</div>${L==="ar"?"":`<div class="da-tr" id="daTr">${esc(DOA_TR)}</div><div class="da-mn" id="daMn">“${esc(t(X.mean))}”</div>`}
+   <div class="da-src" id="daSrc">${esc(t(X.src))}</div><p class="dim" style="font-size:12px;text-align:center;margin-top:4px">${esc(t(X.fad))}</p>
+   <div class="da-note">${esc(t(X.note))}</div></div>
+  <button type="button" class="btn gold da-ok" id="daOk">${esc(t(X.ok))}</button></div>`; }
+function show(info,opts){ opts=opts||{}; let ov=document.getElementById("daPop");
+ if(!ov){ ov=document.createElement("div"); ov.id="daPop"; ov.className="da-ov"; document.body.appendChild(ov);
+  ov.addEventListener("click",e=>{ if(e.target===ov||e.target.closest("#daX")||e.target.closest("#daOk")) hide(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!ov.hidden) hide(); }); }
+ ov.dataset.key=(info&&info.key)||""; ov._info=info||null; ov.innerHTML=html(info); ov.hidden=false;
+ if(info&&info.key) markSeen(info.key); returnPopup=null;
+ if(opts.chime) chime(); log("popup",{key:info&&info.key}); try{ document.getElementById("daOk").focus({preventScroll:true}); }catch(e){} }
+function hide(){ const ov=document.getElementById("daPop"); if(ov) ov.hidden=true; }
+function openFromTap(key){ const info=returnPopup&&(!key||returnPopup.key===key)?returnPopup:(pend&&pend.key===key?pend.info:{key:key||""}); show(info); }
+/* ---------- satu notifikasi gabungan saat azan selesai ---------- */
+function doaNotif(p){ const L=lg(), lines=[p.info.time+(p.info.place?" — "+p.info.place:""),DOA_AR]; if(L!=="ar") lines.push("“"+t(X.mean)+"”"); lines.push(t(X.nSrc));
+ return notify(sub(t(X.nTitle),pn(p.n)),{body:lines.join("\n"),tag:"kusyu-doa-azan",data:{url:"./?doa-azan="+encodeURIComponent(p.key)+"#beranda",key:p.key}},()=>openFromTap(p.key)); }
+async function fire(reason){ const p=pend; if(!p) return; pend=null; aRef=null; aStarted=false; log("fire",{key:p.key,reason});
+ if(vis()){ show(p.info,{chime:true}); return; }
+ returnPopup=Object.assign({},p.info,{exp:Date.now()+LATE}); if(p.wantN) await doaNotif(p); }
+/* dipanggil dari tickNotif (jadwal) saat waktu salat masuk. true = ditangani di sini (notifikasi lama digabung). */
+function take(n,at,wantN,info,hasAudio){ if(!cfg().on) return false;
+ const key=dkey(new Date(at))+n; if(seen()[key]) return true;
+ pend={key,n,at,wantN:!!wantN,info:{key,n,time:(info||"").split(" — ")[0],place:(info||"").split(" — ").slice(1).join(" — ")},audio:!!hasAudio}; log("take",{key,hasAudio:!!hasAudio});
+ return true; }
+function started(a){ aRef=a; aStarted=true; }
+function ended(){ if(pend&&aStarted) fire("ended"); }
+function blocked(){ aRef=null; aStarted=false; }
+function tick(){ const c=cfg(), now=Date.now();
+ if(pend){ const el=now-pend.at, playing=aRef&&!aRef.paused&&!aRef.ended;
+  if((el>=ADHAN_MS&&!playing)||el>=MAX_WAIT) fire(playing?"max":"timer"); }
+ prepTick(c,now); }
+/* ---------- notifikasi persiapan 10 menit (terpisah) ---------- */
+const prepDone={};
+function azVoice(){ return Object.assign({voice:"makkah"},S.get("rk_azan",{})).voice; }
+function prepTick(c,now){ if(!c.prep||!window.RKPT||azVoice()==="silent") return; const tm=RKPT.times(new Date()); if(!tm) return;
+ for(const n of RKPT.FARD){ const d=tm[n]-now, id=dkey(new Date())+n; if(d<=PREP&&d>PREP-120000&&!prepDone[id]){ prepDone[id]=1; prepNotif(n,id); } } }
+function prepText(){ return {title:t(X.pTitle),body:t(X.pList).map(x=>"• "+x).join("\n")}; }
+function prepNotif(n,id){ const p=prepText(); log("prep",{key:id}); return notify(p.title,{body:pn(n)+"\n"+p.body,tag:"kusyu-prep-"+id,requireInteraction:false,data:{url:"./#beranda"}}); }
+/* ---------- buka kembali / ketuk notifikasi ---------- */
+function checkReturn(){ if(!vis()) return; const now=Date.now();
+ if(returnPopup){ if(!returnPopup.exp||now<returnPopup.exp){ show(returnPopup); return; } returnPopup=null; }
+ if(!cfg().on||!window.RKPT) return; const tm=RKPT.times(new Date()); if(!tm) return;
+ for(const n of RKPT.FARD){ const at=+tm[n], key=dkey(new Date())+n, el=now-at;
+  if(el>=ADHAN_MS&&el<LATE&&!seen()[key]&&!(pend&&pend.key===key)&&azVoice()!=="silent"){ show({key,n,time:fmtT(tm[n])}); return; } } }
+const fmtT=d=>{ try{ return d.toLocaleTimeString(lg()==="ar"?"ar-SA-u-nu-latn":({id:"id-ID",en:"en-GB"})[lg()],{hour:"2-digit",minute:"2-digit",hour12:false}); }catch(e){ return ""; } };
+function fromUrl(){ const q=new URLSearchParams(location.search), k=q.get("doa-azan"); const h=location.hash==="#doa-azan";
+ if(k==null&&!h) return false; try{ history.replaceState(null,"",location.pathname+"#beranda"); }catch(e){}
+ const n=(k||"").replace(/^\d{4}-\d\d-\d\d/,""); show({key:k||"",n:PN[n]?n:"",time:""}); return true; }
+const URL0=location.search+location.hash;
+/* ---------- Notification Triggers API (eksperimental; hanya jika browser mendukung) ---------- */
+async function scheduleTriggers(){ try{ if(!cfg().on||!canNotify()||!("showTrigger" in Notification.prototype)||typeof TimestampTrigger==="undefined"||!window.RKPT||azVoice()==="silent") return;
+ const reg=await getReg(); if(!reg) return; const now=Date.now();
+ for(let i=0;i<2;i++){ const d=new Date(); d.setDate(d.getDate()+i); const tm=RKPT.times(d); if(!tm) continue;
+  for(const n of RKPT.FARD){ const at=+tm[n]+ADHAN_MS; if(at<=now) continue; const key=dkey(d)+n;
+   await reg.showNotification(sub(t(X.nTitle),pn(n)),{body:DOA_AR+(lg()!=="ar"?"\n“"+t(X.mean)+"”":"")+"\n"+t(X.nSrc),tag:"kusyu-doa-azan-"+key,showTrigger:new TimestampTrigger(at),icon:"icon-192.png",silent:false,vibrate:[300,120,300,120,600],requireInteraction:true,renotify:true,data:{url:"./?doa-azan="+key+"#beranda",key}}).catch(()=>{});
+   if(cfg().prep){ const pa=+tm[n]-PREP; if(pa>now){ const p=prepText(); await reg.showNotification(p.title,{body:pn(n)+"\n"+p.body,tag:"kusyu-prep-"+key,showTrigger:new TimestampTrigger(pa),icon:"icon-192.png",data:{url:"./#beranda"}}).catch(()=>{}); } } } }
+ log("triggers"); }catch(e){} }
+/* ---------- pengaturan ---------- */
+function settings(){ const st=document.getElementById("stStack"); if(!st) return; let c=document.getElementById("daSet");
+ if(!c){ c=document.createElement("div"); c.id="daSet"; c.className="card da-set"; st.appendChild(c); }
+ const k=cfg(); c.innerHTML=`<div class="eyebrow">🤲 ${esc(t(X.setT))}</div>
+  <label><input type="checkbox" id="daOn"${k.on?" checked":""}><span>${esc(t(X.setOn))}</span></label>
+  <label><input type="checkbox" id="daSnd"${k.sound?" checked":""}><span>${esc(t(X.setSnd))}</span></label>
+  <label><input type="checkbox" id="daPrep"${k.prep?" checked":""}><span>${esc(t(X.setPrep))}</span></label>
+  <p class="dim" style="font-size:11.5px;margin-top:8px;line-height:1.5">${esc(t(X.setNote))}</p>
+  <button type="button" class="btn sm ghost" id="daView">${esc(t(X.setView))}</button>`;
+ const sv=(f,v)=>{ S.set("rk_doa_azan",Object.assign(cfg(),{[f]:v})); };
+ c.querySelector("#daOn").onchange=e=>sv("on",e.target.checked); c.querySelector("#daSnd").onchange=e=>sv("sound",e.target.checked); c.querySelector("#daPrep").onchange=e=>sv("prep",e.target.checked);
+ c.querySelector("#daView").onclick=()=>show(null); }
+window.RKDoaAzan={take,started,ended,blocked,show,hide,tick,cfg,checkReturn,prepText,TEXT:{DOA_AR,DOA_TR,SH_AR,X},
+ _state:()=>({pend,returnPopup}),_fire:fire,ADHAN_MS};
+function init(){ swInit(); settings();
+ const q=new URLSearchParams(URL0.split("#")[0]); const fromTap=q.get("doa-azan")!=null||URL0.endsWith("#doa-azan");
+ if(fromTap){ const k=q.get("doa-azan")||""; try{ history.replaceState(null,"",location.pathname+"#beranda"); }catch(e){} const n=k.replace(/^\d{4}-\d\d-\d\d/,""); setTimeout(()=>show({key:k,n:PN[n]?n:"",time:""}),400); }
+ else setTimeout(checkReturn,1500);
+ setInterval(tick,5000);
+ document.addEventListener("visibilitychange",()=>{ if(vis()){ tick(); checkReturn(); } else scheduleTriggers(); });
+ window.addEventListener("hashchange",()=>{ if(location.hash==="#doa-azan") fromUrl(); });
+ document.addEventListener("rk:lang",()=>setTimeout(()=>{ settings(); const ov=document.getElementById("daPop"); if(ov&&!ov.hidden) ov.innerHTML=html(ov._info); },0));
+ document.addEventListener("click",e=>{ if(e.target.closest&&e.target.closest("[data-l]")) setTimeout(settings,80); });
+ setTimeout(scheduleTriggers,3000); }
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else setTimeout(init,0);
 })();
 
 </script>
