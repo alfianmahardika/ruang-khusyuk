@@ -1,4 +1,22 @@
 <!doctype html><html lang="id" data-theme="gold"><head>
+<script>
+/* Kusyu Hijri formatter: numeric parts from Intl umalqura, month names from our own tables (Intl 'id' gives Gregorian names + era 'SM') */
+(function(){
+var M={id:["Muharram","Safar","Rabiul Awal","Rabiul Akhir","Jumadil Awal","Jumadil Akhir","Rajab","Syakban","Ramadan","Syawal","Zulkaidah","Zulhijah"],
+en:["Muharram","Safar","Rabi al-Awwal","Rabi al-Thani","Jumada al-Ula","Jumada al-Akhirah","Rajab","Sha'ban","Ramadan","Shawwal","Dhu al-Qa'dah","Dhu al-Hijjah"],
+ar:["محرم","صفر","ربيع الأول","ربيع الآخر","جمادى الأولى","جمادى الآخرة","رجب","شعبان","رمضان","شوال","ذو القعدة","ذو الحجة"]};
+var SUF={id:"H",en:"AH",ar:"هـ"}, f=null;
+function lg(l){ l=String(l||"id").slice(0,2).toLowerCase(); return M[l]?l:"id"; }
+function parts(d){ try{ if(!f) f=new Intl.DateTimeFormat("en-u-ca-islamic-umalqura-nu-latn",{day:"numeric",month:"numeric",year:"numeric"});
+  var o={}; f.formatToParts(d||new Date()).forEach(function(p){ if(p.type==="day"||p.type==="month"||p.type==="year") o[p.type]=parseInt(String(p.value).replace(/\D/g,""),10); });
+  return (o.day&&o.month&&o.year)?{d:o.day,m:o.month,y:o.year}:null; }catch(e){ return null; } }
+function toAr(s){ return String(s).replace(/\d/g,function(c){ return "٠١٢٣٤٥٦٧٨٩"[c]; }); }
+function monthName(m,l){ return M[lg(l)][m-1]||""; }
+function fmt(d,l,noDay){ var p=parts(d); if(!p) return ""; l=lg(l); var s=(noDay?"":p.d+" ")+M[l][p.m-1]+" "+p.y+" "+SUF[l]; return l==="ar"?toAr(s):s; }
+window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true);},monthName:monthName,M:M};
+})();
+
+</script>
 <script>/* AUTO-LANG: first visit only; manual choice saved in rk_lang always wins */(function(){try{if(localStorage.getItem("rk_lang")!=null)return;var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(function(x){return String(x).toLowerCase();});var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var p=(ls[0]||"").slice(0,2),l;var AR=/^Asia\/(Riyadh|Dubai|Qatar|Kuwait|Bahrain|Muscat|Aden|Baghdad|Amman|Damascus|Beirut|Gaza|Hebron)$|^Africa\/(Cairo|Tripoli|Tunis|Algiers|Casablanca|Khartoum|Nouakchott)$/;if(p==="id"||p==="ms")l="id";else if(p==="ar")l="ar";else if(p==="en"&&!/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz)&&!AR.test(tz))l="en";else if(/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz))l="id";else if(AR.test(tz))l="ar";else if(ls.some(function(x){return /^(id|ms)/.test(x)}))l="id";else if(ls.some(function(x){return /^ar/.test(x)}))l="ar";else l="en";localStorage.setItem("rk_lang",JSON.stringify(l));localStorage.setItem("rk_lang_auto","1");}catch(e){}})();</script><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Kusyu</title>
 <meta name="description" content="Kusyu — checklist ibadah harian & kehadiran hati dalam salat">
@@ -2155,7 +2173,7 @@ const I18N={
     $$("#langseg button").forEach(b=>b.classList.toggle("on",b.dataset.l===this.lang));
     $$("[data-i]").forEach(el=>{ el.innerHTML=t(el.dataset.i); });
     $$("[data-i-ph]").forEach(el=>{ el.placeholder=t(el.dataset.iPh); });
-    try{ $("#hijri").textContent=new Intl.DateTimeFormat(t("hijri")+"-u-ca-islamic-umalqura",{day:"numeric",month:"long",year:"numeric"}).format(new Date()); }catch(e){ $("#hijri").textContent=""; }
+    try{ $("#hijri").textContent=RKHijri.fmt(new Date(),this.lang); }catch(e){ $("#hijri").textContent=""; }
   }
 };
 const L=x=>x==null?"":(typeof x==="object"&&!Array.isArray(x)&&("id" in x))?(x[I18N.lang]||x.id||""):String(x);
@@ -2753,7 +2771,7 @@ async function search(){ const q=$("#jdQ").value.trim(); if(!q) return; const bo
    box.innerHTML=j.length?j.map((x,i)=>`<button type="button" data-i="${i}">${esc(x.display_name)}</button>`).join(""):`<span class="dim">${t("noRes")}</span>`;
    box.querySelectorAll("button").forEach(b=>b.onclick=()=>{ const x=j[+b.dataset.i]; box.innerHTML=""; $("#jdMan").hidden=true; setLoc(x.lat,x.lon,x.display_name.split(",").slice(0,3).join(","),(x.address&&x.address.country_code)||""); });
   }catch(e){ box.innerHTML=`<span class="dim">${t("noRes")}</span>`; } }
-function hijri(d){ try{ return new Intl.DateTimeFormat((getLang()==="ar"?"ar-SA":loc_())+"-u-ca-islamic-umalqura",{day:"numeric",month:"long",year:"numeric"}).format(d); }catch(e){ return ""; } }
+function hijri(d){ return RKHijri.fmt(d,getLang()); }
 function render(){
   if(!$("#page-jadwal")) return; const L=getLang();
   $$("[data-jd]").forEach(e=>e.textContent=t(e.dataset.jd)); $$("[data-jdph]").forEach(e=>e.placeholder=t(e.dataset.jdph));
@@ -3502,10 +3520,10 @@ function renderLainnya(){ const g=$("#lnGrid"); if(!g) return;
   renderCal(); }
 function renderCal(){ const el=$("#lnCal"); if(!el) return; const lg=lang()==="ar"?"ar-SA":lang()==="en"?"en":"id";
   let fd,fm; try{ fd=new Intl.DateTimeFormat(lg+"-u-ca-islamic-umalqura-nu-latn",{day:"numeric"}); fm=new Intl.DateTimeFormat(lg+"-u-ca-islamic-umalqura-nu-latn",{month:"long",year:"numeric"}); }catch(e){ el.textContent="—"; return; }
-  const hd=d=>+fd.format(d).replace(/\D/g,""), today=new Date(); const start=new Date(today); start.setDate(today.getDate()-hd(today)+1);
+  const hd=d=>{ const p=window.RKHijri&&RKHijri.parts(d); return p?p.d:+fd.format(d).replace(/\D/g,""); }, today=new Date(); const start=new Date(today); start.setDate(today.getDate()-hd(today)+1);
   const days=[]; for(let i=0;i<31;i++){ const d=new Date(start); d.setDate(start.getDate()+i); if(i>0&&hd(d)===1) break; days.push(d); }
   const wd=[...Array(7)].map((_,i)=>new Date(2024,0,7+i).toLocaleDateString(lg,{weekday:"narrow"}));
-  el.innerHTML=`<h3 style="margin-top:6px">${esc(fm.format(today))}</h3><div class="v2-cal">${wd.map(w=>`<div class="h">${w}</div>`).join("")}${"<div></div>".repeat(start.getDay())}${days.map(d=>{ const h=hd(d), fast=[1,4].includes(d.getDay())||(h>=13&&h<=15); return `<div class="d${dkey(d)===dkey(today)?" today":""}${fast?" fast":""}">${h}<small>${d.getDate()}/${d.getMonth()+1}</small></div>`; }).join("")}</div>`; }
+  el.innerHTML=`<h3 style="margin-top:6px">${esc(window.RKHijri?RKHijri.monthYear(today,lang()):fm.format(today))}</h3><div class="v2-cal">${wd.map(w=>`<div class="h">${w}</div>`).join("")}${"<div></div>".repeat(start.getDay())}${days.map(d=>{ const h=hd(d), fast=[1,4].includes(d.getDay())||(h>=13&&h<=15); return `<div class="d${dkey(d)===dkey(today)?" today":""}${fast?" fast":""}">${h}<small>${d.getDate()}/${d.getMonth()+1}</small></div>`; }).join("")}</div>`; }
 
 /* ---------- Premium ---------- */
 function renderPremium(){ const f=$("#prFree"); if(!f) return; f.innerHTML=["pf1","pf2","pf3","pf4","pf5","pf6"].map(k=>`<li>${v(k)}</li>`).join(""); $("#prPro").innerHTML=["pp1","pp2","pp3","pp4","pp5","pp6"].map(k=>`<li>${v(k)}</li>`).join("");
