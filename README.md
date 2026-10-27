@@ -1,4 +1,4 @@
-# Ruang Khusyuk
+# Best Muslim
 
 Static PWA (single `index.html`, no build step) — daily ibadah checklist with dalil, prayer focus tools, tasbih, journal, Qur'an recitation audio. Languages: Indonesia / English / العربية (RTL).
 
