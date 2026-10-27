@@ -1,5 +1,153 @@
 <!doctype html><html lang="id" data-theme="gold"><head>
 <script>
+/* ===== Kusyu — Ikon 3D bergaya "Grab" (SVG inline, tanpa jaringan). Hanya benda: tidak ada gambar orang/makhluk bernyawa. =====
+   Gradien didefinisikan SEKALI di <svg id="k3Defs"> (tidak display:none, agar url(#..) tetap jalan walau ikon ada di halaman tersembunyi). */
+(function(){
+"use strict";
+const lg=(id,stops,dir)=>{ const [x1,y1,x2,y2]=dir||[0,0,0,1]; return `<linearGradient id="${id}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}">${stops.map(([o,c,a])=>`<stop offset="${o}" stop-color="${c}"${a!=null?` stop-opacity="${a}"`:""}/>`).join("")}</linearGradient>`; };
+const rg=(id,stops,cx,cy,r)=>`<radialGradient id="${id}" cx="${cx||.5}" cy="${cy||.5}" r="${r||.5}">${stops.map(([o,c,a])=>`<stop offset="${o}" stop-color="${c}"${a!=null?` stop-opacity="${a}"`:""}/>`).join("")}</radialGradient>`;
+const H=[0,0,1,0];
+const DEFS=[
+ lg("k3-gold",[[0,"#fff4c8"],[.32,"#f2d17e"],[.72,"#c9973c"],[1,"#86591a"]]),
+ lg("k3-goldh",[[0,"#8a5c1b"],[.3,"#e9c56e"],[.5,"#fff3cc"],[.72,"#d4a54c"],[1,"#7d5216"]],H),
+ lg("k3-goldd",[[0,"#e2b85f"],[1,"#6d460f"]]),
+ lg("k3-em",[[0,"#7ff5c8"],[.45,"#22b07d"],[1,"#0a5a3e"]]),
+ lg("k3-emh",[[0,"#0a5a3e"],[.45,"#2fc48d"],[.6,"#5fe3b0"],[1,"#0b4e37"]],H),
+ lg("k3-navy",[[0,"#8091e6"],[.5,"#2f3f99"],[1,"#141a4a"]]),
+ lg("k3-ruby",[[0,"#ff9a90"],[.5,"#d33a4b"],[1,"#741325"]]),
+ lg("k3-cream",[[0,"#fffef8"],[1,"#eedcb4"]]),
+ lg("k3-black",[[0,"#55555e"],[.55,"#1d1d23"],[1,"#060608"]]),
+ lg("k3-blackh",[[0,"#0b0b0e"],[1,"#34343c"]],H),
+ lg("k3-teal",[[0,"#9ff0ff"],[.5,"#22a6cf"],[1,"#0b4d6c"]]),
+ lg("k3-violet",[[0,"#d6b2ff"],[.5,"#8250e0"],[1,"#3b1b78"]]),
+ lg("k3-orange",[[0,"#fff0a0"],[.45,"#ffc93b"],[1,"#c9780c"]]),
+ lg("k3-silver",[[0,"#ffffff"],[.45,"#d3d8e2"],[1,"#7c8496"]]),
+ rg("k3-hi",[[0,"#fff",.95],[1,"#fff",0]]),
+ rg("k3-sh",[[0,"#000",.42],[1,"#000",0]])
+].join("");
+function ensure(){ if(document.getElementById("k3Defs")||!document.body) return; const d=document.createElementNS("http://www.w3.org/2000/svg","svg");
+ d.id="k3Defs"; d.setAttribute("width","0"); d.setAttribute("height","0"); d.setAttribute("aria-hidden","true"); d.style.cssText="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none";
+ d.innerHTML="<defs>"+DEFS+"</defs>"; document.body.prepend(d); }
+if(document.body) ensure(); else document.addEventListener("DOMContentLoaded",ensure);
+const G=n=>`url(#k3-${n})`;
+const SH=(rx,cy)=>`<ellipse cx="32" cy="${cy||58.5}" rx="${rx||20}" ry="3.6" fill="${G("sh")}"/>`;
+const HI=(cx,cy,rx,ry,rot)=>`<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${G("hi")}"${rot?` transform="rotate(${rot} ${cx} ${cy})"`:""}/>`;
+const STAR=(cx,cy,r,f)=>{ const p=[]; for(let i=0;i<10;i++){ const a=-Math.PI/2+i*Math.PI/5, rr=i%2?r*.45:r; p.push((cx+rr*Math.cos(a)).toFixed(2)+","+(cy+rr*Math.sin(a)).toFixed(2)); } return `<polygon points="${p.join(" ")}" fill="${f||G("gold")}"/>`; };
+const STAR8=(cx,cy,r,ri,f,st)=>{ const p=[]; for(let i=0;i<16;i++){ const a=-Math.PI/2+i*Math.PI/8, rr=i%2?ri:r; p.push((cx+rr*Math.cos(a)).toFixed(2)+","+(cy+rr*Math.sin(a)).toFixed(2)); } return `<polygon points="${p.join(" ")}" fill="${f}"${st?` stroke="${st}" stroke-width="1"`:""}/>`; };
+const I={
+ /* Akademi Syahadah: toga di atas tumpukan kitab */
+ akademi:SH(21)+`<rect x="12" y="41" width="40" height="10" rx="2.6" fill="${G("ruby")}"/><rect x="14.5" y="43" width="36" height="6" rx="1.5" fill="${G("cream")}"/><rect x="12" y="41" width="5" height="10" rx="2" fill="#8d1a2c"/>
+ <rect x="15" y="32" width="36" height="10" rx="2.6" fill="${G("em")}"/><rect x="17.5" y="34" width="32" height="6" rx="1.5" fill="${G("cream")}"/><rect x="46" y="32" width="5" height="10" rx="2" fill="#0b5a3e"/><rect x="15" y="35.5" width="31" height="1.6" fill="${G("goldh")}"/>
+ <path d="M22 22.5v6.8c0 2.7 4.5 4.7 10 4.7s10-2 10-4.7v-6.8z" fill="${G("navy")}"/><path d="M32 9.5L8.5 19.5 32 29.5 55.5 19.5z" fill="${G("navy")}"/><path d="M32 11.5L13.5 19.5 32 27.3 50.5 19.5z" fill="#4b5cc0" opacity=".55"/>
+ <path d="M32 19.5L46.5 23.8v8.4" stroke="${G("goldd")}" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M44.6 31.5h3.8l1 5.4h-5.8z" fill="${G("gold")}"/><circle cx="32" cy="19.5" r="2" fill="${G("gold")}"/>`+HI(24,16,8,2.6,-22),
+ /* Mushaf di atas rehal */
+ quran:SH(21)+`<path d="M14 49l18-9 18 9-3 3.5-15-7.5-15 7.5z" fill="${G("goldd")}"/><path d="M17 53l30-15M47 53L17 38" stroke="${G("gold")}" stroke-width="3.4" stroke-linecap="round"/>
+ <path d="M32 21c-6-3.5-13-4.2-21-3v24c8-1.2 15-.5 21 3z" fill="${G("em")}"/><path d="M32 21c6-3.5 13-4.2 21-3v24c-8-1.2-15-.5-21 3z" fill="${G("em")}"/>
+ <path d="M32 22.5c-5.4-3-11.4-3.6-18.5-2.6v20.6c7-.9 13 0 18.5 2.6z" fill="${G("cream")}"/><path d="M32 22.5c5.4-3 11.4-3.6 18.5-2.6v20.6c-7-.9-13 0-18.5 2.6z" fill="${G("cream")}"/>
+ <path d="M17 25.5c4.2-.4 8 .2 11.5 1.6M17 30c4.2-.4 8 .2 11.5 1.6M17 34.5c4.2-.4 8 .2 11.5 1.6M35.5 27.1c3.5-1.4 7.3-2 11.5-1.6M35.5 31.6c3.5-1.4 7.3-2 11.5-1.6M35.5 36.1c3.5-1.4 7.3-2 11.5-1.6" stroke="#b58b45" stroke-width="1.3" stroke-linecap="round" opacity=".75"/>
+ <path d="M32 22.5v22" stroke="#b9925a" stroke-width="1"/>`+STAR(32,11.5,5.4)+HI(22,22,7,2.2,-12),
+ /* Kitab hadis: tumpukan kitab */
+ hadis:SH(21)+`<rect x="10" y="44" width="44" height="9" rx="2.4" fill="${G("navy")}"/><rect x="12.5" y="46" width="39" height="5" rx="1.2" fill="${G("cream")}"/><rect x="10" y="47.2" width="44" height="1.8" fill="${G("goldh")}"/>
+ <rect x="13" y="35" width="38" height="9.5" rx="2.4" fill="${G("ruby")}"/><rect x="15.5" y="37" width="33" height="5.5" rx="1.2" fill="${G("cream")}"/><rect x="13" y="38.6" width="38" height="1.8" fill="${G("goldh")}"/>
+ <g transform="rotate(-8 32 30)"><rect x="12" y="25" width="40" height="10" rx="2.4" fill="${G("em")}"/><rect x="14.5" y="27" width="35" height="6" rx="1.2" fill="${G("cream")}"/><rect x="12" y="28.8" width="40" height="1.8" fill="${G("goldh")}"/></g>
+ <path d="M41 18l1.6-6 1.6 6 6 1.6-6 1.6-1.6 6-1.6-6-6-1.6z" fill="${G("gold")}"/>`+HI(22,27,8,2,-8),
+ /* Sirah: gulungan naskah */
+ sirah:SH(21)+`<path d="M15 16h34v32H15z" fill="${G("cream")}"/><path d="M15 16h34v4H15zM15 44h34v4H15z" fill="#e3c88f" opacity=".7"/>
+ <path d="M21 25h22M21 30h22M21 35h16M21 40h19" stroke="#b58b45" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
+ <rect x="10" y="10.5" width="44" height="7" rx="3.5" fill="${G("goldh")}"/><rect x="10" y="46.5" width="44" height="7" rx="3.5" fill="${G("goldh")}"/>
+ <circle cx="9.5" cy="14" r="3.4" fill="${G("ruby")}"/><circle cx="54.5" cy="14" r="3.4" fill="${G("ruby")}"/><circle cx="9.5" cy="50" r="3.4" fill="${G("ruby")}"/><circle cx="54.5" cy="50" r="3.4" fill="${G("ruby")}"/>`+HI(24,12.5,10,1.6)+HI(24,48.5,10,1.6),
+ /* Hafalan AI: mikrofon emas + kilau */
+ hafalan:SH(15)+`<path d="M18 31a14 14 0 0 0 28 0" stroke="${G("goldd")}" stroke-width="3.2" fill="none" stroke-linecap="round"/><rect x="30.3" y="44" width="3.4" height="8" fill="${G("goldd")}"/><rect x="22" y="51" width="20" height="4.5" rx="2.2" fill="${G("gold")}"/>
+ <rect x="22" y="8" width="20" height="33" rx="10" fill="${G("goldh")}"/><path d="M23 19h18M23 24h18M23 29h18" stroke="#8a5c1b" stroke-width="1.2" opacity=".55"/>`+HI(27.5,15,3,6)+`<path d="M50 8l1.4 4.2 4.2 1.4-4.2 1.4L50 19.2l-1.4-4.2-4.2-1.4 4.2-1.4z" fill="${G("teal")}"/><path d="M12 12l1 2.8 2.8 1-2.8 1-1 2.8-1-2.8-2.8-1 2.8-1z" fill="${G("em")}"/>`,
+ /* Masjid */
+ masjid:SH(23)+`<rect x="49" y="18" width="7" height="36" rx="1.5" fill="${G("cream")}"/><path d="M48 18h9l-4.5-8z" fill="${G("gold")}"/><rect x="48" y="27" width="9" height="2.4" fill="${G("goldh")}"/><circle cx="52.5" cy="8.8" r="1.4" fill="${G("gold")}"/>
+ <rect x="10" y="33" width="38" height="21" rx="1.8" fill="${G("cream")}"/><rect x="10" y="33" width="38" height="3.2" fill="${G("goldh")}"/>
+ <path d="M13 33c0-10 7.8-15.5 16-19.5 8.2 4 16 9.5 16 19.5z" fill="${G("gold")}"/><path d="M29 13.5V8" stroke="${G("goldd")}" stroke-width="1.8"/><path d="M31.4 4.6a3 3 0 1 0 0 4.4 2.4 2.4 0 1 1 0-4.4z" fill="${G("gold")}"/>
+ <path d="M23.5 54V45a5.5 5.5 0 0 1 11 0v9z" fill="${G("em")}"/><path d="M14 44a2.6 2.6 0 0 1 5.2 0v4H14zM38.8 44a2.6 2.6 0 0 1 5.2 0v4h-5.2z" fill="${G("em")}"/>`+HI(22,22,6,3,-30),
+ /* Kantong zakat + koin */
+ zakat:SH(21)+`<path d="M24 20c-9 6-14 14-14 22 0 8 8 12 22 12s22-4 22-12c0-8-5-16-14-22z" fill="${G("gold")}"/><path d="M26 21.5L19.5 10.5c4 2.6 8 3.4 12.5 1.2 4.5 2.2 8.5 1.4 12.5-1.2L38 21.5z" fill="${G("gold")}"/><path d="M26 21.5L22.5 15c3 1.4 6 1.8 9.5.4 3.5 1.4 6.5 1 9.5-.4L38 21.5z" fill="#8a5c1b" opacity=".35"/>
+ <path d="M24 20.5c3 2.4 13 2.4 16 0" stroke="${G("ruby")}" stroke-width="3.2" stroke-linecap="round" fill="none"/><circle cx="40.5" cy="22" r="2" fill="${G("ruby")}"/>
+ <circle cx="44" cy="44" r="10" fill="${G("goldh")}"/><circle cx="44" cy="44" r="7.2" fill="none" stroke="#9c6c22" stroke-width="1.2"/>`+STAR(44,44,3.8,"#a8762a")+HI(20,32,4,8,25)+HI(41,40,3,2),
+ /* Bulan sabit + bintang */
+ puasa:SH(17)+`<path d="M38 7a24 24 0 1 0 17 38A19.5 19.5 0 0 1 38 7z" fill="${G("gold")}"/><path d="M38 7a24 24 0 0 0-22 21c3-9 11-16 20-17.2z" fill="#fff4c8" opacity=".6"/>`+STAR(46,22,7,G("orange"))+`<circle cx="52" cy="38" r="1.6" fill="#fff4c8"/><circle cx="57" cy="13" r="1.1" fill="#fff4c8"/>`+HI(18,26,3,8,20),
+ /* Ka'bah (isometrik) */
+ haji:SH(22)+`<path d="M32 20L53 13v32L32 54z" fill="${G("blackh")}"/><path d="M32 20L11 13v32l21 9z" fill="${G("black")}"/><path d="M11 13L32 6l21 7-21 7z" fill="#3a3a42"/>
+ <path d="M11 20.5l21 7 21-7v4.6l-21 7-21-7z" fill="${G("goldh")}"/><path d="M11 20.5l21 7v4.6l-21-7z" fill="${G("gold")}"/><path d="M38 34.5l7-2.3v14l-7 2.6z" fill="${G("gold")}"/>
+ <path d="M14 22.6l15 5M35 27.6l15-5" stroke="#7d5216" stroke-width=".7" stroke-dasharray="1.5 1.5"/>`+HI(20,14,8,1.8,18),
+ /* Bintang 8 (logo Kusyu) — alur salat khusyuk */
+ flow:SH(19)+STAR8(32,30,25,10.5,G("gold"))+STAR8(32,30,16,7.5,G("goldd"))+`<circle cx="32" cy="30" r="6.5" fill="${G("em")}"/>`+HI(32,26.5,3.5,1.8)+HI(22,18,6,2.5,-40),
+ /* Papan checklist */
+ harian:SH(19)+`<rect x="13" y="10" width="38" height="46" rx="5" fill="${G("goldd")}"/><rect x="16" y="14" width="32" height="39" rx="2.5" fill="${G("cream")}"/><rect x="24" y="6.5" width="16" height="8" rx="3" fill="${G("silver")}"/>
+ <path d="M20.5 25l3 3 5-6M20.5 35l3 3 5-6" stroke="${G("em")}" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 25.5h11M32 35.5h11M32 45.5h8" stroke="#c7a466" stroke-width="2.2" stroke-linecap="round"/><rect x="20" y="42.5" width="7" height="6" rx="1.5" fill="none" stroke="#c7a466" stroke-width="1.6"/>`+HI(27,9,6,1.4),
+ /* Persiapan: tetes air wudhu */
+ persiapan:SH(16)+`<path d="M30 6C22 18 15 27 15 37a15 15 0 0 0 30 0C45 27 38 18 30 6z" fill="${G("teal")}"/>`+HI(23.5,33,3.4,7.5,15)+`<path d="M50 30c-3 4.4-5 7.4-5 10a5 5 0 0 0 10 0c0-2.6-2-5.6-5-10z" fill="${G("teal")}"/>`+HI(48.4,40,1.2,2.4)+`<path d="M47 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="${G("gold")}"/>`,
+ /* Bacaan salat: buku dengan pita pembatas */
+ bacaan:SH(19)+`<rect x="14" y="8" width="36" height="46" rx="4" fill="${G("violet")}"/><rect x="17" y="8" width="33" height="46" rx="3.5" fill="#6a3fc9" opacity=".35"/><rect x="45" y="11" width="5" height="40" fill="${G("cream")}"/>
+ <rect x="20" y="16" width="20" height="13" rx="2.5" fill="none" stroke="${G("gold")}" stroke-width="1.8"/><path d="M24 22.5h12" stroke="${G("gold")}" stroke-width="1.8" stroke-linecap="round"/><path d="M36 8v15l3.5-2.8L43 23V8" fill="${G("ruby")}"/><path d="M14 46h31" stroke="${G("goldh")}" stroke-width="2"/>`+HI(20,13,4,1.6),
+ /* Sunnah: miswak + bintang */
+ sunnah:SH(19)+`<g transform="rotate(-38 32 32)"><rect x="9" y="27" width="40" height="10" rx="5" fill="${G("orange")}"/><rect x="9" y="27" width="40" height="3" rx="1.5" fill="#fff0a0" opacity=".6"/><path d="M49 27.5h4.5c2 0 3.5 2 3.5 4.5s-1.5 4.5-3.5 4.5H49z" fill="${G("cream")}"/><path d="M51 28.5v7M53.5 28.8v6.4M55.6 29.6v4.8" stroke="#d9c28f" stroke-width=".9"/><path d="M18 27v10M30 27v10" stroke="#a5620c" stroke-width="1" opacity=".5"/></g>`+STAR(17,15,7)+`<circle cx="49" cy="49" r="2" fill="${G("gold")}"/>`,
+ /* Gerakan: sajadah */
+ gerakan:SH(23)+`<path d="M16 8h32l6 44H10z" fill="${G("ruby")}"/><path d="M19.5 12h25l4.8 36.5H14.7z" fill="none" stroke="${G("gold")}" stroke-width="2"/><path d="M24 30c0-6 3.6-9.5 8-12 4.4 2.5 8 6 8 12v12H24z" fill="${G("navy")}" stroke="${G("gold")}" stroke-width="1.4"/>
+ <path d="M10 52h44l-.6 3H10.6z" fill="${G("goldh")}"/><path d="M13 55v3M17 55v3M21 55v3M25 55v3M29 55v3M33 55v3M37 55v3M41 55v3M45 55v3M49 55v3" stroke="${G("gold")}" stroke-width="1"/>`+HI(26,13,8,1.5),
+ /* Tasbih */
+ tasbih:SH(17)+(()=>{ let s=""; const n=22; for(let i=0;i<n;i++){ const a=Math.PI/2+i*2*Math.PI/n+.14; if(i===0) continue; const x=32+17*Math.cos(a), y=27+17*Math.sin(a); s+=`<circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="3.3" fill="${G(i%11===0?"gold":"em")}"/><circle cx="${(x-1).toFixed(2)}" cy="${(y-1.1).toFixed(2)}" r="1" fill="#fff" opacity=".7"/>`; } return s; })()+`<path d="M32 44v5" stroke="${G("gold")}" stroke-width="2"/><path d="M28.5 49h7l2 8h-11z" fill="${G("gold")}"/><circle cx="32" cy="46" r="3.6" fill="${G("goldh")}"/>`,
+ /* Setelah salat & jurnal: buku jurnal + pena */
+ setelah:SH(21)+`<rect x="12" y="9" width="34" height="46" rx="4" fill="${G("navy")}"/><rect x="12" y="9" width="7" height="46" rx="3" fill="#202a72"/><rect x="24" y="18" width="16" height="10" rx="2" fill="${G("cream")}"/><path d="M27 22h10M27 25h7" stroke="#8a6a3a" stroke-width="1.2" stroke-linecap="round"/>
+ <g transform="rotate(35 46 34)"><rect x="43" y="12" width="6.5" height="34" rx="3" fill="${G("goldh")}"/><path d="M43 46h6.5l-3.25 7z" fill="${G("cream")}"/><path d="M45.5 51h1.5l-.75 2z" fill="#333"/><rect x="43" y="17" width="6.5" height="2.4" fill="${G("ruby")}"/></g>`+HI(25,12,6,1.4),
+ /* Murattal: headphone */
+ mur:SH(20)+`<path d="M12 37V31a20 20 0 0 1 40 0v6" stroke="${G("goldh")}" stroke-width="5" fill="none" stroke-linecap="round"/><rect x="7.5" y="33" width="13" height="20" rx="6" fill="${G("ruby")}"/><rect x="43.5" y="33" width="13" height="20" rx="6" fill="${G("ruby")}"/>
+ <rect x="16" y="35" width="6" height="16" rx="3" fill="${G("gold")}"/><rect x="42" y="35" width="6" height="16" rx="3" fill="${G("gold")}"/><path d="M29 36v9M32 32v17M35 37v7" stroke="${G("em")}" stroke-width="2.4" stroke-linecap="round"/>`+HI(11.5,38,2,4),
+ /* Masjid terdekat: pin lokasi berkubah */
+ lokasi:SH(13,58)+`<path d="M32 4a19 19 0 0 0-19 19c0 13 19 32 19 32s19-19 19-32A19 19 0 0 0 32 4z" fill="${G("ruby")}"/><circle cx="32" cy="23" r="12" fill="${G("cream")}"/>
+ <path d="M24 30h16v-4H24z" fill="${G("em")}"/><path d="M25 26c0-5 3.5-7.6 7-9.4 3.5 1.8 7 4.4 7 9.4z" fill="${G("gold")}"/><path d="M32 16.6v-3" stroke="${G("goldd")}" stroke-width="1.4"/>`+HI(22,15,4,6,30),
+ /* Kompas kiblat */
+ kiblat:SH(19)+`<circle cx="32" cy="31" r="23" fill="${G("goldh")}"/><circle cx="32" cy="31" r="18.5" fill="${G("cream")}"/><circle cx="32" cy="31" r="18.5" fill="none" stroke="#c9a24a" stroke-width="1"/>
+ <path d="M32 14.5v3M32 44.5v3M15.5 31h3M45.5 31h3" stroke="#a37a30" stroke-width="1.6" stroke-linecap="round"/><path d="M39.5 21.5L34.6 33.6 24.5 40.5 29.4 28.4z" fill="${G("ruby")}"/><path d="M24.5 40.5l4.9-12.1 5.2 5.2z" fill="${G("navy")}"/><circle cx="32" cy="31" r="2.4" fill="${G("gold")}"/>
+ <rect x="29" y="4" width="6" height="5" rx="1.5" fill="${G("goldh")}"/>`+HI(24,19,8,3,-35),
+ /* Belanja Berkah: keranjang kuning */
+ belanja:SH(22)+`<path d="M22 24c0-8 4.5-13 10-13s10 5 10 13" stroke="${G("goldd")}" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M9 24h46l-5 28a4 4 0 0 1-4 3.4H18a4 4 0 0 1-4-3.4z" fill="${G("orange")}"/><path d="M8 22h48v6H8z" rx="2" fill="${G("gold")}"/>
+ <path d="M22 33v14M32 33v14M42 33v14" stroke="#c9780c" stroke-width="2.6" stroke-linecap="round" opacity=".7"/><path d="M47 38l1.2 3.6 3.6 1.2-3.6 1.2L47 47.6 45.8 44l-3.6-1.2 3.6-1.2z" fill="#fff"/>`+HI(20,30,6,2.4,-10),
+ /* Premium: permata */
+ premium:SH(17)+`<path d="M18 10h28l10 14-24 30L8 24z" fill="${G("violet")}"/><path d="M8 24h48L32 54z" fill="#5a2fb0" opacity=".55"/><path d="M18 10l6 14 8-14 8 14 6-14M8 24h48M24 24l8 30 8-30" stroke="#e9d4ff" stroke-width="1" fill="none" opacity=".75"/>
+ <path d="M18 10h14l-8 14H8z" fill="#efe0ff" opacity=".45"/>`+STAR(50,9,4.6),
+ /* Pengaturan: roda gigi */
+ settings:SH(18)+(()=>{ let s=""; for(let i=0;i<8;i++){ s+=`<rect x="28.5" y="5" width="7" height="10" rx="2" fill="${G("silver")}" transform="rotate(${i*45} 32 30)"/>`; } return s; })()+`<circle cx="32" cy="30" r="17" fill="${G("silver")}"/><circle cx="32" cy="30" r="12" fill="${G("goldh")}"/><circle cx="32" cy="30" r="6" fill="${G("navy")}"/>`+HI(25,22,6,3,-35),
+ /* Privasi: perisai + gembok */
+ privasi:SH(17)+`<path d="M32 5l21 7.5v15c0 13.5-9 22.5-21 27.5-12-5-21-14-21-27.5v-15z" fill="${G("em")}"/><path d="M32 9l17 6v12.5c0 11-7.3 18.6-17 22.8z" fill="#0a5a3e" opacity=".35"/>
+ <path d="M26 30v-4a6 6 0 0 1 12 0v4" stroke="${G("silver")}" stroke-width="3" fill="none"/><rect x="22.5" y="29" width="19" height="15" rx="3" fill="${G("gold")}"/><circle cx="32" cy="35" r="2.2" fill="#6d460f"/><rect x="31" y="35.5" width="2" height="5" rx="1" fill="#6d460f"/>`+HI(22,15,6,2.6,-20)
+};
+I.syahadah=I.akademi; I.salat=I.masjid; I.umrah=I.haji;
+
+/* Lainnya: label pendek + deskripsi satu baris (id/en/ar) per data-tile */
+const TL={
+ quran:["akademi",["Akademi","Academy","الأكاديمية"],["Qur'an & hadis","Qur'an & hadith","قرآن وحديث"]],
+ flow:["flow",["Salat Khusyuk","Mindful Prayer","صلاة خاشعة"],["Alur khusyuk","Step-by-step","خطوة بخطوة"]],
+ harian:["harian",["Checklist","Checklist","المهام"],["Amalan + dalil","Deeds + evidence","الأعمال والأدلة"]],
+ persiapan:["persiapan",["Persiapan","Preparation","التهيئة"],["Wudhu & niat","Wudu & intention","الوضوء والنية"]],
+ bacaan:["bacaan",["Bacaan Salat","Recitations","الأذكار"],["Arab & makna","Arabic & meaning","النص والمعنى"]],
+ sunnah:["sunnah",["Sunnah","Sunnah","السنن"],["Amalan harian","Daily sunnah","سنن يومية"]],
+ gerakan:["gerakan",["Gerakan","Postures","الحركات"],["Postur & fisio","Posture & physio","الهيئة والعلاج"]],
+ tasbih:["tasbih",["Tasbih","Tasbih","المسبحة"],["Hitung dzikir","Dhikr counter","عدّاد الذكر"]],
+ setelah:["setelah",["Setelah Salat","After Prayer","بعد الصلاة"],["Dzikir & jurnal","Dhikr & journal","أذكار ومذكرات"]],
+ mur:["mur",["Murattal","Murattal","التلاوة"],["Dengar tilawah","Listen & recite","استماع وتلاوة"]],
+ "beranda#v2MasjidCard":["lokasi",["Masjid","Mosques","المساجد"],["Masjid terdekat","Nearby mosques","الأقرب إليك"]],
+ kiblat:["kiblat",["Kiblat","Qibla","القبلة"],["Kompas kiblat","Qibla compass","بوصلة القبلة"]],
+ zakat:["zakat",["Zakat","Zakat","الزكاة"],["Hitung zakat","Zakat calculator","حاسبة الزكاة"]],
+ belanja:["belanja",["Belanja Berkah","Blessed Shop","تسوّق مبارك"],["Voucher & amal","Vouchers & charity","قسائم وصدقات"]],
+ puasa:["puasa",["Puasa","Fasting","الصيام"],["Kalender puasa","Fasting calendar","تقويم الصيام"]],
+ umrah:["haji",["Haji & Umrah","Hajj & Umrah","الحج والعمرة"],["Paket travel","Travel packages","باقات السفر"]],
+ premium:["premium",["Premium","Premium","بريميوم"],["Fitur lengkap","All features","مزايا كاملة"]],
+ settings:["settings",["Pengaturan","Settings","الإعدادات"],["Bahasa & tema","Language & theme","اللغة والمظهر"]],
+ privasi:["privasi",["Privasi","Privacy","الخصوصية"],["Kebijakan data","Data policy","سياسة البيانات"]],
+ hafalan:["hafalan",["Hafalan AI","Hafiz AI","الحفظ الذكي"],["Murajaah Qur'an","Qur'an review","مراجعة الحفظ"]]
+};
+function tile(p,lang){ const m=TL[p]; if(!m) return null; const i={id:0,en:1,ar:2}[lang]||0; return {ic:m[0],lab:m[1][i]||m[1][0],d:m[2][i]||m[2][0]}; }
+function icon(name,size,cls){ ensure(); const b=I[name]; if(!b) return ""; const z=size||48; return `<svg class="k3${cls?" "+cls:""}" viewBox="0 0 64 64" width="${z}" height="${z}" aria-hidden="true" focusable="false" data-k3="${name}">${b}</svg>`; }
+window.K3D={icon,tile,tiles:()=>Object.keys(TL),names:()=>Object.keys(I),ensure};
+})();
+
+</script>
+<script>
 /* Kusyu Hijri formatter: numeric parts from Intl umalqura, month names from our own tables (Intl 'id' gives Gregorian names + era 'SM') */
 (function(){
 var M={id:["Muharram","Safar","Rabiul Awal","Rabiul Akhir","Jumadil Awal","Jumadil Akhir","Rajab","Syakban","Ramadan","Syawal","Zulkaidah","Zulhijah"],
@@ -1364,6 +1512,40 @@ html.duo-lock,html.duo-lock body{overflow:hidden}
 .da-set .btn{margin-top:10px}
 
 
+/* ===== Kusyu — ikon 3D (t46): Rukun Islam, Akademi Syahadah, grid Lainnya 4 kolom ===== */
+svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.18))}
+/* Beranda: 5 rukun */
+.rk-row .rk-icons i{width:58px;height:58px;border-radius:20px;
+ background:radial-gradient(110% 100% at 30% 10%,rgba(255,244,200,.20),rgba(230,199,122,.07) 55%,transparent),linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.015)),var(--glass2);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 6px 14px rgba(0,0,0,.22)}
+.rk-row .rk-icons i svg.k3{width:44px;height:44px}
+.rk-row .rk-icons button:active i{transform:scale(.93)} .rk-row .rk-icons i{transition:transform .15s}
+.rk-row .rk-icons small{max-width:100%;overflow:hidden;text-overflow:ellipsis;margin-top:-2px}
+.rk-sheet .rk-ic svg.k3{width:60px;height:60px;margin:0 auto}
+.rk-ol li i svg.k3{width:26px;height:26px}
+/* Akademi: 4 kolom (Qur'an, Hadis, Sirah, Hafalan AI) */
+.pk-grid{grid-template-columns:repeat(4,1fr)!important;gap:8px!important}
+.pk-tile{padding:12px 4px 11px!important;min-height:118px}
+.pk-tile i{filter:none!important;margin-bottom:4px!important}
+.pk-tile i svg.k3{width:46px;height:46px}
+.pk-tile b{font-size:12.5px!important}
+.pk-tile small{font-size:10.5px!important}
+.pk-lead{font-size:13px;margin-top:4px}
+/* Lainnya: grid ikon 4 kolom + deskripsi 1 baris */
+#lnGrid.k3-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 6px;padding:14px 8px;border-radius:22px;border:1px solid var(--line);background:var(--glass)}
+.k3-tile{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;padding:2px 0;border:0;background:none;color:var(--fg);font:inherit;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.k3-tile i{display:grid;place-items:center;width:60px;height:60px;border-radius:20px;margin-bottom:4px;transition:transform .15s;
+ background:radial-gradient(110% 100% at 30% 10%,rgba(255,244,200,.20),rgba(230,199,122,.07) 55%,transparent),linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.015)),var(--glass2);
+ border:1px solid var(--line2,var(--line));box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 6px 14px rgba(0,0,0,.22)}
+.k3-tile i svg.k3{width:46px;height:46px}
+.k3-tile:active i{transform:scale(.92)}
+.k3-tile:focus-visible{outline:2px solid var(--gold2,#e6c77a);outline-offset:3px;border-radius:12px}
+.k3-tile b{font-size:12px;font-weight:700;line-height:1.2;max-width:100%;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow-wrap:anywhere}
+.k3-tile small{font-size:10px;line-height:1.25;color:var(--fg3);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+:is([data-theme=light],[data-theme=pink]) .rk-row .rk-icons i,:is([data-theme=light],[data-theme=pink]) .k3-tile i{background:linear-gradient(180deg,#fff,#f7efe0);box-shadow:inset 0 1px 0 #fff,0 6px 14px rgba(120,90,40,.14)}
+[data-theme=pink] .rk-row .rk-icons i,[data-theme=pink] .k3-tile i{background:linear-gradient(180deg,#fff,#f6e9e7)}
+
+
 .ks-card{margin-top:4px}.ks-streak{font-size:20px;color:#e6c77a}.ks-acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
 .ks-small{font-size:11.5px}.ks-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}.ks-stats div{background:rgba(230,199,122,.08);border-radius:12px;padding:8px 4px;text-align:center}
 .ks-stats b{display:block;font-size:18px;color:#e6c77a}.ks-stats small{font-size:10.5px;opacity:.75}.ks-bonus{font-size:12px;color:#e6c77a;margin-bottom:6px}
@@ -1400,18 +1582,13 @@ html.duo-lock,html.duo-lock body{overflow:hidden}
     <!-- ================= V2: BERANDA ================= -->
     <section class="page" id="page-beranda">
       <div class="stack">
-        <div class="card lit v2-next" id="v2Next"></div>
+        <div class="card lit v2-next v2-click" id="v2Next" data-go="jadwal"></div>
         <button class="v2-hero" id="v2Start" type="button">
           <span class="v2-hero-ic" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="20" cy="20" r="4.5" fill="currentColor"/></svg></span>
           <b data-v="startBtn"></b><span class="v2-tag" data-v="tagline"></span><small data-v="startSub"></small>
           <span class="v2-cta" aria-hidden="true"><span data-v="startGo"></span> <i>→</i></span>
         </button>
-        <div class="card v2-click" id="v2HafCard"><div class="row v2-sb"><div class="eyebrow" data-v="hafTitle"></div><span><span class="v2-beta">Beta</span> <span class="v2-pro">PRO</span></span></div>
-          <p class="dim" style="margin-top:6px" data-v="hafLead"></p><div class="v2-hafmini" id="v2HafMini"></div>
-          <div class="row" style="margin-top:10px"><button class="btn sm gold" type="button" data-go="hafalan" data-v="hafOpen"></button></div></div>
-        <div class="card"><div class="row v2-sb"><div class="eyebrow" data-v="todayTimes"></div><button class="btn sm ghost" type="button" data-go="jadwal" data-v="detail"></button></div><div class="v2-times" id="v2Times"></div></div>
-        <div class="card lit v2-click" data-go="kiblat"><div class="row v2-sb"><div class="eyebrow" data-v="qiblaT"></div><span class="dim" data-v="openCompass"></span></div>
-          <div class="v2-qrow"><svg viewBox="0 0 30 30" width="38" height="38" aria-hidden="true"><rect x="1" y="3" width="28" height="25" rx="2" fill="#111" stroke="#d9b86a"/><rect x="1" y="9" width="28" height="5" fill="#d9b86a"/></svg><b id="v2Qdeg" dir="ltr">—</b><span class="dim" data-v="fromNorth"></span></div></div>
+        <div class="card" id="v2TimesCard"><div class="row v2-sb"><div class="eyebrow" data-v="todayTimes"></div><button class="btn sm ghost" type="button" data-go="jadwal" data-v="detail"></button></div><div class="v2-times" id="v2Times"></div></div>
         <div class="card" id="v2MasjidCard"><div class="row v2-sb"><div class="eyebrow" data-v="masjidT"></div><button class="btn sm gold" type="button" id="v2MasjidBtn" data-v="find"></button></div>
           <div id="v2Masjid" class="v2-mlist"><p class="dim" style="font-size:13px" data-v="masjidLead"></p></div>
           <p class="dim v2-attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors · Overpass API</p></div>
@@ -1958,7 +2135,7 @@ const BACAAN = [
         latin:"At-taḥiyyātu lillāhi waṣ-ṣalawātu waṭ-ṭayyibāt. As-salāmu 'alaika ayyuhan-nabiyyu wa raḥmatullāhi wa barakātuh. As-salāmu 'alainā wa 'alā 'ibādillāhiṣ-ṣāliḥīn. Asyhadu allā ilāha illallāh, wa asyhadu anna Muḥammadan 'abduhu wa rasūluh.",
         arti:T("Segala penghormatan milik Allah, juga salawat dan kebaikan. Salam sejahtera atasmu wahai Nabi, beserta rahmat Allah dan berkah-Nya. Salam sejahtera atas kami dan atas hamba-hamba Allah yang saleh. Aku bersaksi tiada tuhan selain Allah, dan aku bersaksi Muhammad adalah hamba dan utusan-Nya.","All greetings are for Allah, and prayers and good things. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and Messenger.","التحيات لله والصلوات والطيبات، السلام عليك أيها النبي ورحمة الله وبركاته، السلام علينا وعلى عباد الله الصالحين، أشهد أن لا إله إلا الله وأشهد أن محمدًا عبده ورسوله."),
         dalil:[["HR Bukhari 831, Muslim 402",T("Ibnu Mas'ud: Nabi ﷺ mengajarkannya dengan telapak tangannya di antara kedua telapak tanganku.","Ibn Mas'ud: the Prophet ﷺ taught it to me with my hand between his hands.","ابن مسعود: علّمني رسول الله ﷺ التشهد وكفّي بين كفّيه.")],["HR Muslim 402",T("\"Jika kalian mengucapkan 'as-salāmu 'alā 'ibādillāhiṣ-ṣāliḥīn', ia mengenai setiap hamba saleh di langit dan di bumi.\"","\"When you say 'peace be upon the righteous servants of Allah', it reaches every righteous servant in the heavens and the earth.\"","«فإنكم إذا قلتم ذلك أصابت كل عبد صالح في السماء والأرض».")]],
-        makna:T("'Abduhu wa rasūluh' — hamba disebut sebelum utusan. Kemuliaan tertinggi manusia adalah menjadi hamba. Saat jari telunjuk terangkat pada syahadat, itu isyarat tauhid: satu. Pandanglah jarimu.","'His servant and Messenger' — servant is named before Messenger. The highest honor of a human being is to be a servant. When the index finger rises at the testimony, it signals tawhid: one. Look at your finger.","«عبده ورسوله»: قُدّمت العبودية على الرسالة. أعلى شرف للإنسان أن يكون عبدًا. حين ترفع السبابة عند الشهادة فهي إشارة التوحيد: واحد. انظر إلى إصبعك.") },
+        makna:T("'Abduhu wa rasūluh' — hamba disebut sebelum utusan. Kemuliaan tertinggi manusia adalah menjadi hamba. Saat jari telunjuk terangkat pada syahadah, itu isyarat tauhid: satu. Pandanglah jarimu.","'His servant and Messenger' — servant is named before Messenger. The highest honor of a human being is to be a servant. When the index finger rises at the testimony, it signals tawhid: one. Look at your finger.","«عبده ورسوله»: قُدّمت العبودية على الرسالة. أعلى شرف للإنسان أن يكون عبدًا. حين ترفع السبابة عند الشهادة فهي إشارة التوحيد: واحد. انظر إلى إصبعك.") },
       { judul:T("Salawat Ibrahimiyah (rukun dalam tasyahud akhir menurut Syafi'i)","The Ibrahimi salawat (a pillar in the final tashahhud per Shafi'i)","الصلاة الإبراهيمية (ركن في التشهد الأخير عند الشافعية)"),
         arab:"اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
         latin:"Allāhumma ṣalli 'alā Muḥammad wa 'alā āli Muḥammad, kamā ṣallaita 'alā Ibrāhīm wa 'alā āli Ibrāhīm, innaka ḥamīdum majīd. Allāhumma bārik 'alā Muḥammad wa 'alā āli Muḥammad, kamā bārakta 'alā Ibrāhīm wa 'alā āli Ibrāhīm, innaka ḥamīdum majīd.",
@@ -2684,7 +2861,7 @@ const Murattal={ db:null, tracks:[], curId:null, url:null,
 /* ---------------- Boot ---------------- */
 window.RKOld={get Figure(){return Figure;},get Bacaan(){return Bacaan;}};
 const App={ rerender(){ Persiapan.render(); Planner.render(); Bacaan.render(); Sunnah.render(); Figure.render(); Tasbih.render(); Jurnal.render(); Murattal.renderList(); } };
-function start(){ I18N.init(); Persiapan.init(); Planner.init(); Bacaan.init(); Sunnah.init(); Tasbih.init(); Jurnal.init(); Murattal.init(); const h=(location.hash||"").replace("#",""); go(PAGES.includes(h)?h:"beranda"); }
+function start(){ I18N.init(); Persiapan.init(); Planner.init(); Bacaan.init(); Sunnah.init(); Tasbih.init(); Jurnal.init(); Murattal.init(); const h=(location.hash||"").replace("#",""); go("beranda"); /* t45: always open on Beranda */ try{ const dl=new URLSearchParams(location.search).get("doa-azan")!=null||h==="doa-azan"; if(!dl) history.replaceState(null,"",location.pathname+"#beranda"); }catch(e){}; }
 document.readyState==="loading"?document.addEventListener("DOMContentLoaded",start):start();
 })();
 </script>
@@ -3512,7 +3689,7 @@ const D=window.RKV2DATA;
 const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includes(l)?l:"id";};
 const L=o=>o==null?"":(typeof o==="string"?o:(o[lang()]||o.id||""));
 const V={
- nQuran:["Pustaka","Library","المكتبة"], quranT:["Al-Qur'an","Al-Qur'an","القرآن الكريم"],
+ nQuran:["Akademi","Academy","الأكاديمية"], quranT:["Al-Qur'an","Al-Qur'an","القرآن الكريم"],
  privT:["Privasi","Privacy","الخصوصية"],
  nBelanja:["Belanja Berkah","Blessed Shop","تسوّق مبارك"], belanjaT:["Belanja Berkah","Blessed Shopping","تسوّق مبارك"], zakatT:["Zakat","Zakat","الزكاة"],
  puasaT:["Kalender Puasa","Fasting Calendar","تقويم الصيام"], umrahT:["Haji & Umrah","Hajj & Umrah","الحج والعمرة"],
@@ -3791,7 +3968,10 @@ const Flow={ i:0, pose:0, chair:false, dz:0, dzi:0, bT:null,
 /* ---------- Lainnya ---------- */
 function renderLainnya(){ const g=$("#lnGrid"); if(!g) return;
   const T=[["📖","quranT","quran"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["🧭","nKiblat","kiblat"],["💰","zakatT","zakat"],["🛍️","belanjaT","belanja"],["🌙","puasaT","puasa"],["🕋","umrahT","umrah"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
-  g.innerHTML=T.map(([i,k,p])=>`<button class="v2-tile" type="button" data-tile="${p}"><i>${i}</i><b>${v(k)}</b></button>`).join("");
+  if(!T.some(x=>x[2]==="hafalan")) T.push(["🎙️","nHafalan","hafalan"]); /* t46: Hafalan AI juga di Lainnya */
+  g.classList.toggle("k3-grid",!!window.K3D);
+  g.innerHTML=T.map(([i,k,p])=>{ const m=window.K3D&&K3D.tile(p,lang()); if(!m) return `<button class="v2-tile" type="button" data-tile="${p}"><i>${i}</i><b>${v(k)}</b></button>`;
+    return `<button class="k3-tile" type="button" data-tile="${p}" title="${esc(v(k))}" aria-label="${esc(m.lab+" · "+m.d)}"><i aria-hidden="true">${K3D.icon(m.ic,46)}</i><b>${esc(m.lab)}</b><small>${esc(m.d)}</small></button>`; }).join("");
   const ck=new Set(store.get("rk_doa_check",[]));
   $("#lnDoaList").innerHTML=D.H.filter(h=>h.step!=="surah").map(h=>`<details><summary><input type="checkbox" data-doa="${h.id}"${ck.has(h.id)?" checked":""} onclick="event.stopPropagation()"><span style="flex:1">${esc(L(h.name))}</span><span class="dim">▾</span></summary><div class="ar" dir="rtl" lang="ar">${esc(h.ar)}</div><div class="tr">${esc(h.tr)}</div><p style="font-size:13.5px;margin-top:4px">${esc(L(h.m))}</p><div class="src">${esc(h.src)}</div></details>`).join("");
   renderCal(); }
@@ -4041,7 +4221,7 @@ function ayahSheet(k){ const [s,a]=k.split(":").map(Number), sm=S(s), bm=store.g
 
 /* ---------- Beranda card ---------- */
 function berandaCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#qHomeCard");
-  if(!c){ c=document.createElement("div"); c.id="qHomeCard"; c.className="card lit q-home"; const anchor=$("#v2HafCard"); if(anchor) anchor.before(c); else pg.prepend(c); }
+  if(!c){ c=document.createElement("div"); c.id="qHomeCard"; c.className="card lit q-home"; const anchor=$("#v2HafCard")||$("#v2TimesCard"); if(anchor) anchor.before(c); else pg.prepend(c); }
   loadMeta().then(()=>{ c.innerHTML=`<div class="row v2-sb"><div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm ghost" type="button" data-qgo="1">${t("tSurah")} →</button></div>${contCard()}`; }).catch(()=>{ c.innerHTML=`<div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm gold" type="button" data-qgo="1">${t("open")}</button>`; }); }
 
 function init(){ if(!$("#page-quran")) return; const sh=$("#qSheet"); if(sh) document.body.appendChild(sh); applyT();
@@ -4129,13 +4309,13 @@ window.KusyuBacaan=[
  note:["Lafaz ini riwayat Ibnu Mas'ud. Mazhab Syafi'i mengutamakan riwayat Ibnu Abbas (HR. Muslim 403): \"At-taḥiyyātul-mubārakātuṣ-ṣalawātuṭ-ṭayyibātu lillāh…\" — keduanya sahih.","This wording is from Ibn Mas'ud. The Shafi'i school prefers Ibn Abbas' version (Muslim 403) — both are authentic.","المختار عند الشافعية تشهد ابن عباس، وكلاهما صحيح."],
  hk:["Saat mengucap \"salam atas hamba-hamba Allah yang saleh\", doa kita sampai ke setiap hamba saleh di langit dan bumi.","Saying peace upon the righteous reaches every righteous servant in heaven and earth.","تصيب كل عبد صالح."],
  dl:"HR. Bukhari 831, Muslim 402 (riwayat Ibnu Mas'ud); HR. Muslim 403 (riwayat Ibnu Abbas)"},
-{id:"b_tas2",ic:"☝️",n:["Tasyahud (bagian 2: syahadat)","Tashahhud (part 2: testimony)","التشهد ٢"],ref:"tasyahud",
+{id:"b_tas2",ic:"☝️",n:["Tasyahud (bagian 2: syahadah)","Tashahhud (part 2: testimony)","التشهد ٢"],ref:"tasyahud",
  ar:"أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
  tr:"Asyhadu allā ilāha illallāh, wa asyhadu anna Muḥammadan ‘abduhū wa rasūluh.",
  w:[["أَشْهَدُ","aku bersaksi","I bear witness"],["أَنْ لَا إِلَٰهَ","bahwa tiada tuhan","that there is no god"],["إِلَّا اللَّهُ","selain Allah","but Allah"],["أَنَّ مُحَمَّدًا","bahwa Muhammad","that Muhammad"],["عَبْدُهُ","hamba-Nya","is His servant"],["وَرَسُولُهُ","dan utusan-Nya","and His Messenger"]],
  m:["Aku bersaksi bahwa tiada tuhan selain Allah, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya.","I bear witness that there is no god but Allah, and that Muhammad is His servant and Messenger.","الشهادتان."],
  note:["Bagian 1 + 2 adalah tasyahud awal (rakaat ke-2). Pada tasyahud akhir dilanjutkan dengan shalawat dan doa sebelum salam (pelajaran berikutnya). Telunjuk kanan berisyarat saat \"illallāh\".","Parts 1+2 form the first tashahhud. In the final tashahhud, continue with salawat and the du'a before salam. Raise the right index finger at \"illallah\".","يشير بالسبابة عند إلا الله."],
- hk:["Setiap salat kita memperbarui syahadat — dasar seluruh hidup seorang muslim.","Every prayer renews the testimony of faith.","تجديد الشهادة في كل صلاة."],
+ hk:["Setiap salat kita memperbarui syahadah — dasar seluruh hidup seorang muslim.","Every prayer renews the testimony of faith.","تجديد الشهادة في كل صلاة."],
  dl:"HR. Bukhari 831, Muslim 402; HR. Muslim 580 (isyarat jari telunjuk)"},
 {id:"b_shalawat",ic:"💚",n:["Shalawat Ibrahimiyah","Salawat Ibrahimiyyah","الصلاة الإبراهيمية"],ref:"shalawat",
  w:[["اللَّهُمَّ صَلِّ","ya Allah, limpahkan salawat","O Allah, send prayers"],["عَلَى مُحَمَّدٍ","kepada Muhammad","upon Muhammad"],["وَعَلَى آلِ مُحَمَّدٍ","dan keluarga Muhammad","and the family of Muhammad"],["كَمَا صَلَّيْتَ","sebagaimana Engkau limpahkan salawat","as You sent prayers"],["عَلَى إِبْرَاهِيمَ","kepada Ibrahim","upon Ibrahim"],["إِنَّكَ حَمِيدٌ","sungguh Engkau Maha Terpuji","You are Praiseworthy"],["مَجِيدٌ","Maha Mulia","Glorious"],["اللَّهُمَّ بَارِكْ","ya Allah, berkahilah","O Allah, bless"],["كَمَا بَارَكْتَ","sebagaimana Engkau memberkahi","as You blessed"]],
@@ -4189,7 +4369,7 @@ const T={
  pgN:["Halaman","Page","صفحة"], prevP:["Sebelumnya","Previous","السابقة"], nextP:["Berikutnya","Next","التالية"], jump:["Ke halaman","Go to page","انتقل إلى صفحة"], ofP:["dari","of","من"], written:["halaman ditulis","pages written","صفحات مكتوبة"], enSoon:["(English version coming; showing Indonesian)","(English version coming; showing Indonesian)",""], draftTag:["Draf · menunggu tinjauan ustadz","Draft · awaiting scholar review","مسودة · بانتظار المراجعة"], words:["kata","words","كلمة"],
  arNote:["","","(النص بالإندونيسية/الإنجليزية مؤقتًا)"],
  today:["Hari Ini","Today","اليوم"], todayLead:["1 ayat · 1 hadis · 1 halaman sirah","1 verse · 1 hadith · 1 seerah page","آية · حديث · صفحة سيرة"], ayat:["Ayat hari ini","Verse of the day","آية اليوم"], hd:["Hadis hari ini","Hadith of the day","حديث اليوم"], sr:["Sirah hari ini","Seerah of the day","سيرة اليوم"],
- libEy:["Bacaan harian","Daily reading","القراءة اليومية"], libT:["Pustaka","Library","المكتبة"], tileQ:["114 surah","114 surahs","١١٤ سورة"], tileH:["Kitab hadis sahih","Authentic hadith","الحديث الصحيح"], tileS:["Kisah Nabi ﷺ","Life of the Prophet ﷺ","حياة النبي ﷺ"],
+ libEy:["Rukun pertama · Syahadah","First pillar · Shahadah","الركن الأول · الشهادة"], libT:["Akademi Syahadah","Shahadah Academy","أكاديمية الشهادة"], libLead:["Mengenal Allah dan Rasul-Nya ﷺ lewat Al-Qur'an, Hadis, dan Sirah.","Know Allah and His Messenger ﷺ through the Qur'an, Hadith and Seerah.","معرفة الله ورسوله ﷺ من خلال القرآن والحديث والسيرة."], tabHq:["Hafalan AI","Hafiz AI","الحفظ الذكي"], tileHq:["Murajaah Qur'an","Qur'an review","مراجعة الحفظ"], tileQ:["114 surah","114 surahs","١١٤ سورة"], tileH:["Kitab hadis sahih","Authentic hadith","الحديث الصحيح"], tileS:["Kisah Nabi ﷺ","Life of the Prophet ﷺ","حياة النبي ﷺ"],
  pmProg:["Program Harian","Daily Programme","البرنامج اليومي"], pmA:["1 Ayat","1 Verse","آية واحدة"], pmH:["1 Hadis","1 Hadith","حديث واحد"], pmS:["1 Halaman Sirah","1 Seerah Page","صفحة سيرة"], pmScroll:["Baca sampai akhir, nanti tercentang otomatis ⬇","Read to the end and it checks itself ⬇","اقرأ حتى النهاية وسيُعلَّم تلقائيًا ⬇"], pmWait:["Teruskan membaca… {n} detik lagi","Keep reading… {n}s to go","واصل القراءة… {n} ث"],
  pmOk:["✓ Sudah saya baca","✓ I've read it","✓ قرأته"], pmBack:["← Kembali ke program","← Back to programme","→ العودة إلى البرنامج"], pmDone:["✓ Sudah selesai hari ini","✓ Already done today","✓ تم اليوم"], pmPr:["{x} hari ini selesai ✓","Today's {x} is done ✓","تم {x} اليوم ✓"], pmRet:["Kembali ke program…","Back to the programme…","العودة إلى البرنامج…"], pmMasya:["Masya Allah!","Masha Allah!","ما شاء الله!"],
  done:["Selesai","Done","تم"], allDone:["MasyaAllah, program hari ini tuntas!","MashaAllah, today's programme is complete!","ما شاء الله، أتممت برنامج اليوم!"], read:["Baca","Read","اقرأ"]
@@ -4341,7 +4521,7 @@ async function todayData(){ const sd=seed(); const out={};
   try{ await loadSI(); const av=SR.idx.ch.filter(c=>c[4]); const c=av[sd%av.length]; out.s={n:c[0],title:cT(c)}; }catch(e){}
   return out; }
 async function homeCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#pkToday");
-  if(!c){ c=document.createElement("div"); c.id="pkToday"; c.className="card lit pk-today"; const a=$("#qHomeCard")||$("#v2HafCard"); if(a) a.before(c); else pg.prepend(c); }
+  if(!c){ c=document.createElement("div"); c.id="pkToday"; c.className="card lit pk-today"; const a=$("#qHomeCard")||$("#v2HafCard")||$("#v2TimesCard"); if(a) a.before(c); else pg.prepend(c); }
   const PP=pGet(); if(PP&&PP.st!=="off") return pHome(c); c.className="card lit pk-today";
   const D=await todayData(); const td=(logAll()[dk()])||{}; const n=["hi_ayat","hi_hadis","hi_sirah"].filter(k=>td[k]).length;
   const row=(k,ic,lab,body,open)=>`<div class="pk-it${td[k]?" on":""}"><button type="button" class="pk-ck" data-hik="${k}" aria-pressed="${!!td[k]}" aria-label="${t("done")}">${td[k]?"✓":""}</button><button type="button" class="pk-bd" ${open}><small>${ic} ${lab}</small>${body}</button></div>`;
@@ -4530,7 +4710,8 @@ function pClick(e){ if(bClick(e)) return true; const a=e.target.closest("[data-p
 
 function inject(){ const pg=$("#page-quran"); if(!pg||$("#pkHome")) return; pg.dataset.pk="home";
   const home=document.createElement("div"); home.id="pkHome"; home.className="pk-home";
-  home.innerHTML=`<div class="pk-hh"><div class="eyebrow" data-pt="libEy"></div><h1 data-pt="libT"></h1></div><div class="pk-grid">${[["q","📖","tabQ","tileQ"],["h","📚","tabH","tileH"],["s","📜","tabS","tileS"]].map(([k,i,l,sb])=>`<button class="v2-tile pk-tile" type="button" data-pk="${k}"><i aria-hidden="true">${i}</i><b data-pt="${l}"></b><small data-pt="${sb}"></small></button>`).join("")}</div>`;
+  const K3=(n,e)=>window.K3D?K3D.icon(n,46):e;
+  home.innerHTML=`<div class="pk-hh"><div class="eyebrow" data-pt="libEy"></div><h1 data-pt="libT"></h1><p class="muted pk-lead" data-pt="libLead"></p></div><div class="pk-grid">${[["q","quran","📖","tabQ","tileQ"],["h","hadis","📚","tabH","tileH"],["s","sirah","📜","tabS","tileS"]].map(([k,n,i,l,sb])=>`<button class="v2-tile pk-tile" type="button" data-pk="${k}"><i aria-hidden="true">${K3(n,i)}</i><b data-pt="${l}"></b><small data-pt="${sb}"></small></button>`).join("")}<button class="v2-tile pk-tile pk-hq" type="button" data-go="hafalan" id="pkHafalan"><i aria-hidden="true">${K3("hafalan","🎙️")}</i><b data-pt="tabHq"></b><small data-pt="tileHq"></small></button></div>`;
   pg.prepend(home); const pp=document.createElement("div"); pp.id="pkProg"; pp.className="card pp"; home.after(pp);
   const bb=document.createElement("div"); bb.id="pkBack"; bb.className="pk-backbar"; bb.innerHTML=`<button type="button" class="pk-back" data-pkback="1"><span aria-hidden="true">${lang()==="ar"?"→":"←"}</span> <span data-pt="back"></span></button>`; pp.after(bb);
   const h=document.createElement("div"); h.id="pkHadis"; h.className="pk-pane"; h.innerHTML=`<div class="stack" id="hIndex"><div class="q-hero"><div class="eyebrow" data-pt="hEy"></div><div class="q-hero-ar h-hero-ar" lang="ar" dir="rtl">صَحِيحُ الْبُخَارِيِّ</div><p class="muted" data-pt="hLead"></p></div>
@@ -5413,6 +5594,7 @@ const ARF='lang="ar" dir="rtl"';
 
 /* ---------- Ikon (SVG garis emas, currentColor) ---------- */
 const sv=(b,extra)=>`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"${extra||""}>${b}</svg>`;
+const K3=(n,z)=>window.K3D?K3D.icon(n,z||40):(ICON[n]||ICON.quran);
 const ICON={
  quran:sv('<path d="M12 2.4l.75 1.55 1.7.22-1.25 1.15.32 1.68L12 6.2l-1.52.8.32-1.68L9.55 4.17l1.7-.22z" fill="currentColor" stroke="none"/><path d="M12 9.4C10 7.9 6.8 7.5 3.4 8.1v9.3c3.4-.6 6.6-.2 8.6 1.3 2-1.5 5.2-1.9 8.6-1.3V8.1C17.2 7.5 14 7.9 12 9.4z"/><path d="M12 9.4v9.3"/><path d="M6.8 19.3l10.4 3M17.2 19.3L6.8 22.3"/>'),
  salat:sv('<path d="M3 21.2h18"/><path d="M5.2 21.2v-7.4h12.6v7.4"/><path d="M6.4 13.8c0-3.1 2.4-4.7 5.1-6.3 2.7 1.6 5.1 3.2 5.1 6.3"/><path d="M11.5 7.5V5"/><path d="M12.9 3.2a1.5 1.5 0 1 1-1.4-1 1.2 1.2 0 0 0 1.4 1z" fill="currentColor" stroke="none"/><path d="M10 21.2v-2.7a1.5 1.5 0 0 1 3 0v2.7"/><path d="M20.6 21.2V10.6M19.5 10.6h2.2M20.6 10.6V8.2l-.0-.01"/><circle cx="20.6" cy="7.4" r=".7" fill="currentColor" stroke="none"/>'),
@@ -5423,17 +5605,18 @@ const ICON={
 };
 const X={
  r:[["Rukun 1","Pillar 1","الركن ١"],["Rukun 2","Pillar 2","الركن ٢"],["Rukun 3","Pillar 3","الركن ٣"],["Rukun 4","Pillar 4","الركن ٤"],["Rukun 5","Pillar 5","الركن ٥"]],
- rq:["Al-Qur'an","Qur'an","القرآن"], rs:["Salat","Prayer","الصلاة"], rz:["Zakat","Zakat","الزكاة"], rp:["Puasa","Fasting","الصيام"], rh:["Haji/Umrah","Hajj/Umrah","الحج والعمرة"],
+ rq:["Syahadah","Shahadah","الشهادة"], rqA:["Akademi Syahadah","Shahadah Academy","أكاديمية الشهادة"], rs:["Salat","Prayer","الصلاة"], rz:["Zakat","Zakat","الزكاة"], rp:["Puasa","Fasting","الصيام"], rh:["Haji/Umrah","Hajj/Umrah","الحج والعمرة"],
  cap:["Disusun menurut rukun Islam · HR. Bukhari 8, Muslim 16","Arranged by the pillars of Islam · Bukhari 8, Muslim 16","مرتبة على أركان الإسلام · البخاري ٨، مسلم ١٦"],
  hTitle:["Islam dibangun di atas lima perkara","Islam is built upon five","بُني الإسلام على خمس"],
  hTr:["\"Islam dibangun di atas lima perkara: bersaksi bahwa tiada ilah selain Allah dan Muhammad adalah utusan Allah, mendirikan salat, menunaikan zakat, berhaji, dan berpuasa Ramadan.\"","\"Islam is built upon five: testifying that there is no god but Allah and that Muhammad is the Messenger of Allah, establishing prayer, giving zakat, Hajj, and fasting Ramadan.\"",""],
  hSrc:["HR. Bukhari no. 8 dan Muslim no. 16, dari Abdullah bin Umar","Sahih al-Bukhari 8 and Sahih Muslim 16, from 'Abdullah ibn 'Umar","رواه البخاري (٨) ومسلم (١٦) عن عبد الله بن عمر"],
  hOrd:["Urutan puasa sebelum haji mengikuti riwayat Muslim no. 16: ketika seseorang mengulang dengan \"haji lalu puasa Ramadan\", Ibnu Umar menjawab: «لَا، صِيَامُ رَمَضَانَ وَالْحَجُّ، هَكَذَا سَمِعْتُهُ مِنْ رَسُولِ اللَّهِ ﷺ».","Fasting before Hajj follows Muslim 16: when a man repeated it as \"Hajj then fasting Ramadan\", Ibn 'Umar said: «لَا، صِيَامُ رَمَضَانَ وَالْحَجُّ، هَكَذَا سَمِعْتُهُ مِنْ رَسُولِ اللَّهِ ﷺ».","تقديم الصيام على الحج على رواية مسلم (١٦): «لَا، صِيَامُ رَمَضَانَ وَالْحَجُّ، هَكَذَا سَمِعْتُهُ مِنْ رَسُولِ اللَّهِ ﷺ»."],
- hQ:["Posisi rukun pertama (syahadat) diisi pintu Al-Qur'an, kalam Allah yang menjadi dasar kalimat tauhid. Syahadat sendiri tetap rukun pertama dan tidak tergantikan.","The first pillar's slot (the shahadah) opens the Qur'an, Allah's speech on which tawhid rests. The shahadah itself remains the first pillar and is irreplaceable.","خانة الركن الأول (الشهادتان) تفتح القرآن الكريم، كلام الله الذي يقوم عليه التوحيد، وتبقى الشهادتان الركن الأول الذي لا يُستبدل."],
+ hQ:["Ikon rukun pertama, Syahadah, membuka Akademi Syahadah: tempat belajar Al-Qur'an, Hadis, dan Sirah untuk mengenal Allah dan Rasul-Nya ﷺ. Syahadah sendiri tetap rukun pertama dan tidak tergantikan.","The first pillar's icon, the Shahadah, opens the Shahadah Academy: learning the Qur'an, Hadith and Seerah to know Allah and His Messenger ﷺ. The Shahadah itself remains the first pillar and is irreplaceable.","أيقونة الركن الأول (الشهادة) تفتح أكاديمية الشهادة: تعلّم القرآن والحديث والسيرة لمعرفة الله ورسوله ﷺ، وتبقى الشهادتان الركن الأول الذي لا يُستبدل."],
+ rd:[["Akademi ilmu","Academy","أكاديمية العلم"],["Jadwal & kiblat","Times & qibla","المواقيت والقبلة"],["Hitung zakat","Calculator","حاسبة الزكاة"],["Kalender","Calendar","التقويم"],["Paket travel","Packages","الباقات"]],
  close:["Tutup","Close","إغلاق"],
  qbBtn:["Buka Kompas Kiblat","Open Qibla Compass","افتح بوصلة القبلة"], qbSub:["Arah kiblat dari lokasimu","Qibla direction from your location","اتجاه القبلة من موقعك"]
 };
-const RUKUN=[["quran","rq","quran"],["salat","rs","jadwal"],["zakat","rz","zakat"],["puasa","rp","puasa"],["haji","rh","umrah"]];
+const RUKUN=[["syahadah","rq","quran"],["salat","rs","jadwal"],["zakat","rz","zakat"],["puasa","rp","puasa"],["haji","rh","umrah"]];
 const BUNIYA="بُنِيَ الإِسْلَامُ عَلَى خَمْسٍ: شَهَادَةِ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَإِقَامِ الصَّلَاةِ، وَإِيتَاءِ الزَّكَاةِ، وَالْحَجِّ، وَصَوْمِ رَمَضَانَ";
 
 function sheet(html,id){ let s=document.getElementById("rkSheet"); if(!s){ s=document.createElement("div"); s.id="rkSheet"; s.className="bb-sheet rk-sheet"; s.hidden=true; s.addEventListener("click",e=>{ if(e.target===s||e.target.closest("[data-rkclose]")) s.hidden=true; }); document.body.appendChild(s); }
@@ -5443,11 +5626,11 @@ function sheet(html,id){ let s=document.getElementById("rkSheet"); if(!s){ s=doc
 function homeRow(){ const nx=document.getElementById("v2Next"); if(!nx) return; let r=document.getElementById("bbHomeRow");
  if(!r){ r=document.createElement("div"); r.id="bbHomeRow"; nx.insertAdjacentElement("afterend",r); }
  r.className="card bb-hrow rk-row";
- r.innerHTML=`<div class="rk-icons">${RUKUN.map(([ic,k,p],i)=>`<button type="button" data-go="${p}" data-hr="${p}" data-rukun="${i+1}"><i>${ICON[ic]}<em>${N(i+1)}</em></i><span>${esc(t(X[k]))}</span><small>${esc(t(X.r[i]))}</small></button>`).join("")}</div>
+ r.innerHTML=`<div class="rk-icons">${RUKUN.map(([ic,k,p],i)=>`<button type="button" data-go="${p}" data-hr="${p}" data-rukun="${i+1}" aria-label="${esc(t(X.r[i])+": "+t(X[k])+" · "+t(X.rd[i]))}"><i>${K3(ic,40)}<em>${N(i+1)}</em></i><span>${esc(t(X[k]))}</span><small>${esc(t(X.rd[i]))}</small></button>`).join("")}</div>
  <button type="button" class="rk-cap" id="rkCap"><span ${ARF}>«بُنِيَ الإِسْلَامُ عَلَى خَمْسٍ»</span><small>${esc(t(X.cap))} ⓘ</small></button>`; }
-function buniyaSheet(){ sheet(`<div class="ic rk-ic">${ICON.quran}</div><h2>${esc(t(X.hTitle))}</h2>
+function buniyaSheet(){ sheet(`<div class="ic rk-ic">${K3("syahadah",56)}</div><h2>${esc(t(X.hTitle))}</h2>
  <div class="rk-ar" ${ARF}>«${BUNIYA}»</div>${lg()!=="ar"?`<p class="rk-tr">${esc(t(X.hTr))}</p>`:""}<p class="rk-src">${esc(t(X.hSrc))}</p>
- <ol class="rk-ol">${RUKUN.map(([ic,k],i)=>`<li><i>${ICON[ic]}</i><b>${esc(t(X.r[i]))}</b> · ${esc(t(X[k]))}</li>`).join("")}</ol>
+ <ol class="rk-ol">${RUKUN.map(([ic,k],i)=>`<li><i>${K3(ic,26)}</i><b>${esc(t(X.r[i]))}</b> · ${esc(t(i?X[k]:X.rqA))}</li>`).join("")}</ol>
  <p class="rk-note">${esc(t(X.hOrd))}</p><p class="rk-note">${esc(t(X.hQ))}</p>`,"rkBuniya"); }
 
 /* ---------- Jadwal: tombol Kiblat menonjol ---------- */
