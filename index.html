@@ -1151,6 +1151,87 @@ html.duo-lock,html.duo-lock body{overflow:hidden}
 [data-theme=pink] .pk-draft{color:#7d4f57}
 
 
+#zkStack .zk-types{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+#zkStack .zk-type{display:flex;flex-direction:column;align-items:center;gap:4px;padding:11px 6px;border:1px solid var(--line);border-radius:16px;background:var(--glass);color:var(--fg);font:inherit;cursor:pointer;text-align:center}
+#zkStack .zk-type i{font-style:normal;font-size:22px}
+#zkStack .zk-type b{font-size:12.5px;line-height:1.25}
+#zkStack .zk-type.on{border-color:var(--gold2,#d9b86a);background:rgba(201,162,74,.18);box-shadow:0 0 0 1px var(--gold2,#d9b86a) inset}
+#zkStack .zk-f{margin-top:10px}
+#zkStack .zk-f label{display:block;font-weight:700;font-size:13.5px;margin-bottom:5px}
+#zkStack .zk-f small{display:block;font-size:11.5px;color:var(--fg3);margin-top:4px;line-height:1.45}
+#zkStack .zk-in{position:relative;display:flex;align-items:center}
+#zkStack .zk-in span{position:absolute;inset-inline-start:12px;font-size:13px;color:var(--fg3);pointer-events:none}
+#zkStack .zk-in input{padding-inline-start:40px;font-size:15px;font-variant-numeric:tabular-nums}
+#zkStack .zk-in.u input{padding-inline-start:12px;padding-inline-end:52px}
+#zkStack .zk-in.u span{inset-inline-start:auto;inset-inline-end:12px}
+#zkStack .zk-chk{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:13.5px;line-height:1.45}
+#zkStack .zk-chk input{margin-top:3px;accent-color:var(--gold)}
+#zkStack .zk-res{border:1px solid var(--gold2,#d9b86a)}
+#zkStack .zk-rows{display:grid;gap:6px;margin-top:8px;font-size:13.5px}
+#zkStack .zk-rows div{display:flex;justify-content:space-between;gap:10px}
+#zkStack .zk-rows b{font-variant-numeric:tabular-nums}
+#zkStack .zk-big{font-size:28px;font-weight:800;margin:10px 0 2px;color:var(--gold2,#d9b86a);font-variant-numeric:tabular-nums}
+#zkStack .zk-st{display:inline-block;margin-top:8px;padding:4px 10px;border-radius:999px;font-size:12.5px;font-weight:700}
+#zkStack .zk-st.yes{background:rgba(159,211,184,.18);color:var(--jade,#2f7a57)}
+#zkStack .zk-st.no{background:var(--glass2);color:var(--fg2)}
+#zkStack .zk-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+#zkStack .zk-chips button{border:1px solid var(--line);background:var(--glass);color:var(--fg);border-radius:999px;padding:7px 12px;font:inherit;font-size:12.5px;cursor:pointer;font-variant-numeric:tabular-nums}
+#zkStack .zk-chips button.on{border-color:var(--gold2,#d9b86a);color:var(--gold2,#d9b86a)}
+#zkStack .zk-pay{width:100%;margin-top:12px;padding:13px;font-size:15px}
+#zkStack .zk-soon{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px dashed var(--gold2,#d9b86a);font-size:13px;line-height:1.5}
+#zkStack .zk-dalil .ar{font-family:Amiri,"Amiri Quran",serif;font-size:19px;line-height:1.9;margin-top:8px}
+#zkStack .zk-dalil p{font-size:13.5px;line-height:1.55;margin-top:4px}
+#zkStack .zk-dalil .src{font-size:11.5px;color:var(--fg3);margin-top:2px}
+#zkStack .zk-dalil details{border-top:1px solid var(--line);padding:8px 0}
+#zkStack .zk-dalil summary{cursor:pointer;font-weight:700;font-size:13.5px}
+#zkStack .zk-note{font-size:13px;line-height:1.55;margin-top:8px;padding:10px 12px;border-radius:12px;background:var(--glass2)}
+#zkStack .zk-note b{display:block;margin-bottom:3px}
+#zkStack .zk-steps{display:flex;gap:6px;margin-top:8px;font-size:11.5px;color:var(--fg3)}
+#zkStack .zk-steps span{flex:1;text-align:center;padding:5px 2px;border-radius:999px;background:var(--glass)}
+.zk-home{display:flex;align-items:center;gap:12px}
+.zk-home i{font-style:normal;font-size:28px}
+[data-theme=pink] #zkStack .zk-type.on{background:rgba(110,74,84,.12);border-color:#8a5a66;box-shadow:0 0 0 1px #8a5a66 inset}
+[data-theme=pink] #zkStack .zk-big{color:#6e4a54}
+[data-theme=pink] #zkStack .zk-res,[data-theme=pink] #zkStack .zk-soon{border-color:#8a5a66}
+[data-theme=light] #zkStack .zk-big{color:#8a6a1f}
+#zkStack .zk-pay[aria-disabled=true]{opacity:.78}
+#zkStack .zk-in{direction:ltr}
+
+
+#bbStack .bb-doors{display:grid;gap:12px}
+#bbStack .bb-door{display:flex;align-items:center;gap:14px;padding:18px 16px;border:1px solid var(--line);border-radius:22px;background:var(--glass);color:var(--fg);font:inherit;cursor:pointer;text-align:start;width:100%}
+#bbStack .bb-door i{font-style:normal;font-size:38px;width:64px;height:64px;display:grid;place-items:center;border-radius:18px;background:var(--glass2);flex:none}
+#bbStack .bb-door b{display:block;font-size:17px}
+#bbStack .bb-door small{display:block;font-size:12.5px;color:var(--fg3);margin-top:3px;line-height:1.4}
+#bbStack .bb-door em{margin-inline-start:auto;font-style:normal;color:var(--gold2,#d9b86a);font-size:20px}
+.bb-tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:rgba(201,162,74,.18);color:var(--gold2,#d9b86a)}
+#bbStack .bb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+#bbStack .bb-v{display:flex;flex-direction:column;gap:6px;align-items:flex-start;padding:12px;border:1px dashed var(--line2,var(--line));border-radius:18px;background:var(--glass);color:var(--fg);font:inherit;text-align:start;cursor:pointer}
+#bbStack .bb-v i{font-style:normal;font-size:28px}
+#bbStack .bb-v b{font-size:13.5px;line-height:1.3}
+#bbStack .bb-v small{font-size:11.5px;color:var(--fg3)}
+#bbStack .bb-p{padding:14px;border:1px dashed var(--line2,var(--line));border-radius:18px;background:var(--glass);margin-top:0}
+#bbStack .bb-p .hd{display:flex;gap:12px;align-items:center}
+#bbStack .bb-p .hd i{font-style:normal;font-size:30px}
+#bbStack .bb-p p{font-size:13.5px;line-height:1.5;margin-top:8px}
+#bbStack .bb-btn[aria-disabled=true],.bb-sheet .bb-btn[aria-disabled=true]{opacity:.62;cursor:not-allowed}
+#bbStack .bb-soon,.bb-sheet .bb-soon{margin-top:8px;padding:9px 12px;border-radius:12px;border:1px dashed var(--gold2,#d9b86a);font-size:12.5px;line-height:1.5}
+.bb-sheet{position:fixed;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.45)}
+.bb-sheet[hidden]{display:none}
+.bb-sheet .in{width:100%;max-width:560px;max-height:86vh;overflow:auto;background:var(--bg2,#1c150d);color:var(--fg);border-radius:22px 22px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));border-top:1px solid var(--line2,var(--line))}
+.bb-sheet .ic{font-size:44px;text-align:center}
+.bb-sheet h2{font-size:19px;text-align:center;margin:6px 0 4px}
+.bb-sheet ul{font-size:13.5px;line-height:1.55;padding-inline-start:18px;margin:8px 0}
+.bb-sheet .bb-btn{width:100%;margin-top:10px;padding:13px}
+.bb-hrow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.bb-hrow button{display:flex;flex-direction:column;align-items:center;gap:5px;border:0;background:none;color:var(--fg);font:inherit;cursor:pointer;padding:2px 0;min-width:0}
+.bb-hrow button i{font-style:normal;font-size:23px;width:52px;height:52px;display:grid;place-items:center;border-radius:50%;background:var(--glass2);border:1px solid var(--line)}
+.bb-hrow button span{font-size:11.5px;font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nav button[data-p=belanja] span{white-space:normal;line-height:1.05;text-align:center;font-size:10px;letter-spacing:0;overflow:visible}
+[data-theme=pink] .bb-sheet .in,[data-theme=light] .bb-sheet .in{background:var(--bg,#fff)}
+[data-theme=pink] .bb-tag{background:rgba(110,74,84,.12);color:#6e4a54}
+
+
 .ks-card{margin-top:4px}.ks-streak{font-size:20px;color:#e6c77a}.ks-acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
 .ks-small{font-size:11.5px}.ks-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}.ks-stats div{background:rgba(230,199,122,.08);border-radius:12px;padding:8px 4px;text-align:center}
 .ks-stats b{display:block;font-size:18px;color:#e6c77a}.ks-stats small{font-size:10.5px;opacity:.75}.ks-bonus{font-size:12px;color:#e6c77a;margin-bottom:6px}
@@ -1280,6 +1361,14 @@ html.duo-lock,html.duo-lock body{overflow:hidden}
     <!-- ================= PRIVASI ================= -->
     <section class="page" id="page-privasi">
       <div class="stack" id="pvStack"></div>
+    </section>
+    <!-- ================= ZAKAT ================= -->
+    <section class="page" id="page-zakat">
+      <div class="stack" id="zkStack"></div>
+    </section>
+    <!-- ================= BELANJA BERKAH ================= -->
+    <section class="page" id="page-belanja">
+      <div class="stack" id="bbStack"></div>
     </section>
     <!-- ================= JADWAL SALAT + KIBLAT (baru) ================= -->
     <section class="page" id="page-jadwal">
@@ -1540,7 +1629,7 @@ html.duo-lock,html.duo-lock body{overflow:hidden}
     <button data-p="quran"><svg viewBox="0 0 24 24"><path d="M12 6c-2-1.6-5-2-8-1.6V19c3-.4 6 0 8 1.6 2-1.6 5-2 8-1.6V4.4C17 4 14 4.4 12 6z"/><path d="M12 6v14.6"/></svg><span data-v="nQuran"></span></button>
     <button data-p="hafalan"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span data-v="nHafalan"></span></button>
     <button data-p="jadwal"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg><span data-v="nJadwal"></span></button>
-    <button data-p="kiblat"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span data-v="nKiblat"></span></button>
+    <button data-p="belanja"><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.6 10.2a2 2 0 0 1-2 1.8H7.6a2 2 0 0 1-2-1.8z"/><path d="M8.5 9l3.5-5 3.5 5"/><path d="M9.5 13.5v3M14.5 13.5v3"/></svg><span data-v="nBelanja"></span></button>
     <button data-p="lainnya"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg><span data-v="nLainnya"></span></button>
   </nav>
   <div class="v2-splash" id="v2Splash"><svg viewBox="0 0 40 40" width="84" height="84"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="none" stroke="#e6c77a" stroke-width="1.4"/><circle cx="20" cy="20" r="4.5" fill="#e6c77a"/></svg><b>Kusyu</b><div id="v2SplashVerse"></div><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
@@ -2223,7 +2312,7 @@ const t=k=>UI[k]?L(UI[k]):k;
 const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:g==="hasan"?`<span class="pill gold">${t("g.hasan")}</span>`:g==="dhaif"?`<span class="pill rose">${t("g.dhaif")}</span>`:`<span class="pill rose">${t("g.khilaf")}</span>`;
 
 /* ---------------- Router ---------------- */
-const PAGES=["beranda","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
+const PAGES=["beranda","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
 function go(p){ if(!PAGES.includes(p)) p="beranda";
   $$(".page").forEach(s=>s.classList.toggle("on",s.id==="page-"+p)); $$("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.p===p));
   $("#view").scrollTop=0; try{history.replaceState(null,"","#"+p);}catch(e){}
@@ -3284,6 +3373,7 @@ const L=o=>o==null?"":(typeof o==="string"?o:(o[lang()]||o.id||""));
 const V={
  nQuran:["Pustaka","Library","المكتبة"], quranT:["Al-Qur'an","Al-Qur'an","القرآن الكريم"],
  privT:["Privasi","Privacy","الخصوصية"],
+ nBelanja:["Belanja Berkah","Blessed Shop","تسوّق مبارك"], belanjaT:["Belanja Berkah","Blessed Shopping","تسوّق مبارك"], zakatT:["Zakat","Zakat","الزكاة"],
  tagline:["Tempat hati bertemu Allah","Where the heart meets Allah","حيث يلقى القلب الله"],
  skip:["Ketuk untuk lanjut","Tap to continue","انقر للمتابعة"],
  startGo:["Mulai sekarang","Start now","ابدأ الآن"],
@@ -3555,7 +3645,7 @@ const Flow={ i:0, pose:0, chair:false, dz:0, dzi:0, bT:null,
 
 /* ---------- Lainnya ---------- */
 function renderLainnya(){ const g=$("#lnGrid"); if(!g) return;
-  const T=[["📖","quranT","quran"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
+  const T=[["📖","quranT","quran"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["🧭","nKiblat","kiblat"],["💰","zakatT","zakat"],["🛍️","belanjaT","belanja"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
   g.innerHTML=T.map(([i,k,p])=>`<button class="v2-tile" type="button" data-tile="${p}"><i>${i}</i><b>${v(k)}</b></button>`).join("");
   const ck=new Set(store.get("rk_doa_check",[]));
   $("#lnDoaList").innerHTML=D.H.filter(h=>h.step!=="surah").map(h=>`<details><summary><input type="checkbox" data-doa="${h.id}"${ck.has(h.id)?" checked":""} onclick="event.stopPropagation()"><span style="flex:1">${esc(L(h.name))}</span><span class="dim">▾</span></summary><div class="ar" dir="rtl" lang="ar">${esc(h.ar)}</div><div class="tr">${esc(h.tr)}</div><p style="font-size:13.5px;margin-top:4px">${esc(L(h.m))}</p><div class="src">${esc(h.src)}</div></details>`).join("");
@@ -4854,6 +4944,7 @@ const LOCAL=[
  [["Hafalan Al-Qur'an & AI hafalan","Qur'an memorisation & AI","حفظ القرآن والذكاء الاصطناعي"],"ks_hifz, rk_hafalan"],
  [["Penanda & bacaan terakhir (Qur'an, hadis, sirah), jurnal","Bookmarks & last read (Qur'an, hadith, sirah), journal","العلامات وآخر قراءة، والمذكرات"],"rk_q_bm, rk_q_last, rk_h_bm, rk_h_last, rk_s_last, rk_journal"],
  [["Pengaturan azan, metode & cache masjid","Azan settings, method & mosque cache","إعدادات الأذان والطريقة وذاكرة المساجد"],"rk_azan, rk_pt_*, rk_masjid_cache"],
+ [["Input terakhir kalkulator zakat (angka & harga emas)","Last zakat calculator inputs (figures & gold price)","آخر مدخلات حاسبة الزكاة (الأرقام وسعر الذهب)"],"rk_zakat"],
  [["Rekaman suara saat hafalan diproses langsung di HP dan tidak diunggah","Voice recordings during memorisation are processed on the phone and never uploaded","تُعالج التسجيلات الصوتية على الهاتف ولا تُرفع"],""]
 ];
 const NET=[
@@ -4888,6 +4979,275 @@ function sync(){ addLinks(); render(); }
 window.KusyuPrivasi={render,wipe,NET,LOCAL};
 document.addEventListener("DOMContentLoaded",sync); if(document.readyState!=="loading") setTimeout(sync,0);
 window.addEventListener("hashchange",sync); document.addEventListener("click",e=>{ if(e.target.closest("[data-l]")) setTimeout(sync,50); });
+})();
+
+</script>
+<script>
+/* ===== Kusyu — Zakat (kalkulator; pola alur: pilih jenis → hitung → nominal → bayar[segera hadir]) =====
+   Tanpa jaringan. Input terakhir disimpan hanya di localStorage (rk_zakat). Tombol bayar tidak melakukan apa pun selain menampilkan pemberitahuan. */
+(function(){
+"use strict";
+const lg=()=>{try{const l=JSON.parse(localStorage.getItem("rk_lang")||'"id"');return ["id","en","ar"].includes(l)?l:"id";}catch(e){return "id";}};
+const t=o=>o[{id:0,en:1,ar:2}[lg()]];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY="rk_zakat";
+const DEF={type:"maal",gold:2550000,silver:36750,v:{f_jiwa:"1",f_unit:"kg",f_qty_kg:"2,5",f_qty_l:"3,5",f_price_kg:"15000",f_price_l:"11000"},haul:{m:1,d:1},debt:{m:0,d:0,p:1},jew:0,amt:""};
+const GOLD_NISAB=85, SILVER_NISAB=595, RATE=0.025;
+const PRICE_DATE=["27 Oktober 2026","27 October 2026","٢٧ أكتوبر ٢٠٢٦"];
+let S=load(), shownPay=false;
+function load(){ try{ const o=JSON.parse(localStorage.getItem(KEY)||"null"); if(o&&typeof o==="object") return Object.assign({},DEF,o,{v:Object.assign({},DEF.v,o.v||{}),haul:Object.assign({},DEF.haul,o.haul||{}),debt:Object.assign({},DEF.debt,o.debt||{})}); }catch(e){} return JSON.parse(JSON.stringify(DEF)); }
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} }
+const num=s=>{ s=String(s==null?"":s).trim(); if(!s) return 0; s=s.replace(/[^\d.,]/g,""); return +s.replace(/\./g,"").replace(",",".")||0; };   /* id-ID: titik = ribuan, koma = desimal */
+const money=n=>"Rp "+Math.round(n).toLocaleString("id-ID");
+const grams=n=>(Math.round(n*1000)/1000).toLocaleString("id-ID")+" g";
+const fmtIn=s=>{ const n=num(s); return n?Math.round(n).toLocaleString("id-ID"):""; };
+
+const X={
+ back:["← Belanja Berkah","← Blessed Shopping","← تسوّق مبارك"],
+ ey:["Zakat","Zakat","الزكاة"], title:["Hitung & Tunaikan Zakat","Calculate & Pay Zakat","احسب زكاتك وأدِّها"],
+ lead:["Pilih jenis zakat, isi angka, lalu lihat apakah sudah wajib dan berapa zakatnya. Perhitungan berjalan di HP ini saja.","Choose a zakat type, enter your figures and see whether zakat is due and how much. Calculated on this phone only.","اختر نوع الزكاة وأدخل الأرقام لتعرف هل وجبت وكم مقدارها. يتم الحساب على هذا الهاتف فقط."],
+ steps:[["1 Jenis","2 Hitung","3 Nominal","4 Bayar"],["1 Type","2 Calculate","3 Amount","4 Pay"],["١ النوع","٢ الحساب","٣ المبلغ","٤ الدفع"]],
+ typeT:["Pilih jenis zakat","Choose zakat type","اختر نوع الزكاة"],
+ nisabT:["Dasar nisab","Nisab basis","أساس النصاب"],
+ goldL:["Harga emas per gram","Gold price per gram","سعر غرام الذهب"],
+ silverL:["Harga perak per gram","Silver price per gram","سعر غرام الفضة"],
+ est:["Perkiraan, bukan harga resmi: harga emas batangan 1 g di Indonesia per "," Estimate, not an official price: 1 g gold bar price in Indonesia as of ","تقدير وليس سعرًا رسميًا: سعر سبيكة ذهب ١ غ في إندونيسيا بتاريخ "],
+ est2:[". Ubah sesuai harga hari ini.",". Update it to today's price.",". عدّله حسب سعر اليوم."],
+ estS:["Perkiraan harga perak batangan per ","Estimated silver bar price as of ","تقدير سعر الفضة بتاريخ "],
+ nisabIs:["Nisab = 85 g emas = ","Nisab = 85 g gold = ","النصاب = ٨٥ غ ذهب = "],
+ amilNote:["Lembaga amil zakat resmi menetapkan angka nisab sendiri; bila membayar lewat lembaga, ikuti ketetapannya.","Official zakat bodies publish their own nisab figure; if you pay through one, follow its figure.","تحدد مؤسسات الزكاة الرسمية نصابها؛ إن دفعت عن طريقها فاتبع تقديرها."],
+ resT:["Hasil perhitungan","Result","النتيجة"],
+ net:["Harta bersih","Net wealth","صافي المال"], nisab:["Nisab","Nisab","النصاب"], zak:["Zakat (2,5%)","Zakat (2.5%)","الزكاة (٢٫٥٪)"],
+ yes:["✓ Sudah wajib zakat","✓ Zakat is due","✓ وجبت الزكاة"], no:["Belum mencapai nisab — belum wajib, sedekah tetap dianjurkan","Below nisab — not yet due; charity is still encouraged","دون النصاب — لم تجب بعد، والصدقة مستحبة"],
+ noHaul:["Belum genap haul (1 tahun hijriah) — belum wajib","Haul (1 lunar year) not complete — not yet due","لم يحل الحول — لم تجب بعد"],
+ haulL:["Harta ini sudah saya miliki genap 1 tahun hijriah (haul) di atas nisab","I have held this above nisab for a full lunar year (haul)","مضى على هذا المال حول هجري كامل وهو فوق النصاب"],
+ debtL:["Kurangi hutang yang jatuh tempo","Deduct debts now due","اخصم الديون الحالّة"],
+ debtS:["Ini pendapat sebagian ulama dan praktik banyak lembaga amil. Menurut pendapat yang kuat (al-azhar) dalam mazhab Syafi'i, hutang tidak mengurangi kewajiban zakat.","This follows some scholars and many zakat bodies. The stronger view (al-azhar) in the Shafi'i school is that debt does not reduce zakat.","هذا رأي بعض العلماء وعمل كثير من المؤسسات، والأظهر عند الشافعية أن الدين لا يمنع الزكاة."],
+ payT:["Nominal zakat","Zakat amount","مبلغ الزكاة"], payL:["Nominal yang ingin ditunaikan","Amount you intend to pay","المبلغ الذي تريد أداءه"],
+ useCalc:["Sesuai hitungan","As calculated","حسب الحساب"],
+ payB:["Bayar lewat BAZNAS — segera hadir","Pay via BAZNAS — coming soon","الدفع عبر بازناس — قريبًا"],
+ soon:["Pembayaran segera hadir — menunggu kerja sama resmi dengan lembaga amil zakat. Untuk sekarang, tunaikan zakat langsung ke lembaga amil zakat resmi di daerah Anda. Kusyu tidak menerima atau meneruskan uang.","Payment coming soon — awaiting an official partnership with a zakat agency. For now, please pay your zakat directly to an official zakat agency near you. Kusyu does not receive or forward money.","الدفع قريبًا — بانتظار شراكة رسمية مع مؤسسة زكاة. أدِّ زكاتك الآن مباشرة إلى مؤسسة زكاة رسمية في منطقتك. لا يستلم Kusyu أي أموال."],
+ niat:["Niat zakat cukup di dalam hati ketika memisahkan atau menyerahkan zakat (mazhab Syafi'i).","The intention for zakat is in the heart when setting it aside or handing it over (Shafi'i school).","تكفي نية الزكاة بالقلب عند عزلها أو دفعها (المذهب الشافعي)."],
+ dalilT:["Dalil & catatan fikih","Evidence & fiqh notes","الأدلة والملاحظات الفقهية"],
+ disc:["Kalkulator ini alat bantu, bukan fatwa. Untuk kasus khusus, tanyakan ustadz atau lembaga amil zakat resmi. Wallahu a'lam.","This calculator is an aid, not a fatwa. For special cases ask a scholar or an official zakat agency. Allah knows best.","هذه الحاسبة أداة مساعدة وليست فتوى. في الحالات الخاصة اسأل عالمًا أو مؤسسة زكاة رسمية. والله أعلم."],
+ shafiT:["Catatan mazhab Syafi'i","Shafi'i note","ملاحظة شافعية"],
+ toMaal:["Hitung dengan cara mazhab Syafi'i (gabung ke Zakat Maal) →","Calculate the Shafi'i way (as Zakat on Wealth) →","احسب على المذهب الشافعي (ضمن زكاة المال) ←"]
+};
+const TYPES=[
+ {k:"maal",i:"💰",n:["Zakat Maal","Zakat on Wealth","زكاة المال"]},
+ {k:"peng",i:"💼",n:["Penghasilan","Income","زكاة الدخل"]},
+ {k:"emas",i:"🪙",n:["Emas & Perak","Gold & Silver","الذهب والفضة"]},
+ {k:"dagang",i:"🏪",n:["Perdagangan","Trade","عروض التجارة"]},
+ {k:"fitrah",i:"🌾",n:["Fitrah","Zakat al-Fitr","زكاة الفطر"]}
+];
+const F={
+ m_kas:[["Tabungan, kas & deposito","Savings, cash & deposits","المدخرات والنقد والودائع"],["Saldo saat ini","Current balance","الرصيد الحالي"]],
+ m_inv:[["Investasi (saham, reksa dana) — nilai pasar","Investments (shares, funds) — market value","الاستثمارات — بسعر السوق"],["Opsional","Optional","اختياري"]],
+ m_piut:[["Piutang yang diharapkan kembali","Receivables expected to be repaid","الديون المرجوّ سدادها لك"],["Opsional","Optional","اختياري"]],
+ m_debt:[["Hutang jatuh tempo","Debts now due","الديون الحالّة"],["Opsional","Optional","اختياري"]],
+ p_gaji:[["Penghasilan utama per bulan","Main income per month","الدخل الشهري الأساسي"],["Gaji / pendapatan tetap","Salary / fixed income","الراتب أو الدخل الثابت"]],
+ p_lain:[["Penghasilan lain per bulan","Other income per month","دخل آخر شهريًا"],["Bonus, komisi, honor — opsional","Bonus, commission — optional","مكافآت وعمولات — اختياري"]],
+ p_debt:[["Cicilan / hutang jatuh tempo per bulan","Instalments / debts due per month","الأقساط أو الديون الحالّة شهريًا"],["Opsional","Optional","اختياري"]],
+ e_gold:[["Emas simpanan (gram)","Stored gold (grams)","الذهب المدخر (غرام)"],["Batangan, koin, perhiasan yang disimpan","Bars, coins, stored jewellery","سبائك وعملات وحلي مدخرة"]],
+ e_jew:[["Perhiasan emas yang dipakai (gram)","Gold jewellery worn (grams)","حلي الذهب الملبوسة (غرام)"],["Opsional","Optional","اختياري"]],
+ e_silver:[["Perak simpanan (gram)","Stored silver (grams)","الفضة المدخرة (غرام)"],["Nisab perak 595 g","Silver nisab 595 g","نصاب الفضة ٥٩٥ غ"]],
+ d_stok:[["Barang dagangan (harga pasar saat ini)","Trade stock (current market value)","عروض التجارة (بسعر السوق)"],["Nilai stok di akhir haul","Stock value at the end of the haul","قيمة البضاعة عند تمام الحول"]],
+ d_kas:[["Kas & saldo usaha","Business cash & balances","نقد التجارة وأرصدتها"],["",""," "]],
+ d_piut:[["Piutang dagang yang lancar","Collectible trade receivables","الديون التجارية المرجوّة"],["Opsional","Optional","اختياري"]],
+ d_debt:[["Hutang usaha jatuh tempo","Business debts now due","ديون التجارة الحالّة"],["Opsional","Optional","اختياري"]],
+ f_jiwa:[["Jumlah jiwa (diri & tanggungan)","Number of people (you & dependants)","عدد الأفراد (أنت ومن تعول)"],["Termasuk anak yang lahir sebelum maghrib akhir Ramadan","Including a child born before sunset on the last day of Ramadan","ومنهم من وُلد قبل غروب آخر يوم من رمضان"]],
+ f_qty:[["Takaran per jiwa","Measure per person","المقدار عن كل فرد"],["1 sha' — umum di Indonesia 2,5 kg atau 3,5 liter beras","1 sa' — commonly 2.5 kg or 3.5 litres of rice in Indonesia","صاع واحد — في إندونيسيا عادة ٢٫٥ كغ أو ٣٫٥ لتر أرز"]],
+ f_price:[["Harga beras","Rice price","سعر الأرز"],["Perkiraan — ubah sesuai beras yang biasa Anda makan","Estimate — set it to the rice you usually eat","تقدير — عدّله حسب الأرز الذي تأكله عادة"]]
+};
+const NOTE={
+ maal:["Uang, tabungan dan harta simpanan dizakati 2,5% bila mencapai nisab dan genap haul (satu tahun hijriah). Nisab di sini memakai 85 g emas seperti yang umum dipakai di Indonesia; sebagian ulama memakai nisab perak (595 g) yang lebih rendah, dan itu lebih hati-hati bagi fakir miskin. Bila ragu, tanyakan ustadz atau lembaga amil setempat.",
+  "Cash, savings and stored wealth owe 2.5% once they reach nisab and a full lunar year (haul) passes. Nisab here uses 85 g of gold, as is common in Indonesia; some scholars use the lower silver nisab (595 g), which is more cautious for the poor. If unsure, ask a scholar or local zakat body.",
+  "تجب الزكاة في النقود والمدخرات بنسبة ٢٫٥٪ إذا بلغت النصاب وحال عليها الحول. اعتمدنا نصاب ٨٥ غ ذهب كما هو شائع في إندونيسيا، وبعض العلماء يعتمد نصاب الفضة (٥٩٥ غ) وهو أحوط للفقراء. عند الشك اسأل عالمًا أو مؤسسة الزكاة."],
+ peng:["Zakat penghasilan (profesi) adalah ijtihad ulama kontemporer (antara lain Syaikh Yusuf al-Qaradawi dan Fatwa MUI No. 3 Tahun 2003): penghasilan yang mencapai nisab (85 g emas per tahun, atau 1/12-nya per bulan) dizakati 2,5% saat diterima. Dalam mazhab Syafi'i tidak dikenal zakat profesi tersendiri: gaji yang tersimpan digabung ke harta simpanan, lalu dizakati bila mencapai nisab dan genap haul. Mazhab Syafi'i membolehkan menyegerakan zakat (ta'jil) setelah nisab dimiliki, sehingga pembayaran bulanan dapat diniatkan sebagai cicilan zakat maal. Ini masalah ijtihadiyah; hormati perbedaan pendapat.",
+  "Income (professional) zakat is a contemporary ijtihad (e.g. Shaykh Yusuf al-Qaradawi; Indonesian Ulema Council fatwa no. 3/2003): income reaching nisab (85 g of gold a year, or 1/12 of it a month) pays 2.5% when received. The Shafi'i school has no separate income zakat: saved salary joins your wealth and pays zakat at nisab after a full haul. The Shafi'i school allows paying zakat early (ta'jil) once nisab is owned, so monthly payments can be intended as advance zakat on wealth. This is a matter of ijtihad; respect the difference of opinion.",
+  "زكاة الرواتب اجتهاد معاصر (كالشيخ يوسف القرضاوي وفتوى مجلس العلماء الإندونيسي رقم ٣ لسنة ٢٠٠٣): إذا بلغ الدخل النصاب أُخرج منه ٢٫٥٪ عند قبضه. ولا يعرف المذهب الشافعي زكاة مستقلة للرواتب، بل يُضم المدخر منها إلى المال ويزكّى إذا بلغ النصاب وحال الحول. ويجيز الشافعية تعجيل الزكاة بعد ملك النصاب، فيمكن نية الدفع الشهري تعجيلًا لزكاة المال. والمسألة اجتهادية."],
+ emas:["Nisab emas 85 g (20 mitsqal) dan perak 595 g (200 dirham), masing-masing dihitung sendiri: dalam mazhab Syafi'i emas dan perak tidak digabung untuk mencapai nisab. Menurut pendapat yang kuat (al-azhar) dalam mazhab Syafi'i, perhiasan mubah yang dipakai wajar oleh perempuan tidak wajib dizakati, sedangkan perhiasan yang disimpan atau berlebihan wajib. Mazhab Hanafi mewajibkan zakat perhiasan; mencentang pilihan di bawah berarti mengikuti pendapat yang lebih hati-hati.",
+  "Gold nisab is 85 g (20 mithqal) and silver 595 g (200 dirhams), each counted separately: the Shafi'i school does not combine gold and silver to reach nisab. In the stronger Shafi'i view, permissible jewellery worn normally by women owes no zakat, while stored or excessive jewellery does. The Hanafi school requires zakat on jewellery; ticking the option below follows that more cautious view.",
+  "نصاب الذهب ٨٥ غ (٢٠ مثقالًا) والفضة ٥٩٥ غ (٢٠٠ درهم)، ولا يُضم أحدهما إلى الآخر عند الشافعية. والأظهر عندهم أن الحلي المباح الذي تلبسه المرأة لا زكاة فيه، بخلاف المدّخر أو المسرف فيه. ويوجبها الحنفية؛ واختيار الخيار أدناه أخذٌ بالأحوط."],
+ dagang:["Jumhur ulama, termasuk mazhab Syafi'i, mewajibkan zakat barang dagangan. Di akhir haul, barang dinilai dengan harga pasar, ditambah kas dan piutang yang lancar, lalu dizakati 2,5% bila mencapai nisab emas. Haul dihitung sejak mulai berdagang.",
+  "The majority of scholars, including the Shafi'i school, require zakat on trade goods. At the end of the haul, value stock at market price, add cash and collectible receivables, and pay 2.5% if the total reaches the gold nisab. The haul runs from when trading began.",
+  "أوجب الجمهور ومنهم الشافعية زكاة عروض التجارة: تُقوَّم البضاعة بسعر السوق عند تمام الحول، ويُضم إليها النقد والديون المرجوّة، ويخرج ٢٫٥٪ إن بلغت نصاب الذهب."],
+ fitrah:["Dalam mazhab Syafi'i, zakat fitrah dibayar 1 sha' makanan pokok (di Indonesia: beras) untuk diri sendiri dan setiap orang yang wajib dinafkahi, bila memiliki kelebihan makanan pada malam dan hari raya. Waktu wajibnya saat terbenam matahari di akhir Ramadan; boleh disegerakan sejak awal Ramadan, paling utama sebelum salat Id, dan tidak boleh ditunda melewati hari raya tanpa uzur. Membayar fitrah dengan uang adalah pendapat mazhab Hanafi; banyak lembaga amil menerima uang lalu membelikan beras sebagai wakil Anda. Nilai rupiah di sini hanya perkiraan untuk keperluan itu.",
+  "In the Shafi'i school zakat al-fitr is 1 sa' of the staple food (in Indonesia: rice) for yourself and each dependant, if you have food beyond the needs of Eid night and day. It becomes due at sunset on the last day of Ramadan; it may be paid from the start of Ramadan, best before the Eid prayer, and must not be delayed past Eid day without excuse. Paying in money is the Hanafi view; many zakat bodies accept money and buy rice on your behalf. The rupiah value here is only an estimate for that purpose.",
+  "زكاة الفطر عند الشافعية صاع من غالب قوت البلد (الأرز في إندونيسيا) عنك وعن كل من تلزمك نفقته إن فضل عن قوت ليلة العيد ويومه. تجب بغروب شمس آخر يوم من رمضان، ويجوز تعجيلها من أول رمضان، والأفضل قبل صلاة العيد، ولا يجوز تأخيرها عن يوم العيد بلا عذر. وإخراج القيمة مذهب الحنفية، وتقبل مؤسسات كثيرة المال وتشتري به الأرز وكالةً عنك."]
+};
+/* Dalil: teks Qur'an = Tanzil Uthmani (sama dengan modul Al-Qur'an Kusyu); terjemah dari data terjemah aplikasi. Hadis: sahih/hasan. */
+const DAL=[
+ {g:1,ar:"خُذْ مِنْ أَمْوَٰلِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا وَصَلِّ عَلَيْهِمْ ۖ إِنَّ صَلَوٰتَكَ سَكَنٌ لَّهُمْ ۗ وَٱللَّهُ سَمِيعٌ عَلِيمٌ",
+  tr:["Ambillah zakat dari sebagian harta mereka, dengan zakat itu kamu membersihkan dan mensucikan mereka dan mendoalah untuk mereka. Sesungguhnya doa kamu itu (menjadi) ketenteraman jiwa bagi mereka. Dan Allah Maha Mendengar lagi Maha Mengetahui.","Take alms of their wealth, wherewith thou mayst purify them and mayst make them grow, and pray for them. Lo! thy prayer is an assuagement for them. Allah is Hearer, Knower.",""],src:["QS. At-Taubah [9]: 103","Qur'an, At-Tawbah 9:103","التوبة: ١٠٣"]},
+ {g:1,ar:"وَأَقِيمُوا۟ ٱلصَّلَوٰةَ وَءَاتُوا۟ ٱلزَّكَوٰةَ وَٱرْكَعُوا۟ مَعَ ٱلرَّٰكِعِينَ",tr:["Dan dirikanlah shalat, tunaikanlah zakat dan ruku'lah beserta orang-orang yang ruku'.","Establish worship, pay the poor-due, and bow your heads with those who bow (in worship).",""],src:["QS. Al-Baqarah [2]: 43","Qur'an, Al-Baqarah 2:43","البقرة: ٤٣"]},
+ {g:1,ar:"كَانَ النَّبِيُّ ﷺ إِذَا أَتَاهُ قَوْمٌ بِصَدَقَتِهِمْ قَالَ: «اللَّهُمَّ صَلِّ عَلَى آلِ فُلَانٍ»",tr:["Apabila suatu kaum datang kepada Nabi ﷺ membawa zakat mereka, beliau berdoa: \"Ya Allah, limpahkan rahmat kepada keluarga si fulan.\"","When people brought their zakat to the Prophet ﷺ he would say: \"O Allah, bless the family of so-and-so.\"",""],src:["HR. al-Bukhari 1497, Muslim 1078 (dari Abdullah bin Abi Aufa)","al-Bukhari 1497, Muslim 1078 (Abdullah ibn Abi Awfa)","البخاري ١٤٩٧، مسلم ١٠٧٨"]},
+ {g:"maal emas dagang peng",ar:"لَيْسَ فِيمَا دُونَ خَمْسِ أَوَاقٍ صَدَقَةٌ",tr:["Tidak ada zakat pada (perak) yang kurang dari lima uqiyah (200 dirham).","There is no zakat on (silver) less than five awaq (200 dirhams).",""],src:["HR. al-Bukhari 1405, Muslim 979 (dari Abu Sa'id al-Khudri)","al-Bukhari 1405, Muslim 979 (Abu Sa'id al-Khudri)","البخاري ١٤٠٥، مسلم ٩٧٩"]},
+ {g:"maal emas dagang peng",ar:"وَفِي الرِّقَةِ رُبْعُ الْعُشْرِ",tr:["Dan pada perak (uang dirham) zakatnya seperempat puluh (2,5%).","And on silver (dirhams) a quarter of a tenth (2.5%).",""],src:["HR. al-Bukhari 1454 (surat Abu Bakar, dari Anas)","al-Bukhari 1454 (letter of Abu Bakr, from Anas)","البخاري ١٤٥٤"]},
+ {g:"maal emas dagang",ar:"وَلَيْسَ عَلَيْكَ شَيْءٌ - يَعْنِي فِي الذَّهَبِ - حَتَّى يَكُونَ لَكَ عِشْرُونَ دِينَارًا، فَإِذَا كَانَ لَكَ عِشْرُونَ دِينَارًا وَحَالَ عَلَيْهَا الْحَوْلُ فَفِيهَا نِصْفُ دِينَارٍ",tr:["Tidak ada kewajiban atasmu pada emas sampai engkau memiliki 20 dinar; bila engkau memiliki 20 dinar dan telah berlalu satu haul, zakatnya setengah dinar.","Nothing is due on gold until you have twenty dinars; when you have twenty dinars and a year has passed, half a dinar is due.",""],src:["HR. Abu Dawud 1573 (dari Ali); dinilai hasan/sahih oleh sebagian ulama hadis","Abu Dawud 1573 (Ali); graded hasan/sahih by some hadith scholars","أبو داود ١٥٧٣؛ حسّنه وصححه بعض المحدثين"]},
+ {g:"fitrah",ar:"فَرَضَ رَسُولُ اللَّهِ ﷺ زَكَاةَ الْفِطْرِ صَاعًا مِنْ تَمْرٍ أَوْ صَاعًا مِنْ شَعِيرٍ عَلَى الْعَبْدِ وَالْحُرِّ وَالذَّكَرِ وَالْأُنْثَى وَالصَّغِيرِ وَالْكَبِيرِ مِنَ الْمُسْلِمِينَ، وَأَمَرَ بِهَا أَنْ تُؤَدَّى قَبْلَ خُرُوجِ النَّاسِ إِلَى الصَّلَاةِ",tr:["Rasulullah ﷺ mewajibkan zakat fitri satu sha' kurma atau satu sha' gandum atas setiap muslim, budak maupun merdeka, laki-laki maupun perempuan, kecil maupun besar, dan memerintahkan agar ditunaikan sebelum orang-orang keluar untuk salat (Id).","The Messenger of Allah ﷺ made zakat al-fitr obligatory, one sa' of dates or one sa' of barley, on every Muslim, slave or free, male or female, young or old, and ordered it paid before people go out to the (Eid) prayer.",""],src:["HR. al-Bukhari 1503, Muslim 984 (dari Ibnu Umar)","al-Bukhari 1503, Muslim 984 (Ibn Umar)","البخاري ١٥٠٣، مسلم ٩٨٤"]},
+ {g:"fitrah",ar:"فَرَضَ رَسُولُ اللَّهِ ﷺ زَكَاةَ الْفِطْرِ طُهْرَةً لِلصَّائِمِ مِنَ اللَّغْوِ وَالرَّفَثِ وَطُعْمَةً لِلْمَسَاكِينِ",tr:["Rasulullah ﷺ mewajibkan zakat fitri sebagai penyuci bagi orang yang berpuasa dari perkataan sia-sia dan kotor, serta sebagai makanan bagi orang-orang miskin.","The Messenger of Allah ﷺ made zakat al-fitr obligatory to purify the fasting person from idle and indecent talk, and to feed the poor.",""],src:["HR. Abu Dawud 1609, Ibnu Majah 1827 (dari Ibnu Abbas); hasan","Abu Dawud 1609, Ibn Majah 1827 (Ibn Abbas); hasan","أبو داود ١٦٠٩، ابن ماجه ١٨٢٧؛ حسن"]},
+ {g:1,ar:"۞ إِنَّمَا ٱلصَّدَقَٰتُ لِلْفُقَرَآءِ وَٱلْمَسَٰكِينِ وَٱلْعَٰمِلِينَ عَلَيْهَا وَٱلْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِى ٱلرِّقَابِ وَٱلْغَٰرِمِينَ وَفِى سَبِيلِ ٱللَّهِ وَٱبْنِ ٱلسَّبِيلِ ۖ فَرِيضَةً مِّنَ ٱللَّهِ ۗ وَٱللَّهُ عَلِيمٌ حَكِيمٌ",tr:["Sesungguhnya zakat-zakat itu, hanyalah untuk orang-orang fakir, orang-orang miskin, pengurus-pengurus zakat, para mu'allaf yang dibujuk hatinya, untuk (memerdekakan) budak, orang-orang yang berhutang, untuk jalan Allah dan untuk mereka yang sedang dalam perjalanan, sebagai suatu ketetapan yang diwajibkan Allah, dan Allah Maha Mengetahui lagi Maha Bijaksana.","The alms are only for the poor and the needy, and those who collect them, and those whose hearts are to be reconciled, and to free the captives and the debtors, and for the cause of Allah, and (for) the wayfarer; a duty imposed by Allah. Allah is Knower, Wise.",""],src:["QS. At-Taubah [9]: 60 — 8 golongan penerima zakat","Qur'an, At-Tawbah 9:60 — the 8 recipient groups","التوبة: ٦٠ — مصارف الزكاة الثمانية"]}
+];
+
+function field(id,o){ o=o||{}; const f=F[o.f||id]; const val=o.val!=null?o.val:(S.v[id]||"");
+ return `<div class="zk-f"><label for="zk_${id}">${esc(t(f[0]))}</label><div class="zk-in${o.unit?" u":""}"><span>${esc(o.unit||"Rp")}</span><input type="text" id="zk_${id}" data-zk="${id}" inputmode="${o.dec?"decimal":"numeric"}" autocomplete="off" placeholder="0" value="${esc(o.dec||o.raw?val:fmtIn(val))}" dir="ltr"${o.dec?' data-dec="1"':""}${o.raw?' data-raw="1"':""}></div>${t(f[1]).trim()?`<small>${esc(t(f[1]))}</small>`:""}</div>`; }
+const chk=(key,label,on,sub)=>`<label class="zk-chk"><input type="checkbox" data-zkc="${key}"${on?" checked":""}><span>${esc(t(label))}${sub?`<br><small class="dim" style="font-size:11.5px">${esc(t(sub))}</small>`:""}</span></label>`;
+const V=id=>num(S.v[id]);
+
+function calc(){ const g=S.gold||0, ny=GOLD_NISAB*g, ty=S.type; let r={rows:[],zak:0,ok:false,why:""};
+ if(ty==="maal"||ty==="dagang"){ const p=ty==="maal"?"m":"d"; const a=ty==="maal"?V("m_kas")+V("m_inv")+V("m_piut"):V("d_stok")+V("d_kas")+V("d_piut"); const debt=S.debt[p]?V(p+"_debt"):0; const net=Math.max(0,a-debt);
+  r.rows=[[X.net,money(net)],[X.nisab,money(ny)]]; r.ok=net>0&&net>=ny&&!!S.haul[p]; r.why=net>=ny&&net>0&&!S.haul[p]?"haul":""; r.zak=r.ok?net*RATE:0; }
+ else if(ty==="peng"){ const nm=ny/12, net=Math.max(0,V("p_gaji")+V("p_lain")-(S.debt.p?V("p_debt"):0)); r.rows=[[X.net,money(net)+" /"+t(["bln","mo","شهر"])],[X.nisab,money(nm)+" /"+t(["bln","mo","شهر"])]]; r.ok=net>0&&net>=nm; r.zak=r.ok?net*RATE:0; }
+ else if(ty==="emas"){ const gg=num(S.v.e_gold)+(S.jew?num(S.v.e_jew):0), sg=num(S.v.e_silver), sp=S.silver||0; const zg=gg>=GOLD_NISAB?gg*RATE:0, zs=sg>=SILVER_NISAB?sg*RATE:0;
+  r.rows=[[["Emas dihitung","Gold counted","الذهب المحسوب"],grams(gg)+" / "+t(X.nisab)+" 85 g"],[["Perak","Silver","الفضة"],grams(sg)+" / "+t(X.nisab)+" 595 g"]];
+  if(zg) r.rows.push([["Zakat emas","Gold zakat","زكاة الذهب"],grams(zg)+" ≈ "+money(zg*g)]); if(zs) r.rows.push([["Zakat perak","Silver zakat","زكاة الفضة"],grams(zs)+" ≈ "+money(zs*sp)]);
+  r.ok=!!(zg||zs); r.zak=zg*g+zs*sp; }
+ else if(ty==="fitrah"){ const u=S.v.f_unit==="l"?"l":"kg", j=Math.max(0,Math.floor(num(S.v.f_jiwa))), q=num(S.v["f_qty_"+u]), pr=num(S.v["f_price_"+u]); const tot=j*q;
+  r.rows=[[["Jumlah jiwa","People","عدد الأفراد"],String(j)],[["Total beras","Total rice","مجموع الأرز"],(Math.round(tot*100)/100).toLocaleString("id-ID")+" "+(u==="l"?"liter":"kg")],[["Perkiraan nilai uang","Estimated cash value","القيمة التقديرية"],money(tot*pr)]];
+  r.ok=j>0; r.zak=tot*pr; r.rice=(Math.round(tot*100)/100).toLocaleString("id-ID")+" "+(u==="l"?"liter":"kg"); }
+ return r; }
+
+function form(){ const ty=S.type;
+ if(ty==="maal") return field("m_kas")+field("m_inv")+field("m_piut")+field("m_debt")+chk("debt.m",X.debtL,S.debt.m,X.debtS)+chk("haul.m",X.haulL,S.haul.m);
+ if(ty==="peng") return field("p_gaji")+field("p_lain")+field("p_debt")+chk("debt.p",X.debtL,S.debt.p)+`<div class="row" style="margin-top:10px"><button class="btn sm ghost" type="button" data-zktype="maal" id="zkToMaal">${esc(t(X.toMaal))}</button></div>`;
+ if(ty==="emas") return field("e_gold",{unit:"g",dec:1})+field("e_silver",{unit:"g",dec:1})+field("e_jew",{unit:"g",dec:1})+chk("jew",["Hitung juga perhiasan yang dipakai (pendapat yang lebih hati-hati)","Also count jewellery worn (the more cautious view)","احسب الحلي الملبوسة أيضًا (الأحوط)"],S.jew);
+ if(ty==="dagang") return field("d_stok")+field("d_kas")+field("d_piut")+field("d_debt")+chk("debt.d",X.debtL,S.debt.d,X.debtS)+chk("haul.d",X.haulL,S.haul.d);
+ const u=S.v.f_unit==="l"?"l":"kg";
+ return field("f_jiwa",{unit:t(["jiwa","people","فرد"]),raw:1})+`<div class="zk-f"><label>${esc(t(["Satuan","Unit","الوحدة"]))}</label><div class="v2-seg" id="zkUnit"><button type="button" data-zku="kg" class="${u==="kg"?"on":""}">kg</button><button type="button" data-zku="l" class="${u==="l"?"on":""}">liter</button></div></div>`
+  +field("f_qty_"+u,{f:"f_qty",unit:u==="l"?"liter":"kg",dec:1})+field("f_price_"+u,{f:"f_price",unit:"",val:S.v["f_price_"+u]}).replace(`</label>`,` (${u==="l"?t(["per liter","per litre","لكل لتر"]):t(["per kg","per kg","لكل كغ"])})</label>`); }
+
+function nisabCard(){ if(S.type==="fitrah") return "";
+ return `<div class="card" id="zkNisab"><div class="eyebrow">${esc(t(X.nisabT))}</div>
+ <div class="zk-f"><label for="zk_gold">${esc(t(X.goldL))}</label><div class="zk-in"><span>Rp</span><input type="text" id="zk_gold" data-zkp="gold" inputmode="numeric" dir="ltr" value="${esc(fmtIn(S.gold))}"></div><small>⚠ ${esc(t(X.est))}${esc(t(PRICE_DATE))}${esc(t(X.est2))}</small></div>
+ ${S.type==="emas"?`<div class="zk-f"><label for="zk_silver">${esc(t(X.silverL))}</label><div class="zk-in"><span>Rp</span><input type="text" id="zk_silver" data-zkp="silver" inputmode="numeric" dir="ltr" value="${esc(fmtIn(S.silver))}"></div><small>⚠ ${esc(t(X.estS))}${esc(t(PRICE_DATE))}${esc(t(X.est2))}</small></div>`:""}
+ <p class="dim" style="font-size:12.5px;margin-top:8px" id="zkNisabIs">${esc(t(X.nisabIs))}<b dir="ltr">${money(GOLD_NISAB*(S.gold||0))}</b></p><p class="dim" style="font-size:11.5px;margin-top:4px">${esc(t(X.amilNote))}</p></div>`; }
+
+function resHTML(){ const r=calc(); const st=S.type==="fitrah"?"":(r.ok?`<span class="zk-st yes">${esc(t(X.yes))}</span>`:`<span class="zk-st no">${esc(t(r.why==="haul"?X.noHaul:X.no))}</span>`);
+ const big=S.type==="fitrah"?(r.rice||"0 kg"):money(r.zak);
+ return `<div class="eyebrow">${esc(t(X.resT))}</div><div class="zk-big" id="zkAmt" dir="ltr">${big}</div>${S.type==="fitrah"?`<div class="dim" style="font-size:12.5px" dir="ltr">≈ ${money(r.zak)}</div>`:""}${st}<div class="zk-rows">${r.rows.map(([a,b])=>`<div><span class="dim">${esc(t(a))}</span><b dir="ltr">${esc(b)}</b></div>`).join("")}</div>`; }
+
+function payHTML(){ const r=calc(), z=Math.round(r.zak); const cur=S.amt!==""&&S.amt!=null?num(S.amt):z;
+ const pre=[...new Set([z,50000,100000,250000,500000,1000000].filter(x=>x>0))];
+ return `<div class="eyebrow">${esc(t(X.payT))}</div><div class="zk-chips" id="zkChips">${pre.map((x,i)=>`<button type="button" data-zkamt="${x}" class="${x===cur?"on":""}">${i===0&&x===z?esc(t(X.useCalc))+" · ":""}${money(x)}</button>`).join("")}</div>
+ <div class="zk-f"><label for="zk_amt">${esc(t(X.payL))}</label><div class="zk-in"><span>Rp</span><input type="text" id="zk_amt" data-zkp="amt" inputmode="numeric" dir="ltr" value="${esc(cur?fmtIn(cur):"")}" placeholder="0"></div></div>
+ <button class="btn gold zk-pay" type="button" id="zkPay" aria-disabled="true">💳 ${esc(t(X.payB))}</button>
+ <div class="zk-soon" id="zkSoon" role="status"${shownPay?"":" hidden"}>⏳ ${esc(t(X.soon))}</div>
+ <p class="dim" style="font-size:12px;margin-top:8px">🤍 ${esc(t(X.niat))}</p>`; }
+
+function dalilHTML(){ const ty=S.type; const list=DAL.filter(d=>d.g===1||String(d.g).split(" ").includes(ty));
+ return `<div class="eyebrow">📜 ${esc(t(X.dalilT))}</div><div class="zk-note" id="zkShafi"><b>${esc(t(X.shafiT))}</b>${esc(t(NOTE[ty]))}</div>
+ ${list.map((d,i)=>`<details${i===0?" open":""}><summary>${esc(t(d.src))}</summary><div class="ar" dir="rtl" lang="ar">${esc(d.ar)}</div>${t(d.tr)?`<p>${esc(t(d.tr))}</p>`:""}</details>`).join("")}
+ <p class="dim" style="font-size:11px;margin-top:8px">Teks Al-Qur'an: Tanzil (CC BY 3.0).</p><p class="dim" style="font-size:12px;margin-top:6px">${esc(t(X.disc))}</p>`; }
+
+function render(){ const st=document.getElementById("zkStack"); if(!st) return;
+ st.innerHTML=`<div class="row v2-sb"><button class="btn sm ghost" type="button" data-go="belanja" id="zkBack">${esc(t(X.back))}</button></div>
+ <div><div class="eyebrow">🤲 ${esc(t(X.ey))}</div><h1>${esc(t(X.title))}</h1><p class="muted" style="margin-top:6px">${esc(t(X.lead))}</p><div class="zk-steps">${t(X.steps).map(s=>`<span>${esc(s)}</span>`).join("")}</div></div>
+ <div class="card"><div class="eyebrow">${esc(t(X.typeT))}</div><div class="zk-types" id="zkTypes">${TYPES.map(x=>`<button type="button" class="zk-type${x.k===S.type?" on":""}" data-zktype="${x.k}"><i>${x.i}</i><b>${esc(t(x.n))}</b></button>`).join("")}</div></div>
+ ${nisabCard()}
+ <div class="card" id="zkForm"><div class="eyebrow">${esc(TYPES.find(x=>x.k===S.type).i+" "+t(TYPES.find(x=>x.k===S.type).n))}</div>${form()}</div>
+ <div class="card zk-res" id="zkRes">${resHTML()}</div>
+ <div class="card" id="zkPayCard">${payHTML()}</div>
+ <div class="card zk-dalil" id="zkDalil">${dalilHTML()}</div>`; }
+function refresh(){ const a=document.getElementById("zkRes"); if(a) a.innerHTML=resHTML(); const n=document.getElementById("zkNisabIs"); if(n) n.innerHTML=esc(t(X.nisabIs))+`<b dir="ltr">${money(GOLD_NISAB*(S.gold||0))}</b>`;
+ if(S.amt===""){ const c=document.getElementById("zkPayCard"); const f=document.activeElement&&document.activeElement.id; if(c&&f!=="zk_amt"){ c.innerHTML=payHTML(); } } }
+
+document.addEventListener("input",e=>{ const el=e.target; if(!el.closest||!el.closest("#zkStack")) return;
+ if(el.dataset.zk){ S.v[el.dataset.zk]=el.value; save(); refresh(); }
+ else if(el.dataset.zkp){ if(el.dataset.zkp==="amt"){ S.amt=el.value.trim()===""?"":String(num(el.value)); save(); $$chips(); } else { S[el.dataset.zkp]=num(el.value); save(); refresh(); } } });
+function $$chips(){ const cur=num(S.amt); document.querySelectorAll("#zkChips [data-zkamt]").forEach(b=>b.classList.toggle("on",+b.dataset.zkamt===cur)); }
+document.addEventListener("focusout",e=>{ const el=e.target; if(!el.closest||!el.closest("#zkStack")||el.tagName!=="INPUT"||el.type!=="text") return; if(el.dataset.dec||el.dataset.raw) return; const f=fmtIn(el.value); if(el.value!==f) el.value=f; });
+document.addEventListener("change",e=>{ const el=e.target; if(!el.dataset||!el.dataset.zkc||!el.closest("#zkStack")) return; const [a,b]=el.dataset.zkc.split("."); if(b) S[a][b]=el.checked?1:0; else S[a]=el.checked?1:0; save(); refresh(); });
+document.addEventListener("click",e=>{ if(!e.target.closest) return; const ty=e.target.closest("[data-zktype]"); if(ty&&ty.closest("#zkStack")){ S.type=ty.dataset.zktype; S.amt=""; shownPay=false; save(); render(); if(ty.id==="zkToMaal"){ const v=document.getElementById("view"); const f=document.getElementById("zkForm"); if(v&&f) v.scrollTop=f.offsetTop-80; } return; }
+ const u=e.target.closest("[data-zku]"); if(u&&u.closest("#zkStack")){ S.v.f_unit=u.dataset.zku; save(); render(); return; }
+ const am=e.target.closest("[data-zkamt]"); if(am&&am.closest("#zkStack")){ S.amt=am.dataset.zkamt; save(); const i=document.getElementById("zk_amt"); if(i) i.value=fmtIn(S.amt); $$chips(); return; }
+ if(e.target.closest("#zkPay")){ e.preventDefault(); shownPay=true; const s=document.getElementById("zkSoon"); if(s){ s.hidden=false; s.scrollIntoView&&s.scrollIntoView({block:"nearest"}); } return; }
+ if(e.target.closest("[data-l]")) setTimeout(render,60); });
+window.KusyuZakat={render,calc,state:()=>S,DEF,KEY,open(type){ if(type&&TYPES.some(x=>x.k===type)){ S.type=type; save(); } shownPay=false; render(); }};
+document.addEventListener("DOMContentLoaded",render); if(document.readyState!=="loading") setTimeout(render,0);
+const pg=()=>document.getElementById("page-zakat"); setTimeout(()=>{ const p=pg(); if(p&&window.MutationObserver) new MutationObserver(()=>{ if(p.classList.contains("on")){ shownPay=false; render(); const nb=document.querySelector('#nav button[data-p="belanja"]'); if(nb) nb.classList.add("on"); } }).observe(p,{attributes:true,attributeFilter:["class"]}); },0);
+})();
+
+</script>
+<script>
+/* ===== Kusyu — Belanja Berkah: Voucher Halal, Sedekah, Zakat. Semua masih CONTOH; tidak ada transaksi, tidak ada jaringan. ===== */
+(function(){
+"use strict";
+const lg=()=>{try{const l=JSON.parse(localStorage.getItem("rk_lang")||'"id"');return ["id","en","ar"].includes(l)?l:"id";}catch(e){return "id";}};
+const t=o=>o[{id:0,en:1,ar:2}[lg()]];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const X={
+ ey:["Belanja Berkah","Blessed Shopping","تسوّق مبارك"], title:["Belanja, sedekah & zakat dalam satu tempat","Shopping, charity & zakat in one place","التسوق والصدقة والزكاة في مكان واحد"],
+ lead:["Fitur ini sedang disiapkan. Yang tampil sekarang adalah contoh tampilan; belum ada transaksi.","This feature is being prepared. What you see are examples; no transactions yet.","هذه الميزة قيد الإعداد. ما تراه أمثلة فقط؛ لا توجد معاملات بعد."],
+ vT:["Voucher Halal","Halal Vouchers","قسائم حلال"], vS:["Promo dari mitra usaha halal","Offers from halal partners","عروض من شركاء حلال"],
+ sT:["Sedekah","Charity","الصدقة"], sS:["Program kebaikan bersama lembaga resmi","Good causes with official institutions","برامج خير مع مؤسسات رسمية"],
+ zT:["Zakat","Zakat","الزكاة"], zS:["Kalkulator zakat maal, penghasilan, emas, dagang & fitrah","Calculator for wealth, income, gold, trade & fitr","حاسبة زكاة المال والدخل والذهب والتجارة والفطر"],
+ back:["← Belanja Berkah","← Blessed Shopping","← تسوّق مبارك"],
+ ex:["Contoh — mitra segera hadir","Example — partners coming soon","مثال — الشركاء قريبًا"],
+ exS:["Contoh — menunggu mitra lembaga resmi","Example — awaiting an official partner institution","مثال — بانتظار مؤسسة شريكة رسمية"],
+ vLead:["Kartu di bawah hanya contoh tampilan, bukan penawaran nyata. Rencananya hanya mitra dengan sertifikat halal resmi yang ditampilkan.","The cards below are layout examples, not real offers. The plan is to list only partners with official halal certification.","البطاقات أدناه أمثلة للعرض وليست عروضًا حقيقية، والخطة أن يُعرض فقط الشركاء الحاصلون على شهادة حلال رسمية."],
+ sLead:["Program di bawah hanya contoh. Donasi baru dibuka setelah ada kerja sama dengan lembaga resmi yang laporannya bisa diperiksa.","These programs are examples only. Donations open only after partnering with official institutions with auditable reports.","هذه البرامج أمثلة فقط، ولن تُفتح التبرعات إلا بعد الشراكة مع مؤسسات رسمية ذات تقارير قابلة للتدقيق."],
+ qris:["Pembayaran QRIS segera hadir","QRIS payment coming soon","الدفع عبر QRIS قريبًا"],
+ qrisN:["Belum ada pembayaran. Voucher ini contoh, belum bisa dibeli.","No payment yet. This voucher is an example and can't be bought.","لا يوجد دفع بعد. هذه القسيمة مثال ولا يمكن شراؤها."],
+ don:["Sedekah — segera hadir","Donate — coming soon","تصدّق — قريبًا"],
+ donN:["Donasi belum dibuka — menunggu kerja sama resmi dengan lembaga. Kusyu tidak menerima uang.","Donations aren't open yet — awaiting an official partnership. Kusyu does not receive money.","التبرع غير متاح بعد — بانتظار شراكة رسمية. لا يستلم Kusyu أي أموال."],
+ terms:["Ketentuan (contoh)","Terms (example)","الشروط (مثال)"],
+ t1:["Berlaku di mitra yang sudah terverifikasi","Valid at verified partners","صالحة لدى الشركاء الموثقين"],
+ t2:["Satu kali pakai per akun","One use per account","استخدام واحد لكل حساب"],
+ t3:["Detail mitra diumumkan setelah kerja sama resmi","Partner details announced after an official agreement","تُعلن تفاصيل الشريك بعد الاتفاق الرسمي"],
+ close:["Tutup","Close","إغلاق"],
+ hadis:["«مَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ»","«مَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ»","«مَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ»"],
+ hadisT:["\"Sedekah tidak akan mengurangi harta.\" — HR. Muslim 2588 (dari Abu Hurairah)","\"Charity does not decrease wealth.\" — Muslim 2588 (Abu Hurayrah)","رواه مسلم ٢٥٨٨ عن أبي هريرة"],
+ hk:["Kiblat","Qibla","القبلة"], hj:["Jadwal","Times","المواقيت"], hq:["Al-Qur'an","Qur'an","القرآن"], hz:["Zakat","Zakat","الزكاة"], hb:["Belanja","Shop","تسوّق"]
+};
+const VOUCH=[
+ {i:"🍱",n:["Katering aqiqah halal","Halal aqiqah catering","تموين عقيقة حلال"],o:["Diskon 10%","10% off","خصم ١٠٪"]},
+ {i:"📚",n:["Toko buku Islami","Islamic bookshop","مكتبة إسلامية"],o:["Potongan Rp25.000","Rp25,000 off","خصم ٢٥٬٠٠٠ روبية"]},
+ {i:"🧕",n:["Busana muslim","Modest fashion","أزياء محتشمة"],o:["Diskon 15%","15% off","خصم ١٥٪"]},
+ {i:"🍯",n:["Kurma & madu","Dates & honey","تمر وعسل"],o:["Potongan Rp20.000","Rp20,000 off","خصم ٢٠٬٠٠٠ روبية"]},
+ {i:"🎙️",n:["Kelas tahsin Al-Qur'an","Qur'an tahsin class","دروس تحسين التلاوة"],o:["Gratis 1 sesi","1 free session","حصة مجانية"]},
+ {i:"☕",n:["Kafe halal","Halal café","مقهى حلال"],o:["Diskon 10%","10% off","خصم ١٠٪"]}
+];
+const PROG=[
+ {i:"🕋",n:["Umrahkan Guru Ngaji","Send a Qur'an Teacher on Umrah","عمرة لمعلّم القرآن"],d:["Membantu guru ngaji yang telah lama mengajar untuk berangkat umrah.","Helping long-serving Qur'an teachers perform umrah.","مساعدة معلمي القرآن القدامى على أداء العمرة."]},
+ {i:"🏠",n:["Bantu Yayasan Yatim & Dhuafa","Support an Orphan & Needy Foundation","دعم دار للأيتام والمحتاجين"],d:["Kebutuhan harian, pendidikan dan kesehatan anak yatim.","Daily needs, schooling and healthcare for orphans.","الاحتياجات اليومية والتعليم والصحة للأيتام."]},
+ {i:"📖",n:["Wakaf Al-Qur'an untuk Pesantren","Qur'an Copies for Pesantren","وقف المصاحف للمعاهد"],d:["Mushaf untuk santri dan TPQ yang kekurangan.","Mushafs for students and Qur'an schools in need.","مصاحف للطلاب والكتاتيب المحتاجة."]},
+ {i:"💧",n:["Air Bersih untuk Masjid Desa","Clean Water for Village Mosques","مياه نظيفة لمساجد القرى"],d:["Sumur dan tempat wudhu untuk masjid di desa.","Wells and wudu areas for village mosques.","آبار وأماكن وضوء لمساجد القرى."]}
+];
+let view="home";
+function sheet(html){ let s=document.getElementById("bbSheet"); if(!s){ s=document.createElement("div"); s.id="bbSheet"; s.className="bb-sheet"; s.hidden=true; s.addEventListener("click",e=>{ if(e.target===s||e.target.closest("[data-bbclose]")) s.hidden=true; }); document.body.appendChild(s); }
+ s.innerHTML=`<div class="in" role="dialog" aria-modal="true">${html}</div>`; s.hidden=false; }
+const backBtn=()=>`<div class="row v2-sb"><button class="btn sm ghost" type="button" data-bbv="home" id="bbBack">${esc(t(X.back))}</button></div>`;
+function render(){ const st=document.getElementById("bbStack"); if(!st) return;
+ if(view==="voucher"){ st.innerHTML=backBtn()+`<div><div class="eyebrow">🎟️ ${esc(t(X.vT))}</div><h1>${esc(t(X.vT))}</h1><p class="muted" style="margin-top:6px">${esc(t(X.vLead))}</p></div>
+  <div class="bb-grid" id="bbVGrid">${VOUCH.map((v,i)=>`<button type="button" class="bb-v" data-bbvch="${i}"><span class="bb-tag">${esc(t(X.ex))}</span><i>${v.i}</i><b>${esc(t(v.n))}</b><small>${esc(t(v.o))}</small></button>`).join("")}</div>`; return; }
+ if(view==="sedekah"){ st.innerHTML=backBtn()+`<div><div class="eyebrow">🤲 ${esc(t(X.sT))}</div><h1>${esc(t(X.sT))}</h1><p class="muted" style="margin-top:6px">${esc(t(X.sLead))}</p></div>
+  <div class="card"><div class="ar" dir="rtl" lang="ar" style="font-family:Amiri,serif;font-size:20px;text-align:center">${esc(X.hadis[0])}</div><p class="dim" style="font-size:12.5px;text-align:center;margin-top:4px">${esc(t(X.hadisT))}</p></div>
+  <div class="stack" id="bbProg" style="gap:10px">${PROG.map((p,i)=>`<div class="bb-p" data-bbp="${i}"><span class="bb-tag">${esc(t(X.exS))}</span><div class="hd" style="margin-top:8px"><i>${p.i}</i><b style="font-size:15.5px">${esc(t(p.n))}</b></div><p>${esc(t(p.d))}</p><button type="button" class="btn sm bb-btn" aria-disabled="true" data-bbdon="${i}" style="margin-top:10px">🤲 ${esc(t(X.don))}</button><div class="bb-soon" data-bbdonn="${i}" hidden>⏳ ${esc(t(X.donN))}</div></div>`).join("")}</div>`; return; }
+ st.innerHTML=`<div><div class="eyebrow">🛍️ ${esc(t(X.ey))}</div><h1>${esc(t(X.title))}</h1><p class="muted" style="margin-top:6px">${esc(t(X.lead))}</p></div>
+ <div class="bb-doors" id="bbDoors">
+  <button type="button" class="bb-door" data-bbv="voucher"><i>🎟️</i><span><b>${esc(t(X.vT))}</b><small>${esc(t(X.vS))}</small></span><em>›</em></button>
+  <button type="button" class="bb-door" data-bbv="sedekah"><i>🤲</i><span><b>${esc(t(X.sT))}</b><small>${esc(t(X.sS))}</small></span><em>›</em></button>
+  <button type="button" class="bb-door" data-go="zakat" data-bbz="1"><i>💰</i><span><b>${esc(t(X.zT))}</b><small>${esc(t(X.zS))}</small></span><em>›</em></button>
+ </div>`; }
+function voucherSheet(i){ const v=VOUCH[i]; sheet(`<div class="ic">${v.i}</div><div style="text-align:center"><span class="bb-tag">${esc(t(X.ex))}</span></div><h2>${esc(t(v.n))}</h2><p style="text-align:center;font-weight:700">${esc(t(v.o))}</p>
+ <div class="eyebrow" style="margin-top:10px">${esc(t(X.terms))}</div><ul><li>${esc(t(X.t1))}</li><li>${esc(t(X.t2))}</li><li>${esc(t(X.t3))}</li></ul>
+ <button type="button" class="btn gold bb-btn" id="bbQris" aria-disabled="true">▦ ${esc(t(X.qris))}</button><div class="bb-soon" id="bbQrisN" hidden>⏳ ${esc(t(X.qrisN))}</div>
+ <button type="button" class="btn ghost bb-btn" data-bbclose="1">${esc(t(X.close))}</button>`); }
+/* Beranda: baris ikon fitur (gaya Muslim Pro) — Kiblat membuka kompas langsung */
+function homeRow(){ const nx=document.getElementById("v2Next"); if(!nx) return; let r=document.getElementById("bbHomeRow");
+ if(!r){ r=document.createElement("div"); r.id="bbHomeRow"; r.className="card bb-hrow"; nx.insertAdjacentElement("afterend",r); }
+ r.innerHTML=[["🧭","hk","kiblat"],["🕐","hj","jadwal"],["📖","hq","quran"],["💰","hz","zakat"],["🛍️","hb","belanja"]].map(([i,k,p])=>`<button type="button" data-go="${p}" data-hr="${p}"><i>${i}</i><span>${esc(t(X[k]))}</span></button>`).join(""); }
+document.addEventListener("click",e=>{ if(!e.target.closest) return;
+ const b=e.target.closest("[data-bbv]"); if(b&&b.closest("#bbStack")){ view=b.dataset.bbv; render(); const v=document.getElementById("view"); if(v) v.scrollTop=0; return; }
+ const vc=e.target.closest("[data-bbvch]"); if(vc){ voucherSheet(+vc.dataset.bbvch); return; }
+ if(e.target.closest("#bbQris")){ const n=document.getElementById("bbQrisN"); if(n) n.hidden=false; return; }
+ const dn=e.target.closest("[data-bbdon]"); if(dn){ const n=document.querySelector(`[data-bbdonn="${dn.dataset.bbdon}"]`); if(n) n.hidden=false; return; }
+ if(e.target.closest('#nav button[data-p="belanja"]')){ view="home"; render(); }
+ if(e.target.closest("[data-l]")) setTimeout(()=>{ render(); homeRow(); },60); });
+window.KusyuBelanja={render,view:()=>view,open(v){ view=v||"home"; render(); }};
+function init(){ render(); homeRow(); }
+document.addEventListener("DOMContentLoaded",init); if(document.readyState!=="loading") setTimeout(init,0);
 })();
 
 </script>
