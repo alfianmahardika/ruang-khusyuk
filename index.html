@@ -809,6 +809,48 @@ input[type=file]{display:none}
 .bl-qa{font-family:var(--font-arab,serif);font-size:20px}
 .bl-done{color:#3a9b5c;font-weight:700;margin:0}.bl-skip{margin-top:6px}.bl-hm{margin:6px 0}
 [data-theme=pink] .bl-node.done .bl-dot{background:#c98b98}
+/* ===== Pustaka home: 3 ikon + program; sub-tampilan dengan tombol Kembali (v40) ===== */
+#page-quran:not([data-pk="home"]) #pkHome,#page-quran:not([data-pk="home"]) #pkProg{display:none!important}
+#page-quran[data-pk="home"] #qIndex,#page-quran[data-pk="home"] #qReader{display:none!important}
+.pk-home{margin:0 0 14px}
+.pk-hh{margin:0 0 12px}
+.pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pk-tile{align-items:center!important;text-align:center!important;justify-content:flex-start;padding:16px 8px 13px!important;min-height:112px;transition:transform .15s,border-color .2s,background .2s}
+.pk-tile i{font-size:32px!important;line-height:1;margin-bottom:6px;filter:drop-shadow(0 4px 10px rgba(201,162,74,.25))}
+.pk-tile b{font-size:13.5px!important;line-height:1.25}
+.pk-tile small{font-size:11px!important;line-height:1.3}
+.pk-tile:active{transform:scale(.96)}
+.pk-tile:focus-visible{outline:2px solid var(--gold2,#e6c77a);outline-offset:2px}
+#pkBack{display:none;margin:0 0 10px}
+#page-quran[data-pk="q"]:not(:has(#qReader:not([hidden]))) #pkBack,#page-quran[data-pk="h"]:not(:has(#hReader:not([hidden]))) #pkBack,#page-quran[data-pk="s"]:not(:has(#sReader:not([hidden]))) #pkBack{display:flex}
+.pk-back{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:9px 14px 9px 10px;border-radius:999px;border:1px solid var(--line);background:var(--glass);color:var(--gold2,#e6c77a);font-weight:800;font-size:14px}
+.pk-back:focus-visible{outline:2px solid var(--gold2,#e6c77a)}
+/* mode program */
+.pm-on #page-quran .q-reader{padding-bottom:150px}
+.pm-hl{position:relative;border-radius:14px;background:rgba(230,199,122,.10)!important;box-shadow:0 0 0 2px var(--gold2,#e6c77a),0 0 0 7px rgba(230,199,122,.12);transition:box-shadow .3s}
+span.pm-hl{box-shadow:none;outline:2px solid var(--gold2,#e6c77a);border-radius:6px}
+.s-text.pm-hl{padding:4px 10px}
+.pm-bar{position:fixed;left:0;right:0;z-index:7;display:flex;align-items:center;gap:10px;margin:0 auto;max-width:560px;padding:10px 12px calc(10px + 0px);background:var(--bg2,#1d160d);border-top:1px solid var(--line);box-shadow:0 -10px 28px -14px rgba(0,0,0,.55);animation:pmUp .3s ease-out}
+.pm-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.pm-tx small{font-size:11px;color:var(--fg3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pm-tx small b{color:var(--gold2,#e6c77a)}
+.pm-st{font-size:12.5px;font-weight:700;color:var(--fg)}
+.pm-p{display:block;height:5px;border-radius:5px;background:rgba(201,162,74,.18);overflow:hidden}
+.pm-p b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold,#c9a24a),var(--gold2,#e6c77a));transition:width .25s linear}
+.pm-btn{flex:none;padding:9px 12px!important;font-size:13px!important}
+.pm-bar.done .pm-st{color:var(--jade2,#7fd1a8)}
+.pm-praise{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:rgba(10,7,3,.6);opacity:0;transition:opacity .25s;overflow:hidden;cursor:pointer}
+.pm-praise.on{opacity:1}
+.pm-pr-in{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:22px 26px;border-radius:24px;background:var(--bg2,#1d160d);border:1px solid var(--line);box-shadow:0 20px 50px -20px rgba(0,0,0,.6);max-width:300px;animation:pmPop .45s cubic-bezier(.3,1.5,.5,1)}
+.pm-pr-h{font-size:22px;color:var(--gold2,#e6c77a)}
+.pm-pr-in p{margin:0;font-weight:700;color:var(--fg)}
+.pm-pr-ic{font-size:64px}
+.pm-praise i{position:absolute;top:-20px;left:var(--x);color:#f3d98b;font-style:normal;animation:ppFall 2.4s var(--d) ease-in forwards}
+.pm-flash{animation:pmFlash 1.4s}
+@keyframes pmUp{from{transform:translateY(100%)}}
+@keyframes pmPop{from{transform:scale(.7);opacity:0}}
+@keyframes pmFlash{30%{box-shadow:0 0 0 3px var(--gold2,#e6c77a);border-radius:14px}}
+@media (prefers-reduced-motion:reduce){.pm-bar,.pm-pr-in,.pm-flash{animation:none}.pm-praise i{display:none}}
 
 
 /* ===== Kusyu Duo ===== */
@@ -3912,6 +3954,9 @@ const T={
  pgN:["Halaman","Page","صفحة"], prevP:["Sebelumnya","Previous","السابقة"], nextP:["Berikutnya","Next","التالية"], jump:["Ke halaman","Go to page","انتقل إلى صفحة"], ofP:["dari","of","من"], written:["halaman ditulis","pages written","صفحات مكتوبة"], enSoon:["(English version coming; showing Indonesian)","(English version coming; showing Indonesian)",""], draftTag:["Draf · menunggu tinjauan ustadz","Draft · awaiting scholar review","مسودة · بانتظار المراجعة"], words:["kata","words","كلمة"],
  arNote:["","","(النص بالإندونيسية/الإنجليزية مؤقتًا)"],
  today:["Hari Ini","Today","اليوم"], todayLead:["1 ayat · 1 hadis · 1 halaman sirah","1 verse · 1 hadith · 1 seerah page","آية · حديث · صفحة سيرة"], ayat:["Ayat hari ini","Verse of the day","آية اليوم"], hd:["Hadis hari ini","Hadith of the day","حديث اليوم"], sr:["Sirah hari ini","Seerah of the day","سيرة اليوم"],
+ libEy:["Bacaan harian","Daily reading","القراءة اليومية"], libT:["Pustaka","Library","المكتبة"], tileQ:["114 surah","114 surahs","١١٤ سورة"], tileH:["Kitab hadis sahih","Authentic hadith","الحديث الصحيح"], tileS:["Kisah Nabi ﷺ","Life of the Prophet ﷺ","حياة النبي ﷺ"],
+ pmProg:["Program Harian","Daily Programme","البرنامج اليومي"], pmA:["1 Ayat","1 Verse","آية واحدة"], pmH:["1 Hadis","1 Hadith","حديث واحد"], pmS:["1 Halaman Sirah","1 Seerah Page","صفحة سيرة"], pmScroll:["Baca sampai akhir, nanti tercentang otomatis ⬇","Read to the end and it checks itself ⬇","اقرأ حتى النهاية وسيُعلَّم تلقائيًا ⬇"], pmWait:["Teruskan membaca… {n} detik lagi","Keep reading… {n}s to go","واصل القراءة… {n} ث"],
+ pmOk:["✓ Sudah saya baca","✓ I've read it","✓ قرأته"], pmBack:["← Kembali ke program","← Back to programme","→ العودة إلى البرنامج"], pmDone:["✓ Sudah selesai hari ini","✓ Already done today","✓ تم اليوم"], pmPr:["{x} hari ini selesai ✓","Today's {x} is done ✓","تم {x} اليوم ✓"], pmRet:["Kembali ke program…","Back to the programme…","العودة إلى البرنامج…"], pmMasya:["Masya Allah!","Masha Allah!","ما شاء الله!"],
  done:["Selesai","Done","تم"], allDone:["MasyaAllah, program hari ini tuntas!","MashaAllah, today's programme is complete!","ما شاء الله، أتممت برنامج اليوم!"], read:["Baca","Read","اقرأ"]
 };
 const t=k=>{const a=T[k];return a?(a[L()]||a[0]):k;};
@@ -3997,7 +4042,52 @@ async function sOpen(n){ n=+n; await loadSI(); const r=$("#sReader"), body=$("#s
 function sClose(){ $("#sReader").hidden=true; $("#sIndex").hidden=false; sList(); }
 
 /* ---------- Hub ---------- */
-function setTab(x){ pRender();  const pg=$("#page-quran"); if(!pg) return; pg.dataset.pk=x; store.set("rk_pk_tab",x); $$("#pkTabs button").forEach(b=>b.classList.toggle("on",b.dataset.pk===x)); if(x==="h") hList(); if(x==="s") sList(); }
+/* Tampilan Pustaka: "home" (3 ikon + program) | "q" | "h" | "s". Riwayat browser/Android: masuk sub-tampilan = pushState, tombol Kembali = history.back(). */
+const VW=()=>{ const pg=$("#page-quran"); return (pg&&pg.dataset.pk)||"home"; };
+const qOn=()=>{ const pg=$("#page-quran"); return !!(pg&&pg.classList.contains("on")); };
+function hpush(st){ try{ const s=history.state; if(s&&s.pk) history.replaceState(st,"",location.href); else history.pushState(st,"",location.href); }catch(e){} }
+function closeReaders(){ const q=$("#qReader"); if(q&&!q.hidden){ try{ window.RKQuran&&window.RKQuran.close(); }catch(e){} } if($("#hReader")&&!$("#hReader").hidden) hClose(); if($("#sReader")&&!$("#sReader").hidden) sClose(); }
+function setTab(x,o){ o=o||{}; const pg=$("#page-quran"); if(!pg) return; if(!["home","q","h","s"].includes(x)) x="home"; const prev=pg.dataset.pk;
+  if(x==="home"){ pmEnd(); closeReaders(); }
+  pg.dataset.pk=x; if(x==="home") pRender(); if(x==="h") hList(); if(x==="s") sList();
+  if(x!=="home"&&o.push!==false) hpush({pk:x,pm:o.pm?1:0});
+  if(prev!==x){ const vw=$("#view"); if(vw) vw.scrollTop=0; } }
+function pkBack(){ const s=history.state; if(s&&s.pk){ try{ history.back(); return; }catch(e){} } setTab("home",{push:false}); }
+
+/* ---------- Mode Program: pembaca dibuka dari tugas Tahap 2 (centang otomatis + manual) ---------- */
+const PMCFG={a:20000,h:30000,s:60000};
+let PM=null;
+const pmLab=k=>t({a:"pmA",h:"pmH",s:"pmS"}[k]);
+function pmLaunch(k,btn){ const P=pGet(); if(!P||P.st!=="on"||!btn) return false; pmEnd();
+  const done=!!(((P.done||{})[dk()]||{})[k]);
+  PM={k,need:PMCFG[k],dw:0,reach:false,done,last:performance.now(),sel:"",el:null,fin:false};
+  setTab({a:"q",h:"h",s:"s"}[k],{pm:1}); document.documentElement.classList.add("pm-on");
+  if(k==="a"){ const [s,a]=btn.dataset.hiq.split(":"); PM.sel="#qa-"+s+"-"+a; window.RKQuran&&window.RKQuran.open(s,a); }
+  else if(k==="h"){ const [kk,n]=btn.dataset.hopen.split(":"); PM.sel="#h-"+String(n).replace(".","_"); hOpen(kk,n); }
+  else { PM.sel="#sBody .s-text"; sOpen(btn.dataset.sopen); }
+  pmBar(); PM.iv=setInterval(pmTick,250); const vw=$("#view"); if(vw) vw.addEventListener("scroll",pmTick,{passive:true}); window.addEventListener("scroll",pmTick,{passive:true}); return true; }
+function pmBar(){ if(!PM) return; let b=$("#pmBar"); if(!b){ b=document.createElement("div"); b.id="pmBar"; b.className="pm-bar"; b.setAttribute("role","status"); document.body.appendChild(b); }
+  const nv=$("#nav"); b.style.bottom=(nv&&nv.offsetParent!==null?nv.getBoundingClientRect().height:0)+"px"; b.dir=lang()==="ar"?"rtl":"ltr";
+  b.innerHTML=`<div class="pm-tx"><small>🌱 ${t("pmProg")} · <b>${pmLab(PM.k)}</b></small><span class="pm-st"></span><i class="pm-p"><b></b></i></div>${PM.done?`<button type="button" class="btn ghost pm-btn" data-pmback="1">${t("pmBack")}</button>`:`<button type="button" class="btn gold pm-btn" data-pmok="1">${t("pmOk")}</button>`}`;
+  b.classList.toggle("done",PM.done); pmDraw(); }
+function pmDraw(){ const b=$("#pmBar"); if(!b||!PM) return; const st=b.querySelector(".pm-st"), pb=b.querySelector(".pm-p b");
+  const f=PM.done?1:(Math.min(1,PM.dw/PM.need)*.5+(PM.reach?.5:0)); if(pb) pb.style.width=(f*100).toFixed(1)+"%";
+  const tx=PM.done?t("pmDone"):(!PM.reach?t("pmScroll"):t("pmWait").replace("{n}",NUM(Math.max(1,Math.ceil((PM.need-PM.dw)/1000))))); if(st&&st.textContent!==tx) st.textContent=tx; }
+function pmTick(){ if(!PM||PM.fin) return; const now=performance.now(), dt=now-PM.last; PM.last=now;
+  const el=$(PM.sel); if(el){ if(!el.classList.contains("pm-hl")){ el.classList.add("pm-hl"); PM.el=el; } if(!document.hidden&&dt<2000) PM.dw+=dt;
+    if(!PM.reach){ const r=el.getBoundingClientRect(), bar=$("#pmBar"), lim=bar?bar.getBoundingClientRect().top:innerHeight; if(r.height>0&&r.bottom<=lim+4&&r.bottom>0) PM.reach=true; } }
+  if(!PM.done&&PM.reach&&PM.dw>=PM.need) return pmComplete(false);
+  pmDraw(); }
+function pmEnd(){ if(!PM) return; clearInterval(PM.iv); const vw=$("#view"); if(vw) vw.removeEventListener("scroll",pmTick); window.removeEventListener("scroll",pmTick);
+  $$(".pm-hl").forEach(e=>e.classList.remove("pm-hl")); const b=$("#pmBar"); if(b) b.remove(); document.documentElement.classList.remove("pm-on"); PM=null; }
+function pmComplete(manual){ if(!PM||PM.fin) return; PM.fin=true; clearInterval(PM.iv); const k=PM.k; const P=pGet(); const td=(P&&P.done&&P.done[dk()])||{};
+  if(!td[k]) pMark(k); PM.done=true; pmBar(); const D=window.KusyuDuo;
+  const o=document.createElement("div"); o.id="pmPraise"; o.className="pm-praise"; o.setAttribute("role","status"); o.dir=lang()==="ar"?"rtl":"ltr";
+  o.innerHTML=`<div class="pm-pr-in">${D&&D.nur?D.nur("cheer",112):`<span class="pm-pr-ic" aria-hidden="true">🏮</span>`}<b class="pm-pr-h">${t("pmMasya")}</b><p>${esc(t("pmPr").replace("{x}",pmLab(k)))}</p><small class="dim">${t("pmRet")}</small></div>${Array.from({length:16},(_,i)=>`<i style="--x:${(i*41)%100}%;--d:${(i%6)*0.12}s">✦</i>`).join("")}`;
+  document.body.appendChild(o); requestAnimationFrame(()=>o.classList.add("on"));
+  try{ if(D){ D.sfx("ok"); D.buzz&&D.buzz(40); if(manual&&D.praise) setTimeout(()=>D.speak(D.praise(),lang()),250); } }catch(e){}
+  const fin=()=>{ if(!o.isConnected) return; o.remove(); pmReturn(k); }; o.onclick=fin; setTimeout(fin,2200); }
+function pmReturn(k){ pmEnd(); pkBack(); let n=0; const iv=setInterval(()=>{ const it=$(`#pkProg [data-ppk="${k}"]`); if((it&&VW()==="home")||++n>30){ clearInterval(iv); if(it){ it.scrollIntoView({block:"center"}); it.classList.remove("duo-flash","pm-flash"); void it.offsetWidth; it.classList.add("pm-flash"); } } },100); }
 function applyT(){ $$("[data-pt]").forEach(e=>e.textContent=t(e.dataset.pt)); $$("[data-pph]").forEach(e=>{e.placeholder=t(e.dataset.pph); e.setAttribute("aria-label",t(e.dataset.pph));}); const a=$("#hAttr"); if(a) a.innerHTML=t("hAttr"); }
 
 /* ---------- Hari Ini ---------- */
@@ -4198,14 +4288,16 @@ function pClick(e){ if(bClick(e)) return true; const a=e.target.closest("[data-p
     if(v==="join"){ const P=pGet(); if(P){ P.st="on"; pSet(P); pRender(); homeCard(); } else { pSet(pNew()); pRender(); homeCard(); } }
     else if(v==="pause") pState("pause"); else if(v==="resume") pState("on"); else if(v==="stop") pState("off");
     else if(v==="reset"){ if(confirm(t("resetQ"))){ pSet(Object.assign(pNew(),{st:(pGet()||{}).st==="pause"?"on":"on"})); pRender(); homeCard(); } }
-    else if(v==="goto"){ window.go&&window.go("quran"); setTab("q"); setTimeout(()=>{ const p=$("#pkProg"); p&&p.scrollIntoView({block:"start"}); },60); }
+    else if(v==="goto"){ window.go&&window.go("quran"); setTab("home",{push:false}); setTimeout(()=>{ const p=$("#pkProg"); p&&p.scrollIntoView({block:"start"}); },60); }
     return true; }
   const m=e.target.closest("[data-ppm]"); if(m){ pMark(m.dataset.ppm); if(m.closest("#pkToday")) homeCard(); return true; }
   const x=e.target.closest("[data-ppx]"); if(x){ pMore(x.dataset.ppx); return true; } return false; }
 
-function inject(){ const pg=$("#page-quran"); if(!pg||$("#pkTabs")) return;
-  const tabs=document.createElement("div"); tabs.className="v2-seg pk-tabs"; tabs.id="pkTabs"; tabs.setAttribute("role","tablist");
-  tabs.innerHTML=`<button data-pk="q" class="on" data-pt="tabQ"></button><button data-pk="h" data-pt="tabH"></button><button data-pk="s" data-pt="tabS"></button>`; pg.prepend(tabs); const pp=document.createElement("div"); pp.id="pkProg"; pp.className="card pp"; tabs.after(pp);
+function inject(){ const pg=$("#page-quran"); if(!pg||$("#pkHome")) return; pg.dataset.pk="home";
+  const home=document.createElement("div"); home.id="pkHome"; home.className="pk-home";
+  home.innerHTML=`<div class="pk-hh"><div class="eyebrow" data-pt="libEy"></div><h1 data-pt="libT"></h1></div><div class="pk-grid">${[["q","📖","tabQ","tileQ"],["h","📚","tabH","tileH"],["s","📜","tabS","tileS"]].map(([k,i,l,sb])=>`<button class="v2-tile pk-tile" type="button" data-pk="${k}"><i aria-hidden="true">${i}</i><b data-pt="${l}"></b><small data-pt="${sb}"></small></button>`).join("")}</div>`;
+  pg.prepend(home); const pp=document.createElement("div"); pp.id="pkProg"; pp.className="card pp"; home.after(pp);
+  const bb=document.createElement("div"); bb.id="pkBack"; bb.className="pk-backbar"; bb.innerHTML=`<button type="button" class="pk-back" data-pkback="1"><span aria-hidden="true">${lang()==="ar"?"→":"←"}</span> <span data-pt="back"></span></button>`; pp.after(bb);
   const h=document.createElement("div"); h.id="pkHadis"; h.className="pk-pane"; h.innerHTML=`<div class="stack" id="hIndex"><div class="q-hero"><div class="eyebrow" data-pt="hEy"></div><div class="q-hero-ar h-hero-ar" lang="ar" dir="rtl">صَحِيحُ الْبُخَارِيِّ</div><p class="muted" data-pt="hLead"></p></div>
    <div id="hCont"></div><div class="q-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="hSearch" type="search" autocomplete="off" data-pph="hSearch"></div>
    <div class="v2-seg q-tabs" id="hTabs"><button data-t="k" class="on" data-pt="tKitab"></button><button data-t="b" data-pt="tMarks"></button></div><div id="hList" class="q-list"></div><p class="dim q-attr" id="hAttr"></p></div>
@@ -4213,24 +4305,40 @@ function inject(){ const pg=$("#page-quran"); if(!pg||$("#pkTabs")) return;
   const s=document.createElement("div"); s.id="pkSirah"; s.className="pk-pane"; s.innerHTML=`<div class="stack" id="sIndex"><div class="q-hero"><div class="eyebrow" data-pt="sEy"></div><div class="q-hero-ar h-hero-ar" lang="ar" dir="rtl">السِّيرَةُ النَّبَوِيَّةُ</div><p class="muted" data-pt="sLead"></p></div><div class="s-draft" data-pt="draft"></div><div id="sList" class="q-list"></div></div>
    <div id="sReader" class="q-reader h-reader" hidden><div class="q-bar"><button class="q-ib" id="sBack" type="button">←</button><div class="q-bt"><b id="sTitle"></b><small id="sSub"></small></div><span></span></div><div id="sBody" class="q-body s-body"></div></div>`;
   pg.append(h,s); applyT(); }
-function init(){ inject(); if(!$("#pkTabs")) return;
-  $("#pkTabs").addEventListener("click",e=>{ const b=e.target.closest("[data-pk]"); if(b) setTab(b.dataset.pk); });
+function init(){ inject(); if(!$("#pkHome")) return;
+  $("#pkHome").addEventListener("click",e=>{ const b=e.target.closest("[data-pk]"); if(b) setTab(b.dataset.pk); });
+  $("#pkBack").addEventListener("click",e=>{ if(e.target.closest("[data-pkback]")) pkBack(); });
+  /* tombol ← di pembaca: dalam mode program kembali ke program; selain itu ikut riwayat bila ada */
+  document.addEventListener("click",e=>{ const b=e.target.closest("#qBack,#hBack,#sBack"); if(!b) return; const s=history.state;
+    if(PM){ e.stopPropagation(); e.preventDefault(); pmEnd(); pkBack(); return; }
+    if(s&&s.r){ e.stopPropagation(); e.preventDefault(); try{ history.back(); }catch(_){} } },true);
+  window.addEventListener("popstate",()=>{ if(!qOn()) return; const s=history.state;
+    if(!s||!s.pk){ if(VW()!=="home") setTab("home",{push:false}); return; }
+    if(!s.r){ pmEnd(); closeReaders(); setTab(s.pk,{push:false}); } });
+  const RV={qReader:"q",hReader:"h",sReader:"s"};
+  new MutationObserver(ms=>{ ms.forEach(m=>{ const el=m.target, k=RV[el.id]; if(!k||el.hidden||m.oldValue===null) return; const pg=$("#page-quran"); if(pg.dataset.pk!==k) pg.dataset.pk=k;
+    if(PM) return; const s=history.state; if(!(s&&s.r)){ try{ history.pushState({pk:k,r:1},"",location.href); }catch(e){} } }); }).observe($("#page-quran"),{attributes:true,attributeFilter:["hidden"],attributeOldValue:true,subtree:true});
   $("#hTabs").addEventListener("click",e=>{ const b=e.target.closest("[data-t]"); if(!b) return; H.tab=b.dataset.t; $$("#hTabs button").forEach(x=>x.classList.toggle("on",x===b)); hList(); });
   $("#hSearch").addEventListener("input",()=>{ clearTimeout(hList.t); hList.t=setTimeout(hList,250); });
   $("#hBack").onclick=hClose; $("#sBack").onclick=sClose;
-  document.addEventListener("click",e=>{ if(pClick(e)) return; const ck=e.target.closest("[data-hik]"); if(ck){ logToggle(ck.dataset.hik); homeCard(); return; }
+  document.addEventListener("click",e=>{
+    if(e.target.closest("[data-pmok]")){ pmComplete(true); return; } if(e.target.closest("[data-pmback]")){ pmEnd(); pkBack(); return; }
+    { let pb=e.target.closest("#pkProg [data-ppk] [data-hiq],#pkProg [data-ppk] [data-hopen],#pkProg [data-ppk] [data-sopen]"); const bd=!pb&&e.target.closest("#pkProg .pp-it .pp-bd");
+      if(bd&&!e.target.closest("button,a,summary")) pb=bd.querySelector(".pp-acts [data-hiq],.pp-acts [data-hopen],.pp-acts [data-sopen]");
+      if(pb){ const it=pb.closest("[data-ppk]"); if(it&&pmLaunch(it.dataset.ppk,pb)) return; } }
+    if(pClick(e)) return; const ck=e.target.closest("[data-hik]"); if(ck){ logToggle(ck.dataset.hik); homeCard(); return; }
     const hub=e.target.closest("[data-hihub]"); if(hub){ window.go&&window.go("quran"); setTab(hub.dataset.hihub); }
     const q=e.target.closest("[data-hiq]"); if(q){ window.go&&window.go("quran"); setTab("q"); const [s,a]=q.dataset.hiq.split(":"); const btn=document.createElement("button"); btn.dataset.open=s+":"+a; btn.hidden=true; $("#qIndex").appendChild(btn); btn.click(); btn.remove(); return; }
     const o=e.target.closest("[data-hopen]"); if(o){ const [k,n]=o.dataset.hopen.split(":"); hOpen(k,n); return; }
     const so=e.target.closest("[data-sopen]"); if(so){ sOpen(so.dataset.sopen); return; }
     const bm=e.target.closest("[data-hbm]"); if(bm){ hBm(bm.dataset.hbm); return; } const cp=e.target.closest("[data-hcp]"); if(cp){ hCopy(cp.dataset.hcp); return; } });
-  setTab(store.get("rk_pk_tab","q")==="q"?"q":store.get("rk_pk_tab","q"));
+  setTab("home",{push:false});
   homeCard(); pRender();
-  document.addEventListener("rk:lang",()=>setTimeout(()=>{ applyT(); homeCard(); pRender(); const pk=$("#page-quran").dataset.pk; if(pk==="h"&&!$("#hReader").hidden&&H.cur) hOpen(H.cur.k); else if(pk==="h") hList(); if(pk==="s") sList(); },30));
-  const _go=window.go; if(_go) window.go=function(p){ _go(p); if(p==="beranda") homeCard(); };
+  document.addEventListener("rk:lang",()=>setTimeout(()=>{ applyT(); homeCard(); pRender(); pmBar(); const ba=$("#pkBack [aria-hidden]"); if(ba) ba.textContent=lang()==="ar"?"→":"←"; const pk=$("#page-quran").dataset.pk; if(pk==="h"&&!$("#hReader").hidden&&H.cur) hOpen(H.cur.k); else if(pk==="h") hList(); if(pk==="s") sList(); },30));
+  const _go=window.go; if(_go) window.go=function(p){ const was=qOn(); _go(p); if(p==="beranda") homeCard(); if(p==="quran"&&!was) setTab("home",{push:false}); if(p!=="quran") pmEnd(); };
   window.addEventListener("hashchange",()=>{ if(location.hash==="#beranda") homeCard(); });
-  $$("#nav button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.p==="beranda") homeCard(); }));
-  window.KusyuPustaka={bComplete,t2Open:()=>t2Open(pGet()),BU,H,SR,setTab,hOpen,sOpen,homeCard,todayData,pRender,pStats:()=>pStats(pGet()),prog:pGet};
+  $$("#nav button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.p==="beranda") homeCard(); if(b.dataset.p==="quran") setTab("home",{push:false}); else pmEnd(); }));
+  window.KusyuPustaka={PMCFG,pm:()=>PM,view:VW,back:pkBack,bComplete,t2Open:()=>t2Open(pGet()),BU,H,SR,setTab,hOpen,sOpen,homeCard,todayData,pRender,pStats:()=>pStats(pGet()),prog:pGet};
 }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
 })();
@@ -4416,7 +4524,7 @@ document.addEventListener("click",ev=>{ const g=s=>ev.target.closest(s); let a;
 },true);
 function boot(){ const pp=$("#pkProg"); if(!pp) return setTimeout(boot,300); new MutationObserver(()=>{ if(!pp._duoBusy) decorate(); }).observe(pp,{childList:true,subtree:true}); decorate(); }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
-window.KusyuDuo={open,close,build,speak,sfx,state:()=>S,decorate};
+window.KusyuDuo={open,close,build,speak,sfx,buzz,nur,praise:()=>rnd(PRAISE[lang()]),state:()=>S,decorate};
 })();
 
 </script>
