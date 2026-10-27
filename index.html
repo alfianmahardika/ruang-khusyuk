@@ -1588,7 +1588,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
           <b data-v="startBtn"></b><span class="v2-tag" data-v="tagline"></span><small data-v="startSub"></small>
           <span class="v2-cta" aria-hidden="true"><span data-v="startGo"></span> <i>→</i></span>
         </button>
-        <div class="card" id="v2TimesCard"><div class="row v2-sb"><div class="eyebrow" data-v="todayTimes"></div><button class="btn sm ghost" type="button" data-go="jadwal" data-v="detail"></button></div><div class="v2-times" id="v2Times"></div></div>
+        <!-- t47: kartu "Jadwal salat hari ini" dihapus dari Beranda; jadwal lengkap dibuka lewat kartu "Salat berikutnya" (halaman Jadwal tetap utuh) -->
         <div class="card" id="v2MasjidCard"><div class="row v2-sb"><div class="eyebrow" data-v="masjidT"></div><button class="btn sm gold" type="button" id="v2MasjidBtn" data-v="find"></button></div>
           <div id="v2Masjid" class="v2-mlist"><p class="dim" style="font-size:13px" data-v="masjidLead"></p></div>
           <p class="dim v2-attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors · Overpass API</p></div>
@@ -4221,7 +4221,7 @@ function ayahSheet(k){ const [s,a]=k.split(":").map(Number), sm=S(s), bm=store.g
 
 /* ---------- Beranda card ---------- */
 function berandaCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#qHomeCard");
-  if(!c){ c=document.createElement("div"); c.id="qHomeCard"; c.className="card lit q-home"; const anchor=$("#v2HafCard")||$("#v2TimesCard"); if(anchor) anchor.before(c); else pg.prepend(c); }
+  if(!c){ c=document.createElement("div"); c.id="qHomeCard"; c.className="card lit q-home"; const anchor=$("#v2HafCard")||$("#v2TimesCard")||$("#v2MasjidCard"); if(anchor) anchor.before(c); else pg.prepend(c); }
   loadMeta().then(()=>{ c.innerHTML=`<div class="row v2-sb"><div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm ghost" type="button" data-qgo="1">${t("tSurah")} →</button></div>${contCard()}`; }).catch(()=>{ c.innerHTML=`<div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm gold" type="button" data-qgo="1">${t("open")}</button>`; }); }
 
 function init(){ if(!$("#page-quran")) return; const sh=$("#qSheet"); if(sh) document.body.appendChild(sh); applyT();
@@ -4521,7 +4521,7 @@ async function todayData(){ const sd=seed(); const out={};
   try{ await loadSI(); const av=SR.idx.ch.filter(c=>c[4]); const c=av[sd%av.length]; out.s={n:c[0],title:cT(c)}; }catch(e){}
   return out; }
 async function homeCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#pkToday");
-  if(!c){ c=document.createElement("div"); c.id="pkToday"; c.className="card lit pk-today"; const a=$("#qHomeCard")||$("#v2HafCard")||$("#v2TimesCard"); if(a) a.before(c); else pg.prepend(c); }
+  if(!c){ c=document.createElement("div"); c.id="pkToday"; c.className="card lit pk-today"; const a=$("#qHomeCard")||$("#v2HafCard")||$("#v2TimesCard")||$("#v2MasjidCard"); if(a) a.before(c); else pg.prepend(c); }
   const PP=pGet(); if(PP&&PP.st!=="off") return pHome(c); c.className="card lit pk-today";
   const D=await todayData(); const td=(logAll()[dk()])||{}; const n=["hi_ayat","hi_hadis","hi_sirah"].filter(k=>td[k]).length;
   const row=(k,ic,lab,body,open)=>`<div class="pk-it${td[k]?" on":""}"><button type="button" class="pk-ck" data-hik="${k}" aria-pressed="${!!td[k]}" aria-label="${t("done")}">${td[k]?"✓":""}</button><button type="button" class="pk-bd" ${open}><small>${ic} ${lab}</small>${body}</button></div>`;
