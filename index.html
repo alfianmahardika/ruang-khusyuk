@@ -1232,6 +1232,99 @@ html.duo-lock,html.duo-lock body{overflow:hidden}
 [data-theme=pink] .bb-tag{background:rgba(110,74,84,.12);color:#6e4a54}
 
 
+/* ===== Kusyu — Rukun Islam (beranda row, kalender puasa, haji & umrah) ===== */
+#bbHomeRow.rk-row{display:block;padding:14px 10px 10px}
+.rk-row .rk-icons{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.rk-row .rk-icons button{display:flex;flex-direction:column;align-items:center;gap:4px;border:0;background:none;color:var(--fg);font:inherit;cursor:pointer;padding:2px 0;min-width:0}
+.rk-row .rk-icons i{position:relative;font-style:normal;width:54px;height:54px;display:grid;place-items:center;border-radius:18px;color:var(--gold2,#d9b86a);
+ background:radial-gradient(120% 120% at 30% 15%,rgba(230,199,122,.22),rgba(201,162,74,.06) 60%,transparent),var(--glass2);border:1px solid var(--line2,var(--line));box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.rk-row .rk-icons i svg{width:27px;height:27px}
+.rk-row .rk-icons i em{position:absolute;top:-5px;inset-inline-end:-5px;font-style:normal;font-size:10px;font-weight:800;min-width:17px;height:17px;line-height:17px;border-radius:9px;text-align:center;background:linear-gradient(180deg,#e6c77a,#c9a24a);color:#1a1208}
+.rk-row .rk-icons span{font-size:11.5px;font-weight:700;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rk-row .rk-icons small{font-size:9.5px;color:var(--fg3);margin-top:-3px;white-space:nowrap}
+.rk-row .rk-cap{display:flex;flex-direction:column;align-items:center;gap:1px;width:100%;margin-top:10px;padding:8px 6px 2px;border:0;border-top:1px dashed var(--line);background:none;color:var(--fg2);font:inherit;cursor:pointer}
+.rk-row .rk-cap span{font-family:Amiri,serif;font-size:16px;color:var(--gold2,#d9b86a)}
+.rk-row .rk-cap small{font-size:10.5px;color:var(--fg3)}
+.rk-sheet .rk-ic{color:var(--gold2,#d9b86a)} .rk-sheet .rk-ic svg{width:44px;height:44px}
+.rk-ar{font-family:Amiri,serif;font-size:20px;line-height:1.9;text-align:center;margin:10px 0 4px;color:var(--fg)}
+.rk-tr{font-size:13.5px;line-height:1.55;margin-top:4px}
+.rk-src{font-size:12px;color:var(--gold2,#d9b86a);font-weight:600;margin-top:4px}
+.rk-note{font-size:12.5px;line-height:1.55;margin-top:8px;padding:9px 11px;border-radius:12px;background:var(--glass2);border:1px solid var(--line)}
+.rk-ol{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.rk-ol li{display:flex;align-items:center;gap:8px;font-size:13.5px} .rk-ol li i{color:var(--gold2,#d9b86a);display:grid} .rk-ol li i svg{width:20px;height:20px}
+.rk-ey{display:flex;align-items:center;gap:6px} .rk-ey svg{width:16px;height:16px}
+/* Kiblat button on Jadwal */
+.rk-qbtn{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border-radius:20px;border:1px solid var(--gold2,#d9b86a);cursor:pointer;font:inherit;text-align:start;color:var(--fg);
+ background:linear-gradient(135deg,rgba(230,199,122,.22),rgba(201,162,74,.06)),var(--glass)}
+.rk-qbtn i{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;color:#1a1208;background:linear-gradient(180deg,#e6c77a,#c9a24a);flex:none} .rk-qbtn i svg{width:28px;height:28px}
+.rk-qbtn b{display:block;font-size:16px} .rk-qbtn small{display:block;font-size:12px;color:var(--fg3);margin-top:2px}
+.rk-qbtn em{margin-inline-start:auto;font-style:normal;font-size:22px;color:var(--gold2,#d9b86a)}
+/* Puasa calendar */
+.pz-cal{padding:14px 10px 12px}
+.pz-hd{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.pz-tt{text-align:center;min-width:0} .pz-tt b{display:block;font-size:17px} .pz-tt small{display:block;font-size:12px;color:var(--gold2,#d9b86a);font-weight:600}
+.pz-nav{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--glass2);color:var(--fg);font-size:22px;line-height:1;cursor:pointer;flex:none}
+[dir=rtl] .pz-nav{transform:scaleX(-1)}
+.pz-wd,.pz-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.pz-wd{margin:12px 0 4px} .pz-wd span{text-align:center;font-size:10.5px;color:var(--fg3);font-weight:700;overflow:hidden;white-space:nowrap}
+.pz-c{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:0;height:54px;padding:5px 0 0;border-radius:12px;border:1px solid transparent;background:var(--glass2);color:var(--fg);font:inherit;cursor:pointer;min-width:0}
+.pz-c.pz-e{background:none;cursor:default}
+.pz-c b{font-size:15px;line-height:1.1} .pz-c small{font-size:9.5px;color:var(--fg3);line-height:1.2;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.pz-dots{position:absolute;bottom:5px;display:flex;gap:2px}
+.pz-d{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--fg3)}
+.pz-d.pz-s{background:var(--gold2,#d9b86a)} .pz-d.pz-s.pz-maj{background:var(--gold2,#d9b86a);box-shadow:0 0 0 2px rgba(217,184,106,.35)}
+.pz-d.pz-w{background:#3fae84} .pz-d.pz-x{background:#e0524f} .pz-d.pz-k{background:#e39a3b}
+.pz-c.pz-ls{border-color:rgba(217,184,106,.35)}
+.pz-c.pz-major{background:rgba(217,184,106,.2);border-color:var(--gold2,#d9b86a)}
+.pz-c.pz-lw{background:rgba(63,174,132,.16);border-color:rgba(63,174,132,.45)}
+.pz-c.pz-lx{background:rgba(224,82,79,.18);border-color:rgba(224,82,79,.6)} .pz-c.pz-lx b{color:#e0524f}
+.pz-c.pz-lk{border-color:rgba(227,154,59,.55)}
+.pz-c.pz-today{outline:2px solid var(--fg);outline-offset:1px}
+.pz-c.pz-flash{animation:pzf 1.2s ease 2}
+@keyframes pzf{50%{box-shadow:0 0 0 4px rgba(217,184,106,.7)}}
+.pz-jump{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;font-size:12px}
+.pz-chip{border:1px solid var(--line2,var(--line));background:var(--glass);color:var(--fg);font:inherit;font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;cursor:pointer}
+#pzToday{border-color:var(--gold2,#d9b86a);color:var(--gold2,#d9b86a)}
+.pz-legend{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;font-size:12px;padding:12px 14px}
+.pz-legend span{display:flex;align-items:center;gap:7px;line-height:1.3} .pz-legend .pz-d{flex:none;width:9px;height:9px}
+.pz-up{display:grid;gap:8px;margin-top:8px}
+.pz-up button{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;text-align:start;padding:10px 12px;border-radius:14px;border:1px solid var(--line);background:var(--glass2);color:var(--fg);font:inherit;cursor:pointer}
+.pz-up b{font-size:13px;grid-row:span 2;align-self:center;color:var(--gold2,#d9b86a)} .pz-up span{font-size:13px;font-weight:600} .pz-up small{font-size:11px;color:var(--fg3)}
+.pz-disc{font-size:11.5px;line-height:1.55}
+.pz-sd{text-align:center;margin-bottom:8px} .pz-sd b{display:block;font-size:17px} .pz-sd span{display:block;font-size:13px;color:var(--gold2,#d9b86a);font-weight:600;margin-top:2px}
+.pz-f{padding:12px;border-radius:16px;border:1px solid var(--line);background:var(--glass2);margin-top:10px}
+.pz-f.pz-fx{border-color:rgba(224,82,79,.6)} .pz-f.pz-fw{border-color:rgba(63,174,132,.55)} .pz-f.pz-fk{border-color:rgba(227,154,59,.6)}
+.pz-fh{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap} .pz-fh b{font-size:15px}
+.pz-h{font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;background:rgba(217,184,106,.2);color:var(--gold2,#d9b86a)}
+.pz-hx{background:rgba(224,82,79,.18);color:#e0524f} .pz-hw{background:rgba(63,174,132,.18);color:#3fae84} .pz-hk{background:rgba(227,154,59,.18);color:#c77d1c} .pz-hi{background:var(--glass);color:var(--fg2)}
+/* Haji & Umrah */
+.um-lic p{font-size:13px;line-height:1.55;margin-top:6px} .um-aff{font-size:12px!important;color:var(--fg3)}
+.um-form label{display:flex;flex-direction:column;gap:4px;font-size:12.5px;font-weight:600;margin-top:10px;min-width:0}
+.um-form select,.um-form input.jd-in{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line2,var(--line));background:var(--glass);color:var(--fg);font:inherit;font-size:14px}
+.um-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.um-seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:14px;background:var(--glass2);border:1px solid var(--line)}
+.um-seg button{padding:9px;border-radius:10px;border:0;background:none;color:var(--fg);font:inherit;font-weight:700;cursor:pointer}
+.um-seg button.on{background:linear-gradient(180deg,#e6c77a,#c9a24a);color:#1a1208}
+.um-lbl{font-size:12.5px;font-weight:600;margin-top:12px}
+.um-needs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.um-need{flex-direction:row!important;align-items:center;gap:6px!important;margin:0!important;padding:7px 10px;border-radius:999px;border:1px solid var(--line2,var(--line));background:var(--glass);font-weight:500!important;font-size:12.5px!important;cursor:pointer}
+.um-need input{accent-color:#c9a24a;margin:0}
+.um-go{width:100%;margin-top:14px;padding:13px;justify-content:center}
+.um-pk{padding:14px;border-radius:18px;border:1px dashed var(--line2,var(--line));background:var(--glass)}
+.um-pk.um-top{border:1.5px solid var(--gold2,#d9b86a);background:linear-gradient(160deg,rgba(230,199,122,.14),transparent 60%),var(--glass)}
+.um-ph{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.um-pct{font-size:12px;color:var(--fg2)} .um-pct b{font-size:18px;color:var(--gold2,#d9b86a)}
+.um-pn{display:flex;align-items:center;gap:10px;margin-top:8px} .um-pn i{color:var(--gold2,#d9b86a);display:grid} .um-pn i svg{width:30px;height:30px} .um-pn b{font-size:15px;line-height:1.3}
+.um-meta{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12.5px;margin-top:8px;color:var(--fg2)}
+.um-bar{height:6px;border-radius:4px;background:var(--glass2);margin-top:10px;overflow:hidden} .um-bar i{display:block;height:100%;background:linear-gradient(90deg,#c9a24a,#e6c77a);border-radius:4px}
+.um-why{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:3px;font-size:12.5px;line-height:1.4}
+.um-why li{display:flex;gap:6px} .um-why li b{flex:none;width:14px} .um-why li.y b{color:#3fae84} .um-why li.m b{color:#e39a3b} .um-why li.n b{color:#e0524f} .um-why li.n{color:var(--fg3)}
+.um-book{width:100%;margin-top:10px}
+[data-theme=pink] .rk-row .rk-icons i em,[data-theme=pink] .um-seg button.on,[data-theme=pink] .rk-qbtn i{background:linear-gradient(180deg,#b78589,#9E6B6F);color:#fff}
+[data-theme=pink] .rk-row .rk-icons i{background:radial-gradient(120% 120% at 30% 15%,rgba(158,107,111,.16),transparent 60%),var(--glass2)}
+[data-theme=pink] .um-bar i{background:linear-gradient(90deg,#9E6B6F,#c49ea1)}
+
+
 /* ===== Doa setelah azan (popup) ===== */
 .da-ov{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);animation:daFade .25s ease}
 .da-ov[hidden]{display:none}
@@ -1395,6 +1488,13 @@ html.duo-lock,html.duo-lock body{overflow:hidden}
     <!-- ================= BELANJA BERKAH ================= -->
     <section class="page" id="page-belanja">
       <div class="stack" id="bbStack"></div>
+    </section>
+    <!-- ================= RUKUN ISLAM: PUASA + HAJI & UMRAH ================= -->
+    <section class="page" id="page-puasa">
+      <div class="stack" id="pzStack"></div>
+    </section>
+    <section class="page" id="page-umrah">
+      <div class="stack" id="umStack"></div>
     </section>
     <!-- ================= JADWAL SALAT + KIBLAT (baru) ================= -->
     <section class="page" id="page-jadwal">
@@ -2338,7 +2438,7 @@ const t=k=>UI[k]?L(UI[k]):k;
 const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:g==="hasan"?`<span class="pill gold">${t("g.hasan")}</span>`:g==="dhaif"?`<span class="pill rose">${t("g.dhaif")}</span>`:`<span class="pill rose">${t("g.khilaf")}</span>`;
 
 /* ---------------- Router ---------------- */
-const PAGES=["beranda","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
+const PAGES=["beranda","puasa","umrah","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
 function go(p){ if(!PAGES.includes(p)) p="beranda";
   $$(".page").forEach(s=>s.classList.toggle("on",s.id==="page-"+p)); $$("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.p===p));
   $("#view").scrollTop=0; try{history.replaceState(null,"","#"+p);}catch(e){}
@@ -3402,6 +3502,7 @@ const V={
  nQuran:["Pustaka","Library","المكتبة"], quranT:["Al-Qur'an","Al-Qur'an","القرآن الكريم"],
  privT:["Privasi","Privacy","الخصوصية"],
  nBelanja:["Belanja Berkah","Blessed Shop","تسوّق مبارك"], belanjaT:["Belanja Berkah","Blessed Shopping","تسوّق مبارك"], zakatT:["Zakat","Zakat","الزكاة"],
+ puasaT:["Kalender Puasa","Fasting Calendar","تقويم الصيام"], umrahT:["Haji & Umrah","Hajj & Umrah","الحج والعمرة"],
  tagline:["Tempat hati bertemu Allah","Where the heart meets Allah","حيث يلقى القلب الله"],
  skip:["Ketuk untuk lanjut","Tap to continue","انقر للمتابعة"],
  startGo:["Mulai sekarang","Start now","ابدأ الآن"],
@@ -3673,7 +3774,7 @@ const Flow={ i:0, pose:0, chair:false, dz:0, dzi:0, bT:null,
 
 /* ---------- Lainnya ---------- */
 function renderLainnya(){ const g=$("#lnGrid"); if(!g) return;
-  const T=[["📖","quranT","quran"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["🧭","nKiblat","kiblat"],["💰","zakatT","zakat"],["🛍️","belanjaT","belanja"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
+  const T=[["📖","quranT","quran"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["🧭","nKiblat","kiblat"],["💰","zakatT","zakat"],["🛍️","belanjaT","belanja"],["🌙","puasaT","puasa"],["🕋","umrahT","umrah"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
   g.innerHTML=T.map(([i,k,p])=>`<button class="v2-tile" type="button" data-tile="${p}"><i>${i}</i><b>${v(k)}</b></button>`).join("");
   const ck=new Set(store.get("rk_doa_check",[]));
   $("#lnDoaList").innerHTML=D.H.filter(h=>h.step!=="surah").map(h=>`<details><summary><input type="checkbox" data-doa="${h.id}"${ck.has(h.id)?" checked":""} onclick="event.stopPropagation()"><span style="flex:1">${esc(L(h.name))}</span><span class="dim">▾</span></summary><div class="ar" dir="rtl" lang="ar">${esc(h.ar)}</div><div class="tr">${esc(h.tr)}</div><p style="font-size:13.5px;margin-top:4px">${esc(L(h.m))}</p><div class="src">${esc(h.src)}</div></details>`).join("");
@@ -5205,11 +5306,12 @@ const lg=()=>{try{const l=JSON.parse(localStorage.getItem("rk_lang")||'"id"');re
 const t=o=>o[{id:0,en:1,ar:2}[lg()]];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const X={
- ey:["Belanja Berkah","Blessed Shopping","تسوّق مبارك"], title:["Belanja, sedekah & zakat dalam satu tempat","Shopping, charity & zakat in one place","التسوق والصدقة والزكاة في مكان واحد"],
+ ey:["Belanja Berkah","Blessed Shopping","تسوّق مبارك"], title:["Belanja, sedekah, zakat & umrah dalam satu tempat","Shopping, charity, zakat & umrah in one place","التسوق والصدقة والزكاة والعمرة في مكان واحد"],
  lead:["Fitur ini sedang disiapkan. Yang tampil sekarang adalah contoh tampilan; belum ada transaksi.","This feature is being prepared. What you see are examples; no transactions yet.","هذه الميزة قيد الإعداد. ما تراه أمثلة فقط؛ لا توجد معاملات بعد."],
  vT:["Voucher Halal","Halal Vouchers","قسائم حلال"], vS:["Promo dari mitra usaha halal","Offers from halal partners","عروض من شركاء حلال"],
  sT:["Sedekah","Charity","الصدقة"], sS:["Program kebaikan bersama lembaga resmi","Good causes with official institutions","برامج خير مع مؤسسات رسمية"],
  zT:["Zakat","Zakat","الزكاة"], zS:["Kalkulator zakat maal, penghasilan, emas, dagang & fitrah","Calculator for wealth, income, gold, trade & fitr","حاسبة زكاة المال والدخل والذهب والتجارة والفطر"],
+ uT:["Haji & Umrah","Hajj & Umrah","الحج والعمرة"], uS:["Paket travel berizin + Pembanding Pintar sesuai budget","Licensed travel packages + a Smart Comparator for your budget","باقات مرخّصة ومقارن ذكي حسب ميزانيتك"],
  back:["← Belanja Berkah","← Blessed Shopping","← تسوّق مبارك"],
  ex:["Contoh — mitra segera hadir","Example — partners coming soon","مثال — الشركاء قريبًا"],
  exS:["Contoh — menunggu mitra lembaga resmi","Example — awaiting an official partner institution","مثال — بانتظار مؤسسة شريكة رسمية"],
@@ -5257,13 +5359,14 @@ function render(){ const st=document.getElementById("bbStack"); if(!st) return;
   <button type="button" class="bb-door" data-bbv="voucher"><i>🎟️</i><span><b>${esc(t(X.vT))}</b><small>${esc(t(X.vS))}</small></span><em>›</em></button>
   <button type="button" class="bb-door" data-bbv="sedekah"><i>🤲</i><span><b>${esc(t(X.sT))}</b><small>${esc(t(X.sS))}</small></span><em>›</em></button>
   <button type="button" class="bb-door" data-go="zakat" data-bbz="1"><i>💰</i><span><b>${esc(t(X.zT))}</b><small>${esc(t(X.zS))}</small></span><em>›</em></button>
+  <button type="button" class="bb-door" data-go="umrah" data-bbu="1"><i>🕋</i><span><b>${esc(t(X.uT))}</b><small>${esc(t(X.uS))}</small></span><em>›</em></button>
  </div>`; }
 function voucherSheet(i){ const v=VOUCH[i]; sheet(`<div class="ic">${v.i}</div><div style="text-align:center"><span class="bb-tag">${esc(t(X.ex))}</span></div><h2>${esc(t(v.n))}</h2><p style="text-align:center;font-weight:700">${esc(t(v.o))}</p>
  <div class="eyebrow" style="margin-top:10px">${esc(t(X.terms))}</div><ul><li>${esc(t(X.t1))}</li><li>${esc(t(X.t2))}</li><li>${esc(t(X.t3))}</li></ul>
  <button type="button" class="btn gold bb-btn" id="bbQris" aria-disabled="true">▦ ${esc(t(X.qris))}</button><div class="bb-soon" id="bbQrisN" hidden>⏳ ${esc(t(X.qrisN))}</div>
  <button type="button" class="btn ghost bb-btn" data-bbclose="1">${esc(t(X.close))}</button>`); }
 /* Beranda: baris ikon fitur (gaya Muslim Pro) — Kiblat membuka kompas langsung */
-function homeRow(){ const nx=document.getElementById("v2Next"); if(!nx) return; let r=document.getElementById("bbHomeRow");
+function homeRow(){ if(window.KusyuRukun) return KusyuRukun.homeRow(); /* Rukun Islam row (src/rukun) */ const nx=document.getElementById("v2Next"); if(!nx) return; let r=document.getElementById("bbHomeRow");
  if(!r){ r=document.createElement("div"); r.id="bbHomeRow"; r.className="card bb-hrow"; nx.insertAdjacentElement("afterend",r); }
  r.innerHTML=[["🧭","hk","kiblat"],["🕐","hj","jadwal"],["📖","hq","quran"],["💰","hz","zakat"],["🛍️","hb","belanja"]].map(([i,k,p])=>`<button type="button" data-go="${p}" data-hr="${p}"><i>${i}</i><span>${esc(t(X[k]))}</span></button>`).join(""); }
 document.addEventListener("click",e=>{ if(!e.target.closest) return;
@@ -5275,6 +5378,277 @@ document.addEventListener("click",e=>{ if(!e.target.closest) return;
  if(e.target.closest("[data-l]")) setTimeout(()=>{ render(); homeRow(); },60); });
 window.KusyuBelanja={render,view:()=>view,open(v){ view=v||"home"; render(); }};
 function init(){ render(); homeRow(); }
+document.addEventListener("DOMContentLoaded",init); if(document.readyState!=="loading") setTimeout(init,0);
+})();
+
+</script>
+<script>
+/* ===== Kusyu — Rukun Islam: baris ikon Beranda (Bukhari 8 / Muslim 16), Kalender Puasa (Masehi + Hijriah Umm al-Qura),
+   Haji & Umrah (contoh paket + Pembanding Pintar di perangkat). Tanpa jaringan, tanpa audio. ===== */
+(function(){
+"use strict";
+const lg=()=>{try{const l=JSON.parse(localStorage.getItem("rk_lang")||'"id"');return ["id","en","ar"].includes(l)?l:"id";}catch(e){return "id";}};
+const t=o=>Array.isArray(o)?o[{id:0,en:1,ar:2}[lg()]]:o;
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toAr=s=>String(s).replace(/\d/g,c=>"٠١٢٣٤٥٦٧٨٩"[c]);
+const N=s=>lg()==="ar"?toAr(s):String(s);
+const LOC=()=>({id:"id-ID",en:"en-GB",ar:"ar-u-ca-gregory-nu-arab"}[lg()]);
+const ARF='lang="ar" dir="rtl"';
+
+/* ---------- Ikon (SVG garis emas, currentColor) ---------- */
+const sv=(b,extra)=>`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"${extra||""}>${b}</svg>`;
+const ICON={
+ quran:sv('<path d="M12 2.4l.75 1.55 1.7.22-1.25 1.15.32 1.68L12 6.2l-1.52.8.32-1.68L9.55 4.17l1.7-.22z" fill="currentColor" stroke="none"/><path d="M12 9.4C10 7.9 6.8 7.5 3.4 8.1v9.3c3.4-.6 6.6-.2 8.6 1.3 2-1.5 5.2-1.9 8.6-1.3V8.1C17.2 7.5 14 7.9 12 9.4z"/><path d="M12 9.4v9.3"/><path d="M6.8 19.3l10.4 3M17.2 19.3L6.8 22.3"/>'),
+ salat:sv('<path d="M3 21.2h18"/><path d="M5.2 21.2v-7.4h12.6v7.4"/><path d="M6.4 13.8c0-3.1 2.4-4.7 5.1-6.3 2.7 1.6 5.1 3.2 5.1 6.3"/><path d="M11.5 7.5V5"/><path d="M12.9 3.2a1.5 1.5 0 1 1-1.4-1 1.2 1.2 0 0 0 1.4 1z" fill="currentColor" stroke="none"/><path d="M10 21.2v-2.7a1.5 1.5 0 0 1 3 0v2.7"/><path d="M20.6 21.2V10.6M19.5 10.6h2.2M20.6 10.6V8.2l-.0-.01"/><circle cx="20.6" cy="7.4" r=".7" fill="currentColor" stroke="none"/>'),
+ zakat:sv('<circle cx="13.2" cy="7" r="4.3"/><path d="M13.2 4.9v4.2M11.6 6.2l1.6-1.3 1.6 1.3"/><path d="M2.6 15.4h3.2l3 1.2h3.6a1.5 1.5 0 0 1 0 3H9"/><path d="M12.4 19.5l5.4-2.6a1.6 1.6 0 0 1 2 2.4L15.2 22H7.4l-4.8-1.6"/>'),
+ puasa:sv('<path d="M14.8 3.2a8.6 8.6 0 1 0 6 14.2 7.1 7.1 0 0 1-6-14.2z"/><path d="M17.6 6.3l.55 1.15 1.25.17-.92.85.23 1.24-1.11-.6-1.11.6.23-1.24-.92-.85 1.25-.17z" fill="currentColor" stroke="none"/><path d="M8.2 14.6h5.2M9.4 17.2h2.8"/>'),
+ haji:sv('<path d="M12 2.8l8.2 3.6v10.4L12 21.2l-8.2-4.4V6.4z"/><path d="M3.8 6.4L12 10l8.2-3.6"/><path d="M12 10v11.2"/><path d="M3.8 9.4L12 13l8.2-3.6" stroke-width="2.3"/><path d="M6.6 15.4v3l2.1 1.1v-3z" fill="currentColor" stroke="none"/>'),
+ kiblat:sv('<circle cx="12" cy="12" r="9.2"/><path d="M12 2.8v2M12 19.2v2M2.8 12h2M19.2 12h2"/><path d="M15.6 8.4l-2.1 5.1-5.1 2.1 2.1-5.1z"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>')
+};
+const X={
+ r:[["Rukun 1","Pillar 1","الركن ١"],["Rukun 2","Pillar 2","الركن ٢"],["Rukun 3","Pillar 3","الركن ٣"],["Rukun 4","Pillar 4","الركن ٤"],["Rukun 5","Pillar 5","الركن ٥"]],
+ rq:["Al-Qur'an","Qur'an","القرآن"], rs:["Salat","Prayer","الصلاة"], rz:["Zakat","Zakat","الزكاة"], rp:["Puasa","Fasting","الصيام"], rh:["Haji/Umrah","Hajj/Umrah","الحج والعمرة"],
+ cap:["Disusun menurut rukun Islam · HR. Bukhari 8, Muslim 16","Arranged by the pillars of Islam · Bukhari 8, Muslim 16","مرتبة على أركان الإسلام · البخاري ٨، مسلم ١٦"],
+ hTitle:["Islam dibangun di atas lima perkara","Islam is built upon five","بُني الإسلام على خمس"],
+ hTr:["\"Islam dibangun di atas lima perkara: bersaksi bahwa tiada ilah selain Allah dan Muhammad adalah utusan Allah, mendirikan salat, menunaikan zakat, berhaji, dan berpuasa Ramadan.\"","\"Islam is built upon five: testifying that there is no god but Allah and that Muhammad is the Messenger of Allah, establishing prayer, giving zakat, Hajj, and fasting Ramadan.\"",""],
+ hSrc:["HR. Bukhari no. 8 dan Muslim no. 16, dari Abdullah bin Umar","Sahih al-Bukhari 8 and Sahih Muslim 16, from 'Abdullah ibn 'Umar","رواه البخاري (٨) ومسلم (١٦) عن عبد الله بن عمر"],
+ hOrd:["Urutan puasa sebelum haji mengikuti riwayat Muslim no. 16: ketika seseorang mengulang dengan \"haji lalu puasa Ramadan\", Ibnu Umar menjawab: «لَا، صِيَامُ رَمَضَانَ وَالْحَجُّ، هَكَذَا سَمِعْتُهُ مِنْ رَسُولِ اللَّهِ ﷺ».","Fasting before Hajj follows Muslim 16: when a man repeated it as \"Hajj then fasting Ramadan\", Ibn 'Umar said: «لَا، صِيَامُ رَمَضَانَ وَالْحَجُّ، هَكَذَا سَمِعْتُهُ مِنْ رَسُولِ اللَّهِ ﷺ».","تقديم الصيام على الحج على رواية مسلم (١٦): «لَا، صِيَامُ رَمَضَانَ وَالْحَجُّ، هَكَذَا سَمِعْتُهُ مِنْ رَسُولِ اللَّهِ ﷺ»."],
+ hQ:["Posisi rukun pertama (syahadat) diisi pintu Al-Qur'an, kalam Allah yang menjadi dasar kalimat tauhid. Syahadat sendiri tetap rukun pertama dan tidak tergantikan.","The first pillar's slot (the shahadah) opens the Qur'an, Allah's speech on which tawhid rests. The shahadah itself remains the first pillar and is irreplaceable.","خانة الركن الأول (الشهادتان) تفتح القرآن الكريم، كلام الله الذي يقوم عليه التوحيد، وتبقى الشهادتان الركن الأول الذي لا يُستبدل."],
+ close:["Tutup","Close","إغلاق"],
+ qbBtn:["Buka Kompas Kiblat","Open Qibla Compass","افتح بوصلة القبلة"], qbSub:["Arah kiblat dari lokasimu","Qibla direction from your location","اتجاه القبلة من موقعك"]
+};
+const RUKUN=[["quran","rq","quran"],["salat","rs","jadwal"],["zakat","rz","zakat"],["puasa","rp","puasa"],["haji","rh","umrah"]];
+const BUNIYA="بُنِيَ الإِسْلَامُ عَلَى خَمْسٍ: شَهَادَةِ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَإِقَامِ الصَّلَاةِ، وَإِيتَاءِ الزَّكَاةِ، وَالْحَجِّ، وَصَوْمِ رَمَضَانَ";
+
+function sheet(html,id){ let s=document.getElementById("rkSheet"); if(!s){ s=document.createElement("div"); s.id="rkSheet"; s.className="bb-sheet rk-sheet"; s.hidden=true; s.addEventListener("click",e=>{ if(e.target===s||e.target.closest("[data-rkclose]")) s.hidden=true; }); document.body.appendChild(s); }
+ s.innerHTML=`<div class="in" role="dialog" aria-modal="true" id="${id||"rkSheetIn"}">${html}<button type="button" class="btn ghost bb-btn" data-rkclose="1">${esc(t(X.close))}</button></div>`; s.hidden=false; s.querySelector(".in").scrollTop=0; }
+
+/* ---------- Beranda: 5 rukun ---------- */
+function homeRow(){ const nx=document.getElementById("v2Next"); if(!nx) return; let r=document.getElementById("bbHomeRow");
+ if(!r){ r=document.createElement("div"); r.id="bbHomeRow"; nx.insertAdjacentElement("afterend",r); }
+ r.className="card bb-hrow rk-row";
+ r.innerHTML=`<div class="rk-icons">${RUKUN.map(([ic,k,p],i)=>`<button type="button" data-go="${p}" data-hr="${p}" data-rukun="${i+1}"><i>${ICON[ic]}<em>${N(i+1)}</em></i><span>${esc(t(X[k]))}</span><small>${esc(t(X.r[i]))}</small></button>`).join("")}</div>
+ <button type="button" class="rk-cap" id="rkCap"><span ${ARF}>«بُنِيَ الإِسْلَامُ عَلَى خَمْسٍ»</span><small>${esc(t(X.cap))} ⓘ</small></button>`; }
+function buniyaSheet(){ sheet(`<div class="ic rk-ic">${ICON.quran}</div><h2>${esc(t(X.hTitle))}</h2>
+ <div class="rk-ar" ${ARF}>«${BUNIYA}»</div>${lg()!=="ar"?`<p class="rk-tr">${esc(t(X.hTr))}</p>`:""}<p class="rk-src">${esc(t(X.hSrc))}</p>
+ <ol class="rk-ol">${RUKUN.map(([ic,k],i)=>`<li><i>${ICON[ic]}</i><b>${esc(t(X.r[i]))}</b> · ${esc(t(X[k]))}</li>`).join("")}</ol>
+ <p class="rk-note">${esc(t(X.hOrd))}</p><p class="rk-note">${esc(t(X.hQ))}</p>`,"rkBuniya"); }
+
+/* ---------- Jadwal: tombol Kiblat menonjol ---------- */
+function jadwalKiblat(){ const pg=document.getElementById("page-jadwal"); if(!pg) return; const st=pg.querySelector(".stack"); if(!st) return; let b=document.getElementById("rkJdQibla");
+ if(!b){ b=document.createElement("button"); b.type="button"; b.id="rkJdQibla"; b.className="rk-qbtn"; b.dataset.go="kiblat"; (st.firstElementChild||st).insertAdjacentElement("afterend",b); }
+ b.innerHTML=`<i>${ICON.kiblat}</i><span><b>${esc(t(X.qbBtn))}</b><small>${esc(t(X.qbSub))}</small></span><em>›</em>`; }
+
+/* =====================================================================
+   KALENDER PUASA
+   ===================================================================== */
+const H=window.RKHijri;
+const hp=d=>(H&&H.parts(d))||null;
+const HM=m=>H?H.monthName(m,lg()):String(m);
+/* level: w=wajib, s=sunnah, x=haram, k=makruh/peringatan, i=info */
+const F={
+ ramadan:{lv:"w",n:["Puasa Ramadan","Ramadan fast","صيام رمضان"],h:["Wajib","Obligatory","فرض"],
+  d:[{ar:"يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِنْ قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ",tr:["\"Wahai orang-orang yang beriman, diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang-orang sebelum kamu agar kamu bertakwa.\"","\"O you who believe, fasting is prescribed for you as it was prescribed for those before you, so that you may attain taqwa.\""],s:["QS. Al-Baqarah [2]: 183","Qur'an, al-Baqarah 2:183","سورة البقرة: ١٨٣"]}]},
+ senin:{lv:"s",n:["Puasa Senin","Monday fast","صيام الاثنين"],h:["Sunnah","Sunnah","سنة"],
+  d:[{ar:"سُئِلَ عَنْ صَوْمِ يَوْمِ الِاثْنَيْنِ؟ قَالَ: «ذَاكَ يَوْمٌ وُلِدْتُ فِيهِ، وَيَوْمٌ بُعِثْتُ - أَوْ أُنْزِلَ عَلَيَّ فِيهِ»",tr:["Beliau ﷺ ditanya tentang puasa hari Senin, beliau menjawab: \"Itu hari aku dilahirkan, dan hari aku diutus (atau diturunkan wahyu kepadaku).\"","He ﷺ was asked about fasting on Monday and said: \"That is the day I was born, and the day I was sent (or revelation came to me).\""],s:["HR. Muslim no. 1162, dari Abu Qatadah","Sahih Muslim 1162, from Abu Qatadah","رواه مسلم (١١٦٢) عن أبي قتادة"]},
+     {ar:"«تُعْرَضُ الأَعْمَالُ يَوْمَ الِاثْنَيْنِ وَالْخَمِيسِ، فَأُحِبُّ أَنْ يُعْرَضَ عَمَلِي وَأَنَا صَائِمٌ»",tr:["\"Amal-amal diperlihatkan (kepada Allah) pada hari Senin dan Kamis, maka aku suka amalku diperlihatkan saat aku berpuasa.\"","\"Deeds are presented on Monday and Thursday, and I love that my deeds be presented while I am fasting.\""],s:["HR. Tirmidzi no. 747, dari Abu Hurairah (hasan)","Jami' at-Tirmidhi 747, from Abu Hurayrah (hasan)","رواه الترمذي (٧٤٧) عن أبي هريرة، حسن"]}]},
+ kamis:{lv:"s",n:["Puasa Kamis","Thursday fast","صيام الخميس"],h:["Sunnah","Sunnah","سنة"],d:"senin1"},
+ bidh:{lv:"s",n:["Ayyamul Bidh (13, 14, 15)","Ayyam al-Bid (13th–15th)","الأيام البيض"],h:["Sunnah","Sunnah","سنة"],
+  d:[{ar:"«يَا أَبَا ذَرٍّ، إِذَا صُمْتَ مِنَ الشَّهْرِ ثَلَاثَةَ أَيَّامٍ فَصُمْ ثَلَاثَ عَشْرَةَ وَأَرْبَعَ عَشْرَةَ وَخَمْسَ عَشْرَةَ»",tr:["\"Wahai Abu Dzar, jika engkau berpuasa tiga hari dalam sebulan, berpuasalah pada tanggal 13, 14, dan 15.\"","\"O Abu Dharr, if you fast three days of a month, fast the 13th, 14th and 15th.\""],s:["HR. Tirmidzi no. 761 dan Nasa'i no. 2424, dari Abu Dzar (hasan)","Jami' at-Tirmidhi 761 and Sunan an-Nasa'i 2424, from Abu Dharr (hasan)","رواه الترمذي (٧٦١) والنسائي (٢٤٢٤) عن أبي ذر، حسن"]},
+     {ar:"«أَوْصَانِي خَلِيلِي ﷺ بِثَلَاثٍ: صِيَامِ ثَلَاثَةِ أَيَّامٍ مِنْ كُلِّ شَهْرٍ، وَرَكْعَتَيِ الضُّحَى، وَأَنْ أُوتِرَ قَبْلَ أَنْ أَنَامَ»",tr:["\"Kekasihku ﷺ berwasiat kepadaku tiga hal: puasa tiga hari setiap bulan, dua rakaat Dhuha, dan witir sebelum tidur.\"","\"My dear friend ﷺ advised me three things: fasting three days every month, two rak'ahs of Duha, and witr before sleeping.\""],s:["HR. Bukhari no. 1981 dan Muslim no. 721, dari Abu Hurairah","Sahih al-Bukhari 1981 and Sahih Muslim 721, from Abu Hurayrah","رواه البخاري (١٩٨١) ومسلم (٧٢١) عن أبي هريرة"]}]},
+ arafah:{lv:"s",n:["Puasa Arafah (9 Dzulhijjah)","Day of Arafah (9 Dhu al-Hijjah)","صيام يوم عرفة"],h:["Sunnah muakkadah","Highly recommended","سنة مؤكدة"],
+  d:[{ar:"«صِيَامُ يَوْمِ عَرَفَةَ أَحْتَسِبُ عَلَى اللَّهِ أَنْ يُكَفِّرَ السَّنَةَ الَّتِي قَبْلَهُ وَالسَّنَةَ الَّتِي بَعْدَهُ»",tr:["\"Puasa hari Arafah, aku berharap kepada Allah agar menghapus dosa setahun sebelumnya dan setahun sesudahnya.\"","\"Fasting the day of Arafah, I hope from Allah that it expiates the year before and the year after.\""],s:["HR. Muslim no. 1162, dari Abu Qatadah","Sahih Muslim 1162, from Abu Qatadah","رواه مسلم (١١٦٢) عن أبي قتادة"]}],
+  note:["Mazhab Syafi'i: tidak disunnahkan bagi jamaah haji yang sedang wukuf di Arafah.","Shafi'i: not recommended for pilgrims standing at Arafah.","عند الشافعية: لا يُسنّ للحاج الواقف بعرفة."]},
+ tasua:{lv:"s",n:["Puasa Tasu'a (9 Muharram)","Tasu'a (9 Muharram)","صيام تاسوعاء"],h:["Sunnah","Sunnah","سنة"],
+  d:[{ar:"«لَئِنْ بَقِيتُ إِلَى قَابِلٍ لَأَصُومَنَّ التَّاسِعَ»",tr:["\"Jika aku masih hidup sampai tahun depan, sungguh aku akan berpuasa pada hari kesembilan.\"","\"If I live until next year, I will surely fast the ninth.\""],s:["HR. Muslim no. 1134, dari Ibnu Abbas","Sahih Muslim 1134, from Ibn 'Abbas","رواه مسلم (١١٣٤) عن ابن عباس"]}]},
+ asyura:{lv:"s",n:["Puasa Asyura (10 Muharram)","Ashura (10 Muharram)","صيام عاشوراء"],h:["Sunnah muakkadah","Highly recommended","سنة مؤكدة"],
+  d:[{ar:"«وَصِيَامُ يَوْمِ عَاشُورَاءَ أَحْتَسِبُ عَلَى اللَّهِ أَنْ يُكَفِّرَ السَّنَةَ الَّتِي قَبْلَهُ»",tr:["\"Dan puasa hari Asyura, aku berharap kepada Allah agar menghapus dosa setahun sebelumnya.\"","\"And fasting the day of Ashura, I hope from Allah that it expiates the year before.\""],s:["HR. Muslim no. 1162, dari Abu Qatadah","Sahih Muslim 1162, from Abu Qatadah","رواه مسلم (١١٦٢) عن أبي قتادة"]}]},
+ muharram:{lv:"s",n:["Perbanyak puasa di bulan Muharram","Fast often in Muharram","الإكثار من الصيام في المحرم"],h:["Sunnah","Sunnah","سنة"],
+  d:[{ar:"«أَفْضَلُ الصِّيَامِ بَعْدَ رَمَضَانَ شَهْرُ اللَّهِ الْمُحَرَّمُ، وَأَفْضَلُ الصَّلَاةِ بَعْدَ الْفَرِيضَةِ صَلَاةُ اللَّيْلِ»",tr:["\"Puasa paling utama setelah Ramadan adalah (puasa di) bulan Allah, Muharram, dan salat paling utama setelah salat fardhu adalah salat malam.\"","\"The best fasting after Ramadan is in Allah's month of Muharram, and the best prayer after the obligatory is the night prayer.\""],s:["HR. Muslim no. 1163, dari Abu Hurairah","Sahih Muslim 1163, from Abu Hurayrah","رواه مسلم (١١٦٣) عن أبي هريرة"]}]},
+ syawal:{lv:"s",n:["Puasa 6 hari Syawal","Six days of Shawwal","ست من شوال"],h:["Sunnah","Sunnah","سنة"],
+  d:[{ar:"«مَنْ صَامَ رَمَضَانَ ثُمَّ أَتْبَعَهُ سِتًّا مِنْ شَوَّالٍ، كَانَ كَصِيَامِ الدَّهْرِ»",tr:["\"Siapa yang berpuasa Ramadan lalu mengikutinya dengan enam hari di bulan Syawal, maka seperti puasa setahun penuh.\"","\"Whoever fasts Ramadan and follows it with six days of Shawwal, it is as if he fasted for a lifetime.\""],s:["HR. Muslim no. 1164, dari Abu Ayyub al-Anshari","Sahih Muslim 1164, from Abu Ayyub al-Ansari","رواه مسلم (١١٦٤) عن أبي أيوب الأنصاري"]}],
+  note:["Ditandai 2–7 Syawal. Mazhab Syafi'i: paling utama berurutan segera setelah Idul Fitri, tetapi sah di hari mana pun sepanjang Syawal.","Marked 2–7 Shawwal. Shafi'i: best consecutively right after Eid, but valid on any days of Shawwal.","مُعلَّمة من ٢ إلى ٧ شوال. عند الشافعية: الأفضل متتابعة عقب العيد، وتجزئ في أي أيام شوال."]},
+ syaban:{lv:"s",n:["Perbanyak puasa di bulan Sya'ban","Fast often in Sha'ban","الإكثار من الصيام في شعبان"],h:["Sunnah","Sunnah","سنة"],
+  d:[{ar:"«فَمَا رَأَيْتُ رَسُولَ اللَّهِ ﷺ اسْتَكْمَلَ صِيَامَ شَهْرٍ إِلَّا رَمَضَانَ، وَمَا رَأَيْتُهُ أَكْثَرَ صِيَامًا مِنْهُ فِي شَعْبَانَ»",tr:["\"Aku tidak pernah melihat Rasulullah ﷺ menyempurnakan puasa sebulan penuh kecuali Ramadan, dan aku tidak melihat beliau lebih banyak berpuasa daripada di bulan Sya'ban.\" (Aisyah)","\"I never saw the Messenger of Allah ﷺ fast a complete month except Ramadan, nor did I see him fast more in any month than in Sha'ban.\" ('A'ishah)"],s:["HR. Bukhari no. 1969 dan Muslim no. 1156, dari Aisyah","Sahih al-Bukhari 1969 and Sahih Muslim 1156, from 'A'ishah","رواه البخاري (١٩٦٩) ومسلم (١١٥٦) عن عائشة"]}]},
+ syaban2:{lv:"k",n:["Paruh kedua Sya'ban (16–29)","Second half of Sha'ban (16–29)","النصف الثاني من شعبان"],h:["Haram tanpa sebab (Syafi'i)","Forbidden without a reason (Shafi'i)","يحرم بلا سبب عند الشافعية"],
+  d:[{ar:"«إِذَا انْتَصَفَ شَعْبَانُ فَلَا تَصُومُوا»",tr:["\"Apabila Sya'ban telah masuk pertengahannya, maka janganlah kalian berpuasa.\"","\"When Sha'ban is half over, do not fast.\""],s:["HR. Abu Dawud no. 2337 dan Tirmidzi no. 738, dari Abu Hurairah (Tirmidzi: hasan sahih)","Sunan Abi Dawud 2337 and Jami' at-Tirmidhi 738, from Abu Hurayrah (hasan sahih per at-Tirmidhi)","رواه أبو داود (٢٣٣٧) والترمذي (٧٣٨) عن أبي هريرة، وقال الترمذي: حسن صحيح"]}],
+  note:["Mazhab Syafi'i: tetap boleh jika disambung dengan puasa sebelum tanggal 16, sudah menjadi kebiasaan (mis. Senin–Kamis), qadha, atau nadzar.","Shafi'i: still allowed if joined to fasting before the 16th, a habit (e.g. Monday–Thursday), a make-up, or a vow.","عند الشافعية: يجوز إن وصله بما قبل النصف، أو وافق عادة، أو كان قضاء أو نذرًا."]},
+ syak:{lv:"x",n:["Yaumusy syak (30 Sya'ban)","Day of doubt (30 Sha'ban)","يوم الشك"],h:["Haram tanpa sebab (Syafi'i)","Forbidden without a reason (Shafi'i)","يحرم بلا سبب عند الشافعية"],
+  d:[{ar:"«لَا يَتَقَدَّمَنَّ أَحَدُكُمْ رَمَضَانَ بِصَوْمِ يَوْمٍ أَوْ يَوْمَيْنِ، إِلَّا أَنْ يَكُونَ رَجُلٌ كَانَ يَصُومُ صَوْمَهُ فَلْيَصُمْ ذَلِكَ الْيَوْمَ»",tr:["\"Janganlah salah seorang dari kalian mendahului Ramadan dengan puasa sehari atau dua hari, kecuali orang yang biasa berpuasa (pada hari itu), maka silakan ia berpuasa.\"","\"None of you should precede Ramadan by fasting a day or two, unless he has a habit of fasting, then let him fast that day.\""],s:["HR. Bukhari no. 1914 dan Muslim no. 1082, dari Abu Hurairah","Sahih al-Bukhari 1914 and Sahih Muslim 1082, from Abu Hurayrah","رواه البخاري (١٩١٤) ومسلم (١٠٨٢) عن أبي هريرة"]},
+     {ar:"«مَنْ صَامَ الْيَوْمَ الَّذِي يُشَكُّ فِيهِ فَقَدْ عَصَى أَبَا الْقَاسِمِ ﷺ»",tr:["\"Siapa yang berpuasa pada hari yang diragukan, sungguh ia telah durhaka kepada Abul Qasim ﷺ.\" (Ammar bin Yasir)","\"Whoever fasts the day of doubt has disobeyed Abu al-Qasim ﷺ.\" ('Ammar ibn Yasir)"],s:["HR. Abu Dawud no. 2334 dan Tirmidzi no. 686 (Tirmidzi: hasan sahih)","Sunan Abi Dawud 2334 and Jami' at-Tirmidhi 686 (hasan sahih per at-Tirmidhi)","رواه أبو داود (٢٣٣٤) والترمذي (٦٨٦)، وقال: حسن صحيح"]}],
+  note:["Mazhab Syafi'i: haram berpuasa pada hari syak tanpa sebab; boleh untuk qadha, nadzar, atau yang bertepatan dengan kebiasaannya. Tanggal 30 Sya'ban di kalender ini hanya perkiraan.","Shafi'i: fasting the day of doubt without a reason is forbidden; allowed for make-up, a vow, or an existing habit. 30 Sha'ban here is an estimate.","عند الشافعية: يحرم صوم يوم الشك بلا سبب، ويجوز للقضاء والنذر وموافقة العادة. وتاريخ ٣٠ شعبان هنا تقديري."]},
+ ied_f:{lv:"x",n:["Idul Fitri (1 Syawal)","Eid al-Fitr (1 Shawwal)","عيد الفطر"],h:["Haram berpuasa","Fasting forbidden","يحرم صومه"],d:"ied"},
+ ied_a:{lv:"x",n:["Idul Adha (10 Dzulhijjah)","Eid al-Adha (10 Dhu al-Hijjah)","عيد الأضحى"],h:["Haram berpuasa","Fasting forbidden","يحرم صومه"],d:"ied"},
+ tasyrik:{lv:"x",n:["Hari Tasyrik (11–13 Dzulhijjah)","Days of Tashriq (11–13 Dhu al-Hijjah)","أيام التشريق"],h:["Haram berpuasa","Fasting forbidden","يحرم صومها"],
+  d:[{ar:"«أَيَّامُ التَّشْرِيقِ أَيَّامُ أَكْلٍ وَشُرْبٍ»",tr:["\"Hari-hari Tasyrik adalah hari makan dan minum.\"","\"The days of Tashriq are days of eating and drinking.\""],s:["HR. Muslim no. 1141, dari Nubaisyah al-Hudzali","Sahih Muslim 1141, from Nubayshah al-Hudhali","رواه مسلم (١١٤١) عن نُبيشة الهذلي"]}],
+  note:["Karena itu Ayyamul Bidh bulan Dzulhijjah hanya 14 dan 15; tanggal 13 tidak boleh dipuasai.","So Ayyam al-Bid in Dhu al-Hijjah is only the 14th and 15th; the 13th may not be fasted.","لذا فالأيام البيض في ذي الحجة هي ١٤ و١٥ فقط، ولا يُصام الثالث عشر."]},
+ jumat:{lv:"i",n:["Jumat saja","Friday alone","إفراد الجمعة"],h:["Makruh jika dikhususkan","Disliked if singled out","يُكره إفراده"],
+  d:[{ar:"«لَا يَصُومَنَّ أَحَدُكُمْ يَوْمَ الْجُمُعَةِ، إِلَّا يَوْمًا قَبْلَهُ أَوْ بَعْدَهُ»",tr:["\"Janganlah salah seorang dari kalian berpuasa pada hari Jumat, kecuali (disertai) sehari sebelumnya atau sesudahnya.\"","\"None of you should fast on Friday unless he fasts a day before or after it.\""],s:["HR. Bukhari no. 1985 dan Muslim no. 1144, dari Abu Hurairah","Sahih al-Bukhari 1985 and Sahih Muslim 1144, from Abu Hurayrah","رواه البخاري (١٩٨٥) ومسلم (١١٤٤) عن أبي هريرة"]}],
+  note:["Tidak makruh bila disambung Kamis atau Sabtu, atau bertepatan dengan puasa yang punya sebab seperti Arafah, Asyura, atau qadha.","Not disliked if joined with Thursday or Saturday, or if it coincides with a fast that has its own reason (Arafah, Ashura, make-up).","لا يُكره إن وُصل بالخميس أو السبت، أو وافق صومًا له سبب كعرفة وعاشوراء والقضاء."]},
+ daud:{lv:"i",n:["Puasa Daud","Fast of Dawud","صيام داود"],h:["Sunnah · puasa sunnah paling utama","Sunnah · the best voluntary fast","سنة · أفضل صيام التطوع"],
+  d:[{ar:"«فَصُمْ يَوْمًا وَأَفْطِرْ يَوْمًا، فَذَلِكَ صِيَامُ دَاوُدَ عَلَيْهِ السَّلَامُ، وَهُوَ أَفْضَلُ الصِّيَامِ»",tr:["\"Berpuasalah sehari dan berbukalah sehari, itulah puasa Nabi Daud 'alaihissalam, dan itu puasa yang paling utama.\"","\"Fast one day and break fast one day; that is the fasting of Dawud (peace be upon him), and it is the best fasting.\""],s:["HR. Bukhari no. 1976 dan Muslim no. 1159, dari Abdullah bin Amr","Sahih al-Bukhari 1976 and Sahih Muslim 1159, from 'Abdullah ibn 'Amr","رواه البخاري (١٩٧٦) ومسلم (١١٥٩) عن عبد الله بن عمرو"]}],
+  note:["Sehari puasa, sehari tidak, kapan pun selain hari-hari yang diharamkan. Tidak ditandai di kalender karena mulainya bebas.","One day on, one day off, any time except forbidden days. Not marked because you choose the start.","يوم صوم ويوم فطر في غير الأيام المحرمة، ولا يُعلَّم في التقويم لأن بدايته اختيارية."]}
+};
+const IED_D=[{ar:"«هَذَانِ يَوْمَانِ نَهَى رَسُولُ اللَّهِ ﷺ عَنْ صِيَامِهِمَا: يَوْمُ فِطْرِكُمْ مِنْ صِيَامِكُمْ، وَالْيَوْمُ الْآخَرُ تَأْكُلُونَ فِيهِ مِنْ نُسُكِكُمْ»",tr:["\"Dua hari ini Rasulullah ﷺ melarang berpuasa padanya: hari berbuka kalian dari puasa (Idul Fitri), dan hari lainnya kalian memakan hewan kurban kalian (Idul Adha).\" (Umar bin Khattab)","\"These are two days on which the Messenger of Allah ﷺ forbade fasting: the day you break your fast, and the day you eat from your sacrifices.\" ('Umar ibn al-Khattab)"],s:["HR. Bukhari no. 1990 dan Muslim no. 1137, dari Umar bin Khattab","Sahih al-Bukhari 1990 and Sahih Muslim 1137, from 'Umar ibn al-Khattab","رواه البخاري (١٩٩٠) ومسلم (١١٣٧) عن عمر بن الخطاب"]},
+ {ar:"«نَهَى النَّبِيُّ ﷺ عَنْ صَوْمِ يَوْمِ الْفِطْرِ وَالنَّحْرِ»",tr:["\"Nabi ﷺ melarang puasa pada hari Idul Fitri dan hari Nahr (Idul Adha).\"","\"The Prophet ﷺ forbade fasting on the day of al-Fitr and the day of an-Nahr.\""],s:["HR. Bukhari no. 1991, dari Abu Sa'id al-Khudri","Sahih al-Bukhari 1991, from Abu Sa'id al-Khudri","رواه البخاري (١٩٩١) عن أبي سعيد الخدري"]}];
+const dalil=k=>{ const d=F[k].d; if(d==="ied") return IED_D; if(d==="senin1") return [F.senin.d[1]]; return d; };
+
+function types(date){ const p=hp(date); const out=[]; if(!p) return out; const {d,m}=p, wd=date.getDay();
+ if(m===10&&d===1) return ["ied_f"]; if(m===12&&d===10) return ["ied_a"]; if(m===12&&d>=11&&d<=13) return ["tasyrik"];
+ if(m===9) return ["ramadan"];
+ if(m===8&&d===30) return ["syak"];
+ if(m===12&&d===9) out.push("arafah");
+ if(m===1&&d===9) out.push("tasua"); if(m===1&&d===10) out.push("asyura");
+ if(m===10&&d>=2&&d<=7) out.push("syawal");
+ if(d>=13&&d<=15) out.push("bidh");
+ if(wd===1) out.push("senin"); if(wd===4) out.push("kamis");
+ if(m===1) out.push("muharram");
+ if(m===8&&d<=15) out.push("syaban");
+ if(m===8&&d>=16) out.push("syaban2");
+ if(wd===5) out.push("jumat");
+ return out; }
+const lvOf=ts=>ts.some(k=>F[k].lv==="x")?"x":ts.some(k=>F[k].lv==="w")?"w":ts.some(k=>F[k].lv==="s")?"s":ts.some(k=>F[k].lv==="k")?"k":"";
+const MAJOR=new Set(["arafah","tasua","asyura","syawal","bidh"]);
+
+const P={y:0,m:0};
+const keyOf=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const atNoon=(y,m,d)=>new Date(y,m,d,12,0,0);
+function today(){ const n=new Date(); return atNoon(n.getFullYear(),n.getMonth(),n.getDate()); }
+const PZ={
+ ey:["Rukun 4 · Puasa","Pillar 4 · Fasting","الركن ٤ · الصيام"], title:["Kalender Puasa","Fasting Calendar","تقويم الصيام"],
+ lead:["Kalender Masehi dan Hijriah dalam satu tampilan. Ketuk tanggal untuk melihat puasanya beserta dalil.","Gregorian and Hijri in one view. Tap a date to see its fasts with evidence.","التقويم الميلادي والهجري معًا. اضغط على التاريخ لرؤية الصيام ودليله."],
+ back:["← Beranda","← Home","← الرئيسية"], todayB:["Hari ini","Today","اليوم"], prev:["Bulan sebelumnya","Previous month","الشهر السابق"], next:["Bulan berikutnya","Next month","الشهر التالي"],
+ lgW:["Wajib (Ramadan)","Obligatory (Ramadan)","فرض (رمضان)"], lgS:["Sunnah","Sunnah","سنة"], lgS2:["Sunnah utama (Arafah, Asyura, Bidh, Syawal)","Major sunnah (Arafah, Ashura, Bid, Shawwal)","سنة مؤكدة (عرفة، عاشوراء، البيض، شوال)"], lgX:["Haram berpuasa","Fasting forbidden","يحرم الصيام"], lgK:["Hati-hati / bersyarat","Caution / conditional","تنبيه / بشرط"],
+ disc:["Tanggal Hijriah dihitung dengan kalender Umm al-Qura (Arab Saudi). Di Indonesia, awal Ramadan, Syawal, dan Dzulhijjah ditetapkan Kemenag lewat rukyat dan sidang isbat, sehingga bisa berbeda satu hari. Ikuti ketetapan pemerintah setempat.","Hijri dates use the Umm al-Qura calendar (Saudi Arabia). Locally, the start of Ramadan, Shawwal and Dhu al-Hijjah is set by moon sighting and may differ by a day. Follow your local authority.","التاريخ الهجري محسوب بتقويم أم القرى، وقد يختلف بداية رمضان وشوال وذي الحجة يومًا بحسب الرؤية المحلية؛ فاتبع الجهة الرسمية في بلدك."],
+ none:["Tidak ada puasa khusus pada tanggal ini. Puasa sunnah mutlak tetap boleh, dan qadha Ramadan bisa dikerjakan.","No specific fast on this date. A general voluntary fast or a Ramadan make-up is still fine.","لا صيام مخصوص في هذا اليوم، ويجوز صيام التطوع المطلق أو القضاء."],
+ jump:["Lompat ke","Jump to","انتقل إلى"], jR:["Ramadan","Ramadan","رمضان"], jS:["Syawal","Shawwal","شوال"], jA:["Arafah","Arafah","عرفة"], jM:["Asyura","Ashura","عاشوراء"],
+ upT:["Puasa sunnah terdekat","Upcoming sunnah fasts","أقرب صيام التطوع"], daudT:["Puasa Daud","Fast of Dawud","صيام داود"], more:["Lihat dalil","See evidence","عرض الدليل"],
+ nw:["Rincian","Details","التفاصيل"]
+};
+function monthHead(y,m){ const a=hp(atNoon(y,m,1)), b=hp(atNoon(y,m+1,0)); if(!a||!b) return ""; const s=a.y===b.y?(a.m===b.m?HM(a.m):HM(a.m)+" – "+HM(b.m))+" "+N(b.y):HM(a.m)+" "+N(a.y)+" – "+HM(b.m)+" "+N(b.y); return s+" "+({id:"H",en:"AH",ar:"هـ"}[lg()]); }
+function findNext(hm,hd){ const s=today(); for(let i=0;i<400;i++){ const d=atNoon(s.getFullYear(),s.getMonth(),s.getDate()+i); const p=hp(d); if(p&&p.m===hm&&p.d===hd) return d; } return null; }
+function renderPuasa(){ const st=document.getElementById("pzStack"); if(!st) return; if(!P.y){ const n=today(); P.y=n.getFullYear(); P.m=n.getMonth(); }
+ const y=P.y,m=P.m, first=atNoon(y,m,1), days=new Date(y,m+1,0).getDate(), lead=first.getDay(), tk=keyOf(today());
+ const wdn=[...Array(7)].map((_,i)=>new Intl.DateTimeFormat(LOC(),{weekday:"short"}).format(atNoon(2026,0,4+i)));
+ let cells=""; for(let i=0;i<lead;i++) cells+=`<span class="pz-c pz-e"></span>`;
+ for(let d=1;d<=days;d++){ const dt=atNoon(y,m,d), p=hp(dt), ts=types(dt), lv=lvOf(ts), k=keyOf(dt), maj=ts.some(x=>MAJOR.has(x));
+  const dots=ts.filter(x=>F[x].lv!=="i").slice(0,3).map(x=>`<i class="pz-d pz-${F[x].lv}${MAJOR.has(x)?" pz-maj":""}"></i>`).join("");
+  cells+=`<button type="button" class="pz-c${lv?" pz-l"+lv:""}${maj?" pz-major":""}${k===tk?" pz-today":""}" data-pzd="${k}" aria-label="${esc(new Intl.DateTimeFormat(LOC(),{day:"numeric",month:"long"}).format(dt))}"><b>${N(d)}</b><small>${p?N(p.d)+(p.d===1?" "+esc(HM(p.m).split(" ")[0]):""):""}</small><span class="pz-dots">${dots}</span></button>`; }
+ /* upcoming major sunnah (next 60 days) */
+ const s0=today(); const up=[]; for(let i=0;i<75&&up.length<4;i++){ const d=atNoon(s0.getFullYear(),s0.getMonth(),s0.getDate()+i); const ts=types(d).filter(x=>F[x].lv==="s"&&!["senin","kamis","muharram","syaban"].includes(x)); if(ts.length) up.push([d,ts]); }
+ st.innerHTML=`<div class="row v2-sb"><button class="btn sm ghost" type="button" data-go="beranda" id="pzBack">${esc(t(PZ.back))}</button></div>
+ <div><div class="eyebrow rk-ey">${ICON.puasa}<span>${esc(t(PZ.ey))}</span></div><h1>${esc(t(PZ.title))}</h1><p class="muted" style="margin-top:6px">${esc(t(PZ.lead))}</p></div>
+ <div class="card lit pz-cal" id="pzCal">
+  <div class="pz-hd"><button type="button" class="pz-nav" id="pzPrev" aria-label="${esc(t(PZ.prev))}">‹</button><div class="pz-tt"><b id="pzMonth">${esc(new Intl.DateTimeFormat(LOC(),{month:"long",year:"numeric"}).format(first))}</b><small id="pzHMonth">${esc(monthHead(y,m))}</small></div><button type="button" class="pz-nav" id="pzNext" aria-label="${esc(t(PZ.next))}">›</button></div>
+  <div class="pz-wd">${wdn.map(w=>`<span>${esc(w)}</span>`).join("")}</div>
+  <div class="pz-grid" id="pzGrid">${cells}</div>
+  <div class="pz-jump"><button type="button" class="pz-chip" id="pzToday">${esc(t(PZ.todayB))}</button><span class="dim">${esc(t(PZ.jump))}</span>${[["jR",9,1],["jS",10,2],["jA",12,9],["jM",1,10]].map(([k,hm,hd])=>`<button type="button" class="pz-chip" data-pzj="${hm}-${hd}">${esc(t(PZ[k]))}</button>`).join("")}</div>
+ </div>
+ <div class="card pz-legend" id="pzLegend"><span><i class="pz-d pz-w"></i>${esc(t(PZ.lgW))}</span><span><i class="pz-d pz-s"></i>${esc(t(PZ.lgS))}</span><span><i class="pz-d pz-s pz-maj"></i>${esc(t(PZ.lgS2))}</span><span><i class="pz-d pz-x"></i>${esc(t(PZ.lgX))}</span><span><i class="pz-d pz-k"></i>${esc(t(PZ.lgK))}</span></div>
+ ${up.length?`<div class="card"><div class="eyebrow">${esc(t(PZ.upT))}</div><div class="pz-up" id="pzUp">${up.map(([d,ts])=>`<button type="button" data-pzd="${keyOf(d)}"><b>${esc(new Intl.DateTimeFormat(LOC(),{weekday:"short",day:"numeric",month:"short"}).format(d))}</b><span>${esc(ts.map(x=>t(F[x].n)).join(" · "))}</span><small>${esc(H?H.fmt(d,lg()):"")}</small></button>`).join("")}</div></div>`:""}
+ <div class="card pz-daud" id="pzDaud"><div class="eyebrow">${esc(t(PZ.daudT))}</div><div class="rk-ar" ${ARF}>${F.daud.d[0].ar}</div>${lg()!=="ar"?`<p class="rk-tr">${esc(t(F.daud.d[0].tr))}</p>`:""}<p class="rk-src">${esc(t(F.daud.d[0].s))}</p><p class="rk-note">${esc(t(F.daud.note))}</p></div>
+ <p class="dim pz-disc" id="pzDisc">ⓘ ${esc(t(PZ.disc))}</p>`; }
+function dateSheet(k){ const [y,mo,d]=k.split("-").map(Number), dt=atNoon(y,mo-1,d), ts=types(dt);
+ const blocks=ts.length?ts.map(x=>{ const f=F[x]; return `<div class="pz-f pz-f${f.lv}" data-pzt="${x}"><div class="pz-fh"><b>${esc(t(f.n))}</b><span class="pz-h pz-h${f.lv}">${esc(t(f.h))}</span></div>${dalil(x).map(q=>`<div class="rk-ar" ${ARF}>${q.ar}</div>${lg()!=="ar"?`<p class="rk-tr">${esc(t(q.tr))}</p>`:""}<p class="rk-src">📚 ${esc(t(q.s))}</p>`).join("")}${f.note?`<p class="rk-note">${esc(t(f.note))}</p>`:""}</div>`; }).join(""):`<p class="rk-note">${esc(t(PZ.none))}</p>`;
+ sheet(`<div class="pz-sd"><b>${esc(new Intl.DateTimeFormat(LOC(),{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(dt))}</b><span>${esc(H?H.fmt(dt,lg()):"")}</span></div>${blocks}<p class="dim pz-disc">ⓘ ${esc(t(PZ.disc))}</p>`,"pzSheet"); }
+
+/* =====================================================================
+   HAJI & UMRAH — contoh paket + Pembanding Pintar (skor di perangkat)
+   ===================================================================== */
+const UM={
+ ey:["Rukun 5 · Haji & Umrah","Pillar 5 · Hajj & Umrah","الركن ٥ · الحج والعمرة"], title:["Haji & Umrah","Hajj & Umrah","الحج والعمرة"],
+ lead:["Bandingkan paket travel sesuai kebutuhan dan budget. Semua penghitungan dilakukan di HP-mu, tidak dikirim ke mana pun.","Compare travel packages by your needs and budget. Everything is computed on your phone and sent nowhere.","قارن الباقات حسب احتياجك وميزانيتك. تتم الحسابات على هاتفك ولا تُرسل إلى أي جهة."],
+ backB:["← Belanja Berkah","← Blessed Shopping","← تسوّق مبارك"], backH:["← Beranda","← Home","← الرئيسية"],
+ lic:["Hanya travel berizin Kemenag","Only Ministry-licensed operators","فقط الشركات المرخّصة من وزارة الشؤون الدينية"],
+ licT:["Mitra wajib memiliki izin resmi Kementerian Agama: PPIU untuk umrah dan PIHK untuk haji khusus. Ingat \"5 Pasti Umrah\": pasti izinnya, pasti jadwal terbangnya, pasti hotelnya, pasti visanya, pasti harga dan layanannya.","Partners must hold an official Ministry of Religious Affairs licence: PPIU for umrah and PIHK for special hajj. Check the licence, flight schedule, hotel, visa, and the price and services.","يجب أن يحمل الشريك ترخيصًا رسميًا: PPIU للعمرة وPIHK للحج الخاص. تحقّق من الترخيص وموعد الطيران والفندق والتأشيرة والسعر والخدمات."],
+ aff:["Kusyu menerima komisi dari mitra. Komisi tidak memengaruhi urutan hasil Pembanding Pintar.","Kusyu receives a commission from partners. Commissions do not affect the Smart Comparator ranking.","يتلقى Kusyu عمولة من الشركاء، ولا تؤثر العمولة على ترتيب نتائج المقارن الذكي."],
+ ex:["Contoh — mitra segera hadir","Example — partners coming soon","مثال — الشركاء قريبًا"],
+ cmpT:["Pembanding Pintar","Smart Comparator","المقارن الذكي"], cmpS:["Isi kebutuhanmu, Kusyu urutkan paket yang paling cocok.","Tell us your needs; Kusyu ranks the best-matching packages.","أدخل احتياجاتك ويرتب Kusyu الباقات الأنسب."],
+ fJenis:["Jenis","Type","النوع"], jU:["Umrah","Umrah","عمرة"], jH:["Haji Khusus","Special Hajj","حج خاص"],
+ fBudget:["Budget per orang (Rp)","Budget per person (IDR)","الميزانية للفرد (روبية)"], fKota:["Kota keberangkatan","Departure city","مدينة المغادرة"], fBintang:["Bintang hotel","Hotel stars","نجوم الفندق"], any:["Bebas","Any","أي"],
+ fHari:["Lama perjalanan (hari)","Trip length (days)","مدة الرحلة (أيام)"], fBulan:["Bulan berangkat","Departure month","شهر المغادرة"], fNeed:["Kebutuhan khusus","Special needs","احتياجات خاصة"],
+ go:["Bandingkan","Compare","قارن"], res:["Hasil paling cocok","Best matches","أنسب النتائج"], match:["cocok","match","تطابق"],
+ book:["Pesan — segera hadir","Book — coming soon","احجز — قريبًا"], bookN:["Pemesanan belum dibuka. Paket ini contoh; belum ada travel mitra dan belum ada pembayaran.","Booking isn't open. This package is an example; no partner or payment yet.","الحجز غير متاح بعد. هذه الباقة مثال، ولا يوجد شريك أو دفع حتى الآن."],
+ all:["Semua paket contoh","All example packages","كل الباقات (أمثلة)"], days:["hari","days","يومًا"], star:["bintang","star","نجوم"], from:["dari","from","من"], jt:["jt","m","مليون"],
+ dalilT:["Keutamaan","Virtue","الفضل"], wait:["Haji khusus memiliki masa tunggu (antrean) bertahun-tahun sesuai porsi Kemenag.","Special hajj has a multi-year waiting list per the Ministry's quota.","للحج الخاص قائمة انتظار تمتد سنوات بحسب الحصة الرسمية."],
+ empty:["Isi budget lalu tekan Bandingkan.","Enter a budget and tap Compare.","أدخل الميزانية ثم اضغط قارن."]
+};
+const NEEDS=[["lansia",["Ramah lansia","Elderly-friendly","مناسب لكبار السن"]],["kursi",["Kursi roda","Wheelchair","كرسي متحرك"]],["keluarga",["Keluarga & anak","Family & kids","العائلة والأطفال"]],["ustadz",["Pembimbing ustadz","Ustadh guide","مرشد شرعي"]],["dekat",["Hotel dekat Masjidil Haram","Hotel near the Haram","فندق قريب من الحرم"]],["langsung",["Penerbangan langsung","Direct flight","رحلة مباشرة"]],["wanita",["Pendamping muslimah","Female companion staff","مرافِقة للنساء"]],["plus",["Plus wisata (Turki/Thaif)","Plus tour (Turkey/Taif)","جولة إضافية (تركيا/الطائف)"]]];
+const CITIES=["Jakarta","Surabaya","Medan","Makassar","Bandung","Yogyakarta","Solo","Semarang","Balikpapan","Banjarmasin","Padang","Aceh","Palembang","Batam","Lombok"];
+const MONTHS=()=>[...Array(12)].map((_,i)=>new Intl.DateTimeFormat(LOC(),{month:"long"}).format(new Date(2026,i,15)));
+const PK=[
+ {id:"A",j:"u",n:["Paket Contoh A — Umrah Hemat","Example A — Value Umrah","مثال أ — عمرة اقتصادية"],p:29.9,s:3,h:9,c:["Jakarta","Surabaya","Medan"],mo:[1,2,3,5,6,10,11,12],f:["ustadz"],dist:900},
+ {id:"B",j:"u",n:["Paket Contoh B — Umrah Reguler","Example B — Standard Umrah","مثال ب — عمرة عادية"],p:34.5,s:4,h:12,c:["Jakarta","Surabaya","Makassar","Medan","Balikpapan"],mo:[1,2,3,4,5,6,9,10,11,12],f:["ustadz","lansia","wanita"],dist:450},
+ {id:"C",j:"u",n:["Paket Contoh C — Umrah Keluarga","Example C — Family Umrah","مثال ج — عمرة عائلية"],p:38.9,s:4,h:12,c:["Jakarta","Bandung","Semarang","Yogyakarta"],mo:[6,7,12,1],f:["keluarga","ustadz","wanita"],dist:500},
+ {id:"D",j:"u",n:["Paket Contoh D — Umrah Ramah Lansia","Example D — Elderly-care Umrah","مثال د — عمرة لكبار السن"],p:42.0,s:5,h:12,c:["Jakarta","Surabaya","Solo","Yogyakarta"],mo:[1,2,3,10,11,12],f:["lansia","kursi","ustadz","dekat","wanita"],dist:150},
+ {id:"E",j:"u",n:["Paket Contoh E — Umrah Plus Turki","Example E — Umrah plus Turkey","مثال هـ — عمرة مع تركيا"],p:46.5,s:4,h:14,c:["Jakarta","Surabaya"],mo:[4,5,9,10],f:["plus","ustadz","keluarga"],dist:600},
+ {id:"F",j:"u",n:["Paket Contoh F — Umrah VIP Direct","Example F — VIP Direct Umrah","مثال و — عمرة VIP مباشرة"],p:62.0,s:5,h:9,c:["Jakarta"],mo:[1,2,3,4,5,6,7,8,9,10,11,12],f:["langsung","dekat","lansia","kursi","ustadz"],dist:80},
+ {id:"G",j:"u",n:["Paket Contoh G — Umrah Ramadan","Example G — Ramadan Umrah","مثال ز — عمرة رمضان"],p:48.0,s:4,h:16,c:["Jakarta","Medan","Aceh","Padang","Palembang","Batam"],mo:[2,3],f:["ustadz","dekat"],dist:300},
+ {id:"H",j:"u",n:["Paket Contoh H — Umrah Thaif","Example H — Umrah plus Taif","مثال ح — عمرة مع الطائف"],p:33.0,s:3,h:12,c:["Makassar","Banjarmasin","Balikpapan","Lombok","Surabaya"],mo:[1,5,6,7,8,11,12],f:["plus","keluarga","ustadz"],dist:1100},
+ {id:"I",j:"h",n:["Paket Contoh I — Haji Khusus","Example I — Special Hajj","مثال ط — حج خاص"],p:245,s:5,h:26,c:["Jakarta","Surabaya"],mo:[5,6],f:["ustadz","dekat","lansia","wanita"],dist:250},
+ {id:"J",j:"h",n:["Paket Contoh J — Haji Khusus Premium","Example J — Premium Special Hajj","مثال ي — حج خاص مميز"],p:320,s:5,h:23,c:["Jakarta"],mo:[5,6],f:["ustadz","dekat","lansia","kursi","langsung","wanita"],dist:100}
+];
+const UKEY="rk_umrah"; const UDEF={j:"u",b:"35000000",c:"Jakarta",s:"0",h:"12",mo:String(new Date().getMonth()+1),nd:[]};
+let U=(()=>{ try{ return Object.assign({},UDEF,JSON.parse(localStorage.getItem(UKEY)||"{}")); }catch(e){ return Object.assign({},UDEF); } })(), ranked=null, umFrom="belanja";
+const rp=v=>{ const l=lg(); const s=v>=100?Math.round(v):(+v).toFixed(1).replace(/\.0$/,""); return "Rp "+(l==="id"?String(s).replace(".",","):s)+" "+t(UM.jt); };
+const numIn=s=>+String(s||"").replace(/[^\d]/g,"")||0;
+/* skor transparan: budget 30 · kota 15 · bintang 15 · lama 10 · bulan 10 · kebutuhan 20; jenis wajib sama */
+function score(pk,q){ const R=[]; let sc=0; const B=q.b/1e6;
+ if(pk.j!==q.j) return {sc:0,R:[["✗",t([ "Jenis berbeda","Different type","نوع مختلف"])]]};
+ if(B>0){ if(pk.p<=B){ sc+=30; R.push(["✓",t(["Harga "+rp(pk.p)+", masuk budget","Price "+rp(pk.p)+", within budget","السعر "+rp(pk.p)+" ضمن الميزانية"])]); }
+  else { const o=(pk.p-B)/B; const v=Math.max(0,30*(1-o/0.35)); sc+=v; R.push([v>12?"≈":"✗",t(["Lebih "+rp(pk.p-B)+" dari budget","Over budget by "+rp(pk.p-B),"يزيد "+rp(pk.p-B)+" عن الميزانية"])]); } }
+ else sc+=15;
+ if(pk.c.includes(q.c)){ sc+=15; R.push(["✓",t(["Berangkat dari "+q.c,"Departs from "+q.c,"المغادرة من "+q.c])]); } else R.push(["✗",t(["Tidak berangkat dari "+q.c+" (tersedia: "+pk.c.slice(0,3).join(", ")+")","No departure from "+q.c+" (has: "+pk.c.slice(0,3).join(", ")+")","لا مغادرة من "+q.c]),]);
+ const S=+q.s; if(!S){ sc+=15; } else if(pk.s>=S){ sc+=15; R.push(["✓",t(["Hotel bintang "+pk.s,"Hotel "+pk.s+"-star","فندق "+toAr(pk.s)+" نجوم"])]); } else { sc+=Math.max(0,15-(S-pk.s)*8); R.push(["✗",t(["Hotel bintang "+pk.s+", di bawah keinginan","Hotel "+pk.s+"-star, below your wish","فندق "+toAr(pk.s)+" نجوم، أقل من المطلوب"])]); }
+ const Hh=+q.h||pk.h, dd=Math.abs(pk.h-Hh); sc+=Math.max(0,10-dd*2.5); R.push([dd<=1?"✓":dd<=3?"≈":"✗",t([pk.h+" hari"+(dd?" (ingin "+Hh+")":""),pk.h+" days"+(dd?" (wanted "+Hh+")":""),toAr(pk.h)+" يومًا"])]);
+ const M=+q.mo; if(pk.mo.includes(M)){ sc+=10; R.push(["✓",t(["Ada keberangkatan di bulan "+MONTHS()[M-1],"Departs in "+MONTHS()[M-1],"مغادرة في "+MONTHS()[M-1]])]); } else { const near=pk.mo.some(x=>Math.min(Math.abs(x-M),12-Math.abs(x-M))===1); sc+=near?5:0; R.push([near?"≈":"✗",t([near?"Berangkat sebulan sebelum/sesudah bulan pilihan":"Tidak ada keberangkatan di bulan itu",near?"Departs a month before/after":"No departure that month",near?"مغادرة قبل/بعد الشهر بشهر":"لا مغادرة في ذلك الشهر"])]); }
+ if(q.nd.length){ const hit=q.nd.filter(x=>pk.f.includes(x)); sc+=20*hit.length/q.nd.length; hit.forEach(x=>R.push(["✓",t(NEEDS.find(n=>n[0]===x)[1])])); q.nd.filter(x=>!pk.f.includes(x)).forEach(x=>R.push(["✗",t(["Belum ada: ","Missing: ","غير متوفر: "])+t(NEEDS.find(n=>n[0]===x)[1])])); }
+ else sc+=20;
+ return {sc:Math.round(sc),R}; }
+function rank(){ const q={j:U.j,b:numIn(U.b),c:U.c,s:U.s,h:U.h,mo:U.mo,nd:U.nd||[]}; return PK.map(pk=>Object.assign({pk},score(pk,q))).filter(r=>r.pk.j===q.j).sort((a,b)=>b.sc-a.sc||a.pk.p-b.pk.p); }
+const pkCard=(pk,r,rk)=>`<div class="um-pk${rk===0?" um-top":""}" data-umpk="${pk.id}"><div class="um-ph"><span class="bb-tag">${esc(t(UM.ex))}</span>${r?`<span class="um-pct" data-umpct="${r.sc}"><b>${N(r.sc)}%</b> ${esc(t(UM.match))}</span>`:""}</div>
+ <div class="um-pn"><i>${ICON.haji}</i><b>${esc(t(pk.n))}</b></div>
+ <div class="um-meta"><span>💰 ${esc(rp(pk.p))}</span><span>🏨 ${"★".repeat(pk.s)}</span><span>🗓 ${N(pk.h)} ${esc(t(UM.days))}</span><span>✈️ ${esc(pk.c.slice(0,3).join(", "))}${pk.c.length>3?" +"+N(pk.c.length-3):""}</span></div>
+ ${r?`<div class="um-bar"><i style="width:${r.sc}%"></i></div><ul class="um-why">${r.R.map(([m,s])=>`<li class="${m==="✓"?"y":m==="≈"?"m":"n"}"><b>${m}</b>${esc(s)}</li>`).join("")}</ul>`:""}
+ <button type="button" class="btn sm bb-btn um-book" aria-disabled="true" data-umbook="${pk.id}">🕋 ${esc(t(UM.book))}</button><div class="bb-soon" data-umbookn="${pk.id}" hidden>⏳ ${esc(t(UM.bookN))}</div></div>`;
+function renderUmrah(){ const st=document.getElementById("umStack"); if(!st) return; const MO=MONTHS();
+ st.innerHTML=`<div class="row v2-sb"><button class="btn sm ghost" type="button" data-go="${umFrom}" id="umBack">${esc(t(umFrom==="beranda"?UM.backH:UM.backB))}</button></div>
+ <div><div class="eyebrow rk-ey">${ICON.haji}<span>${esc(t(UM.ey))}</span></div><h1>${esc(t(UM.title))}</h1><p class="muted" style="margin-top:6px">${esc(t(UM.lead))}</p></div>
+ <div class="card um-lic" id="umLic"><b>🛡️ ${esc(t(UM.lic))}</b><p>${esc(t(UM.licT))}</p><p class="um-aff" id="umAff">ⓘ ${esc(t(UM.aff))}</p></div>
+ <div class="card lit um-form" id="umForm"><div class="eyebrow">✨ ${esc(t(UM.cmpT))}</div><p class="dim" style="font-size:12.5px;margin:4px 0 10px">${esc(t(UM.cmpS))}</p>
+  <div class="um-seg" role="radiogroup">${[["u","jU"],["h","jH"]].map(([v,k])=>`<button type="button" role="radio" aria-checked="${U.j===v}" data-umj="${v}" class="${U.j===v?"on":""}">${esc(t(UM[k]))}</button>`).join("")}</div>
+  <label>${esc(t(UM.fBudget))}<input class="jd-in" id="umBudget" inputmode="numeric" dir="ltr" value="${esc(Number(numIn(U.b)).toLocaleString("id-ID"))}"></label>
+  <div class="um-2"><label>${esc(t(UM.fKota))}<select id="umKota">${CITIES.map(c=>`<option${c===U.c?" selected":""}>${c}</option>`).join("")}</select></label>
+  <label>${esc(t(UM.fBintang))}<select id="umBintang">${[["0",t(UM.any)],["3","★★★"],["4","★★★★"],["5","★★★★★"]].map(([v,l])=>`<option value="${v}"${v===String(U.s)?" selected":""}>${l}</option>`).join("")}</select></label></div>
+  <div class="um-2"><label>${esc(t(UM.fHari))}<select id="umHari">${[9,12,14,16,20,23,26].map(v=>`<option value="${v}"${String(v)===String(U.h)?" selected":""}>${N(v)}</option>`).join("")}</select></label>
+  <label>${esc(t(UM.fBulan))}<select id="umBulan">${MO.map((m,i)=>`<option value="${i+1}"${String(i+1)===String(U.mo)?" selected":""}>${esc(m)}</option>`).join("")}</select></label></div>
+  <div class="um-lbl">${esc(t(UM.fNeed))}</div><div class="um-needs">${NEEDS.map(([k,l])=>`<label class="um-need"><input type="checkbox" data-umn="${k}"${(U.nd||[]).includes(k)?" checked":""}><span>${esc(t(l))}</span></label>`).join("")}</div>
+  ${U.j==="h"?`<p class="rk-note">⏳ ${esc(t(UM.wait))}</p>`:""}
+  <button type="button" class="btn gold um-go" id="umGo">✨ ${esc(t(UM.go))}</button></div>
+ <div id="umRes">${ranked?`<div class="eyebrow" style="margin:4px 2px 8px">${esc(t(UM.res))}</div><div class="stack" style="gap:10px">${ranked.map((r,i)=>pkCard(r.pk,r,i)).join("")}</div>`:`<p class="dim" style="text-align:center">${esc(t(UM.empty))}</p>`}</div>
+ ${ranked?"":`<div><div class="eyebrow" style="margin:4px 2px 8px">${esc(t(UM.all))}</div><div class="stack" id="umAll" style="gap:10px">${PK.filter(p=>p.j===U.j).map(p=>pkCard(p,null,-1)).join("")}</div></div>`}
+ <div class="card"><div class="eyebrow">${esc(t(UM.dalilT))}</div><div class="rk-ar" ${ARF}>«الْعُمْرَةُ إِلَى الْعُمْرَةِ كَفَّارَةٌ لِمَا بَيْنَهُمَا، وَالْحَجُّ الْمَبْرُورُ لَيْسَ لَهُ جَزَاءٌ إِلَّا الْجَنَّةُ»</div>${lg()!=="ar"?`<p class="rk-tr">${esc(t(["\"Umrah ke umrah berikutnya adalah penghapus dosa di antara keduanya, dan haji mabrur tiada balasan baginya selain surga.\"","\"An umrah to the next umrah expiates what is between them, and an accepted Hajj has no reward but Paradise.\""]))}</p>`:""}<p class="rk-src">📚 ${esc(t(["HR. Bukhari no. 1773 dan Muslim no. 1349, dari Abu Hurairah","Sahih al-Bukhari 1773 and Sahih Muslim 1349, from Abu Hurayrah","رواه البخاري (١٧٧٣) ومسلم (١٣٤٩) عن أبي هريرة"]))}</p></div>`; }
+function readForm(){ const g=id=>document.getElementById(id); if(!g("umBudget")) return; U.b=String(numIn(g("umBudget").value)); U.c=g("umKota").value; U.s=g("umBintang").value; U.h=g("umHari").value; U.mo=g("umBulan").value;
+ U.nd=[...document.querySelectorAll("[data-umn]")].filter(x=>x.checked).map(x=>x.dataset.umn); try{ localStorage.setItem(UKEY,JSON.stringify(U)); }catch(e){} }
+
+/* ---------- events ---------- */
+document.addEventListener("click",e=>{ if(!e.target.closest) return;
+ if(e.target.closest("#rkCap")){ buniyaSheet(); return; }
+ const gu=e.target.closest('[data-go="umrah"]'); if(gu){ umFrom=gu.closest("#bbHomeRow")?"beranda":"belanja"; ranked=null; setTimeout(renderUmrah,0); }
+ if(e.target.closest('[data-go="puasa"]')){ const n=today(); P.y=n.getFullYear(); P.m=n.getMonth(); setTimeout(renderPuasa,0); }
+ if(e.target.closest("#pzPrev")){ P.m--; if(P.m<0){P.m=11;P.y--;} renderPuasa(); return; }
+ if(e.target.closest("#pzNext")){ P.m++; if(P.m>11){P.m=0;P.y++;} renderPuasa(); return; }
+ if(e.target.closest("#pzToday")){ const n=today(); P.y=n.getFullYear(); P.m=n.getMonth(); renderPuasa(); return; }
+ const pj=e.target.closest("[data-pzj]"); if(pj){ const [hm,hd]=pj.dataset.pzj.split("-").map(Number); const d=findNext(hm,hd); if(d){ P.y=d.getFullYear(); P.m=d.getMonth(); renderPuasa(); const c=document.querySelector(`[data-pzd="${keyOf(d)}"]`); if(c){ c.classList.add("pz-flash"); } } return; }
+ const pd=e.target.closest("[data-pzd]"); if(pd){ dateSheet(pd.dataset.pzd); return; }
+ const uj=e.target.closest("[data-umj]"); if(uj){ readForm(); U.j=uj.dataset.umj; if(U.j==="h"&&numIn(U.b)<150e6){ U.b="250000000"; U.h="26"; U.mo="5"; } if(U.j==="u"&&numIn(U.b)>=150e6){ U.b="35000000"; U.h="12"; } ranked=null; renderUmrah(); return; }
+ if(e.target.closest("#umGo")){ readForm(); ranked=rank(); renderUmrah(); const r=document.getElementById("umRes"); if(r&&r.scrollIntoView) r.scrollIntoView({block:"start"}); return; }
+ const ub=e.target.closest("[data-umbook]"); if(ub){ const n=document.querySelector(`[data-umbookn="${ub.dataset.umbook}"]`); if(n) n.hidden=false; return; }
+ if(e.target.closest("[data-l]")) setTimeout(()=>{ homeRow(); jadwalKiblat(); renderPuasa(); renderUmrah(); },70); });
+document.addEventListener("input",e=>{ if(e.target&&e.target.id==="umBudget"){ const v=numIn(e.target.value); e.target.value=v?v.toLocaleString("id-ID"):""; } });
+window.KusyuRukun={homeRow,renderPuasa,renderUmrah,types,score,rank,PK,F,dalil,ICON,openUmrah(from){ umFrom=from||"belanja"; ranked=null; renderUmrah(); },
+ setMonth(y,m){ P.y=y; P.m=m; renderPuasa(); }};
+function init(){ homeRow(); jadwalKiblat(); renderPuasa(); renderUmrah(); }
 document.addEventListener("DOMContentLoaded",init); if(document.readyState!=="loading") setTimeout(init,0);
 })();
 
