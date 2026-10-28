@@ -1,0 +1,104 @@
+/* Best Muslim v78 — AR Qibla (camera). Gold style; privacy-first. */
+.bm-ar-entry{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px;
+}
+.bm-ar-entry .btn{flex:1;min-width:140px}
+.bm-ar-ov{
+  position:fixed;inset:0;z-index:12000;display:none;flex-direction:column;
+  background:#0a0c10;color:#f3e9d4;
+}
+.bm-ar-ov.on{display:flex}
+.bm-ar-video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  background:#111;transform:scaleX(1);
+}
+.bm-ar-layer{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+.bm-ar-hud{
+  position:relative;z-index:3;display:flex;flex-direction:column;gap:8px;
+  padding:calc(12px + env(safe-area-inset-top,0px)) 14px 12px;
+  background:linear-gradient(180deg,rgba(8,10,14,.72),transparent);
+  pointer-events:none;
+}
+.bm-ar-hud .row{display:flex;align-items:center;justify-content:space-between;gap:10px;pointer-events:auto}
+.bm-ar-hud h2{margin:0;font-size:1rem;font-weight:800;color:#e6c77a}
+.bm-ar-close{
+  width:40px;height:40px;border-radius:999px;border:0;cursor:pointer;
+  background:rgba(243,233,212,.12);color:#e6c77a;font-size:22px;font-weight:700;
+}
+.bm-ar-meta{
+  display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;font-weight:700;
+  color:rgba(243,233,212,.9);
+}
+.bm-ar-meta span b{color:#e6c77a;font-weight:800}
+.bm-ar-status{
+  margin-top:2px;font-size:13px;font-weight:700;color:rgba(243,233,212,.75);
+}
+.bm-ar-status.ok{color:#7ec9ad;text-shadow:0 0 12px rgba(126,201,173,.55)}
+.bm-ar-privacy{
+  margin:0;font-size:11px;line-height:1.35;color:rgba(243,233,212,.55);max-width:42ch;
+}
+.bm-ar-footer{
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  padding:12px 14px calc(14px + env(safe-area-inset-bottom,0px));
+  background:linear-gradient(0deg,rgba(8,10,14,.78),transparent);
+  pointer-events:none;
+}
+.bm-ar-hint{
+  font-size:12.5px;line-height:1.4;color:rgba(243,233,212,.8);
+  background:rgba(230,199,122,.1);border:1px solid rgba(230,199,122,.28);
+  border-radius:12px;padding:10px 12px;
+}
+.bm-ar-marker{
+  position:absolute;top:42%;width:88px;height:110px;margin-left:-44px;
+  transform:translate3d(0,0,0);transition:left .08s linear,opacity .2s,filter .2s;
+  display:flex;flex-direction:column;align-items:center;pointer-events:none;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));
+}
+.bm-ar-marker svg{width:72px;height:72px;display:block}
+.bm-ar-marker .lab{
+  margin-top:6px;padding:4px 10px;border-radius:999px;
+  background:rgba(8,10,14,.55);border:1px solid rgba(230,199,122,.45);
+  font-size:11px;font-weight:800;color:#e6c77a;letter-spacing:.04em;
+}
+.bm-ar-marker.aligned{
+  filter:drop-shadow(0 0 18px rgba(230,199,122,.85)) drop-shadow(0 0 36px rgba(126,201,173,.45));
+}
+.bm-ar-marker.aligned .lab{
+  background:rgba(126,201,173,.2);border-color:rgba(126,201,173,.6);color:#b8f0d8;
+}
+.bm-ar-edge{
+  position:absolute;top:45%;width:48px;height:48px;border-radius:999px;
+  display:none;align-items:center;justify-content:center;
+  background:rgba(8,10,14,.55);border:1.5px solid rgba(230,199,122,.55);
+  color:#e6c77a;font-size:22px;font-weight:800;pointer-events:none;
+  animation:bm-ar-pulse 1.2s ease-in-out infinite;
+}
+.bm-ar-edge.left{left:10px}
+.bm-ar-edge.right{right:10px}
+.bm-ar-edge.on{display:flex}
+@keyframes bm-ar-pulse{
+  0%,100%{transform:scale(1);opacity:.85}
+  50%{transform:scale(1.08);opacity:1}
+}
+.bm-ar-cross{
+  position:absolute;left:50%;top:42%;width:2px;height:56px;margin-left:-1px;margin-top:-28px;
+  background:linear-gradient(180deg,transparent,rgba(230,199,122,.55),transparent);
+  pointer-events:none;
+}
+.bm-ar-cross::before{
+  content:"";position:absolute;left:50%;top:50%;width:56px;height:2px;margin-left:-28px;margin-top:-1px;
+  background:linear-gradient(90deg,transparent,rgba(230,199,122,.55),transparent);
+}
+.bm-ar-fallback{
+  position:absolute;inset:0;z-index:4;display:none;align-items:center;justify-content:center;
+  padding:24px;text-align:center;background:rgba(8,10,14,.88);
+}
+.bm-ar-fallback.on{display:flex}
+.bm-ar-fallback .box{
+  max-width:340px;background:linear-gradient(180deg,#1a2218,#101410);
+  border:1px solid rgba(230,199,122,.3);border-radius:18px;padding:20px;
+}
+.bm-ar-fallback h3{margin:0 0 8px;color:#e6c77a}
+.bm-ar-fallback p{margin:0;font-size:13.5px;line-height:1.45;color:rgba(243,233,212,.8)}
