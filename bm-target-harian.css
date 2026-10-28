@@ -1,4 +1,4 @@
-/* Best Muslim v80 — Hari ini (unified Target + Amalan sunnah), gold */
+/* Best Muslim v81 — Hari ini (unified Target + Amalan sunnah), gold */
 #bmTargetHost{margin:0}
 .bm-tg-card{
   background:linear-gradient(165deg,rgba(42,34,22,.98),rgba(14,19,27,.98));
@@ -135,3 +135,35 @@
   opacity:0;pointer-events:none;transition:opacity .25s;
 }
 .bm-tg-toast.on{opacity:1}
+
+/* v81 — Qur'an target picker + reader progress */
+.bm-tg-qedit{
+  flex:0 0 auto;width:32px;height:32px;border-radius:999px;border:1px solid rgba(217,184,106,.35);
+  background:rgba(217,184,106,.1);color:#e6c77a;font-size:14px;cursor:pointer;line-height:1;
+  display:flex;align-items:center;justify-content:center;margin-right:2px;
+}
+.bm-tg-qedit:active{opacity:.85}
+.bm-q-presets{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 14px}
+.bm-q-preset{
+  border:1px solid rgba(217,184,106,.28);background:rgba(255,255,255,.04);color:#f3e9d4;
+  border-radius:12px;padding:10px 8px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;
+}
+.bm-q-preset.on{border-color:rgba(217,184,106,.7);background:rgba(217,184,106,.16);color:#f0d79a}
+.bm-q-custom{margin:4px 0 12px}
+.bm-q-custom label{font-size:12px;font-weight:700;color:#e6c77a}
+.bm-q-custom-row{display:flex;gap:8px;margin-top:6px}
+.bm-q-custom-row input,.bm-q-custom-row select{
+  flex:1;border-radius:12px;border:1px solid rgba(217,184,106,.28);background:rgba(0,0,0,.25);
+  color:#f3e9d4;padding:10px 12px;font:inherit;font-size:14px;
+}
+.bm-q-prog{
+  display:flex;flex-direction:column;gap:4px;padding:6px 12px 8px;
+  background:linear-gradient(180deg,rgba(26,28,22,.96),rgba(14,19,27,.9));
+  border-bottom:1px solid rgba(217,184,106,.22);
+}
+.bm-q-prog[hidden]{display:none!important}
+.bm-q-prog-tx{font-size:11.5px;font-weight:800;color:#e6c77a;letter-spacing:.02em}
+.bm-q-prog-track{height:5px;border-radius:999px;background:rgba(217,184,106,.15);overflow:hidden}
+.bm-q-prog-track i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#c9a24a,#e6c77a);transition:width .35s ease}
+.bm-q-prog.done .bm-q-prog-tx{color:#7ec9ad}
+.bm-q-prog.done .bm-q-prog-track i{background:linear-gradient(90deg,#5aa888,#7ec9ad)}

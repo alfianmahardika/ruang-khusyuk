@@ -1,6 +1,7 @@
-/*! Best Muslim v80 — Hari ini (unified Target + Amalan sunnah).
+/*! Best Muslim v81 — Hari ini + user-chosen Qur'an daily target.
  * Reuses: rk_salat_*, ks_hikmah, rk_q_last/rk_q_lastpg, rk_dompet, ks_ibadah_log, rk_target_harian.
  * Privacy-first: localStorage only. ID/EN/AR. Gold Best Muslim.
+ * Mushaf Madinah 604 pages via quran/meta.json (Tanzil).
  */
 (function () {
   "use strict";
@@ -9,8 +10,20 @@
   var PTS_DONE = 25;
   var FREEZE_MAX = 2;
   var FREEZE_EVERY = 7;
-  var QURAN_AYAT_GOAL = 10;
   var CIRC = 2 * Math.PI * 26;
+  var PAGES_PER_JUZ = 604 / 30; /* Madinah ≈ 20.133 */
+  var META = null;
+  var META_P = null; /* promise */
+  var qDoneToastShown = {};
+
+  var PRESETS = [
+    { amount: 1, unit: "ayat" },
+    { amount: 10, unit: "ayat" },
+    { amount: 1, unit: "halaman" },
+    { amount: 2, unit: "halaman" },
+    { amount: 0.5, unit: "juz" },
+    { amount: 1, unit: "juz" }
+  ];
 
   var I18N = {
     id: {
@@ -23,8 +36,9 @@
       gSalat: "Sholat 5 waktu",
       gSalatSub: "Centang dari checklist Jadwal",
       gSalatUzur: "Tidak dihitung saat uzur",
-      gQuran: "Baca 1 halaman Qur'an",
-      gQuranSub: "Atau ±{n} ayat di mode per ayat",
+      gQuran: "Baca {label} Qur'an",
+      gQuranSub: "Ketuk untuk baca · Ubah target lewat ✏️",
+      gQuranProg: "{have}/{need} {unit}",
       gHikmah: "1 Hikmah Harian",
       gHikmahSub: "Selesaikan putaran Hikmah hari ini",
       sunnahToggle: "+ Amalan sunnah (opsional)",
@@ -55,7 +69,28 @@
       save: "Simpan",
       done: "Selesai",
       of3: "{n}/3",
-      dalil: "Dalil"
+      dalil: "Dalil",
+      qPickTitle: "Target Qur'an harian",
+      qPickLead: "Pilih berapa yang ingin Anda baca setiap hari. Boleh diubah kapan saja.",
+      qPickSkip: "Lewati (pakai 1 halaman)",
+      qPickCustom: "Custom",
+      qPickAmt: "Jumlah",
+      qUnitAyat: "ayat",
+      qUnitHalaman: "halaman",
+      qUnitJuz: "juz",
+      qEdit: "Ubah",
+      qProgBar: "{have}/{need} {unit}",
+      qDoneTitle: "Target Qur'an hari ini tercapai ✓",
+      qDoneSub: "Alhamdulillah — target {label} selesai.",
+      qBackHome: "Kembali ke Beranda",
+      qKeepReading: "Lanjut baca",
+      qSetTitle: "Target Qur'an harian",
+      qSetLead: "Berlaku untuk kartu Hari ini. Progres hari ini tetap dihitung ulang sesuai target baru.",
+      qHalf: "½ juz",
+      qLabelAyat: "{n} ayat",
+      qLabelHalaman: "{n} halaman",
+      qLabelJuz: "{n} juz",
+      qLabelHalfJuz: "½ juz"
     },
     en: {
       ey: "Daily",
@@ -67,8 +102,9 @@
       gSalat: "5 daily prayers",
       gSalatSub: "From the Prayer Times checklist",
       gSalatUzur: "Not counted during uzur",
-      gQuran: "Read 1 Qur'an page",
-      gQuranSub: "Or about {n} verses in verse mode",
+      gQuran: "Read {label} of Qur'an",
+      gQuranSub: "Tap to read · Change target via ✏️",
+      gQuranProg: "{have}/{need} {unit}",
       gHikmah: "1 Daily Wisdom",
       gHikmahSub: "Finish today's Hikmah round",
       sunnahToggle: "+ Optional sunnah deeds",
@@ -99,7 +135,28 @@
       save: "Save",
       done: "Done",
       of3: "{n}/3",
-      dalil: "Evidence"
+      dalil: "Evidence",
+      qPickTitle: "Daily Qur'an target",
+      qPickLead: "Choose how much you want to read each day. You can change it anytime.",
+      qPickSkip: "Skip (use 1 page)",
+      qPickCustom: "Custom",
+      qPickAmt: "Amount",
+      qUnitAyat: "verses",
+      qUnitHalaman: "pages",
+      qUnitJuz: "juz",
+      qEdit: "Edit",
+      qProgBar: "{have}/{need} {unit}",
+      qDoneTitle: "Today's Qur'an target reached ✓",
+      qDoneSub: "Alhamdulillah — {label} target done.",
+      qBackHome: "Back to Home",
+      qKeepReading: "Keep reading",
+      qSetTitle: "Daily Qur'an target",
+      qSetLead: "Applies to the Today card. Today's progress is re-checked against the new target.",
+      qHalf: "½ juz",
+      qLabelAyat: "{n} verses",
+      qLabelHalaman: "{n} pages",
+      qLabelJuz: "{n} juz",
+      qLabelHalfJuz: "½ juz"
     },
     ar: {
       ey: "يومي",
@@ -111,8 +168,9 @@
       gSalat: "الصلوات الخمس",
       gSalatSub: "من قائمة مواقيت الصلاة",
       gSalatUzur: "لا تُحتسب أثناء العذر",
-      gQuran: "قراءة صفحة من القرآن",
-      gQuranSub: "أو نحو {n} آيات في وضع الآية",
+      gQuran: "قراءة {label} من القرآن",
+      gQuranSub: "انقر للقراءة · غيّر الهدف عبر ✏️",
+      gQuranProg: "{have}/{need} {unit}",
       gHikmah: "حكمة يومية واحدة",
       gHikmahSub: "أتمّ جولة الحكمة اليوم",
       sunnahToggle: "+ سنن اختيارية",
@@ -143,11 +201,33 @@
       save: "حفظ",
       done: "تم",
       of3: "{n}/3",
-      dalil: "الدليل"
+      dalil: "الدليل",
+      qPickTitle: "هدف القرآن اليومي",
+      qPickLead: "اختر مقدار قراءتك كل يوم. يمكنك تغييره في أي وقت.",
+      qPickSkip: "تخطَّ (صفحة واحدة)",
+      qPickCustom: "مخصص",
+      qPickAmt: "العدد",
+      qUnitAyat: "آيات",
+      qUnitHalaman: "صفحات",
+      qUnitJuz: "أجزاء",
+      qEdit: "تعديل",
+      qProgBar: "{have}/{need} {unit}",
+      qDoneTitle: "تحقق هدف القرآن اليوم ✓",
+      qDoneSub: "الحمد لله — اكتمل هدف {label}.",
+      qBackHome: "العودة إلى الرئيسية",
+      qKeepReading: "متابعة القراءة",
+      qSetTitle: "هدف القرآن اليومي",
+      qSetLead: "ينطبق على بطاقة اليوم. يُعاد احتساب تقدّم اليوم وفق الهدف الجديد.",
+      qHalf: "نصف جزء",
+      qLabelAyat: "{n} آيات",
+      qLabelHalaman: "{n} صفحات",
+      qLabelJuz: "{n} أجزاء",
+      qLabelHalfJuz: "نصف جزء"
     }
   };
 
   var sunnahOpen = false;
+  var readerHooked = false;
 
   function storeGet(k, d) {
     try {
@@ -188,7 +268,7 @@
     var s = L[k] != null ? L[k] : I18N.en[k] != null ? I18N.en[k] : k;
     if (vars)
       Object.keys(vars).forEach(function (x) {
-        s = String(s).replace("{" + x + "}", vars[x]);
+        s = String(s).replace(new RegExp("\\{" + x + "\\}", "g"), vars[x]);
       });
     return s;
   }
@@ -200,6 +280,13 @@
   function lx(arr) {
     var i = { id: 0, en: 1, ar: 2 }[lang()] || 0;
     return (arr && arr[i]) || (arr && arr[0]) || "";
+  }
+  function fmtNum(n) {
+    n = +n;
+    if (!isFinite(n)) return "0";
+    if (Math.abs(n - 0.5) < 0.001) return lang() === "ar" ? "½" : "½";
+    if (Math.floor(n) === n) return String(n);
+    return String(Math.round(n * 100) / 100);
   }
 
   function defaultState() {
@@ -216,6 +303,10 @@
       lastQPage: null,
       lastQAyat: null,
       quranAyatProg: {},
+      quranProg: {},
+      quranTarget: { amount: 1, unit: "halaman" },
+      quranTargetSet: false,
+      quranDoneToast: {},
       streakMigrated: false
     };
   }
@@ -226,6 +317,12 @@
     s.celebrated = s.celebrated || {};
     s.quran = s.quran || {};
     s.quranAyatProg = s.quranAyatProg || {};
+    s.quranProg = s.quranProg || {};
+    s.quranDoneToast = s.quranDoneToast || {};
+    if (!s.quranTarget || typeof s.quranTarget !== "object") s.quranTarget = { amount: 1, unit: "halaman" };
+    var u = s.quranTarget.unit;
+    if (u !== "ayat" && u !== "halaman" && u !== "juz") s.quranTarget.unit = "halaman";
+    s.quranTarget.amount = Math.max(0.01, +s.quranTarget.amount || 1);
     s.freezes = Math.max(0, Math.min(FREEZE_MAX, s.freezes | 0));
     s.streak = s.streak | 0;
     s.freezeAwardAt = s.freezeAwardAt | 0;
@@ -235,7 +332,191 @@
     storeSet(SK, s);
   }
 
-  /** One streak: max of Target + Log Ibadah so nobody loses progress. */
+  function getTarget(s) {
+    s = s || state();
+    return { amount: +s.quranTarget.amount || 1, unit: s.quranTarget.unit || "halaman" };
+  }
+  function setTarget(amount, unit, opts) {
+    opts = opts || {};
+    var s = state();
+    unit = unit === "ayat" || unit === "halaman" || unit === "juz" ? unit : "halaman";
+    amount = Math.max(0.01, Math.min(unit === "juz" ? 30 : unit === "halaman" ? 604 : 6236, +amount || 1));
+    if (unit === "juz" && Math.abs(amount - 0.5) < 0.001) amount = 0.5;
+    s.quranTarget = { amount: amount, unit: unit };
+    if (opts.markSet !== false) s.quranTargetSet = true;
+    save(s);
+    /* Re-evaluate done against existing progress — mid-day change OK */
+    trackQuranProgress(true);
+    render();
+    renderSettingsCard();
+    updateReaderBar();
+    return s.quranTarget;
+  }
+
+  function unitWord(unit) {
+    if (unit === "ayat") return t("qUnitAyat");
+    if (unit === "juz") return t("qUnitJuz");
+    return t("qUnitHalaman");
+  }
+  function targetLabel(tg) {
+    tg = tg || getTarget();
+    if (tg.unit === "juz" && Math.abs(tg.amount - 0.5) < 0.001) return t("qLabelHalfJuz");
+    if (tg.unit === "ayat") return t("qLabelAyat", { n: fmtNum(tg.amount) });
+    if (tg.unit === "juz") return t("qLabelJuz", { n: fmtNum(tg.amount) });
+    return t("qLabelHalaman", { n: fmtNum(tg.amount) });
+  }
+  function goalQuranTitle(tg) {
+    return t("gQuran", { label: targetLabel(tg) });
+  }
+
+  function loadMeta() {
+    if (META) return Promise.resolve(META);
+    if (META_P) return META_P;
+    META_P = fetch("quran/meta.json")
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      })
+      .then(function (m) {
+        META = m;
+        return m;
+      })
+      .catch(function (e) {
+        META_P = null;
+        console.warn("[BmTarget] quran/meta.json missing — page/juz mapping limited", e);
+        return null;
+      });
+    return META_P;
+  }
+  function findIdx(arr, s, a) {
+    if (!arr || !arr.length) return 0;
+    var lo = 0,
+      hi = arr.length - 1,
+      ans = 0;
+    while (lo <= hi) {
+      var mid = (lo + hi) >> 1;
+      var x = arr[mid];
+      if (x[0] < s || (x[0] === s && x[1] <= a)) {
+        ans = mid;
+        lo = mid + 1;
+      } else hi = mid - 1;
+    }
+    return ans;
+  }
+  function pageOf(s, a) {
+    try {
+      if (window.RKQuran && typeof RKQuran.pos === "function") {
+        var p = RKQuran.pos(s, a);
+        if (p && p.page) return p.page;
+      }
+    } catch (e) {}
+    if (!META || !META.p) return null;
+    return findIdx(META.p, +s, +a) + 1;
+  }
+
+  function dayProg(s, day) {
+    s = s || state();
+    day = day || dkey();
+    s.quranProg = s.quranProg || {};
+    if (!s.quranProg[day] || typeof s.quranProg[day] !== "object") {
+      s.quranProg[day] = { ayat: {}, pages: {} };
+    }
+    s.quranProg[day].ayat = s.quranProg[day].ayat || {};
+    s.quranProg[day].pages = s.quranProg[day].pages || {};
+    return s.quranProg[day];
+  }
+  function progressAmount(s, day) {
+    s = s || state();
+    day = day || dkey();
+    var tg = getTarget(s);
+    var p = dayProg(s, day);
+    var ayatN = Object.keys(p.ayat).length;
+    var pageN = Object.keys(p.pages).length;
+    /* Legacy bridge */
+    if (!ayatN && (s.quranAyatProg[day] | 0) > 0) ayatN = s.quranAyatProg[day] | 0;
+    if (!pageN && (s.quran[day] | 0) > 0 && tg.unit === "halaman") pageN = s.quran[day] | 0;
+    if (tg.unit === "ayat") return ayatN;
+    if (tg.unit === "juz") return pageN / PAGES_PER_JUZ;
+    return pageN;
+  }
+  function progressNeed(s) {
+    return getTarget(s).amount;
+  }
+  function progressHaveDisplay(s, day) {
+    var tg = getTarget(s);
+    var have = progressAmount(s, day);
+    if (tg.unit === "juz") return Math.round(have * 100) / 100;
+    return Math.floor(have);
+  }
+
+  function quranDone(day, s) {
+    s = s || state();
+    day = day || dkey();
+    if (s.quran && s.quran[day] >= 1) return true;
+    var need = progressNeed(s);
+    var have = progressAmount(s, day);
+    return have + 1e-9 >= need;
+  }
+
+  function markQuranDone(s, day) {
+    s = s || state();
+    day = day || dkey();
+    if (!(s.quran[day] >= 1)) {
+      s.quran[day] = 1;
+      save(s);
+    }
+    return s;
+  }
+
+  function trackQuranProgress(forceEval) {
+    var s = state();
+    var day = dkey();
+    var page = storeGet("rk_q_lastpg", null);
+    var last = storeGet("rk_q_last", null);
+    var p = dayProg(s, day);
+    var changed = false;
+
+    if (last && last.s != null && last.a != null) {
+      var key = last.s + ":" + last.a;
+      var sameDay = !last.ts || dkey(new Date(last.ts)) === day;
+      if (sameDay) {
+        if (!p.ayat[key]) {
+          p.ayat[key] = 1;
+          changed = true;
+        }
+        var pg = pageOf(last.s, last.a);
+        if (pg != null && !p.pages[pg]) {
+          p.pages[pg] = 1;
+          changed = true;
+        }
+      }
+      s.lastQAyat = key;
+    }
+    if (page != null) {
+      page = Math.max(1, Math.min(604, +page || 1));
+      if (!p.pages[page]) {
+        p.pages[page] = 1;
+        changed = true;
+      }
+      /* If META knows page start ayah, count that ayah too */
+      if (META && META.p && META.p[page - 1]) {
+        var st = META.p[page - 1];
+        var ak = st[0] + ":" + st[1];
+        if (!p.ayat[ak]) {
+          p.ayat[ak] = 1;
+          changed = true;
+        }
+      }
+      s.lastQPage = page;
+    }
+    s.quranProg[day] = p;
+    if (changed || forceEval) {
+      if (quranDone(day, s)) markQuranDone(s, day);
+      else save(s);
+    }
+    return s;
+  }
+
   function migrateStreak(s) {
     if (s.streakMigrated) return s;
     var other = 0;
@@ -266,37 +547,6 @@
     } catch (e) {
       return false;
     }
-  }
-  function quranDone(day, s) {
-    s = s || state();
-    if (s.quran && s.quran[day] >= 1) return true;
-    if ((s.quranAyatProg && s.quranAyatProg[day]) >= QURAN_AYAT_GOAL) return true;
-    return false;
-  }
-
-  function trackQuranProgress() {
-    var s = state();
-    var day = dkey();
-    var page = storeGet("rk_q_lastpg", null);
-    var last = storeGet("rk_q_last", null);
-    var changed = false;
-    if (page != null && s.lastQPage != null && page !== s.lastQPage) {
-      s.quran[day] = (s.quran[day] | 0) + 1;
-      changed = true;
-    }
-    if (page != null) s.lastQPage = page;
-    if (last && last.s != null && last.a != null) {
-      var key = last.s + ":" + last.a;
-      if (s.lastQAyat && s.lastQAyat !== key) {
-        if (last.ts && dkey(new Date(last.ts)) === day) {
-          s.quranAyatProg[day] = (s.quranAyatProg[day] | 0) + 1;
-          changed = true;
-        }
-      }
-      s.lastQAyat = key;
-    }
-    if (changed) save(s);
-    return s;
   }
 
   function goals(day, s) {
@@ -349,74 +599,72 @@
       save(s);
       return msgs;
     }
-    var start = dAdd(s.lastRoll, 1);
-    if (start > today) return msgs;
-    for (var day = start; day < today; day = dAdd(day, 1)) {
-      if (s.calendar[day] === "full" || s.calendar[day] === "freeze" || s.calendar[day] === "uzur") continue;
-      if (s.uzur && s.uzurSince && s.uzurSince <= day) {
-        s.calendar[day] = "uzur";
+    if (s.lastRoll === today) return msgs;
+    var d = s.lastRoll;
+    while (d !== today) {
+      d = dAdd(d, 1);
+      if (d === today) break;
+      if (s.calendar[d] === "full" || s.calendar[d] === "freeze" || s.calendar[d] === "uzur") continue;
+      var wasUzur = s.uzur && s.uzurSince && s.uzurSince <= d;
+      if (wasUzur) {
+        s.calendar[d] = "uzur";
         continue;
       }
       if ((s.freezes | 0) > 0) {
         s.freezes = (s.freezes | 0) - 1;
-        s.calendar[day] = "freeze";
-        msgs.push({ type: "freeze", day: day });
-        continue;
+        s.calendar[d] = "freeze";
+        msgs.push({ type: "freeze", day: d });
+      } else {
+        s.streak = 0;
+        s.freezeAwardAt = 0;
+        msgs.push({ type: "break", day: d });
       }
-      s.calendar[day] = "miss";
-      s.streak = 0;
-      s.freezeAwardAt = 0;
-      msgs.push({ type: "break", day: day });
     }
     s.lastRoll = today;
     save(s);
     return msgs;
   }
 
+  function dompetPoin() {
+    try {
+      var d = storeGet(SK_DOM, {}) || {};
+      return d.poin | 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+  function addDompetPts(n) {
+    var d = storeGet(SK_DOM, null) || { saldo: 0, poin: 0, hist: [], claimed: {}, act: {} };
+    d.poin = (d.poin | 0) + (n | 0);
+    storeSet(SK_DOM, d);
+    return d.poin | 0;
+  }
+
   function completeTodayIfReady() {
     var s = state();
     var day = dkey();
     var g = goals(day, s);
-    if (s.uzur) {
-      s.calendar[day] = "uzur";
-      save(s);
-      return { completed: false, uzur: true, g: g, s: s };
+    if (!g.all) return { completed: false, fresh: false, g: g, s: s };
+    if (s.calendar[day] === "full") return { completed: true, fresh: false, g: g, s: s };
+    var fresh = !s.celebrated[day];
+    markFullDay(s, day);
+    if (fresh) {
+      s.celebrated[day] = 1;
+      addDompetPts(PTS_DONE);
     }
-    if (!g.all) return { completed: false, g: g, s: s };
-    var already = s.calendar[day] === "full";
-    if (!already) {
-      s = markFullDay(s, day);
-      save(s);
-      if (!s.celebrated[day]) {
-        awardPoints(PTS_DONE, "Hari ini");
-        s = state();
-        s.celebrated[day] = 1;
-        save(s);
-        return { completed: true, fresh: true, g: goals(day, s), s: s };
-      }
-    }
-    return { completed: true, fresh: false, g: g, s: s };
+    save(s);
+    return { completed: true, fresh: fresh, g: goals(day, s), s: s };
   }
 
-  function awardPoints(n, note) {
-    var o = storeGet(SK_DOM, null) || { saldo: 0, poin: 0, hist: [], claimed: {}, act: {} };
-    o.poin = (o.poin | 0) + n;
-    o.hist = o.hist || [];
-    o.hist.unshift({ ts: Date.now(), day: dkey(), pts: n, note: note || "Hari ini" });
-    if (o.hist.length > 80) o.hist.length = 80;
-    storeSet(SK_DOM, o);
-    try {
-      if (window.KusyuDompet && KusyuDompet.renderStrip) KusyuDompet.renderStrip();
-      else if (window.renderStrip) renderStrip();
-    } catch (e) {}
-  }
-
-  function dompetPoin() {
-    try {
-      if (window.KusyuDompet && KusyuDompet.st) return KusyuDompet.st().poin | 0;
-    } catch (e) {}
-    var o = storeGet(SK_DOM, null) || {};
-    return o.poin | 0;
+  function ringSvg(pct) {
+    var off = CIRC * (1 - Math.max(0, Math.min(1, pct)));
+    return (
+      '<svg viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="26"/><circle class="fg" cx="32" cy="32" r="26" stroke-dasharray="' +
+      CIRC.toFixed(2) +
+      '" stroke-dashoffset="' +
+      off.toFixed(2) +
+      '"/></svg>'
+    );
   }
 
   function showToast(msg) {
@@ -433,18 +681,6 @@
     showToast._t = setTimeout(function () {
       el.classList.remove("on");
     }, 4200);
-  }
-
-  function ringSvg(pct) {
-    var off = CIRC * (1 - Math.max(0, Math.min(1, pct)));
-    return (
-      '<svg viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="26"/>' +
-      '<circle class="fg" cx="32" cy="32" r="26" stroke-dasharray="' +
-      CIRC.toFixed(2) +
-      '" stroke-dashoffset="' +
-      off.toFixed(2) +
-      '"/></svg>'
-    );
   }
 
   function ensureCard() {
@@ -539,6 +775,286 @@
     );
   }
 
+  function goalRow(ic, title, sub, on, skip, extra) {
+    extra = extra || "";
+    return (
+      '<div class="bm-tg-goal' +
+      (on ? " on" : "") +
+      (skip ? " skip" : "") +
+      '"><span class="ic">' +
+      ic +
+      '</span><div class="tx"><b>' +
+      esc(title) +
+      "</b><small>" +
+      esc(sub) +
+      "</small></div>" +
+      extra +
+      '<span class="ck">' +
+      (on ? "✓" : "") +
+      "</span></div>"
+    );
+  }
+
+  function openQuranReader() {
+    loadMeta().then(function () {
+      try {
+        sessionStorage.setItem("rk_nav_mushaf", "1");
+      } catch (e) {}
+      go("mushaf");
+      var last = storeGet("rk_q_last", null);
+      var pg = storeGet("rk_q_lastpg", null);
+      var tries = 0;
+      function attempt() {
+        tries++;
+        var Q = window.RKQuran;
+        if (!Q && tries < 20) {
+          setTimeout(attempt, 80);
+          return;
+        }
+        try {
+          if (Q && typeof Q.openPage === "function" && pg) {
+            Q.openPage(+pg);
+          } else if (Q && typeof Q.open === "function") {
+            if (last && last.s) Q.open(last.s, last.a || 1);
+            else Q.open(1, 1);
+          }
+        } catch (e) {}
+        ensureReaderBar();
+        updateReaderBar();
+        maybeShowQuranDone();
+      }
+      setTimeout(attempt, 120);
+    });
+  }
+
+  function ensureReaderBar() {
+    var r = document.getElementById("qReader");
+    if (!r) return null;
+    var bar = document.getElementById("bmQProgBar");
+    if (bar) return bar;
+    bar = document.createElement("div");
+    bar.id = "bmQProgBar";
+    bar.className = "bm-q-prog";
+    bar.innerHTML =
+      '<div class="bm-q-prog-tx" id="bmQProgTx"></div><div class="bm-q-prog-track"><i id="bmQProgFg"></i></div>';
+    var qbar = r.querySelector(".q-bar");
+    if (qbar && qbar.nextSibling) r.insertBefore(bar, qbar.nextSibling);
+    else r.insertBefore(bar, r.firstChild);
+    return bar;
+  }
+  function updateReaderBar() {
+    var bar = document.getElementById("bmQProgBar");
+    var r = document.getElementById("qReader");
+    if (!r || r.hidden) {
+      if (bar) bar.hidden = true;
+      return;
+    }
+    bar = ensureReaderBar();
+    if (!bar) return;
+    bar.hidden = false;
+    trackQuranProgress();
+    var s = state();
+    var tg = getTarget(s);
+    var have = progressHaveDisplay(s);
+    var need = tg.amount;
+    var pct = Math.max(0, Math.min(1, progressAmount(s) / need));
+    var tx = document.getElementById("bmQProgTx");
+    var fg = document.getElementById("bmQProgFg");
+    if (tx)
+      tx.textContent = t("qProgBar", {
+        have: fmtNum(have),
+        need: fmtNum(need),
+        unit: unitWord(tg.unit)
+      });
+    if (fg) fg.style.width = (pct * 100).toFixed(1) + "%";
+    bar.classList.toggle("done", quranDone(dkey(), s));
+    maybeShowQuranDone();
+  }
+  function maybeShowQuranDone() {
+    var s = state();
+    var day = dkey();
+    if (!quranDone(day, s)) return;
+    markQuranDone(s, day);
+    if (s.quranDoneToast[day] || qDoneToastShown[day]) return;
+    var r = document.getElementById("qReader");
+    if (!r || r.hidden) return;
+    qDoneToastShown[day] = 1;
+    s.quranDoneToast[day] = 1;
+    save(s);
+    openQuranDoneSheet();
+    setTimeout(function () {
+      render();
+    }, 80);
+  }
+  function openQuranDoneSheet() {
+    var lab = targetLabel();
+    openOv(
+      '<button type="button" class="bm-tg-x">×</button>' +
+        '<div class="bm-tg-cele" id="bmQDone">' +
+        '<div class="big">📖</div>' +
+        "<h3>" +
+        esc(t("qDoneTitle")) +
+        "</h3>" +
+        '<p class="lead">' +
+        esc(t("qDoneSub", { label: lab })) +
+        "</p>" +
+        '<div class="bm-tg-actions">' +
+        '<button type="button" class="btn gold" id="bmQBackHome">' +
+        esc(t("qBackHome")) +
+        "</button>" +
+        '<button type="button" class="btn ghost" id="bmQKeep">' +
+        esc(t("qKeepReading")) +
+        "</button></div></div>"
+    );
+    var bh = document.getElementById("bmQBackHome");
+    if (bh)
+      bh.onclick = function () {
+        closeOv();
+        try {
+          if (window.RKQuran && RKQuran.close) RKQuran.close();
+        } catch (e) {}
+        go("beranda");
+        setTimeout(render, 120);
+      };
+    var kp = document.getElementById("bmQKeep");
+    if (kp) kp.onclick = closeOv;
+  }
+
+  function openTargetPicker(opts) {
+    opts = opts || {};
+    var s = state();
+    var tg = getTarget(s);
+    var presetBtns = PRESETS.map(function (p, i) {
+      var on =
+        p.unit === tg.unit &&
+        Math.abs(+p.amount - +tg.amount) < 0.001 &&
+        !opts.forceCustom;
+      var lab =
+        p.unit === "juz" && p.amount === 0.5
+          ? t("qHalf")
+          : fmtNum(p.amount) + " " + unitWord(p.unit);
+      return (
+        '<button type="button" class="bm-q-preset' +
+        (on ? " on" : "") +
+        '" data-i="' +
+        i +
+        '">' +
+        esc(lab) +
+        "</button>"
+      );
+    }).join("");
+    openOv(
+      '<button type="button" class="bm-tg-x">×</button>' +
+        "<h3>" +
+        esc(t("qPickTitle")) +
+        "</h3>" +
+        '<p class="lead">' +
+        esc(t("qPickLead")) +
+        "</p>" +
+        '<div class="bm-q-presets" id="bmQPresets">' +
+        presetBtns +
+        "</div>" +
+        '<div class="bm-q-custom">' +
+        "<label><span>" +
+        esc(t("qPickCustom")) +
+        "</span></label>" +
+        '<div class="bm-q-custom-row">' +
+        '<input type="number" id="bmQAmt" min="0.5" step="0.5" inputmode="decimal" value="' +
+        esc(fmtNum(tg.amount)) +
+        '" aria-label="' +
+        esc(t("qPickAmt")) +
+        '"/>' +
+        '<select id="bmQUnit" aria-label="unit">' +
+        '<option value="ayat"' +
+        (tg.unit === "ayat" ? " selected" : "") +
+        ">" +
+        esc(t("qUnitAyat")) +
+        "</option>" +
+        '<option value="halaman"' +
+        (tg.unit === "halaman" ? " selected" : "") +
+        ">" +
+        esc(t("qUnitHalaman")) +
+        "</option>" +
+        '<option value="juz"' +
+        (tg.unit === "juz" ? " selected" : "") +
+        ">" +
+        esc(t("qUnitJuz")) +
+        "</option></select></div></div>" +
+        '<div class="bm-tg-actions">' +
+        '<button type="button" class="btn gold" id="bmQSave">' +
+        esc(t("save")) +
+        "</button>" +
+        (opts.allowSkip
+          ? '<button type="button" class="btn ghost" id="bmQSkip">' + esc(t("qPickSkip")) + "</button>"
+          : '<button type="button" class="btn ghost" id="bmQCancel">' + esc(t("close")) + "</button>") +
+        "</div>"
+    );
+    var box = document.getElementById("bmQPresets");
+    if (box) {
+      box.querySelectorAll(".bm-q-preset").forEach(function (b) {
+        b.onclick = function () {
+          var p = PRESETS[+b.getAttribute("data-i")];
+          var amt = document.getElementById("bmQAmt");
+          var unt = document.getElementById("bmQUnit");
+          if (amt) amt.value = p.amount;
+          if (unt) unt.value = p.unit;
+          box.querySelectorAll(".bm-q-preset").forEach(function (x) {
+            x.classList.toggle("on", x === b);
+          });
+        };
+      });
+    }
+    var saveBtn = document.getElementById("bmQSave");
+    if (saveBtn)
+      saveBtn.onclick = function () {
+        var amt = parseFloat((document.getElementById("bmQAmt") || {}).value) || 1;
+        var unt = (document.getElementById("bmQUnit") || {}).value || "halaman";
+        setTarget(amt, unt);
+        closeOv();
+      };
+    var skip = document.getElementById("bmQSkip");
+    if (skip)
+      skip.onclick = function () {
+        setTarget(1, "halaman");
+        closeOv();
+      };
+    var cancel = document.getElementById("bmQCancel");
+    if (cancel) cancel.onclick = closeOv;
+  }
+
+  function renderSettingsCard() {
+    var stack = document.getElementById("stStack");
+    if (!stack) return;
+    var card = document.getElementById("bmQTargetSettings");
+    if (!card) {
+      card = document.createElement("div");
+      card.id = "bmQTargetSettings";
+      card.className = "card";
+      var loc = stack.querySelector('[data-v="location"]');
+      var hostCard = loc && loc.closest ? loc.closest(".card") : null;
+      if (hostCard && hostCard.nextSibling) stack.insertBefore(card, hostCard.nextSibling);
+      else stack.appendChild(card);
+    }
+    var tg = getTarget();
+    card.innerHTML =
+      '<div class="eyebrow">' +
+      esc(t("qSetTitle")) +
+      "</div>" +
+      '<p style="margin-top:6px;font-size:13px"><b>' +
+      esc(goalQuranTitle(tg)) +
+      "</b></p>" +
+      '<p class="dim" style="font-size:11.5px;margin-top:4px">' +
+      esc(t("qSetLead")) +
+      "</p>" +
+      '<button class="btn sm gold" type="button" id="bmQSetEdit" style="margin-top:8px">✏️ ' +
+      esc(t("qEdit")) +
+      "</button>";
+    var b = document.getElementById("bmQSetEdit");
+    if (b) b.onclick = function () {
+      openTargetPicker();
+    };
+  }
+
   function render() {
     trackQuranProgress();
     var card = ensureCard();
@@ -550,6 +1066,18 @@
     var have = g.uzur ? (g.quran ? 1 : 0) + (g.hikmah ? 1 : 0) : (g.salat ? 1 : 0) + (g.quran ? 1 : 0) + (g.hikmah ? 1 : 0);
     var pct = need ? have / need : 0;
     var pts = dompetPoin();
+    var tg = getTarget(s);
+    var qHave = progressHaveDisplay(s, day);
+    var qSub = g.quran
+      ? t("done")
+      : t("gQuranProg", { have: fmtNum(qHave), need: fmtNum(tg.amount), unit: unitWord(tg.unit) });
+
+    var qEdit =
+      '<button type="button" class="bm-tg-qedit" id="bmTgQEdit" title="' +
+      esc(t("qEdit")) +
+      '" aria-label="' +
+      esc(t("qEdit")) +
+      '">✏️</button>';
 
     card.innerHTML =
       '<div class="bm-tg-top">' +
@@ -582,7 +1110,7 @@
       "</div></div>" +
       '<div class="bm-tg-goals">' +
       goalRow("🕌", t("gSalat"), s.uzur ? t("gSalatUzur") : t("gSalatSub"), s.uzur ? true : g.salat, s.uzur) +
-      goalRow("📖", t("gQuran"), t("gQuranSub", { n: QURAN_AYAT_GOAL }), g.quran, false) +
+      goalRow("📖", goalQuranTitle(tg), qSub + " · " + t("gQuranSub"), g.quran, false, qEdit) +
       goalRow("✨", t("gHikmah"), t("gHikmahSub"), g.hikmah, false) +
       "</div>" +
       renderSunnahBlock() +
@@ -597,14 +1125,18 @@
       esc(t("privacy")) +
       "</p>";
 
-    var map = [
-      function () {
+    var goalsEl = card.querySelectorAll(".bm-tg-goal");
+    if (goalsEl[0])
+      goalsEl[0].onclick = function () {
         go("jadwal");
-      },
-      function () {
-        go("quran");
-      },
-      function () {
+      };
+    if (goalsEl[1])
+      goalsEl[1].onclick = function (e) {
+        if (e.target && e.target.closest && e.target.closest("#bmTgQEdit")) return;
+        openQuranReader();
+      };
+    if (goalsEl[2])
+      goalsEl[2].onclick = function () {
         go("beranda");
         setTimeout(function () {
           var b = document.querySelector("#pkToday [data-hkstart], #pkToday .hk-btn, #pkToday .hk-go");
@@ -614,12 +1146,14 @@
             if (slide) slide.scrollIntoView({ inline: "center", behavior: "smooth" });
           }
         }, 200);
-      }
-    ];
-    card.querySelectorAll(".bm-tg-goal").forEach(function (r, i) {
-      r.style.cursor = "pointer";
-      r.onclick = map[i];
-    });
+      };
+    var ed = document.getElementById("bmTgQEdit");
+    if (ed)
+      ed.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openTargetPicker();
+      };
     var stBtn = document.getElementById("bmTgStreakBtn");
     if (stBtn) stBtn.onclick = openCalendar;
     var uzBtn = document.getElementById("bmTgUzur");
@@ -639,23 +1173,7 @@
 
     var res = completeTodayIfReady();
     if (res.fresh) openCelebration(res.s);
-  }
-
-  function goalRow(ic, title, sub, on, skip) {
-    return (
-      '<div class="bm-tg-goal' +
-      (on ? " on" : "") +
-      (skip ? " skip" : "") +
-      '"><span class="ic">' +
-      ic +
-      '</span><div class="tx"><b>' +
-      esc(title) +
-      "</b><small>" +
-      esc(sub) +
-      '</small></div><span class="ck">' +
-      (on ? "✓" : "") +
-      "</span></div>"
-    );
+    renderSettingsCard();
   }
 
   function ensureOv() {
@@ -857,6 +1375,8 @@
     s.freezes = 1;
     s.freezeAwardAt = 1;
     s.streakMigrated = true;
+    s.quranTarget = { amount: 1, unit: "halaman" };
+    s.quranTargetSet = true;
     for (var i = 1; i <= 12; i++) s.calendar[dAdd(today, -i)] = "full";
     s.calendar[dAdd(today, -5)] = "freeze";
     s.calendar[dAdd(today, -8)] = "uzur";
@@ -879,10 +1399,40 @@
         })()
       });
       s.quran[today] = 1;
+      s.quranProg[today] = { ayat: { "1:1": 1 }, pages: { 1: 1 } };
       s.celebrated = {};
       delete s.calendar[today];
       log[today] = { jamaah: Date.now(), rawatib: Date.now(), dhuha: Date.now(), tahajjud: Date.now() };
       storeSet(SK_DOM, { saldo: 0, poin: 148, hist: [], claimed: {}, act: {} });
+    } else if (mode === "quran-picker" || mode === "picker") {
+      s.quranTargetSet = false;
+      s.quran = {};
+      storeSet("rk_salat_" + today, ["fajr", "dhuhr", "asr", "maghrib"]);
+      storeSet("ks_hikmah", { day: today, doneToday: true, days: (function () { var o = {}; o[today] = 1; return o; })() });
+      storeSet(SK_DOM, { saldo: 0, poin: 72, hist: [], claimed: {}, act: {} });
+    } else if (mode === "quran-prog" || mode === "reader") {
+      s.quranTarget = { amount: 10, unit: "ayat" };
+      s.quranTargetSet = true;
+      s.quranProg[today] = {
+        ayat: { "1:1": 1, "1:2": 1, "1:3": 1 },
+        pages: { 1: 1 }
+      };
+      storeSet("rk_q_last", { s: 1, a: 3, ts: Date.now() });
+      storeSet("rk_q_lastpg", 1);
+      storeSet("rk_salat_" + today, ["fajr", "dhuhr", "asr", "maghrib"]);
+      storeSet("ks_hikmah", { day: today, doneToday: true, days: (function () { var o = {}; o[today] = 1; return o; })() });
+      storeSet(SK_DOM, { saldo: 0, poin: 72, hist: [], claimed: {}, act: {} });
+    } else if (mode === "quran-done") {
+      s.quranTarget = { amount: 1, unit: "halaman" };
+      s.quranTargetSet = true;
+      s.quran[today] = 1;
+      s.quranProg[today] = { ayat: { "1:1": 1, "1:2": 1 }, pages: { 1: 1 } };
+      s.quranDoneToast = {};
+      storeSet("rk_q_last", { s: 1, a: 7, ts: Date.now() });
+      storeSet("rk_q_lastpg", 1);
+      storeSet("rk_salat_" + today, ["fajr", "dhuhr", "asr", "maghrib"]);
+      storeSet("ks_hikmah", { day: today, doneToday: true, days: (function () { var o = {}; o[today] = 1; return o; })() });
+      storeSet(SK_DOM, { saldo: 0, poin: 72, hist: [], claimed: {}, act: {} });
     } else if (mode === "sunnah-open" || mode === "sunnah") {
       storeSet("rk_salat_" + today, ["fajr", "dhuhr", "asr", "maghrib"]);
       storeSet("ks_hikmah", {
@@ -898,7 +1448,6 @@
       log[today] = { jamaah: Date.now(), rawatib: Date.now() };
       storeSet(SK_DOM, { saldo: 0, poin: 86, hist: [], claimed: {}, act: {} });
     } else {
-      // collapsed / beranda
       storeSet("rk_salat_" + today, ["fajr", "dhuhr", "asr", "maghrib"]);
       storeSet("ks_hikmah", {
         day: today,
@@ -920,7 +1469,6 @@
     return s;
   }
 
-  /** Native notif action: mark prayer done respecting time-lock (RKPT.canCheck). */
   function markSalatFromNotif(prayer, day) {
     day = day || dkey();
     prayer = String(prayer || "").toLowerCase();
@@ -929,8 +1477,8 @@
     if (["fajr", "dhuhr", "asr", "maghrib", "isha"].indexOf(n) < 0) return { ok: false, reason: "bad_prayer" };
     try {
       if (window.RKPT && typeof RKPT.canCheck === "function") {
-        var [y, m, dd] = day.split("-").map(Number);
-        var d = new Date(y, m - 1, dd);
+        var parts = day.split("-").map(Number);
+        var d = new Date(parts[0], parts[1] - 1, parts[2]);
         if (!RKPT.canCheck(n, d)) return { ok: false, reason: "locked" };
       }
     } catch (e) {}
@@ -950,6 +1498,57 @@
     return { ok: true, prayer: n };
   }
 
+  function hookReader() {
+    if (readerHooked) return;
+    readerHooked = true;
+    setInterval(function () {
+      var r = document.getElementById("qReader");
+      if (r && !r.hidden) {
+        trackQuranProgress();
+        updateReaderBar();
+      }
+    }, 900);
+    var tries = 0;
+    function wrap() {
+      var Q = window.RKQuran;
+      if (!Q) {
+        if (tries++ < 40) setTimeout(wrap, 200);
+        return;
+      }
+      if (Q._bmTgHook) return;
+      Q._bmTgHook = 1;
+      ["open", "openPage"].forEach(function (fn) {
+        if (typeof Q[fn] !== "function") return;
+        var orig = Q[fn];
+        Q[fn] = function () {
+          var ret = orig.apply(this, arguments);
+          Promise.resolve(ret).then(function () {
+            setTimeout(function () {
+              trackQuranProgress();
+              ensureReaderBar();
+              updateReaderBar();
+            }, 60);
+          });
+          return ret;
+        };
+      });
+    }
+    wrap();
+  }
+
+  function maybeFirstPrompt() {
+    var s = state();
+    if (s.quranTargetSet) return;
+    /* optional / skippable — only show once after short delay on beranda */
+    setTimeout(function () {
+      var pg = document.getElementById("page-beranda");
+      if (!pg || !pg.classList.contains("on")) return;
+      if (state().quranTargetSet) return;
+      if (document.getElementById("bmTgOv") && document.getElementById("bmTgOv").classList.contains("on")) return;
+      openTargetPicker({ allowSkip: true });
+    }, 700);
+  }
+
   function boot() {
     var demo = null;
     try {
@@ -959,6 +1558,7 @@
     } catch (e) {}
     if (demo) seedDemo(demo === "1" ? "beranda" : demo);
 
+    loadMeta();
     migrateStreak(state());
     var msgs = rollMisses();
     msgs.forEach(function (m) {
@@ -967,11 +1567,25 @@
     });
 
     render();
+    hookReader();
+    renderSettingsCard();
+    if (!demo || demo === "picker" || demo === "quran-picker") maybeFirstPrompt();
+    if (demo === "quran-picker" || demo === "picker") setTimeout(function () { openTargetPicker({ allowSkip: true }); }, 400);
+    if (demo === "quran-prog" || demo === "reader") setTimeout(openQuranReader, 500);
+    if (demo === "quran-done") setTimeout(function () { openQuranReader(); setTimeout(openQuranDoneSheet, 600); }, 400);
+
     document.addEventListener("rk:salat-check", function () {
       setTimeout(render, 50);
     });
     document.addEventListener("rk:ibadah", function () {
       setTimeout(render, 50);
+    });
+    document.addEventListener("rk:lang", function () {
+      setTimeout(function () {
+        render();
+        renderSettingsCard();
+        updateReaderBar();
+      }, 40);
     });
     window.addEventListener("storage", function () {
       setTimeout(render, 80);
@@ -992,6 +1606,8 @@
       window.go = function (p) {
         _go.apply(this, arguments);
         if (p === "beranda") setTimeout(render, 100);
+        if (p === "settings") setTimeout(renderSettingsCard, 80);
+        if (p === "mushaf" || p === "quran") setTimeout(updateReaderBar, 200);
       };
       window.go._bmTg = 1;
     }
@@ -1005,6 +1621,10 @@
     openCalendar: openCalendar,
     openUzur: openUzur,
     openCelebration: openCelebration,
+    openTargetPicker: openTargetPicker,
+    openQuranReader: openQuranReader,
+    setTarget: setTarget,
+    getTarget: getTarget,
     showToast: showToast,
     rollMisses: rollMisses,
     completeTodayIfReady: completeTodayIfReady,
