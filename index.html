@@ -886,17 +886,33 @@ input[type=file]{display:none}
 .v2-masjid-jd{margin-top:8px}
 .v2-masjid-jd .v2-attr{margin-top:8px;font-size:11px}
 
-/* t62: Beranda hero carousel (Salat Khusyuk + Hikmah) — scroll-snap, dots, no autoplay */
-.v2-hero-car{margin:0 0 2px}
-.v2-hero-track{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:24px}
+/* ===== t64: compact hero carousel (deploy62 design, scaled) ===== */
+.v2-hero-car{margin:0 0 0}
+.v2-hero-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 16px;scroll-padding-inline:16px;border-radius:0}
 .v2-hero-track::-webkit-scrollbar{display:none}
-.v2-hero-slide{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;min-height:280px;display:flex;align-items:stretch;box-sizing:border-box}
-.v2-hero-slide>.v2-hero,.v2-hero-slide>#pkToday{flex:1;width:100%;min-height:280px;box-sizing:border-box;margin:0}
-.v2-hero-slide>.v2-hero{justify-content:center}
-.v2-hero-slide>#pkToday.hk-card,.v2-hero-slide>#pkToday.pk-today{display:flex;flex-direction:column;justify-content:center}
-.v2-hero-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
-.v2-hero-dot{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:rgba(230,199,122,.28);cursor:pointer}
-.v2-hero-dot.on{background:#e6c77a;transform:scale(1.15)}
+.v2-hero-slide{flex:0 0 calc(100% - 32px);scroll-snap-align:center;scroll-snap-stop:always;min-height:0;display:flex;align-items:stretch;box-sizing:border-box}
+.v2-hero-slide>.v2-hero,.v2-hero-slide>#pkToday{flex:1;width:100%;min-height:0;box-sizing:border-box;margin:0}
+.v2-hero-slide>.v2-hero{justify-content:center;padding:14px 16px 12px;gap:2px;border-radius:20px;box-shadow:0 10px 28px -12px rgba(201,162,74,.55);overflow:hidden;min-width:0;box-sizing:border-box}
+.v2-hero-slide>.v2-hero b{font-size:22px;line-height:1.12;max-width:100%;padding:0 2px;box-sizing:border-box}
+.v2-hero-slide>.v2-hero .v2-tag{font-size:12.5px}
+.v2-hero-slide>.v2-hero small{font-size:10.5px;opacity:.85;line-height:1.35;max-width:100%;padding:0 4px;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;word-break:break-word;text-align:center;display:block}
+.v2-hero-slide>.v2-hero .v2-hero-ic img,.v2-hero-slide>.v2-hero .v2-hero-ic svg{width:32px;height:32px;border-radius:8px}
+.v2-hero-slide>.v2-hero .v2-cta{margin-top:8px;padding:8px 18px;font-size:13.5px;gap:6px}
+.v2-hero-slide>#pkToday.hk-card,.v2-hero-slide>#pkToday.pk-today,.v2-hero-slide>#pkToday.v2-hero-hk{display:flex;flex-direction:column;justify-content:center;padding:12px 14px;border-radius:20px;min-height:0}
+.v2-hero-slide #pkToday .hk-title{font-size:17px;margin:0 0 2px}
+.v2-hero-slide #pkToday .hk-stack{height:72px;width:140px;margin:2px auto 6px}
+.v2-hero-slide #pkToday .hk-stack .hk-cv{width:44px;height:60px}
+.v2-hero-slide #pkToday .hk-meta{font-size:11.5px;margin:0 0 4px}
+.v2-hero-slide #pkToday .hk-prog-today,.v2-hero-slide #pkToday .hk-prog-tot{font-size:11px;line-height:1.25;margin:0}
+.v2-hero-slide #pkToday .hk-actions .btn,.v2-hero-slide #pkToday [data-hkstart],.v2-hero-slide #pkToday .hk-go{font-size:13px;padding:8px 14px}
+.v2-hero-ind{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:8px;margin-bottom:0;min-height:16px}
+.v2-hero-dot{width:6px;height:6px;border-radius:50%;border:0;padding:0;margin:0;background:rgba(230,199,122,.28);cursor:pointer;transition:width .2s,border-radius .2s,background .2s;
+  font-size:0!important;line-height:0;color:transparent;text-indent:-999px;overflow:hidden;white-space:nowrap;
+  -webkit-appearance:none;appearance:none;min-width:6px;min-height:6px;flex:none}
+.v2-hero-dot.on{width:16px;border-radius:999px;background:#e6c77a;transform:none}
+.v2-hero-chev{font-size:15px;line-height:1;color:rgba(230,199,122,.55);font-weight:600;margin-inline-start:2px;animation:v2HeroChev 1.6s ease-in-out infinite}
+@keyframes v2HeroChev{0%,100%{opacity:.35;transform:translateX(0)}50%{opacity:.85;transform:translateX(3px)}}
+@media (prefers-reduced-motion:reduce){.v2-hero-chev{animation:none}}
 
 /* ===== Al-Qur'an reader ===== */
 @font-face{font-family:"Amiri Quran";src:url(quran/fonts/AmiriQuran.woff2) format("woff2");font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+25CC}
@@ -1833,16 +1849,6 @@ html:is([data-theme=light],[data-theme=pink]) .gm-bar,html[data-theme=pink] .gm-
 .hk-quote{margin:10px 16px 0;max-width:320px;text-align:center;font-size:12px;line-height:1.45;opacity:.75;font-style:italic}
 .hk-quote small{display:block;margin-top:4px;font-style:normal;opacity:.85;font-size:11px}
 
-/* t60: progress + continue/replay */
-.hk-prog-today,.hk-prog-tot{font-size:12.5px;line-height:1.4;margin:0 0 6px;color:var(--fg3,#7a6a55)}
-.hk-prog-tot{margin-bottom:12px;opacity:.9}
-.hk-fin-prog{margin:8px 0 0;text-align:center}
-.hk-fin-prog .hk-prog-today,.hk-fin-prog .hk-prog-tot{color:inherit;opacity:.85}
-.hk-fin-bot .hk-btn{margin-top:8px}
-.hk-fin-bot .hk-btn.done{margin-top:6px;background:transparent;color:inherit;border:1.5px solid rgba(255,255,255,.35);font-weight:600}
-:is([data-theme=light],[data-theme=pink]) .hk-fin-bot .hk-btn.done,[data-theme=pink] .hk-fin-bot .hk-btn.done{border-color:rgba(0,0,0,.2)}
-.hk-fin-bot .hk-more{display:block;width:100%;margin:8px auto 0;background:none;border:0;color:inherit;font:inherit;font-size:14px;opacity:.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-
 
 /* ===== Best Muslim — Hafalan Al-Qur'an AI ===== */
 .hq{display:flex;flex-direction:column;gap:14px}
@@ -2118,41 +2124,30 @@ html:is([data-theme=light],[data-theme=pink]) .gm-bar,html[data-theme=pink] .gm-
 [data-theme=pink] .um-bar i{background:linear-gradient(90deg,#9E6B6F,#c49ea1)}
 
 
-/* ===== Doa setelah azan (popup) — t62: satu kartu bergaya Hikmah Harian ===== */
+/* ===== Doa setelah azan (popup) ===== */
 .da-ov{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);animation:daFade .25s ease}
 .da-ov[hidden]{display:none}
 @keyframes daFade{from{opacity:0}to{opacity:1}}
 @keyframes daUp{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
-.da-in{position:relative;width:100%;max-width:560px;max-height:92vh;overflow:auto;background:transparent;color:var(--fg);border-radius:24px 24px 0 0;padding:12px 14px calc(16px + env(safe-area-inset-bottom));animation:daUp .3s ease}
-.da-x{position:absolute;top:18px;inset-inline-end:22px;z-index:2;border:0;background:rgba(0,0,0,.35);color:#f3e7d2;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-[data-theme=light] .da-x,[data-theme=pink] .da-x{background:rgba(255,255,255,.7);color:#3b2a14}
-.da-card{margin:0 auto;padding:0 16px 18px;overflow:hidden;position:relative;border-radius:22px;
- background:linear-gradient(180deg,rgba(255,252,245,.98),rgba(248,240,225,.96));
- border:1px solid rgba(160,120,60,.18);box-shadow:0 12px 36px rgba(40,25,10,.18)}
-[data-theme=dark] .da-card,[data-theme=gold] .da-card{background:linear-gradient(180deg,rgba(42,32,22,.98),rgba(28,20,14,.98));border-color:rgba(212,175,55,.22);box-shadow:0 12px 36px rgba(0,0,0,.45)}
-[data-theme=pink] .da-card{background:linear-gradient(180deg,#fff7f5,#fceeea);border-color:rgba(160,90,100,.2)}
-.da-cover{position:relative;height:88px;margin:0 -16px 12px;display:flex;align-items:center;justify-content:center;
- background:linear-gradient(145deg,#2a1f12 0%,#4a3820 40%,#c9a24a 100%);overflow:hidden}
-[data-theme=pink] .da-cover{background:linear-gradient(145deg,#3b262d 0%,#9E6B6F 45%,#EBCFCF 100%)}
-.da-cover-glow{position:absolute;inset:-40% -20%;background:radial-gradient(circle at 50% 30%,rgba(243,217,139,.45),transparent 55%);pointer-events:none}
-.da-cover-ic{position:relative;z-index:1;font-size:42px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
-.da-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
-.da-ey{font-size:12px;letter-spacing:.04em;text-transform:uppercase;opacity:.75;font-weight:700;color:var(--gold2,#c9a24a)}
-.da-sub{font-size:13.5px;line-height:1.4;color:var(--fg3,#7a6a55);margin:0 0 12px;text-align:center}
-[data-theme=dark] .da-sub,[data-theme=gold] .da-sub{color:rgba(240,220,180,.65)}
-.da-ar{font-family:"Amiri","Amiri Quran",var(--font-arab),serif;font-size:26px;line-height:2.05;text-align:center;color:var(--fg);margin:4px 0 8px}
-.da-tr{font-style:italic;font-size:14px;line-height:1.55;color:var(--fg2);text-align:center;margin:0 0 8px}
-.da-mn{font-size:14.5px;line-height:1.6;margin:0 0 10px;text-align:center;padding:10px 12px;border-radius:12px;background:rgba(201,162,74,.08)}
-[data-theme=dark] .da-mn,[data-theme=gold] .da-mn{background:rgba(230,199,122,.08)}
-.da-src{font-size:12.5px;color:var(--gold2);font-weight:700;margin-top:4px;text-align:center}
-.da-fad{font-size:12.5px;line-height:1.5;text-align:center;margin:8px 0 0;opacity:.85}
-.da-note{font-size:11.5px;color:var(--fg3);line-height:1.5;margin-top:12px;border-top:1px dashed rgba(160,120,60,.25);padding-top:10px;text-align:center}
-.da-ok{display:block;width:100%;max-width:280px;margin:14px auto 0;padding:14px 20px;justify-content:center;border-radius:999px;font-weight:800;font-size:16px;letter-spacing:.02em}
+.da-in{width:100%;max-width:560px;max-height:90vh;overflow:auto;background:var(--bg2,#1c150d);color:var(--fg);border-radius:24px 24px 0 0;border-top:1px solid var(--line2,var(--line));padding:18px 18px calc(18px + env(safe-area-inset-bottom));animation:daUp .3s ease}
+.da-hd{display:flex;align-items:center;gap:10px}
+.da-hd .ic{font-size:30px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:var(--glass2);border:1px solid var(--line);flex:none}
+.da-hd h2{font-size:19px;line-height:1.2;margin:0}
+.da-hd small{display:block;color:var(--fg3);font-size:12.5px;margin-top:2px}
+.da-x{margin-inline-start:auto;border:1px solid var(--line);background:transparent;color:var(--fg2);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;flex:none}
+.da-step{margin-top:12px;border:1px solid var(--line);border-radius:16px;padding:12px 13px;background:var(--glass)}
+.da-step .no{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--gold2);text-transform:uppercase}
+.da-step p{font-size:13.5px;line-height:1.55;margin:6px 0 0}
+.da-ar{font-family:var(--font-arab);font-size:25px;line-height:2;text-align:center;color:var(--fg);margin:8px 0 2px}
+.da-ar.sm{font-size:21px}
+.da-tr{font-style:italic;font-size:13.5px;line-height:1.55;color:var(--fg2);text-align:center}
+.da-mn{font-size:14px;line-height:1.6;margin-top:8px}
+.da-src{font-size:12px;color:var(--gold2);font-weight:700;margin-top:8px;text-align:center}
+.da-note{font-size:11.5px;color:var(--fg3);line-height:1.5;margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.da-ok{width:100%;margin-top:14px;padding:13px;justify-content:center}
 .da-set label{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:10px}
 .da-set input{flex:none}
 .da-set .btn{margin-top:10px}
-/* legacy ids kept empty so old selectors don't break */
-#daShalawat{display:none!important}
 
 
 /* ===== Best Muslim — ikon 3D (t46): Rukun Islam, Akademi Syahadah, grid Lainnya 4 kolom ===== */
@@ -2223,10 +2218,10 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
 
 
 
-    <!-- ================= V2: BERANDA ================= -->
+<!-- ================= V2: BERANDA ================= -->
     <section class="page" id="page-beranda">
       <div class="stack">
-        <!-- t62: swipeable hero — slide 1 Mulai Salat Khusyuk, slide 2 Hikmah Harian (no autoplay) -->
+        <!-- t64: deploy62 hero carousel — compact scale + dots/chevron (no soft-notif) -->
         <div class="v2-hero-car" id="v2HeroCar">
           <div class="v2-hero-track" id="v2HeroTrack" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Beranda hero">
             <div class="v2-hero-slide" data-hi="0">
@@ -2240,9 +2235,10 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
               <div id="pkToday" class="card lit pk-today hk-card v2-hero-hk"></div>
             </div>
           </div>
-          <div class="v2-hero-dots" id="v2HeroDots" aria-hidden="true">
-            <button type="button" class="v2-hero-dot on" data-i="0" aria-label="1"></button>
-            <button type="button" class="v2-hero-dot" data-i="1" aria-label="2"></button>
+          <div class="v2-hero-ind" id="v2HeroDots" aria-hidden="true">
+            <button type="button" class="v2-hero-dot on" data-hi="0" aria-label="Slide 1"></button>
+            <button type="button" class="v2-hero-dot" data-hi="1" aria-label="Slide 2"></button>
+            <span class="v2-hero-chev" aria-hidden="true">›</span>
           </div>
         </div>
         <div class="card lit v2-next v2-click" id="v2Next" data-go="jadwal"></div>
@@ -4475,9 +4471,15 @@ const PROMO=[{id:"wardah",brand:"Wardah",tag:["Cantik halal, hati tenang","Halal
 
 /* t62: hero carousel (Salat | Hikmah) — scroll-snap + dots, no autoplay */
 function initHeroCar(){ const track=$("#v2HeroTrack"), dots=$("#v2HeroDots"); if(!track||!dots||track._heroBound) return; track._heroBound=1;
-  const sync=()=>{ const w=track.clientWidth||1; const i=Math.round(track.scrollLeft/w); dots.querySelectorAll(".v2-hero-dot").forEach((d,j)=>d.classList.toggle("on",j===i)); };
+  /* data-hi (not data-i): base jadwal i18n fills [data-i] textContent — that painted "0"/"1" on phones */
+  dots.querySelectorAll(".v2-hero-dot").forEach(d=>{ d.textContent=""; d.removeAttribute("data-i"); });
+  const slideW=()=>{ const s=track.querySelector(".v2-hero-slide"); return s?s.getBoundingClientRect().width:track.clientWidth; };
+  const sync=()=>{ const w=slideW()||1; const gap=10; const i=Math.max(0,Math.min(1,Math.round(track.scrollLeft/(w+gap))));
+    dots.querySelectorAll(".v2-hero-dot").forEach((d,j)=>d.classList.toggle("on",j===i));
+    const chev=dots.querySelector(".v2-hero-chev"); if(chev) chev.style.visibility=i===0?"visible":"hidden"; };
   track.addEventListener("scroll",()=>{ clearTimeout(track._hst); track._hst=setTimeout(sync,60); },{passive:true});
-  dots.addEventListener("click",e=>{ const b=e.target.closest("[data-i]"); if(!b) return; track.scrollTo({left:(+b.dataset.i)*(track.clientWidth||0),behavior:"smooth"}); });
+  dots.addEventListener("click",e=>{ const b=e.target.closest("[data-hi]"); if(!b) return; const w=slideW(); track.scrollTo({left:(+b.dataset.hi)*(w+10),behavior:"smooth"}); });
+  sync();
 }
 function renderPromo(){ const track=$("#v2PromoTrack"), dots=$("#v2PromoDots"); if(!track) return; const i=({id:0,en:1,ar:2}[lang()]);
   track.innerHTML=PROMO.map((p,idx)=>`<a class="v2-promo-slide" href="${p.href}" data-promo="${p.id}" data-todo="promo-link" aria-label="${esc(p.brand)}"><img src="${p.img}" alt="" width="320" height="140" decoding="async" loading="lazy"><span class="v2-promo-mitra">${v("promoMitra")}</span><div class="v2-promo-copy"><b>${esc(p.brand)}</b><span>${esc(p.tag[i])}</span><em>${v("promoCta")} →</em></div></a>`).join("");
@@ -6500,8 +6502,8 @@ window.KusyuAk50={onDone,openTrack,quiz,closeTk,closeQz,decorate,openGame,closeG
 
 </script>
 <script>
-/* t57/t60 — Hikmah Harian: Daily Wisdom (1 ayat + 1 hadis + 3 highlight sirah), urutan ketat berurutan.
-   Data lokal saja. Progres Quran/Hadis/Sirah memakai jalur ks_prog + pointer ks_hikmah.ai/hi/si. */
+/* t57 — Hikmah Hari Ini: Daily Review style daily review (1 ayat + 1 hadis + 3 highlight sirah).
+   Data lokal saja. Progres Quran/Hadis/Sirah memakai jalur ks_prog yang sama. */
 (function(){
 "use strict";
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -6510,23 +6512,18 @@ const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includ
 const L=()=>({id:0,en:1,ar:2}[lang()]);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const NUM=n=>lang()==="ar"?String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]):String(n);
-const Ndot=n=>{const x=+n|0; if(lang()==="ar") return NUM(x); if(lang()==="id") return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,"."); return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,",");};
 const PK=()=>window.KusyuPustaka;
 const toast=m=>{const t=$("#toast");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2600);};
 const dk=(d)=>{const x=d||new Date();return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0");};
 const dAdd=(d,n)=>{const x=new Date(d+"T12:00:00");x.setDate(x.getDate()+n);return dk(x);};
 const pad=n=>String(n).padStart(3,"0");
-const TOT_A=6236, TOT_H=7563;
 const T={
  name:["Hikmah Harian","Daily Wisdom","الحكمة اليومية"],
  sub:["5 kartu dari {a}, {h} dan Sirah","5 cards from {a}, {h} and Seerah","٥ بطاقات من {a} و{h} والسيرة"],
- subDone:["Selesai hari ini · kamu bisa lanjut atau ulas lagi","Done for today · continue or review again","أتممت اليوم · يمكنك المتابعة أو المراجعة"],
+ subDone:["Selesai hari ini · kembali besok, insya Allah","Done for today · come back tomorrow, insha Allah","أتممت اليوم · عد غدًا إن شاء الله"],
  start:["Mulai","Review","ابدأ"],
- reopen:["Buka lagi","Open again","افتح مجددًا"],
  doneBtn:["Selesai","Done","تم"],
  reviewMore:["Uji hafalan →","Test your memory →","اختبر حفظك ←"],
- continueMore:["Lanjut baca lagi →","Keep reading →","تابع القراءة ←"],
- replayToday:["Ulas lagi kartu hari ini","Review today's cards","راجع بطاقات اليوم"],
  skip:["Lewati","Discard","تخطَّ"],
  master:["Sudah hafal","Master","أتقنتُه"],
  later:["Ulangi besok","Again tomorrow","أعد غدًا"],
@@ -6542,12 +6539,10 @@ const T={
  streak:["Istiqamah harian","Daily istiqamah","الاستقامة اليومية"],
  dayN:["{n} hari","{n} day","{n} يوم"],
  daysN:["{n} hari","{n} days","{n} أيام"],
- todayLine:["Hari ini: {a} ayat, {h} hadis, {s} kalimat sirah","Today: {a} ayahs, {h} hadiths, {s} seerah lines","اليوم: {a} آية، {h} حديث، {s} جملة سيرة"],
- totalsLine:["Al-Qur'an {a}/{ta} ayat · Hadis {h} · Sirah {p}% selesai","Qur'an {a}/{ta} ayahs · Hadith {h} · Seerah {p}% done","القرآن {a}/{ta} آية · الحديث {h} · السيرة {p}٪"],
  quote:["Amalan yang paling dicintai Allah adalah yang paling rutin walaupun sedikit.","The most beloved deeds to Allah are those done most consistently, even if small.","أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ."],
  quoteSrc:["HR. Bukhari 6464, Muslim 783","Bukhari 6464, Muslim 783","البخاري ٦٤٦٤، مسلم ٧٨٣"],
- hintA:["Ayat berikutnya berurutan","Next ayah in sequence","الآية التالية بالترتيب"],
- hintH:["Hadis berikutnya · Shahih al-Bukhari","Next hadith · Sahih al-Bukhari","الحديث التالي · صحيح البخاري"],
+ hintA:["Ayat dari jalur bacaanmu","A verse from your reading track","آية من مسار قراءتك"],
+ hintH:["Hadis dari Shahih al-Bukhari","A hadith from Sahih al-Bukhari","حديث من صحيح البخاري"],
  hintS:["Cuplikan Sirah Nabawiyah · Bab {b} · {p}%","Seerah passage · Ch. {b} · {p}%","مقتطف من السيرة · باب {b} · {p}٪"],
  taf:["Tafsir singkat","Brief tafsir","تفسير موجز"],
  draft:["Terjemahan: draf, dalam peninjauan.","Translation: draft, under review.",""],
@@ -6562,25 +6557,17 @@ const T={
 };
 const tt=(k,vars)=>{let s=(T[k]&&(T[k][L()]||T[k][0]))||k; if(vars) Object.keys(vars).forEach(x=>{s=s.replace(new RegExp("\\{"+x+"\\}","g"),vars[x]);}); return s;};
 const HK="ks_hikmah";
-const stGet=()=>store.get(HK,{ai:null,hi:null,si:0,fav:{},notes:{},later:{},master:{},days:{},hist:[],today:null,lastDeck:null,reviewMode:false});
+const stGet=()=>store.get(HK,{si:0,fav:{},notes:{},later:{},master:{},days:{},hist:[]});
 const stSet=v=>store.set(HK,v);
 const COVER={a:"hikmah/cover-q.svg",h:"hikmah/cover-h.svg",s:"hikmah/cover-s.svg"};
 const LAND="hikmah/landscape.svg";
-let HL=null, DECK=null, IX=0, busy=false, REVIEW=false;
+let HL=null, DECK=null, IX=0, busy=false, sw={};
 
 function ensureProg(){ const P=PK()&&PK().prog&&PK().prog(); if(P&&P.st==="on") return P;
   const cur=store.get("ks_prog",null);
   if(cur){ cur.st="on"; store.set("ks_prog",cur); try{PK().pRender&&PK().pRender();}catch(e){} return cur; }
   const neu={st:"on",a:{p:1,t:1},h:{p:1,t:1},s:{p:1,t:1},day:dk(),done:{},pz:[],extra:0,since:dk(),b:{d:{}}};
   store.set("ks_prog",neu); try{PK().pRender&&PK().pRender();}catch(e){} return neu; }
-
-function migrate(){ const S=stGet(); let ch=false; const P=store.get("ks_prog",null);
-  if(S.ai==null){ S.ai=Math.min(Math.max(1,(P&&P.a&&(P.a.p|0))||1),TOT_A); ch=true; }
-  if(S.hi==null){ S.hi=Math.min(Math.max(1,(P&&P.h&&(P.h.p|0))||1),TOT_H); ch=true; }
-  if(S.si==null||S.si<0){ S.si=0; ch=true; }
-  if(!S.today||S.today.day!==dk()){ S.today={day:dk(),a:0,h:0,s:0}; ch=true; }
-  if(S.day&&S.day!==dk()){ S.deck=null; S.i=0; S.doneToday=false; S.lastDeck=null; S.reviewMode=false; S.day=dk(); ch=true; }
-  if(ch) stSet(S); return S; }
 
 async function loadHL(){ if(HL) return HL; const r=await fetch("hikmah/sirah-hl.json"); HL=await r.json(); return HL; }
 
@@ -6594,36 +6581,33 @@ async function tafShort(s,a){ try{
   return t;
  }catch(e){ return ""; } }
 
-function nextA(n){ n=(+n|0); return n>=TOT_A?1:n+1; }
-function nextH(n){ n=(+n|0); return n>=TOT_H?1:n+1; }
-
-async function makeDeckFromPointers(ai,hi,si){ await loadHL();
-  const A=await PK().ayahAt(ai); const H=await PK().hadAt(hi);
+async function buildDeck(opts){ const S=stGet(), day=dk(); const live=opts&&opts.live;
+  if(S.day===day&&S.deck&&S.deck.length){ DECK=S.deck; if(!live && !$("#hkOv.on")) IX=S.i||0; return DECK; }
+  const P0=PK()&&PK().prog&&PK().prog();
+  const P=P0&&P0.st!=="off"?P0:{a:{p:1,t:1},h:{p:1,t:1},s:{p:1,t:1}};
+  await loadHL();
+  const aN=Math.min(P.a.p||P.a.t||1,6236), hN=Math.min(P.h.p||P.h.t||1,7563);
+  const A=await PK().ayahAt(aN); const H=await PK().hadAt(hN);
   const taf=await tafShort(A.s,A.a);
-  let s0=((si|0)%(HL.n||1)+HL.n)%(HL.n||1);
+  let si=S.si|0; if(si>=HL.n) si=0;
   const sir=[];
-  for(let k=0;k<3;k++){ const h=HL.hl[(s0+k)%HL.n]; sir.push({type:"s",id:"s:"+h.i+":"+dk()+"/"+k, p:h.p, k:h.k, n:h.n, t:h.t, idt:h.id, en:h.en, pct:h.pct, hi:h.i}); }
-  return [
-    {type:"a",id:"a:"+ai, g:ai, s:A.s, a:A.a, name:A.name, ar:A.ar, tr:A.tr||"", taf, st:null},
-    {type:"h",id:"h:"+hi, n:hi, k:H.k, kn:H.kn, ar:H.ar||"", tr:H.id||"", st:null},
+  for(let k=0;k<3;k++){ const h=HL.hl[(si+k)%HL.n]; sir.push({type:"s",id:"s:"+h.i, p:h.p, k:h.k, n:h.n, t:h.t, idt:h.id, en:h.en, pct:h.pct, hi:h.i}); }
+  const deck=[
+    {type:"a",id:"a:"+aN, g:aN, s:A.s, a:A.a, name:A.name, ar:A.ar, tr:A.tr||"", taf, st:null},
+    {type:"h",id:"h:"+hN, n:hN, k:H.k, kn:H.kn, ar:H.ar||"", tr:H.id||"", st:null},
     ...sir.map(x=>({...x,st:null}))
   ];
-}
+  /* resurface "later" cards first if due */
+  const due=Object.keys(S.later||{}).filter(id=>S.later[id]<=day&&!deck.find(c=>c.id===id));
+  /* keep deck fixed at 5 for the daily ritual; later just marks for tomorrow */
+  S.day=day; S.deck=deck; S.i=0; S.si=si; S.doneToday=false; stSet(S);
+  DECK=deck; IX=0; return deck; }
 
-async function buildDeck(opts){ const o=opts||{}; migrate(); const S=stGet(); const day=dk(); const live=!!o.live;
-  if(o.replay&&S.lastDeck&&S.lastDeck.length){
-    DECK=S.lastDeck.map(c=>({...c,st:null})); IX=0; REVIEW=true; S.reviewMode=true; S.deck=DECK; S.i=0; stSet(S); return DECK;
-  }
-  if(!o.forceNext&&S.day===day&&S.deck&&S.deck.length){ DECK=S.deck; REVIEW=!!S.reviewMode; if(!live&&!$("#hkOv.on")) IX=S.i||0; return DECK; }
-  const ai=Math.min(Math.max(1,S.ai|0||1),TOT_A), hi=Math.min(Math.max(1,S.hi|0||1),TOT_H), si=S.si|0;
-  const deck=await makeDeckFromPointers(ai,hi,si);
-  S.day=day; S.deck=deck; S.i=0; S.reviewMode=false; if(o.forceNext) S.doneToday=false; stSet(S);
-  DECK=deck; IX=0; REVIEW=false; return deck; }
-
-function weekDays(){
+function weekDays(){ /* 7 hari mulai dari hari mulai pengguna (seperti review harian), label Sen…Ahd */
   const S=stGet(), labs=T.week[L()]||T.week[0];
   const P=store.get("ks_prog",null); const startStr=(S.since||(P&&P.since)||dk());
   const start=new Date(startStr+"T12:00:00"); const today=new Date(); today.setHours(12,0,0,0);
+  /* jendela 7 hari yang berisi hari ini, berawal pada weekday start (atau senin minggu ini bila start jauh) */
   let anchor=new Date(today); const startDow=(start.getDay()+6)%7; const todayDow=(today.getDay()+6)%7;
   anchor.setDate(today.getDate()-((todayDow-startDow+7)%7));
   const out=[];
@@ -6632,16 +6616,6 @@ function weekDays(){
   return out; }
 function streakCount(){ const S=stGet(); let n=0,d=dk(); if(!(S.days&&S.days[d])) d=dAdd(d,-1); let g=0;
   while(g++<4000){ if(S.days&&S.days[d]){ n++; d=dAdd(d,-1);} else break; } return n; }
-
-function progressSnap(){ const S=migrate(); const aDone=Math.max(0,Math.min(TOT_A,(S.ai|0)-1));
-  const hDone=Math.max(0,Math.min(TOT_H,(S.hi|0)-1));
-  const sn=HL&&HL.n?HL.n:164; const si=S.si|0; const p=Math.min(100,Math.floor(si*1000/sn)/10);
-  const td=S.today&&S.today.day===dk()?S.today:{a:0,h:0,s:0};
-  return {td,aDone,hDone,p,st:streakCount()}; }
-
-function progressHTML(){ const {td,aDone,hDone,p,st}=progressSnap();
-  return `<p class="hk-prog-today">${esc(tt("todayLine",{a:NUM(td.a|0),h:NUM(td.h|0),s:NUM(td.s|0)}))}</p>
-    <p class="hk-prog-tot">${esc(tt("totalsLine",{a:Ndot(aDone),ta:Ndot(TOT_A),h:Ndot(hDone),p:NUM(p)}))}${st?` · 🔥 ${esc(tt(st===1?"dayN":"daysN",{n:NUM(st)}))}`:""}</p>`; }
 
 function coverHTML(type,cls){ return `<span class="${cls||"hk-cv"}" aria-hidden="true"><img src="${COVER[type]}" alt="" width="80" height="110" loading="lazy"></span>`; }
 
@@ -6655,8 +6629,7 @@ async function renderCard(el){ if(!el) return; el.className="card lit pk-today h
     <div class="hk-stack">${coverHTML("a")}${coverHTML("h")}${coverHTML("s")}</div>
     <h3 class="hk-title">${esc(tt("name"))}</h3>
     <p class="hk-sub">${done?esc(tt("subDone")):esc(tt("sub",{a:aName,h:hName}))}</p>
-    ${progressHTML()}
-    <button type="button" class="hk-btn${done?" done":""}" data-hkstart="1">${done?esc(tt("reopen")):esc(tt("start"))}</button>
+    <button type="button" class="hk-btn${done?" done":""}" data-hkstart="1">${done?esc(tt("doneBtn")):esc(tt("start"))}</button>
     ${done?`<p class="hk-done-banner">${esc(tt("finTitle"))}</p>`:""}`; }
 
 function dotsHTML(){ if(!DECK) return "";
@@ -6697,10 +6670,9 @@ function shell(){ let o=$("#hkOv"); if(!o){ o=document.createElement("div"); o.i
 function close(){ const o=$("#hkOv"); if(o){ o.classList.remove("on"); setTimeout(()=>{ if(o&&!o.classList.contains("on")) o.remove(); },220); }
   const n=$("#hkNote"); if(n) n.remove(); try{renderCard($("#pkToday"));}catch(e){} try{PK().homeCard&&PK().homeCard();}catch(e){} }
 
-async function open(force){ ensureProg(); migrate();
-  const S=stGet();
-  if(S.doneToday&&!force&&!S.reviewMode){ await buildDeck({live:true}); showFin(); return; }
-  await buildDeck(); IX=Math.max(0, DECK.findIndex(c=>!c.st)); if(IX<0){ showFin(); return; }
+async function open(force){ ensureProg(); await buildDeck(); const S=stGet();
+  if(S.doneToday && !force){ showFin(); return; }
+  IX=Math.max(0, DECK.findIndex(c=>!c.st)); if(IX<0){ showFin(); return; }
   const o=shell(); o.innerHTML=""; requestAnimationFrame(()=>o.classList.add("on"));
   render(); }
 
@@ -6712,50 +6684,34 @@ function render(){ const o=$("#hkOv"); if(!o) return;
     <div class="hk-stage"><div class="hk-cardv" id="hkCard">${cardBody(c)}${actionsHTML(c)}</div></div>
     ${botHTML()}`; }
 
-function showFin(){ const o=shell(); const S=stGet();
-  if(!REVIEW){ S.doneToday=true; S.days=S.days||{}; S.days[dk()]=1; if(!S.since) S.since=dk();
-    if(DECK&&DECK.length) S.lastDeck=DECK.map(c=>({...c,st:c.st||"keep"})); }
-  S.reviewMode=false; REVIEW=false; stSet(S);
+function showFin(){ const o=shell(); const S=stGet(); S.doneToday=true; S.days=S.days||{}; S.days[dk()]=1; if(!S.since) S.since=dk(); stSet(S);
   const n=DECK?DECK.length:5; const st=streakCount(); const week=weekDays();
   o.innerHTML=`<div class="hk-fin"><div class="hk-top"><button type="button" class="hk-x" data-hkclose="1" aria-label="✕">✕</button><div class="hk-date">${esc(tt("name"))}</div><span></span></div>
     <div class="hk-dots">${Array(n).fill(0).map(()=>`<i class="ok">✓</i>`).join("")}<i class="ok">✓</i></div>
-    <div class="hk-fin-top"><h2>${esc(tt("finTitle"))}</h2><p>${esc(tt("finSub",{n:NUM(n)}))}</p>
-      <div class="hk-fin-prog">${progressHTML()}</div></div>
+    <div class="hk-fin-top"><h2>${esc(tt("finTitle"))}</h2><p>${esc(tt("finSub",{n:NUM(n)}))}</p></div>
     <div class="hk-fin-bg" style="background-image:url('${LAND}')"></div>
     <div class="hk-streak"><div class="hk-sh"><span>${esc(tt("streak"))}</span><span>🔥 ${esc(tt(st===1?"dayN":"daysN",{n:NUM(st)}))}</span></div>
       <div class="hk-week">${week.map(d=>`<span>${esc(d.lab)}<i class="${d.on?"on":""}">${d.on?"✓":""}</i></span>`).join("")}</div></div>
-    <div class="hk-fin-bot">
-      <button type="button" class="hk-btn" data-hkcont="1">${esc(tt("continueMore"))}</button>
-      <button type="button" class="hk-more" data-hkreplay="1">${esc(tt("replayToday"))}</button>
+    <div class="hk-fin-bot"><button type="button" class="hk-btn" data-hkclose="1">${esc(tt("doneBtn"))}</button>
       <button type="button" class="hk-more" data-hkquiz="1">${esc(tt("reviewMore"))}</button>
-      <button type="button" class="hk-btn done" data-hkclose="1">${esc(tt("doneBtn"))}</button>
       <p class="hk-quote">“${esc(tt("quote"))}” <small>${esc(tt("quoteSrc"))}</small></p></div></div>`;
   requestAnimationFrame(()=>o.classList.add("on"));
   try{renderCard($("#pkToday"));}catch(e){} }
 
-async function continueMore(){ ensureProg(); migrate();
-  const S=stGet(); S.deck=null; S.i=0; S.doneToday=false; S.reviewMode=false; stSet(S);
-  REVIEW=false; await buildDeck({forceNext:true});
-  const o=shell(); o.innerHTML=""; requestAnimationFrame(()=>o.classList.add("on"));
-  IX=0; render(); }
-
-async function replayToday(){ const S=stGet(); if(!S.lastDeck||!S.lastDeck.length){ toast(tt("subDone")); return; }
-  await buildDeck({replay:true}); const o=shell(); o.innerHTML=""; requestAnimationFrame(()=>o.classList.add("on"));
-  IX=0; render(); }
-
-async function advanceTrack(c,mode){
-  const S=migrate();
+async function advanceTrack(c,mode){ /* mode: keep|master|skip|later */
+  const S=stGet();
   if(mode==="later"){ S.later=S.later||{}; S.later[c.id]=dAdd(dk(),1); stSet(S); toast(tt("laterOk")); return; }
-  if(REVIEW){ /* ulas ulang: jangan hitung ganda */ if(mode==="master"){ S.master=S.master||{}; S.master[c.id]=dk(); stSet(S); toast(tt("masterOk")); } return; }
   if(mode==="master"){ S.master=S.master||{}; S.master[c.id]=dk(); stSet(S); toast(tt("masterOk")); }
-  /* maju pointer berurutan untuk keep/master/skip; later tidak */
+  if(mode==="skip"){ /* no progress advance */ return; }
+  /* keep or master → advance reading track once per source card */
   try{
-    if(c.type==="a"){ S.ai=nextA(c.g||S.ai); if(mode!=="skip"){ S.today=S.today&&S.today.day===dk()?S.today:{day:dk(),a:0,h:0,s:0}; S.today.a=(S.today.a|0)+1; if(PK().trackRead) PK().trackRead("a",1); } stSet(S); }
-    else if(c.type==="h"){ S.hi=nextH(c.n||S.hi); if(mode!=="skip"){ S.today=S.today&&S.today.day===dk()?S.today:{day:dk(),a:0,h:0,s:0}; S.today.h=(S.today.h|0)+1; if(PK().trackRead) PK().trackRead("h",1); } stSet(S); }
-    else if(c.type==="s"){ S.si=(typeof c.hi==="number"?c.hi+1:((S.si|0)+1)); if(HL&&S.si>=HL.n) S.si=0;
-      if(mode!=="skip"){ S.today=S.today&&S.today.day===dk()?S.today:{day:dk(),a:0,h:0,s:0}; S.today.s=(S.today.s|0)+1;
-        const finishedPage=c.k===c.n-1; if(finishedPage&&PK().trackRead) PK().trackRead("s",1); }
-      stSet(S); }
+    if(c.type==="a"&&PK().trackRead) PK().trackRead("a",1);
+    else if(c.type==="h"&&PK().trackRead) PK().trackRead("h",1);
+    else if(c.type==="s"){ /* advance sirah highlight cursor; page progress when leaving a page */
+      S.si=(typeof c.hi==="number"?c.hi+1:((S.si|0)+1)); if(HL&&S.si>=HL.n) S.si=0; stSet(S);
+      const finishedPage=c.k===c.n-1;
+      if(finishedPage&&PK().trackRead) PK().trackRead("s",1);
+    }
   }catch(e){}
 }
 
@@ -6767,9 +6723,9 @@ async function act(mode){ if(busy||!DECK||IX>=DECK.length) return; busy=true;
   setTimeout(()=>{ IX=next; busy=false; if(IX>=DECK.length) showFin(); else render(); },280); }
 
 function shareCard(c){ let text="";
-  if(c.type==="a") text=`QS. ${c.name} ${c.s}:${c.a}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Harian`;
-  else if(c.type==="h") text=`Shahih al-Bukhari ${c.n}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Harian`;
-  else text=`${(c.t&&c.t[0])||"Sirah"}\n${c.idt}\n— Best Muslim · Hikmah Harian`;
+  if(c.type==="a") text=`QS. ${c.name} ${c.s}:${c.a}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Hari Ini`;
+  else if(c.type==="h") text=`Shahih al-Bukhari ${c.n}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Hari Ini`;
+  else text=`${(c.t&&c.t[0])||"Sirah"}\n${c.idt}\n— Best Muslim · Hikmah Hari Ini`;
   if(navigator.share){ navigator.share({text}).catch(()=>{}); }
   else if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(()=>toast(tt("shared"))).catch(()=>toast(tt("shared"))); }
   else { toast(tt("shared")); }
@@ -6788,14 +6744,13 @@ function openNote(c){ let n=$("#hkNote"); if(n) n.remove(); n=document.createEle
 function onClick(e){
   if(e.target.closest("[data-hkclose]")){ close(); return; }
   if(e.target.closest("[data-hkquiz]")){ close(); setTimeout(()=>{ try{ window.KusyuAk50&&KusyuAk50.openGame&&KusyuAk50.openGame(); }catch(err){} },120); return; }
-  if(e.target.closest("[data-hkcont]")){ continueMore(); return; }
-  if(e.target.closest("[data-hkreplay]")){ replayToday(); return; }
   const a=e.target.closest("[data-hk]"); if(a){ act(a.dataset.hk); return; }
   const actb=e.target.closest("[data-hkact]"); if(actb&&DECK&&DECK[IX]){ const c=DECK[IX]; const k=actb.dataset.hkact;
     if(k==="share") shareCard(c); else if(k==="fav") toggleFav(c); else if(k==="note") openNote(c); }
 }
 
 function bindSwipe(o){ let x0=0,y0=0,dx=0,active=false;
+  const stage=()=>o.querySelector(".hk-stage");
   o.addEventListener("touchstart",e=>{ const t=e.changedTouches[0]; if(!t||!e.target.closest(".hk-cardv")) return; active=true; x0=t.clientX; y0=t.clientY; dx=0; },{passive:true});
   o.addEventListener("touchmove",e=>{ if(!active) return; const t=e.changedTouches[0]; dx=t.clientX-x0; const dy=t.clientY-y0; if(Math.abs(dx)<Math.abs(dy)) return;
     const card=$("#hkCard"); if(card){ card.style.transition="none"; card.style.transform=`translateX(${dx}px) rotate(${dx/30}deg)`; } },{passive:true});
@@ -6804,9 +6759,10 @@ function bindSwipe(o){ let x0=0,y0=0,dx=0,active=false;
     if(dx>80) act("keep"); else if(dx<-80) act("skip"); dx=0; },{passive:true});
 }
 
-function boot(){
+function boot(){ /* Beranda card click */
   document.addEventListener("click",e=>{ const b=e.target.closest("#pkToday [data-hkstart]"); if(b){ open(false); return; } });
   const progOn=()=>{ try{ const P=store.get("ks_prog",null); return !!(P&&P.st&&P.st!=="off"); }catch(e){ return false; } };
+  /* hanya timpa kartu bila program aktif — kartu highlight lama tetap saat off */
   const wrap=()=>{ const c=$("#pkToday"); if(c&&progOn()) renderCard(c); };
   document.addEventListener("rk:lang",()=>setTimeout(wrap,40));
   const _go=window.go; if(_go) window.go=function(p){ _go(p); if(p==="beranda") setTimeout(wrap,30); };
@@ -6817,7 +6773,7 @@ function boot(){
     new MutationObserver(ms=>{ ms.forEach(m=>{ if(m.target.id==="pkToday"||(m.addedNodes&&[...m.addedNodes].some(n=>n.id==="pkToday"))) setTimeout(wrap,10); }); }).observe(pg,{childList:true,subtree:true}); };
   obs();
 }
-window.KusyuHikmah={open,close,renderCard,buildDeck,continueMore,replayToday,state:()=>({deck:DECK,i:IX,st:stGet(),review:REVIEW}),tt};
+window.KusyuHikmah={open,close,renderCard,buildDeck,state:()=>({deck:DECK,i:IX,st:stGet()}),tt};
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
 })();
 
@@ -7745,7 +7701,7 @@ document.addEventListener("DOMContentLoaded",init); if(document.readyState!=="lo
 </script>
 <script>
 /* ===== Best Muslim — Doa setelah azan (popup + satu notifikasi gabungan) + notifikasi persiapan 10 menit =====
-   Dalil: HR. Bukhari 614 (Jabir bin Abdillah) — doa setelah azan. (Satu kartu; langkah shalawat terpisah dihapus t62.)
+   Dalil: HR. Bukhari 614 (Jabir bin Abdillah) — doa; HR. Muslim 384 (Abdullah bin 'Amr) — jawab azan, shalawat, lalu minta al-wasilah.
    Tambahan penutup dari riwayat al-Baihaqi (dinilai syadz) SENGAJA tidak dicantumkan.
    Tanpa jaringan pihak ketiga. Pengaturan: rk_doa_azan; riwayat tampil: rk_doa_azan_seen. */
 (function(){
@@ -7774,7 +7730,7 @@ const X={
  src:["Shahih Bukhari nomor 614, dari Jabir bin Abdillah","Sahih al-Bukhari no. 614, from Jabir ibn 'Abdillah","صحيح البخاري، رقم ٦١٤، عن جابر بن عبد الله رضي الله عنهما"],
  fad:["Keutamaan: “…ia berhak mendapat syafaatku pada hari kiamat.” (HR. Bukhari 614)","Virtue: “…my intercession becomes due for him on the Day of Resurrection.” (Bukhari 614)","فضله: «حلّت له شفاعتي يوم القيامة» (البخاري ٦١٤)"],
  note:["Redaksi di atas sesuai Shahih Bukhari. Tambahan yang populer di akhir doa tidak terdapat dalam Bukhari maupun Muslim, sehingga tidak kami cantumkan.","The wording above follows Sahih al-Bukhari. A popular ending addition is not found in Bukhari or Muslim, so it is not included.","اللفظ أعلاه لفظ صحيح البخاري، وأما الزيادة المشهورة في آخره فليست في الصحيحين فلم نذكرها."],
- ok:["Aamiin","Ameen","آمين"],
+ ok:["Aamiin · Tutup","Ameen · Close","آمين · إغلاق"],
  close:["Tutup","Close","إغلاق"],
  setT:["Doa setelah azan","Supplication after the adhan","الدعاء بعد الأذان"],
  setOn:["Tampilkan doa setelah azan selesai (popup & notifikasi)","Show the supplication when the adhan ends (popup & notification)","اعرض الدعاء عند انتهاء الأذان (نافذة وإشعار)"],
@@ -7783,7 +7739,7 @@ const X={
  setView:["Lihat doa","View supplication","عرض الدعاء"],
  setNote:["Notifikasi butuh izin notifikasi dan suara azan selain “Senyap”. Versi web: andal saat aplikasi terbuka atau di latar belakang; saat aplikasi ditutup penuh, notifikasi belum bisa dijamin.","Notifications need notification permission and an azan sound other than “Silent”. Web version: reliable while the app is open or in the background; when fully closed, notifications cannot be guaranteed.","تحتاج الإشعارات إلى الإذن وصوت أذان غير «صامت». في نسخة الويب: موثوقة والتطبيق مفتوح أو في الخلفية؛ أما عند إغلاقه تمامًا فلا يمكن ضمانها."],
  nTitle:["Azan {p} selesai · Doa setelah azan","{p} adhan finished · Supplication after the adhan","انتهى أذان {p} · الدعاء بعد الأذان"],
- nSrc:["(Shahih Bukhari no. 614) · Ketuk untuk baca doa","(Sahih al-Bukhari 614) · Tap to read the supplication","(صحيح البخاري ٦١٤) · اضغط لقراءة الدعاء"],
+ nSrc:["(Shahih Bukhari no. 614) · Ketuk untuk shalawat & doa lengkap","(Sahih al-Bukhari 614) · Tap for salawat & the full supplication","(صحيح البخاري ٦١٤) · اضغط للصلاة على النبي ﷺ والدعاء كاملًا"],
  pTitle:["Sepuluh menit lagi salat. Siapkan dirimu bertemu Allah.","Ten minutes until prayer. Prepare yourself to meet Allah.","بقيت عشر دقائق على الصلاة. تهيّأ للقاء الله."],
  pList:[["Siwak","Wudhu yang sempurna","Pakai pakaian terbaik","Perbaiki niat"],["Siwak","A complete wudu","Wear your best clothes","Renew your intention"],["السواك","إسباغ الوضوء","البس أحسن ثيابك","أصلح نيتك"]]
 };
@@ -7820,19 +7776,15 @@ function chime(){ const c=cfg(); if(!c.sound||S.get("ks_duo_mute",false)) return
    log("chime"); return true; }catch(e){ return false; } }
 /* ---------- popup ---------- */
 function html(info){ const L=lg(), p=info&&info.n?pn(info.n):"";
- const subT=p?sub(t(X.doneP),p)+(info.time?" · "+info.time:""):t(X.manual);
  return `<div class="da-in" role="dialog" aria-modal="true" aria-labelledby="daTitle" dir="${L==="ar"?"rtl":"ltr"}">
-  <button type="button" class="da-x" id="daX" aria-label="${esc(t(X.close))}">✕</button>
-  <div class="da-card" id="daDoa">
-   <div class="da-cover" aria-hidden="true"><span class="da-cover-ic">🤲</span><span class="da-cover-glow"></span></div>
-   <div class="da-meta"><div class="da-ey" id="daTitle">✦ ${esc(t(X.title))}</div></div>
-   <p class="da-sub">${esc(subT)}</p>
-   <div class="da-ar" lang="ar" dir="rtl" id="daAr">${DOA_AR}</div>
-   ${L==="ar"?"":`<div class="da-tr" id="daTr">${esc(DOA_TR)}</div><div class="da-mn" id="daMn">“${esc(t(X.mean))}”</div>`}
-   <div class="da-src" id="daSrc">${esc(t(X.src))}</div>
-   <p class="da-fad">${esc(t(X.fad))}</p>
-   <div class="da-note">${esc(t(X.note))}</div>
-  </div>
+  <div class="da-hd"><div class="ic" aria-hidden="true">🤲</div><div><h2 id="daTitle">${esc(t(X.title))}</h2><small>${esc(p?sub(t(X.doneP),p)+(info.time?" · "+info.time:""):t(X.manual))}</small></div><button type="button" class="da-x" id="daX" aria-label="${esc(t(X.close))}">✕</button></div>
+  <div class="da-step" id="daShalawat"><span class="no">${esc(t(X.s1))}</span><p>${esc(t(X.s1p))}</p>
+   <div class="da-ar sm" lang="ar" dir="rtl">${SH_AR}</div>${L==="ar"?"":`<div class="da-tr">${esc(SH_TR)}</div>`}
+   <div class="da-src">${esc(t(X.s1src))}</div><p class="dim" style="font-size:11.5px;text-align:center">${esc(t(X.s1n))}</p></div>
+  <div class="da-step" id="daDoa"><span class="no">${esc(t(X.s2))}</span>
+   <div class="da-ar" lang="ar" dir="rtl" id="daAr">${DOA_AR}</div>${L==="ar"?"":`<div class="da-tr" id="daTr">${esc(DOA_TR)}</div><div class="da-mn" id="daMn">“${esc(t(X.mean))}”</div>`}
+   <div class="da-src" id="daSrc">${esc(t(X.src))}</div><p class="dim" style="font-size:12px;text-align:center;margin-top:4px">${esc(t(X.fad))}</p>
+   <div class="da-note">${esc(t(X.note))}</div></div>
   <button type="button" class="btn gold da-ok" id="daOk">${esc(t(X.ok))}</button></div>`; }
 function show(info,opts){ opts=opts||{}; let ov=document.getElementById("daPop");
  if(!ov){ ov=document.createElement("div"); ov.id="daPop"; ov.className="da-ov"; document.body.appendChild(ov);
