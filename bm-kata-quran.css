@@ -1,4 +1,4 @@
-/* Best Muslim — Kata Qur'an untukmu (v76). Own design; gold/dark. Silent anim; respects reduced-motion. */
+/* Best Muslim — Kata Qur'an untukmu (v77). Own design; gold/dark. Silent anim; respects reduced-motion. */
 
 .bm-kq-entry{
   display:flex;align-items:stretch;gap:14px;width:100%;text-align:start;
@@ -352,3 +352,29 @@
   .bm-kq-anim.phase-lid .bm-kq-anim-jar .bm-kq-jar .lid{animation:none!important;transition:none!important}
   .bm-kq-anim.phase-done .bm-kq-anim-card{opacity:1;transform:translate(-50%,-50%) scale(1)}
 }
+
+
+/* v77 — Tutup-only close; hide skip after reveal */
+.bm-kq-anim.phase-done .bm-kq-anim-skip{display:none!important;pointer-events:none!important;opacity:0!important}
+.bm-kq-anim.phase-done{
+  /* keep overlay interactive only via card controls */
+}
+.bm-kq-anim.phase-done .bm-kq-anim-card{
+  max-height:min(640px,88vh);
+  width:min(360px,94vw);
+}
+.bm-kq-card-x{
+  position:absolute;top:10px;right:10px;z-index:6;
+  width:36px;height:36px;border-radius:999px;border:0;
+  background:rgba(26,18,8,.12);color:#5a4020;font-size:22px;line-height:1;
+  font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.bm-kq-card-x:active{background:rgba(26,18,8,.22)}
+.bm-kq-tutup{
+  display:block;width:100%;margin-top:14px;padding:14px 16px;
+  border-radius:14px;border:1.5px solid rgba(120,90,40,.35);
+  background:rgba(26,18,8,.08);color:#3a2810;
+  font-weight:800;font-size:15px;cursor:pointer;letter-spacing:.02em;
+}
+.bm-kq-tutup:active{background:rgba(26,18,8,.16)}
+.bm-kq-scroll-card{position:relative}

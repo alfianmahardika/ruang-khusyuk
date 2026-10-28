@@ -1,4 +1,4 @@
-/* Best Muslim v76 — Kata Qur'an untukmu. Local-only; silent; Kemenag ID from JSON. No autoplay. */
+/* Best Muslim v77 — Kata Qur'an untukmu. Local-only; silent; Kemenag ID from JSON. No autoplay. */
 (function () {
   "use strict";
   const DATA_URL = "kata-quran.json";
@@ -36,7 +36,11 @@
       pickMood: "Pilih perasaan dulu",
       cta: "Ambil ayat",
       jarLab: "Quranic Jar",
-      skipAnim: "Ketuk untuk lewati"
+      skipAnim: "Ketuk untuk lewati",
+      tutup: "Tutup",
+      shareText: "Kata Qur'an untukku hari ini ✨ — via Best Muslim App · bestmuslim.app",
+      shareCta: "Dapatkan pesan Qur'an harianmu di Best Muslim App",
+      shareBrand: "Best Muslim App"
     },
     en: {
       ey: "For your heart",
@@ -64,7 +68,11 @@
       pickMood: "Pick a feeling first",
       cta: "Draw an ayah",
       jarLab: "Quranic Jar",
-      skipAnim: "Tap to skip"
+      skipAnim: "Tap to skip",
+      tutup: "Close",
+      shareText: "A Qur'an word for me today ✨ — via Best Muslim App · bestmuslim.app",
+      shareCta: "Get your daily Qur'an message in the Best Muslim App",
+      shareBrand: "Best Muslim App"
     },
     ar: {
       ey: "لقلبك",
@@ -92,7 +100,11 @@
       pickMood: "اختر شعورًا أولًا",
       cta: "خذ آية",
       jarLab: "Quranic Jar",
-      skipAnim: "انقر للتخطّي"
+      skipAnim: "انقر للتخطّي",
+      tutup: "إغلاق",
+      shareText: "كلمة من القرآن لي اليوم ✨ — عبر تطبيق Best Muslim · bestmuslim.app",
+      shareCta: "احصل على رسالة قرآنية يومية في تطبيق Best Muslim",
+      shareBrand: "Best Muslim App"
     }
   };
 
@@ -352,6 +364,9 @@
 
   let animSkip = false;
   let animResolve = null;
+  let cardStayResolve = null;
+  let revealGuardUntil = 0;
+  let lastShare = { story: null, square: null };
 
   function ensureAnim() {
     let ov = document.getElementById("bmKqAnim");
@@ -364,19 +379,24 @@
     ov.innerHTML =
       '<div class="bm-kq-anim-stage" id="bmKqAnimStage">' +
       '<div class="bm-kq-anim-jar" id="bmKqAnimJar">' +
-      jarHTML("lg",{noRise:true}) +
+      jarHTML("lg", { noRise: true }) +
       "</div>" +
       '<div class="bm-kq-anim-scroll" id="bmKqAnimScroll" aria-hidden="true"><span class="spark"></span></div>' +
       '<div class="bm-kq-anim-card" id="bmKqAnimCard"></div>' +
       '<button type="button" class="bm-kq-anim-skip" id="bmKqAnimSkip"></button>' +
       "</div>";
     document.body.appendChild(ov);
-    const skip = () => {
-      animSkip = true;
-      if (animResolve) animResolve();
-    };
     ov.addEventListener("click", (e) => {
-      if (e.target.id === "bmKqAnimSkip" || e.target.closest("#bmKqAnimStage") || e.target === ov) skip();
+      /* After reveal: never close on backdrop / ghost taps — only Tutup/X. */
+      if (ov.classList.contains("phase-done")) return;
+      if (Date.now() < revealGuardUntil) return;
+      const skipBtn = e.target.id === "bmKqAnimSkip" || e.target.closest("#bmKqAnimSkip");
+      const backdrop = e.target === ov;
+      /* During motion: skip pill or backdrop jumps to final card (still stays open). */
+      if (skipBtn || backdrop) {
+        animSkip = true;
+        if (animResolve) animResolve();
+      }
     });
     return ov;
   }
@@ -404,13 +424,60 @@
     });
   }
 
+  function hideSkipPill() {
+    const skipBtn = document.getElementById("bmKqAnimSkip");
+    if (!skipBtn) return;
+    skipBtn.hidden = true;
+    skipBtn.setAttribute("aria-hidden", "true");
+    skipBtn.style.display = "none";
+  }
+
+  function showSkipPill() {
+    const skipBtn = document.getElementById("bmKqAnimSkip");
+    if (!skipBtn) return;
+    skipBtn.hidden = false;
+    skipBtn.removeAttribute("aria-hidden");
+    skipBtn.style.display = "";
+    skipBtn.textContent = t("skipAnim");
+  }
+
+  function dismissRevealedCard() {
+    if (Date.now() < revealGuardUntil) return false;
+    const sheet = document.getElementById("bmKqSheet");
+    if (sheet) {
+      sheet.classList.remove("on");
+      sheet.innerHTML = "";
+    }
+    closeAnim();
+    const jar = document.querySelector("#bmKqStage .bm-kq-jar");
+    if (jar) jar.classList.remove("shake", "lid-open");
+    const rise = document.getElementById("bmKqPop");
+    if (rise) rise.classList.remove("on");
+    if (cardStayResolve) {
+      const r = cardStayResolve;
+      cardStayResolve = null;
+      r();
+    }
+    return true;
+  }
+
+  async function finishRevealAndStay() {
+    setAnimPhase("done");
+    hideSkipPill();
+    revealGuardUntil = Date.now() + 450;
+    /* Card lives in the overlay until Tutup — wire interactive controls now. */
+    wireCardBtns();
+    await new Promise((res) => {
+      cardStayResolve = res;
+    });
+  }
+
   async function playDrawAnim(cardHtml) {
     animSkip = false;
     const ov = ensureAnim();
-    const skipBtn = document.getElementById("bmKqAnimSkip");
-    if (skipBtn) skipBtn.textContent = t("skipAnim");
+    showSkipPill();
     const jarHost = document.getElementById("bmKqAnimJar");
-    if (jarHost) jarHost.innerHTML = jarHTML("lg",{noRise:true});
+    if (jarHost) jarHost.innerHTML = jarHTML("lg", { noRise: true });
     const scroll = document.getElementById("bmKqAnimScroll");
     if (scroll) {
       scroll.innerHTML = '<span class="spark"></span>';
@@ -421,47 +488,42 @@
 
     ov.classList.add("on");
     if (reduced()) {
-      setAnimPhase("done");
-      await sleep(40);
+      await finishRevealAndStay();
       return;
     }
 
     setAnimPhase("lid");
     await waitOrSkip(380);
     if (animSkip) {
-      setAnimPhase("done");
+      await finishRevealAndStay();
       return;
     }
 
     setAnimPhase("rise");
     await waitOrSkip(480);
     if (animSkip) {
-      setAnimPhase("done");
+      await finishRevealAndStay();
       return;
     }
 
     setAnimPhase("float");
     await waitOrSkip(420);
     if (animSkip) {
-      setAnimPhase("done");
+      await finishRevealAndStay();
       return;
     }
 
     setAnimPhase("unroll");
     await waitOrSkip(520);
-    if (animSkip) {
-      setAnimPhase("done");
-      return;
-    }
-
-    setAnimPhase("done");
-    await waitOrSkip(320);
+    /* Skip during unroll also lands on stay-open card */
+    await finishRevealAndStay();
   }
 
   function closeAnim() {
     const ov = document.getElementById("bmKqAnim");
     if (!ov) return;
     ov.classList.remove("on", "phase-lid", "phase-rise", "phase-float", "phase-unroll", "phase-done");
+    hideSkipPill();
   }
 
   async function draw() {
@@ -488,7 +550,6 @@
       sheet.innerHTML = "";
     }
 
-    // Stage jar: lid pop + local rise hint while overlay runs
     const jar = document.querySelector("#bmKqStage .bm-kq-jar");
     if (jar) {
       jar.classList.remove("lid-open", "shake");
@@ -514,24 +575,14 @@
       return;
     }
 
-    // Build card HTML for anim reveal; keep page sheet hidden until done
-    renderCard(false);
-    const sheetHtml = (document.getElementById("bmKqSheet") || {}).innerHTML || "";
-    if (sheet) {
-      sheet.classList.remove("on");
-      sheet.innerHTML = "";
-    }
+    /* Build card HTML into a detached holder (not page sheet) so overlay owns it. */
+    const holder = document.createElement("div");
+    holder.innerHTML = buildCardHtml(false);
+    const sheetHtml = holder.innerHTML;
 
     await playDrawAnim(sheetHtml);
 
-    closeAnim();
-    if (sheet) {
-      sheet.innerHTML = sheetHtml;
-      sheet.classList.add("on");
-      const el = document.getElementById("bmKqCard");
-      if (el) el.classList.add("unroll");
-      wireCardBtns();
-    }
+    /* Returned only after Tutup / Ambil-lagi dismissed the stay-open card. */
     if (jar) jar.classList.remove("shake");
     drawing = false;
     if (ask) ask.disabled = drawsToday() >= max;
@@ -581,18 +632,20 @@
     return true;
   }
 
-  function renderCard(animate) {
-    const sheet = document.getElementById("bmKqSheet");
-    if (!sheet || !card) return;
+  function buildCardHtml(animate) {
+    if (!card) return "";
     const pesan = loc(card.pesan) || (card.pesan && card.pesan.id) || "";
     const langkah = loc(card.langkah) || (card.langkah && card.langkah.id) || "";
     const done = langkahDone(card.id);
     const fav = isFav(card.id);
     const pts = (DATA && DATA.pointsOnLangkah) || PTS;
-    sheet.innerHTML =
+    return (
       '<div class="bm-kq-scroll-card' +
       (animate && !reduced() ? "" : " unroll") +
       '" id="bmKqCard">' +
+      '<button type="button" class="bm-kq-card-x" id="bmKqCloseX" aria-label="' +
+      esc(t("tutup")) +
+      '">×</button>' +
       '<div class="bm-kq-roll-top"></div>' +
       '<div class="bm-kq-scroll-inner">' +
       '<p class="bm-kq-ref">' +
@@ -634,12 +687,19 @@
       '<button type="button" class="btn-kq" id="bmKqAgain">' +
       esc(t("ambil")) +
       "</button>" +
-      "</div></div>" +
-      '<div class="bm-kq-roll-bot"></div></div>';
-    // Fix: card.id is the content id string; Indonesian translation is also under key "id" in JSON!
-    // Our JSON has both "id": "lelah-94-5" AND we used "id" for Kemenag text. CONFLICT.
-    // Look at JSON structure - I used "id" for card id AND the translation field was also "id" for Kemenag.
-    // Need to fix JSON to use "tr" or "idText" for translation.
+      "</div>" +
+      '<button type="button" class="bm-kq-tutup" id="bmKqTutup">' +
+      esc(t("tutup")) +
+      "</button>" +
+      "</div>" +
+      '<div class="bm-kq-roll-bot"></div></div>'
+    );
+  }
+
+  function renderCard(animate) {
+    const sheet = document.getElementById("bmKqSheet");
+    if (!sheet || !card) return;
+    sheet.innerHTML = buildCardHtml(animate);
     sheet.classList.add("on");
     const el = document.getElementById("bmKqCard");
     if (animate && !reduced() && el) {
@@ -654,18 +714,21 @@
   function wireCardBtns() {
     const lg = document.getElementById("bmKqLangkah");
     if (lg)
-      lg.onclick = () => {
+      lg.onclick = (e) => {
+        e.stopPropagation();
         if (!card) return;
         if (langkahDone(card.id)) return;
         if (awardLangkah(card.id)) {
           lg.classList.add("on");
-          lg.querySelector(".bm-kq-check").textContent = "✓";
+          const ck = lg.querySelector(".bm-kq-check");
+          if (ck) ck.textContent = "✓";
           toast(t("ptsGot") + " · " + t("pts", { n: (DATA && DATA.pointsOnLangkah) || PTS }));
         }
       };
     const sv = document.getElementById("bmKqSave");
     if (sv)
-      sv.onclick = () => {
+      sv.onclick = (e) => {
+        e.stopPropagation();
         if (!card) return;
         toggleFav(card.id);
         const fav = isFav(card.id);
@@ -673,109 +736,242 @@
         sv.classList.toggle("saved", fav);
       };
     const sh = document.getElementById("bmKqShare");
-    if (sh) sh.onclick = () => shareCard();
+    if (sh)
+      sh.onclick = (e) => {
+        e.stopPropagation();
+        shareCard();
+      };
+    const close = () => {
+      revealGuardUntil = 0;
+      dismissRevealedCard();
+    };
+    const tu = document.getElementById("bmKqTutup");
+    if (tu)
+      tu.onclick = (e) => {
+        e.stopPropagation();
+        close();
+      };
+    const xx = document.getElementById("bmKqCloseX");
+    if (xx)
+      xx.onclick = (e) => {
+        e.stopPropagation();
+        close();
+      };
     const ag = document.getElementById("bmKqAgain");
-    if (ag) ag.onclick = () => draw();
+    if (ag)
+      ag.onclick = (e) => {
+        e.stopPropagation();
+        revealGuardUntil = 0;
+        /* End stay-open wait, then draw again on next tick. */
+        if (cardStayResolve) {
+          const r = cardStayResolve;
+          cardStayResolve = null;
+          closeAnim();
+          r();
+        }
+        setTimeout(() => {
+          draw();
+        }, 30);
+      };
+  }
+
+  function loadShareLogo() {
+    return new Promise((res) => {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.onload = () => res(img);
+      img.onerror = () => res(null);
+      img.src = "icon-192.png";
+    });
+  }
+
+  function paintShareCanvas(W, H, logo) {
+    const canvas = document.createElement("canvas");
+    canvas.width = W;
+    canvas.height = H;
+    const ctx = canvas.getContext("2d");
+    const head = t("shareHead");
+    const pesan = loc(card.pesan) || "";
+    const tr = card.trId || card.translation || "";
+    const story = H > W;
+    const pad = story ? 72 : 56;
+    const brandH = story ? 260 : 200;
+
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, "#1c1710");
+    g.addColorStop(0.45, "#12151c");
+    g.addColorStop(1, "#0a0c12");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    /* soft gold orbs */
+    ctx.fillStyle = "rgba(230,199,122,.08)";
+    ctx.beginPath();
+    ctx.arc(W * 0.15, H * 0.12, W * 0.22, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(W * 0.85, H * 0.78, W * 0.28, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = "rgba(230,199,122,.5)";
+    ctx.lineWidth = story ? 4 : 3;
+    roundRect(ctx, pad * 0.55, pad * 0.55, W - pad * 1.1, H - pad * 1.1 - brandH * 0.15, story ? 40 : 28);
+    ctx.stroke();
+
+    ctx.fillStyle = "#e6c77a";
+    ctx.font = "800 " + (story ? 36 : 30) + "px system-ui,sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(head, W / 2, pad + (story ? 36 : 24));
+
+    ctx.fillStyle = "rgba(243,233,212,.72)";
+    ctx.font = "700 " + (story ? 26 : 22) + "px system-ui,sans-serif";
+    ctx.fillText(card.ref, W / 2, pad + (story ? 84 : 64));
+
+    ctx.fillStyle = "#f3e9d4";
+    ctx.font = "400 " + (story ? 48 : 40) + "px 'Amiri Quran', Amiri, 'Noto Naskh Arabic', serif";
+    ctx.direction = "rtl";
+    const arY = pad + (story ? 160 : 120);
+    const arEnd = wrapText(ctx, card.ar, W / 2, arY, W - pad * 2, story ? 64 : 52, story ? 7 : 5);
+    ctx.direction = "ltr";
+
+    ctx.fillStyle = "rgba(216,207,189,.95)";
+    ctx.font = "italic 400 " + (story ? 26 : 22) + "px Georgia,serif";
+    const trEnd = wrapText(ctx, tr, W / 2, arEnd + (story ? 36 : 24), W - pad * 2.2, story ? 38 : 32, story ? 9 : 6);
+
+    const boxTop = Math.min(Math.max(trEnd + (story ? 40 : 28), H * (story ? 0.52 : 0.48)), H - brandH - (story ? 220 : 180));
+    const boxH = story ? 200 : 160;
+    ctx.fillStyle = "rgba(230,199,122,.14)";
+    roundRect(ctx, pad, boxTop, W - pad * 2, boxH, 20);
+    ctx.fill();
+    ctx.fillStyle = "#e6c77a";
+    ctx.font = "800 " + (story ? 18 : 15) + "px system-ui,sans-serif";
+    ctx.textAlign = "left";
+    ctx.fillText(t("pesan").toUpperCase(), pad + 28, boxTop + (story ? 40 : 32));
+    ctx.fillStyle = "#f3e9d4";
+    ctx.font = "400 " + (story ? 26 : 22) + "px system-ui,sans-serif";
+    wrapTextLeft(ctx, pesan, pad + 28, boxTop + (story ? 72 : 58), W - pad * 2 - 56, story ? 36 : 30, 4);
+
+    /* Brand strip at bottom — clear source attribution for WA Status */
+    const brandY = H - brandH;
+    ctx.fillStyle = "rgba(8,10,14,.72)";
+    ctx.fillRect(pad * 0.55, brandY, W - pad * 1.1, brandH - pad * 0.4);
+    ctx.strokeStyle = "rgba(230,199,122,.35)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(pad, brandY + 2);
+    ctx.lineTo(W - pad, brandY + 2);
+    ctx.stroke();
+
+    const logoSize = story ? 72 : 56;
+    const logoX = W / 2 - logoSize / 2;
+    const logoY = brandY + (story ? 28 : 22);
+    if (logo) {
+      try {
+        ctx.save();
+        roundRect(ctx, logoX, logoY, logoSize, logoSize, 14);
+        ctx.clip();
+        ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+        ctx.restore();
+      } catch (e) {}
+    } else {
+      ctx.fillStyle = "#1a5c3a";
+      roundRect(ctx, logoX, logoY, logoSize, logoSize, 14);
+      ctx.fill();
+      ctx.fillStyle = "#e6c77a";
+      ctx.font = "800 " + (story ? 28 : 22) + "px system-ui,sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("BM", W / 2, logoY + logoSize * 0.66);
+    }
+
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#e6c77a";
+    ctx.font = "800 " + (story ? 28 : 24) + "px system-ui,sans-serif";
+    ctx.fillText(t("shareBrand"), W / 2, logoY + logoSize + (story ? 36 : 28));
+
+    ctx.fillStyle = "rgba(243,233,212,.9)";
+    ctx.font = "600 " + (story ? 24 : 20) + "px system-ui,sans-serif";
+    const cta = t("shareCta");
+    wrapText(ctx, cta, W / 2, logoY + logoSize + (story ? 72 : 56), W - pad * 2.4, story ? 32 : 26, 2);
+
+    ctx.fillStyle = "#e6c77a";
+    ctx.font = "800 " + (story ? 30 : 26) + "px system-ui,sans-serif";
+    ctx.fillText("bestmuslim.app", W / 2, H - (story ? 48 : 36));
+
+    return canvas;
   }
 
   async function shareCard() {
     if (!card) return;
     const head = t("shareHead");
-    const pesan = loc(card.pesan) || "";
-    const tr = card.trId || card.translation || "";
+    const shareText = t("shareText") + "\n" + card.ref + "\nhttps://bestmuslim.app";
     try {
-      const canvas = document.createElement("canvas");
-      const W = 720,
-        H = 1080;
-      canvas.width = W;
-      canvas.height = H;
-      const ctx = canvas.getContext("2d");
-      // bg
-      const g = ctx.createLinearGradient(0, 0, 0, H);
-      g.addColorStop(0, "#1c1710");
-      g.addColorStop(0.5, "#12151c");
-      g.addColorStop(1, "#0e1118");
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, W, H);
-      // gold border
-      ctx.strokeStyle = "rgba(230,199,122,.45)";
-      ctx.lineWidth = 3;
-      roundRect(ctx, 28, 28, W - 56, H - 56, 28);
-      ctx.stroke();
-      // header
-      ctx.fillStyle = "#e6c77a";
-      ctx.font = "700 22px system-ui,sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillText(head, W / 2, 80);
-      ctx.fillStyle = "rgba(243,233,212,.7)";
-      ctx.font = "600 16px system-ui,sans-serif";
-      ctx.fillText(card.ref, W / 2, 118);
-      // arabic
-      ctx.fillStyle = "#f3e9d4";
-      ctx.font = "400 34px 'Amiri Quran', Amiri, serif";
-      ctx.direction = "rtl";
-      wrapText(ctx, card.ar, W / 2, 180, W - 100, 48, 6);
-      ctx.direction = "ltr";
-      // translation
-      ctx.fillStyle = "rgba(216,207,189,.95)";
-      ctx.font = "italic 400 18px system-ui,sans-serif";
-      const trY = wrapText(ctx, tr, W / 2, 420, W - 110, 28, 8);
-      // pesan box
-      const boxY = Math.max(trY + 30, 560);
-      ctx.fillStyle = "rgba(230,199,122,.12)";
-      roundRect(ctx, 60, boxY, W - 120, 160, 16);
-      ctx.fill();
-      ctx.fillStyle = "#e6c77a";
-      ctx.font = "800 14px system-ui,sans-serif";
-      ctx.textAlign = "left";
-      ctx.fillText(t("pesan").toUpperCase(), 80, boxY + 28);
-      ctx.fillStyle = "#f3e9d4";
-      ctx.font = "400 18px system-ui,sans-serif";
-      wrapTextLeft(ctx, pesan, 80, boxY + 56, W - 160, 26, 4);
-      // footer
-      ctx.fillStyle = "#e6c77a";
-      ctx.font = "800 20px system-ui,sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillText("bestmuslim.app", W / 2, H - 56);
-      ctx.fillStyle = "rgba(243,233,212,.55)";
-      ctx.font = "600 14px system-ui,sans-serif";
-      ctx.fillText("Best Muslim", W / 2, H - 80);
+      const logo = await loadShareLogo();
+      const storyCanvas = paintShareCanvas(1080, 1920, logo);
+      const squareCanvas = paintShareCanvas(1080, 1080, logo);
+      const storyBlob = await new Promise((res) => storyCanvas.toBlob(res, "image/png"));
+      const squareBlob = await new Promise((res) => squareCanvas.toBlob(res, "image/png"));
+      if (!storyBlob) throw new Error("blob");
+      lastShare.story = storyBlob;
+      lastShare.square = squareBlob;
+      try {
+        window.__bmKqLastShare = lastShare;
+      } catch (e) {}
 
-      const blob = await new Promise((res) => canvas.toBlob(res, "image/png"));
-      if (!blob) throw new Error("blob");
-      const file = new File([blob], "kata-quran-bestmuslim.png", { type: "image/png" });
-      const text = head + " — " + card.ref + "\nhttps://bestmuslim.app";
+      const storyFile = new File([storyBlob], "kata-quran-status-bestmuslim.png", { type: "image/png" });
+      const squareFile = new File([squareBlob], "kata-quran-bestmuslim.png", { type: "image/png" });
+
       try {
         if (window.Capacitor && Capacitor.Plugins && Capacitor.Plugins.Share) {
-          const b64 = await blobToDataUrl(blob);
           await Capacitor.Plugins.Share.share({
             title: head,
-            text,
+            text: shareText,
             url: "https://bestmuslim.app",
             dialogTitle: t("bagikan")
           });
-          // Also try Web Share with file when available
-          void b64;
-          return;
         }
       } catch (e) {}
-      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file], title: head, text, url: "https://bestmuslim.app" });
-        return;
+
+      if (navigator.share && navigator.canShare) {
+        const payload = { files: [storyFile, squareFile], title: head, text: shareText };
+        if (navigator.canShare(payload)) {
+          await navigator.share(payload);
+          return;
+        }
+        if (navigator.canShare({ files: [storyFile] })) {
+          await navigator.share({ files: [storyFile], title: head, text: shareText });
+          return;
+        }
       }
       if (navigator.share) {
-        await navigator.share({ title: head, text, url: "https://bestmuslim.app" });
+        await navigator.share({ title: head, text: shareText, url: "https://bestmuslim.app" });
+        /* Still offer story download for Status upload */
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(storyBlob);
+        a.download = "kata-quran-status-bestmuslim.png";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 2500);
         return;
       }
-      // fallback download
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "kata-quran-bestmuslim.png";
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      /* Fallback: download story (+ square) and copy share text */
+      const a1 = document.createElement("a");
+      a1.href = URL.createObjectURL(storyBlob);
+      a1.download = "kata-quran-status-bestmuslim.png";
+      a1.click();
+      setTimeout(() => {
+        URL.revokeObjectURL(a1.href);
+        const a2 = document.createElement("a");
+        a2.href = URL.createObjectURL(squareBlob);
+        a2.download = "kata-quran-bestmuslim.png";
+        a2.click();
+        setTimeout(() => URL.revokeObjectURL(a2.href), 2000);
+      }, 400);
+      try {
+        await navigator.clipboard.writeText(shareText);
+        toast(t("copied"));
+      } catch (e3) {}
     } catch (e) {
       try {
-        await navigator.clipboard.writeText(t("shareHead") + " — " + card.ref + "\nhttps://bestmuslim.app");
+        await navigator.clipboard.writeText(t("shareText") + "\nhttps://bestmuslim.app");
         toast(t("copied"));
       } catch (e2) {
         toast(t("shareFail"));
