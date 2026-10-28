@@ -192,10 +192,11 @@
         e.stopPropagation();
         const code = it.dataset.l;
         closeAll();
-        setLang(code);
-        const bridge = document.querySelector('#langseg [data-l="' + code + '"]');
-        if (bridge) try { bridge.click(); } catch (err) {}
-        render();
+        Promise.resolve(setLang(code)).then(() => {
+          const bridge = document.querySelector('#langseg [data-l="' + code + '"]');
+          if (bridge) try { bridge.click(); } catch (err) {}
+          render();
+        }).catch(() => { render(); });
       });
     }
   }

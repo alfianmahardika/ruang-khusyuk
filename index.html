@@ -3432,16 +3432,23 @@ let toastT; function toast(msg){const t=$("#toast");t.textContent=msg;t.classLis
 /* ---------------- i18n ---------------- */
 const I18N={
   lang:"id",
-  init(){ const nav=(navigator.language||"id").slice(0,2); this.lang=store.get("rk_lang",["id","en","ar"].includes(nav)?nav:"id");
-    $$("#langseg button").forEach(b=>b.addEventListener("click",()=>{this.set(b.dataset.l);})); this.apply(); },
-  set(l){ this.lang=l; store.set("rk_lang",l); this.apply(); App.rerender(); try{document.dispatchEvent(new CustomEvent("rk:lang",{detail:l}));}catch(e){} },
+  init(){ const nav=(navigator.language||"id").slice(0,2); const raw=store.get("rk_lang",["id","en","ar"].includes(nav)?nav:"id"); this.lang=["id","en","ar"].includes(raw)?raw:(raw==="id"||raw==="ar"?raw:"en"); if(!["id","en","ar"].includes(this.lang)) this.lang="id";
+    /* Event delegation so bm-lang syncBridge rebuilds keep working */
+    const seg=$("#langseg"); if(seg&&!seg._bmI18nDel){ seg._bmI18nDel=1; seg.addEventListener("click",e=>{ const b=e.target.closest("[data-l]"); if(!b||!seg.contains(b)) return; this.set(b.dataset.l); }); }
+    else $$("#langseg button").forEach(b=>b.addEventListener("click",()=>{this.set(b.dataset.l);}));
+    document.addEventListener("rk:lang",e=>{ const d=e&&e.detail; const leg=["id","en","ar"].includes(d)?d:null; if(leg&&leg!==this.lang){ this.lang=leg; this.apply(); }});
+    this.apply(); },
+  set(l){ /* Legacy UI dictionaries only id/en/ar — map others to en; BMI18N owns full rk_lang for 18 langs */
+    const leg=["id","en","ar"].includes(l)?l:"en";
+    this.lang=leg; if(["id","en","ar"].includes(l)) store.set("rk_lang",l); this.apply(); App.rerender(); try{document.dispatchEvent(new CustomEvent("rk:lang",{detail:["id","en","ar"].includes(l)?l:l}));}catch(e){} },
   apply(){ const app=$("#app"); app.dir=this.lang==="ar"?"rtl":"ltr"; app.lang=this.lang;
-    $$("#langseg button").forEach(b=>b.classList.toggle("on",b.dataset.l===this.lang));
+    $$("#langseg button").forEach(b=>b.classList.toggle("on",b.dataset.l===this.lang||(window.BMI18N&&BMI18N.getLang&&b.dataset.l===BMI18N.getLang())));
     $$("[data-i]").forEach(el=>{ el.innerHTML=t(el.dataset.i); });
     $$("[data-i-ph]").forEach(el=>{ el.placeholder=t(el.dataset.iPh); });
     try{ $("#hijri").textContent=RKHijri.fmt(new Date(),this.lang); }catch(e){ $("#hijri").textContent=""; }
   }
 };
+window.I18N=I18N;
 const L=x=>x==null?"":(typeof x==="object"&&!Array.isArray(x)&&("id" in x))?(x[I18N.lang]||x.id||""):String(x);
 const t=k=>UI[k]?L(UI[k]):k;
 const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:g==="hasan"?`<span class="pill gold">${t("g.hasan")}</span>`:g==="dhaif"?`<span class="pill rose">${t("g.dhaif")}</span>`:`<span class="pill rose">${t("g.khilaf")}</span>`;
@@ -8096,7 +8103,7 @@ const X={
  s1p:["Nabi ﷺ bersabda: “Apabila kalian mendengar muadzin, ucapkanlah seperti yang ia ucapkan, kemudian bershalawatlah kepadaku… kemudian mintalah kepada Allah al-wasilah untukku.” Bacalah shalawat, misalnya:","The Prophet ﷺ said: “When you hear the muadhdhin, say what he says, then send salawat upon me… then ask Allah to grant me al-Wasilah.” Send salawat, for example:","قال النبي ﷺ: «إذا سمعتم المؤذن فقولوا مثل ما يقول، ثم صلّوا عليّ… ثم سلوا الله لي الوسيلة». فصلِّ على النبي ﷺ، ومن ذلك:"],
  s1src:["HR. Muslim no. 384, dari Abdullah bin 'Amr bin al-'Ash","Sahih Muslim no. 384, from 'Abdullah ibn 'Amr ibn al-'As","صحيح مسلم، رقم ٣٨٤، عن عبد الله بن عمرو بن العاص رضي الله عنهما"],
  s1n:["Lebih utama shalawat Ibrahimiyah lengkap (HR. Bukhari 3370, Muslim 406).","The full Ibrahimi salawat is better (Bukhari 3370, Muslim 406).","والأكمل الصلاة الإبراهيمية (البخاري ٣٣٧٠، مسلم ٤٠٦)."],
- s2:["Langkah 2 · Baca doa ini","Step 2 · Recite this supplication","الخطوة ٢ · ادعُ بهذا الدعاء"],
+ s2:["Doa Setelah Azan","Supplication After the Adhan","الدعاء بعد الأذان"],
  mean:["Ya Allah, Rabb pemilik seruan yang sempurna ini dan salat yang akan didirikan, berikanlah kepada Muhammad al-wasilah dan keutamaan, dan bangkitkanlah beliau ke kedudukan terpuji yang telah Engkau janjikan kepadanya.","O Allah, Lord of this perfect call and of the prayer about to be established, grant Muhammad al-Wasilah and virtue, and raise him to the praiseworthy station that You have promised him.",""],
  src:["Shahih Bukhari nomor 614, dari Jabir bin Abdillah","Sahih al-Bukhari no. 614, from Jabir ibn 'Abdillah","صحيح البخاري، رقم ٦١٤، عن جابر بن عبد الله رضي الله عنهما"],
  fad:["Keutamaan: “…ia berhak mendapat syafaatku pada hari kiamat.” (HR. Bukhari 614)","Virtue: “…my intercession becomes due for him on the Day of Resurrection.” (Bukhari 614)","فضله: «حلّت له شفاعتي يوم القيامة» (البخاري ٦١٤)"],
@@ -8110,7 +8117,7 @@ const X={
  setView:["Lihat doa","View supplication","عرض الدعاء"],
  setNote:["Notifikasi butuh izin notifikasi dan suara azan selain “Senyap”. Versi web: andal saat aplikasi terbuka atau di latar belakang; saat aplikasi ditutup penuh, notifikasi belum bisa dijamin.","Notifications need notification permission and an azan sound other than “Silent”. Web version: reliable while the app is open or in the background; when fully closed, notifications cannot be guaranteed.","تحتاج الإشعارات إلى الإذن وصوت أذان غير «صامت». في نسخة الويب: موثوقة والتطبيق مفتوح أو في الخلفية؛ أما عند إغلاقه تمامًا فلا يمكن ضمانها."],
  nTitle:["Azan {p} selesai · Doa setelah azan","{p} adhan finished · Supplication after the adhan","انتهى أذان {p} · الدعاء بعد الأذان"],
- nSrc:["(Shahih Bukhari no. 614) · Ketuk untuk shalawat & doa lengkap","(Sahih al-Bukhari 614) · Tap for salawat & the full supplication","(صحيح البخاري ٦١٤) · اضغط للصلاة على النبي ﷺ والدعاء كاملًا"],
+ nSrc:["(Shahih Bukhari no. 614) · Ketuk untuk membuka doa","(Sahih al-Bukhari 614) · Tap to open the supplication","(صحيح البخاري ٦١٤) · اضغط لفتح الدعاء"],
  pTitle:["Sepuluh menit lagi salat. Siapkan dirimu bertemu Allah.","Ten minutes until prayer. Prepare yourself to meet Allah.","بقيت عشر دقائق على الصلاة. تهيّأ للقاء الله."],
  pList:[["Siwak","Wudhu yang sempurna","Pakai pakaian terbaik","Perbaiki niat"],["Siwak","A complete wudu","Wear your best clothes","Renew your intention"],["السواك","إسباغ الوضوء","البس أحسن ثيابك","أصلح نيتك"]]
 };
@@ -8147,11 +8154,9 @@ function chime(){ const c=cfg(); if(!c.sound||S.get("ks_duo_mute",false)) return
    log("chime"); return true; }catch(e){ return false; } }
 /* ---------- popup ---------- */
 function html(info){ const L=lg(), p=info&&info.n?pn(info.n):"";
+ /* t73: satu doa saja (Bukhari 614) — tanpa langkah 1 shalawat; label "Doa Setelah Azan" */
  return `<div class="da-in" role="dialog" aria-modal="true" aria-labelledby="daTitle" dir="${L==="ar"?"rtl":"ltr"}">
   <div class="da-hd"><div class="ic" aria-hidden="true">🤲</div><div><h2 id="daTitle">${esc(t(X.title))}</h2><small>${esc(p?sub(t(X.doneP),p)+(info.time?" · "+info.time:""):t(X.manual))}</small></div><button type="button" class="da-x" id="daX" aria-label="${esc(t(X.close))}">✕</button></div>
-  <div class="da-step" id="daShalawat"><span class="no">${esc(t(X.s1))}</span><p>${esc(t(X.s1p))}</p>
-   <div class="da-ar sm" lang="ar" dir="rtl">${SH_AR}</div>${L==="ar"?"":`<div class="da-tr">${esc(SH_TR)}</div>`}
-   <div class="da-src">${esc(t(X.s1src))}</div><p class="dim" style="font-size:11.5px;text-align:center">${esc(t(X.s1n))}</p></div>
   <div class="da-step" id="daDoa"><span class="no">${esc(t(X.s2))}</span>
    <div class="da-ar" lang="ar" dir="rtl" id="daAr">${DOA_AR}</div>${L==="ar"?"":`<div class="da-tr" id="daTr">${esc(DOA_TR)}</div><div class="da-mn" id="daMn">“${esc(t(X.mean))}”</div>`}
    <div class="da-src" id="daSrc">${esc(t(X.src))}</div><p class="dim" style="font-size:12px;text-align:center;margin-top:4px">${esc(t(X.fad))}</p>
