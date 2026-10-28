@@ -182,6 +182,7 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 
 </script>
 <script>/* AUTO-LANG: first visit only; manual choice saved in rk_lang always wins */(function(){try{if(localStorage.getItem("rk_lang")!=null)return;var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(function(x){return String(x).toLowerCase();});var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var p=(ls[0]||"").slice(0,2),l;var AR=/^Asia\/(Riyadh|Dubai|Qatar|Kuwait|Bahrain|Muscat|Aden|Baghdad|Amman|Damascus|Beirut|Gaza|Hebron)$|^Africa\/(Cairo|Tripoli|Tunis|Algiers|Casablanca|Khartoum|Nouakchott)$/;if(p==="id"||p==="ms")l="id";else if(p==="ar")l="ar";else if(p==="en"&&!/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz)&&!AR.test(tz))l="en";else if(/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz))l="id";else if(AR.test(tz))l="ar";else if(ls.some(function(x){return /^(id|ms)/.test(x)}))l="id";else if(ls.some(function(x){return /^ar/.test(x)}))l="ar";else l="en";localStorage.setItem("rk_lang",JSON.stringify(l));localStorage.setItem("rk_lang_auto","1");}catch(e){}})();</script><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="stylesheet" href="bm-lang.css">
+<link rel="stylesheet" href="bm-salat-ux.css">
 </head><body>
 <title>Best Muslim</title>
 <meta name="description" content="Best Muslim — checklist ibadah harian & kehadiran hati dalam salat">
@@ -3696,6 +3697,7 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",sta
 
 <script src="bm-i18n.js" defer></script>
 <script src="bm-lang.js" defer></script>
+<script src="bm-salat-ux.js" defer></script>
 </body></html>
 <script>
 /* =========================================================
@@ -4012,21 +4014,21 @@ const T={
   calcNote:"Dihitung offline dengan algoritma astronomis (gaya praytimes.org). Kemenag: Subuh 20°, Isya 18°, ihtiyat +2 menit. Selisih 1–3 menit dengan jadwal resmi wajar; ikuti jadwal masjid setempat.",
   qibla:"Arah kiblat",fromN:"derajat dari Utara (searah jarum jam)",startCompass:"Aktifkan kompas",aligned:"Menghadap kiblat ✓",turn:"Putar perangkat ke arah Ka'bah",
   noSensor:"Sensor kompas tidak tersedia. Gunakan sudut di atas dengan kompas fisik: Utara di atas, Ka'bah menunjukkan arah kiblat.",live:"Kompas aktif. Pegang perangkat mendatar.",
-  calib:"Tips kalibrasi: gerakkan ponsel membentuk angka 8 beberapa kali, jauhkan dari magnet/logam.",locating:"Mencari lokasi…",locErr:"Lokasi tidak bisa diambil. Silakan atur manual.",noLoc:"Belum ada lokasi. Ketuk \"Gunakan lokasi saya\" atau atur manual.",noRes:"Tidak ditemukan.",reminder:"Waktunya salat"},
+  calib:"Tips kalibrasi: gerakkan ponsel membentuk angka 8 beberapa kali, jauhkan dari magnet/logam.",locating:"Mencari lokasi…",locErr:"Lokasi tidak bisa diambil. Silakan atur manual.",noLoc:"Belum ada lokasi. Ketuk \"Gunakan lokasi saya\" atau atur manual.",noRes:"Tidak ditemukan.",reminder:"Waktunya salat",locked:"Belum masuk waktu {name}",lockedFuture:"Belum bisa dicentang — tanggal di masa depan",lockAria:"Terkunci"},
  en:{azanT:"Azan sound",az_makkah:"Makkah Azan",az_makkahS:"Masjid al-Haram",az_madinah:"Madinah Azan",az_madinahS:"Masjid an-Nabawi",az_mesir:"Egypt Azan",az_mesirS:"Field recording, Cairo (Maadi), Fajr",az_turki:"Turkey Azan",az_turkiS:"Field recording, Istanbul",az_notif:"Notification only",az_notifS:"No azan sound",az_silent:"Silent",az_silentS:"No sound, no notification",azSubuh:"Special Fajr azan (gentler, with \"as-salatu khayrun minan-nawm\")",azNote:"The azan plays on time while this app is open. Azan while the app is closed is coming in the Android/iOS app version.",azBlocked:"Tap the screen once so your browser allows the azan sound.",nav:"Prayer Times",eyebrow:"Wherever you are",title:"Prayer times & Qibla",useGps:"Use my location",manual:"Set manually",cityPh:"Search a city, e.g. London",search:"Search",set:"Use",settings:"Calculation settings",method:"Method",asr:"Asr",shafii:"Shafi'i (standard)",hanafi:"Hanafi",
   fajr:"Fajr",sunrise:"Sunrise",dhuhr:"Dhuhr",asr_:"Asr",maghrib:"Maghrib",isha:"Isha",now:"NOW",next:"Next",inn:"in",h:"h",m:"m",done:"prayers done",
   notif:"Prayer time reminders",notifNote:"Reminders only fire while this app is open (web version). Background notifications need the installed app.",notifDenied:"Notification permission was denied.",
   calcNote:"Calculated offline with an astronomical algorithm (praytimes.org style). Kemenag: Fajr 20°, Isha 18°, +2 min ihtiyat. A 1–3 minute difference from official timetables is normal; follow your local mosque.",
   qibla:"Qibla direction",fromN:"degrees from North (clockwise)",startCompass:"Enable compass",aligned:"Facing the Qibla ✓",turn:"Turn your device toward the Ka'bah",
   noSensor:"No compass sensor available. Use the angle above with a physical compass: North at the top, the Ka'bah marks the Qibla.",live:"Compass active. Hold your device flat.",
-  calib:"Calibration tip: move your phone in a figure-8 a few times, away from magnets/metal.",locating:"Locating…",locErr:"Could not get your location. Please set it manually.",noLoc:"No location yet. Tap \"Use my location\" or set it manually.",noRes:"Nothing found.",reminder:"It is time to pray"},
+  calib:"Calibration tip: move your phone in a figure-8 a few times, away from magnets/metal.",locating:"Locating…",locErr:"Could not get your location. Please set it manually.",noLoc:"No location yet. Tap \"Use my location\" or set it manually.",noRes:"Nothing found.",reminder:"It is time to pray",locked:"{name} time has not started yet",lockedFuture:"Can't check yet — future date",lockAria:"Locked"},
  ar:{azanT:"صوت الأذان",az_makkah:"أذان مكة",az_makkahS:"المسجد الحرام",az_madinah:"أذان المدينة",az_madinahS:"المسجد النبوي",az_mesir:"أذان مصر",az_mesirS:"تسجيل ميداني، القاهرة (المعادي)، الفجر",az_turki:"أذان تركيا",az_turkiS:"تسجيل ميداني، إسطنبول",az_notif:"إشعار فقط",az_notifS:"بدون صوت الأذان",az_silent:"صامت",az_silentS:"بدون صوت أو إشعار",azSubuh:"أذان خاص للفجر (أهدأ، مع «الصلاة خير من النوم»)",azNote:"يُرفع الأذان في وقته ما دام التطبيق مفتوحًا. الأذان والتطبيق مغلق سيتوفر في نسخة تطبيق أندرويد وiOS.",azBlocked:"المس الشاشة مرة ليسمح المتصفح بصوت الأذان.",nav:"مواقيت الصلاة",eyebrow:"أينما كنت",title:"مواقيت الصلاة واتجاه القبلة",useGps:"استخدم موقعي",manual:"تحديد يدوي",cityPh:"ابحث عن مدينة",search:"بحث",set:"استخدم",settings:"إعدادات الحساب",method:"طريقة الحساب",asr:"العصر",shafii:"الشافعي (الجمهور)",hanafi:"الحنفي",
   fajr:"الفجر",sunrise:"الشروق",dhuhr:"الظهر",asr_:"العصر",maghrib:"المغرب",isha:"العشاء",now:"الآن",next:"التالية",inn:"بعد",h:"س",m:"د",done:"صلوات أُدّيت",
   notif:"تذكير بأوقات الصلاة",notifNote:"يعمل التذكير فقط أثناء فتح التطبيق (نسخة الويب). الإشعارات في الخلفية تحتاج التطبيق المثبّت.",notifDenied:"رفض المتصفح إذن الإشعارات.",
   calcNote:"تُحسب دون اتصال بخوارزمية فلكية (على طريقة praytimes.org). وزارة الشؤون الدينية الإندونيسية: الفجر ٢٠°، العشاء ١٨°، احتياط +٢ دقيقة. فرق ١–٣ دقائق طبيعي؛ اتبع مسجدك المحلي.",
   qibla:"اتجاه القبلة",fromN:"درجة من الشمال (باتجاه عقارب الساعة)",startCompass:"تفعيل البوصلة",aligned:"أنت مستقبل القبلة ✓",turn:"أدر جهازك نحو الكعبة",
   noSensor:"لا يوجد مستشعر بوصلة. استخدم الزاوية أعلاه مع بوصلة حقيقية: الشمال للأعلى، والكعبة تشير إلى القبلة.",live:"البوصلة تعمل. أمسك الجهاز أفقيًا.",
-  calib:"نصيحة المعايرة: حرّك الهاتف على شكل الرقم 8 عدة مرات بعيدًا عن المغناطيس والمعادن.",locating:"جارٍ تحديد الموقع…",locErr:"تعذّر تحديد الموقع. حدّده يدويًا.",noLoc:"لا يوجد موقع بعد. اضغط «استخدم موقعي» أو حدّده يدويًا.",noRes:"لا نتائج.",reminder:"حان وقت الصلاة"}};
+  calib:"نصيحة المعايرة: حرّك الهاتف على شكل الرقم 8 عدة مرات بعيدًا عن المغناطيس والمعادن.",locating:"جارٍ تحديد الموقع…",locErr:"تعذّر تحديد الموقع. حدّده يدويًا.",noLoc:"لا يوجد موقع بعد. اضغط «استخدم موقعي» أو حدّده يدويًا.",noRes:"لا نتائج.",reminder:"حان وقت الصلاة",locked:"لم يدخل وقت {name} بعد",lockedFuture:"لا يمكن التحديد — تاريخ مستقبلي",lockAria:"مقفل"}};
 const getLang=()=>{const l=store.get("rk_lang","id");return T[l]?l:"id";};
 const t=k=>T[getLang()][k]||T.en[k]||k;
 const loc_=()=>({id:"id-ID",en:"en-GB",ar:"ar-SA"})[getLang()];
@@ -4066,10 +4068,36 @@ function render(){
   if(!l){ $("#jdList").innerHTML=`<div class="card dim">${t("noLoc")}</div>`; $("#jdNext").hidden=true; $("#qbDeg").textContent="—"; return; }
   const tm=times(sel), k="rk_salat_"+dkey(sel), done=new Set(store.get(k,[]));
   const isToday=dkey(sel)===dkey(today), now=new Date(); let curP=null;
+  const dayCmp=(a,b)=>{ const ka=dkey(a),kb=dkey(b); return ka<kb?-1:ka>kb?1:0; };
+  const isFuture=dayCmp(sel,today)>0, isPast=dayCmp(sel,today)<0;
+  /* Muslim Pro-style: future never; today only after prayer time; past = qadha OK; terbit never */
+  const canCheck=(n)=>{ if(n==="sunrise") return false; if(!tm||!tm[n]) return false; if(isFuture) return false; if(isPast) return true; return tm[n]<=now; };
   if(isToday){ for(const n of FARD){ if(tm[n]<=now) curP=n; } if(curP==="fajr"&&tm.sunrise<=now) curP=null; if(!curP&&now<tm.fajr) curP="isha"; }
-  $("#jdList").innerHTML=NAMES.map(n=>{ const sun=n==="sunrise"; return `<div class="jd-row${sun?" sun":""}${n===curP?" now":""}"><span class="n">${t(n==="asr"?"asr_":n)}</span>${n===curP?`<span class="jd-badge">${t("now")}</span>`:""}<span class="t">${fmt(tm[n])}</span>${sun?'<span style="width:30px"></span>':`<button type="button" class="jd-tick${done.has(n)?" on":""}" data-n="${n}" aria-label="${t(n==="asr"?"asr_":n)}">✓</button>`}</div>`; }).join("")
+  $("#jdList").innerHTML=NAMES.map(n=>{ const sun=n==="sunrise"; const ok=canCheck(n); const on=done.has(n);
+    if(sun) return `<div class="jd-row sun"><span class="n">${t("sunrise")}</span><span class="t">${fmt(tm[n])}</span><span style="width:30px"></span></div>`;
+    const lock=!ok&&!on; const cls=`jd-tick${on?" on":""}${lock?" locked":""}`;
+    const icon=on?"✓":(lock?"🔒":"✓");
+    const aria=lock?`${t("lockAria")} · ${t(n==="asr"?"asr_":n)}`:t(n==="asr"?"asr_":n);
+    return `<div class="jd-row${n===curP?" now":""}${lock?" locked-row":""}"><span class="n">${t(n==="asr"?"asr_":n)}</span>${n===curP?`<span class="jd-badge">${t("now")}</span>`:""}<span class="t">${fmt(tm[n])}</span><button type="button" class="${cls}" data-n="${n}" data-locked="${lock?1:0}" aria-label="${aria}">${icon}</button></div>`;
+  }).join("")
     +`<p class="dim" style="font-size:12px;text-align:center">${done.size}/5 ${t("done")}</p>`;
-  $$("#jdList .jd-tick").forEach(b=>b.onclick=()=>{ const s=new Set(store.get(k,[])); s.has(b.dataset.n)?s.delete(b.dataset.n):s.add(b.dataset.n); store.set(k,[...s]); render(); });
+  $$("#jdList .jd-tick").forEach(b=>b.onclick=()=>{
+    const n=b.dataset.n; const name=t(n==="asr"?"asr_":n);
+    if(!canCheck(n)){
+      const msg=isFuture?t("lockedFuture"):(t("locked").replace("{name}",name));
+      try{ (window.__rkToast||toast)(msg); }catch(e){ msg&&alert(msg); }
+      return;
+    }
+    const s=new Set(store.get(k,[])); const was=s.has(n);
+    if(was) s.delete(n); else s.add(n);
+    store.set(k,[...s]);
+    render();
+    if(!was){
+      try{ document.dispatchEvent(new CustomEvent("rk:salat-check",{detail:{n,day:dkey(sel),label:name}})); }catch(e){}
+      try{ if(window.renderProg) renderProg(); if(window.renderTimes) renderTimes(); if(window.renderStrip) renderStrip(); }catch(e){}
+    }
+  });
+  try{ window.RKPT=Object.assign(window.RKPT||{},{canCheck:(n,d)=>{ const dd=d||sel; const tt=times(dd); if(!tt||n==="sunrise") return false; const tod=new Date(); const cmp=dkey(dd).localeCompare(dkey(tod)); if(cmp>0) return false; if(cmp<0) return true; return tt[n]<=tod; }}); }catch(e){}
   // next
   let nx=null,nt=null; const tt=times(today); for(const n of FARD){ if(tt[n]>now){ nx=n; nt=tt[n]; break; } }
   if(!nx){ const tm2=new Date(today); tm2.setDate(tm2.getDate()+1); nx="fajr"; nt=times(tm2).fajr; }
@@ -4105,7 +4133,7 @@ function azRender(){ const box=$("#azList"); if(!box) return; const c=azCfg();
   box.querySelectorAll(".az-opt").forEach(o=>o.onclick=async e=>{ if(e.target.closest(".az-play")) return; const v=o.dataset.v; store.set("rk_azan",Object.assign(azCfg(),{voice:v}));
     if(v!=="silent"&&("Notification" in window)&&Notification.permission==="default"){ try{ await Notification.requestPermission(); }catch(_){} } azRender(); });
   $$(".az-play").forEach(b=>b.onclick=e=>{ e.preventDefault(); e.stopPropagation(); const k=b.dataset.prev; if(azPrev===k) azStop(); else azPlay(k,b); }); }
-window.RKPT={times:d=>times(d),FARD:FARD};
+window.RKPT=Object.assign(window.RKPT||{},{times:d=>times(d),FARD:FARD});
 function tickNotif(){ const tm=times(new Date()); if(!tm) return; const c=azCfg(), now=Date.now();
   for(const n of FARD){ const d=tm[n]-now, id=dkey(new Date())+n; if(d<=0&&d>-120000&&!notified[id]){ notified[id]=1;
     if(c.voice==="silent") continue;
