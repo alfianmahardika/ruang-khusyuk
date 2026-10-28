@@ -184,8 +184,9 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 <meta name="description" content="Best Muslim — checklist ibadah harian & kehadiran hati dalam salat">
 <meta name="theme-color" content="#140f09">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icon-512.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="icon-180.png" sizes="180x180">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap">
@@ -548,6 +549,8 @@ input[type=file]{display:none}
 .az-play.on{background:var(--gold);color:#111}
 
 
+.brand .logo{border-radius:8px;object-fit:cover;display:block}
+
 /* ===== Tema Emas / Gold (default) ===== */
 [data-theme=gold]{--bg:#140f09;--bg2:#1c150d;--bg3:#251c12;--glass:rgba(230,199,122,.06);--glass2:rgba(230,199,122,.11);--line:rgba(230,199,122,.16);--line2:rgba(230,199,122,.38);
  --fg:#f5ecd8;--fg2:#d9ccb0;--fg3:#ab9b7c;--gold:#c9a24a;--gold2:#e6c77a;--gold3:#a8822f;--jade:#9fd3b8;--jade2:#c3ead6;--rose:#e0a090;--rose2:#f2c4b8;color-scheme:dark}
@@ -673,7 +676,9 @@ input[type=file]{display:none}
 .v2-splash span[lang=ar]{font-family:var(--font-arab);font-style:normal;font-size:24px}
 .v2-splash small{position:absolute;bottom:40px;font-size:12px;color:#ab9b7c}
 .v2-splash.out{opacity:0;pointer-events:none}
-.v2-splash svg{animation:v2spin 6s linear infinite}@keyframes v2spin{to{transform:rotate(360deg)}}
+.v2-splash-logo{width:96px;height:96px;border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.28);object-fit:cover}
+.v2-hero-ic img{width:40px;height:40px;border-radius:10px;display:block;object-fit:cover}
+/* t58: old compass spin removed — logo stays still */
 .v2-flow{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;background:var(--bg)}
 [data-theme=gold] .v2-flow{background:radial-gradient(700px 420px at 50% -10%,rgba(201,162,74,.18),transparent 60%),#140f09}
 .v2-flowhd{display:flex;align-items:center;gap:10px;padding:12px 14px;padding-top:max(12px,env(safe-area-inset-top));border-bottom:1px solid var(--line)}
@@ -2118,7 +2123,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
 
   <header class="hdr">
     <div class="brand">
-      <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f0d79a"/><stop offset="1" stop-color="#b8933f"/></linearGradient></defs><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="none" stroke="url(#lg)" stroke-width="1.6"/><circle cx="20" cy="20" r="4.5" fill="url(#lg)"/></svg>
+      <img class="logo" src="icon-192.png" width="34" height="34" alt="" decoding="async">
       <div class="tx"><b>Best Muslim</b><span data-i="brand.sub"></span><div class="hijri" id="hijri"></div></div>
     </div>
     <div class="right">
@@ -2137,7 +2142,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
       <div class="stack">
         <div class="card lit v2-next v2-click" id="v2Next" data-go="jadwal"></div>
         <button class="v2-hero" id="v2Start" type="button">
-          <span class="v2-hero-ic" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="20" cy="20" r="4.5" fill="currentColor"/></svg></span>
+          <span class="v2-hero-ic" aria-hidden="true"><img src="icon-192.png" width="40" height="40" alt="" decoding="async"></span>
           <b data-v="startBtn"></b><span class="v2-tag" data-v="tagline"></span><small data-v="startSub"></small>
           <span class="v2-cta" aria-hidden="true"><span data-v="startGo"></span> <i>→</i></span>
         </button>
@@ -2503,7 +2508,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
     <button data-p="belanja"><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.6 10.2a2 2 0 0 1-2 1.8H7.6a2 2 0 0 1-2-1.8z"/><path d="M8.5 9l3.5-5 3.5 5"/><path d="M9.5 13.5v3M14.5 13.5v3"/></svg><span data-v="nBelanja"></span></button>
     <button data-p="lainnya"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg><span data-v="nLainnya"></span></button>
   </nav>
-  <div class="v2-splash" id="v2Splash"><svg viewBox="0 0 40 40" width="84" height="84"><path d="M20 2l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="none" stroke="#e6c77a" stroke-width="1.4"/><circle cx="20" cy="20" r="4.5" fill="#e6c77a"/></svg><div class="v2-bsm" id="v2Bsm" aria-label="Bismillahirrahmanirrahim"><div class="ar" dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div><div class="tr" lang="ar-Latn">Bismillāhir-raḥmānir-raḥīm</div><div class="mn" id="v2BsmM">Dengan nama Allah Yang Maha Pengasih, Maha Penyayang</div></div><b>Best Muslim</b><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
+  <div class="v2-splash" id="v2Splash"><img class="v2-splash-logo" src="icon-192.png" width="96" height="96" alt="Best Muslim" decoding="async"><div class="v2-bsm" id="v2Bsm" aria-label="Bismillahirrahmanirrahim"><div class="ar" dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div><div class="tr" lang="ar-Latn">Bismillāhir-raḥmānir-raḥīm</div><div class="mn" id="v2BsmM">Dengan nama Allah Yang Maha Pengasih, Maha Penyayang</div></div><b>Best Muslim</b><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
   <div class="v2-flow" id="v2Flow" hidden><div class="v2-flowhd"><button class="btn sm ghost" id="flX" type="button">✕</button><div class="v2-steps" id="flSteps"></div><span class="dim" id="flCount" dir="ltr"></span></div><div class="v2-flowbody" id="flBody"></div><div class="v2-flowft"><button class="btn" id="flPrev" type="button"></button><button class="btn gold" id="flNextB" type="button"></button></div></div>
 
   <!-- Murattal sheet -->
