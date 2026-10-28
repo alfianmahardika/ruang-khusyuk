@@ -1,0 +1,860 @@
+{
+  "version": 1,
+  "feature": "kata-quran",
+  "name": {
+    "id": "Kata Qur'an untukmu",
+    "en": "A Qur'an Word for You",
+    "ar": "كلمة من القرآن لك"
+  },
+  "reviewNote": "Pesan untukmu (pesan) and Langkah kecil hari ini (langkah) are DRAFT copy for Pak Alfian review. Arabic is Tanzil Uthmani via app data; Indonesian translation (trId) is the official Kemenag text from app quran/s/*.json — do not paraphrase.",
+  "source": {
+    "ar": "Tanzil Uthmani v1.1 via quran/s/*.json",
+    "id": "Official Kemenag via quran/s/*.json field id → stored as trId"
+  },
+  "limitPerMoodPerDay": 3,
+  "pointsOnLangkah": 5,
+  "moods": [
+    {
+      "id": "lelah",
+      "label": {
+        "id": "Lelah",
+        "en": "Tired",
+        "ar": "متعب"
+      },
+      "emoji": "😮‍💨"
+    },
+    {
+      "id": "sedih",
+      "label": {
+        "id": "Sedih",
+        "en": "Sad",
+        "ar": "حزين"
+      },
+      "emoji": "😔"
+    },
+    {
+      "id": "cemas",
+      "label": {
+        "id": "Cemas",
+        "en": "Anxious",
+        "ar": "قلق"
+      },
+      "emoji": "😟"
+    },
+    {
+      "id": "bersyukur",
+      "label": {
+        "id": "Bersyukur",
+        "en": "Grateful",
+        "ar": "شاكر"
+      },
+      "emoji": "🤲"
+    },
+    {
+      "id": "rezeki",
+      "label": {
+        "id": "Butuh Rezeki",
+        "en": "Need Provision",
+        "ar": "أحتاج رزقًا"
+      },
+      "emoji": "🌱"
+    },
+    {
+      "id": "pasangan",
+      "label": {
+        "id": "Rindu Pasangan",
+        "en": "Missing Partner",
+        "ar": "أشتاق لزوجي"
+      },
+      "emoji": "💛"
+    },
+    {
+      "id": "ortu",
+      "label": {
+        "id": "Ingin Jadi Orang Tua Baik",
+        "en": "Want to Be a Better Parent",
+        "ar": "أريد أن أكون والدًا صالحًا"
+      },
+      "emoji": "👨‍👧"
+    },
+    {
+      "id": "sabar",
+      "label": {
+        "id": "Ingin Lebih Sabar",
+        "en": "Want More Patience",
+        "ar": "أريد صبرًا أكثر"
+      },
+      "emoji": "🕊️"
+    }
+  ],
+  "cards": [
+    {
+      "id": "lelah-94-5",
+      "mood": "lelah",
+      "s": 94,
+      "a": 5,
+      "surah": "Asy-Syarh",
+      "ref": "Asy-Syarh 94:5",
+      "ar": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+      "trId": "Karena sesungguhnya sesudah kesulitan itu ada kemudahan,",
+      "pesan": {
+        "id": "Allah menegaskan bahwa bersama kesulitan ada kemudahan. Kelelahanmu bukan tanda ditinggalkan."
+      },
+      "langkah": {
+        "id": "Istirahat 10 menit tanpa layar, lalu baca ulang ayat ini perlahan."
+      }
+    },
+    {
+      "id": "lelah-94-6",
+      "mood": "lelah",
+      "s": 94,
+      "a": 6,
+      "surah": "Asy-Syarh",
+      "ref": "Asy-Syarh 94:6",
+      "ar": "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+      "trId": "sesungguhnya sesudah kesulitan itu ada kemudahan.",
+      "pesan": {
+        "id": "Kemudahan disebut dua kali setelah kesulitan. Jangan buru-buru menilai hari dari rasa lelah saja."
+      },
+      "langkah": {
+        "id": "Minum air, wudhu, dan shalat sunnah 2 rakaat jika mampu."
+      }
+    },
+    {
+      "id": "lelah-2-286",
+      "mood": "lelah",
+      "s": 2,
+      "a": 286,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:286",
+      "ar": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا ٱكْتَسَبَتْ ۗ رَبَّنَا لَا تُؤَاخِذْنَآ إِن نَّسِينَآ أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَآ إِصْرًا كَمَا حَمَلْتَهُۥ عَلَى ٱلَّذِينَ مِن قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِۦ ۖ وَٱعْفُ عَنَّا وَٱغْفِرْ لَنَا وَٱرْحَمْنَآ ۚ أَنتَ مَوْلَىٰنَا فَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
+      "trId": "Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya. Ia mendapat pahala (dari kebajikan) yang diusahakannya dan ia mendapat siksa (dari kejahatan) yang dikerjakannya. (Mereka berdoa): \"Ya Tuhan kami, janganlah Engkau hukum kami jika kami lupa atau kami tersalah. Ya Tuhan kami, janganlah Engkau bebankan kepada kami beban yang berat sebagaimana Engkau bebankan kepada orang-orang sebelum kami. Ya Tuhan kami, janganlah Engkau pikulkan kepada kami apa yang tak sanggup kami memikulnya. Beri maaflah kami; ampunilah kami; dan rahmatilah kami. Engkaulah Penolong kami, maka tolonglah kami terhadap kaum yang kafir\".",
+      "pesan": {
+        "id": "Allah tidak membebani jiwa melebihi kesanggupannya. Batasi dirimu hari ini sesuai kemampuan."
+      },
+      "langkah": {
+        "id": "Tulis 1 tugas yang bisa ditunda tanpa dosa, lalu tunda."
+      }
+    },
+    {
+      "id": "lelah-2-153",
+      "mood": "lelah",
+      "s": 2,
+      "a": 153,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:153",
+      "ar": "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱسْتَعِينُوا۟ بِٱلصَّبْرِ وَٱلصَّلَوٰةِ ۚ إِنَّ ٱللَّهَ مَعَ ٱلصَّٰبِرِينَ",
+      "trId": "Hai orang-orang yang beriman, jadikanlah sabar dan shalat sebagai penolongmu, sesungguhnya Allah beserta orang-orang yang sabar.",
+      "pesan": {
+        "id": "Sabar dan shalat disebut sebagai penolong. Saat tubuh lelah, hati tetap bisa bersandar."
+      },
+      "langkah": {
+        "id": "Kerjakan shalat berikutnya tepat waktu, meski singkat dan khusyuk."
+      }
+    },
+    {
+      "id": "lelah-16-127",
+      "mood": "lelah",
+      "s": 16,
+      "a": 127,
+      "surah": "An-Nahl",
+      "ref": "An-Nahl 16:127",
+      "ar": "وَٱصْبِرْ وَمَا صَبْرُكَ إِلَّا بِٱللَّهِ ۚ وَلَا تَحْزَنْ عَلَيْهِمْ وَلَا تَكُ فِى ضَيْقٍ مِّمَّا يَمْكُرُونَ",
+      "trId": "Bersabarlah (hai Muhammad) dan tiadalah kesabaranmu itu melainkan dengan pertolongan Allah dan janganlah kamu bersedih hati terhadap (kekafiran) mereka dan janganlah kamu bersempit dada terhadap apa yang mereka tipu dayakan.",
+      "pesan": {
+        "id": "Kesabaran yang sejati bergantung kepada Allah, bukan kepada kekuatan sendiri."
+      },
+      "langkah": {
+        "id": "Ucapkan «hasbunallahu wa ni‘mal wakil» 3× dengan tenang."
+      }
+    },
+    {
+      "id": "lelah-39-10",
+      "mood": "lelah",
+      "s": 39,
+      "a": 10,
+      "surah": "Az-Zumar",
+      "ref": "Az-Zumar 39:10",
+      "ar": "قُلْ يَٰعِبَادِ ٱلَّذِينَ ءَامَنُوا۟ ٱتَّقُوا۟ رَبَّكُمْ ۚ لِلَّذِينَ أَحْسَنُوا۟ فِى هَٰذِهِ ٱلدُّنْيَا حَسَنَةٌ ۗ وَأَرْضُ ٱللَّهِ وَٰسِعَةٌ ۗ إِنَّمَا يُوَفَّى ٱلصَّٰبِرُونَ أَجْرَهُم بِغَيْرِ حِسَابٍ",
+      "trId": "Katakanlah: \"Hai hamba-hamba-Ku yang beriman. bertakwalah kepada Tuhanmu\". Orang-orang yang berbuat baik di dunia ini memperoleh kebaikan. Dan bumi Allah itu adalah luas. Sesungguhnya hanya orang-orang yang bersabarlah Yang dicukupkan pahala mereka tanpa batas.",
+      "pesan": {
+        "id": "Bagi yang berbuat baik di dunia ini ada kebaikan; kesabaran dibalas tanpa batas."
+      },
+      "langkah": {
+        "id": "Tidur lebih awal malam ini dan niatkan sebagai istirahat yang halal."
+      }
+    },
+    {
+      "id": "sedih-39-53",
+      "mood": "sedih",
+      "s": 39,
+      "a": 53,
+      "surah": "Az-Zumar",
+      "ref": "Az-Zumar 39:53",
+      "ar": "۞ قُلْ يَٰعِبَادِىَ ٱلَّذِينَ أَسْرَفُوا۟ عَلَىٰٓ أَنفُسِهِمْ لَا تَقْنَطُوا۟ مِن رَّحْمَةِ ٱللَّهِ ۚ إِنَّ ٱللَّهَ يَغْفِرُ ٱلذُّنُوبَ جَمِيعًا ۚ إِنَّهُۥ هُوَ ٱلْغَفُورُ ٱلرَّحِيمُ",
+      "trId": "Katakanlah: \"Hai hamba-hamba-Ku yang malampaui batas terhadap diri mereka sendiri, janganlah kamu berputus asa dari rahmat Allah. Sesungguhnya Allah mengampuni dosa-dosa semuanya. Sesungguhnya Dialah Yang Maha Pengampun lagi Maha Penyayang.",
+      "pesan": {
+        "id": "Allah melarang berputus asa dari rahmat-Nya, meski kita merasa melampaui batas."
+      },
+      "langkah": {
+        "id": "Tulis 1 dosa kecil yang ingin kau tinggalkan, lalu istighfar 10×."
+      }
+    },
+    {
+      "id": "sedih-13-28",
+      "mood": "sedih",
+      "s": 13,
+      "a": 28,
+      "surah": "Ar-Ra'd",
+      "ref": "Ar-Ra'd 13:28",
+      "ar": "ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ",
+      "trId": "(yaitu) orang-orang yang beriman dan hati mereka manjadi tenteram dengan mengingat Allah. Ingatlah, hanya dengan mengingati Allah-lah hati menjadi tenteram.",
+      "pesan": {
+        "id": "Ketenteraman hati digantungkan pada mengingat Allah, bukan pada lenyapnya masalah."
+      },
+      "langkah": {
+        "id": "Duduk diam 2 menit sambil mengulang «Allahu Akbar» pelan."
+      }
+    },
+    {
+      "id": "sedih-2-152",
+      "mood": "sedih",
+      "s": 2,
+      "a": 152,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:152",
+      "ar": "فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ",
+      "trId": "Karena itu, ingatlah kamu kepada-Ku niscaya Aku ingat (pula) kepadamu, dan bersyukurlah kepada-Ku, dan janganlah kamu mengingkari (nikmat)-Ku.",
+      "pesan": {
+        "id": "Allah mengingat hamba yang mengingat-Nya. Kesedihanmu bisa dibawa ke zikir, bukan ditekan."
+      },
+      "langkah": {
+        "id": "Kirim pesan baik ke seseorang yang sedang kau jauhkan hati."
+      }
+    },
+    {
+      "id": "sedih-94-5",
+      "mood": "sedih",
+      "s": 94,
+      "a": 5,
+      "surah": "Asy-Syarh",
+      "ref": "Asy-Syarh 94:5",
+      "ar": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+      "trId": "Karena sesungguhnya sesudah kesulitan itu ada kemudahan,",
+      "pesan": {
+        "id": "Setelah kesulitan ada kemudahan. Sedih boleh; putus asa tidak."
+      },
+      "langkah": {
+        "id": "Jalan kaki 5 menit di luar atau dekat jendela, lalu syukuri 1 hal."
+      }
+    },
+    {
+      "id": "sedih-8-2",
+      "mood": "sedih",
+      "s": 8,
+      "a": 2,
+      "surah": "Al-Anfal",
+      "ref": "Al-Anfal 8:2",
+      "ar": "إِنَّمَا ٱلْمُؤْمِنُونَ ٱلَّذِينَ إِذَا ذُكِرَ ٱللَّهُ وَجِلَتْ قُلُوبُهُمْ وَإِذَا تُلِيَتْ عَلَيْهِمْ ءَايَٰتُهُۥ زَادَتْهُمْ إِيمَٰنًا وَعَلَىٰ رَبِّهِمْ يَتَوَكَّلُونَ",
+      "trId": "Sesungguhnya orang-orang yang beriman ialah mereka yang bila disebut nama Allah gemetarlah hati mereka, dan apabila dibacakan ayat-ayat-Nya bertambahlah iman mereka (karenanya), dan hanya kepada Tuhanlah mereka bertawakkal.",
+      "pesan": {
+        "id": "Ciri orang beriman: hati bergetar saat nama Allah disebut, lalu iman bertambah."
+      },
+      "langkah": {
+        "id": "Putar atau baca Al-Fatihah sekali dengan penuh perhatian."
+      }
+    },
+    {
+      "id": "sedih-2-155",
+      "mood": "sedih",
+      "s": 2,
+      "a": 155,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:155",
+      "ar": "وَلَنَبْلُوَنَّكُم بِشَىْءٍ مِّنَ ٱلْخَوْفِ وَٱلْجُوعِ وَنَقْصٍ مِّنَ ٱلْأَمْوَٰلِ وَٱلْأَنفُسِ وَٱلثَّمَرَٰتِ ۗ وَبَشِّرِ ٱلصَّٰبِرِينَ",
+      "trId": "Dan sungguh akan Kami berikan cobaan kepadamu, dengan sedikit ketakutan, kelaparan, kekurangan harta, jiwa dan buah-buahan. Dan berikanlah berita gembira kepada orang-orang yang sabar.",
+      "pesan": {
+        "id": "Cobaan (ketakutan, lapar, kekurangan) adalah ujian; yang bersabar diberi kabar gembira."
+      },
+      "langkah": {
+        "id": "Ceritakan perasaanmu kepada Allah dalam doa pribadi 1 menit."
+      }
+    },
+    {
+      "id": "cemas-13-28",
+      "mood": "cemas",
+      "s": 13,
+      "a": 28,
+      "surah": "Ar-Ra'd",
+      "ref": "Ar-Ra'd 13:28",
+      "ar": "ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ",
+      "trId": "(yaitu) orang-orang yang beriman dan hati mereka manjadi tenteram dengan mengingat Allah. Ingatlah, hanya dengan mengingati Allah-lah hati menjadi tenteram.",
+      "pesan": {
+        "id": "Hati menjadi tenteram dengan zikir. Kecemasan sering mereda bila perhatian diarahkan kepada Allah."
+      },
+      "langkah": {
+        "id": "Matikan notifikasi 15 menit dan baca ayat ini 3×."
+      }
+    },
+    {
+      "id": "cemas-65-3",
+      "mood": "cemas",
+      "s": 65,
+      "a": 3,
+      "surah": "At-Talaq",
+      "ref": "At-Talaq 65:3",
+      "ar": "وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ ۚ وَمَن يَتَوَكَّلْ عَلَى ٱللَّهِ فَهُوَ حَسْبُهُۥٓ ۚ إِنَّ ٱللَّهَ بَٰلِغُ أَمْرِهِۦ ۚ قَدْ جَعَلَ ٱللَّهُ لِكُلِّ شَىْءٍ قَدْرًا",
+      "trId": "Dan memberinya rezeki dari arah yang tiada disangka-sangkanya. Dan barangsiapa yang bertawakkal kepada Allah niscaya Allah akan mencukupkan (keperluan)nya. Sesungguhnya Allah melaksanakan urusan yang (dikehendaki)Nya. Sesungguhnya Allah telah mengadakan ketentuan bagi tiap-tiap sesuatu.",
+      "pesan": {
+        "id": "Siapa yang bertawakal kepada Allah, Dia mencukupinya. Rezeki dan jalan bisa datang dari arah tak terduga."
+      },
+      "langkah": {
+        "id": "Serahkan 1 kekhawatiran konkret dalam doa, lalu kerjakan 1 langkah kecil."
+      }
+    },
+    {
+      "id": "cemas-2-286",
+      "mood": "cemas",
+      "s": 2,
+      "a": 286,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:286",
+      "ar": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا ٱكْتَسَبَتْ ۗ رَبَّنَا لَا تُؤَاخِذْنَآ إِن نَّسِينَآ أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَآ إِصْرًا كَمَا حَمَلْتَهُۥ عَلَى ٱلَّذِينَ مِن قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِۦ ۖ وَٱعْفُ عَنَّا وَٱغْفِرْ لَنَا وَٱرْحَمْنَآ ۚ أَنتَ مَوْلَىٰنَا فَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
+      "trId": "Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya. Ia mendapat pahala (dari kebajikan) yang diusahakannya dan ia mendapat siksa (dari kejahatan) yang dikerjakannya. (Mereka berdoa): \"Ya Tuhan kami, janganlah Engkau hukum kami jika kami lupa atau kami tersalah. Ya Tuhan kami, janganlah Engkau bebankan kepada kami beban yang berat sebagaimana Engkau bebankan kepada orang-orang sebelum kami. Ya Tuhan kami, janganlah Engkau pikulkan kepada kami apa yang tak sanggup kami memikulnya. Beri maaflah kami; ampunilah kami; dan rahmatilah kami. Engkaulah Penolong kami, maka tolonglah kami terhadap kaum yang kafir\".",
+      "pesan": {
+        "id": "Beban yang Allah berikan sesuai kesanggupan. Pisahkan apa yang bisa kau kendalikan hari ini."
+      },
+      "langkah": {
+        "id": "Buat daftar 3 hal yang bisa kau lakukan; kerjakan hanya yang pertama."
+      }
+    },
+    {
+      "id": "cemas-8-2",
+      "mood": "cemas",
+      "s": 8,
+      "a": 2,
+      "surah": "Al-Anfal",
+      "ref": "Al-Anfal 8:2",
+      "ar": "إِنَّمَا ٱلْمُؤْمِنُونَ ٱلَّذِينَ إِذَا ذُكِرَ ٱللَّهُ وَجِلَتْ قُلُوبُهُمْ وَإِذَا تُلِيَتْ عَلَيْهِمْ ءَايَٰتُهُۥ زَادَتْهُمْ إِيمَٰنًا وَعَلَىٰ رَبِّهِمْ يَتَوَكَّلُونَ",
+      "trId": "Sesungguhnya orang-orang yang beriman ialah mereka yang bila disebut nama Allah gemetarlah hati mereka, dan apabila dibacakan ayat-ayat-Nya bertambahlah iman mereka (karenanya), dan hanya kepada Tuhanlah mereka bertawakkal.",
+      "pesan": {
+        "id": "Iman yang hidup membuat hati responsif kepada Allah, bukan hanya kepada bayangan buruk."
+      },
+      "langkah": {
+        "id": "Tarik napas dalam 4 hitungan, buang 4 hitungan, 5× sambil zikir."
+      }
+    },
+    {
+      "id": "cemas-2-152",
+      "mood": "cemas",
+      "s": 2,
+      "a": 152,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:152",
+      "ar": "فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ",
+      "trId": "Karena itu, ingatlah kamu kepada-Ku niscaya Aku ingat (pula) kepadamu, dan bersyukurlah kepada-Ku, dan janganlah kamu mengingkari (nikmat)-Ku.",
+      "pesan": {
+        "id": "Ingat Allah; Dia mengingatmu. Kecemasan sering mengecil saat hubungan dengan-Nya dihidupkan."
+      },
+      "langkah": {
+        "id": "Shalat sunnah atau zikir singkat sebelum tidur."
+      }
+    },
+    {
+      "id": "cemas-94-6",
+      "mood": "cemas",
+      "s": 94,
+      "a": 6,
+      "surah": "Asy-Syarh",
+      "ref": "Asy-Syarh 94:6",
+      "ar": "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+      "trId": "sesungguhnya sesudah kesulitan itu ada kemudahan.",
+      "pesan": {
+        "id": "Bersama kesulitan ada kemudahan. Jangan biarkan pikiran melompat ke skenario terburuk."
+      },
+      "langkah": {
+        "id": "Tulis skenario terbaik yang masuk akal untuk 1 masalahmu."
+      }
+    },
+    {
+      "id": "bersyukur-14-7",
+      "mood": "bersyukur",
+      "s": 14,
+      "a": 7,
+      "surah": "Ibrahim",
+      "ref": "Ibrahim 14:7",
+      "ar": "وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ ۖ وَلَئِن كَفَرْتُمْ إِنَّ عَذَابِى لَشَدِيدٌ",
+      "trId": "Dan (ingatlah juga), tatkala Tuhanmu memaklumkan; \"Sesungguhnya jika kamu bersyukur, pasti Kami akan menambah (nikmat) kepadamu, dan jika kamu mengingkari (nikmat-Ku), maka sesungguhnya azab-Ku sangat pedih\".",
+      "pesan": {
+        "id": "Jika kamu bersyukur, Allah menjanjikan tambahan. Syukur membuka pintu, bukan sekadar basa-basi."
+      },
+      "langkah": {
+        "id": "Tulis 3 nikmat konkret hari ini (bukan umum)."
+      }
+    },
+    {
+      "id": "bersyukur-2-152",
+      "mood": "bersyukur",
+      "s": 2,
+      "a": 152,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:152",
+      "ar": "فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ",
+      "trId": "Karena itu, ingatlah kamu kepada-Ku niscaya Aku ingat (pula) kepadamu, dan bersyukurlah kepada-Ku, dan janganlah kamu mengingkari (nikmat)-Ku.",
+      "pesan": {
+        "id": "Ingat Allah dan bersyukurlah kepada-Nya; jangan mengingkari nikmat dengan keluhan terus-menerus."
+      },
+      "langkah": {
+        "id": "Ucapkan alhamdulillah dengan suara pelan saat menerima 1 hal kecil."
+      }
+    },
+    {
+      "id": "bersyukur-67-15",
+      "mood": "bersyukur",
+      "s": 67,
+      "a": 15,
+      "surah": "Al-Mulk",
+      "ref": "Al-Mulk 67:15",
+      "ar": "هُوَ ٱلَّذِى جَعَلَ لَكُمُ ٱلْأَرْضَ ذَلُولًا فَٱمْشُوا۟ فِى مَنَاكِبِهَا وَكُلُوا۟ مِن رِّزْقِهِۦ ۖ وَإِلَيْهِ ٱلنُّشُورُ",
+      "trId": "Dialah Yang menjadikan bumi itu mudah bagi kamu, maka berjalanlah di segala penjurunya dan makanlah sebahagian dari rezeki-Nya. Dan hanya kepada-Nya-lah kamu (kembali setelah) dibangkitkan.",
+      "pesan": {
+        "id": "Bumi dimudahkan agar kita berjalan dan memakan rezeki-Nya. Gerak dan usaha adalah bagian syukur."
+      },
+      "langkah": {
+        "id": "Keluar rumah atau berdiri sebentar dan syukuri kesehatanmu."
+      }
+    },
+    {
+      "id": "bersyukur-34-39",
+      "mood": "bersyukur",
+      "s": 34,
+      "a": 39,
+      "surah": "Saba'",
+      "ref": "Saba' 34:39",
+      "ar": "قُلْ إِنَّ رَبِّى يَبْسُطُ ٱلرِّزْقَ لِمَن يَشَآءُ مِنْ عِبَادِهِۦ وَيَقْدِرُ لَهُۥ ۚ وَمَآ أَنفَقْتُم مِّن شَىْءٍ فَهُوَ يُخْلِفُهُۥ ۖ وَهُوَ خَيْرُ ٱلرَّٰزِقِينَ",
+      "trId": "Katakanlah: \"Sesungguhnya Tuhanku melapangkan rezeki bagi siapa yang dikehendaki-Nya di antara hamba-hamba-Nya dan menyempitkan bagi (siapa yang dikehendaki-Nya)\". Dan barang apa saja yang kamu nafkahkan, maka Allah akan menggantinya dan Dialah Pemberi rezeki yang sebaik-baiknya.",
+      "pesan": {
+        "id": "Rezeki diluaskan atau disempitkan menurut kehendak Allah; apa yang diinfakkan diganti."
+      },
+      "langkah": {
+        "id": "Beri sedekah kecil atau bantu 1 orang tanpa diumumkan."
+      }
+    },
+    {
+      "id": "bersyukur-51-58",
+      "mood": "bersyukur",
+      "s": 51,
+      "a": 58,
+      "surah": "Az-Zariyat",
+      "ref": "Az-Zariyat 51:58",
+      "ar": "إِنَّ ٱللَّهَ هُوَ ٱلرَّزَّاقُ ذُو ٱلْقُوَّةِ ٱلْمَتِينُ",
+      "trId": "Sesungguhnya Allah Dialah Maha Pemberi rezeki Yang mempunyai Kekuatan lagi Sangat Kokoh.",
+      "pesan": {
+        "id": "Allah adalah Ar-Razzaq Yang Kokoh. Syukur mengarahkan hati kepada Pemberi, bukan hanya kepada pemberian."
+      },
+      "langkah": {
+        "id": "Sebelum makan berikutnya, baca basmalah dengan sadar."
+      }
+    },
+    {
+      "id": "bersyukur-2-261",
+      "mood": "bersyukur",
+      "s": 2,
+      "a": 261,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:261",
+      "ar": "مَّثَلُ ٱلَّذِينَ يُنفِقُونَ أَمْوَٰلَهُمْ فِى سَبِيلِ ٱللَّهِ كَمَثَلِ حَبَّةٍ أَنۢبَتَتْ سَبْعَ سَنَابِلَ فِى كُلِّ سُنۢبُلَةٍ مِّا۟ئَةُ حَبَّةٍ ۗ وَٱللَّهُ يُضَٰعِفُ لِمَن يَشَآءُ ۗ وَٱللَّهُ وَٰسِعٌ عَلِيمٌ",
+      "trId": "Perumpamaan (nafkah yang dikeluarkan oleh) orang-orang yang menafkahkan hartanya di jalan Allah adalah serupa dengan sebutir benih yang menumbuhkan tujuh bulir, pada tiap-tiap bulir seratus biji. Allah melipat gandakan (ganjaran) bagi siapa yang Dia kehendaki. Dan Allah Maha Luas (karunia-Nya) lagi Maha Mengetahui.",
+      "pesan": {
+        "id": "Infak di jalan Allah digambarkan berlipat seperti biji yang tumbuh. Memberi adalah bentuk syukur aktif."
+      },
+      "langkah": {
+        "id": "Sisihkan sejumlah kecil hari ini untuk kebaikan."
+      }
+    },
+    {
+      "id": "rezeki-65-3",
+      "mood": "rezeki",
+      "s": 65,
+      "a": 3,
+      "surah": "At-Talaq",
+      "ref": "At-Talaq 65:3",
+      "ar": "وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ ۚ وَمَن يَتَوَكَّلْ عَلَى ٱللَّهِ فَهُوَ حَسْبُهُۥٓ ۚ إِنَّ ٱللَّهَ بَٰلِغُ أَمْرِهِۦ ۚ قَدْ جَعَلَ ٱللَّهُ لِكُلِّ شَىْءٍ قَدْرًا",
+      "trId": "Dan memberinya rezeki dari arah yang tiada disangka-sangkanya. Dan barangsiapa yang bertawakkal kepada Allah niscaya Allah akan mencukupkan (keperluan)nya. Sesungguhnya Allah melaksanakan urusan yang (dikehendaki)Nya. Sesungguhnya Allah telah mengadakan ketentuan bagi tiap-tiap sesuatu.",
+      "pesan": {
+        "id": "Allah memberi rezeki dari arah yang tidak disangka bagi yang bertakwa dan bertawakal."
+      },
+      "langkah": {
+        "id": "Kerjakan 1 usaha halal yang sempat kau tunda, meski 15 menit."
+      }
+    },
+    {
+      "id": "rezeki-14-7",
+      "mood": "rezeki",
+      "s": 14,
+      "a": 7,
+      "surah": "Ibrahim",
+      "ref": "Ibrahim 14:7",
+      "ar": "وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ ۖ وَلَئِن كَفَرْتُمْ إِنَّ عَذَابِى لَشَدِيدٌ",
+      "trId": "Dan (ingatlah juga), tatkala Tuhanmu memaklumkan; \"Sesungguhnya jika kamu bersyukur, pasti Kami akan menambah (nikmat) kepadamu, dan jika kamu mengingkari (nikmat-Ku), maka sesungguhnya azab-Ku sangat pedih\".",
+      "pesan": {
+        "id": "Syukur digandeng dengan janji tambahan. Kekurangan sering membaik bila hati mengakui yang sudah ada."
+      },
+      "langkah": {
+        "id": "Hitung pengeluaran non-penting hari ini dan potong 1 item."
+      }
+    },
+    {
+      "id": "rezeki-51-58",
+      "mood": "rezeki",
+      "s": 51,
+      "a": 58,
+      "surah": "Az-Zariyat",
+      "ref": "Az-Zariyat 51:58",
+      "ar": "إِنَّ ٱللَّهَ هُوَ ٱلرَّزَّاقُ ذُو ٱلْقُوَّةِ ٱلْمَتِينُ",
+      "trId": "Sesungguhnya Allah Dialah Maha Pemberi rezeki Yang mempunyai Kekuatan lagi Sangat Kokoh.",
+      "pesan": {
+        "id": "Hanya Allah yang Maha Pemberi rezeki lagi kuat. Bergantung kepada-Nya tidak meniadakan usaha."
+      },
+      "langkah": {
+        "id": "Doakan rezeki halal untukmu dan untuk 1 orang lain."
+      }
+    },
+    {
+      "id": "rezeki-67-15",
+      "mood": "rezeki",
+      "s": 67,
+      "a": 15,
+      "surah": "Al-Mulk",
+      "ref": "Al-Mulk 67:15",
+      "ar": "هُوَ ٱلَّذِى جَعَلَ لَكُمُ ٱلْأَرْضَ ذَلُولًا فَٱمْشُوا۟ فِى مَنَاكِبِهَا وَكُلُوا۟ مِن رِّزْقِهِۦ ۖ وَإِلَيْهِ ٱلنُّشُورُ",
+      "trId": "Dialah Yang menjadikan bumi itu mudah bagi kamu, maka berjalanlah di segala penjurunya dan makanlah sebahagian dari rezeki-Nya. Dan hanya kepada-Nya-lah kamu (kembali setelah) dibangkitkan.",
+      "pesan": {
+        "id": "Berjalanlah di muka bumi dan makanlah dari rezeki-Nya. Gerak mencari adalah ibadah bila niatnya benar."
+      },
+      "langkah": {
+        "id": "Update 1 aplikasi lamaran/usaha atau hubungi 1 peluang."
+      }
+    },
+    {
+      "id": "rezeki-34-39",
+      "mood": "rezeki",
+      "s": 34,
+      "a": 39,
+      "surah": "Saba'",
+      "ref": "Saba' 34:39",
+      "ar": "قُلْ إِنَّ رَبِّى يَبْسُطُ ٱلرِّزْقَ لِمَن يَشَآءُ مِنْ عِبَادِهِۦ وَيَقْدِرُ لَهُۥ ۚ وَمَآ أَنفَقْتُم مِّن شَىْءٍ فَهُوَ يُخْلِفُهُۥ ۖ وَهُوَ خَيْرُ ٱلرَّٰزِقِينَ",
+      "trId": "Katakanlah: \"Sesungguhnya Tuhanku melapangkan rezeki bagi siapa yang dikehendaki-Nya di antara hamba-hamba-Nya dan menyempitkan bagi (siapa yang dikehendaki-Nya)\". Dan barang apa saja yang kamu nafkahkan, maka Allah akan menggantinya dan Dialah Pemberi rezeki yang sebaik-baiknya.",
+      "pesan": {
+        "id": "Allah melapangkan dan menyempitkan rezeki; apa yang diinfakkan tidak sia-sia."
+      },
+      "langkah": {
+        "id": "Bayar atau rencanakan 1 kewajiban keuangan kecil hari ini."
+      }
+    },
+    {
+      "id": "rezeki-2-261",
+      "mood": "rezeki",
+      "s": 2,
+      "a": 261,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:261",
+      "ar": "مَّثَلُ ٱلَّذِينَ يُنفِقُونَ أَمْوَٰلَهُمْ فِى سَبِيلِ ٱللَّهِ كَمَثَلِ حَبَّةٍ أَنۢبَتَتْ سَبْعَ سَنَابِلَ فِى كُلِّ سُنۢبُلَةٍ مِّا۟ئَةُ حَبَّةٍ ۗ وَٱللَّهُ يُضَٰعِفُ لِمَن يَشَآءُ ۗ وَٱللَّهُ وَٰسِعٌ عَلِيمٌ",
+      "trId": "Perumpamaan (nafkah yang dikeluarkan oleh) orang-orang yang menafkahkan hartanya di jalan Allah adalah serupa dengan sebutir benih yang menumbuhkan tujuh bulir, pada tiap-tiap bulir seratus biji. Allah melipat gandakan (ganjaran) bagi siapa yang Dia kehendaki. Dan Allah Maha Luas (karunia-Nya) lagi Maha Mengetahui.",
+      "pesan": {
+        "id": "Nafkah di jalan Allah digambarkan tumbuh berlipat. Jangan takut berbagi dari yang sedikit."
+      },
+      "langkah": {
+        "id": "Beri makanan atau uang receh kepada yang membutuhkan."
+      }
+    },
+    {
+      "id": "pasangan-30-21",
+      "mood": "pasangan",
+      "s": 30,
+      "a": 21,
+      "surah": "Ar-Rum",
+      "ref": "Ar-Rum 30:21",
+      "ar": "وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَـَٔايَٰتٍ لِّقَوْمٍ يَتَفَكَّرُونَ",
+      "trId": "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir.",
+      "pesan": {
+        "id": "Pasangan diciptakan agar kalian merasa tenteram; kasih sayang adalah tanda kekuasaan Allah."
+      },
+      "langkah": {
+        "id": "Kirim pesan lembut atau doakan pasanganmu sekarang."
+      }
+    },
+    {
+      "id": "pasangan-25-74",
+      "mood": "pasangan",
+      "s": 25,
+      "a": 74,
+      "surah": "Al-Furqan",
+      "ref": "Al-Furqan 25:74",
+      "ar": "وَٱلَّذِينَ يَقُولُونَ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّٰتِنَا قُرَّةَ أَعْيُنٍ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+      "trId": "Dan orang orang yang berkata: \"Ya Tuhan kami, anugrahkanlah kepada kami isteri-isteri kami dan keturunan kami sebagai penyenang hati (kami), dan jadikanlah kami imam bagi orang-orang yang bertakwa.",
+      "pesan": {
+        "id": "Doa orang beriman mencakup istri/suami dan keturunan yang menyejukkan mata."
+      },
+      "langkah": {
+        "id": "Doakan pasangan (atau calon) agar menjadi qurrata a‘yun."
+      }
+    },
+    {
+      "id": "pasangan-4-36",
+      "mood": "pasangan",
+      "s": 4,
+      "a": 36,
+      "surah": "An-Nisa'",
+      "ref": "An-Nisa' 4:36",
+      "ar": "۞ وَٱعْبُدُوا۟ ٱللَّهَ وَلَا تُشْرِكُوا۟ بِهِۦ شَيْـًٔا ۖ وَبِٱلْوَٰلِدَيْنِ إِحْسَٰنًا وَبِذِى ٱلْقُرْبَىٰ وَٱلْيَتَٰمَىٰ وَٱلْمَسَٰكِينِ وَٱلْجَارِ ذِى ٱلْقُرْبَىٰ وَٱلْجَارِ ٱلْجُنُبِ وَٱلصَّاحِبِ بِٱلْجَنۢبِ وَٱبْنِ ٱلسَّبِيلِ وَمَا مَلَكَتْ أَيْمَٰنُكُمْ ۗ إِنَّ ٱللَّهَ لَا يُحِبُّ مَن كَانَ مُخْتَالًا فَخُورًا",
+      "trId": "Sembahlah Allah dan janganlah kamu mempersekutukan-Nya dengan sesuatupun. Dan berbuat baiklah kepada dua orang ibu-bapa, karib-kerabat, anak-anak yatim, orang-orang miskin, tetangga yang dekat dan tetangga yang jauh, dan teman sejawat, ibnu sabil dan hamba sahayamu. Sesungguhnya Allah tidak menyukai orang-orang yang sombong dan membangga-banggakan diri,",
+      "pesan": {
+        "id": "Berbuat baik kepada orang tua dan kerabat termasuk perintah setelah tauhid; rumah tangga butuh ihsan."
+      },
+      "langkah": {
+        "id": "Lakukan 1 kebaikan praktis untuk pasangan atau keluarga dekat."
+      }
+    },
+    {
+      "id": "pasangan-24-32",
+      "mood": "pasangan",
+      "s": 24,
+      "a": 32,
+      "surah": "An-Nur",
+      "ref": "An-Nur 24:32",
+      "ar": "وَأَنكِحُوا۟ ٱلْأَيَٰمَىٰ مِنكُمْ وَٱلصَّٰلِحِينَ مِنْ عِبَادِكُمْ وَإِمَآئِكُمْ ۚ إِن يَكُونُوا۟ فُقَرَآءَ يُغْنِهِمُ ٱللَّهُ مِن فَضْلِهِۦ ۗ وَٱللَّهُ وَٰسِعٌ عَلِيمٌ",
+      "trId": "Dan kawinkanlah orang-orang yang sedirian diantara kamu, dan orang-orang yang layak (berkawin) dari hamba-hamba sahayamu yang lelaki dan hamba-hamba sahayamu yang perempuan. Jika mereka miskin Allah akan memampukan mereka dengan kurnia-Nya. Dan Allah Maha luas (pemberian-Nya) lagi Maha Mengetahui.",
+      "pesan": {
+        "id": "Allah memerintahkan menikahkan yang layak; pernikahan adalah jalan yang dimuliakan."
+      },
+      "langkah": {
+        "id": "Perbaiki niat: 1 kalimat syukur atas pasangan atau doa untuk jodoh yang baik."
+      }
+    },
+    {
+      "id": "pasangan-66-6",
+      "mood": "pasangan",
+      "s": 66,
+      "a": 6,
+      "surah": "At-Tahrim",
+      "ref": "At-Tahrim 66:6",
+      "ar": "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ قُوٓا۟ أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا وَقُودُهَا ٱلنَّاسُ وَٱلْحِجَارَةُ عَلَيْهَا مَلَٰٓئِكَةٌ غِلَاظٌ شِدَادٌ لَّا يَعْصُونَ ٱللَّهَ مَآ أَمَرَهُمْ وَيَفْعَلُونَ مَا يُؤْمَرُونَ",
+      "trId": "Hai orang-orang yang beriman, peliharalah dirimu dan keluargamu dari api neraka yang bahan bakarnya adalah manusia dan batu; penjaganya malaikat-malaikat yang kasar, keras, dan tidak mendurhakai Allah terhadap apa yang diperintahkan-Nya kepada mereka dan selalu mengerjakan apa yang diperintahkan.",
+      "pesan": {
+        "id": "Jagalah diri dan keluarga dari api neraka. Cinta pasangan termasuk menasihati dalam kebaikan."
+      },
+      "langkah": {
+        "id": "Ingatkan diri/pasangan dengan lembut untuk 1 amalan (mis. shalat)."
+      }
+    },
+    {
+      "id": "pasangan-2-187",
+      "mood": "pasangan",
+      "s": 2,
+      "a": 187,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:187",
+      "ar": "أُحِلَّ لَكُمْ لَيْلَةَ ٱلصِّيَامِ ٱلرَّفَثُ إِلَىٰ نِسَآئِكُمْ ۚ هُنَّ لِبَاسٌ لَّكُمْ وَأَنتُمْ لِبَاسٌ لَّهُنَّ ۗ عَلِمَ ٱللَّهُ أَنَّكُمْ كُنتُمْ تَخْتَانُونَ أَنفُسَكُمْ فَتَابَ عَلَيْكُمْ وَعَفَا عَنكُمْ ۖ فَٱلْـَٰٔنَ بَٰشِرُوهُنَّ وَٱبْتَغُوا۟ مَا كَتَبَ ٱللَّهُ لَكُمْ ۚ وَكُلُوا۟ وَٱشْرَبُوا۟ حَتَّىٰ يَتَبَيَّنَ لَكُمُ ٱلْخَيْطُ ٱلْأَبْيَضُ مِنَ ٱلْخَيْطِ ٱلْأَسْوَدِ مِنَ ٱلْفَجْرِ ۖ ثُمَّ أَتِمُّوا۟ ٱلصِّيَامَ إِلَى ٱلَّيْلِ ۚ وَلَا تُبَٰشِرُوهُنَّ وَأَنتُمْ عَٰكِفُونَ فِى ٱلْمَسَٰجِدِ ۗ تِلْكَ حُدُودُ ٱللَّهِ فَلَا تَقْرَبُوهَا ۗ كَذَٰلِكَ يُبَيِّنُ ٱللَّهُ ءَايَٰتِهِۦ لِلنَّاسِ لَعَلَّهُمْ يَتَّقُونَ",
+      "trId": "Dihalalkan bagi kamu pada malam hari bulan puasa bercampur dengan isteri-isteri kamu; mereka adalah pakaian bagimu, dan kamupun adalah pakaian bagi mereka. Allah mengetahui bahwasanya kamu tidak dapat menahan nafsumu, karena itu Allah mengampuni kamu dan memberi maaf kepadamu. Maka sekarang campurilah mereka dan ikutilah apa yang telah ditetapkan Allah untukmu, dan makan minumlah hingga terang bagimu benang putih dari benang hitam, yaitu fajar. Kemudian sempurnakanlah puasa itu sampai (datang) malam, (tetapi) janganlah kamu campuri mereka itu, sedang kamu beri'tikaf dalam mesjid. Itulah larangan Allah, maka janganlah kamu mendekatinya. Demikianlah Allah menerangkan ayat-ayat-Nya kepada manusia, supaya mereka bertakwa.",
+      "pesan": {
+        "id": "Pasangan digambarkan sebagai pakaian bagi yang lain: menutupi, melindungi, menghangatkan."
+      },
+      "langkah": {
+        "id": "Minta maaf atau maafkan 1 hal kecil yang sempat menyakiti."
+      }
+    },
+    {
+      "id": "ortu-31-13",
+      "mood": "ortu",
+      "s": 31,
+      "a": 13,
+      "surah": "Luqman",
+      "ref": "Luqman 31:13",
+      "ar": "وَإِذْ قَالَ لُقْمَٰنُ لِٱبْنِهِۦ وَهُوَ يَعِظُهُۥ يَٰبُنَىَّ لَا تُشْرِكْ بِٱللَّهِ ۖ إِنَّ ٱلشِّرْكَ لَظُلْمٌ عَظِيمٌ",
+      "trId": "Dan (ingatlah) ketika Luqman berkata kepada anaknya, di waktu ia memberi pelajaran kepadanya: \"Hai anakku, janganlah kamu mempersekutukan Allah, sesungguhnya mempersekutukan (Allah) adalah benar-benar kezaliman yang besar\".",
+      "pesan": {
+        "id": "Nasihat pertama Luqman kepada anaknya: jangan mempersekutukan Allah. Tauhid adalah akar pendidikan."
+      },
+      "langkah": {
+        "id": "Ceritakan 1 hal tentang Allah kepada anak (atau adik/keponakan) dengan bahasa sederhana."
+      }
+    },
+    {
+      "id": "ortu-31-14",
+      "mood": "ortu",
+      "s": 31,
+      "a": 14,
+      "surah": "Luqman",
+      "ref": "Luqman 31:14",
+      "ar": "وَوَصَّيْنَا ٱلْإِنسَٰنَ بِوَٰلِدَيْهِ حَمَلَتْهُ أُمُّهُۥ وَهْنًا عَلَىٰ وَهْنٍ وَفِصَٰلُهُۥ فِى عَامَيْنِ أَنِ ٱشْكُرْ لِى وَلِوَٰلِدَيْكَ إِلَىَّ ٱلْمَصِيرُ",
+      "trId": "Dan Kami perintahkan kepada manusia (berbuat baik) kepada dua orang ibu-bapaknya; ibunya telah mengandungnya dalam keadaan lemah yang bertambah-tambah, dan menyapihnya dalam dua tahun. Bersyukurlah kepada-Ku dan kepada dua orang ibu bapakmu, hanya kepada-Kulah kembalimu.",
+      "pesan": {
+        "id": "Berbuat baik kepada orang tua digandeng dengan pengorbanan ibu. Hormati mereka dan ajarkan anak menghormati."
+      },
+      "langkah": {
+        "id": "Telepon atau pesan orang tuamu hari ini, meski singkat."
+      }
+    },
+    {
+      "id": "ortu-31-17",
+      "mood": "ortu",
+      "s": 31,
+      "a": 17,
+      "surah": "Luqman",
+      "ref": "Luqman 31:17",
+      "ar": "يَٰبُنَىَّ أَقِمِ ٱلصَّلَوٰةَ وَأْمُرْ بِٱلْمَعْرُوفِ وَٱنْهَ عَنِ ٱلْمُنكَرِ وَٱصْبِرْ عَلَىٰ مَآ أَصَابَكَ ۖ إِنَّ ذَٰلِكَ مِنْ عَزْمِ ٱلْأُمُورِ",
+      "trId": "Hai anakku, dirikanlah shalat dan suruhlah (manusia) mengerjakan yang baik dan cegahlah (mereka) dari perbuatan yang mungkar dan bersabarlah terhadap apa yang menimpa kamu. Sesungguhnya yang demikian itu termasuk hal-hal yang diwajibkan (oleh Allah).",
+      "pesan": {
+        "id": "Luqman menasihati anak: dirikan shalat, amar makruf nahi mungkar, dan bersabar."
+      },
+      "langkah": {
+        "id": "Shalat berjamaah atau dampingi anak shalat 1 waktu."
+      }
+    },
+    {
+      "id": "ortu-17-23",
+      "mood": "ortu",
+      "s": 17,
+      "a": 23,
+      "surah": "Al-Isra'",
+      "ref": "Al-Isra' 17:23",
+      "ar": "۞ وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوٓا۟ إِلَّآ إِيَّاهُ وَبِٱلْوَٰلِدَيْنِ إِحْسَٰنًا ۚ إِمَّا يَبْلُغَنَّ عِندَكَ ٱلْكِبَرَ أَحَدُهُمَآ أَوْ كِلَاهُمَا فَلَا تَقُل لَّهُمَآ أُفٍّ وَلَا تَنْهَرْهُمَا وَقُل لَّهُمَا قَوْلًا كَرِيمًا",
+      "trId": "Dan Tuhanmu telah memerintahkan supaya kamu jangan menyembah selain Dia dan hendaklah kamu berbuat baik pada ibu bapakmu dengan sebaik-baiknya. Jika salah seorang di antara keduanya atau kedua-duanya sampai berumur lanjut dalam pemeliharaanmu, maka sekali-kali janganlah kamu mengatakan kepada keduanya perkataan \"ah\" dan janganlah kamu membentak mereka dan ucapkanlah kepada mereka perkataan yang mulia.",
+      "pesan": {
+        "id": "Setelah tauhid, Allah memerintahkan ihsan kepada orang tua. Pola asuh dimulai dari cara kita memperlakukan mereka."
+      },
+      "langkah": {
+        "id": "Ucapkan kata lembut kepada orang tua atau gantikan 1 tugas rumah mereka."
+      }
+    },
+    {
+      "id": "ortu-17-24",
+      "mood": "ortu",
+      "s": 17,
+      "a": 24,
+      "surah": "Al-Isra'",
+      "ref": "Al-Isra' 17:24",
+      "ar": "وَٱخْفِضْ لَهُمَا جَنَاحَ ٱلذُّلِّ مِنَ ٱلرَّحْمَةِ وَقُل رَّبِّ ٱرْحَمْهُمَا كَمَا رَبَّيَانِى صَغِيرًا",
+      "trId": "Dan rendahkanlah dirimu terhadap mereka berdua dengan penuh kesayangan dan ucapkanlah: \"Wahai Tuhanku, kasihilah mereka keduanya, sebagaimana mereka berdua telah mendidik aku waktu kecil\".",
+      "pesan": {
+        "id": "Rendahkan sayap kasih kepada orang tua dan doakan rahmat untuk mereka."
+      },
+      "langkah": {
+        "id": "Doakan orang tuamu dengan ayat doa ini 1×."
+      }
+    },
+    {
+      "id": "ortu-46-15",
+      "mood": "ortu",
+      "s": 46,
+      "a": 15,
+      "surah": "Al-Ahqaf",
+      "ref": "Al-Ahqaf 46:15",
+      "ar": "وَوَصَّيْنَا ٱلْإِنسَٰنَ بِوَٰلِدَيْهِ إِحْسَٰنًا ۖ حَمَلَتْهُ أُمُّهُۥ كُرْهًا وَوَضَعَتْهُ كُرْهًا ۖ وَحَمْلُهُۥ وَفِصَٰلُهُۥ ثَلَٰثُونَ شَهْرًا ۚ حَتَّىٰٓ إِذَا بَلَغَ أَشُدَّهُۥ وَبَلَغَ أَرْبَعِينَ سَنَةً قَالَ رَبِّ أَوْزِعْنِىٓ أَنْ أَشْكُرَ نِعْمَتَكَ ٱلَّتِىٓ أَنْعَمْتَ عَلَىَّ وَعَلَىٰ وَٰلِدَىَّ وَأَنْ أَعْمَلَ صَٰلِحًا تَرْضَىٰهُ وَأَصْلِحْ لِى فِى ذُرِّيَّتِىٓ ۖ إِنِّى تُبْتُ إِلَيْكَ وَإِنِّى مِنَ ٱلْمُسْلِمِينَ",
+      "trId": "Kami perintahkan kepada manusia supaya berbuat baik kepada dua orang ibu bapaknya, ibunya mengandungnya dengan susah payah, dan melahirkannya dengan susah payah (pula). Mengandungnya sampai menyapihnya adalah tiga puluh bulan, sehingga apabila dia telah dewasa dan umurnya sampai empat puluh tahun ia berdoa: \"Ya Tuhanku, tunjukilah aku untuk mensyukuri nikmat Engkau yang telah Engkau berikan kepadaku dan kepada ibu bapakku dan supaya aku dapat berbuat amal yang saleh yang Engkau ridhai; berilah kebaikan kepadaku dengan (memberi kebaikan) kepada anak cucuku. Sesungguhnya aku bertaubat kepada Engkau dan sesungguhnya aku termasuk orang-orang yang berserah diri\".",
+      "pesan": {
+        "id": "Manusia diperintah berbuat baik kepada ibu bapak; pengorbanan mengandung digarisbawahi."
+      },
+      "langkah": {
+        "id": "Luangkan 10 menit full-attention untuk anak tanpa HP."
+      }
+    },
+    {
+      "id": "sabar-2-153",
+      "mood": "sabar",
+      "s": 2,
+      "a": 153,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:153",
+      "ar": "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱسْتَعِينُوا۟ بِٱلصَّبْرِ وَٱلصَّلَوٰةِ ۚ إِنَّ ٱللَّهَ مَعَ ٱلصَّٰبِرِينَ",
+      "trId": "Hai orang-orang yang beriman, jadikanlah sabar dan shalat sebagai penolongmu, sesungguhnya Allah beserta orang-orang yang sabar.",
+      "pesan": {
+        "id": "Sabar dan shalat adalah penolong. Kesabaran dilatih bersama ibadah, bukan hanya ditekan."
+      },
+      "langkah": {
+        "id": "Tahan diri dari 1 reaksi marah; ganti dengan diam 10 detik."
+      }
+    },
+    {
+      "id": "sabar-2-155",
+      "mood": "sabar",
+      "s": 2,
+      "a": 155,
+      "surah": "Al-Baqarah",
+      "ref": "Al-Baqarah 2:155",
+      "ar": "وَلَنَبْلُوَنَّكُم بِشَىْءٍ مِّنَ ٱلْخَوْفِ وَٱلْجُوعِ وَنَقْصٍ مِّنَ ٱلْأَمْوَٰلِ وَٱلْأَنفُسِ وَٱلثَّمَرَٰتِ ۗ وَبَشِّرِ ٱلصَّٰبِرِينَ",
+      "trId": "Dan sungguh akan Kami berikan cobaan kepadamu, dengan sedikit ketakutan, kelaparan, kekurangan harta, jiwa dan buah-buahan. Dan berikanlah berita gembira kepada orang-orang yang sabar.",
+      "pesan": {
+        "id": "Cobaan pasti datang; kabar gembira bagi orang-orang yang sabar."
+      },
+      "langkah": {
+        "id": "Catat 1 cobaan hari ini dan 1 pelajaran darinya."
+      }
+    },
+    {
+      "id": "sabar-16-127",
+      "mood": "sabar",
+      "s": 16,
+      "a": 127,
+      "surah": "An-Nahl",
+      "ref": "An-Nahl 16:127",
+      "ar": "وَٱصْبِرْ وَمَا صَبْرُكَ إِلَّا بِٱللَّهِ ۚ وَلَا تَحْزَنْ عَلَيْهِمْ وَلَا تَكُ فِى ضَيْقٍ مِّمَّا يَمْكُرُونَ",
+      "trId": "Bersabarlah (hai Muhammad) dan tiadalah kesabaranmu itu melainkan dengan pertolongan Allah dan janganlah kamu bersedih hati terhadap (kekafiran) mereka dan janganlah kamu bersempit dada terhadap apa yang mereka tipu dayakan.",
+      "pesan": {
+        "id": "Kesabaranmu hanya dengan pertolongan Allah. Minta sabar, jangan hanya menuntut hasil."
+      },
+      "langkah": {
+        "id": "Doa singkat: «Rabbi a‘inni ‘ala sabr» 3×."
+      }
+    },
+    {
+      "id": "sabar-103-3",
+      "mood": "sabar",
+      "s": 103,
+      "a": 3,
+      "surah": "Al-'Asr",
+      "ref": "Al-'Asr 103:3",
+      "ar": "إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّٰلِحَٰتِ وَتَوَاصَوْا۟ بِٱلْحَقِّ وَتَوَاصَوْا۟ بِٱلصَّبْرِ",
+      "trId": "kecuali orang-orang yang beriman dan mengerjakan amal saleh dan nasehat menasehati supaya mentaati kebenaran dan nasehat menasehati supaya menetapi kesabaran.",
+      "pesan": {
+        "id": "Yang selamat: beriman, beramal saleh, saling menasihati dalam kebenaran dan kesabaran."
+      },
+      "langkah": {
+        "id": "Nasihati dirimu: tulis 1 komitmen sabar untuk 24 jam ke depan."
+      }
+    },
+    {
+      "id": "sabar-39-10",
+      "mood": "sabar",
+      "s": 39,
+      "a": 10,
+      "surah": "Az-Zumar",
+      "ref": "Az-Zumar 39:10",
+      "ar": "قُلْ يَٰعِبَادِ ٱلَّذِينَ ءَامَنُوا۟ ٱتَّقُوا۟ رَبَّكُمْ ۚ لِلَّذِينَ أَحْسَنُوا۟ فِى هَٰذِهِ ٱلدُّنْيَا حَسَنَةٌ ۗ وَأَرْضُ ٱللَّهِ وَٰسِعَةٌ ۗ إِنَّمَا يُوَفَّى ٱلصَّٰبِرُونَ أَجْرَهُم بِغَيْرِ حِسَابٍ",
+      "trId": "Katakanlah: \"Hai hamba-hamba-Ku yang beriman. bertakwalah kepada Tuhanmu\". Orang-orang yang berbuat baik di dunia ini memperoleh kebaikan. Dan bumi Allah itu adalah luas. Sesungguhnya hanya orang-orang yang bersabarlah Yang dicukupkan pahala mereka tanpa batas.",
+      "pesan": {
+        "id": "Pahala orang yang bersabar dibalas tanpa hisab. Sabar adalah investasi, bukan kekalahan."
+      },
+      "langkah": {
+        "id": "Selesaikan 1 pekerjaan membosankan tanpa mengeluh keras."
+      }
+    },
+    {
+      "id": "sabar-94-5",
+      "mood": "sabar",
+      "s": 94,
+      "a": 5,
+      "surah": "Asy-Syarh",
+      "ref": "Asy-Syarh 94:5",
+      "ar": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا",
+      "trId": "Karena sesungguhnya sesudah kesulitan itu ada kemudahan,",
+      "pesan": {
+        "id": "Bersama kesulitan ada kemudahan. Sabar membuka ruang untuk melihat kemudahan itu."
+      },
+      "langkah": {
+        "id": "Saat tergoda mengeluh, ganti dengan «innalillah» atau «hasbunallah» 1×."
+      }
+    }
+  ]
+}

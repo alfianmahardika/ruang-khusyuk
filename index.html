@@ -183,6 +183,7 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 </script>
 <script>/* AUTO-LANG: first visit only; manual choice saved in rk_lang always wins */(function(){try{if(localStorage.getItem("rk_lang")!=null)return;var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(function(x){return String(x).toLowerCase();});var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var p=(ls[0]||"").slice(0,2),l;var AR=/^Asia\/(Riyadh|Dubai|Qatar|Kuwait|Bahrain|Muscat|Aden|Baghdad|Amman|Damascus|Beirut|Gaza|Hebron)$|^Africa\/(Cairo|Tripoli|Tunis|Algiers|Casablanca|Khartoum|Nouakchott)$/;if(p==="id"||p==="ms")l="id";else if(p==="ar")l="ar";else if(p==="en"&&!/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz)&&!AR.test(tz))l="en";else if(/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz))l="id";else if(AR.test(tz))l="ar";else if(ls.some(function(x){return /^(id|ms)/.test(x)}))l="id";else if(ls.some(function(x){return /^ar/.test(x)}))l="ar";else l="en";localStorage.setItem("rk_lang",JSON.stringify(l));localStorage.setItem("rk_lang_auto","1");}catch(e){}})();</script><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="stylesheet" href="bm-lang.css">
 <link rel="stylesheet" href="bm-salat-ux.css">
+<link rel="stylesheet" href="bm-kata-quran.css">
 </head><body>
 <title>Best Muslim</title>
 <meta name="description" content="Best Muslim — checklist ibadah harian & kehadiran hati dalam salat">
@@ -910,6 +911,20 @@ input[type=file]{display:none}
 /* ===== t70: equal-size hero slides (match Hikmah card) ===== */
 .v2-hero-car{margin:0 0 0}
 .v2-hero-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 16px;scroll-padding-inline:16px;border-radius:0;align-items:stretch}
+/* t76c: iOS Safari tap reliability inside scroll-snap carousel */
+.v2-hero-track{touch-action:pan-x;overscroll-behavior-x:contain}
+.v2-hero-track .v2-hero,
+.v2-hero-track #pkToday,
+.v2-hero-track #pkToday .hk-btn,
+.v2-hero-track #pkToday button,
+.v2-hero-track .v2-cta{-webkit-tap-highlight-color:rgba(230,199,122,.25);touch-action:manipulation;cursor:pointer;-webkit-user-select:none;user-select:none}
+.v2-hero-track #pkToday.hk-card,.v2-hero-track #pkToday.pk-today{cursor:pointer;-webkit-tap-highlight-color:rgba(230,199,122,.25);touch-action:manipulation;position:relative;overflow:visible}
+.v2-hero-track #pkToday .hk-btn,.v2-hero-track #pkToday [data-hkstart]{position:relative;z-index:2;touch-action:manipulation}
+@media (pointer:coarse){
+  .v2-hero-play{transform:none!important;will-change:auto}
+  .v2-hero-play .v2-hero-ic-sholat{will-change:auto}
+  .v2-hero-shine{display:none}
+}
 .v2-hero-track::-webkit-scrollbar{display:none}
 .v2-hero-slide{flex:0 0 calc(100% - 32px);scroll-snap-align:center;scroll-snap-stop:always;min-height:0;display:flex;align-items:stretch;box-sizing:border-box}
 .v2-hero-slide>.v2-hero,.v2-hero-slide>#pkToday{flex:1 1 auto;width:100%;height:auto;min-height:0;box-sizing:border-box;margin:0;align-self:stretch}
@@ -938,6 +953,17 @@ input[type=file]{display:none}
 
 /* t70 praying icon */
 .v2-hero-slide>.v2-hero .v2-hero-ic-sholat img,.v2-hero-slide>.v2-hero .v2-hero-ic-sholat svg{width:72px;height:72px;border-radius:0;object-fit:contain;background:transparent;display:block}
+.v2-hero-slide>.v2-hero.v2-hero-kq{gap:6px;padding:14px 14px 12px}
+.v2-hero-slide>.v2-hero.v2-hero-kq .v2-hero-ic-kq{display:flex;flex-direction:column;align-items:center;gap:4px;margin:0}
+.v2-hero-slide>.v2-hero.v2-hero-kq .bm-kq-jar-hero{width:64px;height:78px;margin:0}
+.v2-hero-slide>.v2-hero.v2-hero-kq .bm-kq-jar-hero .lid{height:12px}
+.v2-hero-slide>.v2-hero.v2-hero-kq .bm-kq-jar-hero .lid::after{top:-5px;height:6px}
+.v2-hero-slide>.v2-hero.v2-hero-kq .bm-kq-jar-hero .neck{top:10px;height:8px}
+.v2-hero-slide>.v2-hero.v2-hero-kq .bm-kq-jar-hero .body{top:16px;border-radius:8px 8px 14px 14px}
+.v2-hero-slide>.v2-hero.v2-hero-kq .bm-kq-jar-hero .scroll{width:9px;height:34px;bottom:10px}
+.v2-hero-slide>.v2-hero.v2-hero-kq .bm-kq-jar-lab{font-size:11px;font-weight:800;letter-spacing:.04em;color:rgba(26,18,8,.75);text-transform:none}
+.v2-hero-slide>.v2-hero.v2-hero-kq b{font-size:18px;line-height:1.15}
+
 .v2-hero-slide>.v2-hero b{text-align:center;font-size:19px;line-height:1.2;max-width:16em}
 .v2-hero-slide>.v2-hero .v2-cta{margin-top:4px;padding:8px 18px;font-size:13.5px}
 .v2-hero-slide>#pkToday.hk-card,.v2-hero-slide>#pkToday.pk-today,.v2-hero-slide>#pkToday.v2-hero-hk{justify-content:center;padding:14px 14px 16px;border-radius:20px;height:auto}
@@ -2381,10 +2407,25 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
             <div class="v2-hero-slide" data-hi="1">
               <div id="pkToday" class="card lit pk-today hk-card v2-hero-hk"></div>
             </div>
+            <div class="v2-hero-slide" data-hi="2">
+              <button class="v2-hero v2-hero-kq" id="bmKqHero" type="button" aria-label="Kata Qur'an untukmu">
+                <span class="v2-hero-shine" aria-hidden="true"></span>
+                <span class="v2-hero-ic v2-hero-ic-kq" aria-hidden="true">
+                  <div class="bm-kq-jar bm-kq-jar-hero" aria-hidden="true">
+                    <div class="lid"></div><div class="neck"></div>
+                    <div class="body"><span class="scroll"></span><span class="scroll"></span><span class="scroll"></span></div>
+                  </div>
+                  <span class="bm-kq-jar-lab">Quranic Jar</span>
+                </span>
+                <b data-kq="title">Kata Qur'an untukmu</b>
+                <span class="v2-cta" aria-hidden="true"><span data-kq="cta">Ambil ayat</span> <i>→</i></span>
+              </button>
+            </div>
           </div>
           <div class="v2-hero-ind" id="v2HeroDots" aria-hidden="true">
             <button type="button" class="v2-hero-dot on" data-hi="0" aria-label="Slide 1"></button>
             <button type="button" class="v2-hero-dot" data-hi="1" aria-label="Slide 2"></button>
+            <button type="button" class="v2-hero-dot" data-hi="2" aria-label="Slide 3"></button>
             <span class="v2-hero-chev" aria-hidden="true">›</span>
           </div>
         </div>
@@ -2440,7 +2481,25 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
     <!-- ================= V2: KIBLAT ================= -->
     <section class="page" id="page-kiblat"><div class="stack" id="kbStack"><div><div class="eyebrow" data-v="qiblaEy"></div><h1 data-v="qiblaT"></h1></div></div></section>
     <!-- ================= V2: LAINNYA ================= -->
-    <section class="page" id="page-lainnya">
+        <section class="page" id="page-kata-quran">
+      <div class="stack bm-kq-wrap">
+        <button type="button" class="btn sm ghost" id="bmKqBack" style="align-self:flex-start">← <span data-kq="back">Kembali</span></button>
+        <div class="bm-kq-head"><h2 data-kq="title">Kata Qur'an untukmu</h2><p data-kq="sub">Pilih perasaanmu, ambil satu ayat hari ini</p></div>
+        <div class="bm-kq-stage" id="bmKqStage">
+          <div class="bm-kq-jar lg" aria-hidden="true">
+            <div class="lid"></div><div class="neck"></div>
+            <div class="body"><span class="scroll"></span><span class="scroll"></span><span class="scroll"></span></div>
+            <div class="bm-kq-rise" id="bmKqPop"><span class="spark"></span></div>
+          </div>
+        </div>
+        <p class="bm-kq-mood-q" data-kq="moodQ">Bagaimana perasaanmu hari ini?</p>
+        <div class="bm-kq-moods" id="bmKqMoods"></div>
+        <button type="button" class="bm-kq-ask" id="bmKqAsk" disabled data-kq="ask">Apa kata Qur'an untukku?</button>
+        <p class="bm-kq-limit" id="bmKqLimit"></p>
+        <div class="bm-kq-sheet" id="bmKqSheet"></div>
+      </div>
+    </section>
+<section class="page" id="page-lainnya">
       <div class="stack">
         <div><div class="eyebrow" data-v="moreEy"></div><h1 data-v="more"></h1></div>
         <div class="v2-grid" id="lnGrid"></div>
@@ -3455,7 +3514,7 @@ const t=k=>UI[k]?L(UI[k]):k;
 const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:g==="hasan"?`<span class="pill gold">${t("g.hasan")}</span>`:g==="dhaif"?`<span class="pill rose">${t("g.dhaif")}</span>`:`<span class="pill rose">${t("g.khilaf")}</span>`;
 
 /* ---------------- Router ---------------- */
-const PAGES=["beranda","puasa","umrah","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
+const PAGES=["beranda","puasa","umrah","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah","kata-quran"];
 function go(p){ if(p==="mushaf"){ p="quran"; try{ sessionStorage.setItem("rk_nav_mushaf","1"); }catch(e){} }
   else { try{ sessionStorage.removeItem("rk_nav_mushaf"); }catch(e){} }
   if(!PAGES.includes(p)) p="beranda";
@@ -3698,6 +3757,7 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",sta
 <script src="bm-i18n.js" defer></script>
 <script src="bm-lang.js" defer></script>
 <script src="bm-salat-ux.js" defer></script>
+<script src="bm-kata-quran.js" defer></script>
 </body></html>
 <script>
 /* =========================================================
@@ -4659,11 +4719,55 @@ function initHeroCar(){ const track=$("#v2HeroTrack"), dots=$("#v2HeroDots"); if
   /* data-hi (not data-i): base jadwal i18n fills [data-i] textContent — that painted "0"/"1" on phones */
   dots.querySelectorAll(".v2-hero-dot").forEach(d=>{ d.textContent=""; d.removeAttribute("data-i"); });
   const slideW=()=>{ const s=track.querySelector(".v2-hero-slide"); return s?s.getBoundingClientRect().width:track.clientWidth; };
-  const sync=()=>{ const w=slideW()||1; const gap=10; const i=Math.max(0,Math.min(1,Math.round(track.scrollLeft/(w+gap))));
+  const nSlides=()=>track.querySelectorAll(".v2-hero-slide").length||1;
+  const sync=()=>{ const w=slideW()||1; const gap=10; const max=Math.max(0,nSlides()-1); const i=Math.max(0,Math.min(max,Math.round(track.scrollLeft/(w+gap))));
     dots.querySelectorAll(".v2-hero-dot").forEach((d,j)=>d.classList.toggle("on",j===i));
-    const chev=dots.querySelector(".v2-hero-chev"); if(chev) chev.style.visibility=i===0?"visible":"hidden"; };
+    const chev=dots.querySelector(".v2-hero-chev"); if(chev) chev.style.visibility=i<max?"visible":"hidden"; };
   track.addEventListener("scroll",()=>{ clearTimeout(track._hst); track._hst=setTimeout(sync,60); },{passive:true});
   dots.addEventListener("click",e=>{ const b=e.target.closest("[data-hi]"); if(!b) return; const w=slideW(); track.scrollTo({left:(+b.dataset.hi)*(w+10),behavior:"smooth"}); });
+  /* iOS Safari/WebKit: scroll-snap + overflow-x often cancels the synthetic click on CTAs inside the track.
+     Synthesize a tap when finger movement is tiny; debounce the native click that may also fire. */
+  (function bindHeroTapFix(){
+    const SEL="#v2Start, #bmKqHero, #pkToday [data-hkstart], #pkToday [data-hkagain], #pkToday .hk-btn, #pkToday button";
+    let x0=null,y0=null,t0=0,suppressUntil=0,synth=false;
+    const isTapTarget=(el)=>{
+      if(!el||!el.closest) return null;
+      const direct=el.closest(SEL);
+      if(direct) return direct;
+      /* Whole Hikmah card body should open (iOS users tap the books/title, not only Mulai) */
+      const card=el.closest("#pkToday");
+      if(card) return card.querySelector("[data-hkstart], [data-hkagain], .hk-btn, button");
+      return null;
+    };
+    track.addEventListener("touchstart",e=>{
+      if(e.touches.length!==1){ x0=null; return; }
+      const p=e.touches[0]; x0=p.clientX; y0=p.clientY; t0=Date.now();
+    },{passive:true});
+    track.addEventListener("touchmove",e=>{
+      if(x0==null||!e.touches[0]) return;
+      const p=e.touches[0];
+      if(Math.abs(p.clientX-x0)>10||Math.abs(p.clientY-y0)>10) x0=null; /* treat as swipe */
+    },{passive:true});
+    track.addEventListener("touchend",e=>{
+      if(x0==null) return;
+      const p=e.changedTouches&&e.changedTouches[0]; if(!p){ x0=null; return; }
+      const dx=Math.abs(p.clientX-x0), dy=Math.abs(p.clientY-y0), dt=Date.now()-t0;
+      x0=null;
+      if(dx>10||dy>10||dt>650) return;
+      const hit=document.elementFromPoint(p.clientX,p.clientY);
+      const btn=isTapTarget(hit)||isTapTarget(e.target);
+      if(!btn) return;
+      try{ e.preventDefault(); }catch(_){}
+      synth=true;
+      try{ btn.click(); }catch(_){}
+      synth=false;
+      suppressUntil=Date.now()+450; /* swallow delayed ghost click on iOS */
+    },{passive:false});
+    track.addEventListener("click",e=>{
+      if(synth) return;
+      if(Date.now()<suppressUntil && isTapTarget(e.target)){ e.preventDefault(); e.stopImmediatePropagation(); }
+    },true);
+  })();
   sync();
 }
 function renderPromo(){ const track=$("#v2PromoTrack"), dots=$("#v2PromoDots"); if(!track) return; const i=({id:0,en:1,ar:2}[lang()]);
