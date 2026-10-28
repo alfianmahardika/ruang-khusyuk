@@ -1,0 +1,90 @@
+/* Header language flag circle + dropdown (no permanent text in header) */
+.bm-lang{position:relative;flex:none;z-index:8}
+.bm-lang-btn{
+  appearance:none;width:34px;height:34px;padding:0;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line,rgba(255,255,255,.12));
+  background:var(--glass,rgba(255,255,255,.06));
+  display:inline-flex;align-items:center;justify-content:center;overflow:hidden;
+  box-shadow:0 1px 0 rgba(0,0,0,.15);
+  transition:transform .15s,background .15s,border-color .15s;
+}
+.bm-lang-btn:hover{background:var(--glass2,rgba(255,255,255,.1));border-color:rgba(217,184,106,.4)}
+.bm-lang-btn:active{transform:scale(.94)}
+.bm-lang-btn[aria-expanded="true"]{border-color:rgba(217,184,106,.55);box-shadow:0 0 0 2px rgba(217,184,106,.18)}
+.bm-lang-btn .bm-flag{width:22px;height:22px;border-radius:999px;overflow:hidden;display:block;flex:none}
+.bm-lang-btn .bm-flag svg{width:100%;height:100%;display:block}
+.bm-lang-menu{
+  position:absolute;top:calc(100% + 8px);left:0;min-width:230px;max-width:min(280px,92vw);
+  max-height:min(70vh,420px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;padding:6px;border-radius:14px;
+  background:rgba(14,19,27,.96);border:1px solid var(--line,rgba(255,255,255,.12));
+  box-shadow:0 12px 32px rgba(0,0,0,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  display:none;z-index:40;scrollbar-width:thin;
+}
+.bm-lang-menu.open{display:block;animation:bmLangIn .16s ease}
+@keyframes bmLangIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.bm-lang-item{
+  appearance:none;width:100%;display:flex;align-items:center;gap:10px;
+  border:0;background:transparent;color:var(--fg,#ede8dd);font:inherit;font-size:13.5px;font-weight:650;
+  padding:9px 10px;border-radius:10px;cursor:pointer;text-align:start;
+}
+.bm-lang-item:hover,.bm-lang-item:focus-visible{background:rgba(217,184,106,.14);outline:0}
+.bm-lang-item.on{background:rgba(217,184,106,.18);color:var(--gold2,#f0d79a)}
+.bm-lang-item .bm-flag{width:22px;height:22px;border-radius:999px;overflow:hidden;flex:none}
+.bm-lang-item .bm-flag svg{width:100%;height:100%;display:block}
+.bm-lang-item span{flex:1;min-width:0}
+.app[dir=rtl] .bm-lang-menu{left:auto;right:0}
+/* Hidden bridge for legacy I18N #langseg listeners */
+.langseg.bm-lang-bridge{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0;margin:-1px}
+
+/* Header layout: flag LEFT · brand center · Masuk TOP-RIGHT */
+.hdr{display:flex;align-items:center;gap:10px}
+.hdr-left{display:flex;align-items:center;flex:none;order:0}
+.hdr .brand{flex:1;min-width:0;order:1;justify-content:flex-start}
+.hdr .right{display:flex;align-items:center;gap:8px;flex:none;order:2;margin-inline-start:auto}
+/* Masuk circle matches flag circle size/family */
+#bmAuthHdrBtn{
+  appearance:none;width:34px;height:34px;min-width:34px;padding:0;margin:0;
+  border-radius:999px;border:1px solid rgba(217,184,106,.4);
+  background:rgba(217,184,106,.16);color:var(--gold2,#f0d79a);
+  font:inherit;font-size:10px;font-weight:800;letter-spacing:.02em;
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+  white-space:nowrap;overflow:hidden;line-height:1;flex:none;
+  transition:transform .15s,background .15s;
+}
+#bmAuthHdrBtn:hover{background:rgba(217,184,106,.26)}
+#bmAuthHdrBtn:active{transform:scale(.94)}
+#bmAuthHdrBtn.is-profil{font-size:9px;letter-spacing:0}
+@media (max-width:440px){
+  .bm-lang-btn,#bmAuthHdrBtn{width:32px;height:32px;min-width:32px}
+  .bm-lang-btn .bm-flag{width:20px;height:20px}
+}
+
+/* Social login buttons (Google brand guidelines-ish + Apple) */
+.bm-social{display:flex;flex-direction:column;gap:10px;margin:14px 0 6px}
+.bm-btn-google,.bm-btn-apple{
+  appearance:none;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+  height:44px;border-radius:999px;font:inherit;font-size:14px;font-weight:650;cursor:pointer;
+  transition:transform .12s,opacity .12s,background .12s;
+}
+.bm-btn-google{background:#fff;color:#1f1f1f;border:1px solid #dadce0}
+.bm-btn-google:hover{background:#f7f8f8}
+.bm-btn-google:active{transform:scale(.985)}
+.bm-btn-google .g-ico{width:18px;height:18px;flex:none}
+.bm-btn-apple{background:#000;color:#fff;border:1px solid #000}
+.bm-btn-apple:hover{background:#111}
+.bm-btn-apple .a-ico{width:18px;height:18px;flex:none}
+.bm-social-soon{
+  margin:0;padding:8px 12px;border-radius:12px;font-size:12.5px;line-height:1.4;
+  background:rgba(217,184,106,.1);border:1px solid rgba(217,184,106,.28);color:var(--fg2,#bcb6a9);
+}
+.bm-social-div{
+  display:flex;align-items:center;gap:10px;margin:12px 0 4px;color:var(--fg3,#847f74);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+}
+.bm-social-div::before,.bm-social-div::after{content:"";flex:1;height:1px;background:var(--line,rgba(255,255,255,.1))}
+
+.bm-lang-item .bm-lang-lab{flex:1;min-width:0;text-align:start}
+.bm-lang-item .bm-lang-check{width:16px;flex:none;text-align:center;color:var(--gold2,#f0d79a);font-weight:800;font-size:13px}
+/* Settings language grid grows with many langs */
+#stLang.v2-seg{flex-wrap:wrap;max-height:none}
+#stLang.v2-seg button{flex:1 1 auto;min-width:42%}

@@ -181,7 +181,8 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 })();
 
 </script>
-<script>/* AUTO-LANG: first visit only; manual choice saved in rk_lang always wins */(function(){try{if(localStorage.getItem("rk_lang")!=null)return;var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(function(x){return String(x).toLowerCase();});var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var p=(ls[0]||"").slice(0,2),l;var AR=/^Asia\/(Riyadh|Dubai|Qatar|Kuwait|Bahrain|Muscat|Aden|Baghdad|Amman|Damascus|Beirut|Gaza|Hebron)$|^Africa\/(Cairo|Tripoli|Tunis|Algiers|Casablanca|Khartoum|Nouakchott)$/;if(p==="id"||p==="ms")l="id";else if(p==="ar")l="ar";else if(p==="en"&&!/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz)&&!AR.test(tz))l="en";else if(/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz))l="id";else if(AR.test(tz))l="ar";else if(ls.some(function(x){return /^(id|ms)/.test(x)}))l="id";else if(ls.some(function(x){return /^ar/.test(x)}))l="ar";else l="en";localStorage.setItem("rk_lang",JSON.stringify(l));localStorage.setItem("rk_lang_auto","1");}catch(e){}})();</script><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<script>/* AUTO-LANG: first visit only; manual choice saved in rk_lang always wins */(function(){try{if(localStorage.getItem("rk_lang")!=null)return;var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(function(x){return String(x).toLowerCase();});var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var p=(ls[0]||"").slice(0,2),l;var AR=/^Asia\/(Riyadh|Dubai|Qatar|Kuwait|Bahrain|Muscat|Aden|Baghdad|Amman|Damascus|Beirut|Gaza|Hebron)$|^Africa\/(Cairo|Tripoli|Tunis|Algiers|Casablanca|Khartoum|Nouakchott)$/;if(p==="id"||p==="ms")l="id";else if(p==="ar")l="ar";else if(p==="en"&&!/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz)&&!AR.test(tz))l="en";else if(/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz))l="id";else if(AR.test(tz))l="ar";else if(ls.some(function(x){return /^(id|ms)/.test(x)}))l="id";else if(ls.some(function(x){return /^ar/.test(x)}))l="ar";else l="en";localStorage.setItem("rk_lang",JSON.stringify(l));localStorage.setItem("rk_lang_auto","1");}catch(e){}})();</script><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="stylesheet" href="bm-lang.css">
+</head><body>
 <title>Best Muslim</title>
 <meta name="description" content="Best Muslim — checklist ibadah harian & kehadiran hati dalam salat">
 <meta name="theme-color" content="#140f09">
@@ -2340,12 +2341,14 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
   <div class="pattern" aria-hidden="true"><svg><defs><pattern id="star8" width="72" height="72" patternUnits="userSpaceOnUse"><g fill="none" stroke="#d9b86a" stroke-width="1"><path d="M36 6l8 22 22 8-22 8-8 22-8-22-22-8 22-8z"/><path d="M36 14l5 17 17 5-17 5-5 17-5-17-17-5 17-5z"/><circle cx="36" cy="36" r="4"/><circle cx="0" cy="0" r="6"/><circle cx="72" cy="0" r="6"/><circle cx="0" cy="72" r="6"/><circle cx="72" cy="72" r="6"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#star8)"/></svg></div>
 
   <header class="hdr">
+    <div class="hdr-left">
+      <div class="langseg bm-lang-bridge" id="langseg" role="group" aria-label="Language" aria-hidden="true"><button data-l="id" type="button">ID</button><button data-l="en" type="button">EN</button><button data-l="ar" type="button">AR</button></div>
+    </div>
     <div class="brand">
       <img class="logo" src="icon-192.png" width="34" height="34" alt="" decoding="async">
       <div class="tx"><img class="v2-brand-wm" src="wordmark-3d-hdr.webp" width="140" height="27" alt="Best Muslim" decoding="async" onerror="this.onerror=null;this.src='wordmark-3d-hdr.png'"><span data-i="brand.sub"></span><div class="hijri" id="hijri"></div></div>
     </div>
     <div class="right">
-      <div class="langseg" id="langseg" role="group" aria-label="Language"><button data-l="id">ID</button><button data-l="en">EN</button><button data-l="ar">AR</button></div>
       <button id="themeBtn" class="iconbtn" type="button" aria-label="Theme">☀</button>
       <button class="murbtn" id="murBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg><div class="eq"><i></i><i></i><i></i></div><span class="tx" data-i="mur.btn"></span></button>
     </div>
@@ -3684,6 +3687,8 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",sta
 })();
 </script>
 
+<script src="bm-i18n.js" defer></script>
+<script src="bm-lang.js" defer></script>
 </body></html>
 <script>
 /* =========================================================
@@ -4586,7 +4591,7 @@ function curPrayer(){const now=new Date(),tt=times(now);if(!tt)return 0;let c=0;
 
 /* ---------- i18n apply ---------- */
 function applyV(){ $$("[data-v]:not(.az-opt)").forEach(el=>{el.textContent=v(el.dataset.v);}); const tg=$("#v2SplashTag"); if(tg){tg.textContent=v("tagline");tg.lang=lang();} const sk=$("#v2SplashSkip"); if(sk) sk.textContent=v("skip"); const bm=$("#v2BsmM"); if(bm){ bm.textContent=v("bsmM"); bm.hidden=lang()==="ar"; } /* t53: pembuka Bismillah */
-  renderAll(); }
+  renderAll(); ;try{if(window.BMI18N&&BMI18N.applyNav)BMI18N.applyNav();}catch(e){}}
 
 /* ---------- Splash ---------- */
 function splash(){ const s=$("#v2Splash"); if(!s) return; /* t67: longer fade — same bg as Beranda so handoff is seamless */ const hide=()=>{ if(s._hid) return; s._hid=1; s.classList.add("out"); setTimeout(()=>{ try{s.remove();}catch(e){} },740); }; s.addEventListener("click",hide,{once:true}); setTimeout(hide,3400); }
