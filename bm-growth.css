@@ -1,0 +1,52 @@
+/* Best Muslim v82 — growth: share cards, invite, smart notifs */
+.bm-gr-ov{
+  position:fixed;inset:0;z-index:13500;display:none;align-items:flex-end;justify-content:center;
+  background:rgba(5,8,12,.62);padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));
+}
+.bm-gr-ov.on{display:flex}
+.bm-gr-sheet{
+  width:100%;max-width:420px;max-height:min(90vh,720px);overflow:auto;
+  background:linear-gradient(180deg,#1a2218,#101410);border:1px solid rgba(217,184,106,.3);
+  border-radius:22px 22px 18px 18px;padding:18px 16px 16px;color:#f3e9d4;
+  animation:bmGrUp .28s ease;position:relative;
+}
+@keyframes bmGrUp{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.bm-gr-sheet h3{margin:0 0 6px;font-size:1.15rem;color:#e6c77a;font-family:var(--font-display,serif)}
+.bm-gr-sheet .lead{margin:0 0 12px;font-size:13px;line-height:1.45;opacity:.85}
+.bm-gr-x{
+  position:absolute;top:10px;right:12px;width:36px;height:36px;border:0;border-radius:999px;
+  background:rgba(243,233,212,.1);color:#e6c77a;font-size:20px;cursor:pointer;
+}
+.bm-gr-preview{
+  width:100%;aspect-ratio:9/16;max-height:42vh;object-fit:contain;border-radius:14px;
+  border:1px solid rgba(217,184,106,.28);background:#0a0c12;margin:8px 0 12px;
+}
+.bm-gr-name{
+  width:100%;border-radius:12px;border:1px solid rgba(217,184,106,.28);background:rgba(0,0,0,.25);
+  color:#f3e9d4;padding:10px 12px;font:inherit;font-size:14px;margin:6px 0 12px;box-sizing:border-box;
+}
+.bm-gr-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.bm-gr-actions .btn{flex:1;min-width:120px;font-size:13px}
+.bm-gr-invite{
+  margin-top:10px;padding:12px;border-radius:14px;border:1px solid rgba(217,184,106,.22);
+  background:rgba(217,184,106,.07);
+}
+.bm-gr-invite .code{font-weight:800;color:#e6c77a;letter-spacing:.04em}
+.bm-gr-badge{
+  display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:4px 10px;border-radius:999px;
+  background:rgba(126,201,173,.14);border:1px solid rgba(126,201,173,.35);color:#9ee0c4;
+  font-size:12px;font-weight:800;
+}
+.bm-gr-banner{
+  position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);
+  z-index:12500;width:min(94vw,400px);padding:12px 14px;border-radius:16px;
+  background:rgba(16,20,14,.96);border:1px solid rgba(217,184,106,.4);color:#f3e9d4;
+  box-shadow:0 12px 32px rgba(0,0,0,.4);display:none;
+}
+.bm-gr-banner.on{display:block;animation:bmGrUp .25s ease}
+.bm-gr-banner b{display:block;color:#e6c77a;font-size:13px;margin-bottom:2px}
+.bm-gr-banner p{margin:0;font-size:12.5px;line-height:1.4;opacity:.9}
+.bm-gr-banner .row{display:flex;gap:8px;margin-top:10px}
+.bm-gr-banner .row .btn{flex:1;font-size:12px;padding:8px}
+.bm-gr-tog{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;font-size:13px}
+.bm-gr-tog input{width:18px;height:18px}

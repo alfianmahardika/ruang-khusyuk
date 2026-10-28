@@ -1,4 +1,4 @@
-/*! Best Muslim v81 — Hari ini + user-chosen Qur'an daily target.
+/*! Best Muslim v82 — Hari ini: 2 required (Sholat+Hikmah) + optional Qur'an Bonus.
  * Reuses: rk_salat_*, ks_hikmah, rk_q_last/rk_q_lastpg, rk_dompet, ks_ibadah_log, rk_target_harian.
  * Privacy-first: localStorage only. ID/EN/AR. Gold Best Muslim.
  * Mushaf Madinah 604 pages via quran/meta.json (Tanzil).
@@ -39,6 +39,9 @@
       gQuran: "Baca {label} Qur'an",
       gQuranSub: "Ketuk untuk baca · Ubah target lewat ✏️",
       gQuranProg: "{have}/{need} {unit}",
+      bonus: "Bonus",
+      bonusSub: "Opsional — tidak memengaruhi streak",
+      addQuran: "+ Target Qur'an",
       gHikmah: "1 Hikmah Harian",
       gHikmahSub: "Selesaikan putaran Hikmah hari ini",
       sunnahToggle: "+ Amalan sunnah (opsional)",
@@ -68,7 +71,7 @@
       uzurFiqh: "Menurut mayoritas ulama (termasuk madzhab Syafi'i), perempuan yang sedang haid atau nifas tidak wajib sholat, dan sholat yang terlewat saat itu tidak diqada. Mode ini hanya membantu pencatatan pribadi di aplikasi — bukan fatwa. Untuk kondisi sakit atau safar, ikuti hukum dan kemudahan yang berlaku bagi Anda, sebaiknya dengan menanyakan kepada ustadz/ustadzah tepercaya.",
       save: "Simpan",
       done: "Selesai",
-      of3: "{n}/3",
+      ofNeed: "{n}/{m}",
       dalil: "Dalil",
       qPickTitle: "Target Qur'an harian",
       qPickLead: "Pilih berapa yang ingin Anda baca setiap hari. Boleh diubah kapan saja.",
@@ -85,7 +88,7 @@
       qBackHome: "Kembali ke Beranda",
       qKeepReading: "Lanjut baca",
       qSetTitle: "Target Qur'an harian",
-      qSetLead: "Berlaku untuk kartu Hari ini. Progres hari ini tetap dihitung ulang sesuai target baru.",
+      qSetLead: "Bonus opsional di kartu Hari ini (tidak memengaruhi streak). Progres hari ini dihitung ulang sesuai target baru.",
       qHalf: "½ juz",
       qLabelAyat: "{n} ayat",
       qLabelHalaman: "{n} halaman",
@@ -105,6 +108,9 @@
       gQuran: "Read {label} of Qur'an",
       gQuranSub: "Tap to read · Change target via ✏️",
       gQuranProg: "{have}/{need} {unit}",
+      bonus: "Bonus",
+      bonusSub: "Optional — does not affect streak",
+      addQuran: "+ Qur'an target",
       gHikmah: "1 Daily Wisdom",
       gHikmahSub: "Finish today's Hikmah round",
       sunnahToggle: "+ Optional sunnah deeds",
@@ -134,7 +140,7 @@
       uzurFiqh: "According to the majority of scholars (including the Shafi'i school), women in menstruation or postnatal bleeding are not obligated to pray, and missed prayers in that period are not made up. This mode only helps personal tracking in the app — it is not a fatwa. For illness or travel, follow the rulings and concessions that apply to you, ideally with a trusted teacher.",
       save: "Save",
       done: "Done",
-      of3: "{n}/3",
+      ofNeed: "{n}/{m}",
       dalil: "Evidence",
       qPickTitle: "Daily Qur'an target",
       qPickLead: "Choose how much you want to read each day. You can change it anytime.",
@@ -151,7 +157,7 @@
       qBackHome: "Back to Home",
       qKeepReading: "Keep reading",
       qSetTitle: "Daily Qur'an target",
-      qSetLead: "Applies to the Today card. Today's progress is re-checked against the new target.",
+      qSetLead: "Optional bonus on Today (does not affect streak). Today's progress re-checks against the new target.",
       qHalf: "½ juz",
       qLabelAyat: "{n} verses",
       qLabelHalaman: "{n} pages",
@@ -171,6 +177,9 @@
       gQuran: "قراءة {label} من القرآن",
       gQuranSub: "انقر للقراءة · غيّر الهدف عبر ✏️",
       gQuranProg: "{have}/{need} {unit}",
+      bonus: "مكافأة",
+      bonusSub: "اختياري — لا يؤثر على السلسلة",
+      addQuran: "+ هدف القرآن",
       gHikmah: "حكمة يومية واحدة",
       gHikmahSub: "أتمّ جولة الحكمة اليوم",
       sunnahToggle: "+ سنن اختيارية",
@@ -200,7 +209,7 @@
       uzurFiqh: "عند جمهور العلماء (ومنهم الشافعية) لا تجب الصلاة على الحائض والنفساء، ولا يُقضى ما فات في تلك المدة. هذا الوضع للمساعدة في التتبع الشخصي فقط — وليس فتوى. للمرض أو السفر اتّبع الأحكام والتيسير التي تناسبك، ويُستحب سؤال معلّم موثوق.",
       save: "حفظ",
       done: "تم",
-      of3: "{n}/3",
+      ofNeed: "{n}/{m}",
       dalil: "الدليل",
       qPickTitle: "هدف القرآن اليومي",
       qPickLead: "اختر مقدار قراءتك كل يوم. يمكنك تغييره في أي وقت.",
@@ -217,7 +226,7 @@
       qBackHome: "العودة إلى الرئيسية",
       qKeepReading: "متابعة القراءة",
       qSetTitle: "هدف القرآن اليومي",
-      qSetLead: "ينطبق على بطاقة اليوم. يُعاد احتساب تقدّم اليوم وفق الهدف الجديد.",
+      qSetLead: "مكافأة اختيارية في بطاقة اليوم (لا تؤثر على السلسلة). يُعاد احتساب تقدّم اليوم وفق الهدف الجديد.",
       qHalf: "نصف جزء",
       qLabelAyat: "{n} آيات",
       qLabelHalaman: "{n} صفحات",
@@ -557,14 +566,16 @@
     var gSalat = uzur ? true : salatDone(day);
     var gQ = quranDone(day, s);
     var gH = hikmahDone(day);
+    /* Required: Sholat + Hikmah only. Qur'an is optional bonus (does not affect streak). */
     return {
       uzur: uzur,
       salat: gSalat,
       quran: gQ,
       hikmah: gH,
-      needed: uzur ? 2 : 3,
-      doneCount: (uzur ? 0 : gSalat ? 1 : 0) + (gQ ? 1 : 0) + (gH ? 1 : 0),
-      all: uzur ? gQ && gH : gSalat && gQ && gH
+      bonus: gQ,
+      needed: uzur ? 1 : 2,
+      doneCount: (uzur ? 0 : gSalat ? 1 : 0) + (gH ? 1 : 0),
+      all: uzur ? !!gH : !!(gSalat && gH)
     };
   }
 
@@ -731,10 +742,15 @@
     storeSet("ks_ibadah_log", o);
   }
 
-  function renderSunnahBlock() {
+  function renderSunnahBlock(opts) {
+    opts = opts || {};
     var items = sunnahItems();
     var day = sunnahDay();
-    if (!items.length) return "";
+    var addQ =
+      opts.addQuran
+        ? '<button type="button" class="bm-tg-addq" id="bmTgAddQuran">' + esc(t("addQuran")) + "</button>"
+        : "";
+    if (!items.length && !addQ) return "";
     var rows = items
       .map(function (it) {
         var on = !!day[it.k];
@@ -760,27 +776,37 @@
         );
       })
       .join("");
+    var tog = items.length
+      ? '<button type="button" class="bm-tg-sunnah-tog" id="bmTgSunnahTog">' +
+        esc(sunnahOpen ? t("sunnahHide") : t("sunnahToggle")) +
+        "</button>"
+      : "";
+    var body = items.length
+      ? '<div class="bm-tg-sunnah-body" id="bmTgSunnahBody"' +
+        (sunnahOpen ? "" : " hidden") +
+        ">" +
+        rows +
+        "</div>"
+      : "";
     return (
       '<div class="bm-tg-sunnah' +
       (sunnahOpen ? " open" : "") +
       '">' +
-      '<button type="button" class="bm-tg-sunnah-tog" id="bmTgSunnahTog">' +
-      esc(sunnahOpen ? t("sunnahHide") : t("sunnahToggle")) +
-      "</button>" +
-      '<div class="bm-tg-sunnah-body" id="bmTgSunnahBody"' +
-      (sunnahOpen ? "" : " hidden") +
-      ">" +
-      rows +
-      "</div></div>"
+      tog +
+      addQ +
+      body +
+      "</div>"
     );
   }
 
-  function goalRow(ic, title, sub, on, skip, extra) {
+  function goalRow(ic, title, sub, on, skip, extra, cls) {
     extra = extra || "";
+    cls = cls || "";
     return (
       '<div class="bm-tg-goal' +
       (on ? " on" : "") +
       (skip ? " skip" : "") +
+      (cls ? " " + cls : "") +
       '"><span class="ic">' +
       ic +
       '</span><div class="tx"><b>' +
@@ -882,6 +908,13 @@
     s.quranDoneToast[day] = 1;
     save(s);
     openQuranDoneSheet();
+    try {
+      if (window.BmGrowth && BmGrowth.onQuranTargetReached) {
+        setTimeout(function () {
+          BmGrowth.onQuranTargetReached({ label: targetLabel() });
+        }, 1200);
+      }
+    } catch (e) {}
     setTimeout(function () {
       render();
     }, 80);
@@ -1062,8 +1095,8 @@
     var s = migrateStreak(state());
     var day = dkey();
     var g = goals(day, s);
-    var need = g.uzur ? 2 : 3;
-    var have = g.uzur ? (g.quran ? 1 : 0) + (g.hikmah ? 1 : 0) : (g.salat ? 1 : 0) + (g.quran ? 1 : 0) + (g.hikmah ? 1 : 0);
+    var need = g.needed;
+    var have = g.doneCount;
     var pct = need ? have / need : 0;
     var pts = dompetPoin();
     var tg = getTarget(s);
@@ -1084,7 +1117,7 @@
       '<div class="bm-tg-ring-wrap">' +
       ringSvg(pct) +
       '<div class="pct">' +
-      esc(t("of3", { n: have })) +
+      esc(t("ofNeed", { n: have, m: need })) +
       "</div></div>" +
       '<div class="bm-tg-head"><p class="bm-tg-ey">' +
       esc(t("ey")) +
@@ -1110,33 +1143,31 @@
       "</div></div>" +
       '<div class="bm-tg-goals">' +
       goalRow("🕌", t("gSalat"), s.uzur ? t("gSalatUzur") : t("gSalatSub"), s.uzur ? true : g.salat, s.uzur) +
-      goalRow("📖", goalQuranTitle(tg), qSub + " · " + t("gQuranSub"), g.quran, false, qEdit) +
       goalRow("✨", t("gHikmah"), t("gHikmahSub"), g.hikmah, false) +
       "</div>" +
-      renderSunnahBlock() +
+      (s.quranTargetSet
+        ? '<div class="bm-tg-bonus" id="bmTgBonus">' +
+          '<div class="bm-tg-bonus-lab">' +
+          esc(t("bonus")) +
+          " · " +
+          esc(t("bonusSub")) +
+          "</div>" +
+          goalRow("📖", goalQuranTitle(tg), qSub + " · " + t("gQuranSub"), g.quran, false, qEdit, "bonus") +
+          "</div>"
+        : "") +
+      renderSunnahBlock({ addQuran: !s.quranTargetSet }) +
       '<div class="bm-tg-actions">' +
       '<button type="button" class="btn sm ghost" id="bmTgUzur">' +
       esc(t("openUzur")) +
-      "</button></div>" +
-      '<p class="bm-tg-guest">' +
-      esc(t("guest")) +
-      "</p>" +
-      '<p class="bm-tg-note">' +
-      esc(t("privacy")) +
-      "</p>";
+      "</button></div>";
 
-    var goalsEl = card.querySelectorAll(".bm-tg-goal");
+    var goalsEl = card.querySelectorAll(".bm-tg-goals > .bm-tg-goal");
     if (goalsEl[0])
       goalsEl[0].onclick = function () {
         go("jadwal");
       };
     if (goalsEl[1])
-      goalsEl[1].onclick = function (e) {
-        if (e.target && e.target.closest && e.target.closest("#bmTgQEdit")) return;
-        openQuranReader();
-      };
-    if (goalsEl[2])
-      goalsEl[2].onclick = function () {
+      goalsEl[1].onclick = function () {
         go("beranda");
         setTimeout(function () {
           var b = document.querySelector("#pkToday [data-hkstart], #pkToday .hk-btn, #pkToday .hk-go");
@@ -1146,6 +1177,12 @@
             if (slide) slide.scrollIntoView({ inline: "center", behavior: "smooth" });
           }
         }, 200);
+      };
+    var bonusEl = card.querySelector(".bm-tg-bonus .bm-tg-goal");
+    if (bonusEl)
+      bonusEl.onclick = function (e) {
+        if (e.target && e.target.closest && e.target.closest("#bmTgQEdit")) return;
+        openQuranReader();
       };
     var ed = document.getElementById("bmTgQEdit");
     if (ed)
@@ -1158,6 +1195,13 @@
     if (stBtn) stBtn.onclick = openCalendar;
     var uzBtn = document.getElementById("bmTgUzur");
     if (uzBtn) uzBtn.onclick = openUzur;
+    var addQ = document.getElementById("bmTgAddQuran");
+    if (addQ)
+      addQ.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openTargetPicker({ allowSkip: true });
+      };
     var tog = document.getElementById("bmTgSunnahTog");
     if (tog)
       tog.onclick = function () {
@@ -1376,7 +1420,7 @@
     s.freezeAwardAt = 1;
     s.streakMigrated = true;
     s.quranTarget = { amount: 1, unit: "halaman" };
-    s.quranTargetSet = true;
+    s.quranTargetSet = false; /* opt-in bonus -- default hidden */
     for (var i = 1; i <= 12; i++) s.calendar[dAdd(today, -i)] = "full";
     s.calendar[dAdd(today, -5)] = "freeze";
     s.calendar[dAdd(today, -8)] = "uzur";
@@ -1388,6 +1432,7 @@
     }
 
     if (mode === "done" || mode === "cele") {
+      s.quranTargetSet = true;
       storeSet("rk_salat_" + today, ["fajr", "dhuhr", "asr", "maghrib", "isha"]);
       storeSet("ks_hikmah", {
         day: today,
@@ -1569,7 +1614,7 @@
     render();
     hookReader();
     renderSettingsCard();
-    if (!demo || demo === "picker" || demo === "quran-picker") maybeFirstPrompt();
+    /* Quran target is opt-in via "+ Target Quran" -- no auto popup */
     if (demo === "quran-picker" || demo === "picker") setTimeout(function () { openTargetPicker({ allowSkip: true }); }, 400);
     if (demo === "quran-prog" || demo === "reader") setTimeout(openQuranReader, 500);
     if (demo === "quran-done") setTimeout(function () { openQuranReader(); setTimeout(openQuranDoneSheet, 600); }, 400);

@@ -42,6 +42,14 @@
   border:1px solid rgba(217,184,106,.22);color:#f0d79a;
 }
 .bm-tg-goals{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.bm-tg-bonus{margin-top:10px;padding-top:8px;border-top:1px dashed rgba(217,184,106,.22)}
+.bm-tg-bonus-lab{font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;opacity:.55;margin:0 2px 6px;font-weight:600}
+.bm-tg-goal.bonus{opacity:.82;transform:scale(.97);transform-origin:top center;padding:8px 10px;border-color:rgba(217,184,106,.22);background:rgba(217,184,106,.04)}
+.bm-tg-goal.bonus .tx b{font-size:12px;font-weight:600}
+.bm-tg-goal.bonus .tx small{font-size:10.5px}
+.bm-tg-goal.bonus .ic{font-size:14px;opacity:.85}
+.bm-tg-goal.bonus .ck{width:18px;height:18px;font-size:11px}
+.bm-tg-goal.bonus.on{border-color:rgba(126,201,173,.35);background:rgba(126,201,173,.06);opacity:.9}
 .bm-tg-goal{
   display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;
   background:rgba(255,255,255,.04);border:1px solid rgba(217,184,106,.12);
@@ -57,6 +65,12 @@
 .bm-tg-goal.on .ck{background:#7ec9ad;border-color:#7ec9ad;color:#0e131b}
 
 /* Optional sunnah collapse */
+.bm-tg-addq{
+  display:block;width:100%;margin:6px 0 0;padding:4px 2px;border:0;background:transparent;
+  color:rgba(230,199,122,.72);font:inherit;font-size:11.5px;font-weight:600;text-align:start;
+  cursor:pointer;opacity:.85;letter-spacing:.01em
+}
+.bm-tg-addq:active{opacity:1;color:rgba(230,199,122,.95)}
 .bm-tg-sunnah{margin-top:10px}
 .bm-tg-sunnah-tog{
   width:100%;text-align:start;border:1px dashed rgba(217,184,106,.35);
