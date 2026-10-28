@@ -1850,6 +1850,60 @@ html:is([data-theme=light],[data-theme=pink]) .gm-bar,html[data-theme=pink] .gm-
 .hk-quote small{display:block;margin-top:4px;font-style:normal;opacity:.85;font-size:11px}
 
 
+/* Dompet Berkah — Shopee-style strip, dark-gold theme (t66) */
+.bm-dompet{display:flex;align-items:stretch;gap:0;margin:6px 0 2px;padding:0;border-radius:14px;border:1px solid rgba(230,199,122,.28);
+  background:linear-gradient(180deg,rgba(42,32,22,.96),rgba(24,18,12,.98));box-shadow:0 4px 14px rgba(0,0,0,.22);overflow:hidden;min-height:48px}
+.bm-dompet button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:8px;padding:8px 10px;min-width:0;color:inherit;font:inherit}
+.bm-dompet button:active{opacity:.85}
+.bm-dp-qr{flex:0 0 auto;padding-inline:12px 10px;justify-content:center}
+.bm-dp-qr svg{width:28px;height:28px;display:block}
+.bm-dp-saldo{flex:1 1 auto;border-inline-start:1px solid rgba(230,199,122,.18);border-inline-end:1px solid rgba(230,199,122,.18);min-width:0}
+.bm-dp-saldo .bm-dp-ic{width:22px;height:22px;border-radius:6px;background:linear-gradient(145deg,#ecd08a,#a8822f);display:grid;place-items:center;flex:none;font-size:11px;font-weight:800;color:#1a1208}
+.bm-dp-saldo .bm-dp-tx{min-width:0;display:flex;flex-direction:column;gap:1px}
+.bm-dp-saldo b{font-size:13.5px;font-weight:800;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--gold2,#e6c77a)}
+.bm-dp-saldo small{font-size:10.5px;color:var(--fg3);line-height:1.2}
+.bm-dp-poin{flex:0 1 auto;padding-inline:10px 12px;position:relative;max-width:42%}
+.bm-dp-poin .bm-dp-coin{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a8,#c9a24a 60%,#8a6a20);display:grid;place-items:center;flex:none;font-size:12px;box-shadow:0 0 0 1px rgba(230,199,122,.35);position:relative}
+.bm-dp-poin .bm-dp-dot{position:absolute;top:-2px;inset-inline-end:-2px;width:8px;height:8px;border-radius:50%;background:#e23b3b;border:1.5px solid #1a1208;display:none}
+.bm-dp-poin.claimable .bm-dp-dot{display:block}
+.bm-dp-poin .bm-dp-tx{min-width:0;display:flex;flex-direction:column;gap:1px}
+.bm-dp-poin b{font-size:12.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bm-dp-poin small{font-size:10px;color:var(--fg3);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+:is([data-theme=light],[data-theme=pink]) .bm-dompet,[data-theme=pink] .bm-dompet{background:linear-gradient(180deg,#fffaf0,#f3ebe0);border-color:rgba(160,120,40,.25)}
+:is([data-theme=light],[data-theme=pink]) .bm-dp-saldo b,[data-theme=pink] .bm-dp-saldo b{color:#7a5a18}
+:is([data-theme=light],[data-theme=pink]) .bm-dp-poin .bm-dp-dot,[data-theme=pink] .bm-dp-poin .bm-dp-dot{border-color:#fff}
+
+/* sheets */
+#bmDompetSheet .panel,#bmPoinSheet .panel{max-height:88%}
+.bm-sh-bal{text-align:center;padding:8px 0 14px}
+.bm-sh-bal .eyebrow{margin-bottom:4px}
+.bm-sh-bal b{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--gold2,#e6c77a);display:block;line-height:1.15}
+.bm-sh-bal small{display:block;margin-top:4px;font-size:12px;color:var(--fg3)}
+.bm-sh-acts{display:grid;grid-template-columns:1fr;gap:8px;margin:4px 0 12px}
+.bm-sh-acts .btn{justify-content:center;opacity:.92}
+.bm-sh-acts .btn .soon{display:inline-block;margin-inline-start:6px;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px;background:rgba(230,199,122,.16);color:var(--gold2);border:1px solid rgba(230,199,122,.28)}
+.bm-sh-note{font-size:11.5px;line-height:1.45;color:var(--fg3);border:1px dashed rgba(230,199,122,.28);border-radius:12px;padding:10px 12px;background:rgba(230,199,122,.05);margin:0 0 8px}
+.bm-ch-list,.bm-hist,.bm-vouch{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.bm-ch{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.bm-ch.on{border-color:rgba(230,199,122,.35);background:rgba(230,199,122,.08)}
+.bm-ch.got{opacity:.55}
+.bm-ch b{font-size:13px;display:block}
+.bm-ch small{font-size:11px;color:var(--fg3)}
+.bm-ch .bm-ch-pts{margin-inline-start:auto;font-weight:800;color:var(--gold2);font-size:13px;flex:none}
+.bm-ch .bm-ch-st{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px;border:1px solid var(--line2);color:var(--fg3);flex:none}
+.bm-ch.on .bm-ch-st{border-color:rgba(230,199,122,.4);color:var(--gold2)}
+.bm-ch.got .bm-ch-st{color:var(--jade,#7ec9ad);border-color:rgba(126,201,173,.35)}
+.bm-vouch .bm-vc{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;border:1px dashed rgba(230,199,122,.3);opacity:.85}
+.bm-vc i{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(230,199,122,.12);font-style:normal;font-size:18px;flex:none}
+.bm-vc b{font-size:13px;display:block}
+.bm-vc small{font-size:11px;color:var(--fg3)}
+.bm-vc .tag{font-size:10px;font-weight:700;color:#e23b3b;background:rgba(226,59,59,.12);border:1px solid rgba(226,59,59,.28);padding:2px 7px;border-radius:999px;margin-inline-start:auto;flex:none;white-space:nowrap}
+.bm-hist-row{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:6px 0;border-bottom:1px solid rgba(127,127,127,.12)}
+.bm-hist-row span{color:var(--fg3)}
+.bm-hist-row b.plus{color:var(--jade,#7ec9ad)}
+.bm-claim-bar{position:sticky;bottom:0;padding-top:10px;background:linear-gradient(180deg,transparent,var(--bg3) 28%);margin-top:8px}
+
+
 /* ===== Best Muslim — Hafalan Al-Qur'an AI ===== */
 .hq{display:flex;flex-direction:column;gap:14px}
 .hq-focus>:not(#hqRoot){display:none!important}
@@ -2242,6 +2296,8 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
           </div>
         </div>
         <div class="card lit v2-next v2-click" id="v2Next" data-go="jadwal"></div>
+        <!-- t66: Dompet Berkah strip (below Salat Berikutnya) -->
+        <div class="bm-dompet" id="bmDompet" role="region" aria-label="Dompet Berkah"></div>
         <!-- t47: kartu "Jadwal salat hari ini" dihapus dari Beranda; jadwal lengkap dibuka lewat kartu "Salat berikutnya" (halaman Jadwal tetap utuh) -->
         <!-- t61: Masjid Terdekat dipindah ke halaman Jadwal (di bawah Buka Kompas Kiblat) -->
         <!-- t62: Al-Qur'an Lanjutkan Membaca dihapus dari Beranda (tetap di tab Qur'an) -->
@@ -4692,7 +4748,7 @@ const Flow={ i:0, pose:0, chair:false, dz:0, dzi:0, bT:null,
   init(){ $("#v2Start").onclick=()=>this.open(0); $("#flX").onclick=()=>this.close();
     $("#flPrev").onclick=()=>{ if(this.i>0){ this.i--; this.render(); } };
     $("#flNextB").onclick=()=>{ if(this.i<this.steps.length-1){ this.i++; this.render(); } else this.finish(); }; },
-  finish(){ /* t49: Selesai menutup alur */ if($("#flSal")) this.saveRef(); this.close(); renderProg(); } };
+  finish(){ /* t49: Selesai menutup alur */ if($("#flSal")) this.saveRef(); try{ window.KusyuDompet&&KusyuDompet.noteAct("flow"); }catch(e){} this.close(); renderProg(); } };
 
 /* ---------- Lainnya ---------- */
 function renderLainnya(){ const g=$("#lnGrid"); if(!g) return;
@@ -4740,7 +4796,7 @@ function initSettings(){
 /* ---------- Kiblat page: move compass card ---------- */
 function initKiblat(){ const d=$("#qbDial"); const card=d&&d.closest(".card"); if(card) $("#kbStack").appendChild(card); }
 
-function renderAll(){ initHeroCar(); renderNext(); renderTimes(); renderQ(); renderProg(); renderPromo(); renderHafMini(); Haf.renderList(); if(Haf.cur) Haf.ui(); Masjid.render(); renderLainnya(); renderPremium(); renderSettings(); if(!$("#v2Flow").hidden) Flow.render(); }
+function renderAll(){ initHeroCar(); renderNext(); try{ window.KusyuDompet&&KusyuDompet.render(); }catch(e){} renderTimes(); renderQ(); renderProg(); renderPromo(); renderHafMini(); Haf.renderList(); if(Haf.cur) Haf.ui(); Masjid.render(); renderLainnya(); renderPremium(); renderSettings(); if(!$("#v2Flow").hidden) Flow.render(); }
 
 function init(){
   initKiblat(); initSettings(); Masjid.init(); Haf.init(); Flow.init(); initHeroCar();
@@ -4759,6 +4815,7 @@ function init(){
   const _go=window.go; window.go=function(p){ _go(p); if(p==="beranda"||p==="settings"||p==="premium") renderAll(); if(p!=="hafalan") Haf.stop(); };
   applyV(); splash();
   window.RKV2={Flow,Haf,Masjid,renderAll,v,setProgOpen,toggleProg,renderPromo,initHeroCar};
+  try{ window.KusyuDompet&&KusyuDompet.init(); }catch(e){}
 }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
 })();
@@ -6684,7 +6741,7 @@ function render(){ const o=$("#hkOv"); if(!o) return;
     <div class="hk-stage"><div class="hk-cardv" id="hkCard">${cardBody(c)}${actionsHTML(c)}</div></div>
     ${botHTML()}`; }
 
-function showFin(){ const o=shell(); const S=stGet(); S.doneToday=true; S.days=S.days||{}; S.days[dk()]=1; if(!S.since) S.since=dk(); stSet(S);
+function showFin(){ const o=shell(); const S=stGet(); S.doneToday=true; S.days=S.days||{}; S.days[dk()]=1; if(!S.since) S.since=dk(); stSet(S); try{ window.KusyuDompet&&KusyuDompet.noteAct("hikmah"); }catch(e){}
   const n=DECK?DECK.length:5; const st=streakCount(); const week=weekDays();
   o.innerHTML=`<div class="hk-fin"><div class="hk-top"><button type="button" class="hk-x" data-hkclose="1" aria-label="✕">✕</button><div class="hk-date">${esc(tt("name"))}</div><span></span></div>
     <div class="hk-dots">${Array(n).fill(0).map(()=>`<i class="ok">✓</i>`).join("")}<i class="ok">✓</i></div>
@@ -6775,6 +6832,199 @@ function boot(){ /* Beranda card click */
 }
 window.KusyuHikmah={open,close,renderCard,buildDeck,state:()=>({deck:DECK,i:IX,st:stGet()}),tt};
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
+})();
+
+</script>
+<script>
+/* Dompet Berkah + Poin Berkah (t66). localStorage only; no payment network. */
+(function(){
+const SK="rk_dompet";
+const store=window.store||{get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+const $=s=>document.querySelector(s);
+const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includes(l)?l:"id";};
+const L=()=>({id:0,en:1,ar:2}[lang()]||0);
+const dk=(d)=>{const x=d||new Date();return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0");};
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+const NUM=n=>new Intl.NumberFormat(lang()==="ar"?"ar":"id").format(n|0);
+const Rp=n=>"Rp"+NUM(n|0);
+
+const T={
+  title:["Dompet Berkah","Blessed Wallet","محفظة البركة"],
+  bayar:["Bayar QRIS","Pay QRIS","ادفع QRIS"],
+  topupHint:["Saldo {rp} · Top up","Balance {rp} · Top up","الرصيد {rp} · شحن"],
+  klaim:["Klaim Poin","Claim Points","استلم النقاط"],
+  klaimSub:["Poin Berkah","Blessed Points","نقاط البركة"],
+  klaimAvail:["+{n} siap diklaim","+{n} ready to claim","+{n} جاهزة"],
+  saldo0:["Rp0","Rp0","٠ ر.إ"],
+  shBal:["Saldo dompet","Wallet balance","رصيد المحفظة"],
+  topup:["Top up","Top up","شحن"],
+  sedekah:["Sedekah","Charity","صدقة"],
+  soon:["Segera hadir","Coming soon","قريبًا"],
+  payNote:["Fitur pembayaran menunggu mitra berizin Bank Indonesia. Belum ada top up, QRIS, atau sedekah sungguhan — tidak ada transaksi jaringan.","Payments await a BI-licensed partner. No real top-up, QRIS, or charity yet — no network transactions.","المدفوعات بانتظار شريك مرخّص من بنك إندونيسيا. لا شحن ولا QRIS ولا صدقة حقيقية بعد — بلا معاملات شبكة."],
+  poinT:["Poin Berkah","Blessed Points","نقاط البركة"],
+  poinBal:["Saldo poin","Points balance","رصيد النقاط"],
+  challenges:["Tantangan hari ini","Today's challenges","تحديات اليوم"],
+  hist:["Riwayat poin","Points history","سجل النقاط"],
+  tukar:["Tukar Poin","Redeem Points","استبدال النقاط"],
+  contoh:["Contoh · segera hadir","Sample · coming soon","مثال · قريبًا"],
+  claimBtn:["Klaim Poin","Claim Points","استلم النقاط"],
+  claimNone:["Belum ada poin untuk diklaim","Nothing to claim yet","لا نقاط للاستلام بعد"],
+  claimOk:["+{n} Poin Berkah diklaim","+{n} Blessed Points claimed","تم استلام +{n} نقطة"],
+  done:["Selesai","Done","تم"],
+  ready:["Siap","Ready","جاهز"],
+  locked:["Belum","Locked","مغلق"],
+  claimed:["Diklaim","Claimed","مُستلَم"],
+  chHikmah:["Selesaikan Hikmah Harian","Finish Daily Wisdom","أتمم الحكمة اليومية"],
+  chGame:["Main game / kuis","Play a game / quiz","العب لعبة / اختبارًا"],
+  chSalat:["Salat 5 waktu","Pray all 5 prayers","صلِّ الصلوات الخمس"],
+  chIbadah:["Checklist Log Ibadah","Daily deeds checklist","قائمة العبادات"],
+  close:["Tutup","Close","إغلاق"],
+  emptyHist:["Belum ada riwayat.","No history yet.","لا سجل بعد."],
+  vouchNote:["Katalog contoh mitra. Penukaran belum aktif.","Sample partner catalog. Redemption not active yet.","كتالوج شركاء تجريبي. الاستبدال غير مفعّل."]
+};
+const tt=(k,vars)=>{ let s=(T[k]&&T[k][L()])||(T[k]&&T[k][0])||k; if(vars) Object.keys(vars).forEach(x=>{ s=s.replace("{"+x+"}",vars[x]); }); return s; };
+
+function st(){ const o=store.get(SK,null); return o&&typeof o==="object"?o:{saldo:0,poin:0,hist:[],claimed:{},act:{}}; }
+function save(o){ store.set(SK,o); }
+
+function noteAct(k){ const o=st(), d=dk(); o.act=o.act||{}; o.act[d]=Object.assign({},o.act[d]||{},{[k]:1}); save(o); try{renderStrip();}catch(e){} }
+
+function hikmahDone(){ try{ const S=store.get("ks_hikmah",{}); return !!(S&&(S.doneToday||(S.days&&S.days[dk()]))); }catch(e){ return false; } }
+function salatDone(){ try{ return (store.get("rk_salat_"+dk(),[])||[]).length>=5; }catch(e){ return false; } }
+function gameDone(){ try{ const o=st(); if(o.act&&o.act[dk()]&&o.act[dk()].flow) return true;
+  const j=store.get("rk_journal",[])||[]; if(j.some(x=>x&&x.day===dk()&&x.src==="flow")) return true;
+  const P=store.get("ks_prog",null); if(P&&P.qz&&P.qz[dk()]&&Object.keys(P.qz[dk()]).length) return true;
+  return false; }catch(e){ return false; } }
+function ibadahPts(){ try{ if(window.KusyuIbadah&&KusyuIbadah.stats){ const s=KusyuIbadah.stats(); return (s.today||0)+(s.todayBonus||0); } }catch(e){} return 0; }
+function ibadahAny(){ try{ if(window.KusyuIbadah&&KusyuIbadah.Log){ const day=(KusyuIbadah.Log.all()||{})[dk()]||{}; return Object.keys(day).length>0; } }catch(e){} return ibadahPts()>0; }
+
+function challenges(){
+  const o=st(), day=dk(); const got=(o.claimed&&o.claimed[day])||{};
+  const ib=Math.max(ibadahPts(), ibadahAny()?5:0);
+  const list=[
+    {id:"hikmah", pts:10, ok:hikmahDone(), title:tt("chHikmah")},
+    {id:"game", pts:5, ok:gameDone(), title:tt("chGame")},
+    {id:"salat5", pts:20, ok:salatDone(), title:tt("chSalat")},
+    {id:"ibadah", pts:ib||5, ok:ibadahAny(), title:tt("chIbadah")}
+  ];
+  return list.map(c=>({...c, claimed:!!got[c.id], claimable:c.ok&&!got[c.id]}));
+}
+function claimableTotal(){ return challenges().filter(c=>c.claimable).reduce((s,c)=>s+c.pts,0); }
+
+function claimAll(){
+  const o=st(), day=dk(); o.claimed=o.claimed||{}; o.claimed[day]=Object.assign({},o.claimed[day]||{});
+  let add=0; const names=[];
+  challenges().forEach(c=>{
+    if(!c.claimable) return;
+    o.claimed[day][c.id]=1; add+=c.pts; names.push(c.title);
+  });
+  if(!add) return 0;
+  o.poin=(o.poin|0)+add;
+  o.hist=o.hist||[];
+  o.hist.unshift({ts:Date.now(),day,pts:add,note:names.join(" · ")});
+  if(o.hist.length>80) o.hist.length=80;
+  save(o); return add;
+}
+
+const QRIS_SVG=`<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="3" width="8" height="2.2" rx="1" fill="#e6c77a"/><rect x="3" y="3" width="2.2" height="8" rx="1" fill="#e6c77a"/><rect x="21" y="3" width="8" height="2.2" rx="1" fill="#e6c77a"/><rect x="26.8" y="3" width="2.2" height="8" rx="1" fill="#e6c77a"/><rect x="3" y="26.8" width="8" height="2.2" rx="1" fill="#e6c77a"/><rect x="3" y="21" width="2.2" height="8" rx="1" fill="#e6c77a"/><rect x="21" y="26.8" width="8" height="2.2" rx="1" fill="#e6c77a"/><rect x="26.8" y="21" width="2.2" height="8" rx="1" fill="#e6c77a"/><text x="16" y="18.5" text-anchor="middle" font-size="7.5" font-weight="800" fill="#e6c77a" font-family="system-ui,sans-serif">QRIS</text></svg>`;
+
+function placeStrip(){
+  const nx=document.getElementById("v2Next");
+  const el=document.getElementById("bmDompet");
+  if(nx&&el&&nx.nextElementSibling!==el) nx.insertAdjacentElement("afterend",el);
+}
+function renderStrip(){
+  placeStrip();
+  const el=$("#bmDompet"); if(!el) return;
+  const o=st(); const avail=claimableTotal();
+  el.innerHTML=`<button type="button" class="bm-dp-qr" data-bm="dompet" aria-label="QRIS">${QRIS_SVG}</button>
+    <button type="button" class="bm-dp-saldo" data-bm="dompet" aria-label="${esc(tt("title"))}">
+      <span class="bm-dp-ic" aria-hidden="true">Rp</span>
+      <span class="bm-dp-tx"><b>${esc(Rp(o.saldo|0))}</b><small>${esc(tt("bayar"))}</small></span>
+    </button>
+    <button type="button" class="bm-dp-poin${avail>0?" claimable":""}" data-bm="poin" aria-label="${esc(tt("poinT"))}">
+      <span class="bm-dp-coin" aria-hidden="true">✦<i class="bm-dp-dot"></i></span>
+      <span class="bm-dp-tx"><b>${esc(tt("klaim"))}</b><small>${avail>0?esc(tt("klaimAvail",{n:NUM(avail)})):esc(tt("klaimSub")+" · "+NUM(o.poin|0))}</small></span>
+    </button>`;
+}
+
+function openSheet(id){ const s=$(id); if(s) s.classList.add("on"); }
+function closeSheet(id){ const s=$(id); if(s) s.classList.remove("on"); }
+
+function renderDompetSheet(){
+  const body=$("#bmDompetBody"); if(!body) return;
+  const o=st();
+  body.innerHTML=`<div class="bm-sh-bal"><div class="eyebrow">${esc(tt("shBal"))}</div><b>${esc(Rp(o.saldo|0))}</b><small>${esc(tt("title"))}</small></div>
+    <div class="bm-sh-acts">
+      <button type="button" class="btn" disabled><span>${esc(tt("topup"))}</span><span class="soon">${esc(tt("soon"))}</span></button>
+      <button type="button" class="btn" disabled><span>${esc(tt("bayar"))}</span><span class="soon">${esc(tt("soon"))}</span></button>
+      <button type="button" class="btn" disabled><span>${esc(tt("sedekah"))}</span><span class="soon">${esc(tt("soon"))}</span></button>
+    </div>
+    <p class="bm-sh-note">${esc(tt("payNote"))}</p>`;
+}
+
+function renderPoinSheet(){
+  const body=$("#bmPoinBody"); if(!body) return;
+  const o=st(); const chs=challenges(); const avail=claimableTotal();
+  const chHTML=chs.map(c=>{
+    const cls=c.claimed?"got":c.claimable?"on":"";
+    const stLab=c.claimed?tt("claimed"):c.claimable?tt("ready"):tt("locked");
+    return `<div class="bm-ch ${cls}"><div><b>${esc(c.title)}</b><small>${c.ok?tt("done"):tt("locked")}</small></div><span class="bm-ch-pts">+${NUM(c.pts)}</span><span class="bm-ch-st">${esc(stLab)}</span></div>`;
+  }).join("");
+  const hist=(o.hist||[]).slice(0,12).map(h=>`<div class="bm-hist-row"><span>${esc(h.day||"")} · ${esc(h.note||"")}</span><b class="plus">+${NUM(h.pts)}</b></div>`).join("")||`<p class="dim" style="font-size:12px">${esc(tt("emptyHist"))}</p>`;
+  const vouchers=[
+    {ic:"💄", n:"Wardah", sub:"Voucher belanja · 500 poin"},
+    {ic:"✈️", n:"Maktour", sub:"Diskon umrah · 2000 poin"},
+    {ic:"🧴", n:"Kahf", sub:"Voucher perawatan · 400 poin"}
+  ].map(v=>`<div class="bm-vc"><i>${v.ic}</i><div><b>${esc(v.n)}</b><small>${esc(v.sub)}</small></div><span class="tag">${esc(tt("contoh"))}</span></div>`).join("");
+  body.innerHTML=`<div class="bm-sh-bal"><div class="eyebrow">${esc(tt("poinBal"))}</div><b>${esc(NUM(o.poin|0))}</b><small>${esc(tt("poinT"))}</small></div>
+    <div class="eyebrow">${esc(tt("challenges"))}</div>
+    <div class="bm-ch-list">${chHTML}</div>
+    <div class="bm-claim-bar"><button type="button" class="btn gold" id="bmClaimBtn" ${avail?"":"disabled"} style="width:100%;justify-content:center">${avail?esc(tt("claimBtn")+" · +"+NUM(avail)):esc(tt("claimNone"))}</button></div>
+    <div class="eyebrow" style="margin-top:16px">${esc(tt("hist"))}</div>
+    <div class="bm-hist">${hist}</div>
+    <div class="eyebrow" style="margin-top:16px">${esc(tt("tukar"))}</div>
+    <p class="dim" style="font-size:11.5px;margin:4px 0 8px">${esc(tt("vouchNote"))}</p>
+    <div class="bm-vouch">${vouchers}</div>`;
+  const btn=$("#bmClaimBtn");
+  if(btn) btn.onclick=()=>{ const n=claimAll(); if(n){ try{ (window.toast||alert)(tt("claimOk",{n:NUM(n)})); }catch(e){} renderPoinSheet(); renderStrip(); } };
+}
+
+function ensureSheets(){
+  if($("#bmDompetSheet")) return;
+  const wrap=document.createElement("div");
+  wrap.innerHTML=`<div class="sheet" id="bmDompetSheet"><div class="panel" role="dialog" aria-modal="true" aria-labelledby="bmDompetH">
+      <div class="row v2-sb" style="margin-bottom:8px"><h2 id="bmDompetH" style="font-size:18px;margin:0"></h2><button type="button" class="btn sm ghost" id="bmDompetX"></button></div>
+      <div id="bmDompetBody"></div></div></div>
+    <div class="sheet" id="bmPoinSheet"><div class="panel" role="dialog" aria-modal="true" aria-labelledby="bmPoinH">
+      <div class="row v2-sb" style="margin-bottom:8px"><h2 id="bmPoinH" style="font-size:18px;margin:0"></h2><button type="button" class="btn sm ghost" id="bmPoinX"></button></div>
+      <div id="bmPoinBody"></div></div></div>`;
+  document.body.appendChild(wrap);
+  $("#bmDompetX").onclick=()=>closeSheet("#bmDompetSheet");
+  $("#bmPoinX").onclick=()=>closeSheet("#bmPoinSheet");
+  $("#bmDompetSheet").addEventListener("click",e=>{ if(e.target.id==="bmDompetSheet") closeSheet("#bmDompetSheet"); });
+  $("#bmPoinSheet").addEventListener("click",e=>{ if(e.target.id==="bmPoinSheet") closeSheet("#bmPoinSheet"); });
+}
+
+function openDompet(){ ensureSheets(); $("#bmDompetH").textContent=tt("title"); $("#bmDompetX").textContent=tt("close"); renderDompetSheet(); openSheet("#bmDompetSheet"); }
+function openPoin(){ ensureSheets(); $("#bmPoinH").textContent=tt("poinT"); $("#bmPoinX").textContent=tt("close"); renderPoinSheet(); openSheet("#bmPoinSheet"); }
+
+function bind(){
+  const root=$("#bmDompet"); if(!root||root._bmBound) return; root._bmBound=1;
+  root.addEventListener("click",e=>{
+    const b=e.target.closest("[data-bm]"); if(!b) return;
+    e.preventDefault(); e.stopPropagation();
+    if(b.dataset.bm==="poin") openPoin(); else openDompet();
+  });
+}
+
+function render(){ renderStrip(); bind(); }
+function init(){ if(window.__bmDompetInit){ render(); return; } window.__bmDompetInit=1; render();
+  document.addEventListener("rk:lang",()=>render());
+  document.addEventListener("rk:ibadah",()=>render());
+}
+
+window.KusyuDompet={init,render,renderStrip,openDompet,openPoin,noteAct,challenges,claimableTotal,claimAll,st,SK};
 })();
 
 </script>
@@ -7397,8 +7647,11 @@ function voucherSheet(i){ const v=VOUCH[i]; sheet(`<div class="ic">${v.i}</div><
  <button type="button" class="btn gold bb-btn" id="bbQris" aria-disabled="true">▦ ${esc(t(X.qris))}</button><div class="bb-soon" id="bbQrisN" hidden>⏳ ${esc(t(X.qrisN))}</div>
  <button type="button" class="btn ghost bb-btn" data-bbclose="1">${esc(t(X.close))}</button>`); }
 /* Beranda: baris ikon fitur (gaya Muslim Pro) — Kiblat membuka kompas langsung */
-function homeRow(){ if(window.KusyuRukun) return KusyuRukun.homeRow(); /* Rukun Islam row (src/rukun) */ const nx=document.getElementById("v2Next"); if(!nx) return; let r=document.getElementById("bbHomeRow");
- if(!r){ r=document.createElement("div"); r.id="bbHomeRow"; r.className="card bb-hrow"; nx.insertAdjacentElement("afterend",r); }
+function homeRow(){ if(window.KusyuRukun) return KusyuRukun.homeRow(); /* Rukun Islam row (src/rukun) */ const nx=document.getElementById("v2Next"); if(!nx) return;
+ const dp=document.getElementById("bmDompet"); const anchor=(dp&&dp.parentNode===nx.parentNode)?dp:nx;
+ let r=document.getElementById("bbHomeRow");
+ if(!r){ r=document.createElement("div"); r.id="bbHomeRow"; r.className="card bb-hrow"; anchor.insertAdjacentElement("afterend",r); }
+ else if(r.previousElementSibling!==anchor){ anchor.insertAdjacentElement("afterend",r); }
  r.innerHTML=[["🧭","hk","kiblat"],["🕐","hj","jadwal"],["📖","hq","quran"],["💰","hz","zakat"],["🛍️","hb","belanja"]].map(([i,k,p])=>`<button type="button" data-go="${p}" data-hr="${p}"><i>${i}</i><span>${esc(t(X[k]))}</span></button>`).join(""); }
 document.addEventListener("click",e=>{ if(!e.target.closest) return;
  const b=e.target.closest("[data-bbv]"); if(b&&b.closest("#bbStack")){ view=b.dataset.bbv; render(); const v=document.getElementById("view"); if(v) v.scrollTop=0; return; }
@@ -7458,8 +7711,12 @@ function sheet(html,id){ let s=document.getElementById("rkSheet"); if(!s){ s=doc
  s.innerHTML=`<div class="in" role="dialog" aria-modal="true" id="${id||"rkSheetIn"}">${html}<button type="button" class="btn ghost bb-btn" data-rkclose="1">${esc(t(X.close))}</button></div>`; s.hidden=false; s.querySelector(".in").scrollTop=0; }
 
 /* ---------- Beranda: 5 rukun ---------- */
-function homeRow(){ const nx=document.getElementById("v2Next"); if(!nx) return; let r=document.getElementById("bbHomeRow");
- if(!r){ r=document.createElement("div"); r.id="bbHomeRow"; nx.insertAdjacentElement("afterend",r); }
+function homeRow(){ const nx=document.getElementById("v2Next"); if(!nx) return;
+ const dp=document.getElementById("bmDompet");
+ const anchor=(dp&&dp.parentNode===nx.parentNode)?dp:nx;
+ let r=document.getElementById("bbHomeRow");
+ if(!r){ r=document.createElement("div"); r.id="bbHomeRow"; anchor.insertAdjacentElement("afterend",r); }
+ else if(r.previousElementSibling!==anchor){ anchor.insertAdjacentElement("afterend",r); }
  r.className="card bb-hrow rk-row";
  r.innerHTML=`<div class="rk-icons">${RUKUN.map(([ic,k,p],i)=>`<button type="button" data-go="${p}" data-hr="${p}" data-rukun="${i+1}" aria-label="${esc(t(X.r[i])+": "+t(X[k])+" · "+t(X.rd[i]))}"><i>${K3(ic,40)}<em>${N(i+1)}</em></i><span>${esc(t(X[k]))}</span><small>${esc(t(X.rd[i]))}</small></button>`).join("")}</div>
  <button type="button" class="rk-cap" id="rkCap"><span ${ARF}>«بُنِيَ الإِسْلَامُ عَلَى خَمْسٍ»</span><small>${esc(t(X.cap))} ⓘ</small></button>`; }
