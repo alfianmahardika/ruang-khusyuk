@@ -1659,6 +1659,112 @@ html:is([data-theme=light],[data-theme=pink]) .gm-bar,html[data-theme=pink] .gm-
 .ak-gfoot{text-align:center}
 
 
+/* ===== t57: Hikmah Hari Ini — Daily Review style daily review ===== */
+#pkToday.hk-card{padding:16px 16px 18px;overflow:hidden;position:relative;background:linear-gradient(180deg,rgba(255,252,245,.97),rgba(248,240,225,.95));border:1px solid rgba(160,120,60,.18);box-shadow:0 8px 28px rgba(40,25,10,.08)}
+[data-theme=dark] #pkToday.hk-card,[data-theme=gold] #pkToday.hk-card{background:linear-gradient(180deg,rgba(42,32,22,.96),rgba(28,20,14,.96));border-color:rgba(212,175,55,.22);box-shadow:0 8px 28px rgba(0,0,0,.35)}
+[data-theme=pink] #pkToday.hk-card{background:linear-gradient(180deg,#fff7f5,#fceeea);border-color:rgba(160,90,100,.2)}
+.hk-card .hk-ey{font-size:11px;letter-spacing:.04em;text-transform:uppercase;opacity:.7;margin:0 0 2px}
+.hk-card .hk-title{font-size:20px;font-weight:700;margin:0 0 2px;letter-spacing:-.02em}
+.hk-card .hk-sub{font-size:13.5px;line-height:1.4;color:var(--fg3,#7a6a55);margin:0 0 14px}
+[data-theme=dark] .hk-card .hk-sub,[data-theme=gold] .hk-card .hk-sub{color:rgba(240,220,180,.65)}
+.hk-stack{position:relative;height:100px;margin:2px auto 10px;width:180px}
+.hk-stack .hk-cv{position:absolute;width:70px;height:96px;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.28);overflow:hidden;background:#222;transition:transform .25s}
+.hk-stack .hk-cv img,.hk-stack .hk-cv svg{width:100%;height:100%;display:block;object-fit:cover}
+.hk-stack .hk-cv:nth-child(1){left:14px;top:8px;transform:rotate(-12deg);z-index:1}
+.hk-stack .hk-cv:nth-child(2){left:55px;top:0;transform:rotate(0deg);z-index:3;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.hk-stack .hk-cv:nth-child(3){left:96px;top:8px;transform:rotate(12deg);z-index:2}
+.hk-btn{display:block;width:100%;max-width:220px;margin:0 auto;padding:12px 20px;border:0;border-radius:999px;background:#111;color:#fff;font-weight:700;font-size:15px;cursor:pointer}
+.hk-btn:active{transform:scale(.98)}
+[data-theme=dark] .hk-btn,[data-theme=gold] .hk-btn{background:#f0d48a;color:#1a1208}
+.hk-btn.done{background:transparent;color:inherit;border:1.5px solid rgba(120,100,70,.35);font-weight:600}
+.hk-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+.hk-flame{font-size:13px;opacity:.85}
+.hk-done-banner{text-align:center;font-size:13px;margin:8px 0 0;opacity:.8}
+
+/* overlay review */
+#hkOv{position:fixed;inset:0;z-index:55;background:#f4eee3;color:#1c1610;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .2s}
+#hkOv.on{opacity:1;pointer-events:auto}
+[data-theme=dark] #hkOv,[data-theme=gold] #hkOv{background:#1a140e;color:#f3e7d2}
+[data-theme=pink] #hkOv{background:#fbf3f0;color:#3b262d}
+.hk-top{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 0;gap:8px;flex:none}
+.hk-x,.hk-ico{all:unset;box-sizing:border-box;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer;background:rgba(0,0,0,.05);font-size:16px}
+[data-theme=dark] .hk-x,[data-theme=gold] .hk-x,[data-theme=dark] .hk-ico,[data-theme=gold] .hk-ico{background:rgba(255,255,255,.08)}
+.hk-date{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.hk-dots{display:flex;gap:6px;justify-content:center;padding:8px 0 4px;flex:none}
+.hk-dots i{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.18);display:inline-block}
+.hk-dots i.on{background:rgba(0,0,0,.55);transform:scale(1.15)}
+.hk-dots i.ok{background:transparent;width:auto;height:auto;font-size:11px;line-height:7px;color:rgba(0,0,0,.45)}
+[data-theme=dark] .hk-dots i,[data-theme=gold] .hk-dots i{background:rgba(255,255,255,.22)}
+[data-theme=dark] .hk-dots i.on,[data-theme=gold] .hk-dots i.on{background:rgba(240,212,138,.9)}
+[data-theme=dark] .hk-dots i.ok,[data-theme=gold] .hk-dots i.ok{color:rgba(240,212,138,.7);background:transparent}
+
+.hk-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:8px 16px 8px;position:relative;touch-action:pan-y}
+.hk-cardv{width:100%;max-width:420px;background:#fff;border-radius:18px;box-shadow:0 12px 40px rgba(40,25,10,.12);padding:16px 16px 12px;display:flex;flex-direction:column;gap:10px;max-height:100%;overflow:auto;transform:translateX(0) rotate(0);transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .28s;will-change:transform}
+[data-theme=dark] .hk-cardv,[data-theme=gold] .hk-cardv{background:#2a2118;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+[data-theme=pink] .hk-cardv{background:#fff;box-shadow:0 12px 36px rgba(120,60,70,.1)}
+.hk-cardv.swipe-l{transform:translateX(-120%) rotate(-6deg);opacity:0}
+.hk-cardv.swipe-r{transform:translateX(120%) rotate(6deg);opacity:0}
+.hk-hint{font-size:11.5px;color:rgba(0,0,0,.4);margin:0}
+[data-theme=dark] .hk-hint,[data-theme=gold] .hk-hint{color:rgba(255,255,255,.4)}
+.hk-src{display:flex;align-items:center;gap:10px}
+.hk-src .hk-thumb{width:40px;height:54px;border-radius:4px;overflow:hidden;flex:none;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.hk-src .hk-thumb img,.hk-src .hk-thumb svg{width:100%;height:100%;display:block;object-fit:cover}
+.hk-src b{display:block;font-size:13.5px;line-height:1.25}
+.hk-src small{display:block;font-size:12px;opacity:.65;margin-top:1px}
+.hk-body{font-family:Georgia,"Times New Roman",serif;font-size:17.5px;line-height:1.55;margin:4px 0 0}
+.hk-body .hk-ar{font-family:"Amiri Quran","Noto Naskh Arabic",serif;font-size:23px;line-height:1.85;direction:rtl;text-align:right;margin:0 0 10px}
+.hk-body .hk-tr{font-size:15px;line-height:1.5;margin:0 0 8px;font-family:inherit}
+.hk-body .hk-taf{font-size:13.5px;line-height:1.5;opacity:.82;margin:0;padding-top:8px;border-top:1px solid rgba(0,0,0,.08)}
+[data-theme=dark] .hk-body .hk-taf,[data-theme=gold] .hk-body .hk-taf{border-color:rgba(255,255,255,.1)}
+.hk-body .hk-meta2{font-size:12px;opacity:.6;margin-top:6px;font-family:system-ui,sans-serif}
+.hk-acts{display:flex;justify-content:space-around;padding:6px 0 2px;border-top:1px solid rgba(0,0,0,.06);margin-top:4px}
+[data-theme=dark] .hk-acts,[data-theme=gold] .hk-acts{border-color:rgba(255,255,255,.08)}
+.hk-acts button{all:unset;box-sizing:border-box;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;cursor:pointer;font-size:18px;opacity:.75}
+.hk-acts button:active,.hk-acts button.on{opacity:1;background:rgba(0,0,0,.06)}
+[data-theme=dark] .hk-acts button:active,[data-theme=gold] .hk-acts button:active,[data-theme=dark] .hk-acts button.on,[data-theme=gold] .hk-acts button.on{background:rgba(255,255,255,.08)}
+.hk-acts button.on{color:#c23b4a}
+
+.hk-bot{flex:none;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;padding:8px 12px 18px;align-items:end}
+.hk-bot button{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;font-size:11px;opacity:.85;padding:4px}
+.hk-bot button .hk-ci{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:20px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.06)}
+[data-theme=dark] .hk-bot button .hk-ci,[data-theme=gold] .hk-bot button .hk-ci{background:#2a2118;border-color:rgba(255,255,255,.1)}
+.hk-bot button[data-hk="skip"] .hk-ci{background:#fff;color:#222}
+.hk-bot button[data-hk="keep"] .hk-ci{background:#2f6fed;color:#fff;border:0;box-shadow:0 4px 14px rgba(47,111,237,.35)}
+[data-theme=dark] .hk-bot button[data-hk="keep"] .hk-ci,[data-theme=gold] .hk-bot button[data-hk="keep"] .hk-ci{background:#3d7dff}
+.hk-bot button[data-hk="master"] .hk-ci,.hk-bot button[data-hk="later"] .hk-ci{background:rgba(0,0,0,.04)}
+[data-theme=dark] .hk-bot button[data-hk="master"] .hk-ci,[data-theme=gold] .hk-bot button[data-hk="master"] .hk-ci,[data-theme=dark] .hk-bot button[data-hk="later"] .hk-ci,[data-theme=gold] .hk-bot button[data-hk="later"] .hk-ci{background:rgba(255,255,255,.06)}
+
+/* completion */
+.hk-fin{flex:1;display:flex;flex-direction:column;min-height:0;position:relative;overflow:hidden}
+.hk-fin-bg{position:absolute;inset:40% 0 0;background-size:cover;background-position:center top;pointer-events:none}
+.hk-fin-top{padding:8px 16px 0;text-align:center;position:relative;z-index:1}
+.hk-fin-top h2{font-size:28px;margin:18px 0 6px;letter-spacing:-.02em}
+.hk-fin-top p{margin:0 auto;max-width:320px;font-size:14.5px;line-height:1.45;opacity:.8}
+.hk-streak{position:relative;z-index:1;margin:22px 16px 0;padding:14px 14px 12px;border-radius:16px;background:rgba(255,255,255,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(40,20,0,.1)}
+[data-theme=dark] .hk-streak,[data-theme=gold] .hk-streak{background:rgba(30,22,14,.72)}
+.hk-streak .hk-sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13.5px;font-weight:600}
+.hk-week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.hk-week span{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;opacity:.7}
+.hk-week i{width:28px;height:28px;border-radius:50%;border:1.5px dashed rgba(0,0,0,.25);display:grid;place-items:center;font-size:12px;font-style:normal}
+.hk-week i.on{background:#e8893a;border:0;color:#fff;box-shadow:0 2px 8px rgba(232,137,58,.4)}
+[data-theme=dark] .hk-week i,[data-theme=gold] .hk-week i{border-color:rgba(255,255,255,.25)}
+.hk-fin-bot{position:relative;z-index:1;margin-top:auto;padding:18px 16px 28px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.hk-fin-bot .hk-btn{background:#fff;color:#111;max-width:280px;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+[data-theme=dark] .hk-fin-bot .hk-btn,[data-theme=gold] .hk-fin-bot .hk-btn{background:#f0d48a;color:#1a1208}
+.hk-more{all:unset;cursor:pointer;font-size:13.5px;opacity:.85;padding:6px}
+.hk-more:active{opacity:1}
+
+/* note sheet */
+#hkNote{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+#hkNote.on{opacity:1;pointer-events:auto}
+#hkNote .hk-note-in{background:var(--bg,#fff);color:inherit;width:100%;max-width:480px;border-radius:18px 18px 0 0;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom))}
+[data-theme=dark] #hkNote .hk-note-in,[data-theme=gold] #hkNote .hk-note-in{background:#241c14}
+#hkNote textarea{width:100%;min-height:110px;border-radius:12px;border:1px solid rgba(0,0,0,.12);padding:10px;font:inherit;resize:vertical;background:transparent;color:inherit}
+#hkNote .hk-note-a{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.hk-quote{margin:10px 16px 0;max-width:320px;text-align:center;font-size:12px;line-height:1.45;opacity:.75;font-style:italic}
+.hk-quote small{display:block;margin-top:4px;font-style:normal;opacity:.85;font-size:11px}
+
+
 /* ===== Best Muslim — Hafalan Al-Qur'an AI ===== */
 .hq{display:flex;flex-direction:column;gap:14px}
 .hq-focus>:not(#hqRoot){display:none!important}
@@ -5124,7 +5230,10 @@ async function todayData(){ const sd=seed(); const out={};
   return out; }
 async function homeCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#pkToday");
   if(!c){ c=document.createElement("div"); c.id="pkToday"; c.className="card lit pk-today"; const a=$("#qHomeCard")||$("#v2HafCard")||$("#v2TimesCard")||$("#v2MasjidCard"); if(a) a.before(c); else pg.prepend(c); }
-  const PP=pGet(); if(PP&&PP.st!=="off") return pHome(c); c.className="card lit pk-today";
+  /* t57: program aktif → Hikmah Harian di Beranda; program off → highlight harian lama. Akademi #pkProg tetap. */
+  const PP=pGet();
+  if(PP&&PP.st!=="off"&&window.KusyuHikmah&&KusyuHikmah.renderCard){ try{ return await KusyuHikmah.renderCard(c); }catch(e){} }
+  if(PP&&PP.st!=="off") return pHome(c); c.className="card lit pk-today";
   const D=await todayData(); const td=(logAll()[dk()])||{}; const n=["hi_ayat","hi_hadis","hi_sirah"].filter(k=>td[k]).length;
   const row=(k,ic,lab,body,open)=>`<div class="pk-it${td[k]?" on":""}"><button type="button" class="pk-ck" data-hik="${k}" aria-pressed="${!!td[k]}" aria-label="${t("done")}">${td[k]?"✓":""}</button><button type="button" class="pk-bd" ${open}><small>${ic} ${lab}</small>${body}</button></div>`;
   c.dir=lang()==="ar"?"rtl":"ltr";
@@ -6222,6 +6331,283 @@ document.addEventListener("click",e=>{ const g=e.target.closest("[data-akgame]")
 function boot(){ const pp=$("#pkProg"); if(!pp) return setTimeout(boot,300); new MutationObserver(()=>{ if(!pp._akBusy) decorate(); }).observe(pp,{childList:true,subtree:true}); decorate(); }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
 window.KusyuAk50={onDone,openTrack,quiz,closeTk,closeQz,decorate,openGame,closeGame,renderGame,pend:pendGet,state:()=>QZ};
+})();
+
+</script>
+<script>
+/* t57 — Hikmah Hari Ini: Daily Review style daily review (1 ayat + 1 hadis + 3 highlight sirah).
+   Data lokal saja. Progres Quran/Hadis/Sirah memakai jalur ks_prog yang sama. */
+(function(){
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includes(l)?l:"id";};
+const L=()=>({id:0,en:1,ar:2}[lang()]);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const NUM=n=>lang()==="ar"?String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]):String(n);
+const PK=()=>window.KusyuPustaka;
+const toast=m=>{const t=$("#toast");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2600);};
+const dk=(d)=>{const x=d||new Date();return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0");};
+const dAdd=(d,n)=>{const x=new Date(d+"T12:00:00");x.setDate(x.getDate()+n);return dk(x);};
+const pad=n=>String(n).padStart(3,"0");
+const T={
+ name:["Hikmah Harian","Daily Wisdom","الحكمة اليومية"],
+ sub:["5 kartu dari {a}, {h} dan Sirah","5 cards from {a}, {h} and Seerah","٥ بطاقات من {a} و{h} والسيرة"],
+ subDone:["Selesai hari ini · kembali besok, insya Allah","Done for today · come back tomorrow, insha Allah","أتممت اليوم · عد غدًا إن شاء الله"],
+ start:["Mulai","Review","ابدأ"],
+ doneBtn:["Selesai","Done","تم"],
+ reviewMore:["Uji hafalan →","Test your memory →","اختبر حفظك ←"],
+ skip:["Lewati","Discard","تخطَّ"],
+ master:["Sudah hafal","Master","أتقنتُه"],
+ later:["Ulangi besok","Again tomorrow","أعد غدًا"],
+ keep:["Lanjut","Keep","متابعة"],
+ share:["Bagikan","Share","شارك"],
+ fav:["Favorit","Favorite","مفضلة"],
+ note:["Catatan","Note","ملاحظة"],
+ noteSave:["Simpan","Save","حفظ"],
+ noteCancel:["Batal","Cancel","إلغاء"],
+ notePh:["Tulis catatanmu…","Write a note…","اكتب ملاحظتك…"],
+ finTitle:["Alhamdulillah!","Alhamdulillah!","الحمد لله!"],
+ finSub:["Kamu sudah merenungi {n} hikmah dan menuntaskan Hikmah Harian hari ini.","You just reviewed {n} highlights and completed your Daily Wisdom.","لقد راجعتَ {n} مقتطفات وأتممتَ حكمتك اليومية."],
+ streak:["Istiqamah harian","Daily istiqamah","الاستقامة اليومية"],
+ dayN:["{n} hari","{n} day","{n} يوم"],
+ daysN:["{n} hari","{n} days","{n} أيام"],
+ quote:["Amalan yang paling dicintai Allah adalah yang paling rutin walaupun sedikit.","The most beloved deeds to Allah are those done most consistently, even if small.","أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ."],
+ quoteSrc:["HR. Bukhari 6464, Muslim 783","Bukhari 6464, Muslim 783","البخاري ٦٤٦٤، مسلم ٧٨٣"],
+ hintA:["Ayat dari jalur bacaanmu","A verse from your reading track","آية من مسار قراءتك"],
+ hintH:["Hadis dari Shahih al-Bukhari","A hadith from Sahih al-Bukhari","حديث من صحيح البخاري"],
+ hintS:["Cuplikan Sirah Nabawiyah · Bab {b} · {p}%","Seerah passage · Ch. {b} · {p}%","مقتطف من السيرة · باب {b} · {p}٪"],
+ taf:["Tafsir singkat","Brief tafsir","تفسير موجز"],
+ draft:["Terjemahan: draf, dalam peninjauan.","Translation: draft, under review.",""],
+ week:[["Sen","Sel","Rab","Kam","Jum","Sab","Ahd"],["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],["إث","ث","أر","خ","ج","س","أح"]],
+ shared:["Tersalin / dibagikan","Copied / shared","تم النسخ / المشاركة"],
+ saved:["Catatan disimpan","Note saved","حُفظت الملاحظة"],
+ favOn:["Ditambahkan ke favorit","Added to favorites","أُضيفت إلى المفضلة"],
+ favOff:["Dihapus dari favorit","Removed from favorites","أُزيلت من المفضلة"],
+ laterOk:["Akan muncul lagi besok","Will resurface tomorrow","ستظهر غدًا"],
+ masterOk:["Ditandai sudah hafal","Marked as mastered","وُسم بالإتقان"],
+ needProg:["Menyiapkan jalur bacaan…","Preparing your reading track…","جاري تجهيز مسار القراءة…"]
+};
+const tt=(k,vars)=>{let s=(T[k]&&(T[k][L()]||T[k][0]))||k; if(vars) Object.keys(vars).forEach(x=>{s=s.replace(new RegExp("\\{"+x+"\\}","g"),vars[x]);}); return s;};
+const HK="ks_hikmah";
+const stGet=()=>store.get(HK,{si:0,fav:{},notes:{},later:{},master:{},days:{},hist:[]});
+const stSet=v=>store.set(HK,v);
+const COVER={a:"hikmah/cover-q.svg",h:"hikmah/cover-h.svg",s:"hikmah/cover-s.svg"};
+const LAND="hikmah/landscape.svg";
+let HL=null, DECK=null, IX=0, busy=false, sw={};
+
+function ensureProg(){ const P=PK()&&PK().prog&&PK().prog(); if(P&&P.st==="on") return P;
+  const cur=store.get("ks_prog",null);
+  if(cur){ cur.st="on"; store.set("ks_prog",cur); try{PK().pRender&&PK().pRender();}catch(e){} return cur; }
+  const neu={st:"on",a:{p:1,t:1},h:{p:1,t:1},s:{p:1,t:1},day:dk(),done:{},pz:[],extra:0,since:dk(),b:{d:{}}};
+  store.set("ks_prog",neu); try{PK().pRender&&PK().pRender();}catch(e){} return neu; }
+
+async function loadHL(){ if(HL) return HL; const r=await fetch("hikmah/sirah-hl.json"); HL=await r.json(); return HL; }
+
+async function tafShort(s,a){ try{
+  const lg=lang()==="ar"?"ar":"id";
+  const d=await PK().getJSON("tafsir/"+lg+"/"+pad(s)+".json");
+  let t=Array.isArray(d)?d[a-1]:(d&&(d[a]||d[String(a)]));
+  if(!t) return "";
+  t=String(t).replace(/\s+/g," ").trim();
+  if(t.length>320){ const cut=t.slice(0,300); const k=Math.max(cut.lastIndexOf(". "),cut.lastIndexOf("。"),cut.lastIndexOf("؛")); t=(k>120?cut.slice(0,k+1):cut)+"…"; }
+  return t;
+ }catch(e){ return ""; } }
+
+async function buildDeck(opts){ const S=stGet(), day=dk(); const live=opts&&opts.live;
+  if(S.day===day&&S.deck&&S.deck.length){ DECK=S.deck; if(!live && !$("#hkOv.on")) IX=S.i||0; return DECK; }
+  const P0=PK()&&PK().prog&&PK().prog();
+  const P=P0&&P0.st!=="off"?P0:{a:{p:1,t:1},h:{p:1,t:1},s:{p:1,t:1}};
+  await loadHL();
+  const aN=Math.min(P.a.p||P.a.t||1,6236), hN=Math.min(P.h.p||P.h.t||1,7563);
+  const A=await PK().ayahAt(aN); const H=await PK().hadAt(hN);
+  const taf=await tafShort(A.s,A.a);
+  let si=S.si|0; if(si>=HL.n) si=0;
+  const sir=[];
+  for(let k=0;k<3;k++){ const h=HL.hl[(si+k)%HL.n]; sir.push({type:"s",id:"s:"+h.i, p:h.p, k:h.k, n:h.n, t:h.t, idt:h.id, en:h.en, pct:h.pct, hi:h.i}); }
+  const deck=[
+    {type:"a",id:"a:"+aN, g:aN, s:A.s, a:A.a, name:A.name, ar:A.ar, tr:A.tr||"", taf, st:null},
+    {type:"h",id:"h:"+hN, n:hN, k:H.k, kn:H.kn, ar:H.ar||"", tr:H.id||"", st:null},
+    ...sir.map(x=>({...x,st:null}))
+  ];
+  /* resurface "later" cards first if due */
+  const due=Object.keys(S.later||{}).filter(id=>S.later[id]<=day&&!deck.find(c=>c.id===id));
+  /* keep deck fixed at 5 for the daily ritual; later just marks for tomorrow */
+  S.day=day; S.deck=deck; S.i=0; S.si=si; S.doneToday=false; stSet(S);
+  DECK=deck; IX=0; return deck; }
+
+function weekDays(){ /* 7 hari mulai dari hari mulai pengguna (seperti review harian), label Sen…Ahd */
+  const S=stGet(), labs=T.week[L()]||T.week[0];
+  const P=store.get("ks_prog",null); const startStr=(S.since||(P&&P.since)||dk());
+  const start=new Date(startStr+"T12:00:00"); const today=new Date(); today.setHours(12,0,0,0);
+  /* jendela 7 hari yang berisi hari ini, berawal pada weekday start (atau senin minggu ini bila start jauh) */
+  let anchor=new Date(today); const startDow=(start.getDay()+6)%7; const todayDow=(today.getDay()+6)%7;
+  anchor.setDate(today.getDate()-((todayDow-startDow+7)%7));
+  const out=[];
+  for(let i=0;i<7;i++){ const d=new Date(anchor); d.setDate(anchor.getDate()+i); const key=dk(d); const lab=labs[(d.getDay()+6)%7];
+    out.push({lab, on:!!(S.days&&S.days[key]), isToday:key===dk()}); }
+  return out; }
+function streakCount(){ const S=stGet(); let n=0,d=dk(); if(!(S.days&&S.days[d])) d=dAdd(d,-1); let g=0;
+  while(g++<4000){ if(S.days&&S.days[d]){ n++; d=dAdd(d,-1);} else break; } return n; }
+
+function coverHTML(type,cls){ return `<span class="${cls||"hk-cv"}" aria-hidden="true"><img src="${COVER[type]}" alt="" width="80" height="110" loading="lazy"></span>`; }
+
+async function renderCard(el){ if(!el) return; el.className="card lit pk-today hk-card"; el.dir=lang()==="ar"?"rtl":"ltr";
+  try{ await buildDeck({live:!!$("#hkOv.on")}); }catch(e){ el.innerHTML=`<p class="dim">Offline?</p>`; return; }
+  const S=stGet(); const done=!!S.doneToday || (DECK&&DECK.every(c=>c.st));
+  const aName=(DECK[0]&&DECK[0].name)||"Al-Qur'an";
+  const hName=(DECK[1]&&(DECK[1].kn||"Bukhari"))||"Bukhari";
+  const st=streakCount();
+  el.innerHTML=`<div class="hk-meta"><div class="hk-ey">✦ ${esc(tt("name"))}</div><div class="hk-flame">${st?`🔥 ${NUM(st)}`:""}</div></div>
+    <div class="hk-stack">${coverHTML("a")}${coverHTML("h")}${coverHTML("s")}</div>
+    <h3 class="hk-title">${esc(tt("name"))}</h3>
+    <p class="hk-sub">${done?esc(tt("subDone")):esc(tt("sub",{a:aName,h:hName}))}</p>
+    <button type="button" class="hk-btn${done?" done":""}" data-hkstart="1">${done?esc(tt("doneBtn")):esc(tt("start"))}</button>
+    ${done?`<p class="hk-done-banner">${esc(tt("finTitle"))}</p>`:""}`; }
+
+function dotsHTML(){ if(!DECK) return "";
+  return DECK.map((c,i)=>{ if(i<IX&&c.st) return `<i class="ok">✓</i>`; return `<i class="${i===IX?"on":""}"></i>`; }).join("")+`<i class="ok">✓</i>`; }
+
+function cardBody(c){ if(c.type==="a"){
+    return `<p class="hk-hint">${esc(tt("hintA"))}</p>
+      <div class="hk-src">${coverHTML("a","hk-thumb")}<div><b>${esc("QS. "+c.name+" "+c.s+":"+c.a)}</b><small>Al-Qur'an</small></div></div>
+      <div class="hk-body"><p class="hk-ar" lang="ar" dir="rtl">${esc(c.ar)}</p>${c.tr&&lang()!=="ar"?`<p class="hk-tr">${esc(c.tr)}</p>`:""}${c.taf?`<p class="hk-taf"><b>${esc(tt("taf"))}.</b> ${esc(c.taf)}</p>`:""}</div>`; }
+  if(c.type==="h"){
+    return `<p class="hk-hint">${esc(tt("hintH"))}</p>
+      <div class="hk-src">${coverHTML("h","hk-thumb")}<div><b>Shahih al-Bukhari ${NUM(c.n)}</b><small>${esc(c.kn||"")}</small></div></div>
+      <div class="hk-body"><p class="hk-ar hk-har" lang="ar" dir="rtl">${esc(c.ar)}</p>${c.tr&&lang()!=="ar"?`<p class="hk-tr">${esc(c.tr)}</p><p class="hk-meta2">${esc(tt("draft"))}</p>`:(lang()!=="ar"?`<p class="hk-meta2">${esc(tt("draft"))}</p>`:"")}</div>`; }
+  const title=(c.t&&(c.t[L()]||c.t[0]))||"Sirah";
+  const tx=lang()==="en"&&c.en?c.en:c.idt;
+  return `<p class="hk-hint">${esc(tt("hintS",{b:String(c.p),p:String(c.pct)}))}</p>
+    <div class="hk-src">${coverHTML("s","hk-thumb")}<div><b>${esc(title)}</b><small>Sirah Nabawiyah · ${NUM(c.k+1)}/${NUM(c.n)}</small></div></div>
+    <div class="hk-body"><p class="hk-tr" style="font-family:Georgia,serif;font-size:17px">${esc(tx)}</p></div>`; }
+
+function actionsHTML(c){ const S=stGet(); const fav=!!(S.fav&&S.fav[c.id]);
+  return `<div class="hk-acts">
+    <button type="button" data-hkact="share" aria-label="${esc(tt("share"))}">⇧</button>
+    <button type="button" data-hkact="fav" class="${fav?"on":""}" aria-label="${esc(tt("fav"))}">${fav?"♥":"♡"}</button>
+    <button type="button" data-hkact="note" aria-label="${esc(tt("note"))}">📝</button>
+  </div>`; }
+
+function botHTML(){ return `<div class="hk-bot">
+  <button type="button" data-hk="skip"><span class="hk-ci">✕</span>${esc(tt("skip"))}</button>
+  <button type="button" data-hk="master"><span class="hk-ci">🧠</span>${esc(tt("master"))}</button>
+  <button type="button" data-hk="later"><span class="hk-ci">🕐</span>${esc(tt("later"))}</button>
+  <button type="button" data-hk="keep"><span class="hk-ci">✓</span>${esc(tt("keep"))}</button>
+</div>`; }
+
+function shell(){ let o=$("#hkOv"); if(!o){ o=document.createElement("div"); o.id="hkOv"; o.setAttribute("role","dialog"); o.setAttribute("aria-modal","true"); document.body.appendChild(o);
+    o.addEventListener("click",onClick); bindSwipe(o); }
+  o.dir=lang()==="ar"?"rtl":"ltr"; return o; }
+
+function close(){ const o=$("#hkOv"); if(o){ o.classList.remove("on"); setTimeout(()=>{ if(o&&!o.classList.contains("on")) o.remove(); },220); }
+  const n=$("#hkNote"); if(n) n.remove(); try{renderCard($("#pkToday"));}catch(e){} try{PK().homeCard&&PK().homeCard();}catch(e){} }
+
+async function open(force){ ensureProg(); await buildDeck(); const S=stGet();
+  if(S.doneToday && !force){ showFin(); return; }
+  IX=Math.max(0, DECK.findIndex(c=>!c.st)); if(IX<0){ showFin(); return; }
+  const o=shell(); o.innerHTML=""; requestAnimationFrame(()=>o.classList.add("on"));
+  render(); }
+
+function render(){ const o=$("#hkOv"); if(!o) return;
+  if(IX>=DECK.length){ showFin(); return; }
+  const c=DECK[IX]; const today=dk();
+  o.innerHTML=`<div class="hk-top"><button type="button" class="hk-x" data-hkclose="1" aria-label="✕">✕</button><div class="hk-date">${esc(today)}</div><span class="hk-ico" aria-hidden="true">✦</span></div>
+    <div class="hk-dots">${dotsHTML()}</div>
+    <div class="hk-stage"><div class="hk-cardv" id="hkCard">${cardBody(c)}${actionsHTML(c)}</div></div>
+    ${botHTML()}`; }
+
+function showFin(){ const o=shell(); const S=stGet(); S.doneToday=true; S.days=S.days||{}; S.days[dk()]=1; if(!S.since) S.since=dk(); stSet(S);
+  const n=DECK?DECK.length:5; const st=streakCount(); const week=weekDays();
+  o.innerHTML=`<div class="hk-fin"><div class="hk-top"><button type="button" class="hk-x" data-hkclose="1" aria-label="✕">✕</button><div class="hk-date">${esc(tt("name"))}</div><span></span></div>
+    <div class="hk-dots">${Array(n).fill(0).map(()=>`<i class="ok">✓</i>`).join("")}<i class="ok">✓</i></div>
+    <div class="hk-fin-top"><h2>${esc(tt("finTitle"))}</h2><p>${esc(tt("finSub",{n:NUM(n)}))}</p></div>
+    <div class="hk-fin-bg" style="background-image:url('${LAND}')"></div>
+    <div class="hk-streak"><div class="hk-sh"><span>${esc(tt("streak"))}</span><span>🔥 ${esc(tt(st===1?"dayN":"daysN",{n:NUM(st)}))}</span></div>
+      <div class="hk-week">${week.map(d=>`<span>${esc(d.lab)}<i class="${d.on?"on":""}">${d.on?"✓":""}</i></span>`).join("")}</div></div>
+    <div class="hk-fin-bot"><button type="button" class="hk-btn" data-hkclose="1">${esc(tt("doneBtn"))}</button>
+      <button type="button" class="hk-more" data-hkquiz="1">${esc(tt("reviewMore"))}</button>
+      <p class="hk-quote">“${esc(tt("quote"))}” <small>${esc(tt("quoteSrc"))}</small></p></div></div>`;
+  requestAnimationFrame(()=>o.classList.add("on"));
+  try{renderCard($("#pkToday"));}catch(e){} }
+
+async function advanceTrack(c,mode){ /* mode: keep|master|skip|later */
+  const S=stGet();
+  if(mode==="later"){ S.later=S.later||{}; S.later[c.id]=dAdd(dk(),1); stSet(S); toast(tt("laterOk")); return; }
+  if(mode==="master"){ S.master=S.master||{}; S.master[c.id]=dk(); stSet(S); toast(tt("masterOk")); }
+  if(mode==="skip"){ /* no progress advance */ return; }
+  /* keep or master → advance reading track once per source card */
+  try{
+    if(c.type==="a"&&PK().trackRead) PK().trackRead("a",1);
+    else if(c.type==="h"&&PK().trackRead) PK().trackRead("h",1);
+    else if(c.type==="s"){ /* advance sirah highlight cursor; page progress when leaving a page */
+      S.si=(typeof c.hi==="number"?c.hi+1:((S.si|0)+1)); if(HL&&S.si>=HL.n) S.si=0; stSet(S);
+      const finishedPage=c.k===c.n-1;
+      if(finishedPage&&PK().trackRead) PK().trackRead("s",1);
+    }
+  }catch(e){}
+}
+
+async function act(mode){ if(busy||!DECK||IX>=DECK.length) return; busy=true;
+  const cur=IX, c=DECK[cur]; c.st=mode; const next=cur+1;
+  const S=stGet(); S.deck=DECK; S.i=next; stSet(S);
+  const card=$("#hkCard"); if(card) card.classList.add(mode==="skip"||mode==="later"?"swipe-l":"swipe-r");
+  try{ await advanceTrack(c,mode); }catch(e){}
+  setTimeout(()=>{ IX=next; busy=false; if(IX>=DECK.length) showFin(); else render(); },280); }
+
+function shareCard(c){ let text="";
+  if(c.type==="a") text=`QS. ${c.name} ${c.s}:${c.a}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Hari Ini`;
+  else if(c.type==="h") text=`Shahih al-Bukhari ${c.n}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Hari Ini`;
+  else text=`${(c.t&&c.t[0])||"Sirah"}\n${c.idt}\n— Best Muslim · Hikmah Hari Ini`;
+  if(navigator.share){ navigator.share({text}).catch(()=>{}); }
+  else if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(()=>toast(tt("shared"))).catch(()=>toast(tt("shared"))); }
+  else { toast(tt("shared")); }
+}
+function toggleFav(c){ const S=stGet(); S.fav=S.fav||{}; if(S.fav[c.id]){ delete S.fav[c.id]; toast(tt("favOff")); } else { S.fav[c.id]=dk(); toast(tt("favOn")); } stSet(S); render(); }
+function openNote(c){ let n=$("#hkNote"); if(n) n.remove(); n=document.createElement("div"); n.id="hkNote";
+  const S=stGet(); const cur=(S.notes&&S.notes[c.id])||"";
+  n.innerHTML=`<div class="hk-note-in"><b>${esc(tt("note"))}</b><textarea id="hkNoteTx" placeholder="${esc(tt("notePh"))}">${esc(cur)}</textarea>
+    <div class="hk-note-a"><button type="button" class="btn ghost" data-hknotex="1">${esc(tt("noteCancel"))}</button><button type="button" class="btn gold" data-hknotes="1">${esc(tt("noteSave"))}</button></div></div>`;
+  document.body.appendChild(n); requestAnimationFrame(()=>n.classList.add("on"));
+  n.addEventListener("click",e=>{
+    if(e.target===n||e.target.closest("[data-hknotex]")){ n.classList.remove("on"); setTimeout(()=>n.remove(),200); return; }
+    if(e.target.closest("[data-hknotes]")){ const S2=stGet(); S2.notes=S2.notes||{}; S2.notes[c.id]=($("#hkNoteTx").value||"").trim(); if(!S2.notes[c.id]) delete S2.notes[c.id]; stSet(S2); toast(tt("saved")); n.classList.remove("on"); setTimeout(()=>n.remove(),200); }
+  }); }
+
+function onClick(e){
+  if(e.target.closest("[data-hkclose]")){ close(); return; }
+  if(e.target.closest("[data-hkquiz]")){ close(); setTimeout(()=>{ try{ window.KusyuAk50&&KusyuAk50.openGame&&KusyuAk50.openGame(); }catch(err){} },120); return; }
+  const a=e.target.closest("[data-hk]"); if(a){ act(a.dataset.hk); return; }
+  const actb=e.target.closest("[data-hkact]"); if(actb&&DECK&&DECK[IX]){ const c=DECK[IX]; const k=actb.dataset.hkact;
+    if(k==="share") shareCard(c); else if(k==="fav") toggleFav(c); else if(k==="note") openNote(c); }
+}
+
+function bindSwipe(o){ let x0=0,y0=0,dx=0,active=false;
+  const stage=()=>o.querySelector(".hk-stage");
+  o.addEventListener("touchstart",e=>{ const t=e.changedTouches[0]; if(!t||!e.target.closest(".hk-cardv")) return; active=true; x0=t.clientX; y0=t.clientY; dx=0; },{passive:true});
+  o.addEventListener("touchmove",e=>{ if(!active) return; const t=e.changedTouches[0]; dx=t.clientX-x0; const dy=t.clientY-y0; if(Math.abs(dx)<Math.abs(dy)) return;
+    const card=$("#hkCard"); if(card){ card.style.transition="none"; card.style.transform=`translateX(${dx}px) rotate(${dx/30}deg)`; } },{passive:true});
+  o.addEventListener("touchend",()=>{ if(!active) return; active=false; const card=$("#hkCard");
+    if(card){ card.style.transition=""; card.style.transform=""; }
+    if(dx>80) act("keep"); else if(dx<-80) act("skip"); dx=0; },{passive:true});
+}
+
+function boot(){ /* Beranda card click */
+  document.addEventListener("click",e=>{ const b=e.target.closest("#pkToday [data-hkstart]"); if(b){ open(false); return; } });
+  const progOn=()=>{ try{ const P=store.get("ks_prog",null); return !!(P&&P.st&&P.st!=="off"); }catch(e){ return false; } };
+  /* hanya timpa kartu bila program aktif — kartu highlight lama tetap saat off */
+  const wrap=()=>{ const c=$("#pkToday"); if(c&&progOn()) renderCard(c); };
+  document.addEventListener("rk:lang",()=>setTimeout(wrap,40));
+  const _go=window.go; if(_go) window.go=function(p){ _go(p); if(p==="beranda") setTimeout(wrap,30); };
+  $$("#nav button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.p==="beranda") setTimeout(wrap,40); }));
+  const tryRender=()=>{ if($("#pkToday")&&progOn()){ renderCard($("#pkToday")); return true; } return !!$("#pkToday"); };
+  if(!tryRender()){ const t=setInterval(()=>{ if(tryRender()) clearInterval(t); },200); setTimeout(()=>clearInterval(t),8000); }
+  const obs=()=>{ const pg=$("#page-beranda .stack"); if(!pg) return setTimeout(obs,300);
+    new MutationObserver(ms=>{ ms.forEach(m=>{ if(m.target.id==="pkToday"||(m.addedNodes&&[...m.addedNodes].some(n=>n.id==="pkToday"))) setTimeout(wrap,10); }); }).observe(pg,{childList:true,subtree:true}); };
+  obs();
+}
+window.KusyuHikmah={open,close,renderCard,buildDeck,state:()=>({deck:DECK,i:IX,st:stGet()}),tt};
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
 })();
 
 </script>
@@ -7437,7 +7823,7 @@ const OV=[
  ["ov","#overlay",1,"#overlayX"],["mur","#murSheet",1,"#murClose"],["flow","#v2Flow",0,"#flX"],["qs","#qSheet",0,"#qSheetX"],
  ["duo","#duoOv",1,"#duoOv [data-dx]"],["pqs","#pqSheet",0,"#pqSheet [data-pqx]"],["pqc","#pqCel",0,"#pqCelX"],["srs","#srSheet",0,"#srShX"],
  ["aktk","#akTk",0,"#akTk [data-akx]"],["akqz","#akQz",0,"#akQz [data-qend]"],["akg","#akGame",0,"#akGame [data-gx]"],
- ["bbs","#bbSheet",0,"#bbSheet [data-bbclose]"],["rks","#rkSheet",0,"#rkSheet [data-rkclose]"],["da","#daPop",0,"#daX"],["ks","#ksSheet",0,"#ksLater"]];
+ ["bbs","#bbSheet",0,"#bbSheet [data-bbclose]"],["rks","#rkSheet",0,"#rkSheet [data-rkclose]"],["da","#daPop",0,"#daX"],["ks","#ksSheet",0,"#ksLater"],["hk","#hkOv",1,"#hkOv [data-hkclose]"],["hkn","#hkNote",1,"#hkNote [data-hknotex]"]];
 const curPage=()=>{ const p=document.querySelector(".page.on"); return p?p.id.replace(/^page-/,""):"beranda"; };
 function sig(){ const out=[], pg=curPage();
   if(pg!=="beranda") out.push("p:"+pg);
