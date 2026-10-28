@@ -607,7 +607,7 @@ input[type=file]{display:none}
 .v2-m .n{flex:1;min-width:0}.v2-m .n b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.v2-m .n span{font-size:12px;color:var(--fg3)}
 .v2-m a{color:var(--gold2);font-weight:700;font-size:13px;text-decoration:none;border:1px solid var(--line2);border-radius:999px;padding:5px 11px;white-space:nowrap}
 .v2-attr{font-size:10.5px;margin-top:8px}.v2-attr a{color:inherit}
-.v2-prog{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;text-align:center}
+.v2-prog{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px;text-align:center}
 .v2-prog div{border:1px solid var(--line);border-radius:14px;padding:10px 4px;background:var(--glass)}
 .v2-prog b{display:block;font-size:22px;color:var(--gold2);font-family:var(--font-display)}
 .v2-prog span{font-size:11.5px;color:var(--fg2)}
@@ -676,9 +676,25 @@ input[type=file]{display:none}
 .v2-splash span[lang=ar]{font-family:var(--font-arab);font-style:normal;font-size:24px}
 .v2-splash small{position:absolute;bottom:40px;font-size:12px;color:#ab9b7c}
 .v2-splash.out{opacity:0;pointer-events:none}
-.v2-splash-logo{width:96px;height:96px;border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.28);object-fit:cover}
+.v2-splash-logo{width:112px;height:112px;border-radius:26px;box-shadow:0 12px 32px rgba(0,0,0,.32);object-fit:cover}
 .v2-hero-ic img{width:40px;height:40px;border-radius:10px;display:block;object-fit:cover}
-/* t58: old compass spin removed — logo stays still */
+/* t59: 3D brand splash */
+.v2-splash-stage{display:flex;flex-direction:column;align-items:center;gap:14px;padding:0 18px}
+.v2-splash-wm,.v2-splash-bsm{display:block;line-height:0}
+.v2-splash-wm img{width:min(280px,78vw);height:auto;display:block;filter:drop-shadow(0 6px 16px rgba(0,0,0,.35))}
+.v2-splash-bsm img{width:min(320px,86vw);height:auto;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+.v2-splash-stage > *{opacity:0;transform:scale(.92);animation:v2splashIn .75s cubic-bezier(.2,.8,.2,1) forwards}
+.v2-splash-stage > *:nth-child(1){animation-delay:.05s}
+.v2-splash-stage > *:nth-child(2){animation-delay:.18s}
+.v2-splash-stage > *:nth-child(3){animation-delay:.34s}
+@keyframes v2splashIn{to{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){
+  .v2-splash-stage > *{animation:none;opacity:1;transform:none}
+}
+.brand .tx b.v2-brand-txt{display:none}
+.brand .tx img.v2-brand-wm{display:block;height:22px;width:auto;max-width:150px;margin:2px 0 1px}
+.hdr .brand{align-items:center}
+
 .v2-flow{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;background:var(--bg)}
 [data-theme=gold] .v2-flow{background:radial-gradient(700px 420px at 50% -10%,rgba(201,162,74,.18),transparent 60%),#140f09}
 .v2-flowhd{display:flex;align-items:center;gap:10px;padding:12px 14px;padding-top:max(12px,env(safe-area-inset-top));border-bottom:1px solid var(--line)}
@@ -833,6 +849,32 @@ input[type=file]{display:none}
 .v2-bsm .ar{font-family:var(--font-arab);font-size:34px;line-height:1.7;color:#f2dfae}
 .v2-bsm .tr{font-family:var(--font-display);font-style:italic;font-size:17px;color:#e6c77a;margin-top:2px}
 .v2-bsm .mn{font-size:13px;color:#cdbb98;margin-top:4px}
+
+/* t60: merged Progres + expandable Log Ibadah */
+.v2-prog-card{padding-bottom:10px}
+.v2-prog-card .v2-prog-head{cursor:pointer}
+.v2-prog-card .v2-prog-tog{min-width:36px;padding:4px 8px}
+.v2-prog-card .v2-prog-chev{display:inline-block;transition:transform .2s;font-size:14px;opacity:.8}
+.v2-prog-card.open .v2-prog-chev{transform:rotate(180deg)}
+.v2-prog-detail{margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}
+.v2-prog-detail[hidden]{display:none!important}
+.v2-prog b{font-size:18px}
+.v2-prog span{font-size:10.5px}
+/* Promo carousel — local only, no autoplay */
+.v2-promo-card{overflow:hidden}
+.v2-promo-title{margin:2px 0 10px;font-size:17px;font-family:var(--font-display);color:var(--gold2)}
+.v2-promo-track{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:14px}
+.v2-promo-track::-webkit-scrollbar{display:none}
+.v2-promo-slide{position:relative;flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;display:block;min-height:140px;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid rgba(230,199,122,.25)}
+.v2-promo-slide img{width:100%;height:140px;object-fit:cover;display:block}
+.v2-promo-mitra{position:absolute;top:10px;left:10px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;background:rgba(0,0,0,.45);color:#e6c77a;border:1px solid rgba(230,199,122,.4);padding:3px 8px;border-radius:999px}
+.v2-promo-copy{position:absolute;left:0;right:0;bottom:0;padding:12px 14px 10px;background:linear-gradient(transparent,rgba(8,6,2,.92));display:flex;flex-direction:column;gap:2px}
+.v2-promo-copy b{font-size:16px;color:#f3e3b0;font-family:var(--font-display)}
+.v2-promo-copy span{font-size:12.5px;color:#e8dcb8;opacity:.92}
+.v2-promo-copy em{font-style:normal;font-size:12px;color:var(--gold2);margin-top:4px}
+.v2-promo-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.v2-promo-dot{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:rgba(230,199,122,.28);cursor:pointer}
+.v2-promo-dot.on{background:#e6c77a;transform:scale(1.15)}
 
 /* ===== Al-Qur'an reader ===== */
 @font-face{font-family:"Amiri Quran";src:url(quran/fonts/AmiriQuran.woff2) format("woff2");font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+25CC}
@@ -1769,6 +1811,16 @@ html:is([data-theme=light],[data-theme=pink]) .gm-bar,html[data-theme=pink] .gm-
 .hk-quote{margin:10px 16px 0;max-width:320px;text-align:center;font-size:12px;line-height:1.45;opacity:.75;font-style:italic}
 .hk-quote small{display:block;margin-top:4px;font-style:normal;opacity:.85;font-size:11px}
 
+/* t60: progress + continue/replay */
+.hk-prog-today,.hk-prog-tot{font-size:12.5px;line-height:1.4;margin:0 0 6px;color:var(--fg3,#7a6a55)}
+.hk-prog-tot{margin-bottom:12px;opacity:.9}
+.hk-fin-prog{margin:8px 0 0;text-align:center}
+.hk-fin-prog .hk-prog-today,.hk-fin-prog .hk-prog-tot{color:inherit;opacity:.85}
+.hk-fin-bot .hk-btn{margin-top:8px}
+.hk-fin-bot .hk-btn.done{margin-top:6px;background:transparent;color:inherit;border:1.5px solid rgba(255,255,255,.35);font-weight:600}
+:is([data-theme=light],[data-theme=pink]) .hk-fin-bot .hk-btn.done,[data-theme=pink] .hk-fin-bot .hk-btn.done{border-color:rgba(0,0,0,.2)}
+.hk-fin-bot .hk-more{display:block;width:100%;margin:8px auto 0;background:none;border:0;color:inherit;font:inherit;font-size:14px;opacity:.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
 
 /* ===== Best Muslim — Hafalan Al-Qur'an AI ===== */
 .hq{display:flex;flex-direction:column;gap:14px}
@@ -2104,6 +2156,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
 [data-theme=pink] .rk-row .rk-icons i,[data-theme=pink] .k3-tile i{background:linear-gradient(180deg,#fff,#f6e9e7)}
 
 
+.v2-prog-detail.ks-card{margin-top:0;border:0;background:transparent;padding:0;box-shadow:none}
 .ks-card{margin-top:4px}.ks-streak{font-size:20px;color:#e6c77a}.ks-acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
 .ks-small{font-size:11.5px}.ks-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}.ks-stats div{background:rgba(230,199,122,.08);border-radius:12px;padding:8px 4px;text-align:center}
 .ks-stats b{display:block;font-size:18px;color:#e6c77a}.ks-stats small{font-size:10.5px;opacity:.75}.ks-bonus{font-size:12px;color:#e6c77a;margin-bottom:6px}
@@ -2124,7 +2177,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
   <header class="hdr">
     <div class="brand">
       <img class="logo" src="icon-192.png" width="34" height="34" alt="" decoding="async">
-      <div class="tx"><b>Best Muslim</b><span data-i="brand.sub"></span><div class="hijri" id="hijri"></div></div>
+      <div class="tx"><img class="v2-brand-wm" src="wordmark-3d-hdr.webp" width="140" height="27" alt="Best Muslim" decoding="async" onerror="this.onerror=null;this.src='wordmark-3d-hdr.png'"><span data-i="brand.sub"></span><div class="hijri" id="hijri"></div></div>
     </div>
     <div class="right">
       <div class="langseg" id="langseg" role="group" aria-label="Language"><button data-l="id">ID</button><button data-l="en">EN</button><button data-l="ar">AR</button></div>
@@ -2150,7 +2203,23 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
         <div class="card" id="v2MasjidCard"><div class="row v2-sb"><div class="eyebrow" data-v="masjidT"></div><button class="btn sm gold" type="button" id="v2MasjidBtn" data-v="find"></button></div>
           <div id="v2Masjid" class="v2-mlist"><p class="dim" style="font-size:13px" data-v="masjidLead"></p></div>
           <p class="dim v2-attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors · Overpass API</p></div>
-        <div class="card"><div class="eyebrow" data-v="progT"></div><div class="v2-prog" id="v2Prog"></div></div>
+        <div class="card v2-prog-card" id="v2ProgCard">
+          <div class="v2-prog-head" id="v2ProgHead">
+            <div class="row v2-sb"><div class="eyebrow" data-v="progT"></div>
+              <button type="button" class="btn sm ghost v2-prog-tog" id="v2ProgToggle" aria-expanded="false" aria-controls="ksIbadah" title="Expand"><span class="v2-prog-chev" aria-hidden="true">▾</span></button>
+            </div>
+            <div class="v2-prog" id="v2Prog"></div>
+          </div>
+          <div class="ks-card v2-prog-detail" id="ksIbadah" hidden></div>
+        </div>
+        <div class="card v2-promo-card" id="v2PromoCard">
+          <div class="row v2-sb"><div class="eyebrow" data-v="promoEy"></div><span class="dim" style="font-size:11px" data-v="promoMitraLab"></span></div>
+          <h3 class="v2-promo-title" data-v="promoT"></h3>
+          <div class="v2-promo-track" id="v2PromoTrack" tabindex="0" role="region" aria-roledescription="carousel">
+            <!-- slides filled by JS -->
+          </div>
+          <div class="v2-promo-dots" id="v2PromoDots" aria-hidden="true"></div>
+        </div>
         <button class="btn v2-more" type="button" data-go="lainnya"><span data-v="more"></span> →</button>
         <div class="row" style="gap:8px;justify-content:center"><button class="btn sm ghost" type="button" data-go="premium">✦ <span data-v="premium"></span></button><button class="btn sm ghost" type="button" data-go="settings">⚙ <span data-v="settings"></span></button></div>
       </div>
@@ -2508,7 +2577,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
     <button data-p="belanja"><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.6 10.2a2 2 0 0 1-2 1.8H7.6a2 2 0 0 1-2-1.8z"/><path d="M8.5 9l3.5-5 3.5 5"/><path d="M9.5 13.5v3M14.5 13.5v3"/></svg><span data-v="nBelanja"></span></button>
     <button data-p="lainnya"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg><span data-v="nLainnya"></span></button>
   </nav>
-  <div class="v2-splash" id="v2Splash"><img class="v2-splash-logo" src="icon-192.png" width="96" height="96" alt="Best Muslim" decoding="async"><div class="v2-bsm" id="v2Bsm" aria-label="Bismillahirrahmanirrahim"><div class="ar" dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div><div class="tr" lang="ar-Latn">Bismillāhir-raḥmānir-raḥīm</div><div class="mn" id="v2BsmM">Dengan nama Allah Yang Maha Pengasih, Maha Penyayang</div></div><b>Best Muslim</b><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
+  <div class="v2-splash" id="v2Splash"><div class="v2-splash-stage" aria-hidden="false"><img class="v2-splash-logo" src="icon-192.png" width="112" height="112" alt="" decoding="async"><picture class="v2-splash-wm"><source type="image/webp" srcset="wordmark-3d-sm.webp"><img src="wordmark-3d-sm.png" width="280" height="55" alt="Best Muslim" decoding="async"></picture><picture class="v2-splash-bsm"><source type="image/webp" srcset="bismillah-3d-sm.webp"><img src="bismillah-3d-sm.png" width="320" height="102" alt="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ" lang="ar" dir="rtl" decoding="async"></picture></div><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
   <div class="v2-flow" id="v2Flow" hidden><div class="v2-flowhd"><button class="btn sm ghost" id="flX" type="button">✕</button><div class="v2-steps" id="flSteps"></div><span class="dim" id="flCount" dir="ltr"></span></div><div class="v2-flowbody" id="flBody"></div><div class="v2-flowft"><button class="btn" id="flPrev" type="button"></button><button class="btn gold" id="flNextB" type="button"></button></div></div>
 
   <!-- Murattal sheet -->
@@ -4268,7 +4337,10 @@ const V={
  qiblaT:["Kompas Kiblat","Qibla Compass","بوصلة القبلة"], qiblaEy:["Arah Ka'bah","Direction of the Ka'bah","اتجاه الكعبة"], openCompass:["Buka kompas →","Open compass →","افتح البوصلة ←"], fromNorth:["dari utara","from north","من الشمال"],
  masjidT:["Masjid Terdekat","Nearby Mosques","المساجد القريبة"], mAll:["Tampilkan semua","Show all","عرض الكل"], mLess:["Kecilkan","Collapse","تصغير"], mMin:["Sembunyikan daftar","Hide list","إخفاء القائمة"], m3:["Tampilkan 3 terdekat","Show nearest 3","أقرب ٣"], find:["Cari","Find","ابحث"], masjidLead:["Cari masjid dan musala dalam radius 3 km dari lokasi Anda.","Find mosques and prayer rooms within 3 km of your location.","ابحث عن المساجد ضمن 3 كم من موقعك."],
  searching:["Mencari…","Searching…","جارٍ البحث…"], none:["Tidak ditemukan dalam 3 km.","None found within 3 km.","لا توجد مساجد ضمن 3 كم."], mErr:["Gagal memuat data peta. Coba lagi.","Could not load map data. Try again.","تعذّر تحميل البيانات."], mErr2:["Server peta sedang sibuk atau tidak terjangkau. Periksa internet lalu coba lagi.","Map servers are busy or unreachable. Check your connection and try again.","خوادم الخريطة مشغولة أو غير متاحة. تحقّق من الاتصال وحاول مجددًا."], retry:["Coba lagi","Try again","أعد المحاولة"], none10:["Tidak ada masjid tercatat di peta dalam 10 km.","No mosques mapped within 10 km.","لا توجد مساجد مسجّلة ضمن 10 كم."], mWide:["Diperluas ke radius","Widened to radius","وُسِّع البحث إلى"], mFb:["Hasil dari pencarian alternatif (bisa kurang lengkap).","Results from fallback search (may be incomplete).","نتائج من بحث بديل (قد تكون ناقصة)."], locating2:["Mengambil lokasi…","Getting location…","جارٍ تحديد الموقع…"], route:["Rute","Route","المسار"], noName:["Masjid (tanpa nama)","Mosque (unnamed)","مسجد (بدون اسم)"], noNameMu:["Musholla (tanpa nama)","Prayer room (unnamed)","مصلى (بدون اسم)"], mush:["Musholla","Prayer room","مصلى"], gmaps:["Lihat di Google Maps","View on Google Maps","عرض في خرائط Google"], gmapsNote:["untuk tempat yang belum ada di peta OSM","for places not yet on OSM","للأماكن غير المسجلة"], fromGps:["Dari lokasi GPS Anda","From your GPS location","من موقعك الحالي"], fromHp:["Dari lokasi HP Anda","From your phone's location","من موقع هاتفك"], acc:["akurasi","accuracy","دقة"], gpsNo:["GPS tidak tersedia, memakai lokasi tersimpan:","GPS unavailable, using saved location:","GPS غير متاح، يُستخدم الموقع المحفوظ:"], gpsNo2:["GPS tidak tersedia dan belum ada lokasi tersimpan. Izinkan lokasi atau atur di Jadwal.","GPS unavailable and no saved location. Allow location or set it in Jadwal.","GPS غير متاح ولا يوجد موقع محفوظ."], mCancel:["Batal","Cancel","إلغاء"], mCanceled:["Pencarian dibatalkan.","Search cancelled.","أُلغي البحث."], pLoc:["Mengambil lokasi HP…","Getting phone location…","جارٍ تحديد موقع الهاتف…"], pLocOk:["Lokasi HP didapat","Phone location found","تم تحديد الموقع"], pLocFb:["GPS tidak tersedia, memakai lokasi tersimpan","GPS unavailable, using saved location","يُستخدم الموقع المحفوظ"], pRad:["Mencari masjid radius %s km…","Searching mosques within %s km…","البحث ضمن %s كم…"], pFb:["Mencari di sumber cadangan (%s)…","Searching backup source (%s)…","البحث في مصدر بديل (%s)…"], pSort:["Mengurutkan dari yang terdekat…","Sorting by nearest…","الترتيب حسب الأقرب…"], pDone:["Selesai, %s masjid ditemukan","Done, %s mosques found","تم، وُجد %s مسجدًا"], needLoc:["Atur lokasi dulu di Jadwal.","Set your location in Jadwal first.","حدّد موقعك أولًا."],
- progT:["Progres hari ini","Today's progress","تقدّم اليوم"], pSalat:["salat","prayers","صلوات"], pHarian:["checklist","checklist","المهام"], pHaf:["hari hafalan","memorize streak","أيام الحفظ"],
+ progT:["Progres hari ini","Today's progress","تقدّم اليوم"], pSalat:["salat","prayers","صلوات"], pHarian:["amalan","sunnah","سنن"], pHaf:["hari hafalan","memorize streak","أيام الحفظ"],
+ pPoin:["poin hari ini","pts today","نقاط اليوم"], pStreak:["streak","streak","تتابع"],
+ promoEy:["Promo","Promo","عرض"], promoMitraLab:["Mitra","Partners","شركاء"], promoT:["Promo Berkah Hari Ini","Blessed promo today","عروض مباركة لليوم"],
+ promoCta:["Lihat promo","See promo","شاهد العرض"], promoMitra:["Mitra","Partner","شريك"],
  more:["Lainnya","More","المزيد"], moreEy:["Semua menu","All menus","كل القوائم"], premium:["Premium","Premium","بريميوم"], settings:["Pengaturan","Settings","الإعدادات"],
  nBeranda:["Beranda","Home","الرئيسية"], nHafalan:["Hafalan","Memorize","الحفظ"], nJadwal:["Jadwal","Times","المواقيت"], nKiblat:["Kiblat","Qibla","القبلة"], nLainnya:["Lainnya","More","المزيد"],
  next:["Salat berikutnya","Next prayer","الصلاة القادمة"], nqLbl:["Kiblat","Qibla","القبلة"], nqAria:["Buka kompas kiblat","Open Qibla compass","افتح بوصلة القبلة"], inn:["dalam","in","بعد"], azVoice:["Azan","Adhan","الأذان"], setLocBtn:["📍 Atur lokasi","📍 Set location","📍 حدّد الموقع"], autoLoc:["Lokasi otomatis","Auto location","موقع تلقائي"],
@@ -4328,7 +4400,7 @@ function applyV(){ $$("[data-v]:not(.az-opt)").forEach(el=>{el.textContent=v(el.
   renderAll(); }
 
 /* ---------- Splash ---------- */
-function splash(){ const s=$("#v2Splash"); if(!s) return; const hide=()=>{s.classList.add("out");setTimeout(()=>s.remove(),500);}; s.addEventListener("click",hide); setTimeout(hide,2500); }
+function splash(){ const s=$("#v2Splash"); if(!s) return; const hide=()=>{s.classList.add("out");setTimeout(()=>s.remove(),500);}; s.addEventListener("click",hide); setTimeout(hide,3200); /* t59: give 3D splash a beat */ }
 
 /* ---------- Beranda ---------- */
 function azLabel(){const c=Object.assign({voice:"makkah"},store.get("rk_azan",{}));return v({makkah:"vMakkah",madinah:"vMadinah",mesir:"vMesir",turki:"vTurki",notif:"vNotif",silent:"vSilent"}[c.voice]||"vMakkah");}
@@ -4344,8 +4416,23 @@ function renderTimes(){ const el=$("#v2Times"); if(!el) return; const tt=times(n
   const done=new Set(store.get("rk_salat_"+dkey(),[])), np=nextPrayer();
   el.innerHTML=["fajr","sunrise","dhuhr","asr","maghrib","isha"].map(n=>`<div class="${np&&np.n===n&&dkey(np.t)===dkey()?"now":""}${done.has(n)?" ok":""}"><span>${v(n)}</span><b dir="ltr">${fmt(tt[n])}</b></div>`).join(""); }
 function renderQ(){ const l=loc(), el=$("#v2Qdeg"); if(!el) return; el.textContent=l&&window.RKPray?Math.round(RKPray.qibla(l.lat,l.lng))+"°":"—"; }
-function renderProg(){ const el=$("#v2Prog"); if(!el) return; const s=store.get("rk_salat_"+dkey(),[]).length, h=(store.get("rk_harian_hist",{})[dkey()]||0);
-  el.innerHTML=`<div class="v2-click" data-go="jadwal"><b>${s}/5</b><span>${v("pSalat")}</span></div><div class="v2-click" data-go="harian"><b>${h}%</b><span>${v("pHarian")}</span></div><div class="v2-click" data-go="hafalan"><b>${Haf.streak()}🔥</b><span>${v("pHaf")}</span></div>`; }
+function ibadahSnap(){ try{ if(window.KusyuIbadah&&KusyuIbadah.stats){ const st=KusyuIbadah.stats(); const items=(KusyuIbadah.ITEMS||[]); const day=(KusyuIbadah.Log&&KusyuIbadah.Log.all()||{})[dkey()]||{}; const done=items.filter(it=>day[it.k]).length; const pct=items.length?Math.round(100*done/items.length):0; return {pts:(st.today||0)+(st.todayBonus||0), streak:st.streak||0, pct}; } }catch(e){} return {pts:0,streak:0,pct:0}; }
+function renderProg(){ const el=$("#v2Prog"); if(!el) return; const s=store.get("rk_salat_"+dkey(),[]).length; const ib=ibadahSnap();
+  el.innerHTML=`<div class="v2-click" data-go="jadwal"><b>${s}/5</b><span>${v("pSalat")}</span></div><div class="v2-click" data-exp="1"><b>${ib.pct}%</b><span>${v("pHarian")}</span></div><div class="v2-click" data-exp="1"><b>${ib.pts}</b><span>${v("pPoin")}</span></div><div class="v2-click" data-exp="1"><b>${ib.streak}🔥</b><span>${v("pStreak")}</span></div>`; }
+function setProgOpen(on){ const d=$("#ksIbadah"), t=$("#v2ProgToggle"), c=$("#v2ProgCard"); if(!d||!t) return; d.hidden=!on; t.setAttribute("aria-expanded",on?"true":"false"); if(c) c.classList.toggle("open",!!on); if(on&&window.KusyuIbadah&&KusyuIbadah.render) KusyuIbadah.render(); }
+function toggleProg(){ const d=$("#ksIbadah"); setProgOpen(!!(d&&d.hidden)); }
+const PROMO=[{id:"wardah",brand:"Wardah",tag:["Cantik halal, hati tenang","Halal beauty, calm heart","جمال حلال وقلب مطمئن"],img:"promo/wardah.webp",href:"#"},
+ {id:"maktour",brand:"Maktour",tag:["Wujudkan umrah bersama keluarga","Make umrah with family","حقق العمرة مع أسرتك"],img:"promo/maktour.webp",href:"#"},
+ {id:"kahf",brand:"Kahf",tag:["Grooming rapi, siap ke masjid","Look sharp, ready for the mosque","أناقة واستعداد للمسجد"],img:"promo/kahf.webp",href:"#"}];
+function renderPromo(){ const track=$("#v2PromoTrack"), dots=$("#v2PromoDots"); if(!track) return; const i=({id:0,en:1,ar:2}[lang()]);
+  track.innerHTML=PROMO.map((p,idx)=>`<a class="v2-promo-slide" href="${p.href}" data-promo="${p.id}" data-todo="promo-link" aria-label="${esc(p.brand)}"><img src="${p.img}" alt="" width="320" height="140" decoding="async" loading="lazy"><span class="v2-promo-mitra">${v("promoMitra")}</span><div class="v2-promo-copy"><b>${esc(p.brand)}</b><span>${esc(p.tag[i])}</span><em>${v("promoCta")} →</em></div></a>`).join("");
+  dots.innerHTML=PROMO.map((_,idx)=>`<button type="button" class="v2-promo-dot${idx===0?" on":""}" data-i="${idx}" aria-label="${idx+1}"></button>`).join("");
+  if(track._promoBound) return; track._promoBound=1;
+  const sync=()=>{ const w=track.clientWidth||1; const i=Math.round(track.scrollLeft/w); dots.querySelectorAll(".v2-promo-dot").forEach((d,j)=>d.classList.toggle("on",j===i)); };
+  track.addEventListener("scroll",()=>{ clearTimeout(track._st); track._st=setTimeout(sync,60); },{passive:true});
+  dots.addEventListener("click",e=>{ const b=e.target.closest("[data-i]"); if(!b) return; const i=+b.dataset.i; track.scrollTo({left:i*(track.clientWidth||0),behavior:"smooth"}); });
+  track.addEventListener("click",e=>{ const a=e.target.closest("a[data-todo]"); if(a&&(a.getAttribute("href")==="#"||a.dataset.todo)){ e.preventDefault(); } });
+}
 function renderHafMini(){ const el=$("#v2HafMini"); if(!el) return; const st=Haf.st(); el.innerHTML=hafRows().slice(0,6).map(h=>{const s=Haf.status(h.id);return `<span class="v2-st s${s}">${esc(h._grp?v(GROUPS[h._grp]):L(h.name))}</span>`;}).join(""); }
 
 /* ---------- Masjid (Overpass) ---------- */
@@ -4592,14 +4679,17 @@ function initSettings(){
 /* ---------- Kiblat page: move compass card ---------- */
 function initKiblat(){ const d=$("#qbDial"); const card=d&&d.closest(".card"); if(card) $("#kbStack").appendChild(card); }
 
-function renderAll(){ renderNext(); renderTimes(); renderQ(); renderProg(); renderHafMini(); Haf.renderList(); if(Haf.cur) Haf.ui(); Masjid.render(); renderLainnya(); renderPremium(); renderSettings(); if(!$("#v2Flow").hidden) Flow.render(); }
+function renderAll(){ renderNext(); renderTimes(); renderQ(); renderProg(); renderPromo(); renderHafMini(); Haf.renderList(); if(Haf.cur) Haf.ui(); Masjid.render(); renderLainnya(); renderPremium(); renderSettings(); if(!$("#v2Flow").hidden) Flow.render(); }
 
 function init(){
   initKiblat(); initSettings(); Masjid.init(); Haf.init(); Flow.init();
+  const tog=$("#v2ProgToggle"); if(tog) tog.addEventListener("click",e=>{ e.preventDefault(); toggleProg(); });
+  const head=$("#v2ProgHead"); if(head) head.addEventListener("click",e=>{ if(e.target.closest("[data-go]")) return; if(e.target.closest("#v2ProgToggle")) return; if(e.target.closest("[data-exp]")){ e.preventDefault(); toggleProg(); } });
   document.addEventListener("click",e=>{ const g=e.target.closest("[data-go]"); if(g){ e.preventDefault(); go(g.dataset.go); return; }
     const t=e.target.closest("[data-tile]"); if(t){ const p=t.dataset.tile; if(p==="flow") Flow.open(0); else if(p==="mur"){ const m=$("#murBtn"); if(m) m.click(); } else if(p.includes("#")){ const [pg,id]=p.split("#"); go(pg); setTimeout(()=>{ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:"smooth"}); },50); } else go(p); } });
   document.addEventListener("change",e=>{ const c=e.target.closest("[data-doa]"); if(!c) return; const s=new Set(store.get("rk_doa_check",[])); c.checked?s.add(c.dataset.doa):s.delete(c.dataset.doa); store.set("rk_doa_check",[...s]); });
   document.addEventListener("rk:lang",()=>setTimeout(applyV,0));
+  document.addEventListener("rk:ibadah",()=>{ try{ renderProg(); }catch(e){} });
   window.addEventListener("storage",renderAll); window.addEventListener("hashchange",()=>{ const h=location.hash.slice(1); if(h==="beranda") renderAll(); });
   // re-render beranda when leaving other pages
   $$("#nav button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.p==="beranda") renderAll(); if(b.dataset.p!=="hafalan") Haf.stop(); }));
@@ -4607,7 +4697,7 @@ function init(){
   let lastLoc=JSON.stringify(loc()); setInterval(()=>{ const n=JSON.stringify(loc()); if(n!==lastLoc){ lastLoc=n; renderAll(); } else { renderNext(); } },15000);
   const _go=window.go; window.go=function(p){ _go(p); if(p==="beranda"||p==="settings"||p==="premium") renderAll(); if(p!=="hafalan") Haf.stop(); };
   applyV(); splash();
-  window.RKV2={Flow,Haf,Masjid,renderAll,v};
+  window.RKV2={Flow,Haf,Masjid,renderAll,v,setProgOpen,toggleProg,renderPromo};
 }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
 })();
@@ -6340,8 +6430,8 @@ window.KusyuAk50={onDone,openTrack,quiz,closeTk,closeQz,decorate,openGame,closeG
 
 </script>
 <script>
-/* t57 — Hikmah Hari Ini: Daily Review style daily review (1 ayat + 1 hadis + 3 highlight sirah).
-   Data lokal saja. Progres Quran/Hadis/Sirah memakai jalur ks_prog yang sama. */
+/* t57/t60 — Hikmah Harian: Daily Wisdom (1 ayat + 1 hadis + 3 highlight sirah), urutan ketat berurutan.
+   Data lokal saja. Progres Quran/Hadis/Sirah memakai jalur ks_prog + pointer ks_hikmah.ai/hi/si. */
 (function(){
 "use strict";
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -6350,18 +6440,23 @@ const lang=()=>{const l=store.get("rk_lang","id");return ["id","en","ar"].includ
 const L=()=>({id:0,en:1,ar:2}[lang()]);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const NUM=n=>lang()==="ar"?String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]):String(n);
+const Ndot=n=>{const x=+n|0; if(lang()==="ar") return NUM(x); if(lang()==="id") return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,"."); return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,",");};
 const PK=()=>window.KusyuPustaka;
 const toast=m=>{const t=$("#toast");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2600);};
 const dk=(d)=>{const x=d||new Date();return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0");};
 const dAdd=(d,n)=>{const x=new Date(d+"T12:00:00");x.setDate(x.getDate()+n);return dk(x);};
 const pad=n=>String(n).padStart(3,"0");
+const TOT_A=6236, TOT_H=7563;
 const T={
  name:["Hikmah Harian","Daily Wisdom","الحكمة اليومية"],
  sub:["5 kartu dari {a}, {h} dan Sirah","5 cards from {a}, {h} and Seerah","٥ بطاقات من {a} و{h} والسيرة"],
- subDone:["Selesai hari ini · kembali besok, insya Allah","Done for today · come back tomorrow, insha Allah","أتممت اليوم · عد غدًا إن شاء الله"],
+ subDone:["Selesai hari ini · kamu bisa lanjut atau ulas lagi","Done for today · continue or review again","أتممت اليوم · يمكنك المتابعة أو المراجعة"],
  start:["Mulai","Review","ابدأ"],
+ reopen:["Buka lagi","Open again","افتح مجددًا"],
  doneBtn:["Selesai","Done","تم"],
  reviewMore:["Uji hafalan →","Test your memory →","اختبر حفظك ←"],
+ continueMore:["Lanjut baca lagi →","Keep reading →","تابع القراءة ←"],
+ replayToday:["Ulas lagi kartu hari ini","Review today's cards","راجع بطاقات اليوم"],
  skip:["Lewati","Discard","تخطَّ"],
  master:["Sudah hafal","Master","أتقنتُه"],
  later:["Ulangi besok","Again tomorrow","أعد غدًا"],
@@ -6377,10 +6472,12 @@ const T={
  streak:["Istiqamah harian","Daily istiqamah","الاستقامة اليومية"],
  dayN:["{n} hari","{n} day","{n} يوم"],
  daysN:["{n} hari","{n} days","{n} أيام"],
+ todayLine:["Hari ini: {a} ayat, {h} hadis, {s} kalimat sirah","Today: {a} ayahs, {h} hadiths, {s} seerah lines","اليوم: {a} آية، {h} حديث، {s} جملة سيرة"],
+ totalsLine:["Al-Qur'an {a}/{ta} ayat · Hadis {h} · Sirah {p}% selesai","Qur'an {a}/{ta} ayahs · Hadith {h} · Seerah {p}% done","القرآن {a}/{ta} آية · الحديث {h} · السيرة {p}٪"],
  quote:["Amalan yang paling dicintai Allah adalah yang paling rutin walaupun sedikit.","The most beloved deeds to Allah are those done most consistently, even if small.","أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ."],
  quoteSrc:["HR. Bukhari 6464, Muslim 783","Bukhari 6464, Muslim 783","البخاري ٦٤٦٤، مسلم ٧٨٣"],
- hintA:["Ayat dari jalur bacaanmu","A verse from your reading track","آية من مسار قراءتك"],
- hintH:["Hadis dari Shahih al-Bukhari","A hadith from Sahih al-Bukhari","حديث من صحيح البخاري"],
+ hintA:["Ayat berikutnya berurutan","Next ayah in sequence","الآية التالية بالترتيب"],
+ hintH:["Hadis berikutnya · Shahih al-Bukhari","Next hadith · Sahih al-Bukhari","الحديث التالي · صحيح البخاري"],
  hintS:["Cuplikan Sirah Nabawiyah · Bab {b} · {p}%","Seerah passage · Ch. {b} · {p}%","مقتطف من السيرة · باب {b} · {p}٪"],
  taf:["Tafsir singkat","Brief tafsir","تفسير موجز"],
  draft:["Terjemahan: draf, dalam peninjauan.","Translation: draft, under review.",""],
@@ -6395,17 +6492,25 @@ const T={
 };
 const tt=(k,vars)=>{let s=(T[k]&&(T[k][L()]||T[k][0]))||k; if(vars) Object.keys(vars).forEach(x=>{s=s.replace(new RegExp("\\{"+x+"\\}","g"),vars[x]);}); return s;};
 const HK="ks_hikmah";
-const stGet=()=>store.get(HK,{si:0,fav:{},notes:{},later:{},master:{},days:{},hist:[]});
+const stGet=()=>store.get(HK,{ai:null,hi:null,si:0,fav:{},notes:{},later:{},master:{},days:{},hist:[],today:null,lastDeck:null,reviewMode:false});
 const stSet=v=>store.set(HK,v);
 const COVER={a:"hikmah/cover-q.svg",h:"hikmah/cover-h.svg",s:"hikmah/cover-s.svg"};
 const LAND="hikmah/landscape.svg";
-let HL=null, DECK=null, IX=0, busy=false, sw={};
+let HL=null, DECK=null, IX=0, busy=false, REVIEW=false;
 
 function ensureProg(){ const P=PK()&&PK().prog&&PK().prog(); if(P&&P.st==="on") return P;
   const cur=store.get("ks_prog",null);
   if(cur){ cur.st="on"; store.set("ks_prog",cur); try{PK().pRender&&PK().pRender();}catch(e){} return cur; }
   const neu={st:"on",a:{p:1,t:1},h:{p:1,t:1},s:{p:1,t:1},day:dk(),done:{},pz:[],extra:0,since:dk(),b:{d:{}}};
   store.set("ks_prog",neu); try{PK().pRender&&PK().pRender();}catch(e){} return neu; }
+
+function migrate(){ const S=stGet(); let ch=false; const P=store.get("ks_prog",null);
+  if(S.ai==null){ S.ai=Math.min(Math.max(1,(P&&P.a&&(P.a.p|0))||1),TOT_A); ch=true; }
+  if(S.hi==null){ S.hi=Math.min(Math.max(1,(P&&P.h&&(P.h.p|0))||1),TOT_H); ch=true; }
+  if(S.si==null||S.si<0){ S.si=0; ch=true; }
+  if(!S.today||S.today.day!==dk()){ S.today={day:dk(),a:0,h:0,s:0}; ch=true; }
+  if(S.day&&S.day!==dk()){ S.deck=null; S.i=0; S.doneToday=false; S.lastDeck=null; S.reviewMode=false; S.day=dk(); ch=true; }
+  if(ch) stSet(S); return S; }
 
 async function loadHL(){ if(HL) return HL; const r=await fetch("hikmah/sirah-hl.json"); HL=await r.json(); return HL; }
 
@@ -6419,33 +6524,36 @@ async function tafShort(s,a){ try{
   return t;
  }catch(e){ return ""; } }
 
-async function buildDeck(opts){ const S=stGet(), day=dk(); const live=opts&&opts.live;
-  if(S.day===day&&S.deck&&S.deck.length){ DECK=S.deck; if(!live && !$("#hkOv.on")) IX=S.i||0; return DECK; }
-  const P0=PK()&&PK().prog&&PK().prog();
-  const P=P0&&P0.st!=="off"?P0:{a:{p:1,t:1},h:{p:1,t:1},s:{p:1,t:1}};
-  await loadHL();
-  const aN=Math.min(P.a.p||P.a.t||1,6236), hN=Math.min(P.h.p||P.h.t||1,7563);
-  const A=await PK().ayahAt(aN); const H=await PK().hadAt(hN);
+function nextA(n){ n=(+n|0); return n>=TOT_A?1:n+1; }
+function nextH(n){ n=(+n|0); return n>=TOT_H?1:n+1; }
+
+async function makeDeckFromPointers(ai,hi,si){ await loadHL();
+  const A=await PK().ayahAt(ai); const H=await PK().hadAt(hi);
   const taf=await tafShort(A.s,A.a);
-  let si=S.si|0; if(si>=HL.n) si=0;
+  let s0=((si|0)%(HL.n||1)+HL.n)%(HL.n||1);
   const sir=[];
-  for(let k=0;k<3;k++){ const h=HL.hl[(si+k)%HL.n]; sir.push({type:"s",id:"s:"+h.i, p:h.p, k:h.k, n:h.n, t:h.t, idt:h.id, en:h.en, pct:h.pct, hi:h.i}); }
-  const deck=[
-    {type:"a",id:"a:"+aN, g:aN, s:A.s, a:A.a, name:A.name, ar:A.ar, tr:A.tr||"", taf, st:null},
-    {type:"h",id:"h:"+hN, n:hN, k:H.k, kn:H.kn, ar:H.ar||"", tr:H.id||"", st:null},
+  for(let k=0;k<3;k++){ const h=HL.hl[(s0+k)%HL.n]; sir.push({type:"s",id:"s:"+h.i+":"+dk()+"/"+k, p:h.p, k:h.k, n:h.n, t:h.t, idt:h.id, en:h.en, pct:h.pct, hi:h.i}); }
+  return [
+    {type:"a",id:"a:"+ai, g:ai, s:A.s, a:A.a, name:A.name, ar:A.ar, tr:A.tr||"", taf, st:null},
+    {type:"h",id:"h:"+hi, n:hi, k:H.k, kn:H.kn, ar:H.ar||"", tr:H.id||"", st:null},
     ...sir.map(x=>({...x,st:null}))
   ];
-  /* resurface "later" cards first if due */
-  const due=Object.keys(S.later||{}).filter(id=>S.later[id]<=day&&!deck.find(c=>c.id===id));
-  /* keep deck fixed at 5 for the daily ritual; later just marks for tomorrow */
-  S.day=day; S.deck=deck; S.i=0; S.si=si; S.doneToday=false; stSet(S);
-  DECK=deck; IX=0; return deck; }
+}
 
-function weekDays(){ /* 7 hari mulai dari hari mulai pengguna (seperti review harian), label Sen…Ahd */
+async function buildDeck(opts){ const o=opts||{}; migrate(); const S=stGet(); const day=dk(); const live=!!o.live;
+  if(o.replay&&S.lastDeck&&S.lastDeck.length){
+    DECK=S.lastDeck.map(c=>({...c,st:null})); IX=0; REVIEW=true; S.reviewMode=true; S.deck=DECK; S.i=0; stSet(S); return DECK;
+  }
+  if(!o.forceNext&&S.day===day&&S.deck&&S.deck.length){ DECK=S.deck; REVIEW=!!S.reviewMode; if(!live&&!$("#hkOv.on")) IX=S.i||0; return DECK; }
+  const ai=Math.min(Math.max(1,S.ai|0||1),TOT_A), hi=Math.min(Math.max(1,S.hi|0||1),TOT_H), si=S.si|0;
+  const deck=await makeDeckFromPointers(ai,hi,si);
+  S.day=day; S.deck=deck; S.i=0; S.reviewMode=false; if(o.forceNext) S.doneToday=false; stSet(S);
+  DECK=deck; IX=0; REVIEW=false; return deck; }
+
+function weekDays(){
   const S=stGet(), labs=T.week[L()]||T.week[0];
   const P=store.get("ks_prog",null); const startStr=(S.since||(P&&P.since)||dk());
   const start=new Date(startStr+"T12:00:00"); const today=new Date(); today.setHours(12,0,0,0);
-  /* jendela 7 hari yang berisi hari ini, berawal pada weekday start (atau senin minggu ini bila start jauh) */
   let anchor=new Date(today); const startDow=(start.getDay()+6)%7; const todayDow=(today.getDay()+6)%7;
   anchor.setDate(today.getDate()-((todayDow-startDow+7)%7));
   const out=[];
@@ -6454,6 +6562,16 @@ function weekDays(){ /* 7 hari mulai dari hari mulai pengguna (seperti review ha
   return out; }
 function streakCount(){ const S=stGet(); let n=0,d=dk(); if(!(S.days&&S.days[d])) d=dAdd(d,-1); let g=0;
   while(g++<4000){ if(S.days&&S.days[d]){ n++; d=dAdd(d,-1);} else break; } return n; }
+
+function progressSnap(){ const S=migrate(); const aDone=Math.max(0,Math.min(TOT_A,(S.ai|0)-1));
+  const hDone=Math.max(0,Math.min(TOT_H,(S.hi|0)-1));
+  const sn=HL&&HL.n?HL.n:164; const si=S.si|0; const p=Math.min(100,Math.floor(si*1000/sn)/10);
+  const td=S.today&&S.today.day===dk()?S.today:{a:0,h:0,s:0};
+  return {td,aDone,hDone,p,st:streakCount()}; }
+
+function progressHTML(){ const {td,aDone,hDone,p,st}=progressSnap();
+  return `<p class="hk-prog-today">${esc(tt("todayLine",{a:NUM(td.a|0),h:NUM(td.h|0),s:NUM(td.s|0)}))}</p>
+    <p class="hk-prog-tot">${esc(tt("totalsLine",{a:Ndot(aDone),ta:Ndot(TOT_A),h:Ndot(hDone),p:NUM(p)}))}${st?` · 🔥 ${esc(tt(st===1?"dayN":"daysN",{n:NUM(st)}))}`:""}</p>`; }
 
 function coverHTML(type,cls){ return `<span class="${cls||"hk-cv"}" aria-hidden="true"><img src="${COVER[type]}" alt="" width="80" height="110" loading="lazy"></span>`; }
 
@@ -6467,7 +6585,8 @@ async function renderCard(el){ if(!el) return; el.className="card lit pk-today h
     <div class="hk-stack">${coverHTML("a")}${coverHTML("h")}${coverHTML("s")}</div>
     <h3 class="hk-title">${esc(tt("name"))}</h3>
     <p class="hk-sub">${done?esc(tt("subDone")):esc(tt("sub",{a:aName,h:hName}))}</p>
-    <button type="button" class="hk-btn${done?" done":""}" data-hkstart="1">${done?esc(tt("doneBtn")):esc(tt("start"))}</button>
+    ${progressHTML()}
+    <button type="button" class="hk-btn${done?" done":""}" data-hkstart="1">${done?esc(tt("reopen")):esc(tt("start"))}</button>
     ${done?`<p class="hk-done-banner">${esc(tt("finTitle"))}</p>`:""}`; }
 
 function dotsHTML(){ if(!DECK) return "";
@@ -6508,9 +6627,10 @@ function shell(){ let o=$("#hkOv"); if(!o){ o=document.createElement("div"); o.i
 function close(){ const o=$("#hkOv"); if(o){ o.classList.remove("on"); setTimeout(()=>{ if(o&&!o.classList.contains("on")) o.remove(); },220); }
   const n=$("#hkNote"); if(n) n.remove(); try{renderCard($("#pkToday"));}catch(e){} try{PK().homeCard&&PK().homeCard();}catch(e){} }
 
-async function open(force){ ensureProg(); await buildDeck(); const S=stGet();
-  if(S.doneToday && !force){ showFin(); return; }
-  IX=Math.max(0, DECK.findIndex(c=>!c.st)); if(IX<0){ showFin(); return; }
+async function open(force){ ensureProg(); migrate();
+  const S=stGet();
+  if(S.doneToday&&!force&&!S.reviewMode){ await buildDeck({live:true}); showFin(); return; }
+  await buildDeck(); IX=Math.max(0, DECK.findIndex(c=>!c.st)); if(IX<0){ showFin(); return; }
   const o=shell(); o.innerHTML=""; requestAnimationFrame(()=>o.classList.add("on"));
   render(); }
 
@@ -6522,34 +6642,50 @@ function render(){ const o=$("#hkOv"); if(!o) return;
     <div class="hk-stage"><div class="hk-cardv" id="hkCard">${cardBody(c)}${actionsHTML(c)}</div></div>
     ${botHTML()}`; }
 
-function showFin(){ const o=shell(); const S=stGet(); S.doneToday=true; S.days=S.days||{}; S.days[dk()]=1; if(!S.since) S.since=dk(); stSet(S);
+function showFin(){ const o=shell(); const S=stGet();
+  if(!REVIEW){ S.doneToday=true; S.days=S.days||{}; S.days[dk()]=1; if(!S.since) S.since=dk();
+    if(DECK&&DECK.length) S.lastDeck=DECK.map(c=>({...c,st:c.st||"keep"})); }
+  S.reviewMode=false; REVIEW=false; stSet(S);
   const n=DECK?DECK.length:5; const st=streakCount(); const week=weekDays();
   o.innerHTML=`<div class="hk-fin"><div class="hk-top"><button type="button" class="hk-x" data-hkclose="1" aria-label="✕">✕</button><div class="hk-date">${esc(tt("name"))}</div><span></span></div>
     <div class="hk-dots">${Array(n).fill(0).map(()=>`<i class="ok">✓</i>`).join("")}<i class="ok">✓</i></div>
-    <div class="hk-fin-top"><h2>${esc(tt("finTitle"))}</h2><p>${esc(tt("finSub",{n:NUM(n)}))}</p></div>
+    <div class="hk-fin-top"><h2>${esc(tt("finTitle"))}</h2><p>${esc(tt("finSub",{n:NUM(n)}))}</p>
+      <div class="hk-fin-prog">${progressHTML()}</div></div>
     <div class="hk-fin-bg" style="background-image:url('${LAND}')"></div>
     <div class="hk-streak"><div class="hk-sh"><span>${esc(tt("streak"))}</span><span>🔥 ${esc(tt(st===1?"dayN":"daysN",{n:NUM(st)}))}</span></div>
       <div class="hk-week">${week.map(d=>`<span>${esc(d.lab)}<i class="${d.on?"on":""}">${d.on?"✓":""}</i></span>`).join("")}</div></div>
-    <div class="hk-fin-bot"><button type="button" class="hk-btn" data-hkclose="1">${esc(tt("doneBtn"))}</button>
+    <div class="hk-fin-bot">
+      <button type="button" class="hk-btn" data-hkcont="1">${esc(tt("continueMore"))}</button>
+      <button type="button" class="hk-more" data-hkreplay="1">${esc(tt("replayToday"))}</button>
       <button type="button" class="hk-more" data-hkquiz="1">${esc(tt("reviewMore"))}</button>
+      <button type="button" class="hk-btn done" data-hkclose="1">${esc(tt("doneBtn"))}</button>
       <p class="hk-quote">“${esc(tt("quote"))}” <small>${esc(tt("quoteSrc"))}</small></p></div></div>`;
   requestAnimationFrame(()=>o.classList.add("on"));
   try{renderCard($("#pkToday"));}catch(e){} }
 
-async function advanceTrack(c,mode){ /* mode: keep|master|skip|later */
-  const S=stGet();
+async function continueMore(){ ensureProg(); migrate();
+  const S=stGet(); S.deck=null; S.i=0; S.doneToday=false; S.reviewMode=false; stSet(S);
+  REVIEW=false; await buildDeck({forceNext:true});
+  const o=shell(); o.innerHTML=""; requestAnimationFrame(()=>o.classList.add("on"));
+  IX=0; render(); }
+
+async function replayToday(){ const S=stGet(); if(!S.lastDeck||!S.lastDeck.length){ toast(tt("subDone")); return; }
+  await buildDeck({replay:true}); const o=shell(); o.innerHTML=""; requestAnimationFrame(()=>o.classList.add("on"));
+  IX=0; render(); }
+
+async function advanceTrack(c,mode){
+  const S=migrate();
   if(mode==="later"){ S.later=S.later||{}; S.later[c.id]=dAdd(dk(),1); stSet(S); toast(tt("laterOk")); return; }
+  if(REVIEW){ /* ulas ulang: jangan hitung ganda */ if(mode==="master"){ S.master=S.master||{}; S.master[c.id]=dk(); stSet(S); toast(tt("masterOk")); } return; }
   if(mode==="master"){ S.master=S.master||{}; S.master[c.id]=dk(); stSet(S); toast(tt("masterOk")); }
-  if(mode==="skip"){ /* no progress advance */ return; }
-  /* keep or master → advance reading track once per source card */
+  /* maju pointer berurutan untuk keep/master/skip; later tidak */
   try{
-    if(c.type==="a"&&PK().trackRead) PK().trackRead("a",1);
-    else if(c.type==="h"&&PK().trackRead) PK().trackRead("h",1);
-    else if(c.type==="s"){ /* advance sirah highlight cursor; page progress when leaving a page */
-      S.si=(typeof c.hi==="number"?c.hi+1:((S.si|0)+1)); if(HL&&S.si>=HL.n) S.si=0; stSet(S);
-      const finishedPage=c.k===c.n-1;
-      if(finishedPage&&PK().trackRead) PK().trackRead("s",1);
-    }
+    if(c.type==="a"){ S.ai=nextA(c.g||S.ai); if(mode!=="skip"){ S.today=S.today&&S.today.day===dk()?S.today:{day:dk(),a:0,h:0,s:0}; S.today.a=(S.today.a|0)+1; if(PK().trackRead) PK().trackRead("a",1); } stSet(S); }
+    else if(c.type==="h"){ S.hi=nextH(c.n||S.hi); if(mode!=="skip"){ S.today=S.today&&S.today.day===dk()?S.today:{day:dk(),a:0,h:0,s:0}; S.today.h=(S.today.h|0)+1; if(PK().trackRead) PK().trackRead("h",1); } stSet(S); }
+    else if(c.type==="s"){ S.si=(typeof c.hi==="number"?c.hi+1:((S.si|0)+1)); if(HL&&S.si>=HL.n) S.si=0;
+      if(mode!=="skip"){ S.today=S.today&&S.today.day===dk()?S.today:{day:dk(),a:0,h:0,s:0}; S.today.s=(S.today.s|0)+1;
+        const finishedPage=c.k===c.n-1; if(finishedPage&&PK().trackRead) PK().trackRead("s",1); }
+      stSet(S); }
   }catch(e){}
 }
 
@@ -6561,9 +6697,9 @@ async function act(mode){ if(busy||!DECK||IX>=DECK.length) return; busy=true;
   setTimeout(()=>{ IX=next; busy=false; if(IX>=DECK.length) showFin(); else render(); },280); }
 
 function shareCard(c){ let text="";
-  if(c.type==="a") text=`QS. ${c.name} ${c.s}:${c.a}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Hari Ini`;
-  else if(c.type==="h") text=`Shahih al-Bukhari ${c.n}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Hari Ini`;
-  else text=`${(c.t&&c.t[0])||"Sirah"}\n${c.idt}\n— Best Muslim · Hikmah Hari Ini`;
+  if(c.type==="a") text=`QS. ${c.name} ${c.s}:${c.a}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Harian`;
+  else if(c.type==="h") text=`Shahih al-Bukhari ${c.n}\n${c.ar}${c.tr?"\n"+c.tr:""}\n— Best Muslim · Hikmah Harian`;
+  else text=`${(c.t&&c.t[0])||"Sirah"}\n${c.idt}\n— Best Muslim · Hikmah Harian`;
   if(navigator.share){ navigator.share({text}).catch(()=>{}); }
   else if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(()=>toast(tt("shared"))).catch(()=>toast(tt("shared"))); }
   else { toast(tt("shared")); }
@@ -6582,13 +6718,14 @@ function openNote(c){ let n=$("#hkNote"); if(n) n.remove(); n=document.createEle
 function onClick(e){
   if(e.target.closest("[data-hkclose]")){ close(); return; }
   if(e.target.closest("[data-hkquiz]")){ close(); setTimeout(()=>{ try{ window.KusyuAk50&&KusyuAk50.openGame&&KusyuAk50.openGame(); }catch(err){} },120); return; }
+  if(e.target.closest("[data-hkcont]")){ continueMore(); return; }
+  if(e.target.closest("[data-hkreplay]")){ replayToday(); return; }
   const a=e.target.closest("[data-hk]"); if(a){ act(a.dataset.hk); return; }
   const actb=e.target.closest("[data-hkact]"); if(actb&&DECK&&DECK[IX]){ const c=DECK[IX]; const k=actb.dataset.hkact;
     if(k==="share") shareCard(c); else if(k==="fav") toggleFav(c); else if(k==="note") openNote(c); }
 }
 
 function bindSwipe(o){ let x0=0,y0=0,dx=0,active=false;
-  const stage=()=>o.querySelector(".hk-stage");
   o.addEventListener("touchstart",e=>{ const t=e.changedTouches[0]; if(!t||!e.target.closest(".hk-cardv")) return; active=true; x0=t.clientX; y0=t.clientY; dx=0; },{passive:true});
   o.addEventListener("touchmove",e=>{ if(!active) return; const t=e.changedTouches[0]; dx=t.clientX-x0; const dy=t.clientY-y0; if(Math.abs(dx)<Math.abs(dy)) return;
     const card=$("#hkCard"); if(card){ card.style.transition="none"; card.style.transform=`translateX(${dx}px) rotate(${dx/30}deg)`; } },{passive:true});
@@ -6597,10 +6734,9 @@ function bindSwipe(o){ let x0=0,y0=0,dx=0,active=false;
     if(dx>80) act("keep"); else if(dx<-80) act("skip"); dx=0; },{passive:true});
 }
 
-function boot(){ /* Beranda card click */
+function boot(){
   document.addEventListener("click",e=>{ const b=e.target.closest("#pkToday [data-hkstart]"); if(b){ open(false); return; } });
   const progOn=()=>{ try{ const P=store.get("ks_prog",null); return !!(P&&P.st&&P.st!=="off"); }catch(e){ return false; } };
-  /* hanya timpa kartu bila program aktif — kartu highlight lama tetap saat off */
   const wrap=()=>{ const c=$("#pkToday"); if(c&&progOn()) renderCard(c); };
   document.addEventListener("rk:lang",()=>setTimeout(wrap,40));
   const _go=window.go; if(_go) window.go=function(p){ _go(p); if(p==="beranda") setTimeout(wrap,30); };
@@ -6611,7 +6747,7 @@ function boot(){ /* Beranda card click */
     new MutationObserver(ms=>{ ms.forEach(m=>{ if(m.target.id==="pkToday"||(m.addedNodes&&[...m.addedNodes].some(n=>n.id==="pkToday"))) setTimeout(wrap,10); }); }).observe(pg,{childList:true,subtree:true}); };
   obs();
 }
-window.KusyuHikmah={open,close,renderCard,buildDeck,state:()=>({deck:DECK,i:IX,st:stGet()}),tt};
+window.KusyuHikmah={open,close,renderCard,buildDeck,continueMore,replayToday,state:()=>({deck:DECK,i:IX,st:stGet(),review:REVIEW}),tt};
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
 })();
 
@@ -7780,9 +7916,11 @@ const Sync={user:null,
 };
 function toast(m){const x=$("#toast"); if(!x) return; x.textContent=m; x.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(()=>x.classList.remove("on"),2600);}
 // ---- UI ----
-function mount(){ if($("#ksIbadah")) return; const pg=$("#page-beranda .stack")||$("#page-beranda"); if(!pg) return;
- const c=document.createElement("div"); c.className="card ks-card"; c.id="ksIbadah"; pg.appendChild(c);
- const sh=document.createElement("div"); sh.className="ks-sheet"; sh.id="ksSheet"; sh.hidden=true; document.body.appendChild(sh); }
+function mount(){ let c=$("#ksIbadah");
+ if(!c){ const host=$("#v2ProgCard")||$("#page-beranda .stack")||$("#page-beranda"); if(!host) return;
+  c=document.createElement("div"); c.className="ks-card v2-prog-detail"; c.id="ksIbadah"; c.hidden=true; host.appendChild(c); }
+ else { c.classList.add("ks-card","v2-prog-detail"); }
+ if(!$("#ksSheet")){ const sh=document.createElement("div"); sh.className="ks-sheet"; sh.id="ksSheet"; sh.hidden=true; document.body.appendChild(sh); } }
 function closeSheet(){const s=$("#ksSheet"); if(s) s.hidden=true;}
 function openSheet(){ if(!ready) return; const s=$("#ksSheet"); const isIOS=/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent)||CFG.showApple;
  s.innerHTML=`<div class="ks-sbox" dir="${lang()==="ar"?"rtl":"ltr"}"><h2>${t("sheetT")}</h2><p class="dim">${t("sheetL")}</p>
@@ -7800,7 +7938,8 @@ function render(){ mount(); const c=$("#ksIbadah"); if(!c) return; const o=Log.a
  <div class="eyebrow" style="margin-top:12px">${t("badges")}</div><div class="ks-badges">${BADGES.map(b=>`<span class="ks-bd${b.ok(s)?" on":""}" data-b="${b.id}">${b.ok(s)?"★":"☆"} ${b.n[i]}</span>`).join("")}</div>
  <p class="ks-motto">${MOTTO[i]}</p><p class="dim ks-small">${t("priv")}</p>`;
  c.querySelectorAll(".ks-tg").forEach(b=>b.onclick=()=>{Log.toggle(b.dataset.k); render();});
- const bi=$("#ksIn"); if(bi) bi.onclick=openSheet; const bo=$("#ksOut"); if(bo) bo.onclick=()=>Sync.signOut(); }
+ const bi=$("#ksIn"); if(bi) bi.onclick=openSheet; const bo=$("#ksOut"); if(bo) bo.onclick=()=>Sync.signOut();
+ try{ document.dispatchEvent(new CustomEvent("rk:ibadah")); }catch(e){} }
 window.KusyuIbadah={Log,stats,Sync,render,openSheet,ITEMS,ready,version:"ks-ibadah-v1"};
 document.addEventListener("rk:lang",()=>setTimeout(render,0));
 const boot=()=>{render(); Sync.init(); setTimeout(render,1200);}; window.addEventListener("load",()=>setTimeout(render,0)); window.addEventListener("hashchange",()=>setTimeout(render,0));
