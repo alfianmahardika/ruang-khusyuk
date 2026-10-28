@@ -118,6 +118,8 @@ const I={
  <path d="M32 14.5v3M32 44.5v3M15.5 31h3M45.5 31h3" stroke="#a37a30" stroke-width="1.6" stroke-linecap="round"/><path d="M39.5 21.5L34.6 33.6 24.5 40.5 29.4 28.4z" fill="${G("ruby")}"/><path d="M24.5 40.5l4.9-12.1 5.2 5.2z" fill="${G("navy")}"/><circle cx="32" cy="31" r="2.4" fill="${G("gold")}"/>
  <rect x="29" y="4" width="6" height="5" rx="1.5" fill="${G("goldh")}"/>`+HI(24,19,8,3,-35),
  /* Belanja Berkah: keranjang kuning */
+ beranda:SH(22)+`<path d="M8 30L32 10l24 20" stroke="${G("goldd")}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 28.5V52a3 3 0 0 0 3 3h10.5V40h13v15H49a3 3 0 0 0 3-3V28.5z" fill="${G("em")}"/><path d="M25.5 55V41.5h13V55" fill="${G("cream")}"/><path d="M12 28.5L32 12.5 52 28.5" fill="${G("gold")}"/><rect x="40" y="16" width="6" height="10" rx="1.2" fill="${G("ruby")}"/>`+HI(22,22,7,2.5,-28),
+ lainnya:SH(18)+`<rect x="10" y="10" width="16" height="16" rx="4" fill="${G("em")}"/><rect x="38" y="10" width="16" height="16" rx="4" fill="${G("gold")}"/><rect x="10" y="38" width="16" height="16" rx="4" fill="${G("violet")}"/><rect x="38" y="38" width="16" height="16" rx="4" fill="${G("ruby")}"/>`+HI(14,14,4,1.5,-20)+HI(42,14,4,1.5,-20),
  belanja:SH(22)+`<path d="M22 24c0-8 4.5-13 10-13s10 5 10 13" stroke="${G("goldd")}" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M9 24h46l-5 28a4 4 0 0 1-4 3.4H18a4 4 0 0 1-4-3.4z" fill="${G("orange")}"/><path d="M8 22h48v6H8z" rx="2" fill="${G("gold")}"/>
  <path d="M22 33v14M32 33v14M42 33v14" stroke="#c9780c" stroke-width="2.6" stroke-linecap="round" opacity=".7"/><path d="M47 38l1.2 3.6 3.6 1.2-3.6 1.2L47 47.6 45.8 44l-3.6-1.2 3.6-1.2z" fill="#fff"/>`+HI(20,30,6,2.4,-10),
  /* Premium: permata */
@@ -143,7 +145,7 @@ const TL={
  tasbih:["tasbih",["Tasbih","Tasbih","المسبحة"],["Hitung dzikir","Dhikr counter","عدّاد الذكر"]],
  setelah:["setelah",["Setelah Salat","After Prayer","بعد الصلاة"],["Dzikir & jurnal","Dhikr & journal","أذكار ومذكرات"]],
  mur:["mur",["Murattal","Murattal","التلاوة"],["Dengar tilawah","Listen & recite","استماع وتلاوة"]],
- "beranda#v2MasjidCard":["lokasi",["Masjid","Mosques","المساجد"],["Masjid terdekat","Nearby mosques","الأقرب إليك"]],
+ "jadwal#v2MasjidCard":["lokasi",["Masjid","Mosques","المساجد"],["Masjid terdekat","Nearby mosques","الأقرب إليك"]],
  jadwal:["jadwal",["Jadwal Salat","Prayer Times","المواقيت"],["Waktu & kiblat","Times & qibla","الأوقات والقبلة"]],
  kiblat:["kiblat",["Kiblat","Qibla","القبلة"],["Kompas kiblat","Qibla compass","بوصلة القبلة"]],
  zakat:["zakat",["Zakat","Zakat","الزكاة"],["Hitung zakat","Zakat calculator","حاسبة الزكاة"]],
@@ -875,6 +877,14 @@ input[type=file]{display:none}
 .v2-promo-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
 .v2-promo-dot{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:rgba(230,199,122,.28);cursor:pointer}
 .v2-promo-dot.on{background:#e6c77a;transform:scale(1.15)}
+
+/* t61: 3D bottom-nav icons */
+.nav.nav-3d button{gap:3px}
+.nav.nav-3d .nav-ic{width:30px;height:30px;object-fit:contain;display:block;filter:saturate(.92);transition:transform .15s,filter .15s}
+.nav.nav-3d button.on .nav-ic{transform:translateY(-1px) scale(1.08);filter:saturate(1.15) drop-shadow(0 2px 4px rgba(230,199,122,.45))}
+.nav.nav-3d button.on{color:var(--gold2,#e6c77a)}
+.v2-masjid-jd{margin-top:8px}
+.v2-masjid-jd .v2-attr{margin-top:8px;font-size:11px}
 
 /* ===== Al-Qur'an reader ===== */
 @font-face{font-family:"Amiri Quran";src:url(quran/fonts/AmiriQuran.woff2) format("woff2");font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+25CC}
@@ -2200,9 +2210,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
           <span class="v2-cta" aria-hidden="true"><span data-v="startGo"></span> <i>→</i></span>
         </button>
         <!-- t47: kartu "Jadwal salat hari ini" dihapus dari Beranda; jadwal lengkap dibuka lewat kartu "Salat berikutnya" (halaman Jadwal tetap utuh) -->
-        <div class="card" id="v2MasjidCard"><div class="row v2-sb"><div class="eyebrow" data-v="masjidT"></div><button class="btn sm gold" type="button" id="v2MasjidBtn" data-v="find"></button></div>
-          <div id="v2Masjid" class="v2-mlist"><p class="dim" style="font-size:13px" data-v="masjidLead"></p></div>
-          <p class="dim v2-attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors · Overpass API</p></div>
+        <!-- t61: Masjid Terdekat dipindah ke halaman Jadwal (di bawah Buka Kompas Kiblat) -->
         <div class="card v2-prog-card" id="v2ProgCard">
           <div class="v2-prog-head" id="v2ProgHead">
             <div class="row v2-sb"><div class="eyebrow" data-v="progT"></div>
@@ -2569,13 +2577,13 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
     </section>
   </main>
 
-  <nav class="nav" id="nav">
-    <button data-p="beranda"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg><span data-v="nBeranda"></span></button>
-    <button data-p="quran"><svg viewBox="0 0 24 24"><path d="M12 6c-2-1.6-5-2-8-1.6V19c3-.4 6 0 8 1.6 2-1.6 5-2 8-1.6V4.4C17 4 14 4.4 12 6z"/><path d="M12 6v14.6"/></svg><span data-v="nQuran"></span></button>
-    <button data-p="hafalan"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span data-v="nHafalan"></span></button>
-    <!-- t48: tab Jadwal dihapus dari menu bawah; halaman Jadwal dibuka dari kartu "Salat berikutnya", ikon Rukun Salat, dan ubin Lainnya -->
-    <button data-p="belanja"><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.6 10.2a2 2 0 0 1-2 1.8H7.6a2 2 0 0 1-2-1.8z"/><path d="M8.5 9l3.5-5 3.5 5"/><path d="M9.5 13.5v3M14.5 13.5v3"/></svg><span data-v="nBelanja"></span></button>
-    <button data-p="lainnya"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg><span data-v="nLainnya"></span></button>
+  <nav class="nav nav-3d" id="nav">
+    <button data-p="beranda" type="button"><img class="nav-ic" src="nav/beranda.webp" width="30" height="30" alt="" decoding="async" onerror="this.onerror=null;this.src='nav/beranda.png'"><span data-v="nBeranda"></span></button>
+    <button data-p="quran" type="button"><img class="nav-ic" src="nav/akademi.webp" width="30" height="30" alt="" decoding="async" onerror="this.onerror=null;this.src='nav/akademi.png'"><span data-v="nQuran"></span></button>
+    <button data-p="mushaf" type="button"><img class="nav-ic" src="nav/quran.webp" width="30" height="30" alt="" decoding="async" onerror="this.onerror=null;this.src='nav/quran.png'"><span data-v="nMushaf"></span></button>
+    <!-- t48: tab Jadwal dihapus; t61: Hafalan diganti Qur'an (mushaf) — Hafalan AI tetap di kartu Akademi -->
+    <button data-p="belanja" type="button"><img class="nav-ic" src="nav/belanja.webp" width="30" height="30" alt="" decoding="async" onerror="this.onerror=null;this.src='nav/belanja.png'"><span data-v="nBelanja"></span></button>
+    <button data-p="lainnya" type="button"><img class="nav-ic" src="nav/lainnya.webp" width="30" height="30" alt="" decoding="async" onerror="this.onerror=null;this.src='nav/lainnya.png'"><span data-v="nLainnya"></span></button>
   </nav>
   <div class="v2-splash" id="v2Splash"><div class="v2-splash-stage" aria-hidden="false"><img class="v2-splash-logo" src="icon-192.png" width="112" height="112" alt="" decoding="async"><picture class="v2-splash-wm"><source type="image/webp" srcset="wordmark-3d-sm.webp"><img src="wordmark-3d-sm.png" width="280" height="55" alt="Best Muslim" decoding="async"></picture><picture class="v2-splash-bsm"><source type="image/webp" srcset="bismillah-3d-sm.webp"><img src="bismillah-3d-sm.png" width="320" height="102" alt="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ" lang="ar" dir="rtl" decoding="async"></picture></div><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
   <div class="v2-flow" id="v2Flow" hidden><div class="v2-flowhd"><button class="btn sm ghost" id="flX" type="button">✕</button><div class="v2-steps" id="flSteps"></div><span class="dim" id="flCount" dir="ltr"></span></div><div class="v2-flowbody" id="flBody"></div><div class="v2-flowft"><button class="btn" id="flPrev" type="button"></button><button class="btn gold" id="flNextB" type="button"></button></div></div>
@@ -3258,8 +3266,10 @@ const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:
 
 /* ---------------- Router ---------------- */
 const PAGES=["beranda","puasa","umrah","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah"];
-function go(p){ if(!PAGES.includes(p)) p="beranda";
-  $$(".page").forEach(s=>s.classList.toggle("on",s.id==="page-"+p)); $$("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.p===p));
+function go(p){ if(p==="mushaf"){ p="quran"; try{ sessionStorage.setItem("rk_nav_mushaf","1"); }catch(e){} }
+  else { try{ sessionStorage.removeItem("rk_nav_mushaf"); }catch(e){} }
+  if(!PAGES.includes(p)) p="beranda";
+  $$(".page").forEach(s=>s.classList.toggle("on",s.id==="page-"+p)); $$("#nav button").forEach(b=>{ let on=b.dataset.p===p; if(p==="quran"){ const pk=(document.getElementById("page-quran")||{}).dataset.pk||"home"; const wantM=sessionStorage.getItem("rk_nav_mushaf")==="1"; if(b.dataset.p==="mushaf") on=!!wantM; if(b.dataset.p==="quran") on=!wantM; } b.classList.toggle("on",!!on); });
   $("#view").scrollTop=0; try{history.replaceState(history.state,"","#"+p);}catch(e){}
   if(p==="gerakan") Figure.ensure(); if(p==="setelah") Jurnal.refresh(); }
 $$("#nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.p))); window.go=p=>go(p);
@@ -4342,7 +4352,7 @@ const V={
  promoEy:["Promo","Promo","عرض"], promoMitraLab:["Mitra","Partners","شركاء"], promoT:["Promo Berkah Hari Ini","Blessed promo today","عروض مباركة لليوم"],
  promoCta:["Lihat promo","See promo","شاهد العرض"], promoMitra:["Mitra","Partner","شريك"],
  more:["Lainnya","More","المزيد"], moreEy:["Semua menu","All menus","كل القوائم"], premium:["Premium","Premium","بريميوم"], settings:["Pengaturan","Settings","الإعدادات"],
- nBeranda:["Beranda","Home","الرئيسية"], nHafalan:["Hafalan","Memorize","الحفظ"], nJadwal:["Jadwal","Times","المواقيت"], nKiblat:["Kiblat","Qibla","القبلة"], nLainnya:["Lainnya","More","المزيد"],
+ nBeranda:["Beranda","Home","الرئيسية"], nMushaf:["Qur'an","Qur'an","القرآن"], nHafalan:["Hafalan","Memorize","الحفظ"], nJadwal:["Jadwal","Times","المواقيت"], nKiblat:["Kiblat","Qibla","القبلة"], nLainnya:["Lainnya","More","المزيد"],
  next:["Salat berikutnya","Next prayer","الصلاة القادمة"], nqLbl:["Kiblat","Qibla","القبلة"], nqAria:["Buka kompas kiblat","Open Qibla compass","افتح بوصلة القبلة"], inn:["dalam","in","بعد"], azVoice:["Azan","Adhan","الأذان"], setLocBtn:["📍 Atur lokasi","📍 Set location","📍 حدّد الموقع"], autoLoc:["Lokasi otomatis","Auto location","موقع تلقائي"],
  fajr:["Subuh","Fajr","الفجر"], sunrise:["Terbit","Sunrise","الشروق"], dhuhr:["Dzuhur","Dhuhr","الظهر"], asr:["Ashar","Asr","العصر"], maghrib:["Maghrib","Maghrib","المغرب"], isha:["Isya","Isha","العشاء"],
  vMakkah:["Makkah","Makkah","مكة"], vMadinah:["Madinah","Madinah","المدينة"], vMesir:["Mesir","Egypt","مصر"], vTurki:["Turki","Turkey","تركيا"], vNotif:["Notifikasi saja","Notification only","إشعار فقط"], vSilent:["Senyap","Silent","صامت"],
@@ -4496,7 +4506,11 @@ const Masjid={ list:null, busy:false, note:"", at:null, pend:false,
     const bt=(k,lab)=>`<button type="button" class="btn sm ghost" data-mv="${k}">${lab}</button>`;
     const tg=N>1?`<div class="row v2-mtog" style="gap:6px;flex-wrap:wrap;margin:6px 0">${md!=="all"&&N>sh.length?bt("all",v("mAll")+" ("+N+")"):""}${md==="all"&&N>3?bt("3",v("mLess")):""}${md==="3"?bt("min",v("mMin")):""}${md==="min"&&N>1?bt("3",v("m3")):""}</div>`:"";
     box.dataset.mv=md; box.innerHTML=lb+(this.note?`<p class="dim" style="font-size:12px;margin-bottom:6px">${esc(this.note)}</p>`:"")+`<div class="v2-mrows${md==="min"?" v2-mmin":""}">`+this.rows(sh)+`</div>`+tg+(md==="min"?"":this.gmap()); },
-  init(){ const c=store.get("rk_masjid_cache",null), l=loc(); if(c&&l&&c.list&&c.list.length&&Math.abs(c.lat-l.lat)<.01&&Math.abs(c.lng-l.lng)<.01&&Date.now()-c.ts<6*36e5){ this.o=c.o; this.list=c.list; this.note=c.note||""; this.at={lat:c.lat,lng:c.lng}; } $("#v2MasjidBtn").addEventListener("click",()=>this.find()); $("#v2Masjid").addEventListener("click",e=>{ const b=e.target.closest("[data-mv]"); if(!b) return; store.set("rk_masjid_view",b.dataset.mv); this.render(); });
+  init(){ const c=store.get("rk_masjid_cache",null), l=loc(); if(c&&l&&c.list&&c.list.length&&Math.abs(c.lat-l.lat)<.01&&Math.abs(c.lng-l.lng)<.01&&Date.now()-c.ts<6*36e5){ this.o=c.o; this.list=c.list; this.note=c.note||""; this.at={lat:c.lat,lng:c.lng}; }
+    /* t61: host on Jadwal; keep #v2MasjidBtn as alias if present */
+    const bind=()=>{ const box=$("#v2Masjid"); if(box&&!box._mBound){ box._mBound=1; box.addEventListener("click",e=>{ const b=e.target.closest("[data-mv]"); if(!b) return; store.set("rk_masjid_view",b.dataset.mv); this.render(); }); }
+      [["#v2MasjidBtn","#rkJdMasjid"]].flatMap(x=>typeof x==="string"?[x]:x).forEach(sel=>{ const el=$(sel); if(el&&!el._mFind){ el._mFind=1; el.addEventListener("click",e=>{ e.preventDefault(); this.find(); }); } }); };
+    bind(); setTimeout(bind,800);
     window.addEventListener("storage",e=>{ if(e.key==="rk_loc") this.sync(); }); window.addEventListener("hashchange",()=>this.sync()); setInterval(()=>this.sync(),1500); } };
 
 /* ---------- Hafalan AI ---------- */
@@ -4635,7 +4649,7 @@ const Flow={ i:0, pose:0, chair:false, dz:0, dzi:0, bT:null,
 
 /* ---------- Lainnya ---------- */
 function renderLainnya(){ const g=$("#lnGrid"); if(!g) return;
-  const T=[["📖","quranT","quran"],["🕰️","nJadwal","jadwal"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","beranda#v2MasjidCard"],["🧭","nKiblat","kiblat"],["💰","zakatT","zakat"],["🛍️","belanjaT","belanja"],["🌙","puasaT","puasa"],["🕋","umrahT","umrah"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
+  const T=[["📖","quranT","quran"],["🕰️","nJadwal","jadwal"],["🕋","tFlow","flow"],["✅","tHarian","harian"],["🧎","tPersiapan","persiapan"],["📖","tBacaan","bacaan"],["🌙","tSunnah","sunnah"],["🧍","tGerakan","gerakan"],["📿","tTasbih","tasbih"],["📝","tSetelah","setelah"],["🎧","tMur","mur"],["🕌","masjidT","jadwal#v2MasjidCard"],["🧭","nKiblat","kiblat"],["💰","zakatT","zakat"],["🛍️","belanjaT","belanja"],["🌙","puasaT","puasa"],["🕋","umrahT","umrah"],["✦","premium","premium"],["⚙","settings","settings"],["🔒","privT","privasi"]];
   if(!T.some(x=>x[2]==="hafalan")) T.push(["🎙️","nHafalan","hafalan"]); /* t46: Hafalan AI juga di Lainnya */
   g.classList.toggle("k3-grid",!!window.K3D);
   g.innerHTML=T.map(([i,k,p])=>{ const m=window.K3D&&K3D.tile(p,lang()); if(!m) return `<button class="v2-tile" type="button" data-tile="${p}"><i>${i}</i><b>${v(k)}</b></button>`;
@@ -5558,7 +5572,18 @@ function init(){ inject(); if(!$("#pkHome")) return;
   setTab("home",{push:false});
   homeCard(); pRender();
   document.addEventListener("rk:lang",()=>setTimeout(()=>{ applyT(); homeCard(); pRender(); pmBar(); const ba=$("#pkBack [aria-hidden]"); if(ba) ba.textContent=lang()==="ar"?"→":"←"; const pk=$("#page-quran").dataset.pk; if(pk==="h"&&!$("#hReader").hidden&&H.cur) hOpen(H.cur.k); else if(pk==="h") hList(); if(pk==="s") sList(); },30));
-  const _go=window.go; if(_go) window.go=function(p){ const was=qOn(); _go(p); if(p==="beranda") homeCard(); if(p==="quran"&&!was) setTab("home",{push:false}); if(p!=="quran") pmEnd(); };
+  function syncNavHilite(){ const onPg=document.querySelector(".page.on"); const p=onPg?onPg.id.replace("page-",""):""; const pk=($("#page-quran")&&$("#page-quran").dataset.pk)||"home";
+    const wantM=(()=>{ try{ return sessionStorage.getItem("rk_nav_mushaf")==="1"; }catch(e){ return pk==="q"; } })();
+    document.querySelectorAll("#nav button").forEach(b=>{ let on=false; if(b.dataset.p==="mushaf") on=(p==="quran"&&(pk==="q"||wantM)); else if(b.dataset.p==="quran") on=(p==="quran"&&pk!=="q"&&!wantM); else on=(b.dataset.p===p); b.classList.toggle("on",!!on); }); }
+  const _go=window.go; if(_go) window.go=function(p){ if(p==="mushaf"){ try{ sessionStorage.setItem("rk_nav_mushaf","1"); }catch(e){} _go("mushaf"); setTab("q",{push:false}); syncNavHilite(); return; }
+    if(p==="quran"){ try{ sessionStorage.removeItem("rk_nav_mushaf"); }catch(e){} }
+    const was=qOn(); _go(p); if(p==="beranda") homeCard(); if(p==="quran"&&!was) setTab("home",{push:false}); if(p!=="quran"&&p!=="mushaf") pmEnd();
+    if(p==="quran"){ try{ if(sessionStorage.getItem("rk_nav_mushaf")==="1") setTab("q",{push:false}); }catch(e){} }
+    syncNavHilite(); };
+  const pgNav=$("#page-quran"); if(pgNav) new MutationObserver(()=>syncNavHilite()).observe(pgNav,{attributes:true,attributeFilter:["data-pk","class"]});
+  /* capture-phase: ensure mushaf tab never falls through to unknown→beranda if go wrap lost */
+  document.addEventListener("click",e=>{ const b=e.target.closest("#nav button[data-p=mushaf]"); if(!b) return; e.preventDefault(); e.stopImmediatePropagation(); try{ sessionStorage.setItem("rk_nav_mushaf","1"); }catch(ex){} if(window.go) go("mushaf"); else { const g=window.go; } },true);
+  setTimeout(syncNavHilite,0);
   window.addEventListener("hashchange",()=>{ if(location.hash==="#beranda") homeCard(); });
   $$("#nav button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.p==="beranda") homeCard(); if(b.dataset.p==="quran") setTab("home",{push:false}); else pmEnd(); }));
   window.KusyuPustaka={trackRead,trackLater,ayahAt,hadAt,sirAt,loadSP,loadSI,loadMeta,loadK,loadId,kName,kitabOf,matn,TOT,pct,dk,getJSON,PMCFG,pm:()=>PM,view:VW,back:pkBack,bComplete,t2Open:()=>t2Open(pGet()),BU,H,SR,setTab,hOpen,sOpen,homeCard,todayData,pRender,pStats:()=>pStats(pGet()),prog:pGet};
@@ -7422,7 +7447,8 @@ const X={
  hQ:["Ikon rukun pertama, Syahadah, membuka Akademi Syahadah: tempat belajar Al-Qur'an, Hadis, dan Sirah untuk mengenal Allah dan Rasul-Nya ﷺ. Syahadah sendiri tetap rukun pertama dan tidak tergantikan.","The first pillar's icon, the Shahadah, opens the Shahadah Academy: learning the Qur'an, Hadith and Seerah to know Allah and His Messenger ﷺ. The Shahadah itself remains the first pillar and is irreplaceable.","أيقونة الركن الأول (الشهادة) تفتح أكاديمية الشهادة: تعلّم القرآن والحديث والسيرة لمعرفة الله ورسوله ﷺ، وتبقى الشهادتان الركن الأول الذي لا يُستبدل."],
  rd:[["Akademi ilmu","Academy","أكاديمية العلم"],["Jadwal & kiblat","Times & qibla","المواقيت والقبلة"],["Hitung zakat","Calculator","حاسبة الزكاة"],["Kalender","Calendar","التقويم"],["Paket travel","Packages","الباقات"]],
  close:["Tutup","Close","إغلاق"],
- qbBtn:["Buka Kompas Kiblat","Open Qibla Compass","افتح بوصلة القبلة"], qbSub:["Arah kiblat dari lokasimu","Qibla direction from your location","اتجاه القبلة من موقعك"]
+ qbBtn:["Buka Kompas Kiblat","Open Qibla Compass","افتح بوصلة القبلة"], qbSub:["Arah kiblat dari lokasimu","Qibla direction from your location","اتجاه القبلة من موقعك"],
+ msBtn:["Cari Masjid Terdekat","Find Nearby Mosques","ابحث عن أقرب مسجد"], msSub:["Masjid & musala dalam radius 3 km","Mosques & prayer rooms within 3 km","مساجد ومصليات ضمن 3 كم"]
 };
 const RUKUN=[["syahadah","rq","quran"],["salat","rs","jadwal"],["zakat","rz","zakat"],["puasa","rp","puasa"],["haji","rh","umrah"]];
 const BUNIYA="بُنِيَ الإِسْلَامُ عَلَى خَمْسٍ: شَهَادَةِ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَإِقَامِ الصَّلَاةِ، وَإِيتَاءِ الزَّكَاةِ، وَالْحَجِّ، وَصَوْمِ رَمَضَانَ";
@@ -7444,7 +7470,19 @@ function buniyaSheet(){ sheet(`<div class="ic rk-ic">${K3("syahadah",56)}</div><
 /* ---------- Jadwal: tombol Kiblat menonjol ---------- */
 function jadwalKiblat(){ const pg=document.getElementById("page-jadwal"); if(!pg) return; const st=pg.querySelector(".stack"); if(!st) return; let b=document.getElementById("rkJdQibla");
  if(!b){ b=document.createElement("button"); b.type="button"; b.id="rkJdQibla"; b.className="rk-qbtn"; b.dataset.go="kiblat"; (st.firstElementChild||st).insertAdjacentElement("afterend",b); }
- b.innerHTML=`<i>${ICON.kiblat}</i><span><b>${esc(t(X.qbBtn))}</b><small>${esc(t(X.qbSub))}</small></span><em>›</em>`; }
+ b.innerHTML=`<i>${ICON.kiblat}</i><span><b>${esc(t(X.qbBtn))}</b><small>${esc(t(X.qbSub))}</small></span><em>›</em>`;
+ /* t61: Masjid Terdekat — pill sama gaya, di bawah tombol Kiblat */
+ let m=document.getElementById("rkJdMasjid");
+ if(!m){ m=document.createElement("button"); m.type="button"; m.id="rkJdMasjid"; m.className="rk-qbtn"; b.insertAdjacentElement("afterend",m); }
+ const ic=(window.K3D&&K3D.icon)?K3D.icon("lokasi",28):ICON.kiblat;
+ m.innerHTML=`<i>${ic}</i><span><b>${esc(t(X.msBtn))}</b><small>${esc(t(X.msSub))}</small></span><em>›</em>`;
+ if(!m._rkBound){ m._rkBound=1; m.addEventListener("click",()=>{ if(window.RKV2&&RKV2.Masjid) RKV2.Masjid.find(); }); }
+ let card=document.getElementById("v2MasjidCard");
+ if(!card){ card=document.createElement("div"); card.id="v2MasjidCard"; card.className="card v2-masjid-jd";
+  card.innerHTML=`<div id="v2Masjid" class="v2-mlist"><p class="dim" style="font-size:13px"></p></div><p class="dim v2-attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors · Overpass API</p>`;
+  m.insertAdjacentElement("afterend",card); }
+ else if(card.previousElementSibling!==m){ m.insertAdjacentElement("afterend",card); }
+}
 
 /* =====================================================================
    KALENDER PUASA

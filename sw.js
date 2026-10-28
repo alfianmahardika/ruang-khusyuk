@@ -1,7 +1,12 @@
 /* Kusyu service worker — HANYA untuk klik notifikasi "Doa setelah azan".
-   Sengaja TANPA handler fetch/cache: tidak mengubah cara aplikasi dimuat atau diperbarui, tidak ada jaringan pihak ketiga. */
+   Sengaja TANPA handler fetch/cache: tidak mengubah cara aplikasi dimuat atau diperbarui, tidak ada jaringan pihak ketiga.
+   CACHE_VER=bm-sw-v61 — bump so phones re-check SW after deploy (no runtime cache; version is the signal). */
+const CACHE_VER="bm-sw-v61";
 self.addEventListener("install",()=>self.skipWaiting());
-self.addEventListener("activate",e=>e.waitUntil(self.clients.claim()));
+self.addEventListener("activate",e=>e.waitUntil((async()=>{
+  try{ const keys=await caches.keys(); await Promise.all(keys.filter(k=>k!==CACHE_VER).map(k=>caches.delete(k))); }catch(_){}
+  await self.clients.claim();
+})()));
 self.addEventListener("notificationclick",e=>{
   e.notification.close();
   const d=e.notification.data||{}; const url=new URL(d.url||"./?doa-azan=1#beranda",self.registration.scope).href;
