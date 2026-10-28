@@ -886,6 +886,18 @@ input[type=file]{display:none}
 .v2-masjid-jd{margin-top:8px}
 .v2-masjid-jd .v2-attr{margin-top:8px;font-size:11px}
 
+/* t62: Beranda hero carousel (Salat Khusyuk + Hikmah) — scroll-snap, dots, no autoplay */
+.v2-hero-car{margin:0 0 2px}
+.v2-hero-track{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:24px}
+.v2-hero-track::-webkit-scrollbar{display:none}
+.v2-hero-slide{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;min-height:280px;display:flex;align-items:stretch;box-sizing:border-box}
+.v2-hero-slide>.v2-hero,.v2-hero-slide>#pkToday{flex:1;width:100%;min-height:280px;box-sizing:border-box;margin:0}
+.v2-hero-slide>.v2-hero{justify-content:center}
+.v2-hero-slide>#pkToday.hk-card,.v2-hero-slide>#pkToday.pk-today{display:flex;flex-direction:column;justify-content:center}
+.v2-hero-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.v2-hero-dot{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:rgba(230,199,122,.28);cursor:pointer}
+.v2-hero-dot.on{background:#e6c77a;transform:scale(1.15)}
+
 /* ===== Al-Qur'an reader ===== */
 @font-face{font-family:"Amiri Quran";src:url(quran/fonts/AmiriQuran.woff2) format("woff2");font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+25CC}
 .q-hero{text-align:center;padding:6px 0 2px}
@@ -2106,30 +2118,41 @@ html:is([data-theme=light],[data-theme=pink]) .gm-bar,html[data-theme=pink] .gm-
 [data-theme=pink] .um-bar i{background:linear-gradient(90deg,#9E6B6F,#c49ea1)}
 
 
-/* ===== Doa setelah azan (popup) ===== */
+/* ===== Doa setelah azan (popup) — t62: satu kartu bergaya Hikmah Harian ===== */
 .da-ov{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);animation:daFade .25s ease}
 .da-ov[hidden]{display:none}
 @keyframes daFade{from{opacity:0}to{opacity:1}}
 @keyframes daUp{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
-.da-in{width:100%;max-width:560px;max-height:90vh;overflow:auto;background:var(--bg2,#1c150d);color:var(--fg);border-radius:24px 24px 0 0;border-top:1px solid var(--line2,var(--line));padding:18px 18px calc(18px + env(safe-area-inset-bottom));animation:daUp .3s ease}
-.da-hd{display:flex;align-items:center;gap:10px}
-.da-hd .ic{font-size:30px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:var(--glass2);border:1px solid var(--line);flex:none}
-.da-hd h2{font-size:19px;line-height:1.2;margin:0}
-.da-hd small{display:block;color:var(--fg3);font-size:12.5px;margin-top:2px}
-.da-x{margin-inline-start:auto;border:1px solid var(--line);background:transparent;color:var(--fg2);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;flex:none}
-.da-step{margin-top:12px;border:1px solid var(--line);border-radius:16px;padding:12px 13px;background:var(--glass)}
-.da-step .no{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--gold2);text-transform:uppercase}
-.da-step p{font-size:13.5px;line-height:1.55;margin:6px 0 0}
-.da-ar{font-family:var(--font-arab);font-size:25px;line-height:2;text-align:center;color:var(--fg);margin:8px 0 2px}
-.da-ar.sm{font-size:21px}
-.da-tr{font-style:italic;font-size:13.5px;line-height:1.55;color:var(--fg2);text-align:center}
-.da-mn{font-size:14px;line-height:1.6;margin-top:8px}
-.da-src{font-size:12px;color:var(--gold2);font-weight:700;margin-top:8px;text-align:center}
-.da-note{font-size:11.5px;color:var(--fg3);line-height:1.5;margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
-.da-ok{width:100%;margin-top:14px;padding:13px;justify-content:center}
+.da-in{position:relative;width:100%;max-width:560px;max-height:92vh;overflow:auto;background:transparent;color:var(--fg);border-radius:24px 24px 0 0;padding:12px 14px calc(16px + env(safe-area-inset-bottom));animation:daUp .3s ease}
+.da-x{position:absolute;top:18px;inset-inline-end:22px;z-index:2;border:0;background:rgba(0,0,0,.35);color:#f3e7d2;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+[data-theme=light] .da-x,[data-theme=pink] .da-x{background:rgba(255,255,255,.7);color:#3b2a14}
+.da-card{margin:0 auto;padding:0 16px 18px;overflow:hidden;position:relative;border-radius:22px;
+ background:linear-gradient(180deg,rgba(255,252,245,.98),rgba(248,240,225,.96));
+ border:1px solid rgba(160,120,60,.18);box-shadow:0 12px 36px rgba(40,25,10,.18)}
+[data-theme=dark] .da-card,[data-theme=gold] .da-card{background:linear-gradient(180deg,rgba(42,32,22,.98),rgba(28,20,14,.98));border-color:rgba(212,175,55,.22);box-shadow:0 12px 36px rgba(0,0,0,.45)}
+[data-theme=pink] .da-card{background:linear-gradient(180deg,#fff7f5,#fceeea);border-color:rgba(160,90,100,.2)}
+.da-cover{position:relative;height:88px;margin:0 -16px 12px;display:flex;align-items:center;justify-content:center;
+ background:linear-gradient(145deg,#2a1f12 0%,#4a3820 40%,#c9a24a 100%);overflow:hidden}
+[data-theme=pink] .da-cover{background:linear-gradient(145deg,#3b262d 0%,#9E6B6F 45%,#EBCFCF 100%)}
+.da-cover-glow{position:absolute;inset:-40% -20%;background:radial-gradient(circle at 50% 30%,rgba(243,217,139,.45),transparent 55%);pointer-events:none}
+.da-cover-ic{position:relative;z-index:1;font-size:42px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
+.da-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+.da-ey{font-size:12px;letter-spacing:.04em;text-transform:uppercase;opacity:.75;font-weight:700;color:var(--gold2,#c9a24a)}
+.da-sub{font-size:13.5px;line-height:1.4;color:var(--fg3,#7a6a55);margin:0 0 12px;text-align:center}
+[data-theme=dark] .da-sub,[data-theme=gold] .da-sub{color:rgba(240,220,180,.65)}
+.da-ar{font-family:"Amiri","Amiri Quran",var(--font-arab),serif;font-size:26px;line-height:2.05;text-align:center;color:var(--fg);margin:4px 0 8px}
+.da-tr{font-style:italic;font-size:14px;line-height:1.55;color:var(--fg2);text-align:center;margin:0 0 8px}
+.da-mn{font-size:14.5px;line-height:1.6;margin:0 0 10px;text-align:center;padding:10px 12px;border-radius:12px;background:rgba(201,162,74,.08)}
+[data-theme=dark] .da-mn,[data-theme=gold] .da-mn{background:rgba(230,199,122,.08)}
+.da-src{font-size:12.5px;color:var(--gold2);font-weight:700;margin-top:4px;text-align:center}
+.da-fad{font-size:12.5px;line-height:1.5;text-align:center;margin:8px 0 0;opacity:.85}
+.da-note{font-size:11.5px;color:var(--fg3);line-height:1.5;margin-top:12px;border-top:1px dashed rgba(160,120,60,.25);padding-top:10px;text-align:center}
+.da-ok{display:block;width:100%;max-width:280px;margin:14px auto 0;padding:14px 20px;justify-content:center;border-radius:999px;font-weight:800;font-size:16px;letter-spacing:.02em}
 .da-set label{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:10px}
 .da-set input{flex:none}
 .da-set .btn{margin-top:10px}
+/* legacy ids kept empty so old selectors don't break */
+#daShalawat{display:none!important}
 
 
 /* ===== Best Muslim — ikon 3D (t46): Rukun Islam, Akademi Syahadah, grid Lainnya 4 kolom ===== */
@@ -2203,14 +2226,29 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
     <!-- ================= V2: BERANDA ================= -->
     <section class="page" id="page-beranda">
       <div class="stack">
+        <!-- t62: swipeable hero — slide 1 Mulai Salat Khusyuk, slide 2 Hikmah Harian (no autoplay) -->
+        <div class="v2-hero-car" id="v2HeroCar">
+          <div class="v2-hero-track" id="v2HeroTrack" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Beranda hero">
+            <div class="v2-hero-slide" data-hi="0">
+              <button class="v2-hero" id="v2Start" type="button">
+                <span class="v2-hero-ic" aria-hidden="true"><img src="icon-192.png" width="40" height="40" alt="" decoding="async"></span>
+                <b data-v="startBtn"></b><span class="v2-tag" data-v="tagline"></span><small data-v="startSub"></small>
+                <span class="v2-cta" aria-hidden="true"><span data-v="startGo"></span> <i>→</i></span>
+              </button>
+            </div>
+            <div class="v2-hero-slide" data-hi="1">
+              <div id="pkToday" class="card lit pk-today hk-card v2-hero-hk"></div>
+            </div>
+          </div>
+          <div class="v2-hero-dots" id="v2HeroDots" aria-hidden="true">
+            <button type="button" class="v2-hero-dot on" data-i="0" aria-label="1"></button>
+            <button type="button" class="v2-hero-dot" data-i="1" aria-label="2"></button>
+          </div>
+        </div>
         <div class="card lit v2-next v2-click" id="v2Next" data-go="jadwal"></div>
-        <button class="v2-hero" id="v2Start" type="button">
-          <span class="v2-hero-ic" aria-hidden="true"><img src="icon-192.png" width="40" height="40" alt="" decoding="async"></span>
-          <b data-v="startBtn"></b><span class="v2-tag" data-v="tagline"></span><small data-v="startSub"></small>
-          <span class="v2-cta" aria-hidden="true"><span data-v="startGo"></span> <i>→</i></span>
-        </button>
         <!-- t47: kartu "Jadwal salat hari ini" dihapus dari Beranda; jadwal lengkap dibuka lewat kartu "Salat berikutnya" (halaman Jadwal tetap utuh) -->
         <!-- t61: Masjid Terdekat dipindah ke halaman Jadwal (di bawah Buka Kompas Kiblat) -->
+        <!-- t62: Al-Qur'an Lanjutkan Membaca dihapus dari Beranda (tetap di tab Qur'an) -->
         <div class="card v2-prog-card" id="v2ProgCard">
           <div class="v2-prog-head" id="v2ProgHead">
             <div class="row v2-sb"><div class="eyebrow" data-v="progT"></div>
@@ -4434,6 +4472,13 @@ function toggleProg(){ const d=$("#ksIbadah"); setProgOpen(!!(d&&d.hidden)); }
 const PROMO=[{id:"wardah",brand:"Wardah",tag:["Cantik halal, hati tenang","Halal beauty, calm heart","جمال حلال وقلب مطمئن"],img:"promo/wardah.webp",href:"#"},
  {id:"maktour",brand:"Maktour",tag:["Wujudkan umrah bersama keluarga","Make umrah with family","حقق العمرة مع أسرتك"],img:"promo/maktour.webp",href:"#"},
  {id:"kahf",brand:"Kahf",tag:["Grooming rapi, siap ke masjid","Look sharp, ready for the mosque","أناقة واستعداد للمسجد"],img:"promo/kahf.webp",href:"#"}];
+
+/* t62: hero carousel (Salat | Hikmah) — scroll-snap + dots, no autoplay */
+function initHeroCar(){ const track=$("#v2HeroTrack"), dots=$("#v2HeroDots"); if(!track||!dots||track._heroBound) return; track._heroBound=1;
+  const sync=()=>{ const w=track.clientWidth||1; const i=Math.round(track.scrollLeft/w); dots.querySelectorAll(".v2-hero-dot").forEach((d,j)=>d.classList.toggle("on",j===i)); };
+  track.addEventListener("scroll",()=>{ clearTimeout(track._hst); track._hst=setTimeout(sync,60); },{passive:true});
+  dots.addEventListener("click",e=>{ const b=e.target.closest("[data-i]"); if(!b) return; track.scrollTo({left:(+b.dataset.i)*(track.clientWidth||0),behavior:"smooth"}); });
+}
 function renderPromo(){ const track=$("#v2PromoTrack"), dots=$("#v2PromoDots"); if(!track) return; const i=({id:0,en:1,ar:2}[lang()]);
   track.innerHTML=PROMO.map((p,idx)=>`<a class="v2-promo-slide" href="${p.href}" data-promo="${p.id}" data-todo="promo-link" aria-label="${esc(p.brand)}"><img src="${p.img}" alt="" width="320" height="140" decoding="async" loading="lazy"><span class="v2-promo-mitra">${v("promoMitra")}</span><div class="v2-promo-copy"><b>${esc(p.brand)}</b><span>${esc(p.tag[i])}</span><em>${v("promoCta")} →</em></div></a>`).join("");
   dots.innerHTML=PROMO.map((_,idx)=>`<button type="button" class="v2-promo-dot${idx===0?" on":""}" data-i="${idx}" aria-label="${idx+1}"></button>`).join("");
@@ -4693,10 +4738,10 @@ function initSettings(){
 /* ---------- Kiblat page: move compass card ---------- */
 function initKiblat(){ const d=$("#qbDial"); const card=d&&d.closest(".card"); if(card) $("#kbStack").appendChild(card); }
 
-function renderAll(){ renderNext(); renderTimes(); renderQ(); renderProg(); renderPromo(); renderHafMini(); Haf.renderList(); if(Haf.cur) Haf.ui(); Masjid.render(); renderLainnya(); renderPremium(); renderSettings(); if(!$("#v2Flow").hidden) Flow.render(); }
+function renderAll(){ initHeroCar(); renderNext(); renderTimes(); renderQ(); renderProg(); renderPromo(); renderHafMini(); Haf.renderList(); if(Haf.cur) Haf.ui(); Masjid.render(); renderLainnya(); renderPremium(); renderSettings(); if(!$("#v2Flow").hidden) Flow.render(); }
 
 function init(){
-  initKiblat(); initSettings(); Masjid.init(); Haf.init(); Flow.init();
+  initKiblat(); initSettings(); Masjid.init(); Haf.init(); Flow.init(); initHeroCar();
   const tog=$("#v2ProgToggle"); if(tog) tog.addEventListener("click",e=>{ e.preventDefault(); toggleProg(); });
   const head=$("#v2ProgHead"); if(head) head.addEventListener("click",e=>{ if(e.target.closest("[data-go]")) return; if(e.target.closest("#v2ProgToggle")) return; if(e.target.closest("[data-exp]")){ e.preventDefault(); toggleProg(); } });
   document.addEventListener("click",e=>{ const g=e.target.closest("[data-go]"); if(g){ e.preventDefault(); go(g.dataset.go); return; }
@@ -4711,7 +4756,7 @@ function init(){
   let lastLoc=JSON.stringify(loc()); setInterval(()=>{ const n=JSON.stringify(loc()); if(n!==lastLoc){ lastLoc=n; renderAll(); } else { renderNext(); } },15000);
   const _go=window.go; window.go=function(p){ _go(p); if(p==="beranda"||p==="settings"||p==="premium") renderAll(); if(p!=="hafalan") Haf.stop(); };
   applyV(); splash();
-  window.RKV2={Flow,Haf,Masjid,renderAll,v,setProgOpen,toggleProg,renderPromo};
+  window.RKV2={Flow,Haf,Masjid,renderAll,v,setProgOpen,toggleProg,renderPromo,initHeroCar};
 }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
 })();
@@ -5026,10 +5071,8 @@ function ayahSheet(k){ const [s,a]=k.split(":").map(Number), sm=S(s), bm=store.g
   $("#qMark").onclick=()=>{ let b=store.get("rk_q_bm",[]); if(has) b=b.filter(x=>!(x.s===s&&x.a===a)); else b.push({s,a,ts:Date.now()}); store.set("rk_q_bm",b); toast(t(has?"saved":"marked")); unsheet(); rerender(); };
   $("#qLast").onclick=()=>{ saveLast(s,a); toast(t("saved")); unsheet(); }; }
 
-/* ---------- Beranda card ---------- */
-function berandaCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#qHomeCard");
-  if(!c){ c=document.createElement("div"); c.id="qHomeCard"; c.className="card lit q-home"; const anchor=$("#v2HafCard")||$("#v2TimesCard")||$("#v2MasjidCard"); if(anchor) anchor.before(c); else pg.prepend(c); }
-  loadMeta().then(()=>{ c.innerHTML=`<div class="row v2-sb"><div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm ghost" type="button" data-qgo="1">${t("tSurah")} →</button></div>${contCard()}`; }).catch(()=>{ c.innerHTML=`<div class="eyebrow">📖 Al-Qur'an</div><button class="btn sm gold" type="button" data-qgo="1">${t("open")}</button>`; }); }
+/* ---------- Beranda card (t62: removed — continue reading stays on Qur'an tab only) ---------- */
+function berandaCard(){ const c=$("#qHomeCard"); if(c) c.remove(); }
 
 function init(){ if(!$("#page-quran")) return; const sh=$("#qSheet"); if(sh) document.body.appendChild(sh); applyT();
   document.addEventListener("click",e=>{ const o=e.target.closest("[data-open]"); if(o&&(o.closest("#page-quran")||o.closest("#qHomeCard"))){ const [s,a]=o.dataset.open.split(":"); unsheet(); open(s,a,o.dataset.hl?{flash:1,noSave:1}:{auto:!!o.dataset.auto}); return; }
@@ -5338,7 +5381,9 @@ async function todayData(){ const sd=seed(); const out={};
   try{ await loadSI(); const av=SR.idx.ch.filter(c=>c[4]); const c=av[sd%av.length]; out.s={n:c[0],title:cT(c)}; }catch(e){}
   return out; }
 async function homeCard(){ const pg=$("#page-beranda .stack"); if(!pg) return; let c=$("#pkToday");
-  if(!c){ c=document.createElement("div"); c.id="pkToday"; c.className="card lit pk-today"; const a=$("#qHomeCard")||$("#v2HafCard")||$("#v2TimesCard")||$("#v2MasjidCard"); if(a) a.before(c); else pg.prepend(c); }
+  /* t62: prefer hero-carousel slide host (#pkToday already in #v2HeroCar); else legacy prepend */
+  if(!c){ c=document.createElement("div"); c.id="pkToday"; c.className="card lit pk-today"; const host=$("#v2HeroTrack .v2-hero-slide[data-hi='1']");
+    if(host){ host.appendChild(c); } else { const a=$("#qHomeCard")||$("#v2HafCard")||$("#v2TimesCard")||$("#v2MasjidCard"); if(a) a.before(c); else pg.prepend(c); } }
   /* t57: program aktif → Hikmah Harian di Beranda; program off → highlight harian lama. Akademi #pkProg tetap. */
   const PP=pGet();
   if(PP&&PP.st!=="off"&&window.KusyuHikmah&&KusyuHikmah.renderCard){ try{ return await KusyuHikmah.renderCard(c); }catch(e){} }
@@ -7700,7 +7745,7 @@ document.addEventListener("DOMContentLoaded",init); if(document.readyState!=="lo
 </script>
 <script>
 /* ===== Best Muslim — Doa setelah azan (popup + satu notifikasi gabungan) + notifikasi persiapan 10 menit =====
-   Dalil: HR. Bukhari 614 (Jabir bin Abdillah) — doa; HR. Muslim 384 (Abdullah bin 'Amr) — jawab azan, shalawat, lalu minta al-wasilah.
+   Dalil: HR. Bukhari 614 (Jabir bin Abdillah) — doa setelah azan. (Satu kartu; langkah shalawat terpisah dihapus t62.)
    Tambahan penutup dari riwayat al-Baihaqi (dinilai syadz) SENGAJA tidak dicantumkan.
    Tanpa jaringan pihak ketiga. Pengaturan: rk_doa_azan; riwayat tampil: rk_doa_azan_seen. */
 (function(){
@@ -7729,7 +7774,7 @@ const X={
  src:["Shahih Bukhari nomor 614, dari Jabir bin Abdillah","Sahih al-Bukhari no. 614, from Jabir ibn 'Abdillah","صحيح البخاري، رقم ٦١٤، عن جابر بن عبد الله رضي الله عنهما"],
  fad:["Keutamaan: “…ia berhak mendapat syafaatku pada hari kiamat.” (HR. Bukhari 614)","Virtue: “…my intercession becomes due for him on the Day of Resurrection.” (Bukhari 614)","فضله: «حلّت له شفاعتي يوم القيامة» (البخاري ٦١٤)"],
  note:["Redaksi di atas sesuai Shahih Bukhari. Tambahan yang populer di akhir doa tidak terdapat dalam Bukhari maupun Muslim, sehingga tidak kami cantumkan.","The wording above follows Sahih al-Bukhari. A popular ending addition is not found in Bukhari or Muslim, so it is not included.","اللفظ أعلاه لفظ صحيح البخاري، وأما الزيادة المشهورة في آخره فليست في الصحيحين فلم نذكرها."],
- ok:["Aamiin · Tutup","Ameen · Close","آمين · إغلاق"],
+ ok:["Aamiin","Ameen","آمين"],
  close:["Tutup","Close","إغلاق"],
  setT:["Doa setelah azan","Supplication after the adhan","الدعاء بعد الأذان"],
  setOn:["Tampilkan doa setelah azan selesai (popup & notifikasi)","Show the supplication when the adhan ends (popup & notification)","اعرض الدعاء عند انتهاء الأذان (نافذة وإشعار)"],
@@ -7738,7 +7783,7 @@ const X={
  setView:["Lihat doa","View supplication","عرض الدعاء"],
  setNote:["Notifikasi butuh izin notifikasi dan suara azan selain “Senyap”. Versi web: andal saat aplikasi terbuka atau di latar belakang; saat aplikasi ditutup penuh, notifikasi belum bisa dijamin.","Notifications need notification permission and an azan sound other than “Silent”. Web version: reliable while the app is open or in the background; when fully closed, notifications cannot be guaranteed.","تحتاج الإشعارات إلى الإذن وصوت أذان غير «صامت». في نسخة الويب: موثوقة والتطبيق مفتوح أو في الخلفية؛ أما عند إغلاقه تمامًا فلا يمكن ضمانها."],
  nTitle:["Azan {p} selesai · Doa setelah azan","{p} adhan finished · Supplication after the adhan","انتهى أذان {p} · الدعاء بعد الأذان"],
- nSrc:["(Shahih Bukhari no. 614) · Ketuk untuk shalawat & doa lengkap","(Sahih al-Bukhari 614) · Tap for salawat & the full supplication","(صحيح البخاري ٦١٤) · اضغط للصلاة على النبي ﷺ والدعاء كاملًا"],
+ nSrc:["(Shahih Bukhari no. 614) · Ketuk untuk baca doa","(Sahih al-Bukhari 614) · Tap to read the supplication","(صحيح البخاري ٦١٤) · اضغط لقراءة الدعاء"],
  pTitle:["Sepuluh menit lagi salat. Siapkan dirimu bertemu Allah.","Ten minutes until prayer. Prepare yourself to meet Allah.","بقيت عشر دقائق على الصلاة. تهيّأ للقاء الله."],
  pList:[["Siwak","Wudhu yang sempurna","Pakai pakaian terbaik","Perbaiki niat"],["Siwak","A complete wudu","Wear your best clothes","Renew your intention"],["السواك","إسباغ الوضوء","البس أحسن ثيابك","أصلح نيتك"]]
 };
@@ -7775,15 +7820,19 @@ function chime(){ const c=cfg(); if(!c.sound||S.get("ks_duo_mute",false)) return
    log("chime"); return true; }catch(e){ return false; } }
 /* ---------- popup ---------- */
 function html(info){ const L=lg(), p=info&&info.n?pn(info.n):"";
+ const subT=p?sub(t(X.doneP),p)+(info.time?" · "+info.time:""):t(X.manual);
  return `<div class="da-in" role="dialog" aria-modal="true" aria-labelledby="daTitle" dir="${L==="ar"?"rtl":"ltr"}">
-  <div class="da-hd"><div class="ic" aria-hidden="true">🤲</div><div><h2 id="daTitle">${esc(t(X.title))}</h2><small>${esc(p?sub(t(X.doneP),p)+(info.time?" · "+info.time:""):t(X.manual))}</small></div><button type="button" class="da-x" id="daX" aria-label="${esc(t(X.close))}">✕</button></div>
-  <div class="da-step" id="daShalawat"><span class="no">${esc(t(X.s1))}</span><p>${esc(t(X.s1p))}</p>
-   <div class="da-ar sm" lang="ar" dir="rtl">${SH_AR}</div>${L==="ar"?"":`<div class="da-tr">${esc(SH_TR)}</div>`}
-   <div class="da-src">${esc(t(X.s1src))}</div><p class="dim" style="font-size:11.5px;text-align:center">${esc(t(X.s1n))}</p></div>
-  <div class="da-step" id="daDoa"><span class="no">${esc(t(X.s2))}</span>
-   <div class="da-ar" lang="ar" dir="rtl" id="daAr">${DOA_AR}</div>${L==="ar"?"":`<div class="da-tr" id="daTr">${esc(DOA_TR)}</div><div class="da-mn" id="daMn">“${esc(t(X.mean))}”</div>`}
-   <div class="da-src" id="daSrc">${esc(t(X.src))}</div><p class="dim" style="font-size:12px;text-align:center;margin-top:4px">${esc(t(X.fad))}</p>
-   <div class="da-note">${esc(t(X.note))}</div></div>
+  <button type="button" class="da-x" id="daX" aria-label="${esc(t(X.close))}">✕</button>
+  <div class="da-card" id="daDoa">
+   <div class="da-cover" aria-hidden="true"><span class="da-cover-ic">🤲</span><span class="da-cover-glow"></span></div>
+   <div class="da-meta"><div class="da-ey" id="daTitle">✦ ${esc(t(X.title))}</div></div>
+   <p class="da-sub">${esc(subT)}</p>
+   <div class="da-ar" lang="ar" dir="rtl" id="daAr">${DOA_AR}</div>
+   ${L==="ar"?"":`<div class="da-tr" id="daTr">${esc(DOA_TR)}</div><div class="da-mn" id="daMn">“${esc(t(X.mean))}”</div>`}
+   <div class="da-src" id="daSrc">${esc(t(X.src))}</div>
+   <p class="da-fad">${esc(t(X.fad))}</p>
+   <div class="da-note">${esc(t(X.note))}</div>
+  </div>
   <button type="button" class="btn gold da-ok" id="daOk">${esc(t(X.ok))}</button></div>`; }
 function show(info,opts){ opts=opts||{}; let ov=document.getElementById("daPop");
  if(!ov){ ov=document.createElement("div"); ov.id="daPop"; ov.className="da-ov"; document.body.appendChild(ov);
