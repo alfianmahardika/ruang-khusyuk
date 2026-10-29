@@ -2,7 +2,7 @@
   "nav.beranda": "الرئيسية",
   "nav.akademi": "الأكاديمية",
   "nav.quran": "القرآن",
-  "nav.belanja": "تسوّق مبارك",
+  "nav.belanja": "متجر البركة",
   "nav.lainnya": "المزيد",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "أو البريد / الهاتف",
   "auth.google.soon": "تسجيل الدخول عبر Google سيُفعَّل بعد إعداد معرّفات العميل.",
   "auth.apple.soon": "تسجيل الدخول عبر Apple سيُفعَّل بعد إعداد Apple Developer.",
-  "auth.social.err": "فشل تسجيل الدخول. أعد المحاولة أو استخدم البريد."
+  "auth.social.err": "فشل تسجيل الدخول. أعد المحاولة أو استخدم البريد.",
+  "nav.jamaah": "الجماعة",
+  "nav.profil": "الملف"
 }

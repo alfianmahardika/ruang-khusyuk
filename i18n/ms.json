@@ -2,7 +2,7 @@
   "nav.beranda": "Laman utama",
   "nav.akademi": "Akademi",
   "nav.quran": "Al-Quran",
-  "nav.belanja": "Beli Berkat",
+  "nav.belanja": "Kedai Berkah",
   "nav.lainnya": "Lain-lain",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "atau e-mel / telefon",
   "auth.google.soon": "Log masuk dengan Google akan aktif selepas ID Klien dikonfigurasi.",
   "auth.apple.soon": "Log masuk dengan Apple akan aktif selepas konfigurasi Apple Developer.",
-  "auth.social.err": "Gagal log masuk. Cuba lagi atau guna e-mel."
+  "auth.social.err": "Gagal log masuk. Cuba lagi atau guna e-mel.",
+  "nav.jamaah": "Jamaah",
+  "nav.profil": "Profil"
 }

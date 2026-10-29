@@ -2,7 +2,7 @@
   "nav.beranda": "হোম",
   "nav.akademi": "একাডেমি",
   "nav.quran": "কুরআন",
-  "nav.belanja": "বরকতময় কেনাকাটা",
+  "nav.belanja": "বরকতময় দোকান",
   "nav.lainnya": "আরও",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "অথবা ইমেইল / ফোন",
   "auth.google.soon": "Google প্রবেশ ক্লায়েন্ট আইডি কনফিগার হলে সক্রিয় হবে।",
   "auth.apple.soon": "Apple প্রবেশ Apple Developer সেটআপের পর সক্রিয় হবে।",
-  "auth.social.err": "প্রবেশ ব্যর্থ। আবার চেষ্টা করুন বা ইমেইল ব্যবহার করুন।"
+  "auth.social.err": "প্রবেশ ব্যর্থ। আবার চেষ্টা করুন বা ইমেইল ব্যবহার করুন।",
+  "nav.jamaah": "জামাআহ",
+  "nav.profil": "প্রোফাইল"
 }

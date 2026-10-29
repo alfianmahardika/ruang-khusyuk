@@ -2,7 +2,7 @@
   "nav.beranda": "خانه",
   "nav.akademi": "آکادمی",
   "nav.quran": "قرآن",
-  "nav.belanja": "خرید پربرکت",
+  "nav.belanja": "فروشگاه برکت",
   "nav.lainnya": "بیشتر",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "یا ایمیل / تلفن",
   "auth.google.soon": "ورود با Google پس از پیکربندی شناسه مشتری فعال می‌شود.",
   "auth.apple.soon": "ورود با Apple پس از پیکربندی Apple Developer فعال می‌شود.",
-  "auth.social.err": "ورود ناموفق. دوباره تلاش کنید یا از ایمیل استفاده کنید."
+  "auth.social.err": "ورود ناموفق. دوباره تلاش کنید یا از ایمیل استفاده کنید.",
+  "nav.jamaah": "جماعت",
+  "nav.profil": "پروفایل"
 }

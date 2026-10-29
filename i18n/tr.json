@@ -2,7 +2,7 @@
   "nav.beranda": "Ana sayfa",
   "nav.akademi": "Akademi",
   "nav.quran": "Kur'an",
-  "nav.belanja": "Bereketli Alışveriş",
+  "nav.belanja": "Bereketli Dükkan",
   "nav.lainnya": "Diğer",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "veya e-posta / telefon",
   "auth.google.soon": "Google ile giriş, İstemci Kimlikleri yapılandırılınca etkinleşir.",
   "auth.apple.soon": "Apple ile giriş, Apple Developer yapılandırılınca etkinleşir.",
-  "auth.social.err": "Giriş başarısız. Tekrar deneyin veya e-posta kullanın."
+  "auth.social.err": "Giriş başarısız. Tekrar deneyin veya e-posta kullanın.",
+  "nav.jamaah": "Cemaat",
+  "nav.profil": "Profil"
 }

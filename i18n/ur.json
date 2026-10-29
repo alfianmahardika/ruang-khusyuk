@@ -2,7 +2,7 @@
   "nav.beranda": "ہوم",
   "nav.akademi": "اکیڈمی",
   "nav.quran": "قرآن",
-  "nav.belanja": "بابرکت خریداری",
+  "nav.belanja": "مبارک دکان",
   "nav.lainnya": "مزید",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "یا ای میل / فون",
   "auth.google.soon": "Google سے داخلہ کلائنٹ آئی ڈی سیٹ ہونے کے بعد فعال ہوگا۔",
   "auth.apple.soon": "Apple سے داخلہ Apple Developer سیٹ اپ کے بعد فعال ہوگا۔",
-  "auth.social.err": "داخلہ ناکام۔ دوبارہ کوشش کریں یا ای میل استعمال کریں۔"
+  "auth.social.err": "داخلہ ناکام۔ دوبارہ کوشش کریں یا ای میل استعمال کریں۔",
+  "nav.jamaah": "جماعت",
+  "nav.profil": "پروفائل"
 }

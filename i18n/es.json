@@ -93,5 +93,7 @@
   "auth.orEmail": "o correo / teléfono",
   "auth.google.soon": "Google se activará tras configurar los Client IDs.",
   "auth.apple.soon": "Apple se activará tras configurar Apple Developer.",
-  "auth.social.err": "Error al iniciar sesión. Inténtalo de nuevo o usa el correo."
+  "auth.social.err": "Error al iniciar sesión. Inténtalo de nuevo o usa el correo.",
+  "nav.jamaah": "Jamaah",
+  "nav.profil": "Perfil"
 }

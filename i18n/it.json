@@ -93,5 +93,7 @@
   "auth.orEmail": "oppure email / telefono",
   "auth.google.soon": "L'accesso Google si attiverà dopo la configurazione dei Client ID.",
   "auth.apple.soon": "L'accesso Apple si attiverà dopo la configurazione Apple Developer.",
-  "auth.social.err": "Accesso non riuscito. Riprova o usa l'email."
+  "auth.social.err": "Accesso non riuscito. Riprova o usa l'email.",
+  "nav.jamaah": "Jamaah",
+  "nav.profil": "Profilo"
 }

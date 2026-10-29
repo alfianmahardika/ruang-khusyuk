@@ -1,8 +1,8 @@
 {
   "nav.beranda": "Beranda",
   "nav.akademi": "Akademi",
-  "nav.quran": "Qur'an",
-  "nav.belanja": "Belanja Berkah",
+  "nav.quran": "Al-Qur'an",
+  "nav.belanja": "Toko Berkah",
   "nav.lainnya": "Lainnya",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "atau email / ponsel",
   "auth.google.soon": "Masuk dengan Google akan segera aktif setelah Client ID dikonfigurasi.",
   "auth.apple.soon": "Masuk dengan Apple akan segera aktif setelah konfigurasi Apple Developer.",
-  "auth.social.err": "Gagal masuk. Coba lagi atau gunakan email."
+  "auth.social.err": "Gagal masuk. Coba lagi atau gunakan email.",
+  "nav.jamaah": "Jamaah",
+  "nav.profil": "Profil"
 }

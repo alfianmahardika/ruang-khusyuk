@@ -1,8 +1,8 @@
 {
   "nav.beranda": "होम",
   "nav.akademi": "अकादमी",
-  "nav.quran": "क़ुरआन",
-  "nav.belanja": "बरकत भरी खरीदारी",
+  "nav.quran": "क़ुरान",
+  "nav.belanja": "बरकत की दुकान",
   "nav.lainnya": "और",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "या ईमेल / फ़ोन",
   "auth.google.soon": "Google साइन इन क्लाइंट ID कॉन्फ़िगर होने पर सक्रिय होगा।",
   "auth.apple.soon": "Apple साइन इन Apple Developer सेटअप के बाद सक्रिय होगा।",
-  "auth.social.err": "साइन इन विफल। फिर कोशिश करें या ईमेल उपयोग करें।"
+  "auth.social.err": "साइन इन विफल। फिर कोशिश करें या ईमेल उपयोग करें।",
+  "nav.jamaah": "जमाअत",
+  "nav.profil": "प्रोफ़ाइल"
 }

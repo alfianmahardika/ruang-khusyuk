@@ -93,5 +93,7 @@
   "auth.orEmail": "ou e-mail / telefone",
   "auth.google.soon": "O início de sessão Google ativa-se após configurar os Client IDs.",
   "auth.apple.soon": "O início de sessão Apple ativa-se após configurar o Apple Developer.",
-  "auth.social.err": "Falha ao entrar. Tente de novo ou use o e-mail."
+  "auth.social.err": "Falha ao entrar. Tente de novo ou use o e-mail.",
+  "nav.jamaah": "Jamaah",
+  "nav.profil": "Perfil"
 }

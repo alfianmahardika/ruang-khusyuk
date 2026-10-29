@@ -93,5 +93,7 @@
   "auth.orEmail": "or email / phone",
   "auth.google.soon": "Sign in with Google will activate once Client IDs are configured.",
   "auth.apple.soon": "Sign in with Apple will activate once Apple Developer is configured.",
-  "auth.social.err": "Sign-in failed. Try again or use email."
+  "auth.social.err": "Sign-in failed. Try again or use email.",
+  "nav.jamaah": "Jamaah",
+  "nav.profil": "Profile"
 }

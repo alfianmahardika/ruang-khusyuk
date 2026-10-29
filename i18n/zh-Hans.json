@@ -2,7 +2,7 @@
   "nav.beranda": "首页",
   "nav.akademi": "学堂",
   "nav.quran": "古兰经",
-  "nav.belanja": "福泽商城",
+  "nav.belanja": "福泽商店",
   "nav.lainnya": "更多",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "或使用邮箱 / 手机",
   "auth.google.soon": "配置客户端 ID 后即可启用 Google 登录。",
   "auth.apple.soon": "完成 Apple Developer 配置后即可启用 Apple 登录。",
-  "auth.social.err": "登录失败。请重试或使用邮箱。"
+  "auth.social.err": "登录失败。请重试或使用邮箱。",
+  "nav.jamaah": "贾马阿",
+  "nav.profil": "个人资料"
 }

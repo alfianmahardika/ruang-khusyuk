@@ -93,5 +93,7 @@
   "auth.orEmail": "oder E-Mail / Telefon",
   "auth.google.soon": "Google-Anmeldung wird nach Konfiguration der Client-IDs aktiv.",
   "auth.apple.soon": "Apple-Anmeldung wird nach Apple-Developer-Einrichtung aktiv.",
-  "auth.social.err": "Anmeldung fehlgeschlagen. Erneut versuchen oder E-Mail nutzen."
+  "auth.social.err": "Anmeldung fehlgeschlagen. Erneut versuchen oder E-Mail nutzen.",
+  "nav.jamaah": "Jamaah",
+  "nav.profil": "Profil"
 }

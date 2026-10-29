@@ -93,5 +93,7 @@
   "auth.orEmail": "of e-mail / telefoon",
   "auth.google.soon": "Google-login wordt actief na configuratie van Client-ID's.",
   "auth.apple.soon": "Apple-login wordt actief na Apple Developer-setup.",
-  "auth.social.err": "Inloggen mislukt. Probeer opnieuw of gebruik e-mail."
+  "auth.social.err": "Inloggen mislukt. Probeer opnieuw of gebruik e-mail.",
+  "nav.jamaah": "Jamaah",
+  "nav.profil": "Profiel"
 }

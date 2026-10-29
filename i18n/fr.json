@@ -93,5 +93,7 @@
   "auth.orEmail": "ou e-mail / téléphone",
   "auth.google.soon": "La connexion Google s'activera une fois les ID client configurés.",
   "auth.apple.soon": "La connexion Apple s'activera après configuration Apple Developer.",
-  "auth.social.err": "Échec de connexion. Réessayez ou utilisez l'e-mail."
+  "auth.social.err": "Échec de connexion. Réessayez ou utilisez l'e-mail.",
+  "nav.jamaah": "Jamaah",
+  "nav.profil": "Profil"
 }

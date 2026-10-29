@@ -2,7 +2,7 @@
   "nav.beranda": "Главная",
   "nav.akademi": "Академия",
   "nav.quran": "Коран",
-  "nav.belanja": "Благой магазин",
+  "nav.belanja": "Благословенный магазин",
   "nav.lainnya": "Ещё",
   "lang.id": "Bahasa Indonesia",
   "lang.en": "English",
@@ -93,5 +93,7 @@
   "auth.orEmail": "или почта / телефон",
   "auth.google.soon": "Вход через Google активируется после настройки Client ID.",
   "auth.apple.soon": "Вход через Apple активируется после настройки Apple Developer.",
-  "auth.social.err": "Не удалось войти. Попробуйте снова или используйте почту."
+  "auth.social.err": "Не удалось войти. Попробуйте снова или используйте почту.",
+  "nav.jamaah": "Джамаа",
+  "nav.profil": "Профиль"
 }
