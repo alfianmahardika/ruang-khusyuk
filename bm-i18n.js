@@ -59,10 +59,15 @@
       quran: "nav.akademi",
       mushaf: "nav.quran",
       belanja: "nav.belanja",
+      "jejak-nur": "nav.jamaah",
+      profil: "nav.profil",
       lainnya: "nav.lainnya"
     };
     Object.keys(map).forEach(p => {
-      const el = document.querySelector('.nav button[data-p="' + p + '"] span[data-v], .nav button[data-p="' + p + '"] span');
+      const btn = document.querySelector('.nav button[data-p="' + p + '"]');
+      if (!btn) return;
+      /* Prefer label span[data-v]; never overwrite .nav-center-btn (holds icon) */
+      const el = btn.querySelector('span[data-v]') || [...btn.querySelectorAll('span')].find(s => !s.classList.contains('nav-center-btn') && !s.querySelector('svg'));
       if (!el) return;
       const k = map[p];
       if (catalogs[lang] && catalogs[lang][k]) el.textContent = t(k);
