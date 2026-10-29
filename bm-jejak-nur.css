@@ -112,7 +112,7 @@
 .jn-edit-btn:active{transform:scale(.97)}
 [data-theme=pink] .jn-edit-btn{background:rgba(125,79,87,.14);border-color:rgba(125,79,87,.35)}
 [data-theme=light] .jn-edit-btn{background:rgba(15,61,46,.08)}
-.jn-prof.tt .jn-stats{margin:18px 4px 10px}
+.jn-prof.tt .jn-stats{margin:12px 4px 10px}
 .jn-prof.tt .jn-badges{margin:6px 0 16px}
 .jn-grid-lab{display:flex;align-items:center;justify-content:space-between;padding:4px 2px 8px;border-top:1px solid var(--border);margin-top:4px;font-size:13px;font-weight:800;color:var(--text);letter-spacing:.04em;text-transform:uppercase}
 .jn-grid-lab em{font-style:normal;color:var(--text-muted);font-weight:700}
@@ -213,7 +213,7 @@
 .jn-msg-ico{position:relative}
 .jn-msg-ico em{position:absolute;top:2px;inset-inline-end:2px;min-width:15px;height:15px;padding:0 3px;border-radius:999px;background:#c04545;color:#fff;font-size:9px;font-style:normal;font-weight:800;display:grid;place-items:center;line-height:1}
 /* TikTok-like profile capsules */
-.jn-pills{display:flex;flex-wrap:nowrap;gap:8px;justify-content:center;align-items:center;margin:12px 0 6px;width:100%}
+.jn-pills{display:flex;flex-wrap:nowrap;gap:8px;justify-content:center;align-items:center;margin:10px 0 0;width:100%}
 .jn-pill{
   position:relative;display:inline-flex;align-items:center;justify-content:center;gap:7px;
   width:auto;max-width:100%;flex:0 0 auto;

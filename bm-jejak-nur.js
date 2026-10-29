@@ -1115,7 +1115,6 @@
             <svg class="jn-pill-ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7.5 7V6a4.5 4.5 0 0 1 9 0v1H19a1.5 1.5 0 0 1 1.5 1.5v11A2.5 2.5 0 0 1 18 22H6a2.5 2.5 0 0 1-2.5-2.5v-11A1.5 1.5 0 0 1 5 7h2.5zm1.75 0h5.5V6a2.75 2.75 0 0 0-5.5 0v1z"/></svg><span class="jn-pill-tx">${esc(shopLab)}</span>
           </button>
         </div>
-        <button type="button" class="jn-edit-btn" data-jn="editprof">${esc(t("editProf"))}</button>
       </div>
       <div class="jn-stats">
         <div><b>${P.streak || 0}</b><span>${esc(t("streak"))}</span></div>
