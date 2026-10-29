@@ -181,3 +181,34 @@
 .bm-q-prog-track i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#c9a24a,#e6c77a);transition:width .35s ease}
 .bm-q-prog.done .bm-q-prog-tx{color:#7ec9ad}
 .bm-q-prog.done .bm-q-prog-track i{background:linear-gradient(90deg,#5aa888,#7ec9ad)}
+
+
+/* v86: light/pink contrast — deep text, gold as accent only */
+:is([data-theme=light],[data-theme=pink]) .bm-tg-card{
+  color:var(--text,#1a140c);
+}
+:is([data-theme=light],[data-theme=pink]) .bm-tg-title{color:var(--accent,#8a6514)}
+:is([data-theme=light],[data-theme=pink]) .bm-tg-streak,
+:is([data-theme=light],[data-theme=pink]) .bm-tg-pts,
+:is([data-theme=light],[data-theme=pink]) .bm-tg-sunnah-tg em,
+:is([data-theme=light],[data-theme=pink]) .bm-tg-sunnah-it summary,
+:is([data-theme=light],[data-theme=pink]) .bm-q-prog-tx,
+:is([data-theme=light],[data-theme=pink]) .bm-q-custom label{color:var(--accent,#8a6514)}
+:is([data-theme=light],[data-theme=pink]) .bm-tg-goal .tx b,
+:is([data-theme=light],[data-theme=pink]) .bm-tg-goal .tx{color:var(--text,#1a140c)}
+:is([data-theme=light],[data-theme=pink]) .bm-tg-goal .tx small{color:var(--text-muted,#4d4535)}
+:is([data-theme=light],[data-theme=pink]) .bm-tg-sheet{
+  background:var(--card-bg,#fffdf8);color:var(--text,#1a140c);border-color:var(--border);
+}
+:is([data-theme=light],[data-theme=pink]) .bm-tg-sheet h3{color:var(--accent,#8a6514)}
+:is([data-theme=light],[data-theme=pink]) .bm-tg-x{color:var(--accent,#8a6514);background:rgba(0,0,0,.06)}
+:is([data-theme=light],[data-theme=pink]) .bm-q-preset{
+  background:rgba(0,0,0,.04);color:var(--text);border-color:var(--border);
+}
+:is([data-theme=light],[data-theme=pink]) .bm-q-preset.on{
+  border-color:var(--accent);background:rgba(138,101,20,.12);color:var(--accent);
+}
+:is([data-theme=light],[data-theme=pink]) .bm-q-custom input,
+:is([data-theme=light],[data-theme=pink]) .bm-tg-sheet input{
+  color:var(--text);background:#fff;border-color:var(--border);
+}

@@ -213,6 +213,32 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
   --font-ar-ui:"Noto Naskh Arabic","Amiri","Segoe UI",system-ui,sans-serif;
   --r:20px; --nav-h:66px;
   color-scheme:dark;
+  /* v86 semantic contrast tokens (body/Arabic adapt to theme) */
+  --text:var(--fg);
+  --text-muted:var(--fg2);
+  --text-faint:var(--fg3);
+  --arabic:#f0e2c0;
+  --accent:var(--gold2);
+  --card-bg:var(--bg2);
+  --border:var(--line);
+}
+/* v86 theme token overrides — WCAG-minded text/arabic/accent/card/border */
+[data-theme=gold],[data-theme=dark]{
+  --text:#f5ecd8; --text-muted:#d9ccb0; --text-faint:#ab9b7c;
+  --arabic:#f3dea6; --accent:#e6c77a;
+  --card-bg:#1c150d; --border:rgba(230,199,122,.28);
+}
+[data-theme=light]{
+  --text:#1a140c; --text-muted:#4d4535; --text-faint:#6b6254;
+  --arabic:#0F3D2E; --accent:#8a6514;
+  --card-bg:#fffdf8; --border:rgba(60,45,20,.18);
+  --fg:#1a140c; --fg2:#4d4535; --fg3:#6b6254;
+}
+[data-theme=pink]{
+  --text:#2a1820; --text-muted:#5e434a; --text-faint:#6f4f57;
+  --arabic:#0F3D2E; --accent:#7d4f57;
+  --card-bg:#FBF4F3; --border:rgba(110,74,84,.24);
+  --fg:#2a1820; --fg2:#5e434a; --fg3:#6f4f57;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -283,7 +309,7 @@ p{margin:0}
 .seg::-webkit-scrollbar{display:none}
 .seg button{flex:1;white-space:nowrap;border:0;background:transparent;color:var(--fg3);font-family:inherit;font-weight:700;font-size:13px;padding:8px 13px;border-radius:999px;cursor:pointer;transition:all .2s}
 .seg button.on{background:var(--glass2);color:var(--gold2);box-shadow:inset 0 0 0 1px var(--line2)}
-.arab{font-family:var(--font-arab);font-size:28px;line-height:2;direction:rtl;text-align:right;color:var(--gold2)}
+.arab{font-family:var(--font-arab);font-size:28px;line-height:2;direction:rtl;text-align:right;color:var(--arabic)}
 .arab.sm{font-size:22px;line-height:1.9}
 .arab.center{text-align:center}
 .latin{font-style:italic;color:var(--fg2);font-size:14px}
@@ -489,7 +515,7 @@ input[type=file]{display:none}
 [dir=rtl] .eyebrow{letter-spacing:0}
 [dir=rtl] .htx .t{font-size:16px}
 /* Light theme */
-:is([data-theme=light],[data-theme=pink]){--bg:#f6f1e7;--bg2:#efe8da;--glass:rgba(255,255,255,.65);--glass2:rgba(0,0,0,.06);--line:rgba(60,45,20,.14);--fg:#221d14;--fg2:#4d4535;--fg3:#7d7461;--gold:#a8812c;--gold2:#8a6514;--jade:#2f8f6d;--jade2:#1f7356;color-scheme:light}
+:is([data-theme=light],[data-theme=pink]){--bg:#f6f1e7;--bg2:#efe8da;--glass:rgba(255,255,255,.65);--glass2:rgba(0,0,0,.06);--line:rgba(60,45,20,.14);--fg:#221d14;--fg2:#4d4535;--fg3:#7d7461;--gold:#a8812c;--gold2:#8a6514;--jade:#2f8f6d;--jade2:#1f7356;--text:#1a140c;--text-muted:#4d4535;--text-faint:#6b6254;--arabic:#0F3D2E;--accent:#8a6514;--card-bg:#fffdf8;--border:rgba(60,45,20,.18);color-scheme:light}
 :is([data-theme=light],[data-theme=pink]) body::before{background:var(--bg)}
 :is([data-theme=light],[data-theme=pink]) .app{background:radial-gradient(900px 500px at 50% -10%,rgba(168,129,44,.14),transparent 60%),radial-gradient(600px 400px at 100% 100%,rgba(47,143,109,.08),transparent 60%),var(--bg)}
 :is([data-theme=light],[data-theme=pink]) .hdr{background:rgba(246,241,231,.75)}
@@ -561,7 +587,7 @@ input[type=file]{display:none}
 
 /* ===== Tema Emas / Gold (default) ===== */
 [data-theme=gold]{--bg:#140f09;--bg2:#1c150d;--bg3:#251c12;--glass:rgba(230,199,122,.06);--glass2:rgba(230,199,122,.11);--line:rgba(230,199,122,.16);--line2:rgba(230,199,122,.38);
- --fg:#f5ecd8;--fg2:#d9ccb0;--fg3:#ab9b7c;--gold:#c9a24a;--gold2:#e6c77a;--gold3:#a8822f;--jade:#9fd3b8;--jade2:#c3ead6;--rose:#e0a090;--rose2:#f2c4b8;color-scheme:dark}
+ --fg:#f5ecd8;--fg2:#d9ccb0;--fg3:#ab9b7c;--gold:#c9a24a;--gold2:#e6c77a;--gold3:#a8822f;--jade:#9fd3b8;--jade2:#c3ead6;--rose:#e0a090;--rose2:#f2c4b8;--text:#f5ecd8;--text-muted:#d9ccb0;--text-faint:#ab9b7c;--arabic:#f3dea6;--accent:#e6c77a;--card-bg:#1c150d;--border:rgba(230,199,122,.28);color-scheme:dark}
 [data-theme=gold] body::before{background:var(--bg)}
 [data-theme=gold] .app{background:radial-gradient(900px 520px at 50% -12%,rgba(201,162,74,.20),transparent 62%),radial-gradient(700px 420px at 100% 105%,rgba(201,162,74,.08),transparent 60%),var(--bg)}
 [data-theme=gold] .hdr{background:rgba(20,15,9,.78);border-bottom-color:rgba(230,199,122,.22)}
@@ -624,7 +650,7 @@ input[type=file]{display:none}
 .v2-hflist{display:flex;flex-direction:column;gap:8px}
 .v2-hfi{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:16px;padding:11px 13px;background:var(--glass);cursor:pointer;color:var(--fg);font:inherit;text-align:start;width:100%}
 .v2-hfi .n{flex:1}.v2-hfi .n small{display:block;color:var(--fg3);font-size:12px}
-.v2-hfi .ar{font-family:var(--font-arab);font-size:18px;color:var(--gold2)}
+.v2-hfi .ar{font-family:var(--font-arab);font-size:18px;color:var(--arabic)}
 .v2-st{font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:999px;border:1px solid var(--line)}
 .v2-st.s1{color:var(--gold2);border-color:var(--line2)}.v2-st.s2{color:var(--jade2);border-color:rgba(159,211,184,.4)}
 .v2-hafmini{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
@@ -746,7 +772,7 @@ input[type=file]{display:none}
 .v2-pose ul{margin:8px 0 0;padding-inline-start:18px;display:flex;flex-direction:column;gap:5px;font-size:13.5px}
 .v2-dz{display:flex;flex-direction:column;align-items:center;gap:8px}
 .v2-dz .c{width:150px;height:150px;border-radius:50%;border:2px solid var(--gold);font-size:46px;font-family:var(--font-display);color:var(--gold2);background:rgba(201,162,74,.08);cursor:pointer}
-.v2-ar{font-family:var(--font-arab);font-size:22px;line-height:1.9;text-align:center;color:var(--fg)}
+.v2-ar{font-family:var(--font-arab);font-size:22px;line-height:1.9;text-align:center;color:var(--arabic)}
 .v2-sur{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--glass)}
 .v2-sur.hi{border-color:var(--gold);background:rgba(201,162,74,.12)}
 .v2-sur small{display:block;color:var(--fg3);font-size:11.5px;margin-top:3px}
@@ -769,10 +795,10 @@ input[type=file]{display:none}
 .gk-pane{margin-top:8px;animation:fade .3s}.gk-warn{font-size:12px;color:#e8c58a;border:1px dashed rgba(230,199,122,.45);border-radius:12px;padding:8px 10px;margin-top:6px}
 #flFig .fig-wrap{margin:10px 0}
 .gk-ift{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
-.rk-ayah{text-align:center}.rk-ayah .ar{font-family:var(--font-arab);font-size:24px;line-height:1.9;color:#f3dea6}.rk-ayah .tr{font-style:italic;font-size:12.5px;color:#cbbd9f;margin-top:2px}.rk-ayah .mn{font-size:13px;color:#e9e0cc;margin-top:4px}.rk-ayah .lb{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#ab9b7c;margin-top:4px}
+.rk-ayah{text-align:center;color:var(--text)}.rk-ayah .ar{font-family:var(--font-arab);font-size:24px;line-height:1.9;color:var(--arabic)}.rk-ayah .tr{font-style:italic;font-size:12.5px;color:var(--text-muted);margin-top:2px}.rk-ayah .mn{font-size:13px;color:var(--text);margin-top:4px}.rk-ayah .lb{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-top:4px}
 .rk-ayah.sp{max-width:340px;padding:0 18px;margin:6px 0 4px;animation:fade 1s}.v2-splash .rk-ayah.sp .ar{font-size:26px}
 .rk-ayah.hero{display:block;margin:4px 0 6px}.rk-ayah.hero .ar{font-size:20px}
-.rk-ayah.flow{border:1px solid rgba(230,199,122,.3);border-radius:16px;padding:12px;margin-bottom:12px;background:rgba(230,199,122,.06)}
+.rk-ayah.flow{border:1px solid var(--border);border-radius:16px;padding:12px;margin-bottom:12px;background:var(--card-bg);color:var(--text)}
 .v2-hero .rk-ayah.hero .ar{color:#2a1d0b!important;font-style:normal}.v2-hero .rk-ayah.hero .tr,.v2-hero .rk-ayah.hero .lb{color:#4a3714!important}.v2-hero .rk-ayah.hero .mn{color:#2f220e!important;font-style:normal}
 
 .gk-mz{border:1px solid rgba(230,199,122,.35);background:rgba(230,199,122,.06);border-radius:14px;padding:10px 12px;margin:6px 0 12px}
@@ -884,9 +910,9 @@ input[type=file]{display:none}
 
 /* t53: pembuka Bismillah di layar awal (singkat, bisa diketuk) */
 .v2-bsm{text-align:center;max-width:340px;padding:0 18px;margin-bottom:6px}
-.v2-bsm .ar{font-family:var(--font-arab);font-size:34px;line-height:1.7;color:#f2dfae}
-.v2-bsm .tr{font-family:var(--font-display);font-style:italic;font-size:17px;color:#e6c77a;margin-top:2px}
-.v2-bsm .mn{font-size:13px;color:#cdbb98;margin-top:4px}
+.v2-bsm .ar{font-family:var(--font-arab);font-size:34px;line-height:1.7;color:var(--arabic)}
+.v2-bsm .tr{font-family:var(--font-display);font-style:italic;font-size:17px;color:var(--accent);margin-top:2px}
+.v2-bsm .mn{font-size:13px;color:var(--text-muted);margin-top:4px}
 
 /* t60: merged Progres + expandable Log Ibadah */
 .v2-prog-card{padding-bottom:10px}
@@ -1006,7 +1032,7 @@ input[type=file]{display:none}
 /* ===== Al-Qur'an reader ===== */
 @font-face{font-family:"Amiri Quran";src:url(quran/fonts/AmiriQuran.woff2) format("woff2");font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+25CC}
 .q-hero{text-align:center;padding:6px 0 2px}
-.q-hero-ar{font-family:"Amiri Quran",serif;font-size:40px;line-height:1.9;color:var(--gold2,#e6c77a);text-shadow:0 0 28px rgba(201,162,74,.35)}
+.q-hero-ar{font-family:"Amiri Quran",serif;font-size:40px;line-height:1.9;color:var(--arabic);text-shadow:0 0 28px rgba(201,162,74,.18)}
 .q-hero p{max-width:30ch;margin:2px auto 0;font-size:13.5px}
 .q-search{display:flex;align-items:center;gap:8px;border:1px solid var(--line,rgba(255,255,255,.12));border-radius:14px;padding:0 12px;background:var(--glass,rgba(255,255,255,.04))}
 .q-search svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;opacity:.6;flex:none}
@@ -1019,7 +1045,7 @@ input[type=file]{display:none}
 .q-row:focus-visible,.q-cont:focus-visible,.q-a:focus-visible{outline:2px solid var(--gold2,#e6c77a);outline-offset:2px}
 .q-row-tx,.q-cont-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
 .q-row-tx b{font-size:15.5px;font-weight:600}.q-row-tx small{font-size:12px;color:var(--fg3,#ab9b7c);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.q-row-ar{font-family:"Amiri Quran",serif;font-size:23px;color:var(--gold2,#e6c77a);line-height:1.6}
+.q-row-ar{font-family:"Amiri Quran",serif;font-size:23px;color:var(--arabic);line-height:1.6}
 .q-star{position:relative;width:40px;height:40px;flex:none;display:grid;place-items:center}
 .q-star svg{position:absolute;inset:0;fill:none;stroke:var(--gold,#c9a24a);stroke-width:1.3}
 .q-star b{position:relative;font-size:12px;font-weight:600;color:var(--fg,#f5ecd8)}
@@ -1164,14 +1190,14 @@ html,body{overscroll-behavior-x:none}
 .q-row-ar{margin-inline-start:auto;font-family:"Amiri Quran","Amiri",serif;font-size:15px;color:var(--gold2,#e6c77a);max-width:42%;text-align:end;line-height:1.5}
 .h-reader{display:block}
 .h-khead{text-align:center;margin:6px 0 10px}
-.h-kar{font-family:"Amiri Quran","Amiri",serif;font-size:28px;line-height:1.8;color:var(--gold2,#e6c77a);text-align:center}
+.h-kar{font-family:"Amiri Quran","Amiri",serif;font-size:28px;line-height:1.8;color:var(--arabic);text-align:center}
 .h-note,.s-draft{font-size:12.5px;line-height:1.5;padding:9px 12px;border-radius:12px;background:rgba(201,162,74,.10);border:1px solid rgba(201,162,74,.28);color:var(--fg2);margin:0 0 12px}
 .h-card{padding:14px 14px 16px;margin:0 0 12px;border-radius:18px;background:var(--glass,rgba(255,255,255,.04));border:1px solid var(--line,rgba(255,255,255,.08));transition:box-shadow .4s}
 .h-card.flash{box-shadow:0 0 0 2px var(--gold2,#e6c77a)}
 .h-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .h-no{font-size:12px;font-weight:800;color:var(--gold2,#e6c77a);letter-spacing:.02em}
 .h-bm.on{color:var(--gold2,#e6c77a)}
-.h-ar{font-family:"Amiri Quran","Amiri",serif;font-size:22px;line-height:2.05;text-align:justify;color:var(--fg,#f3ead8)}
+.h-ar{font-family:"Amiri Quran","Amiri",serif;font-size:22px;line-height:2.05;text-align:justify;color:var(--arabic)}
 .h-nav{display:flex;justify-content:space-between;gap:8px;margin:14px 0}
 .h-snip{display:block;font-family:"Amiri Quran","Amiri",serif;font-size:16px;line-height:1.8;text-align:right}
 .h-sr .q-row-tx{min-width:0}
@@ -2103,8 +2129,42 @@ html:is([data-theme=light],[data-theme=pink]) .gm-bar,html[data-theme=pink] .gm-
 .pv-foot a{color:var(--gold2,#d9b86a);text-decoration:underline;cursor:pointer}
 
 
+
+/* v86: systemic contrast — flow, sheets, ayat, akademi text use tokens */
+.v2-flow{color:var(--text);background:var(--bg)}
+.v2-flow .eyebrow{color:var(--accent)}
+.v2-flowbody{color:var(--text)}
+.v2-dalil summary{color:var(--accent)}
+.v2-dalil .v2-ar,.v2-dalil p{color:var(--text)}
+.v2-dalil p{color:var(--text-muted)}
+.sheet .panel,dialog,.pp-mbox{color:var(--text)}
+.pq-bub,.pq-t,.pq-zkin{color:var(--text)}
+.pq-s{color:var(--text-muted)}
+.pq-n,.pq-sub{color:var(--text-faint)}
+.pq-st b,.pq-dl{color:var(--accent)}
+.bl-ar,.bl-wi span,.bl-qa{color:var(--arabic)}
+.hk-body{color:var(--text)}
+.hk-body .hk-ar{color:var(--arabic)}
+.hk-body .hk-tr{color:var(--text)}
+.hk-body .hk-taf{color:var(--text-muted)}
+.ak-tk-in,.ak-game-in{color:var(--text)}
+.q-reader .q-aya,.q-reader .q-tr,.q-reader .q-id{color:var(--text)}
+.q-reader [lang=ar],.q-reader .q-ar{color:var(--arabic)}
+:is([data-theme=light],[data-theme=pink]) .rk-ayah.flow{
+  background:var(--card-bg);border-color:var(--border);
+  box-shadow:0 1px 0 rgba(0,0,0,.04);
+}
+:is([data-theme=light],[data-theme=pink]) .arab,
+:is([data-theme=light],[data-theme=pink]) .v2-ar,
+:is([data-theme=light],[data-theme=pink]) .q-row-ar,
+:is([data-theme=light],[data-theme=pink]) .q-hero-ar,
+:is([data-theme=light],[data-theme=pink]) .h-kar,
+:is([data-theme=light],[data-theme=pink]) .h-ar{color:var(--arabic)}
+/* Gold accent only for chrome — not body/Arabic on light */
+:is([data-theme=light],[data-theme=pink]) .eyebrow{color:var(--accent)}
+
 /* ===== Tema Dusty Pink (✿) — token mengikuti struktur tema light; aksen mawar/plum lembut ===== */
-[data-theme=pink]{--bg:#F3E6E4;--bg2:#EBDAD8;--bg3:#E8D3D1;--glass:rgba(255,250,249,.62);--glass2:rgba(110,74,84,.07);--line:rgba(110,74,84,.16);--line2:rgba(110,74,84,.34);--fg:#3b262d;--fg2:#5e434a;--fg3:#6f4f57;--gold:#9E6B6F;--gold2:#7d4f57;--jade:#6E4A54;--jade2:#5a3a44;color-scheme:light}
+[data-theme=pink]{--bg:#F3E6E4;--bg2:#EBDAD8;--bg3:#E8D3D1;--glass:rgba(255,250,249,.62);--glass2:rgba(110,74,84,.07);--line:rgba(110,74,84,.16);--line2:rgba(110,74,84,.34);--fg:#2a1820;--fg2:#5e434a;--fg3:#6f4f57;--gold:#9E6B6F;--gold2:#7d4f57;--jade:#6E4A54;--jade2:#5a3a44;--text:#2a1820;--text-muted:#5e434a;--text-faint:#6f4f57;--arabic:#0F3D2E;--accent:#7d4f57;--card-bg:#FBF4F3;--border:rgba(110,74,84,.24);color-scheme:light}
 [data-theme=pink] body::before{background:var(--bg)}
 [data-theme=pink] .app{background:
  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' fill='none' stroke='%237d4f57' stroke-width='1.1' stroke-linecap='round' opacity='.07'%3E%3Cg transform='translate(30 34)'%3E%3Ccircle r='2.2'/%3E%3Cpath d='M0-3c-3-6 3-6 0 0M3 0c6-3 6 3 0 0M0 3c3 6-3 6 0 0M-3 0c-6 3-6-3 0 0'/%3E%3Cpath d='M0 8q2 10 10 14M6 15q5-2 6 2'/%3E%3C/g%3E%3Cg transform='translate(128 110) rotate(25)'%3E%3Ccircle r='1.8'/%3E%3Cpath d='M0-2.6c-2.6-5 2.6-5 0 0M2.6 0c5-2.6 5 2.6 0 0M0 2.6c2.6 5-2.6 5 0 0M-2.6 0c-5 2.6-5-2.6 0 0'/%3E%3C/g%3E%3Cpath d='M95 30q8 6 6 16M98 38q-5 0-6 4M100 44q5-1 7 3'/%3E%3Cpath d='M40 140q-6 8-2 16M38 147q-5-1-7 2'/%3E%3C/svg%3E") 0 0/180px 180px,
@@ -2127,8 +2187,11 @@ html:is([data-theme=light],[data-theme=pink]) .gm-bar,html[data-theme=pink] .gm-
 [data-theme=pink] .v2-hero,[data-theme=pink] .v2-flow{color:#3b262d}
 [data-theme=pink] .v2-flow{background:radial-gradient(700px 420px at 50% -10%,rgba(158,107,111,.18),transparent 60%),#F3E6E4}
 [data-theme=pink] .q-star{color:#9E6B6F}[data-theme=pink] .q-star b{color:#5a3a44}
-[data-theme=pink] .q-row-ar,[data-theme=pink] .h-kar,[data-theme=pink] .q-hero-ar{color:#6E4A54}
-[data-theme=pink] .pk-ar,[data-theme=pink] .h-ar{color:#3b262d}
+[data-theme=pink] .q-row-ar,[data-theme=pink] .h-kar,[data-theme=pink] .q-hero-ar,[data-theme=pink] .rk-ayah .ar,[data-theme=pink] .arab,[data-theme=pink] .v2-ar,[data-theme=pink] .v2-bsm .ar,[data-theme=pink] .hk-body .hk-ar{color:var(--arabic)}
+[data-theme=pink] .pk-ar,[data-theme=pink] .h-ar{color:var(--arabic)}
+[data-theme=pink] .rk-ayah .tr,[data-theme=pink] .v2-bsm .mn{color:var(--text-muted)}
+[data-theme=pink] .rk-ayah .mn{color:var(--text)}
+[data-theme=pink] .rk-ayah .lb{color:var(--text-muted)}
 [data-theme=pink] .pp-ring .bg{stroke:rgba(110,74,84,.15)}[data-theme=pink] .pp-ring .fg{stroke:#9E6B6F}
 [data-theme=pink] .pp-bar i b,[data-theme=pink] .s-prog i b{background:linear-gradient(90deg,#9E6B6F,#6E4A54)}
 [data-theme=pink] .pp-bar i,[data-theme=pink] .s-prog i{background:rgba(110,74,84,.14)}

@@ -50,3 +50,20 @@
 .bm-gr-banner .row .btn{flex:1;font-size:12px;padding:8px}
 .bm-gr-tog{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;font-size:13px}
 .bm-gr-tog input{width:18px;height:18px}
+
+
+/* v86: light/pink sheet contrast */
+:is([data-theme=light],[data-theme=pink]) .bm-gr-sheet{
+  background:var(--card-bg,#fffdf8);color:var(--text,#1a140c);
+  border-color:var(--border,rgba(60,45,20,.18));
+}
+:is([data-theme=light],[data-theme=pink]) .bm-gr-sheet h3{color:var(--accent,#8a6514)}
+:is([data-theme=light],[data-theme=pink]) .bm-gr-x{color:var(--accent);background:rgba(0,0,0,.06)}
+:is([data-theme=light],[data-theme=pink]) .bm-gr-name{
+  color:var(--text);background:#fff;border-color:var(--border);
+}
+:is([data-theme=light],[data-theme=pink]) .bm-gr-invite .code{color:var(--accent)}
+:is([data-theme=light],[data-theme=pink]) .bm-gr-banner{
+  background:rgba(15,61,46,.06);border-color:rgba(15,61,46,.2);color:var(--text);
+}
+:is([data-theme=light],[data-theme=pink]) .bm-gr-banner b{color:var(--accent)}

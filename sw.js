@@ -1,7 +1,7 @@
 /* Kusyu service worker — HANYA untuk klik notifikasi "Doa setelah azan".
    Sengaja TANPA handler fetch/cache: tidak mengubah cara aplikasi dimuat atau diperbarui, tidak ada jaringan pihak ketiga.
-   CACHE_VER=bm-sw-v85 — bump so phones re-check SW after deploy (no runtime cache; version is the signal). */
-const CACHE_VER="bm-sw-v85";
+   CACHE_VER=bm-sw-v86 — bump so phones re-check SW after deploy (no runtime cache; version is the signal). */
+const CACHE_VER="bm-sw-v86";
 /* Precache self-hosted OFL fonts (notification SW still has no fetch handler — version + install cache is the signal). */
 const PRECACHE=["fonts/poppins-semibold.woff2","fonts/OFL.txt"];
 self.addEventListener("install",e=>{
