@@ -190,6 +190,7 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 <link rel="stylesheet" href="bm-growth.css">
 <link rel="stylesheet" href="bm-jejak-nur.css">
 <link rel="stylesheet" href="bm-admin89.css">
+<link rel="stylesheet" href="bm-muslim-pay.css">
 <link rel="stylesheet" href="bm-nav88.css">
 </head><body>
 <title>Best Muslim</title>
@@ -3903,6 +3904,7 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",sta
 <script src="bm-growth.js" defer></script>
 <script src="bm-jejak-nur.js" defer></script>
 <script src="bm-admin89.js" defer></script>
+<script src="bm-muslim-pay.js" defer></script>
 <script src="bm-nav88.js" defer></script>
 </body></html>
 <script>
@@ -7267,7 +7269,7 @@ const Rp=n=>"Rp"+NUM(n|0);
 
 const T={
   title:["Dompet Berkah","Blessed Wallet","محفظة البركة"],
-  bayar:["Bayar QRIS","Pay QRIS","ادفع QRIS"],
+  bayar:["Muslim Pay","Muslim Pay","مسلم باي"],
   topupHint:["Saldo {rp} · Top up","Balance {rp} · Top up","الرصيد {rp} · شحن"],
   klaim:["Klaim Poin","Claim Points","استلم النقاط"],
   klaimSub:["Poin Berkah","Blessed Points","نقاط البركة"],
@@ -7343,7 +7345,15 @@ function claimAll(){
   save(o); return add;
 }
 
-const QRIS_SVG=`<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="3" width="8" height="2.2" rx="1" fill="#e6c77a"/><rect x="3" y="3" width="2.2" height="8" rx="1" fill="#e6c77a"/><rect x="21" y="3" width="8" height="2.2" rx="1" fill="#e6c77a"/><rect x="26.8" y="3" width="2.2" height="8" rx="1" fill="#e6c77a"/><rect x="3" y="26.8" width="8" height="2.2" rx="1" fill="#e6c77a"/><rect x="3" y="21" width="2.2" height="8" rx="1" fill="#e6c77a"/><rect x="21" y="26.8" width="8" height="2.2" rx="1" fill="#e6c77a"/><rect x="26.8" y="21" width="2.2" height="8" rx="1" fill="#e6c77a"/><text x="16" y="18.5" text-anchor="middle" font-size="7.5" font-weight="800" fill="#e6c77a" font-family="system-ui,sans-serif">QRIS</text></svg>`;
+function mpStripIcon(){
+  try{ if(window.BMMuslimPay&&BMMuslimPay.STRIP_MARK) return BMMuslimPay.STRIP_MARK; }catch(e){}
+  return `<svg class="bm-mp-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="rgba(230,199,122,.14)" stroke="#e6c77a" stroke-width="1.4"/><text x="16" y="20" text-anchor="middle" font-size="11" font-weight="800" fill="#e6c77a" font-family="system-ui,sans-serif">MP</text></svg>`;
+}
+function mpStripLabel(){
+  try{ if(window.BMMuslimPay&&BMMuslimPay.stripLabel) return BMMuslimPay.stripLabel(); }catch(e){}
+  return tt("bayar");
+}
+
 
 function placeStrip(){
   const nx=document.getElementById("v2Next");
@@ -7354,10 +7364,10 @@ function renderStrip(){
   placeStrip();
   const el=$("#bmDompet"); if(!el) return;
   const o=st(); const avail=claimableTotal();
-  el.innerHTML=`<button type="button" class="bm-dp-qr" data-bm="dompet" aria-label="QRIS">${QRIS_SVG}</button>
-    <button type="button" class="bm-dp-saldo" data-bm="dompet" aria-label="${esc(tt("title"))}">
+  el.innerHTML=`<button type="button" class="bm-dp-qr mp" data-bm="mpay" aria-label="${esc(mpStripLabel())}">${mpStripIcon()}</button>
+    <button type="button" class="bm-dp-saldo" data-bm="mpay" aria-label="${esc(mpStripLabel())}">
       <span class="bm-dp-ic" aria-hidden="true">Rp</span>
-      <span class="bm-dp-tx"><b>${esc(Rp(o.saldo|0))}</b><small>${esc(tt("bayar"))}</small></span>
+      <span class="bm-dp-tx"><b>${esc(Rp(o.saldo|0))}</b><small>${esc(mpStripLabel())}</small></span>
     </button>
     <button type="button" class="bm-dp-poin${avail>0?" claimable":""}" data-bm="poin" aria-label="${esc(tt("poinT"))}">
       <span class="bm-dp-coin" aria-hidden="true">✦<i class="bm-dp-dot"></i></span>
@@ -7431,7 +7441,9 @@ function bind(){
   root.addEventListener("click",e=>{
     const b=e.target.closest("[data-bm]"); if(!b) return;
     e.preventDefault(); e.stopPropagation();
-    if(b.dataset.bm==="poin") openPoin(); else openDompet();
+    if(b.dataset.bm==="poin") openPoin();
+    else if(b.dataset.bm==="mpay"){ try{ window.BMMuslimPay&&BMMuslimPay.open(); }catch(err){ openDompet(); } }
+    else openDompet();
   });
 }
 
@@ -7441,7 +7453,9 @@ function init(){ if(window.__bmDompetInit){ render(); return; } window.__bmDompe
   document.addEventListener("rk:ibadah",()=>render());
 }
 
-window.KusyuDompet={init,render,renderStrip,openDompet,openPoin,noteAct,challenges,claimableTotal,claimAll,st,SK};
+window.KusyuDompet={init,render,renderStrip,openDompet,openPoin,openMuslimPay:()=>{try{window.BMMuslimPay&&BMMuslimPay.open();}catch(e){openDompet();}},noteAct,challenges,claimableTotal,claimAll,st,SK};
+/* Dompet self-init (main boot may race before this IIFE) */
+try{ if(!window.__bmDompetInit) init(); else render(); }catch(e){}
 })();
 
 </script>

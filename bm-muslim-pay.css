@@ -1,0 +1,68 @@
+/* Muslim Pay — Best Muslim original (GoPay-like one-tap feel, no brand assets) */
+#bmMPay{position:fixed;inset:0;z-index:8600;display:none;flex-direction:column;background:var(--bg,#14110c);color:var(--text,var(--fg,#f5ecd8));overflow:hidden}
+#bmMPay.on{display:flex}
+.mp-hd{display:flex;align-items:center;gap:8px;padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px;border-bottom:1px solid var(--border,rgba(230,199,122,.2));background:color-mix(in srgb,var(--card-bg,rgba(30,24,16,.96)) 92%,transparent);flex:none}
+.mp-hd h1{flex:1;margin:0;font-size:17px;font-weight:800;letter-spacing:.01em;color:var(--text,var(--fg))}
+.mp-back,.mp-hd .mp-x{all:unset;box-sizing:border-box;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--text,var(--fg));background:rgba(127,127,127,.1);border:1px solid var(--border,rgba(127,127,127,.2))}
+.mp-back:active,.mp-hd .mp-x:active{transform:scale(.94)}
+.mp-sc{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:14px 14px calc(28px + var(--nav-h,72px))}
+.mp-bal{border-radius:18px;padding:18px 16px 16px;border:1px solid rgba(230,199,122,.28);
+  background:linear-gradient(145deg,rgba(230,199,122,.18),rgba(15,61,46,.22) 55%,rgba(42,32,22,.5));
+  box-shadow:0 8px 24px rgba(0,0,0,.18);margin-bottom:16px;position:relative;overflow:hidden}
+.mp-bal::after{content:"";position:absolute;inset-inline-end:-20px;top:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(230,199,122,.22),transparent 70%);pointer-events:none}
+.mp-bal .mp-brand{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.mp-bal .mp-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(145deg,#ecd08a,#8a6a20);display:grid;place-items:center;flex:none;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.mp-bal .mp-mark svg{width:22px;height:22px;display:block}
+.mp-bal .mp-brand b{font-size:15px;font-weight:800;color:var(--gold2,#e6c77a)}
+.mp-bal .mp-brand small{display:block;font-size:11px;color:var(--text-muted,var(--fg3));font-weight:600}
+.mp-bal .mp-amt{font-family:var(--font-display,serif);font-size:28px;font-weight:700;color:var(--text,var(--fg));letter-spacing:.02em;line-height:1.15}
+.mp-bal .mp-amt-sub{margin-top:4px;font-size:12.5px;color:var(--text-muted,var(--fg3))}
+.mp-chip{display:inline-flex;align-items:center;gap:5px;margin-top:12px;padding:5px 10px;border-radius:999px;font-size:11.5px;font-weight:700;
+  background:rgba(230,199,122,.14);color:var(--gold2,#e6c77a);border:1px solid rgba(230,199,122,.32)}
+.mp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px;margin:4px 0 18px}
+.mp-item{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;padding:8px 2px;border-radius:14px;text-align:center;color:var(--text,var(--fg));-webkit-tap-highlight-color:transparent}
+.mp-item:active{transform:scale(.96);opacity:.9}
+.mp-ic{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;
+  background:color-mix(in srgb,var(--card-bg,rgba(255,255,255,.06)) 80%,rgba(230,199,122,.12));
+  border:1px solid var(--border,rgba(230,199,122,.22));box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.mp-ic svg{width:24px;height:24px;display:block;color:var(--accent,#e6c77a)}
+.mp-item span{font-size:11.5px;font-weight:700;line-height:1.25;max-width:76px}
+.mp-foot{font-size:11.5px;line-height:1.45;color:var(--text-muted,var(--fg3));text-align:center;
+  border:1px dashed rgba(230,199,122,.28);border-radius:14px;padding:12px 14px;background:rgba(230,199,122,.05);margin:0}
+.mp-foot b{color:var(--text,var(--fg));font-weight:800}
+
+/* coming-soon nested sheet */
+#bmMPaySoon{position:fixed;inset:0;z-index:8700;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.45);padding:0}
+#bmMPaySoon.on{display:flex}
+.mp-soon-panel{width:min(480px,100%);background:var(--card-bg,var(--bg3,#1e1810));color:var(--text,var(--fg));
+  border-radius:22px 22px 0 0;border:1px solid var(--border,rgba(230,199,122,.25));border-bottom:0;
+  padding:16px 16px calc(22px + env(safe-area-inset-bottom,0px));max-height:70vh;overflow:auto}
+.mp-soon-hd{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.mp-soon-hd h2{flex:1;margin:0;font-size:16px;font-weight:800}
+.mp-soon-x{all:unset;box-sizing:border-box;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;cursor:pointer;border:1px solid var(--border);background:rgba(127,127,127,.08)}
+.mp-soon-body{text-align:center;padding:8px 4px 4px}
+.mp-soon-body .mp-big{width:64px;height:64px;margin:0 auto 12px;border-radius:18px;display:grid;place-items:center;
+  background:rgba(230,199,122,.12);border:1px solid rgba(230,199,122,.28)}
+.mp-soon-body .mp-big svg{width:32px;height:32px;color:var(--accent,#e6c77a)}
+.mp-soon-body b{display:block;font-size:16px;margin-bottom:6px;color:var(--text,var(--fg))}
+.mp-soon-body p{margin:0 0 14px;font-size:13.5px;line-height:1.45;color:var(--text-muted,var(--fg3))}
+.mp-soon-body .btn{width:100%;justify-content:center}
+
+/* themes */
+[data-theme=light] .mp-bal{background:linear-gradient(145deg,#fff8e8,#eef6f1 55%,#fff);border-color:rgba(138,101,20,.28)}
+[data-theme=light] .mp-bal .mp-brand b,[data-theme=light] .mp-bal .mp-amt{color:#5c4510}
+[data-theme=light] .mp-ic{background:#fff;border-color:rgba(15,61,46,.14)}
+[data-theme=light] .mp-ic svg{color:#0f3d2e}
+[data-theme=light] .mp-chip{background:rgba(15,61,46,.08);color:#0f3d2e;border-color:rgba(15,61,46,.2)}
+[data-theme=pink] .mp-bal{background:linear-gradient(145deg,#FBF4F3,#f3e4e6 60%,#fff);border-color:rgba(110,74,84,.28)}
+[data-theme=pink] .mp-bal .mp-brand b{color:#6E4A54}
+[data-theme=pink] .mp-bal .mp-amt{color:#2a1c20}
+[data-theme=pink] .mp-ic{background:#fff;border-color:rgba(110,74,84,.18)}
+[data-theme=pink] .mp-ic svg{color:#6E4A54}
+[data-theme=pink] .mp-chip{background:rgba(110,74,84,.1);color:#6E4A54;border-color:rgba(110,74,84,.28)}
+[data-theme=pink] .mp-foot{border-color:rgba(110,74,84,.28);background:rgba(110,74,84,.05)}
+
+/* strip icon on Beranda */
+.bm-dp-qr.mp .bm-mp-mark{width:28px;height:28px;display:block}
+:is([data-theme=light],[data-theme=pink]) .bm-dp-qr.mp svg [fill="#e6c77a"]{fill:#8a6514}
+[data-theme=pink] .bm-dp-qr.mp svg [fill="#e6c77a"]{fill:#6E4A54}
