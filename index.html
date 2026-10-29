@@ -715,8 +715,19 @@ input[type=file]{display:none}
   .v2-splash-stage > *{animation:none;opacity:1;transform:none}
   .v2-splash{transition:opacity .35s}
 }
+/* v85: Poppins SemiBold live wordmark (OFL) — gold/#0F3D2E adaptive */
+@font-face{font-family:"BM Poppins";src:url("fonts/poppins-semibold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
 .brand .tx b.v2-brand-txt{display:none}
-.brand .tx img.v2-brand-wm{display:block;height:22px;width:auto;max-width:150px;margin:2px 0 1px}
+.brand .tx img.v2-brand-wm{display:none} /* kept on disk for share cards; header uses live text */
+/* Beat .brand span{color:var(--fg3);text-transform:uppercase;letter-spacing:.1em} */
+.brand span.bm-wordmark,.bm-wordmark{font-family:"BM Poppins",Poppins,system-ui,sans-serif!important;font-weight:600!important;font-style:normal;font-size:17px;letter-spacing:.01em!important;line-height:1.05;white-space:nowrap;display:block;margin:2px 0 1px;padding:0;max-width:150px;overflow:visible;text-overflow:clip;text-transform:none!important;paint-order:stroke fill;color:#E8C878!important;-webkit-text-stroke:.7px #0F3D2E;text-shadow:1px 1px 0 rgba(15,61,46,.65),0 1px 2px rgba(15,61,46,.35)}
+.bm-wordmark.v2-splash-wm-txt,.v2-splash-wm .bm-wordmark{font-size:clamp(28px,7.2vw,40px)!important;max-width:none;margin:0;text-align:center;-webkit-text-stroke:1px #0F3D2E;text-shadow:2px 2px 0 rgba(15,61,46,.7),0 4px 14px rgba(15,61,46,.28);filter:none}
+.v2-splash-wm.bm-wm-live{display:block;line-height:1.1}
+/* Light / pink: bottle green fill + gold accents (higher specificity than .brand span) */
+:is([data-theme=light],[data-theme=pink]) .brand span.bm-wordmark,
+:is([data-theme=light],[data-theme=pink]) .bm-wordmark{color:#0F3D2E!important;-webkit-text-stroke:.65px #E8C878;text-shadow:1px 1px 0 rgba(232,200,120,.55),0 1px 2px rgba(196,156,64,.35)}
+:is([data-theme=light],[data-theme=pink]) .bm-wordmark.v2-splash-wm-txt,
+:is([data-theme=light],[data-theme=pink]) .v2-splash-wm .bm-wordmark{-webkit-text-stroke:1px #E8C878;text-shadow:2px 2px 0 rgba(232,200,120,.55),0 4px 14px rgba(15,61,46,.12)}
 .hdr .brand{align-items:center}
 
 .v2-flow{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;background:var(--bg)}
@@ -2399,7 +2410,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
     </div>
     <div class="brand">
       <img class="logo" src="icon-192.png" width="34" height="34" alt="" decoding="async">
-      <div class="tx"><img class="v2-brand-wm" src="wordmark-3d-hdr.webp" width="140" height="27" alt="Best Muslim" decoding="async" onerror="this.onerror=null;this.src='wordmark-3d-hdr.png'"><span data-i="brand.sub"></span><div class="hijri" id="hijri"></div></div>
+      <div class="tx"><span class="bm-wordmark v2-brand-wm" role="img" aria-label="Best Muslim">Best Muslim</span><span data-i="brand.sub"></span><div class="hijri" id="hijri"></div></div>
     </div>
     <div class="right">
       <button id="themeBtn" class="iconbtn" type="button" aria-label="Theme">☀</button>
@@ -2856,7 +2867,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
     <button data-p="belanja" type="button"><img class="nav-ic" src="nav/belanja.webp" width="30" height="30" alt="" decoding="async" onerror="this.onerror=null;this.src='nav/belanja.png'"><span data-v="nBelanja"></span></button>
     <button data-p="lainnya" type="button"><img class="nav-ic" src="nav/lainnya.webp" width="30" height="30" alt="" decoding="async" onerror="this.onerror=null;this.src='nav/lainnya.png'"><span data-v="nLainnya"></span></button>
   </nav>
-  <div class="v2-splash" id="v2Splash"><div class="v2-splash-stage" aria-hidden="false"><img class="v2-splash-logo" src="icon-192.png" width="112" height="112" alt="" decoding="async"><picture class="v2-splash-wm"><source type="image/webp" srcset="wordmark-3d-sm.webp"><img src="wordmark-3d-sm.png" width="280" height="55" alt="Best Muslim" decoding="async"></picture><picture class="v2-splash-bsm"><source type="image/webp" srcset="bismillah-3d-sm.webp"><img src="bismillah-3d-sm.png" width="320" height="102" alt="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ" lang="ar" dir="rtl" decoding="async"></picture></div><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
+  <div class="v2-splash" id="v2Splash"><div class="v2-splash-stage" aria-hidden="false"><img class="v2-splash-logo" src="icon-192.png" width="112" height="112" alt="" decoding="async"><span class="v2-splash-wm bm-wm-live"><span class="bm-wordmark v2-splash-wm-txt" role="img" aria-label="Best Muslim">Best Muslim</span></span><picture class="v2-splash-bsm"><source type="image/webp" srcset="bismillah-3d-sm.webp"><img src="bismillah-3d-sm.png" width="320" height="102" alt="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ" lang="ar" dir="rtl" decoding="async"></picture></div><span id="v2SplashTag">Tempat hati bertemu Allah</span><small id="v2SplashSkip">Ketuk untuk lanjut</small></div>
   <div class="v2-flow" id="v2Flow" hidden><div class="v2-flowhd"><button class="btn sm ghost" id="flX" type="button">✕</button><div class="v2-steps" id="flSteps"></div><span class="dim" id="flCount" dir="ltr"></span></div><div class="v2-flowbody" id="flBody"></div><div class="v2-flowft"><button class="btn" id="flPrev" type="button"></button><button class="btn gold" id="flNextB" type="button"></button></div></div>
 
   <!-- Murattal sheet -->
