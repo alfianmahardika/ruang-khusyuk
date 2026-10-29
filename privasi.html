@@ -13,7 +13,7 @@
   h2{font-family:Georgia,serif;font-size:1.2rem;color:var(--gold);margin:28px 0 8px}
   .meta{color:var(--fg2);font-size:.9rem;margin-bottom:22px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:12px 0}
-  .lang{display:flex;gap:8px;margin:12px 0 20px}
+  .lang{display:flex;gap:8px;margin:12px 0 20px;flex-wrap:wrap}
   .lang button{border:1px solid var(--line);background:transparent;color:var(--fg2);border-radius:999px;padding:6px 14px;cursor:pointer;font:600 13px inherit}
   .lang button.on{background:rgba(217,184,106,.18);color:var(--gold2);border-color:rgba(217,184,106,.45)}
   a{color:var(--gold2)} ul{padding-inline-start:1.2em} li{margin:.35em 0}
@@ -25,10 +25,11 @@
 <body>
 <main>
   <h1>Best Muslim</h1>
-  <p class="meta">Kebijakan Privasi / Privacy Policy · Diperbarui 28 Oktober 2026</p>
+  <p class="meta">Kebijakan Privasi / Privacy Policy · Diperbarui 29 Oktober 2026</p>
   <div class="lang" role="tablist">
     <button type="button" class="on" data-l="id" aria-selected="true">Bahasa Indonesia</button>
     <button type="button" data-l="en" aria-selected="false">English</button>
+    <button type="button" data-l="ar" aria-selected="false">العربية</button>
   </div>
 
   <section class="sec on" id="sec-id" lang="id">
@@ -40,27 +41,31 @@
     </div>
     <h2>1. Ringkasan</h2>
     <p>Best Muslim adalah aplikasi ibadah yang mengutamakan kedaulatan data. Kami <strong>tidak menjual data pengguna</strong>, <strong>tidak memasang iklan pihak ketiga</strong>, dan <strong>tidak memakai pelacak analitik/iklan</strong>.</p>
-    <h2>2. Data yang disimpan</h2>
+    <h2>2. Data yang disimpan di perangkat</h2>
     <ul>
-      <li><strong>Penyimpanan lokal saja</strong> (localStorage / penyimpanan perangkat): preferensi bahasa, tema, metode jadwal salat, pilihan suara azan, progres ibadah, catatan lokal, poin Dompet Berkah, dan pengaturan serupa.</li>
-      <li><strong>Lokasi</strong>: dipakai di perangkat untuk menghitung jadwal salat dan arah kiblat. Koordinat dapat disimpan lokal bersama nama tempat. Kami tidak mengunggah lokasi ke server Best Muslim.</li>
-      <li><strong>Izin notifikasi</strong>: hanya diminta ketika Anda mengaktifkan pengingat azan/notifikasi salat — tidak saat pertama membuka aplikasi.</li>
+      <li><strong>localStorage / penyimpanan aplikasi</strong>: bahasa, tema, metode jadwal salat, suara azan, progres ibadah, catatan, poin Dompet, daftar minat Premium/toko/creator, preferensi lain.</li>
+      <li><strong>IndexedDB</strong>: foto Jamaah / Jejak Nur dan aset lokal serupa — tetap di perangkat; tidak diunggah ke server Best Muslim.</li>
+      <li><strong>Lokasi</strong>: dihitung di perangkat untuk jadwal salat &amp; kiblat; dapat disimpan lokal bersama nama tempat.</li>
+      <li><strong>Kamera (opsional)</strong>: pratinjau langsung untuk kompas Kiblat AR; bingkai tidak disimpan atau diunggah.</li>
+      <li><strong>Konten buatan pengguna (UGC)</strong>: unggahan Jamaah, komentar, laporan, dan aplikasi creator disimpan lokal (prototype) kecuali Anda memakai berbagi sistem OS.</li>
+      <li><strong>Rekaman suara hafalan</strong>: diproses di perangkat (model opsional) dan tidak diunggah.</li>
     </ul>
     <h2>3. Jaringan</h2>
     <ul>
-      <li>Fitur inti (jadwal, kiblat, Qur’an offline yang disertakan, alur Khusyuk) dirancang berjalan tanpa akun dan tanpa sinkronisasi cloud wajib.</li>
-      <li>Beberapa fitur opsional (mis. pencarian masjid terdekat) dapat memanggil API peta terbuka (OpenStreetMap/Overpass) dari perangkat Anda; permintaan itu tidak digabung dengan identitas iklan.</li>
-      <li>Tidak ada SDK iklan, tidak ada pixel pelacak, tidak ada penjualan data.</li>
+      <li>Fitur inti dirancang tanpa akun dan tanpa sinkronisasi cloud wajib.</li>
+      <li>Opsional: pencarian kota/masjid via OpenStreetMap/Nominatim/Overpass/Photon dari perangkat Anda.</li>
+      <li><strong>Font web</strong> (Amiri, Manrope, dll.) dapat dimuat dari Google Fonts saat online.</li>
+      <li>Audio murattal opsional dari penyedia pihak ketiga saat Anda menekan putar.</li>
+      <li>Tidak ada SDK iklan, pixel pelacak, atau penjualan data.</li>
     </ul>
-    <h2>4. Notifikasi azan</h2>
-    <p>Pengingat waktu salat dihitung dari lokasi &amp; pengaturan Anda. Pada versi native, pengingat dapat dijadwalkan secara lokal di perangkat (termasuk saat aplikasi ditutup). Suara azan mengikuti pilihan Anda; mode <em>Senyap</em> tidak memutar audio. Tidak ada autoplay audio di luar pengingat yang Anda aktifkan.</p>
-    <h2>5. Anak-anak</h2>
-    <p>Aplikasi bersifat umum / keluarga dan tidak ditujukan untuk mengumpulkan data anak di bawah umur secara terarah.</p>
-    <h2>6. Perubahan</h2>
-    <p>Perubahan kebijakan akan diperbarui di halaman ini beserta tanggal revisi.</p>
-    <h2>7. Hubungi kami</h2>
-    <p>Pertanyaan privasi: <a href="mailto:halo@bestmuslim.app">halo@bestmuslim.app</a><br/>
-    PT East Kedaton Jayaland · Jalan Jenderal Suprapto No. 36, Rogotrunan, Lumajang, Jawa Timur.</p>
+    <h2>4. Notifikasi azan &amp; alarm tepat</h2>
+    <p>Pengingat dihitung lokal. Di Android, aplikasi dapat meminta izin <em>SCHEDULE_EXACT_ALARM</em> agar azan lebih tepat waktu. Jika izin ditolak, pengingat tetap dijadwalkan secara tidak tepat (inexact) dan aplikasi menampilkan edukasi cara mengaktifkannya. Izin baterai tidak terbatas hanya diminta jika Anda memilih langkah “Pastikan adzan tepat waktu” — tidak otomatis saat pertama buka.</p>
+    <h2>5. Hapus data</h2>
+    <p>Di Pengaturan → <strong>Hapus semua data</strong> (juga di halaman Privasi dalam aplikasi): menghapus localStorage, sessionStorage, cache, dan IndexedDB terkait Best Muslim di perangkat ini. Atau hapus data aplikasi / uninstall.</p>
+    <h2>6. Anak-anak</h2>
+    <p>Aplikasi bersifat umum / keluarga dan tidak ditujukan untuk mengumpulkan data anak secara terarah.</p>
+    <h2>7. Perubahan &amp; kontak</h2>
+    <p>Perubahan kebijakan diperbarui di halaman ini beserta tanggal. Pertanyaan: <a href="mailto:halo@bestmuslim.app">halo@bestmuslim.app</a></p>
   </section>
 
   <section class="sec" id="sec-en" lang="en">
@@ -72,27 +77,67 @@
     </div>
     <h2>1. Summary</h2>
     <p>Best Muslim is a worship app built for data sovereignty. We <strong>do not sell user data</strong>, <strong>do not run third-party ads</strong>, and <strong>do not use advertising/analytics trackers</strong>.</p>
-    <h2>2. What we store</h2>
+    <h2>2. On-device data</h2>
     <ul>
-      <li><strong>Local storage only</strong> (localStorage / on-device storage): language, theme, prayer-time method, azan voice, worship progress, local notes, Dompet Berkah points, and similar settings.</li>
-      <li><strong>Location</strong>: used on-device to compute prayer times and qibla. Coordinates may be saved locally with a place name. We do not upload location to a Best Muslim server.</li>
-      <li><strong>Notification permission</strong>: requested only when you enable azan/prayer reminders — never on first open.</li>
+      <li><strong>localStorage / app storage</strong>: language, theme, prayer method, azan voice, worship progress, notes, wallet points, Premium/shop/creator interest lists, and similar preferences.</li>
+      <li><strong>IndexedDB</strong>: Jamaah / Jejak Nur photos and similar local assets — stay on device; not uploaded to Best Muslim servers.</li>
+      <li><strong>Location</strong>: used on-device for prayer times &amp; qibla; may be saved locally with a place name.</li>
+      <li><strong>Camera (optional)</strong>: live preview for the AR Qibla compass; frames are not saved or uploaded.</li>
+      <li><strong>User-generated content (UGC)</strong>: Jamaah posts, comments, reports, and creator applications stay local (prototype) unless you use the OS share sheet.</li>
+      <li><strong>Memorisation audio</strong>: processed on-device (optional model) and never uploaded.</li>
     </ul>
     <h2>3. Network</h2>
     <ul>
-      <li>Core features (schedule, qibla, bundled offline Qur’an, Khusyuk flow) work without an account and without mandatory cloud sync.</li>
-      <li>Optional features (e.g. nearby mosques) may call open map APIs (OpenStreetMap/Overpass) from your device; those requests are not tied to advertising identifiers.</li>
-      <li>No ad SDKs, no tracking pixels, no data sales.</li>
+      <li>Core features work without an account and without mandatory cloud sync.</li>
+      <li>Optional city/mosque lookup via OpenStreetMap/Nominatim/Overpass/Photon from your device.</li>
+      <li><strong>Web fonts</strong> (Amiri, Manrope, etc.) may load from Google Fonts when online.</li>
+      <li>Optional murattal audio from third-party hosts only when you press play.</li>
+      <li>No ad SDKs, tracking pixels, or data sales.</li>
     </ul>
-    <h2>4. Azan notifications</h2>
-    <p>Prayer reminders are computed from your location &amp; settings. In native apps they can be scheduled locally on the device (including when the app is closed). Azan audio follows your chosen voice; <em>Silent</em> plays no audio. There is no autoplay audio outside reminders you enable.</p>
-    <h2>5. Children</h2>
-    <p>The app is general / family-oriented and is not designed to target or collect data from children.</p>
-    <h2>6. Changes</h2>
-    <p>Policy updates will be posted on this page with a revised date.</p>
-    <h2>7. Contact</h2>
-    <p>Privacy questions: <a href="mailto:halo@bestmuslim.app">halo@bestmuslim.app</a><br/>
-    PT East Kedaton Jayaland · Jalan Jenderal Suprapto No. 36, Rogotrunan, Lumajang, East Java, Indonesia.</p>
+    <h2>4. Azan notifications &amp; exact alarms</h2>
+    <p>Reminders are computed locally. On Android the app may request <em>SCHEDULE_EXACT_ALARM</em> for timely azan. If denied, reminders continue on an inexact schedule and the app shows how to enable exact alarms. Unrestricted battery is requested only if you choose “Keep azan on time” — never automatically on first open.</p>
+    <h2>5. Delete data</h2>
+    <p>Settings → <strong>Delete all data</strong> (also on the in-app Privacy page) clears localStorage, sessionStorage, caches, and Best Muslim IndexedDB on this device. Or clear app storage / uninstall.</p>
+    <h2>6. Children</h2>
+    <p>The app is general / family-oriented and is not designed to target or collect children’s data.</p>
+    <h2>7. Changes &amp; contact</h2>
+    <p>Policy updates are posted here with a revised date. Questions: <a href="mailto:halo@bestmuslim.app">halo@bestmuslim.app</a></p>
+  </section>
+
+  <section class="sec" id="sec-ar" lang="ar" dir="rtl">
+    <div class="card">
+      <p><strong>الناشر:</strong> PT East Kedaton Jayaland<br/>
+      <strong>العنوان:</strong> شارع الجنرال سوبرابطو رقم 36، روغوترونان، لوماجانغ، جاوة الشرقية، إندونيسيا<br/>
+      <strong>التواصل:</strong> <a href="mailto:halo@bestmuslim.app">halo@bestmuslim.app</a><br/>
+      <strong>التطبيق:</strong> Best Muslim (ويب وأندرويد/iOS)</p>
+    </div>
+    <h2>1. ملخص</h2>
+    <p>Best Muslim تطبيق عبادة يضع سيادة بياناتك أولاً. <strong>لا نبيع بيانات المستخدمين</strong>، <strong>ولا نعرض إعلانات أطراف ثالثة</strong>، <strong>ولا نستخدم أدوات تتبع إعلانية/تحليلية</strong>.</p>
+    <h2>2. البيانات على الجهاز</h2>
+    <ul>
+      <li><strong>localStorage / تخزين التطبيق</strong>: اللغة، المظهر، طريقة المواقيت، صوت الأذان، تقدم العبادة، الملاحظات، نقاط المحفظة، قوائم الاهتمام ببريميوم/المتجر/المنشئين.</li>
+      <li><strong>IndexedDB</strong>: صور الجماعة / أثر النور وأصول محلية مشابهة — تبقى على الجهاز ولا تُرفع إلى خوادم Best Muslim.</li>
+      <li><strong>الموقع</strong>: يُحسب على الجهاز للمواقيت والقبلة؛ قد يُحفظ محليًا مع اسم المكان.</li>
+      <li><strong>الكاميرا (اختياري)</strong>: معاينة مباشرة لبوصلة القبلة بالواقع المعزز؛ لا تُحفظ الإطارات ولا تُرفع.</li>
+      <li><strong>محتوى المستخدم (UGC)</strong>: منشورات الجماعة والتعليقات والتقارير وطلبات المنشئين محلية (نموذج أولي) إلا إذا استخدمت مشاركة نظام التشغيل.</li>
+      <li><strong>تسجيلات الحفظ</strong>: تُعالج على الجهاز ولا تُرفع.</li>
+    </ul>
+    <h2>3. الشبكة</h2>
+    <ul>
+      <li>الميزات الأساسية بلا حساب وبلا مزامنة سحابية إلزامية.</li>
+      <li>اختياري: بحث المدن/المساجد عبر OpenStreetMap من جهازك.</li>
+      <li><strong>خطوط الويب</strong> قد تُحمَّل من Google Fonts عند الاتصال.</li>
+      <li>صوت التلاوة الاختياري من مزوّدين عند الضغط على تشغيل فقط.</li>
+      <li>لا SDK إعلانات ولا بكسل تتبع ولا بيع بيانات.</li>
+    </ul>
+    <h2>4. تنبيهات الأذان والإنذارات الدقيقة</h2>
+    <p>تُحسب التذكيرات محليًا. على أندرويد قد يطلب التطبيق إذن <em>SCHEDULE_EXACT_ALARM</em>. إذا رُفض، تستمر التذكيرات بجدول غير دقيق مع إرشاد داخل التطبيق. إذن البطارية غير المقيدة يُطلب فقط إذا اخترت «حافظ على دقة الأذان» — وليس تلقائيًا عند أول فتح.</p>
+    <h2>5. حذف البيانات</h2>
+    <p>الإعدادات ← <strong>حذف كل البيانات</strong> يمسح التخزين المحلي وIndexedDB لهذا التطبيق على الجهاز، أو امسح بيانات التطبيق / ألغِ التثبيت.</p>
+    <h2>6. الأطفال</h2>
+    <p>التطبيق عام / عائلي وليس مصممًا لجمع بيانات الأطفال بشكل موجّه.</p>
+    <h2>7. التغييرات والتواصل</h2>
+    <p>تُنشر التحديثات هنا مع تاريخ المراجعة. الأسئلة: <a href="mailto:halo@bestmuslim.app">halo@bestmuslim.app</a></p>
   </section>
 
   <footer>
@@ -103,9 +148,12 @@
 <script>
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.lang button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b?'true':'false');});
-  document.getElementById('sec-id').classList.toggle('on',b.dataset.l==='id');
-  document.getElementById('sec-en').classList.toggle('on',b.dataset.l==='en');
+  ['id','en','ar'].forEach(l=>{
+    const sec=document.getElementById('sec-'+l);
+    if(sec) sec.classList.toggle('on', b.dataset.l===l);
+  });
   document.documentElement.lang=b.dataset.l;
+  document.documentElement.dir=b.dataset.l==='ar'?'rtl':'ltr';
 });
 </script>
 </body>

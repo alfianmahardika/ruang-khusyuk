@@ -1499,8 +1499,9 @@
     const P = storeGet(SK_PROF, {});
     const mine = posts().filter((p) => p.own && !p.hidden);
     const bio = (P.bio || "").slice(0, 150);
-    const shopLab = P.hasShop ? t("shopYours") : t("openShop");
-    const shopAct = P.hasShop ? "shopdash" : "openshop";
+    const storeB = window.bmStoreBuild && window.bmStoreBuild();
+    const shopLab = storeB ? (window.BMStoreGate ? BMStoreGate.tt("minatT") : "Daftar minat") : (P.hasShop ? t("shopYours") : t("openShop"));
+    const shopAct = storeB ? "storeminat" : (P.hasShop ? "shopdash" : "openshop");
     view.innerHTML = `<div class="jn-prof tt">
       <div class="jn-prof-bar">
         <button type="button" class="jn-icon-btn" data-jn="editprof" aria-label="${esc(t("editProf"))}">
@@ -1671,7 +1672,7 @@
     /* Reveal Panel Admin after long-press on menu title area — also via #admin */
     const hid = $("#jnSheetBody .jn-admin-hid");
     const hd = $("#jnSheetT");
-    if (hid && hd) {
+    if (hid && hd && !(window.bmStoreBuild && window.bmStoreBuild())) {
       let tm = null;
       const start = () => {
         tm = setTimeout(() => {
@@ -2106,8 +2107,17 @@
       openOrders();
       return;
     }
+    if (g("[data-jn=storeminat]")) {
+      e.preventDefault();
+      if (window.BMStoreGate) BMStoreGate.showMinatSheet("shopSoon", "buka_toko");
+      return;
+    }
     if (g("[data-jn=openshop]")) {
       e.preventDefault();
+      if (window.bmStoreBuild && window.bmStoreBuild()) {
+        if (window.BMStoreGate) BMStoreGate.showMinatSheet("shopSoon", "buka_toko");
+        return;
+      }
       openShopOnboard();
       return;
     }
@@ -2124,6 +2134,10 @@
     }
     if (g("[data-jn=shopcta]")) {
       e.preventDefault();
+      if (window.bmStoreBuild && window.bmStoreBuild()) {
+        if (window.BMStoreGate) BMStoreGate.showMinatSheet("shopSoon", "buka_toko");
+        return;
+      }
       /* Prototype: mark hasShop and show dashboard */
       const P = storeGet(SK_PROF, defaultProf());
       P.hasShop = true;
@@ -2135,6 +2149,7 @@
     if (g("[data-jn=admin]")) {
       e.preventDefault();
       closeSheet();
+      if (window.bmStoreBuild && window.bmStoreBuild()) return;
       if (window.RKAdmin) RKAdmin.open("queue");
       else if (window.go) window.go("admin");
       return;

@@ -156,7 +156,7 @@ const TL={
  settings:["settings",["Pengaturan","Settings","الإعدادات"],["Bahasa & tema","Language & theme","اللغة والمظهر"]],
  privasi:["privasi",["Privasi","Privacy","الخصوصية"],["Kebijakan data","Data policy","سياسة البيانات"]],
  hafalan:["hafalan",["Hafalan AI","Hafiz AI","الحفظ الذكي"],["Murajaah Qur'an","Qur'an review","مراجعة الحفظ"]],
- jejak-nur:["hafalan",["Jejak Nur","Jejak Nur","أثر النور"],["Feed kebaikan","Goodness feed","خلاصة الخير"]]
+ "jejak-nur":["hafalan",["Jejak Nur","Jejak Nur","أثر النور"],["Feed kebaikan","Goodness feed","خلاصة الخير"]]
 };
 function tile(p,lang){ const m=TL[p]; if(!m) return null; const i={id:0,en:1,ar:2}[lang]||0; return {ic:m[0],lab:m[1][i]||m[1][0],d:m[2][i]||m[2][0]}; }
 function icon(name,size,cls){ ensure(); const b=I[name]; if(!b) return ""; const z=size||48; return `<svg class="k3${cls?" "+cls:""}" viewBox="0 0 64 64" width="${z}" height="${z}" aria-hidden="true" focusable="false" data-k3="${name}">${b}</svg>`; }
@@ -3895,6 +3895,8 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",sta
 })();
 </script>
 
+<script src="bm-store-config.js"></script>
+<script src="bm-store-gate.js"></script>
 <script src="bm-i18n.js" defer></script>
 <script src="bm-lang.js" defer></script>
 <script src="bm-salat-ux.js" defer></script>
@@ -7773,7 +7775,7 @@ const X={
  delB:["Hapus semua data di HP ini","Delete all data on this phone","احذف كل البيانات على هذا الهاتف"],
  conf:["Yakin hapus semua data Best Muslim di HP ini? Progres dan hafalan akan hilang permanen.","Delete all Best Muslim data on this phone? Progress and memorisation will be lost permanently.","هل تريد حذف كل بيانات Best Muslim على هذا الهاتف؟ سيضيع التقدم والحفظ نهائيًا."],
  done:["Data sudah dihapus.","Data deleted.","تم حذف البيانات."],
- upd:["Terakhir diperbarui: 26 Oktober 2026","Last updated: 26 October 2026","آخر تحديث: 26 أكتوبر 2026"],
+ upd:["Terakhir diperbarui: 29 Oktober 2026","Last updated: 29 October 2026","آخر تحديث: 29 أكتوبر 2026"],
  back:["← Pengaturan","← Settings","← الإعدادات"],
  foot:["Privasi","Privacy","الخصوصية"]
 };
@@ -7786,7 +7788,13 @@ const LOCAL=[
  [["Penanda & bacaan terakhir (Qur'an, hadis, sirah), jurnal","Bookmarks & last read (Qur'an, hadith, sirah), journal","العلامات وآخر قراءة، والمذكرات"],"rk_q_bm, rk_q_last, rk_h_bm, rk_h_last, rk_s_last, rk_journal"],
  [["Pengaturan azan, metode & cache masjid","Azan settings, method & mosque cache","إعدادات الأذان والطريقة وذاكرة المساجد"],"rk_azan, rk_pt_*, rk_masjid_cache"],
  [["Input terakhir kalkulator zakat (angka & harga emas)","Last zakat calculator inputs (figures & gold price)","آخر مدخلات حاسبة الزكاة (الأرقام وسعر الذهب)"],"rk_zakat"],
- [["Rekaman suara saat hafalan diproses langsung di HP dan tidak diunggah","Voice recordings during memorisation are processed on the phone and never uploaded","تُعالج التسجيلات الصوتية على الهاتف ولا تُرفع"],""]
+ [["Rekaman suara saat hafalan diproses langsung di HP dan tidak diunggah","Voice recordings during memorisation are processed on the phone and never uploaded","تُعالج التسجيلات الصوتية على الهاتف ولا تُرفع"],""],
+ [["Kamera (opsional) untuk kompas Kiblat AR — pratinjau langsung, tidak disimpan","Camera (optional) for AR Qibla compass — live preview only, not saved","الكاميرا (اختياري) لبوصلة القبلة بالواقع المعزز — معاينة مباشرة دون حفظ"],""],
+ [["Foto Jamaah / Jejak Nur di IndexedDB perangkat (tidak diunggah ke server Best Muslim)","Jamaah / Jejak Nur photos in on-device IndexedDB (not uploaded to Best Muslim servers)","صور الجماعة / أثر النور في IndexedDB على الجهاز (لا تُرفع إلى خوادم Best Muslim)"],"jn_* / IndexedDB"],
+ [["Font web (Amiri, Manrope, dll.) dari Google Fonts saat online","Web fonts (Amiri, Manrope, etc.) from Google Fonts when online","خطوط الويب من Google Fonts عند الاتصال"],""],
+ [["Konten buatan pengguna (UGC) lokal: unggahan Jamaah, komentar, laporan — tetap di perangkat kecuali Anda memakai fitur berbagi sistem","Local UGC: Jamaah posts, comments, reports — stay on device unless you use the system share sheet","محتوى المستخدم محليًا: منشورات الجماعة والتعليقات والتقارير — يبقى على الجهاز"],"rk_jn_*"],
+ [["Jadwal alarm azan tepat (native): izin SCHEDULE_EXACT_ALARM; jika ditolak, pengingat tetap jalan dengan jadwal tidak tepat + edukasi di aplikasi","Exact azan alarms (native): SCHEDULE_EXACT_ALARM; if denied, reminders continue inexactly with in-app education","إنذارات الأذان الدقيقة: SCHEDULE_EXACT_ALARM مع بديل غير دقيق وتعليم داخل التطبيق"],""],
+ [["Minat creator / Premium / toko (daftar minat lokal, bukan pembayaran)","Creator / Premium / shop interest (local interest list, not a payment)","اهتمام المنشئ / بريميوم / المتجر (قائمة اهتمام محلية وليست دفعًا)"],"rk_store_interest_v1, rk_premium_interest, rk_jn_creator_*"]
 ];
 const NET=[
  ["Nominatim (OpenStreetMap)",["Mencari nama kota & mengubah koordinat jadi nama tempat; koordinat dikirim","City search & turning coordinates into a place name; coordinates are sent","البحث عن المدن وتحويل الإحداثيات إلى اسم مكان؛ تُرسل الإحداثيات"]],
@@ -7809,11 +7817,17 @@ function render(){ const el=document.getElementById("pvStack"); if(!el) return;
 async function wipe(){ if(!window.confirm(t(X.conf))) return; const msg=t(X.done);
  try{ localStorage.clear(); }catch(e){} try{ sessionStorage.clear(); }catch(e){}
  try{ if(window.caches){ const ks=await caches.keys(); await Promise.all(ks.map(k=>caches.delete(k))); } }catch(e){}
- try{ if(indexedDB&&indexedDB.databases){ const d=await indexedDB.databases(); d.forEach(x=>x.name&&indexedDB.deleteDatabase(x.name)); } }catch(e){}
+ const known=["bm-jamaah","bm_jamaah","jn-photos","jn_photos","kusyu-quran-v1","kusyu-pustaka-v1","bestmuslim","keyval-store"];
+ try{
+   if(indexedDB&&indexedDB.databases){ const d=await indexedDB.databases(); d.forEach(x=>x.name&&indexedDB.deleteDatabase(x.name)); }
+   else { known.forEach(n=>{ try{ indexedDB.deleteDatabase(n); }catch(e){} }); }
+ }catch(e){ known.forEach(n=>{ try{ indexedDB.deleteDatabase(n); }catch(err){} }); }
  alert(msg); location.hash="#beranda"; location.reload(); }
 function addLinks(){
  const st=document.getElementById("stStack"); if(st&&!document.getElementById("stPriv")){ const c=document.createElement("div"); c.className="card"; c.id="stPriv"; st.appendChild(c); }
  const sp=document.getElementById("stPriv"); if(sp) sp.innerHTML=`<div class="eyebrow">🔒 ${t(X.title)}</div><p class="dim" style="font-size:13px;margin-top:6px">${t(X.prom)}</p><button class="btn sm gold" type="button" data-go="privasi" style="margin-top:8px">${t(X.title)} →</button>`;
+ if(st&&!document.getElementById("stWipe")){ const w=document.createElement("div"); w.className="card"; w.id="stWipe"; st.appendChild(w); }
+ const sw=document.getElementById("stWipe"); if(sw){ sw.innerHTML=`<div class="eyebrow">🗑️ ${t(X.delT)}</div><p class="dim" style="font-size:13px;margin-top:6px">${t(X.delL)}</p><button class="btn sm pv-del" type="button" id="stWipeBtn" style="margin-top:10px">${t(X.delB)}</button>`; const b=document.getElementById("stWipeBtn"); if(b) b.onclick=wipe; }
  const bs=document.querySelector("#page-beranda .stack"); if(bs&&!document.getElementById("pvFoot")){ const f=document.createElement("p"); f.className="pv-foot dim"; f.id="pvFoot"; bs.appendChild(f); }
  const pf=document.getElementById("pvFoot"); if(pf) pf.innerHTML=`🔒 <a data-go="privasi" href="#privasi">${t(X.foot)}</a> · ${esc(t(X.prom))}`; }
 function sync(){ addLinks(); render(); }

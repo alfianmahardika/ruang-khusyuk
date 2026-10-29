@@ -339,6 +339,7 @@
   }
 
   function showPage(tab) {
+    if (window.bmStoreBuild && window.bmStoreBuild()) { if (window.go) window.go("beranda"); return; }
     mountPage();
     if (tab) state.tab = tab;
     document.querySelectorAll(".page").forEach((s) => s.classList.toggle("on", s.id === "page-admin"));
@@ -852,6 +853,7 @@
   }
 
   function injectSettingsVersion() {
+    if (window.bmStoreBuild && window.bmStoreBuild()) return;
     const stack = $("#stStack");
     if (!stack || $("#adVerBtn")) return;
     const btn = document.createElement("button");
@@ -889,6 +891,9 @@
       const inner = window.go;
       window.go = function (p) {
         if (p === "admin" || p === PAGE) {
+          if (window.bmStoreBuild && window.bmStoreBuild()) {
+            return inner.call(this, "beranda");
+          }
           showPage();
           return;
         }
@@ -967,7 +972,7 @@
       injectSettingsVersion();
       if ($("#page-admin")?.classList.contains("on")) render();
     });
-    if (location.hash === "#admin") setTimeout(() => showPage("queue"), 700);
+    if (location.hash === "#admin" && !(window.bmStoreBuild && window.bmStoreBuild())) setTimeout(() => showPage("queue"), 700);
     /* Re-inject version when settings opened */
     const obs = new MutationObserver(() => injectSettingsVersion());
     const st = $("#page-settings");
