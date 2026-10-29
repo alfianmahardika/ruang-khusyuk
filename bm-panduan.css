@@ -1,0 +1,211 @@
+/* Best Muslim v94 — Panduan Pengguna (in-app guide book) */
+#page-panduan.on{display:block;padding:0;max-width:none}
+html:has(#page-panduan.on) #nav,
+body:has(#page-panduan.on) #nav,
+html:has(#page-panduan.on) .hdr,
+body:has(#page-panduan.on) .hdr{display:none!important}
+html:has(#page-panduan.on) #app,
+body:has(#page-panduan.on) #app{padding-top:0!important}
+html:has(#page-panduan.on) #view,
+body:has(#page-panduan.on) #view{padding-bottom:0!important}
+
+.bm-pd-root{
+  position:relative;min-height:100dvh;background:var(--bg,#090c12);
+  color:var(--fg,#f5eee1);display:flex;flex-direction:column;
+  font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+}
+.bm-pd-bar{
+  position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:8px;
+  padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));
+  background:color-mix(in srgb, var(--bg,#090c12) 92%, transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line,rgba(255,255,255,.08));
+}
+.bm-pd-bar .bm-pd-back,.bm-pd-bar .bm-pd-ico{
+  appearance:none;border:0;background:transparent;color:inherit;
+  width:40px;height:40px;border-radius:12px;display:grid;place-items:center;cursor:pointer;
+  font-family:system-ui,-apple-system,sans-serif;font-size:20px;
+}
+.bm-pd-bar .bm-pd-back:hover,.bm-pd-bar .bm-pd-ico:hover{background:var(--glass,rgba(255,255,255,.06))}
+.bm-pd-bar-mid{flex:1;min-width:0;text-align:center}
+.bm-pd-bar-mid b{display:block;font-family:system-ui,-apple-system,sans-serif;font-size:14.5px;font-weight:650;letter-spacing:.01em}
+.bm-pd-bar-mid small{display:block;font-family:system-ui,-apple-system,sans-serif;font-size:11px;opacity:.65;margin-top:1px}
+
+.bm-pd-scroll{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:0 0 48px;scroll-behavior:smooth}
+.bm-pd-cover{
+  margin:18px 18px 8px;padding:28px 22px 24px;border-radius:18px;
+  background:linear-gradient(160deg, color-mix(in srgb, var(--gold,#d9b86a) 22%, #1a140c), #12100c 55%, #0c1018);
+  border:1px solid color-mix(in srgb, var(--gold,#d9b86a) 35%, transparent);
+  box-shadow:0 18px 40px rgba(0,0,0,.35);position:relative;overflow:hidden;
+}
+.bm-pd-cover::after{
+  content:"";position:absolute;inset:auto -20% -40% 30%;height:120%;
+  background:radial-gradient(circle at 30% 30%, rgba(217,184,106,.35), transparent 60%);
+  pointer-events:none;
+}
+.bm-pd-cover .bm-pd-kicker{
+  font-family:system-ui,-apple-system,sans-serif;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold,#d9b86a);opacity:.9;margin:0 0 10px;
+}
+.bm-pd-cover h1{
+  margin:0;font-size:28px;line-height:1.15;font-weight:700;letter-spacing:-.02em;
+  color:#f8f1e4;position:relative;z-index:1;
+}
+.bm-pd-cover .bm-pd-author{
+  margin-top:14px;font-family:system-ui,-apple-system,sans-serif;font-size:13px;opacity:.75;position:relative;z-index:1;
+}
+.bm-pd-cover .bm-pd-lead{
+  margin-top:12px;font-size:15px;line-height:1.55;opacity:.88;max-width:34em;position:relative;z-index:1;
+}
+
+.bm-pd-tools{
+  position:sticky;top:56px;z-index:25;display:flex;gap:8px;padding:10px 14px;
+  background:color-mix(in srgb, var(--bg,#090c12) 94%, transparent);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line,rgba(255,255,255,.06));
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.bm-pd-tools input{
+  flex:1;min-width:0;border-radius:12px;border:1px solid var(--line,rgba(255,255,255,.12));
+  background:var(--card,rgba(255,255,255,.04));color:inherit;padding:10px 12px;font-size:14px;
+}
+.bm-pd-tools button{
+  appearance:none;border:1px solid var(--line,rgba(255,255,255,.12));border-radius:12px;
+  background:var(--card,rgba(255,255,255,.05));color:inherit;padding:0 12px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+}
+.bm-pd-tools button:hover{border-color:var(--gold,#d9b86a)}
+
+.bm-pd-sec{padding:8px 16px 4px}
+.bm-pd-sec-t{
+  text-align:center;font-size:13px;letter-spacing:.04em;color:var(--fg3,rgba(245,238,225,.55));
+  margin:22px 8px 12px;font-style:italic;
+}
+
+.bm-pd-card{
+  margin:0 14px 14px;padding:18px 16px 16px;border-radius:16px;
+  background:var(--card,#16131a);border:1px solid var(--line,rgba(255,255,255,.08));
+  box-shadow:0 8px 24px rgba(0,0,0,.18);position:relative;
+}
+.bm-pd-card-top{display:flex;align-items:flex-start;gap:8px}
+.bm-pd-card-top h3{
+  flex:1;margin:0 0 8px;font-size:17px;line-height:1.3;font-weight:700;
+  font-family:system-ui,-apple-system,sans-serif;letter-spacing:-.01em;
+}
+.bm-pd-card p{margin:0 0 10px;font-size:15.5px;line-height:1.62;color:var(--fg2,#ebe3d4)}
+.bm-pd-card p:last-child{margin-bottom:0}
+.bm-pd-card .bm-pd-go{
+  display:inline-flex;align-items:center;gap:6px;margin-top:6px;
+  font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:650;
+  color:var(--gold,#d9b86a);text-decoration:none;background:transparent;border:0;padding:0;cursor:pointer;
+}
+.bm-pd-shot{
+  display:block;width:100%;margin-top:12px;border-radius:12px;overflow:hidden;
+  border:1px solid var(--line,rgba(255,255,255,.1));background:#000;
+}
+.bm-pd-shot img{display:block;width:100%;height:auto}
+
+.bm-pd-more{
+  appearance:none;border:0;background:transparent;color:inherit;opacity:.55;
+  width:32px;height:32px;border-radius:10px;cursor:pointer;font-size:18px;line-height:1;flex:none;
+}
+.bm-pd-more:hover{opacity:1;background:var(--glass,rgba(255,255,255,.06))}
+
+.bm-pd-menu{
+  position:absolute;right:10px;top:42px;z-index:5;min-width:150px;
+  background:var(--bg2,#1c1822);border:1px solid var(--line,rgba(255,255,255,.12));
+  border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,.4);padding:6px;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.bm-pd-menu button{
+  display:block;width:100%;text-align:left;appearance:none;border:0;background:transparent;
+  color:inherit;padding:10px 12px;border-radius:8px;font-size:13.5px;cursor:pointer;
+}
+.bm-pd-menu button:hover{background:var(--glass,rgba(255,255,255,.06))}
+
+.bm-pd-toc-sheet{
+  position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.55);
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.bm-pd-toc-sheet[hidden]{display:none!important}
+.bm-pd-toc-in{
+  width:min(520px,100%);max-height:78dvh;overflow:auto;border-radius:18px 18px 0 0;
+  background:var(--bg,#0d1018);border:1px solid var(--line,rgba(255,255,255,.1));
+  padding:14px 14px calc(18px + env(safe-area-inset-bottom));
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.bm-pd-toc-in h2{margin:4px 8px 12px;font-size:17px}
+.bm-pd-toc-in a,.bm-pd-toc-in button.bm-pd-toc-a{
+  display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;
+  appearance:none;border:0;background:transparent;color:inherit;text-align:left;
+  padding:12px 10px;border-radius:10px;font-size:14px;cursor:pointer;text-decoration:none;
+}
+.bm-pd-toc-in a:hover,.bm-pd-toc-in button.bm-pd-toc-a:hover{background:var(--glass,rgba(255,255,255,.06))}
+.bm-pd-toc-in .bm-pd-toc-x{float:right;appearance:none;border:0;background:transparent;color:inherit;font-size:20px;cursor:pointer;padding:4px 8px}
+
+.bm-pd-hit mark{background:color-mix(in srgb, var(--gold,#d9b86a) 45%, transparent);color:inherit;border-radius:2px;padding:0 1px}
+.bm-pd-empty{text-align:center;padding:40px 20px;opacity:.7;font-family:system-ui,sans-serif}
+
+/* Entry: Akademi book cover */
+.bm-pd-book{
+  display:flex;gap:14px;align-items:stretch;margin:0 0 14px;padding:0;border:0;width:100%;
+  background:transparent;cursor:pointer;text-align:left;color:inherit;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.bm-pd-book-cover{
+  width:92px;flex:none;aspect-ratio:2/3;border-radius:6px 10px 10px 6px;
+  background:
+    linear-gradient(180deg, #f3e6c8 0 46%, transparent 46%),
+    linear-gradient(160deg, #1a3a2e, #0c1a16 70%, #0a1210);
+  border:1px solid color-mix(in srgb, var(--gold,#d9b86a) 40%, transparent);
+  box-shadow:4px 8px 18px rgba(0,0,0,.35);position:relative;overflow:hidden;
+  padding:10px 8px;display:flex;flex-direction:column;justify-content:flex-start;
+}
+.bm-pd-book-cover b{
+  font-size:10px;line-height:1.25;letter-spacing:.04em;text-transform:uppercase;
+  color:#1a140c;font-weight:800;
+}
+.bm-pd-book-cover span{
+  margin-top:auto;font-size:9px;color:#f3e6c8;opacity:.85;letter-spacing:.08em;text-transform:uppercase;
+}
+.bm-pd-book-meta{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:4px 0}
+.bm-pd-book-meta b{font-size:15px;font-weight:700}
+.bm-pd-book-meta small{font-size:12px;opacity:.7;line-height:1.4}
+
+/* Beranda tip */
+.bm-pd-tip{
+  margin:10px 0 0;padding:12px 12px;border-radius:14px;
+  background:color-mix(in srgb, var(--gold,#d9b86a) 12%, var(--card,#16131a));
+  border:1px solid color-mix(in srgb, var(--gold,#d9b86a) 28%, transparent);
+  display:flex;gap:10px;align-items:flex-start;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.bm-pd-tip b{display:block;font-size:13.5px;margin-bottom:2px}
+.bm-pd-tip span{font-size:12.5px;opacity:.8;line-height:1.4}
+.bm-pd-tip .bm-pd-tip-go{
+  appearance:none;border:0;background:transparent;color:var(--gold,#d9b86a);
+  font-weight:700;font-size:12.5px;padding:0;margin-top:6px;cursor:pointer;
+}
+.bm-pd-tip .bm-pd-tip-x{
+  appearance:none;border:0;background:transparent;color:inherit;opacity:.5;cursor:pointer;
+  font-size:16px;line-height:1;padding:2px 4px;flex:none;
+}
+
+/* Settings / profil row */
+.bm-pd-set-row{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;
+  appearance:none;border:0;background:transparent;color:inherit;cursor:pointer;
+  padding:4px 0;font:inherit;text-align:left;
+}
+.bm-pd-set-row em{opacity:.5;font-style:normal}
+
+/* Theme tweaks */
+[data-theme=light] .bm-pd-cover{
+  background:linear-gradient(160deg,#fff6e4,#f3ebe0 50%,#efe4d4);
+  color:#1a140c;
+}
+[data-theme=light] .bm-pd-cover h1{color:#1a140c}
+[data-theme=light] .bm-pd-card{background:#fff;box-shadow:0 6px 18px rgba(40,30,10,.08)}
+[data-theme=pink] .bm-pd-cover{
+  background:linear-gradient(160deg,#f7dfe3,#e8c4cc 45%,#d4a3b0);
+}
+[data-theme=pink] .bm-pd-cover h1{color:#3a1c24}
+[data-theme=pink] .bm-pd-cover .bm-pd-kicker{color:#8a3d4e}
+[data-theme=pink] .bm-pd-card{background:color-mix(in srgb, #fff 70%, #f3e6e4)}

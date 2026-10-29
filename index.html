@@ -192,6 +192,7 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 <link rel="stylesheet" href="bm-admin89.css">
 <link rel="stylesheet" href="bm-muslim-pay.css">
 <link rel="stylesheet" href="bm-nav88.css">
+<link rel="stylesheet" href="bm-panduan.css">
 </head><body>
 <title>Best Muslim</title>
 <meta name="description" content="Best Muslim — checklist ibadah harian & kehadiran hati dalam salat">
@@ -2684,6 +2685,10 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
       </div>
       <div class="q-sheet" id="qSheet" hidden><div class="q-sheet-in" role="dialog" aria-modal="true"><div id="qSheetBody"></div><button class="btn ghost q-close" type="button" id="qSheetX" data-qt="close"></button></div></div>
     </section>
+    <!-- ================= PANDUAN BEST MUSLIM (v94) ================= -->
+    <section class="page" id="page-panduan" aria-label="Panduan Best Muslim">
+      <div id="bmPanduanRoot" class="bm-pd-root"></div>
+    </section>
     <!-- ================= PRIVASI ================= -->
     <section class="page" id="page-privasi">
       <div class="stack" id="pvStack"></div>
@@ -3655,7 +3660,7 @@ const t=k=>UI[k]?L(UI[k]):k;
 const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:g==="hasan"?`<span class="pill gold">${t("g.hasan")}</span>`:g==="dhaif"?`<span class="pill rose">${t("g.dhaif")}</span>`:`<span class="pill rose">${t("g.khilaf")}</span>`;
 
 /* ---------------- Router ---------------- */
-const PAGES=["beranda","puasa","umrah","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah","kata-quran","jejak-nur","profil","admin"];
+const PAGES=["beranda","puasa","umrah","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah","kata-quran","jejak-nur","profil","admin","panduan"];
 function go(p){ if(p==="mushaf"){ p="quran"; try{ sessionStorage.setItem("rk_nav_mushaf","1"); }catch(e){} }
   else { try{ sessionStorage.removeItem("rk_nav_mushaf"); }catch(e){} }
   if(!PAGES.includes(p)) p="beranda";
@@ -3908,6 +3913,7 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",sta
 <script src="bm-admin89.js" defer></script>
 <script src="bm-muslim-pay.js" defer></script>
 <script src="bm-nav88.js" defer></script>
+<script src="bm-panduan.js" defer></script>
 </body></html>
 <script>
 /* =========================================================
