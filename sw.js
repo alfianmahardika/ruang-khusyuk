@@ -1,7 +1,7 @@
 /* Kusyu service worker — HANYA untuk klik notifikasi "Doa setelah azan".
    Sengaja TANPA handler fetch/cache: tidak mengubah cara aplikasi dimuat atau diperbarui, tidak ada jaringan pihak ketiga.
-   CACHE_VER=bm-sw-v83 — bump so phones re-check SW after deploy (no runtime cache; version is the signal). */
-const CACHE_VER="bm-sw-v83";
+   CACHE_VER=bm-sw-v84 — bump so phones re-check SW after deploy (no runtime cache; version is the signal). */
+const CACHE_VER="bm-sw-v84";
 self.addEventListener("install",()=>self.skipWaiting());
 self.addEventListener("activate",e=>e.waitUntil((async()=>{
   try{ const keys=await caches.keys(); await Promise.all(keys.filter(k=>k!==CACHE_VER).map(k=>caches.delete(k))); }catch(_){}
