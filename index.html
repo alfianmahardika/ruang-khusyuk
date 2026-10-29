@@ -1029,6 +1029,30 @@ input[type=file]{display:none}
   .v2-hero-shine{display:none}
 }
 
+
+/* ===== v87: Qur'an → Hafalan AI promo (Muslim Pro-style) ===== */
+.q-promo{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;margin:10px 0 4px;border-radius:18px;border:1px solid var(--border);background:var(--card-bg);color:var(--text);cursor:pointer;-webkit-tap-highlight-color:transparent;text-align:start;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.q-promo:active{transform:scale(.985)}
+.q-promo:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.q-promo-ic{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:rgba(230,199,122,.16);border:1px solid rgba(230,199,122,.35);color:var(--accent)}
+.q-promo-ic svg{width:34px;height:34px;display:block}
+.q-promo-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;position:relative;z-index:2}
+.q-promo-tx b{font-size:15.5px;font-weight:800;line-height:1.25;color:var(--text);letter-spacing:-.01em}
+.q-promo-tx span{font-size:12.5px;line-height:1.35;color:var(--text-muted)}
+.q-promo-chev{flex:none;color:var(--accent);font-size:18px;opacity:.85;position:relative;z-index:2}
+.q-promo-shine{pointer-events:none;position:absolute;inset:-40% -60%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,0) 46%,rgba(255,248,220,.5) 50%,rgba(255,255,255,0) 54%,transparent 58%);transform:translateX(-30%) rotate(8deg);animation:qPromoShine 5.5s ease-in-out infinite;opacity:.85;mix-blend-mode:soft-light;z-index:1}
+@keyframes qPromoShine{0%,18%{transform:translateX(-45%) rotate(8deg);opacity:0}28%{opacity:.9}55%{transform:translateX(45%) rotate(8deg);opacity:.55}70%,100%{transform:translateX(55%) rotate(8deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.q-promo-shine{animation:none!important;display:none}.q-promo:active{transform:none}}
+[data-theme=gold] .q-promo,[data-theme=dark] .q-promo{background:linear-gradient(135deg,#1c150d 0%,#241a10 100%)}
+[data-theme=light] .q-promo{background:linear-gradient(135deg,#fffdf8 0%,#f5ecd8 100%);box-shadow:0 4px 14px rgba(60,45,20,.08)}
+[data-theme=light] .q-promo-ic{background:rgba(138,101,20,.12);border-color:rgba(138,101,20,.32)}
+[data-theme=light] .q-promo-shine{mix-blend-mode:overlay;opacity:.45}
+[data-theme=pink] .q-promo{background:linear-gradient(135deg,#FBF4F3 0%,#F3E4E6 100%);box-shadow:0 4px 14px rgba(110,74,84,.1)}
+[data-theme=pink] .q-promo-ic{background:rgba(125,79,87,.12);border-color:rgba(125,79,87,.3);color:var(--accent)}
+[data-theme=pink] .q-promo-shine{mix-blend-mode:overlay;opacity:.4}
+[dir=rtl] .q-promo{text-align:right}
+[dir=rtl] .q-promo-chev{transform:scaleX(-1)}
+
 /* ===== Al-Qur'an reader ===== */
 @font-face{font-family:"Amiri Quran";src:url(quran/fonts/AmiriQuran.woff2) format("woff2");font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+25CC}
 .q-hero{text-align:center;padding:6px 0 2px}
@@ -2631,6 +2655,12 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
     <section class="page" id="page-quran">
       <div class="stack" id="qIndex">
         <div class="q-hero"><div class="eyebrow" data-qt="eyebrow"></div><div class="q-hero-ar" lang="ar" dir="rtl">ٱلْقُرْءَانُ ٱلْكَرِيمُ</div><p class="muted" data-qt="lead"></p></div>
+        <button type="button" class="q-promo" id="qHafPromo" data-go="hafalan" aria-labelledby="qHafPromoT qHafPromoS">
+          <span class="q-promo-shine" aria-hidden="true"></span>
+          <span class="q-promo-ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 11c0-1.2.9-2.2 2.1-2.2h11.2c4.2 0 6.7 1.8 6.7 1.8s2.5-1.8 6.7-1.8H40c1.2 0 2.1 1 2.1 2.2v25.2c0 1.2-.9 2.2-2.1 2.2h-5.3c-4.2 0-6.7 1.7-6.7 1.7s-2.5-1.7-6.7-1.7H10.1c-1.2 0-2.1-1-2.1-2.2V11z" fill="currentColor" opacity=".18"/><path d="M24 12.2s-2.2-1.6-6.2-1.6H11.4c-.6 0-1.1.5-1.1 1.1v23.4c0 .6.5 1.1 1.1 1.1H18c3.8 0 6 1.5 6 1.5V12.2z" fill="currentColor" opacity=".55"/><path d="M24 12.2s2.2-1.6 6.2-1.6h6.4c.6 0 1.1.5 1.1 1.1v23.4c0 .6-.5 1.1-1.1 1.1H30c-3.8 0-6 1.5-6 1.5V12.2z" fill="currentColor" opacity=".4"/><path d="M24 12.2v25.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".9"/><path d="M13.2 17.5h6.2M13.2 21.5h6.2M13.2 25.5h4.8M28.6 17.5h6.2M28.6 21.5h6.2M28.6 25.5h4.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".55"/><circle cx="36.2" cy="35.2" r="8" fill="var(--card-bg,#1c150d)" stroke="currentColor" stroke-width="1.7"/><rect x="34.2" y="29.6" width="4" height="7.2" rx="2" fill="currentColor"/><path d="M31.8 34.2a4.4 4.4 0 0 0 8.8 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M36.2 38.6v2.4M33.8 41h4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.5 33.2l1.1 2.4 2.6.3-2 1.8.6 2.5-2.3-1.4-2.3 1.4.6-2.5-2-1.8 2.6-.3z" fill="currentColor"/></svg></span>
+          <span class="q-promo-tx"><b id="qHafPromoT" data-qt="hafPromoT"></b><span id="qHafPromoS" data-qt="hafPromoS"></span></span>
+          <span class="q-promo-chev" aria-hidden="true">›</span>
+        </button>
         <div id="qCont"></div>
         <div id="qChips" class="q-chipsw"></div>
         <div class="q-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="qSearch" type="search" autocomplete="off" data-qph="search"></div>
@@ -5184,6 +5214,7 @@ const AD=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const NUM=n=>lang()==="ar"?AD(n):String(n);
 const T={
  eyebrow:["Kalamullah","The Word of Allah","كلام الله"], lead:["Bacalah dengan tenang. Setiap huruf bernilai kebaikan.","Read calmly. Every letter carries reward.","اقرأ بطمأنينة، فكل حرف بحسنة."],
+ hafPromoT:["Hafal Qur'an lebih cepat","Memorize the Qur'an faster","احفظ القرآن أسرع"], hafPromoS:["Latih hafalanmu bersama AI, dikoreksi langsung","Practice with AI, corrected instantly","درّب حفظك مع الذكاء الاصطناعي، يُصحَّح فورًا"],
  search:["Cari surah, ayat, atau topik (mis. sabar)","Search surah, verse text, or topic","ابحث عن سورة أو آية أو موضوع"],
  gSurah:["Surah","Surah","السور"], gTopic:["Topik","Topic","موضوع"], gAyat:["Ayat","Verses","الآيات"], idxLoad:["Menyiapkan pencarian isi Al-Qur'an…","Preparing Qur'an search…","جارٍ تجهيز البحث…"],
  tSurah:["Surah","Surah","السور"], tJuz:["Juz","Juz","الأجزاء"], tMarks:["Penanda","Bookmarks","العلامات"],
