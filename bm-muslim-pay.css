@@ -1,4 +1,4 @@
-/* Muslim Pay — Best Muslim original (GoPay-like one-tap feel, no brand assets) */
+/* BestPay — Best Muslim original (GoPay-like one-tap feel, no brand assets) */
 #bmMPay{position:fixed;inset:0;z-index:8600;display:none;flex-direction:column;background:var(--bg,#14110c);color:var(--text,var(--fg,#f5ecd8));overflow:hidden}
 #bmMPay.on{display:flex}
 .mp-hd{display:flex;align-items:center;gap:8px;padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px;border-bottom:1px solid var(--border,rgba(230,199,122,.2));background:color-mix(in srgb,var(--card-bg,rgba(30,24,16,.96)) 92%,transparent);flex:none}

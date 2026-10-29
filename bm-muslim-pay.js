@@ -1,4 +1,4 @@
-/*! Muslim Pay — Best Muslim original mockup. No network payments. */
+/*! BestPay — Best Muslim original mockup. No network payments. */
 (function () {
   "use strict";
   const store = window.store || {
@@ -14,8 +14,8 @@
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const T = {
-    title: ["Muslim Pay", "Muslim Pay", "مسلم باي"],
-    balLab: ["Saldo Muslim Pay", "Muslim Pay balance", "رصيد مسلم باي"],
+    title: ["BestPay by Best Muslim", "BestPay by Best Muslim", "BestPay by Best Muslim"],
+    balLab: ["Saldo BestPay", "BestPay balance", "رصيد BestPay"],
     soon: ["Segera hadir", "Coming soon", "قريبًا"],
     soonSub: ["Belum ada saldo atau transaksi sungguhan.", "No real balance or transactions yet.", "لا رصيد ولا معاملات حقيقية بعد."],
     foot: ["Tanpa riba · Tanpa PayLater · Diproses mitra berizin Bank Indonesia", "No riba · No PayLater · Processed by BI-licensed partners", "بلا ربا · بلا PayLater · عبر شركاء مرخّصين من بنك إندونيسيا"],
@@ -32,7 +32,7 @@
     toko: ["Toko Berkah", "Blessed Shop", "متجر البركة"],
     riwayat: ["Riwayat", "History", "السجل"],
     soonBody: ["Fitur ini sedang disiapkan bersama mitra berizin. Tidak ada pembayaran atau data yang dikirim sekarang.", "This feature is being prepared with licensed partners. No payment or data is sent now.", "هذه الميزة قيد الإعداد مع شركاء مرخّصين. لا يُرسل دفع أو بيانات الآن."],
-    strip: ["Muslim Pay", "Muslim Pay", "مسلم باي"]
+    strip: ["BestPay", "BestPay", "BestPay"]
   };
   const tt = (k) => (T[k] && T[k][Li()]) || (T[k] && T[k][0]) || k;
 

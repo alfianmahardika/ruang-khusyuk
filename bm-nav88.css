@@ -91,9 +91,9 @@
 .bm-search-res .dim{padding:12px;text-align:center;color:var(--text-muted)}
 
 /* Jamaah FAB bottom-right (X-style) + Pesan */
-#page-jejak-nur .jn-fab{position:fixed;right:16px;bottom:calc(var(--nav-h,64px) + 18px);left:auto;margin:0;justify-content:flex-end;z-index:7;pointer-events:none}
-#page-jejak-nur .jn-fab button{pointer-events:auto;width:56px;height:56px;border-radius:50%;padding:0;font-size:28px;line-height:1;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.35)}
-#page-jejak-nur .jn-fab button .jn-fab-lab{display:none}
+#page-jejak-nur .jn-fab{position:fixed;right:16px;bottom:calc(var(--nav-h,64px) + 88px + env(safe-area-inset-bottom,0px));left:auto;margin:0;justify-content:flex-end;z-index:8;pointer-events:none;width:auto}
+#page-jejak-nur .jn-fab button{pointer-events:auto;width:56px;height:56px;min-width:56px;max-width:56px;border-radius:50%;padding:0;font-size:28px;line-height:1;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.35);gap:0}
+#page-jejak-nur .jn-fab button .jn-fab-lab{display:none!important}
 .jn-top .jn-msg{border:0;background:transparent;color:var(--accent);font-size:20px;cursor:pointer;padding:6px;line-height:1;position:relative}
 .jn-top .jn-msg em{position:absolute;top:2px;right:0;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#c04545;color:#fff;font-size:9px;font-style:normal;font-weight:800;display:grid;place-items:center}
 

@@ -1,4 +1,4 @@
-/*! Best Muslim v94 — Panduan Pengguna (in-app guide book).
+/*! Best Muslim v95 — Panduan Pengguna (in-app guide book).
  * Inspired by a “library book” reading UX; original BM theme (dark/light/Dusty Pink).
  * Body: id + en. Arabic UI chrome translated; ar body falls back to id (no MT of religious text).
  */
@@ -172,8 +172,8 @@
           id: "dompet",
           title: { id: "Dompet poin / Poin Berkah", en: "Points wallet" },
           body: {
-            id: "Dompet menampilkan Poin Berkah lokal di perangkat (bukan uang). Klaim poin dari aktivitas ibadah yang tersedia. Di build toko, fitur bayar Muslim Pay disembunyikan.",
-            en: "The wallet shows on-device Poin Berkah (not money). Claim points from available worship actions. In the store build, Muslim Pay checkout is hidden."
+            id: "Dompet menampilkan Poin Berkah lokal di perangkat (bukan uang). Klaim poin dari aktivitas ibadah yang tersedia. Di build toko, fitur bayar BestPay disembunyikan.",
+            en: "The wallet shows on-device Poin Berkah (not money). Claim points from available worship actions. In the store build, BestPay checkout is hidden."
           }
         }
       ]
@@ -264,6 +264,26 @@
           shot: "panduan/shots/quran.jpg"
         },
         {
+          id: "mode-mushaf",
+          title: { id: "Mode Mushaf", en: "Mushaf mode" },
+          body: {
+            id: "Mode Mushaf menampilkan Al-Qur'an seperti lembar mushaf Madinah (604 halaman), bukan daftar ayat panjang. Cara buka: buka bacaan, lalu ketuk ikon buku di bilah atas (di samping Aa) — atau di Aa → Tata letak → Mushaf. Geser kiri/kanan untuk ganti halaman. Tab Halaman di indeks juga membuka halaman langsung.",
+            en: "Mushaf mode shows the Qur’an like Madinah mushaf pages (604 pages), not a long verse list. How: open a reading, then tap the book icon in the top bar (beside Aa) — or Aa → Layout → Mushaf. Swipe left/right to change pages. The Pages tab in the index also opens a page directly."
+          },
+          go: "mushaf",
+          shot: "panduan/shots/mushaf.jpg"
+        },
+        {
+          id: "warna-tajwid",
+          title: { id: "Warna Tajwid", en: "Tajweed colours" },
+          body: {
+            id: "Warna tajwid (gaya mushaf Madinah) membantu mengenali hukum bacaan. Aktifkan lewat Aa → Warna tajwid: Mushaf saja / Mushaf + per ayat / Mati — atau tombol Warna tajwid di bawah halaman mushaf. Keterangan lengkap: ⓘ Keterangan warna. Legenda (tema gelap): Merah muda tajam = Mad lazim 6 harakat · Pink = Mad wajib/jaiz 4–5 · Oranye = Mad 2/4/6 · Kuning emas = Mad 2 harakat · Hijau = Ghunnah · ikhfa' · iqlab · Abu-abu = Idgham · tidak dibaca · Biru langit = Qalqalah. Warna hanyalah alat bantu; tetap belajar tajwid dengan guru (talaqqi).",
+            en: "Tajweed colours (Madinah mushaf style) help spot reading rules. Turn on via Aa → Tajweed colours: Mushaf only / Mushaf + by verse / Off — or the Tajweed colours button under a mushaf page. Full guide: ⓘ Colour guide. Legend (dark theme): Bright red-pink = Necessary madd · 6 · Pink = Madd 4–5 · Orange = Madd 2/4/6 · Gold = Madd · 2 · Green = Ghunnah · ikhfa · iqlab · Grey = Idgham · not pronounced · Sky blue = Qalqalah. Colours are only an aid; learn tajweed with a teacher (talaqqi)."
+          },
+          go: "mushaf",
+          shot: "panduan/shots/tajwid.jpg"
+        },
+        {
           id: "lanjut",
           title: { id: "Lanjutkan membaca & target tilawah", en: "Continue reading & tilawah target" },
           body: {
@@ -337,8 +357,18 @@
           id: "feed",
           title: { id: "Feed kebaikan", en: "Goodness feed" },
           body: {
-            id: "Tab Jamaah membuka Jejak Nur: unggahan refleksi/kebaikan. Reaksi (Jazakallah, Aamiin, Doakan), komentar, simpan, dan bagikan tersedia. Konten prototipe tersimpan di perangkat.",
-            en: "The Jamaah tab opens Jejak Nur: reflection/goodness posts. Reactions (Jazakallah, Aameen, Pray), comments, save, and share are available. Prototype content stays on-device."
+            id: "Tab Jamaah membuka Jejak Nur: unggahan refleksi/kebaikan. Kreator terverifikasi bisa memasang hingga 10 foto per unggahan (carousel geser, titik halaman, penghitung 1/N). Reaksi, komentar, simpan, bagikan, dan Dukung dakwah (segera hadir) tersedia. Konten prototipe tersimpan di perangkat (IndexedDB).",
+            en: "The Jamaah tab opens Jejak Nur: reflection/goodness posts. Verified creators can attach up to 10 photos per post (swipeable carousel, page dots, 1/N counter). Reactions, comments, save, share, and Support dawah (coming soon) are available. Prototype content stays on-device (IndexedDB)."
+          },
+          go: "jejak-nur",
+          shot: "panduan/shots/jamaah.jpg"
+        },
+        {
+          id: "carousel",
+          title: { id: "Carousel foto", en: "Photo carousel" },
+          body: {
+            id: "Pada unggahan berfoto: geser kiri/kanan antar foto, lihat 1/N di pojok kanan atas dan titik di bawah gambar. Di sisi kanan: ikuti, suka, komentar, simpan, bagikan (Kirim ke), plus Dukung dakwah. Di bawah: nama kreator, Foto · 1–N, caption, dan kolom Tambahkan komentar.",
+            en: "On photo posts: swipe left/right between photos, see 1/N top-right and dots under the image. On the right: follow, like, comment, save, share (Send to), plus Support dawah. Below: creator name, Photo · 1–N, caption, and Add a comment."
           },
           go: "jejak-nur",
           shot: "panduan/shots/jamaah.jpg"
@@ -370,7 +400,7 @@
     },
     {
       id: "toko",
-      title: { id: "Toko Berkah & Muslim Pay", en: "Toko Berkah & Muslim Pay" },
+      title: { id: "Toko Berkah & BestPay", en: "Toko Berkah & BestPay" },
       cards: [
         {
           id: "toko1",
@@ -381,8 +411,8 @@
                 en: "In the store build, checkout is hidden. You can join an interest list so we know you’re waiting — no real transactions."
               }
             : {
-                id: "Di web saat ini, Toko Berkah & Muslim Pay ditampilkan sebagai segera hadir / alur prototipe. Belum ada pembayaran sungguhan yang wajib. Pantau pembaruan di aplikasi.",
-                en: "On web today, Toko Berkah & Muslim Pay appear as coming soon / prototype flows. There is no required real checkout yet. Watch for app updates."
+                id: "Di web saat ini, Toko Berkah & BestPay ditampilkan sebagai segera hadir / alur prototipe. Belum ada pembayaran sungguhan yang wajib. Pantau pembaruan di aplikasi.",
+                en: "On web today, Toko Berkah & BestPay appear as coming soon / prototype flows. There is no required real checkout yet. Watch for app updates."
               },
           go: "belanja"
         }
@@ -485,8 +515,8 @@
           id: "about",
           title: { id: "Penerbit & kontak", en: "Publisher & contact" },
           body: {
-            id: "Best Muslim diterbitkan oleh PT East Kedaton Jayaland. Saran & pertanyaan: halo@bestmuslim.app · https://bestmuslim.app. Panduan ini diperbarui seiring fitur di aplikasi (v94).",
-            en: "Best Muslim is published by PT East Kedaton Jayaland. Feedback: halo@bestmuslim.app · https://bestmuslim.app. This guide tracks features in the app (v94)."
+            id: "Best Muslim diterbitkan oleh PT East Kedaton Jayaland. Saran & pertanyaan: halo@bestmuslim.app · https://bestmuslim.app. Panduan ini diperbarui seiring fitur di aplikasi (v95).",
+            en: "Best Muslim is published by PT East Kedaton Jayaland. Feedback: halo@bestmuslim.app · https://bestmuslim.app. This guide tracks features in the app (v95)."
           }
         }
       ]
@@ -548,7 +578,7 @@
       '<div class="bm-pd-scroll" id="bmPdScroll">' +
       (arNote ? '<p class="bm-pd-sec-t" style="font-style:normal;opacity:.8">' + esc(arNote) + "</p>" : "") +
       '<div class="bm-pd-cover" id="bmPdCover">' +
-      '<div class="bm-pd-kicker">GUIDE · v94</div>' +
+      '<div class="bm-pd-kicker">GUIDE · v95</div>' +
       "<h1>" +
       esc(LB(UI.title)) +
       "</h1>" +

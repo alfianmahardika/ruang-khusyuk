@@ -7,6 +7,8 @@
   const SK_PROF = "rk_jn_prof_v1";
   const SK_SEED = "rk_jn_seed_v1";
   const SK_SEED2 = "rk_jn_seed_v2";
+  const SK_CAROUSEL_SEED = "rk_jn_carousel_seed_v1";
+  const MAX_IMGS = 10;
   const SK_CREATORS = "rk_jn_creators_v1";
   const SK_APPS = "rk_jn_creator_apps_v1";
   const SK_COMMENTS = "rk_jn_comments_v1";
@@ -38,6 +40,25 @@
       tPray: "Minta Didoakan",
       tPrayS: "Mohon doa sahabat",
       addImg: "Tambah foto",
+      addImgs: "Tambah foto (maks. 10)",
+      imgMax: "Maksimal 10 foto per unggahan",
+      imgCount: "{n} foto",
+      carPrev: "Foto sebelumnya",
+      carNext: "Foto berikutnya",
+      suka: "Suka",
+      komentar: "Komentar",
+      ikuti: "Ikuti",
+      fotoTag: "Foto",
+      fotoMeta: "Foto · {a}-{b}",
+      addCmtPh: "Tambahkan komentar…",
+      kirimKe: "Kirim ke",
+      shareWa: "WhatsApp",
+      shareCopy: "Salin tautan",
+      shareDl: "Unduh foto",
+      dukung: "Dukung dakwah",
+      dukungT: "Segera hadir",
+      dukungLead: "Infak untuk kreator terverifikasi lewat mitra berizin akan segera hadir. Bukan koin, hadiah, atau papan peringkat — hanya dukungan dakwah yang aman dan sesuai syariat.",
+      dukungOk: "Mengerti",
       rmImg: "Hapus",
       sisip: "Sisipkan ayat/hadis",
       pickQ: "Al-Qur'an",
@@ -199,6 +220,25 @@
       tPray: "Ask for Du'a",
       tPrayS: "Request prayers from friends",
       addImg: "Add photo",
+      addImgs: "Add photos (max 10)",
+      imgMax: "Maximum 10 photos per post",
+      imgCount: "{n} photos",
+      carPrev: "Previous photo",
+      carNext: "Next photo",
+      suka: "Like",
+      komentar: "Comments",
+      ikuti: "Follow",
+      fotoTag: "Photo",
+      fotoMeta: "Photo · {a}-{b}",
+      addCmtPh: "Add a comment…",
+      kirimKe: "Send to",
+      shareWa: "WhatsApp",
+      shareCopy: "Copy link",
+      shareDl: "Download photo",
+      dukung: "Support dawah",
+      dukungT: "Coming soon",
+      dukungLead: "Infaq for verified creators via a licensed partner is coming soon. Not coins, gifts, or leaderboards — only safe, sharia-aligned dawah support.",
+      dukungOk: "Got it",
       rmImg: "Remove",
       sisip: "Insert ayah/hadith",
       pickQ: "Qur'an",
@@ -360,6 +400,25 @@
       tPray: "اطلب الدعاء",
       tPrayS: "اطلب دعاء الأصدقاء",
       addImg: "أضف صورة",
+      addImgs: "أضف صورًا (حد أقصى 10)",
+      imgMax: "حد أقصى 10 صور لكل منشور",
+      imgCount: "{n} صور",
+      carPrev: "الصورة السابقة",
+      carNext: "الصورة التالية",
+      suka: "إعجاب",
+      komentar: "تعليقات",
+      ikuti: "متابعة",
+      fotoTag: "صورة",
+      fotoMeta: "صورة · {a}-{b}",
+      addCmtPh: "أضف تعليقًا…",
+      kirimKe: "إرسال إلى",
+      shareWa: "واتساب",
+      shareCopy: "نسخ الرابط",
+      shareDl: "تنزيل الصورة",
+      dukung: "ادعم الدعوة",
+      dukungT: "قريبًا",
+      dukungLead: "التبرع للمنشئين الموثّقين عبر شريك مرخّص قادم قريبًا. لا عملات ولا هدايا ولا لوحات صدارة — دعم دعوي آمن فقط.",
+      dukungOk: "حسنًا",
       rmImg: "حذف",
       sisip: "أدرج آية/حديثًا",
       pickQ: "القرآن",
@@ -824,12 +883,18 @@
     }
     return null;
   }
+  function postImgKeys(p) {
+    if (!p) return [];
+    if (Array.isArray(p.imgKeys) && p.imgKeys.length) return p.imgKeys.filter(Boolean);
+    const k = p.imgKey || (p.hasImg || (p.img && String(p.img).slice(0, 5) === "data:") ? p.id : null);
+    return k ? [k] : [];
+  }
   function postHasImg(p) {
-    return !!(p && (p.hasImg || p.imgKey || (p.img && String(p.img).slice(0, 5) === "data:")));
+    return postImgKeys(p).length > 0 || !!(p && p.img && String(p.img).slice(0, 5) === "data:");
   }
   function postImgKey(p) {
-    if (!p) return null;
-    return p.imgKey || (postHasImg(p) ? p.id : null);
+    const keys = postImgKeys(p);
+    return keys[0] || null;
   }
   /** Migrate legacy inline base64 img → IDB; strip from LS posts to free quota */
   async function migrateInlineImages() {
@@ -1073,6 +1138,63 @@
       if (changed) storeSet(SK_PROF, P);
     }
     seedOwnDemo();
+    seedCarouselDemo();
+  }
+
+  function seedCarouselDemo() {
+    if (storeGet(SK_CAROUSEL_SEED, false)) return;
+    const list = storeGet(SK_POSTS, SEED.slice()) || [];
+    if (list.some((x) => x && x.id === "s_car1")) {
+      storeSet(SK_CAROUSEL_SEED, true);
+      return;
+    }
+    const palette = [
+      ["#0F3D2E", "#c9a24a", "1 · Masjid"],
+      ["#1a2744", "#7eb8ff", "2 · Tilawah"],
+      ["#6E4A54", "#F3E4E6", "3 · Jamaah"],
+      ["#2a1f12", "#e6c77a", "4 · Doa"]
+    ];
+    const keys = [];
+    palette.forEach((c, i) => {
+      const data = makeDemoThumb(c[0], c[1], c[2]);
+      const key = "s_car1_" + i;
+      if (data) {
+        keys.push(key);
+        savePostImage(key, data).catch(function () {});
+      }
+    });
+    if (keys.length) {
+      list.unshift({
+        id: "s_car1",
+        type: "pencapaian",
+        author: "Yayasan Cahaya Ummah",
+        handle: "cahayaummah",
+        av: "CU",
+        creatorType: "lembaga",
+        verified: true,
+        age: "Baru",
+        text: {
+          id: "Cuplikan program tilawah & silaturahim jamaah — geser untuk melihat rangkaian foto. Konten contoh lokal.",
+          en: "A glimpse of tilawah & jamaah gathering — swipe through the photo set. Local sample content.",
+          ar: "لمحة من التلاوة واجتماع الجماعة — مرّر بين الصور. محتوى تجريبي محلي."
+        },
+        hasImg: true,
+        imgKey: keys[0],
+        imgKeys: keys,
+        counts: { j: 50, a: 12, d: 8, sv: 12, sh: 7 },
+        pending: false,
+        own: false,
+        comments: [
+          { id: "c_car1", author: "Hamba Allah", handle: "hambaallah", text: "Masyaallah, barakallah.", at: Date.now() - 3600000 }
+        ]
+      });
+      storeSet(SK_POSTS, list);
+      storeSet("rk_jn_cmt_seed_v1", false);
+      try {
+        seedCommentsFromPosts();
+      } catch (e) {}
+    }
+    storeSet(SK_CAROUSEL_SEED, true);
   }
 
   function slugHandle(name) {
@@ -1223,7 +1345,7 @@
           <button type="button" data-jn-tab="prof" data-jn-i="tabMine"></button>
         </div>
         <div id="jnView"></div>
-        <div class="jn-fab"><button type="button" data-jn="compose" aria-label="Compose"><span aria-hidden="true">+</span><span class="jn-fab-lab" data-jn-i="compose"></span></button></div>
+        <div class="jn-fab"><button type="button" data-jn="compose" aria-label="Compose" title="Compose"><span aria-hidden="true">+</span></button></div>
       </div>
       <div class="jn-sheet" id="jnSheet" hidden>
         <div class="jn-sheet-in" role="dialog" aria-modal="true" aria-labelledby="jnSheetT">
@@ -1297,7 +1419,7 @@
     const aria = verified ? t("fabAria") : t("fabApplyAria");
     const act = verified ? "compose" : "apply";
     const ic = verified ? "+" : "✦";
-    fab.innerHTML = `<button type="button" data-jn="${act}" class="${verified ? "" : "jn-fab-apply"}" aria-label="${esc(aria)}"><span aria-hidden="true">${ic}</span><span class="jn-fab-lab">${esc(label)}</span></button>`;
+    fab.innerHTML = `<button type="button" data-jn="${act}" class="${verified ? "" : "jn-fab-apply"}" aria-label="${esc(aria)}" title="${esc(aria)}"><span aria-hidden="true">${ic}</span></button>`;
   }
 
   function patchPages() {
@@ -1363,7 +1485,7 @@
   const state = {
     tab: "feed",
     edit: null,
-    compose: { type: "refleksi", text: "", img: null, dalil: null },
+    compose: { type: "refleksi", text: "", img: null, imgs: [], dalil: null },
     picker: { mode: "q" }
   };
 
@@ -1412,36 +1534,172 @@
     </div>`;
   }
 
+  function mediaHtml(p) {
+    /* Always build stage track; single photo still uses photo-mode chrome */
+    const keys = postImgKeys(p);
+    if (!keys.length) return "";
+    const n = keys.length;
+    const slides = keys
+      .map(
+        (k, i) =>
+          `<div class="jn-car-slide${i === 0 ? " on" : ""}" data-i="${i}"><img data-jn-img="${esc(k)}" alt="" class="jn-ig-img"><div class="jn-ig-ph" aria-hidden="true"></div></div>`
+      )
+      .join("");
+    const dots =
+      n > 1
+        ? `<div class="jn-car-dots">${keys
+            .map(
+              (k, i) =>
+                `<button type="button" class="jn-car-dot${i === 0 ? " on" : ""}" data-jn-car-dot="${i}" aria-label="${i + 1}"></button>`
+            )
+            .join("")}</div>`
+        : "";
+    const count =
+      n > 1 ? `<div class="jn-car-count"><span data-jn-car-n>1</span> / ${n}</div>` : "";
+    return `<div class="jn-photo-stage jn-car" data-jn-car="${esc(p.id)}" data-n="${n}" data-i="0">
+      <div class="jn-car-track">${slides}</div>
+      ${count}
+      ${dots}
+    </div>`;
+  }
+  function carGo(root, diOrIndex, absolute) {
+    if (!root) return;
+    const n = +root.dataset.n || 1;
+    let i = absolute ? +diOrIndex : (+root.dataset.i || 0) + +diOrIndex;
+    if (i < 0) i = n - 1;
+    if (i >= n) i = 0;
+    root.dataset.i = String(i);
+    root.querySelectorAll(".jn-car-slide").forEach((s, idx) => s.classList.toggle("on", idx === i));
+    root.querySelectorAll(".jn-car-dot").forEach((s, idx) => s.classList.toggle("on", idx === i));
+    const cnt = root.querySelector("[data-jn-car-n]");
+    if (cnt) cnt.textContent = String(i + 1);
+  }
+  function bindCarousels(host) {
+    const root = host || document;
+    root.querySelectorAll("[data-jn-car]").forEach((el) => {
+      if (el._carBound) return;
+      el._carBound = 1;
+      let x0 = null;
+      el.addEventListener(
+        "touchstart",
+        (e) => {
+          if (e.touches.length === 1) x0 = e.touches[0].clientX;
+        },
+        { passive: true }
+      );
+      el.addEventListener(
+        "touchend",
+        (e) => {
+          if (x0 == null) return;
+          const dx = e.changedTouches[0].clientX - x0;
+          x0 = null;
+          if (Math.abs(dx) > 40) carGo(el, dx < 0 ? 1 : -1);
+        },
+        { passive: true }
+      );
+      let dx0 = null;
+      el.addEventListener("pointerdown", (e) => {
+        if (e.pointerType === "touch") return;
+        if (e.target.closest("button,a,input")) return;
+        dx0 = e.clientX;
+        try {
+          el.setPointerCapture(e.pointerId);
+        } catch (err) {}
+      });
+      el.addEventListener("pointerup", (e) => {
+        if (dx0 == null) return;
+        const dx = e.clientX - dx0;
+        dx0 = null;
+        if (Math.abs(dx) > 40) carGo(el, dx < 0 ? 1 : -1);
+      });
+    });
+  }
+  function railHtml(p, R) {
+    const my = R[p.id] || {};
+    const counts = Object.assign({ j: 0, a: 0, d: 0, sv: 0, sh: 0 }, p.counts || {});
+    const saved = (storeGet(SK_SAVED, []) || []).includes(p.id);
+    const cmtN = commentsFor(p.id).length;
+    const likeN = counts.j + (my.j ? 1 : 0);
+    const svN = counts.sv + (saved ? 1 : 0);
+    const shN = counts.sh || 0;
+    const avInner = p.av || initials(p.author);
+    const storeB = window.bmStoreBuild && window.bmStoreBuild();
+    const dukung = storeB
+      ? ""
+      : `<button type="button" class="jn-rail-dukung" data-jn-dukung="1" aria-label="${esc(t("dukung"))}"><span>✦</span><small>${esc(t("dukung"))}</small></button>`;
+    return `<aside class="jn-rail" aria-label="Actions">
+      <button type="button" class="jn-rail-av" data-jn-ikuti="${esc(p.handle || "")}" aria-label="${esc(t("ikuti"))}">
+        <span class="jn-rail-av-circle">${esc(avInner)}</span>
+        <em class="jn-rail-plus" aria-hidden="true">+</em>
+      </button>
+      <button type="button" class="jn-rail-btn ${my.j ? "on" : ""}" data-jn-react="j" aria-label="${esc(t("suka"))}">
+        <span class="jn-rail-ic" aria-hidden="true">♥</span><small>${likeN}</small>
+      </button>
+      <button type="button" class="jn-rail-btn" data-jn-cmt-open="${esc(p.id)}" aria-label="${esc(t("komentar"))}">
+        <span class="jn-rail-ic" aria-hidden="true">💬</span><small>${cmtN}</small>
+      </button>
+      <button type="button" class="jn-rail-btn ${saved ? "on" : ""}" data-jn-save="1" aria-label="${esc(t("savePost"))}">
+        <span class="jn-rail-ic" aria-hidden="true">🔖</span><small>${svN}</small>
+      </button>
+      <button type="button" class="jn-rail-btn" data-jn-share="1" aria-label="${esc(t("sharePost"))}">
+        <span class="jn-rail-ic" aria-hidden="true">↗</span><small>${shN}</small>
+      </button>
+      ${dukung}
+    </aside>`;
+  }
+  function photoMetaHtml(p) {
+    const keys = postImgKeys(p);
+    const n = keys.length || 1;
+    const verified = !!(p.verified || (p.handle && isVerifiedCreator(p.handle)) || (p.own && isVerifiedCreator()));
+    const meta = t("fotoMeta").replace("{a}", "1").replace("{b}", String(n));
+    const body = L3(p.text);
+    return `<div class="jn-photo-meta">
+      <div class="jn-photo-who"><b>${esc(p.author || "Hamba Allah")}</b>${verified ? verifiedBadgeHtml(15) : ""} <span class="jn-photo-tag">📷 ${esc(meta)}</span></div>
+      ${captionHtml(body, p.id)}
+      ${
+        p.dalil
+          ? `<div class="jn-dalil jn-photo-dalil"><div class="ar" dir="rtl" lang="ar">${esc(p.dalil.ar)}</div><div class="mn">${esc(L3(p.dalil.mn))}</div><div class="lb">${esc(p.dalil.ref)}</div></div>`
+          : ""
+      }
+      ${p.pending ? `<div class="jn-pending">⏳ ${esc(t("pending"))}</div>` : ""}
+    </div>
+    <div class="jn-photo-cmtbar">
+      <input type="text" maxlength="280" placeholder="${esc(t("addCmtPh"))}" data-jn-cmt-in="${esc(p.id)}" aria-label="${esc(t("addCmtPh"))}">
+      <button type="button" class="jn-cmt-go" data-jn-cmt-send="${esc(p.id)}" aria-label="${esc(t("commentSend"))}">➤</button>
+    </div>`;
+  }
+
   function igCardHtml(p, R, opts) {
     opts = opts || {};
+    const has = postHasImg(p);
+    if (!p.handle && !p.own) p.handle = slugHandle(p.author || "user");
+    if (has) {
+      /* TikTok photo-mode card */
+      return `<article class="jn-ig jn-photo" data-id="${esc(p.id)}" ${opts.anchor ? 'id="jn-anchor-' + esc(p.id) + '"' : ""}>
+      <div class="jn-photo-wrap">
+        ${mediaHtml(p)}
+        ${railHtml(p, R)}
+      </div>
+      ${photoMetaHtml(p)}
+    </article>`;
+    }
+    /* Text-only: classic card */
     const my = R[p.id] || {};
     const counts = Object.assign({ j: 0, a: 0, d: 0 }, p.counts || {});
     const body = L3(p.text);
     const P = storeGet(SK_PROF, {});
-    const handleStr = p.own ? handleOf(P) : "@" + String(p.handle || slugHandle(p.author || "user")).replace(/^@/, "");
-    if (!p.handle && !p.own) p.handle = slugHandle(p.author || "user");
-    const av = p.own && P.avatarUrl
-      ? `<span class="jn-av sm has-img"><img src="${esc(P.avatarUrl)}" alt=""></span>`
-      : `<span class="jn-av sm">${esc(p.av || initials(p.author))}</span>`;
-    const has = postHasImg(p);
-    const key = postImgKey(p);
-    const media = has
-      ? `<div class="jn-ig-media"><img data-jn-img="${esc(key)}" alt="" class="jn-ig-img"><div class="jn-ig-ph" aria-hidden="true"></div></div>`
-      : "";
-    const dalil = p.dalil
-      ? `<div class="jn-dalil"><div class="ar" dir="rtl" lang="ar">${esc(p.dalil.ar)}</div><div class="mn">${esc(L3(p.dalil.mn))}</div><div class="lb">${esc(p.dalil.ref)}</div></div>`
-      : "";
+    const av =
+      p.own && P.avatarUrl
+        ? `<span class="jn-av sm has-img"><img src="${esc(P.avatarUrl)}" alt=""></span>`
+        : `<span class="jn-av sm">${esc(p.av || initials(p.author))}</span>`;
     const saved = (storeGet(SK_SAVED, []) || []).includes(p.id);
     return `<article class="jn-ig" data-id="${esc(p.id)}" ${opts.anchor ? 'id="jn-anchor-' + esc(p.id) + '"' : ""}>
       <header class="jn-ig-hd">
         ${av}
-        <div class="jn-ig-who">
-          ${authorLineHtml(p)}
-        </div>
+        <div class="jn-ig-who">${authorLineHtml(p)}</div>
         <span class="jn-type chip">${esc(typeLabel(p.type))}</span>
         <time class="jn-ig-time">${esc(p.age || "")}</time>
       </header>
-      ${media}
       <div class="jn-react jn-ig-react">
         <button type="button" data-jn-react="j" class="${my.j ? "on" : ""}">🤍 ${esc(t("reactJ"))} · ${counts.j + (my.j ? 1 : 0)}</button>
         <button type="button" data-jn-react="a" class="${my.a ? "on" : ""}">🤲 ${esc(t("reactA"))} · ${counts.a + (my.a ? 1 : 0)}</button>
@@ -1450,13 +1708,22 @@
         <button type="button" data-jn-share="1">↗ ${esc(t("sharePost"))}</button>
       </div>
       ${captionHtml(body, p.id)}
-      ${dalil}
+      ${
+        p.dalil
+          ? `<div class="jn-dalil"><div class="ar" dir="rtl" lang="ar">${esc(p.dalil.ar)}</div><div class="mn">${esc(L3(p.dalil.mn))}</div><div class="lb">${esc(p.dalil.ref)}</div></div>`
+          : ""
+      }
       ${p.pending ? `<div class="jn-pending">⏳ ${esc(t("pending"))}</div>` : ""}
-      ${opts.compact ? "" : commentsHtml(p.id) + `
+      ${
+        opts.compact
+          ? ""
+          : commentsHtml(p.id) +
+            `
       <div class="jn-card-ft">
         <button type="button" class="jn-rep" data-jn-report="1">${esc(t("report"))}</button>
         ${!p.own ? `<button type="button" class="jn-rep" data-jn-block-author="${esc(p.handle || slugHandle(p.author || ""))}">${esc(t("commentBlock"))}</button>` : ""}
-      </div>`}
+      </div>`
+      }
     </article>`;
   }
 
@@ -1478,6 +1745,7 @@
         </div>`;
     view.innerHTML = prompt + `<div class="jn-feed jn-ig-feed">` + use.map((p) => igCardHtml(p, R)).join("") + `</div>`;
     hydrateImgs(view);
+    bindCarousels(view);
     syncFab();
   }
 
@@ -1547,7 +1815,9 @@
                 const ic = esc((TYPES.find((z) => z.id === p.type) || {}).ic || "");
                 if (postHasImg(p)) {
                   const key = postImgKey(p);
-                  return `<button type="button" class="jn-tile img" data-jn-post="${esc(p.id)}"><img data-jn-img="${esc(key)}" alt="" src=""><span class="jn-tile-type">${ic}</span>${pend}</button>`;
+                  const n = postImgKeys(p).length;
+                  const car = n > 1 ? `<span class="jn-tile-car" aria-label="${n}">⧉</span>` : "";
+                  return `<button type="button" class="jn-tile img" data-jn-post="${esc(p.id)}"><img data-jn-img="${esc(key)}" alt="" src=""><span class="jn-tile-type">${ic}</span>${car}${pend}</button>`;
                 }
                 return `<button type="button" class="jn-tile txt t-${esc(p.type || "refleksi")}" data-jn-post="${esc(p.id)}"><span class="jn-tile-snip">${esc(snip.slice(0, 90))}${snip.length > 90 ? "…" : ""}</span><span class="jn-tile-type">${ic}</span>${pend}</button>`;
               })
@@ -1880,7 +2150,7 @@
       openApplyForm();
       return;
     }
-    state.compose = { type: state.compose.type || "refleksi", text: "", img: null, dalil: null };
+    state.compose = { type: state.compose.type || "refleksi", text: "", img: null, imgs: [], dalil: null };
     paintCompose();
   }
 
@@ -1894,8 +2164,17 @@
           `<button type="button" data-jn-type="${x.id}" class="${c.type === x.id ? "on" : ""}"><b>${x.ic} ${esc(t(x.t))}</b><small>${esc(t(x.s))}</small></button>`
       ).join("")}</div>
       <textarea class="jn-ta" id="jnText" placeholder="${esc(t("ph"))}">${esc(c.text || "")}</textarea>
-      <div class="jn-img-prev" id="jnImgPrev" ${c.img ? "" : "hidden"}>${
-        c.img ? `<img src="${esc(c.img)}" alt=""><button type="button" data-jn="rmimg" aria-label="${esc(t("rmImg"))}">✕</button>` : ""
+      <div class="jn-img-prev multi" id="jnImgPrev" ${(c.imgs && c.imgs.length) || c.img ? "" : "hidden"}>${
+        (c.imgs && c.imgs.length
+          ? c.imgs
+              .map(
+                (src, i) =>
+                  `<div class="jn-img-thumb"><img src="${esc(src)}" alt=""><button type="button" data-jn-rmimg="${i}" aria-label="${esc(t("rmImg"))}">✕</button></div>`
+              )
+              .join("")
+          : c.img
+            ? `<div class="jn-img-thumb"><img src="${esc(c.img)}" alt=""><button type="button" data-jn-rmimg="0" aria-label="${esc(t("rmImg"))}">✕</button></div>`
+            : "")
       }</div>
       ${
         c.dalil
@@ -1903,11 +2182,11 @@
           : ""
       }
       <div class="jn-compose-acts">
-        <button type="button" class="btn sm" data-jn="addimg">${esc(t("addImg"))}</button>
+        <button type="button" class="btn sm" data-jn="addimg">${esc(t("addImgs"))}</button>
         <button type="button" class="btn sm" data-jn="sisip">${esc(t("sisip"))}</button>
-        <input type="file" id="jnFile" accept="image/*" hidden>
+        <input type="file" id="jnFile" accept="image/*" multiple hidden>
       </div>
-      <p class="dim" style="font-size:11.5px;margin-top:8px">${esc(t("imgOnly"))}</p>
+      <p class="dim" style="font-size:11.5px;margin-top:8px">${esc(t("imgOnly"))} · ${esc(t("imgMax"))}</p>
       <div class="row" style="gap:8px;margin-top:14px;justify-content:flex-end">
         <button type="button" class="btn ghost" data-jn="sheetx">${esc(t("cancel"))}</button>
         <button type="button" class="btn gold" data-jn="publish">${esc(t("publish"))}</button>
@@ -2016,24 +2295,24 @@
     const ta = $("#jnText");
     if (ta) state.compose.text = ta.value;
     const text = (state.compose.text || "").trim();
-    const rawImg = state.compose.img;
-    if (!text && !rawImg) {
+    let imgs = Array.isArray(state.compose.imgs) ? state.compose.imgs.slice() : [];
+    if (!imgs.length && state.compose.img) imgs = [state.compose.img];
+    if (imgs.length > MAX_IMGS) imgs = imgs.slice(0, MAX_IMGS);
+    if (!text && !imgs.length) {
       toast(t("needContent"));
       return;
     }
     const P = storeGet(SK_PROF, {});
     const id = "u" + Date.now();
-    let hasImg = false;
-    if (rawImg) {
-      const ok = await savePostImage(id, rawImg);
-      if (!ok) {
-        toast(t("imgFail"));
-        /* still allow text-only publish if text present */
-        if (!text) return;
-      } else {
-        hasImg = true;
-      }
+    const imgKeys = [];
+    for (let i = 0; i < imgs.length; i++) {
+      const key = imgs.length === 1 ? id : id + "_" + i;
+      const ok = await savePostImage(key, imgs[i]);
+      if (ok) imgKeys.push(key);
+      else toast(t("imgFail"));
     }
+    if (!text && !imgKeys.length) return;
+    const hasImg = imgKeys.length > 0;
     const cr = creatorOfHandle(myHandle());
     const post = {
       id: id,
@@ -2045,8 +2324,9 @@
       text: { id: text || " ", en: text || " ", ar: text || " " },
       dalil: state.compose.dalil,
       hasImg: hasImg,
-      imgKey: hasImg ? id : null,
-      counts: { j: 0, a: 0, d: 0 },
+      imgKey: hasImg ? imgKeys[0] : null,
+      imgKeys: hasImg ? imgKeys : [],
+      counts: { j: 0, a: 0, d: 0, sv: 0, sh: 0 },
       pending: true,
       own: true,
       verified: !!cr,
@@ -2065,6 +2345,7 @@
     list.unshift(post);
     savePosts(list);
     state.compose.img = null;
+    state.compose.imgs = [];
     closeSheet();
     toast(t("published"));
     state.tab = "prof";
@@ -2317,14 +2598,74 @@
       render();
       return;
     }
+    const carDot = g("[data-jn-car-dot]");
+    if (carDot) {
+      e.preventDefault();
+      const stage = carDot.closest("[data-jn-car]");
+      carGo(stage, +carDot.dataset.jnCarDot, true);
+      return;
+    }
+    if (g("[data-jn-ikuti]")) {
+      e.preventDefault();
+      toast(t("ikuti") + " ✓");
+      return;
+    }
+    if (g("[data-jn-cmt-open]")) {
+      e.preventDefault();
+      const id = g("[data-jn-cmt-open]").dataset.jnCmtOpen;
+      openSheet(t("komentar"), commentsHtml(id));
+      return;
+    }
+    if (g("[data-jn-dukung]")) {
+      e.preventDefault();
+      if (window.bmStoreBuild && window.bmStoreBuild()) return;
+      openSheet(
+        t("dukungT"),
+        `<div class="jn-dukung"><p>${esc(t("dukungLead"))}</p>
+        <button type="button" class="btn gold" data-jn="sheetx" style="margin-top:12px">${esc(t("dukungOk"))}</button></div>`
+      );
+      return;
+    }
     if (g("[data-jn-share]")) {
       e.preventDefault();
       const card = g(".jn-ig[data-id]");
-      try {
-        const url = location.origin + "/#jejak-nur";
-        if (navigator.clipboard) navigator.clipboard.writeText(url);
-      } catch (err) {}
-      toast(t("sharedOk"));
+      const id = card ? card.dataset.id : "";
+      const url = location.origin + "/#jejak-nur" + (id ? "?p=" + encodeURIComponent(id) : "");
+      openSheet(
+        t("kirimKe"),
+        `<div class="jn-share-sheet">
+          <button type="button" class="jn-share-row" data-jn-share-act="wa" data-url="${esc(url)}">💬 ${esc(t("shareWa"))}</button>
+          <button type="button" class="jn-share-row" data-jn-share-act="copy" data-url="${esc(url)}">🔗 ${esc(t("shareCopy"))}</button>
+          <button type="button" class="jn-share-row" data-jn-share-act="dl">⬇️ ${esc(t("shareDl"))}</button>
+          <button type="button" class="jn-share-row danger" data-jn-report="1">🚩 ${esc(t("report"))}</button>
+        </div>`
+      );
+      return;
+    }
+    const shAct = g("[data-jn-share-act]");
+    if (shAct) {
+      e.preventDefault();
+      const act = shAct.dataset.jnShareAct;
+      const url = shAct.dataset.url || location.origin + "/#jejak-nur";
+      if (act === "wa") {
+        try {
+          window.open("https://wa.me/?text=" + encodeURIComponent(url), "_blank");
+        } catch (err) {}
+      } else if (act === "copy") {
+        try {
+          if (navigator.clipboard) navigator.clipboard.writeText(url);
+        } catch (err) {}
+        toast(t("sharedOk"));
+      } else if (act === "dl") {
+        const card = document.querySelector(".jn-ig.jn-photo .jn-car-slide.on img, .jn-ig.jn-photo img.jn-ig-img");
+        if (card && card.src) {
+          const a = document.createElement("a");
+          a.href = card.src;
+          a.download = "jamaah-foto.jpg";
+          a.click();
+        } else toast(t("shareDl"));
+      }
+      closeSheet();
       return;
     }
     if (g("[data-jn=sheetx]")) {
@@ -2350,10 +2691,18 @@
       if (f) f.click();
       return;
     }
-    if (g("[data-jn=rmimg]")) {
-      state.compose.img = null;
+    if (g("[data-jn=rmimg]") || g("[data-jn-rmimg]")) {
+      const rm = g("[data-jn-rmimg]");
       const ta = $("#jnText");
       if (ta) state.compose.text = ta.value;
+      if (!Array.isArray(state.compose.imgs)) state.compose.imgs = state.compose.img ? [state.compose.img] : [];
+      if (rm) {
+        const ix = +rm.dataset.jnRmimg;
+        state.compose.imgs.splice(ix, 1);
+      } else {
+        state.compose.imgs = [];
+      }
+      state.compose.img = state.compose.imgs[0] || null;
       paintCompose();
       return;
     }
@@ -2461,20 +2810,31 @@
     if (!e.target || !e.target.files || !e.target.files[0]) return;
     const file = e.target.files[0];
     if (e.target.id === "jnFile") {
-      if (file.type && file.type.startsWith("video/")) {
-        toast(t("imgOnly"));
-        e.target.value = "";
+      const files = Array.from(e.target.files || []);
+      e.target.value = "";
+      if (!files.length) return;
+      if (!Array.isArray(state.compose.imgs)) state.compose.imgs = state.compose.img ? [state.compose.img] : [];
+      const room = MAX_IMGS - state.compose.imgs.length;
+      if (room <= 0) {
+        toast(t("imgMax"));
         return;
       }
-      compressImage(file, { maxSide: 1080, maxBytes: 200 * 1024 })
-        .then((data) => {
-          state.compose.img = data;
-          const ta = $("#jnText");
-          if (ta) state.compose.text = ta.value;
+      const take = files.slice(0, room);
+      if (files.length > room) toast(t("imgMax"));
+      const ta = $("#jnText");
+      if (ta) state.compose.text = ta.value;
+      Promise.all(
+        take.map((f) => {
+          if (f.type && f.type.startsWith("video/")) return Promise.reject(new Error("video"));
+          return compressImage(f, { maxSide: 1080, maxBytes: 200 * 1024 });
+        })
+      )
+        .then((datas) => {
+          state.compose.imgs = (state.compose.imgs || []).concat(datas);
+          state.compose.img = state.compose.imgs[0] || null;
           paintCompose();
         })
-        .catch(() => toast("Image error"));
-      e.target.value = "";
+        .catch((err) => toast(err && err.message === "video" ? t("imgOnly") : "Image error"));
       return;
     }
     if (e.target.id === "jnAvFile") {
@@ -2632,6 +2992,7 @@
     loadPostImage,
     savePostImage,
     postHasImg,
+    postImgKeys,
     migrateInlineImages,
     posts,
     creators,

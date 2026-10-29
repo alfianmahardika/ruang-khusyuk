@@ -1,5 +1,5 @@
 /*! Best Muslim — store gating (native Play/App Store builds).
- *  When BM_STORE_BUILD is true: hide Admin, Muslim Pay, Toko Berkah
+ *  When BM_STORE_BUILD is true: hide Admin, BestPay, Toko Berkah
  *  payment UI, Buka Toko / Premium fake-pay; show "Daftar minat" instead.
  *  Web keeps BM_STORE_BUILD=false so nothing is removed. */
 (function () {
@@ -23,9 +23,9 @@
       "متجر البركة والدفع غير متاحين في نسخة المتجر بعد. سجّل اهتمامك."
     ],
     paySoon: [
-      "Muslim Pay belum tersedia di versi toko. Catat minat Anda.",
-      "Muslim Pay is not available in the store build yet. Record your interest.",
-      "مسلم باي غير متاح في نسخة المتجر بعد. سجّل اهتمامك."
+      "BestPay belum tersedia di versi toko. Catat minat Anda.",
+      "BestPay is not available in the store build yet. Record your interest.",
+      "BestPay غير متاح في نسخة المتجر بعد. سجّل اهتمامك."
     ],
     shopSoon: [
       "Buka Toko belum tersedia di versi toko. Catat minat Anda sebagai penjual.",
