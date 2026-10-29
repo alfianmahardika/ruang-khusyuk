@@ -167,3 +167,110 @@
 [data-theme=light] .jn-badges span{background:rgba(15,61,46,.08);color:#0F3D2E}
 [data-theme=light] .jn-stats div{background:#fff;border-color:rgba(15,61,46,.14)}
 [data-theme=dark] .jn-tile.txt,[data-theme=gold] .jn-tile.txt{color:#f5f0e6}
+
+/* —— Instagram-style feed / detail —— */
+.jn-ig-feed{display:flex;flex-direction:column;gap:18px;padding-bottom:88px}
+.jn-ig{border:1px solid var(--border);border-radius:16px;background:var(--card-bg);overflow:hidden;color:var(--text)}
+.jn-ig-hd{display:flex;align-items:center;gap:10px;padding:10px 12px}
+.jn-ig-who{flex:1;min-width:0;text-align:start}
+.jn-ig-who b{display:block;font-size:14px;color:var(--text);line-height:1.2}
+.jn-ig-handle{display:block;font-size:12px;color:var(--text-muted);font-weight:600}
+.jn-ig-hd .jn-type.chip{margin:0;flex:none;font-size:10px;padding:3px 7px}
+.jn-ig-time{font-size:11px;color:var(--text-faint);flex:none}
+.jn-ig-media{position:relative;width:100%;aspect-ratio:4/5;max-height:72vh;background:color-mix(in srgb,var(--text) 8%,transparent);overflow:hidden}
+.jn-ig-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#111}
+.jn-ig-img:not([src]),.jn-ig-img[src=""]{opacity:0}
+.jn-ig-ph{position:absolute;inset:0;background:linear-gradient(135deg,rgba(230,199,122,.12),transparent)}
+.jn-ig-img.on + .jn-ig-ph{display:none}
+.jn-ig-react{padding:8px 10px 0;margin:0}
+.jn-cap{padding:6px 12px 10px;font-size:14px;line-height:1.45;text-align:start;color:var(--text)}
+.jn-cap .jn-more{border:0;background:transparent;color:var(--text-muted);font:inherit;font-weight:700;font-size:13px;cursor:pointer;padding:0 2px}
+.jn-ig .jn-dalil{margin:0 12px 10px}
+.jn-ig .jn-pending{padding:0 12px 10px}
+.jn-ig .jn-chips{padding:0 10px 8px}
+.jn-ig .jn-card-ft{padding:0 12px 10px}
+
+.jn-own-feed{display:flex;flex-direction:column;gap:16px;padding-bottom:12px}
+.jn-own-feed .jn-ig{border-radius:14px}
+
+/* Grid photo tiles: always prefer image when hasImg */
+.jn-tile.img{background:#1a1208}
+.jn-tile.img img{width:100%;height:100%;object-fit:cover;display:block;background:#222}
+.jn-tile.img img:not([src]),.jn-tile.img img[src=""]{opacity:0}
+[data-theme=light] .jn-tile.img{background:#e8e4dc}
+[data-theme=pink] .jn-ig-media{background:rgba(110,74,84,.08)}
+[data-theme=light] .jn-ig{background:#fff}
+[data-theme=pink] .jn-ig{background:#FBF4F3}
+[data-theme=pink] .jn-ig-who b,[data-theme=light] .jn-ig-who b{color:var(--text)}
+[data-theme=dark] .jn-cap,[data-theme=gold] .jn-cap{color:#f3ecdf}
+
+/* —— Profil TikTok chrome (no komunitas header) —— */
+#jnRoot.is-prof .jn-top,
+#jnRoot.is-prof .jn-sample,
+#jnRoot.is-prof .jn-tabs{display:none!important}
+.jn-prof-bar{display:flex;align-items:center;gap:2px;padding:2px 0 8px;position:relative;z-index:2}
+.jn-prof-bar-sp{flex:1}
+.jn-msg-ico{position:relative}
+.jn-msg-ico em{position:absolute;top:2px;inset-inline-end:2px;min-width:15px;height:15px;padding:0 3px;border-radius:999px;background:#c04545;color:#fff;font-size:9px;font-style:normal;font-weight:800;display:grid;place-items:center;line-height:1}
+/* TikTok-like profile capsules */
+.jn-pills{display:flex;flex-wrap:nowrap;gap:8px;justify-content:center;align-items:center;margin:12px 0 6px;width:100%}
+.jn-pill{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  width:auto;max-width:100%;flex:0 0 auto;
+  padding:10px 16px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--jn-pill-border, rgba(0,0,0,.12));
+  background:var(--jn-pill-bg, #fff);
+  color:var(--jn-pill-fg, var(--text));
+  font:inherit;font-size:15.5px;font-weight:600;line-height:1.2;
+  letter-spacing:-.01em;-webkit-tap-highlight-color:transparent;
+  box-shadow:none;
+}
+.jn-pill:active{transform:scale(.97);opacity:.92}
+.jn-pill-ic{flex:0 0 auto;width:18px;height:18px;color:var(--jn-pill-ic, var(--accent, #8a6514));display:block}
+.jn-pill-tx{white-space:nowrap}
+.jn-pill-dot{
+  position:absolute;top:3px;inset-inline-end:6px;
+  width:8px;height:8px;border-radius:50%;
+  background:#FE2C55;box-shadow:0 0 0 1.5px var(--jn-pill-bg, #fff);
+  pointer-events:none;
+}
+.jn-pill.has-dot{padding-inline-end:18px}
+/* dark / gold: elevated soft card */
+[data-theme=gold] .jn-pill,[data-theme=dark] .jn-pill{
+  --jn-pill-bg: color-mix(in srgb, var(--card-bg, #2a2418) 88%, #fff 12%);
+  --jn-pill-border: color-mix(in srgb, var(--border, rgba(230,199,122,.28)) 70%, transparent);
+  --jn-pill-fg: var(--text, #f5ecd8);
+  --jn-pill-ic: var(--accent, #e6c77a);
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.16);
+  color:#f5ecd8;
+}
+[data-theme=gold] .jn-pill-ic,[data-theme=dark] .jn-pill-ic{color:#e6c77a}
+[data-theme=gold] .jn-pill-dot,[data-theme=dark] .jn-pill-dot{box-shadow:0 0 0 1.5px rgba(42,36,24,.95)}
+/* light: white capsule, dark text, bottle-green bag */
+[data-theme=light] .jn-pill{
+  --jn-pill-bg:#fff;--jn-pill-border:rgba(0,0,0,.12);--jn-pill-fg:#161823;--jn-pill-ic:#0f3d2e;
+  background:#fff;border-color:rgba(0,0,0,.12);color:#161823;
+}
+[data-theme=light] .jn-pill-ic{color:#0f3d2e}
+[data-theme=light] .jn-pill-dot{box-shadow:0 0 0 1.5px #fff}
+/* pink: soft white capsule, rose-brown bag */
+[data-theme=pink] .jn-pill{
+  --jn-pill-bg:#fff;--jn-pill-border:rgba(110,74,84,.18);--jn-pill-fg:#2a1c20;--jn-pill-ic:#6E4A54;
+  background:#fff;border-color:rgba(110,74,84,.18);color:#2a1c20;
+}
+[data-theme=pink] .jn-pill-ic{color:#6E4A54}
+[data-theme=pink] .jn-pill-dot{box-shadow:0 0 0 1.5px #fff}
+.jn-empty-shop,.jn-shop-on{text-align:center;padding:12px 8px 8px}
+.jn-empty-shop .big,.jn-shop-on .big{font-size:42px;margin-bottom:8px}
+.jn-empty-shop b{display:block;font-size:15px;color:var(--text);margin-bottom:6px}
+.jn-empty-shop p,.jn-shop-on p{font-size:13.5px;color:var(--text-muted);line-height:1.45;margin:0 0 14px}
+.jn-shop-bullets{text-align:start;margin:0 0 16px;padding-inline-start:22px;color:var(--text);font-size:13.5px;line-height:1.55}
+.jn-shop-dash .muted{color:var(--text-muted);font-size:13.5px;margin:0}
+.jn-orders{display:flex;flex-direction:column;gap:8px}
+.jn-order{border:1px solid var(--border);border-radius:12px;padding:12px;background:var(--card-bg);text-align:start}
+.jn-order b{display:block;font-size:14px;color:var(--text)}
+.jn-order small{display:block;margin-top:4px;color:var(--text-muted);font-size:12px}
+.jn-admin-hid[hidden]{display:none!important}
+/* old absolute top icons unused */
+.jn-prof-top{display:none}

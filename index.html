@@ -189,6 +189,7 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 <link rel="stylesheet" href="bm-target-harian.css">
 <link rel="stylesheet" href="bm-growth.css">
 <link rel="stylesheet" href="bm-jejak-nur.css">
+<link rel="stylesheet" href="bm-admin89.css">
 <link rel="stylesheet" href="bm-nav88.css">
 </head><body>
 <title>Best Muslim</title>
@@ -3653,7 +3654,7 @@ const t=k=>UI[k]?L(UI[k]):k;
 const gradePill=g=>g==="sahih"?`<span class="pill jade">${t("g.sahih")}</span>`:g==="hasan"?`<span class="pill gold">${t("g.hasan")}</span>`:g==="dhaif"?`<span class="pill rose">${t("g.dhaif")}</span>`:`<span class="pill rose">${t("g.khilaf")}</span>`;
 
 /* ---------------- Router ---------------- */
-const PAGES=["beranda","puasa","umrah","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah","kata-quran","jejak-nur","profil"];
+const PAGES=["beranda","puasa","umrah","zakat","belanja","quran","hafalan","kiblat","lainnya","premium","settings","privasi","jadwal","harian","persiapan","bacaan","sunnah","gerakan","tasbih","setelah","kata-quran","jejak-nur","profil","admin"];
 function go(p){ if(p==="mushaf"){ p="quran"; try{ sessionStorage.setItem("rk_nav_mushaf","1"); }catch(e){} }
   else { try{ sessionStorage.removeItem("rk_nav_mushaf"); }catch(e){} }
   if(!PAGES.includes(p)) p="beranda";
@@ -3901,6 +3902,7 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",sta
 <script src="bm-target-harian.js" defer></script>
 <script src="bm-growth.js" defer></script>
 <script src="bm-jejak-nur.js" defer></script>
+<script src="bm-admin89.js" defer></script>
 <script src="bm-nav88.js" defer></script>
 </body></html>
 <script>

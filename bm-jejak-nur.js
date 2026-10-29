@@ -95,6 +95,33 @@
       needContent: "Tambahkan teks atau foto",
       handlePh: "@username",
       handleInvalid: "Username: 3–20 huruf/angka/_",
+      more: "selengkapnya",
+      less: "lebih sedikit",
+      imgQuota: "Foto disimpan terpisah (IndexedDB) — aman dari kuota",
+      imgFail: "Gagal menyimpan foto. Coba kompres ulang.",
+      ownFeed: "Jejakmu",
+      ordersYours: "Pesanan Anda",
+      shopYours: "Toko Anda",
+      openShop: "Buka Toko",
+      ordersT: "Pesanan Anda",
+      ordersEmpty: "Belum ada pesanan di Toko Berkah.",
+      ordersEmptyS: "Voucher dan amal yang Anda beli akan muncul di sini.",
+      ordersBrowse: "Jelajahi Toko Berkah",
+      shopDashT: "Toko Anda",
+      shopDashS: "Kelola etalase, pesanan masuk, dan donasi toko.",
+      shopProducts: "Produk",
+      shopOrdersIn: "Pesanan masuk",
+      shopSoon: "Dasbor penjual · prototipe lokal",
+      openShopT: "Buka Toko di Toko Berkah",
+      openShopLead: "Jual produk halal & amal — bergabung sebagai penjual (segera).",
+      openShopB1: "Etalase produk & voucher",
+      openShopB2: "Pesanan masuk + notifikasi",
+      openShopB3: "Sebagian hasil untuk sedekah",
+      openShopCta: "Daftar penjual (segera)",
+      openShopNote: "Pendaftaran nyata menyusul backend. Ini mockup lokal.",
+      adminPanel: "Panel Admin",
+      pesanBadge: "Pesan",
+      verLong: "Tahan judul menu untuk Panel Admin (uji)",
       fabAria: "Tulis jejak"
     },
     en: {
@@ -184,6 +211,33 @@
       needContent: "Add text or a photo",
       handlePh: "@username",
       handleInvalid: "Username: 3–20 letters/numbers/_",
+      more: "more",
+      less: "less",
+      imgQuota: "Photo stored separately (IndexedDB) — safe from quota",
+      imgFail: "Could not save photo. Try again.",
+      ownFeed: "Your posts",
+      ordersYours: "Your orders",
+      shopYours: "Your shop",
+      openShop: "Open shop",
+      ordersT: "Your orders",
+      ordersEmpty: "No orders in Blessed Shop yet.",
+      ordersEmptyS: "Vouchers and charity purchases will show up here.",
+      ordersBrowse: "Browse Blessed Shop",
+      shopDashT: "Your shop",
+      shopDashS: "Manage storefront, inbound orders, and shop giving.",
+      shopProducts: "Products",
+      shopOrdersIn: "Inbound orders",
+      shopSoon: "Seller dashboard · local prototype",
+      openShopT: "Open a shop on Blessed Shop",
+      openShopLead: "Sell halal goods & charity — join as a seller (coming soon).",
+      openShopB1: "Product & voucher storefront",
+      openShopB2: "Inbound orders + alerts",
+      openShopB3: "Share proceeds to sadaqah",
+      openShopCta: "Seller signup (soon)",
+      openShopNote: "Real signup comes with the backend. Local mockup only.",
+      adminPanel: "Admin Panel",
+      pesanBadge: "Messages",
+      verLong: "Long-press menu title for Admin Panel (demo)",
       fabAria: "Write a trail"
     },
     ar: {
@@ -273,6 +327,33 @@
       needContent: "أضف نصًا أو صورة",
       handlePh: "@username",
       handleInvalid: "اسم المستخدم: 3–20 حرفًا/رقمًا/_",
+      more: "المزيد",
+      less: "أقل",
+      imgQuota: "تُحفظ الصورة في IndexedDB — بأمان من الحصة",
+      imgFail: "تعذّر حفظ الصورة. أعد المحاولة.",
+      ownFeed: "منشوراتك",
+      ordersYours: "طلباتك",
+      shopYours: "متجرك",
+      openShop: "افتح متجرًا",
+      ordersT: "طلباتك",
+      ordersEmpty: "لا طلبات في متجر البركة بعد.",
+      ordersEmptyS: "القسائم والصدقات التي تشتريها ستظهر هنا.",
+      ordersBrowse: "تصفّح متجر البركة",
+      shopDashT: "متجرك",
+      shopDashS: "أدِر الواجهة والطلبات الواردة وعطاء المتجر.",
+      shopProducts: "المنتجات",
+      shopOrdersIn: "طلبات واردة",
+      shopSoon: "لوحة البائع · نموذج محلي",
+      openShopT: "افتح متجرًا في متجر البركة",
+      openShopLead: "بِع منتجات حلالًا وصدقات — انضم كبائع (قريبًا).",
+      openShopB1: "واجهة منتجات وقسائم",
+      openShopB2: "طلبات واردة + تنبيهات",
+      openShopB3: "جزء من العائد للصدقة",
+      openShopCta: "تسجيل البائع (قريبًا)",
+      openShopNote: "التسجيل الحقيقي مع الخادم لاحقًا. هذا نموذج محلي.",
+      adminPanel: "لوحة الإدارة",
+      pesanBadge: "الرسائل",
+      verLong: "اضغط مطولًا على عنوان القائمة للوحة الإدارة",
       fabAria: "اكتب أثرًا"
     }
   };
@@ -435,11 +516,185 @@
       return d;
     }
   };
+  /* Returns true on success. Silent quota failures were the root cause of missing photos. */
   const storeSet = (k, v) => {
     try {
       localStorage.setItem(k, JSON.stringify(v));
-    } catch (e) {}
+      return true;
+    } catch (e) {
+      console.warn("[jn] localStorage set failed", k, e && e.name, e);
+      return false;
+    }
   };
+
+  /* —— Image store: IndexedDB primary, localStorage dataURL fallback for tiny thumbs —— */
+  const IDB_NAME = "rk_jn_idb_v1";
+  const IDB_STORE = "images";
+  const imgMem = Object.create(null); /* id -> objectURL | dataURL */
+  let _idbProm = null;
+  function idbOpen() {
+    if (_idbProm) return _idbProm;
+    _idbProm = new Promise((resolve, reject) => {
+      if (!window.indexedDB) {
+        reject(new Error("no-idb"));
+        return;
+      }
+      const req = indexedDB.open(IDB_NAME, 1);
+      req.onupgradeneeded = () => {
+        const db = req.result;
+        if (!db.objectStoreNames.contains(IDB_STORE)) db.createObjectStore(IDB_STORE);
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error || new Error("idb"));
+    });
+    return _idbProm;
+  }
+  function dataUrlToBlob(dataUrl) {
+    try {
+      const m = String(dataUrl).match(/^data:([^;]+);base64,(.+)$/);
+      if (!m) return null;
+      const bin = atob(m[2]);
+      const arr = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+      return new Blob([arr], { type: m[1] || "image/jpeg" });
+    } catch (e) {
+      return null;
+    }
+  }
+  async function idbPut(key, dataUrl) {
+    const blob = dataUrlToBlob(dataUrl) || dataUrl;
+    const db = await idbOpen();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(IDB_STORE, "readwrite");
+      tx.objectStore(IDB_STORE).put(blob, key);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+  async function idbGet(key) {
+    const db = await idbOpen();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(IDB_STORE, "readonly");
+      const req = tx.objectStore(IDB_STORE).get(key);
+      req.onsuccess = () => resolve(req.result || null);
+      req.onerror = () => reject(req.error);
+    });
+  }
+  async function idbDel(key) {
+    try {
+      const db = await idbOpen();
+      return new Promise((resolve) => {
+        const tx = db.transaction(IDB_STORE, "readwrite");
+        tx.objectStore(IDB_STORE).delete(key);
+        tx.oncomplete = () => resolve(true);
+        tx.onerror = () => resolve(false);
+      });
+    } catch (e) {
+      return false;
+    }
+  }
+  function revokeImg(key) {
+    const u = imgMem[key];
+    if (u && String(u).startsWith("blob:")) {
+      try {
+        URL.revokeObjectURL(u);
+      } catch (e) {}
+    }
+    delete imgMem[key];
+  }
+  async function savePostImage(key, dataUrl) {
+    if (!dataUrl) return false;
+    try {
+      await idbPut(key, dataUrl);
+      revokeImg(key);
+      const blob = dataUrlToBlob(dataUrl);
+      imgMem[key] = blob ? URL.createObjectURL(blob) : dataUrl;
+      return true;
+    } catch (e) {
+      console.warn("[jn] IDB put failed, trying LS fallback", e);
+      /* Fallback: only for small payloads (<90KB string) */
+      try {
+        if (String(dataUrl).length < 90000) {
+          storeSet("rk_jn_img_" + key, dataUrl);
+          imgMem[key] = dataUrl;
+          return true;
+        }
+      } catch (e2) {}
+      return false;
+    }
+  }
+  async function loadPostImage(key) {
+    if (!key) return null;
+    if (imgMem[key]) return imgMem[key];
+    try {
+      const val = await idbGet(key);
+      if (val) {
+        if (val instanceof Blob) {
+          imgMem[key] = URL.createObjectURL(val);
+        } else if (typeof val === "string") {
+          imgMem[key] = val;
+        }
+        return imgMem[key] || null;
+      }
+    } catch (e) {
+      console.warn("[jn] IDB get failed", e);
+    }
+    const ls = storeGet("rk_jn_img_" + key, null);
+    if (ls) {
+      imgMem[key] = ls;
+      return ls;
+    }
+    return null;
+  }
+  function postHasImg(p) {
+    return !!(p && (p.hasImg || p.imgKey || (p.img && String(p.img).slice(0, 5) === "data:")));
+  }
+  function postImgKey(p) {
+    if (!p) return null;
+    return p.imgKey || (postHasImg(p) ? p.id : null);
+  }
+  /** Migrate legacy inline base64 img → IDB; strip from LS posts to free quota */
+  async function migrateInlineImages() {
+    const list = storeGet(SK_POSTS, []);
+    if (!Array.isArray(list) || !list.length) return;
+    let changed = false;
+    for (const p of list) {
+      if (p && p.img && String(p.img).slice(0, 5) === "data:") {
+        const key = p.id;
+        const ok = await savePostImage(key, p.img);
+        if (ok) {
+          p.hasImg = true;
+          p.imgKey = key;
+          delete p.img;
+          changed = true;
+        } else {
+          /* keep hasImg false so we don't show broken tile; drop oversized inline */
+          delete p.img;
+          changed = true;
+        }
+      } else if (p && p.hasImg && !p.imgKey) {
+        p.imgKey = p.id;
+        changed = true;
+      }
+    }
+    if (changed) storeSet(SK_POSTS, list);
+  }
+  async function hydrateImgs(root) {
+    const host = root || document;
+    const nodes = host.querySelectorAll ? host.querySelectorAll("[data-jn-img]") : [];
+    for (const el of nodes) {
+      const key = el.getAttribute("data-jn-img");
+      if (!key) continue;
+      const url = await loadPostImage(key);
+      if (url) {
+        if (el.tagName === "IMG") el.src = url;
+        else {
+          el.style.backgroundImage = "url(" + JSON.stringify(url).slice(1, -1) + ")";
+        }
+        el.classList.add("on");
+      }
+    }
+  }
   const toast = (m) => {
     try {
       if (window.toast) return window.toast(m);
@@ -460,6 +715,7 @@
       if (!P.handle) { P.handle = slugHandle(P.name || "hambaallah"); changed = true; }
       if (P.bio == null) { P.bio = ""; changed = true; }
       if (P.avatarUrl === undefined) { P.avatarUrl = null; changed = true; }
+      if (P.hasShop === undefined) { P.hasShop = false; changed = true; }
       if (changed) storeSet(SK_PROF, P);
     }
     seedOwnDemo();
@@ -481,7 +737,8 @@
       streak: 12,
       khatam: 2,
       hafalan: 3,
-      badges: ["Istiqamah 7", "Tilawah 10", "Hafiz Juz 30"]
+      badges: ["Istiqamah 7", "Tilawah 10", "Hafiz Juz 30"],
+      hasShop: false
     };
   }
   function seedOwnDemo() {
@@ -500,7 +757,8 @@
           av: "HA",
           age: "1j",
           text: { id: "Streak tilawah 30 hari — alhamdulillah.", en: "30-day tilawah streak — alhamdulillah.", ar: "سلسلة تلاوة ٣٠ يومًا — الحمد لله." },
-          img: demoImg,
+          hasImg: !!demoImg,
+          imgKey: demoImg ? "own_img1" : null,
           counts: { j: 8, a: 3, d: 2 },
           own: true
         },
@@ -511,7 +769,8 @@
           av: "HA",
           age: "3j",
           text: { id: "Khusyuk bukan suasana — ia adalah keputusan hati.", en: "Khushu' is not a mood — it is a decision of the heart.", ar: "الخشوع ليس مزاجًا — بل قرار القلب." },
-          img: null,
+          hasImg: false,
+          imgKey: null,
           counts: { j: 5, a: 1, d: 0 },
           own: true
         },
@@ -522,12 +781,16 @@
           av: "HA",
           age: "1h",
           text: { id: "Langkah kecil menuju masjid.", en: "Small steps toward the mosque.", ar: "خطوات صغيرة نحو المسجد." },
-          img: demoImg2,
+          hasImg: !!demoImg2,
+          imgKey: demoImg2 ? "own_img2" : null,
           counts: { j: 4, a: 2, d: 1 },
           own: true
         }
       );
       storeSet(SK_POSTS, list);
+      /* fire-and-forget IDB seed */
+      if (demoImg) savePostImage("own_img1", demoImg).catch(() => {});
+      if (demoImg2) savePostImage("own_img2", demoImg2).catch(() => {});
     }
     storeSet("rk_jn_own_demo_v1", true);
   }
@@ -557,7 +820,20 @@
     return storeGet(SK_POSTS, SEED.slice());
   }
   function savePosts(p) {
-    storeSet(SK_POSTS, p);
+    const cleaned = (p || []).map((x) => {
+      if (!x) return x;
+      const o = Object.assign({}, x);
+      if (o.img && String(o.img).slice(0, 5) === "data:") {
+        /* never persist base64 in LS — IDB only */
+        o.hasImg = true;
+        o.imgKey = o.imgKey || o.id;
+        delete o.img;
+      }
+      return o;
+    });
+    const ok = storeSet(SK_POSTS, cleaned);
+    if (!ok) toast("Storage full — foto tetap di IndexedDB bila ada");
+    return ok;
   }
   function reacts() {
     return storeGet(SK_REACT, {});
@@ -696,10 +972,20 @@
     const root = $("#view");
     if (root) root.scrollTop = 0;
     state.tab = state.tab || "feed";
-    /* hide FAB on profile */
+    /* hide FAB + community header on profile (TikTok-style) */
+    syncProfChrome();
+    render();
+  }
+
+  function syncProfChrome() {
+    const root = $("#jnRoot");
+    if (root) root.classList.toggle("is-prof", state.tab === "prof");
     const fab = $(".jn-fab");
     if (fab) fab.style.display = state.tab === "prof" ? "none" : "";
-    render();
+    const top = $(".jn-top", root || document);
+    const sample = $(".jn-sample", root || document);
+    if (top) top.hidden = state.tab === "prof";
+    if (sample) sample.hidden = state.tab === "prof";
   }
 
   const state = {
@@ -711,6 +997,7 @@
 
   function render() {
     applyI18n();
+    syncProfChrome();
     $$("[data-jn-tab]").forEach((b) => b.classList.toggle("on", b.dataset.jnTab === state.tab));
     const view = $("#jnView");
     if (!view) return;
@@ -718,50 +1005,67 @@
     else renderFeed(view);
   }
 
+  function captionHtml(text, id) {
+    const full = String(text || "").trim();
+    if (!full) return "";
+    const short = full.length > 120;
+    const snip = short ? full.slice(0, 120) + "…" : full;
+    if (!short) return `<div class="jn-cap" data-cap="${esc(id)}"><span class="jn-cap-body">${esc(full)}</span></div>`;
+    return `<div class="jn-cap" data-cap="${esc(id)}"><span class="jn-cap-body" data-full="${esc(full)}" data-short="${esc(snip)}">${esc(snip)}</span> <button type="button" class="jn-more" data-jn-more="${esc(id)}">${esc(t("more"))}</button></div>`;
+  }
+
+  function igCardHtml(p, R, opts) {
+    opts = opts || {};
+    const my = R[p.id] || {};
+    const counts = Object.assign({ j: 0, a: 0, d: 0 }, p.counts || {});
+    const body = L3(p.text);
+    const P = storeGet(SK_PROF, {});
+    const handle = p.own ? handleOf(P) : "@" + slugHandle(p.author || "user");
+    const av = p.own && P.avatarUrl
+      ? `<span class="jn-av sm has-img"><img src="${esc(P.avatarUrl)}" alt=""></span>`
+      : `<span class="jn-av sm">${esc(p.av || initials(p.author))}</span>`;
+    const has = postHasImg(p);
+    const key = postImgKey(p);
+    const media = has
+      ? `<div class="jn-ig-media"><img data-jn-img="${esc(key)}" alt="" class="jn-ig-img"><div class="jn-ig-ph" aria-hidden="true"></div></div>`
+      : "";
+    const dalil = p.dalil
+      ? `<div class="jn-dalil"><div class="ar" dir="rtl" lang="ar">${esc(p.dalil.ar)}</div><div class="mn">${esc(L3(p.dalil.mn))}</div><div class="lb">${esc(p.dalil.ref)}</div></div>`
+      : "";
+    return `<article class="jn-ig" data-id="${esc(p.id)}" ${opts.anchor ? 'id="jn-anchor-' + esc(p.id) + '"' : ""}>
+      <header class="jn-ig-hd">
+        ${av}
+        <div class="jn-ig-who">
+          <b>${esc(p.author || "Hamba Allah")}</b>
+          <span class="jn-ig-handle">${esc(handle)}</span>
+        </div>
+        <span class="jn-type chip">${esc(typeLabel(p.type))}</span>
+        <time class="jn-ig-time">${esc(p.age || "")}</time>
+      </header>
+      ${media}
+      <div class="jn-react jn-ig-react">
+        <button type="button" data-jn-react="j" class="${my.j ? "on" : ""}">🤍 ${esc(t("reactJ"))} · ${counts.j + (my.j ? 1 : 0)}</button>
+        <button type="button" data-jn-react="a" class="${my.a ? "on" : ""}">🤲 ${esc(t("reactA"))} · ${counts.a + (my.a ? 1 : 0)}</button>
+        <button type="button" data-jn-react="d" class="${my.d ? "on" : ""}">🕊️ ${esc(t("reactD"))} · ${counts.d + (my.d ? 1 : 0)}</button>
+      </div>
+      ${captionHtml(body, p.id)}
+      ${dalil}
+      ${p.pending ? `<div class="jn-pending">⏳ ${esc(t("pending"))}</div>` : ""}
+      ${opts.compact ? "" : `<div class="jn-chips">
+        <button type="button" data-jn-chip="1">${esc(t("chip1"))}</button>
+        <button type="button" data-jn-chip="2">${esc(t("chip2"))}</button>
+        <button type="button" data-jn-chip="3">${esc(t("chip3"))}</button>
+        <button type="button" data-jn-chip="4">${esc(t("chip4"))}</button>
+      </div>
+      <div class="jn-card-ft"><button type="button" class="jn-rep" data-jn-report="1">${esc(t("report"))}</button></div>`}
+    </article>`;
+  }
+
   function renderFeed(view) {
-    const list = posts();
+    const list = posts().filter((p) => !p.hidden && p.status !== "rejected");
     const R = reacts();
-    view.innerHTML =
-      `<div class="jn-feed">` +
-      list
-        .map((p) => {
-          const my = R[p.id] || {};
-          const counts = Object.assign({ j: 0, a: 0, d: 0 }, p.counts || {});
-          const body = L3(p.text);
-          const ach = p.achievement
-            ? p.achievement.streak
-              ? `<div class="jn-type">🔥 ${p.achievement.streak} ${esc(t("days"))}</div>`
-              : p.achievement.khatam
-                ? `<div class="jn-type">📖 ${p.achievement.khatam} ${esc(t("juz"))}</div>`
-                : ""
-            : "";
-          const dalil = p.dalil
-            ? `<div class="jn-dalil"><div class="ar" dir="rtl" lang="ar">${esc(p.dalil.ar)}</div><div class="mn">${esc(L3(p.dalil.mn))}</div><div class="lb">${esc(p.dalil.ref)} · ${p.dalil.kind === "quran" ? "Kemenag" : esc(p.dalil.ref)}</div></div>`
-            : "";
-          const img = p.img ? `<img class="jn-img" src="${esc(p.img)}" alt="">` : "";
-          return `<article class="jn-card" data-id="${esc(p.id)}">
-          <div class="jn-card-hd"><span class="jn-av">${esc(p.av || "?")}</span><div class="jn-meta"><b>${esc(p.author)}</b><small>${esc(p.age || "")}${p.own ? " · " + esc(t("own")) : ""}</small></div></div>
-          <div class="jn-type">${esc(typeLabel(p.type))}</div>
-          ${ach}
-          <div class="jn-body">${esc(body)}</div>
-          ${img}${dalil}
-          ${p.pending ? `<div class="jn-pending">⏳ ${esc(t("pending"))} — ${esc(t("pendingNote"))}</div>` : ""}
-          <div class="jn-react">
-            <button type="button" data-jn-react="j" class="${my.j ? "on" : ""}">${esc(t("reactJ"))} · ${counts.j + (my.j ? 1 : 0)}</button>
-            <button type="button" data-jn-react="a" class="${my.a ? "on" : ""}">${esc(t("reactA"))} · ${counts.a + (my.a ? 1 : 0)}</button>
-            <button type="button" data-jn-react="d" class="${my.d ? "on" : ""}">${esc(t("reactD"))} · ${counts.d + (my.d ? 1 : 0)}</button>
-          </div>
-          <div class="jn-chips">
-            <button type="button" data-jn-chip="1">${esc(t("chip1"))}</button>
-            <button type="button" data-jn-chip="2">${esc(t("chip2"))}</button>
-            <button type="button" data-jn-chip="3">${esc(t("chip3"))}</button>
-            <button type="button" data-jn-chip="4">${esc(t("chip4"))}</button>
-          </div>
-          <div class="jn-card-ft"><button type="button" class="jn-rep" data-jn-report="1">${esc(t("report"))}</button></div>
-        </article>`;
-        })
-        .join("") +
-      `</div>`;
+    view.innerHTML = `<div class="jn-feed jn-ig-feed">` + list.map((p) => igCardHtml(p, R)).join("") + `</div>`;
+    hydrateImgs(view);
   }
 
   function avHtml(P, cls) {
@@ -780,15 +1084,22 @@
   function renderProfile(view) {
     ensureSeed();
     const P = storeGet(SK_PROF, {});
-    const mine = posts().filter((p) => p.own);
+    const mine = posts().filter((p) => p.own && !p.hidden);
     const bio = (P.bio || "").slice(0, 150);
+    const shopLab = P.hasShop ? t("shopYours") : t("openShop");
+    const shopAct = P.hasShop ? "shopdash" : "openshop";
     view.innerHTML = `<div class="jn-prof tt">
-      <div class="jn-prof-top">
-        <button type="button" class="jn-icon-btn" data-jn="profmenu" aria-label="${esc(t("menu"))}">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/></svg>
+      <div class="jn-prof-bar">
+        <button type="button" class="jn-icon-btn" data-jn="editprof" aria-label="${esc(t("editProf"))}">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
         </button>
-        <button type="button" class="jn-icon-btn" data-jn="settings" aria-label="${esc(t("pengaturan"))}">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9c.26.6.9 1 1.55 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1Z"/></svg>
+        <div class="jn-prof-bar-sp"></div>
+        <button type="button" class="jn-icon-btn jn-msg-ico" data-jn="pesan" aria-label="${esc(t("pesanBadge"))}">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+          <em>3</em>
+        </button>
+        <button type="button" class="jn-icon-btn" data-jn="profmenu" aria-label="${esc(t("menu"))}">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
       </div>
       <div class="jn-prof-head">
@@ -796,6 +1107,14 @@
         <h2 class="jn-disp">${esc(P.name || "Hamba Allah")}</h2>
         <div class="jn-handle">${esc(handleOf(P))}</div>
         <p class="jn-bio">${bio ? esc(bio) : `<span class="dim">${esc(t("bioPh"))}</span>`}</p>
+        <div class="jn-pills">
+          <button type="button" class="jn-pill has-dot" data-jn="orders" aria-label="${esc(t("ordersYours"))}">
+            <svg class="jn-pill-ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7.5 7V6a4.5 4.5 0 0 1 9 0v1H19a1.5 1.5 0 0 1 1.5 1.5v11A2.5 2.5 0 0 1 18 22H6a2.5 2.5 0 0 1-2.5-2.5v-11A1.5 1.5 0 0 1 5 7h2.5zm1.75 0h5.5V6a2.75 2.75 0 0 0-5.5 0v1z"/></svg><span class="jn-pill-tx">${esc(t("ordersYours"))}</span><i class="jn-pill-dot" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="jn-pill" data-jn="${shopAct}" aria-label="${esc(shopLab)}">
+            <svg class="jn-pill-ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7.5 7V6a4.5 4.5 0 0 1 9 0v1H19a1.5 1.5 0 0 1 1.5 1.5v11A2.5 2.5 0 0 1 18 22H6a2.5 2.5 0 0 1-2.5-2.5v-11A1.5 1.5 0 0 1 5 7h2.5zm1.75 0h5.5V6a2.75 2.75 0 0 0-5.5 0v1z"/></svg><span class="jn-pill-tx">${esc(shopLab)}</span>
+          </button>
+        </div>
         <button type="button" class="jn-edit-btn" data-jn="editprof">${esc(t("editProf"))}</button>
       </div>
       <div class="jn-stats">
@@ -810,15 +1129,19 @@
           ? mine
               .map((p) => {
                 const snip = L3(p.text) || "";
-                if (p.img) {
-                  return `<button type="button" class="jn-tile img" data-jn-post="${esc(p.id)}"><img src="${esc(p.img)}" alt=""><span class="jn-tile-type">${esc((TYPES.find((z) => z.id === p.type) || {}).ic || "")}</span>${p.pending ? `<em class="jn-tile-pend">⏳</em>` : ""}</button>`;
+                const pend = p.pending ? `<em class="jn-tile-pend">⏳</em>` : "";
+                const ic = esc((TYPES.find((z) => z.id === p.type) || {}).ic || "");
+                if (postHasImg(p)) {
+                  const key = postImgKey(p);
+                  return `<button type="button" class="jn-tile img" data-jn-post="${esc(p.id)}"><img data-jn-img="${esc(key)}" alt="" src=""><span class="jn-tile-type">${ic}</span>${pend}</button>`;
                 }
-                return `<button type="button" class="jn-tile txt t-${esc(p.type || "refleksi")}" data-jn-post="${esc(p.id)}"><span class="jn-tile-snip">${esc(snip.slice(0, 90))}${snip.length > 90 ? "…" : ""}</span><span class="jn-tile-type">${esc((TYPES.find((z) => z.id === p.type) || {}).ic || "")}</span>${p.pending ? `<em class="jn-tile-pend">⏳</em>` : ""}</button>`;
+                return `<button type="button" class="jn-tile txt t-${esc(p.type || "refleksi")}" data-jn-post="${esc(p.id)}"><span class="jn-tile-snip">${esc(snip.slice(0, 90))}${snip.length > 90 ? "…" : ""}</span><span class="jn-tile-type">${ic}</span>${pend}</button>`;
               })
               .join("")
           : `<p class="jn-grid-empty dim">${esc(t("noPosts"))}</p>`
       }</div>
     </div>`;
+    hydrateImgs(view);
   }
 
   function openProfMenu() {
@@ -828,6 +1151,79 @@
         <button type="button" data-jn="settings"><span>${esc(t("pengaturan"))}</span><em>›</em></button>
         <button type="button" data-jn="allfitur"><span>${esc(t("semuaFitur"))}</span><em>›</em></button>
         <button type="button" data-jn="editprof"><span>${esc(t("editProf"))}</span><em>›</em></button>
+        <button type="button" class="jn-admin-hid" data-jn="admin" hidden><span>${esc(t("adminPanel"))}</span><em>›</em></button>
+      </div>
+      <p class="dim" style="font-size:11px;margin-top:10px;text-align:center">${esc(t("verLong") || "")}</p>`
+    );
+    /* Reveal Panel Admin after long-press on menu title area — also via #admin */
+    const hid = $("#jnSheetBody .jn-admin-hid");
+    const hd = $("#jnSheetT");
+    if (hid && hd) {
+      let tm = null;
+      const start = () => {
+        tm = setTimeout(() => {
+          hid.hidden = false;
+        }, 700);
+      };
+      const cancel = () => {
+        if (tm) clearTimeout(tm);
+        tm = null;
+      };
+      hd.addEventListener("pointerdown", start);
+      hd.addEventListener("pointerup", cancel);
+      hd.addEventListener("pointerleave", cancel);
+    }
+  }
+
+  function openOrders() {
+    const orders = storeGet("rk_bb_orders_v1", []) || [];
+    openSheet(
+      t("ordersT"),
+      orders.length
+        ? `<div class="jn-orders">${orders
+            .map(
+              (o) =>
+                `<div class="jn-order"><b>${esc(o.title || "Item")}</b><small>${esc(o.status || "")} · ${esc(o.when || "")}</small></div>`
+            )
+            .join("")}</div>`
+        : `<div class="jn-empty-shop">
+            <div class="big">🛍️</div>
+            <b>${esc(t("ordersEmpty"))}</b>
+            <p class="dim">${esc(t("ordersEmptyS"))}</p>
+            <button type="button" class="btn gold" data-jn="gotobelanja">${esc(t("ordersBrowse"))}</button>
+          </div>`
+    );
+  }
+
+  function openShopDash() {
+    openSheet(
+      t("shopDashT"),
+      `<div class="jn-shop-dash">
+        <p class="muted">${esc(t("shopDashS"))}</p>
+        <div class="jn-stats" style="margin-top:12px">
+          <div><b>0</b><span>${esc(t("shopProducts"))}</span></div>
+          <div><b>0</b><span>${esc(t("shopOrdersIn"))}</span></div>
+          <div><b>—</b><span>Rp</span></div>
+        </div>
+        <p class="dim" style="margin-top:12px;font-size:12px">${esc(t("shopSoon"))}</p>
+        <button type="button" class="btn sm ghost" data-jn="sheetx" style="margin-top:10px">${esc(t("back"))}</button>
+      </div>`
+    );
+  }
+
+  function openShopOnboard() {
+    openSheet(
+      t("openShopT"),
+      `<div class="jn-shop-on">
+        <div class="big">🏪</div>
+        <p>${esc(t("openShopLead"))}</p>
+        <ul class="jn-shop-bullets">
+          <li>${esc(t("openShopB1"))}</li>
+          <li>${esc(t("openShopB2"))}</li>
+          <li>${esc(t("openShopB3"))}</li>
+        </ul>
+        <button type="button" class="btn gold" data-jn="shopcta">${esc(t("openShopCta"))}</button>
+        <p class="dim" style="font-size:11.5px;margin-top:10px">${esc(t("openShopNote"))}</p>
       </div>`
     );
   }
@@ -908,34 +1304,33 @@
   }
 
   function openPostDetail(id) {
-    const p = posts().find((x) => x.id === id);
-    if (!p) return;
-    const R = reacts()[id] || {};
-    openSheet(
-      t("postDetail"),
-      `<article class="jn-detail">
-        <div class="jn-meta">
-          <span class="jn-av sm">${esc(p.av || "?")}</span>
-          <div><b>${esc(p.author)}</b><small>${esc(p.age || "")} · ${esc(typeLabel(p.type))}</small></div>
-        </div>
-        ${p.img ? `<div class="jn-detail-img"><img src="${esc(p.img)}" alt=""></div>` : ""}
-        <div class="jn-body">${esc(L3(p.text))}</div>
-        ${
-          p.dalil
-            ? `<div class="jn-dalil"><div class="ar" dir="rtl">${esc(p.dalil.ar)}</div><div class="mn">${esc(L3(p.dalil.mn))}</div><div class="lb">${esc(p.dalil.ref)}</div></div>`
-            : ""
-        }
-        ${p.pending ? `<div class="jn-pending">⏳ ${esc(t("pending"))}</div>` : ""}
-        <div class="jn-reacts">
-          <button type="button" data-jn-react="j" class="${R.j ? "on" : ""}">🤍 ${esc(t("reactJ"))} · ${p.counts.j + (R.j ? 1 : 0)}</button>
-          <button type="button" data-jn-react="a" class="${R.a ? "on" : ""}">🤲 ${esc(t("reactA"))} · ${p.counts.a + (R.a ? 1 : 0)}</button>
-          <button type="button" data-jn-react="d" class="${R.d ? "on" : ""}">🕊️ ${esc(t("reactD"))} · ${p.counts.d + (R.d ? 1 : 0)}</button>
-        </div>
-      </article>`
-    );
-    /* stash for react from detail */
+    openOwnFeed(id);
+  }
+
+  function openOwnFeed(startId) {
+    const mine = posts().filter((p) => p.own && !p.hidden);
+    if (!mine.length) return;
+    const R = reacts();
+    const html =
+      `<div class="jn-own-feed" id="jnOwnFeed">` +
+      mine.map((p) => igCardHtml(p, R, { anchor: true, compact: true })).join("") +
+      `</div>`;
+    openSheet(t("ownFeed"), html);
     const body = $("#jnSheetBody");
-    if (body) body.dataset.detailId = id;
+    if (body) {
+      body.dataset.ownFeed = "1";
+      body.dataset.detailId = startId || "";
+    }
+    hydrateImgs(body || document).then(() => {
+      const el = document.getElementById("jn-anchor-" + startId);
+      if (el) {
+        try {
+          el.scrollIntoView({ block: "start", behavior: "auto" });
+        } catch (e) {
+          el.scrollIntoView();
+        }
+      }
+    });
   }
 
   function openSheet(title, html) {
@@ -1098,34 +1493,59 @@
     });
   }
 
-  function publish() {
+  async function publish() {
     const ta = $("#jnText");
     if (ta) state.compose.text = ta.value;
     const text = (state.compose.text || "").trim();
-    if (!text && !state.compose.img) {
+    const rawImg = state.compose.img;
+    if (!text && !rawImg) {
       toast(t("needContent"));
       return;
     }
     const P = storeGet(SK_PROF, {});
+    const id = "u" + Date.now();
+    let hasImg = false;
+    if (rawImg) {
+      const ok = await savePostImage(id, rawImg);
+      if (!ok) {
+        toast(t("imgFail"));
+        /* still allow text-only publish if text present */
+        if (!text) return;
+      } else {
+        hasImg = true;
+      }
+    }
     const post = {
-      id: "u" + Date.now(),
+      id: id,
       type: state.compose.type,
       author: P.name || "Hamba Allah",
       av: P.av || initials(P.name),
       age: "Baru",
       text: { id: text || " ", en: text || " ", ar: text || " " },
       dalil: state.compose.dalil,
-      img: state.compose.img,
+      hasImg: hasImg,
+      imgKey: hasImg ? id : null,
       counts: { j: 0, a: 0, d: 0 },
       pending: true,
       own: true
     };
+    try {
+      const trust = storeGet("rk_jn_trust_v1", []) || [];
+      const handle = (P.handle || "hambaallah").replace(/^@/, "");
+      const u = trust.find((x) => x && x.handle === handle && x.auto);
+      if (u) {
+        post.pending = false;
+        post.status = "approved";
+      }
+    } catch (e) {}
     const list = posts();
     list.unshift(post);
     savePosts(list);
+    state.compose.img = null;
     closeSheet();
     toast(t("published"));
-    state.tab = "feed";
+    state.tab = "prof";
+    try { sessionStorage.setItem("rk_jn_tab", "prof"); } catch (e) {}
     render();
   }
 
@@ -1159,6 +1579,49 @@
       openProfMenu();
       return;
     }
+    if (g("[data-jn=orders]")) {
+      e.preventDefault();
+      openOrders();
+      return;
+    }
+    if (g("[data-jn=openshop]")) {
+      e.preventDefault();
+      openShopOnboard();
+      return;
+    }
+    if (g("[data-jn=shopdash]")) {
+      e.preventDefault();
+      openShopDash();
+      return;
+    }
+    if (g("[data-jn=gotobelanja]")) {
+      e.preventDefault();
+      closeSheet();
+      if (window.go) window.go("belanja");
+      return;
+    }
+    if (g("[data-jn=shopcta]")) {
+      e.preventDefault();
+      /* Prototype: mark hasShop and show dashboard */
+      const P = storeGet(SK_PROF, defaultProf());
+      P.hasShop = true;
+      storeSet(SK_PROF, P);
+      toast(t("shopYours") + " ✓");
+      openShopDash();
+      return;
+    }
+    if (g("[data-jn=admin]")) {
+      e.preventDefault();
+      closeSheet();
+      if (window.RKAdmin) RKAdmin.open("queue");
+      else if (window.go) window.go("admin");
+      return;
+    }
+    if (g("[data-jn=closesshop]")) {
+      e.preventDefault();
+      closeSheet();
+      return;
+    }
     if (g("[data-jn=editprof]")) {
       e.preventDefault();
       openEditProf();
@@ -1173,6 +1636,25 @@
       e.preventDefault();
       const f = $("#jnAvFile");
       if (f) f.click();
+      return;
+    }
+    const more = g("[data-jn-more]");
+    if (more) {
+      e.preventDefault();
+      const cap = more.closest(".jn-cap");
+      const body = cap && cap.querySelector(".jn-cap-body");
+      if (body) {
+        const expanded = more.dataset.open === "1";
+        if (expanded) {
+          body.textContent = body.dataset.short || body.textContent;
+          more.textContent = t("more");
+          more.dataset.open = "0";
+        } else {
+          body.textContent = body.dataset.full || body.textContent;
+          more.textContent = t("less");
+          more.dataset.open = "1";
+        }
+      }
       return;
     }
     const tile = g("[data-jn-post]");
@@ -1307,31 +1789,24 @@
       return;
     }
 
-    /* React from post detail sheet */
-    const detailBody = $("#jnSheetBody");
-    if (detailBody && detailBody.dataset.detailId && g("[data-jn-react]") && g("#jnSheet")) {
-      const id = detailBody.dataset.detailId;
-      const rr = g("[data-jn-react]");
-      const k = rr.dataset.jnReact;
-      const R = reacts();
-      R[id] = R[id] || {};
-      R[id][k] = !R[id][k];
-      saveReacts(R);
-      openPostDetail(id);
-      return;
-    }
-
-    const card = g(".jn-card[data-id]");
-    if (card) {
-      const id = card.dataset.id;
+    /* React from IG card (feed or own-feed sheet) */
+    const ig = g(".jn-ig[data-id], .jn-card[data-id]");
+    if (ig) {
+      const id = ig.dataset.id;
       const rr = g("[data-jn-react]");
       if (rr) {
+        e.preventDefault();
         const k = rr.dataset.jnReact;
         const R = reacts();
         R[id] = R[id] || {};
         R[id][k] = !R[id][k];
         saveReacts(R);
-        render();
+        const inSheet = !!(g("#jnSheet") && !$("#jnSheet").hidden);
+        if (inSheet && $("#jnSheetBody") && $("#jnSheetBody").dataset.ownFeed) {
+          openOwnFeed(id);
+        } else {
+          render();
+        }
         return;
       }
       if (g("[data-jn-chip]")) {
@@ -1462,6 +1937,12 @@
 
   function boot() {
     ensureSeed();
+    migrateInlineImages().then(() => {
+      try {
+        const view = $("#jnView");
+        if (view) hydrateImgs(view);
+      } catch (e) {}
+    });
     mountPage();
     entryCard();
     registerPageInGo();
@@ -1504,5 +1985,5 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 
-  window.RKJejakNur = { open: showPage, render, t, openPesan, openCompose };
+  window.RKJejakNur = { open: showPage, render, t, openPesan, openCompose, loadPostImage, savePostImage, postHasImg, migrateInlineImages, posts };
 })();
