@@ -1191,6 +1191,26 @@ html,body{overscroll-behavior-x:none}
 .pk-draft{display:block;font-size:10.5px;color:var(--gold,#c9a24a);opacity:.85}
 /* Program Harian "Satu Hari Satu Langkah" */
 #pkProg{margin:0 0 14px}
+/* t83: program as collapsed card under Game */
+#pkGame{margin:0 0 12px}
+.pk-game{border-radius:20px;overflow:hidden;border:0;border-bottom:4px solid #3c8a00;background:linear-gradient(180deg,#1a2a12 0%,#14100b 28%);box-shadow:0 8px 28px rgba(88,204,2,.18)}
+.pk-game .ak-game-in{max-width:none;padding:10px 12px 14px;color:#f6efe2}
+.pk-game .ak-gh{margin:0 0 6px}
+.pk-game .ak-gbody{overflow:visible;max-height:none;padding:4px 0 0}
+.pk-game .ak-gfoot{display:none}
+.pp-fold{margin:0;border:0;padding:0}
+.pp-fold>summary.pp-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:16px;background:rgba(230,199,122,.08);border:1px solid rgba(230,199,122,.28)}
+.pp-fold>summary.pp-sum::-webkit-details-marker{display:none}
+.pp-fold>summary.pp-sum .pp-sum-t{flex:1;min-width:0;font-size:14.5px;font-weight:700;line-height:1.3}
+.pp-fold>summary.pp-sum .pp-sum-t b{color:var(--gold2,#e6c77a);font-weight:800}
+.pp-fold>summary.pp-sum .pp-sum-bar{width:72px;height:6px;border-radius:6px;background:rgba(230,199,122,.15);overflow:hidden;flex:none}
+.pp-fold>summary.pp-sum .pp-sum-bar i{display:block;height:100%;background:linear-gradient(90deg,#c9a24a,#f3d98b);border-radius:6px}
+.pp-fold>summary.pp-sum .pp-sum-go{font-size:16px;opacity:.7;flex:none}
+.pp-fold[open]>summary.pp-sum{border-radius:16px 16px 0 0;border-bottom-color:transparent;margin-bottom:0}
+.pp-fold-body{padding:4px 4px 8px}
+.pp-fold-body .pp-head .eyebrow{display:none}
+#pkProg.pp-compact{padding:0;overflow:hidden}
+#pkProg.pp-compact.pp-inv .pp-fold-body,#pkProg.pp-compact.pp-paused .pp-fold-body{padding:10px 14px 14px}
 .pp-h{margin:6px 0 2px;font-size:19px}
 .pp-inv{border:1px dashed rgba(230,199,122,.45)}
 .pp-inv-tx{margin:10px 0 12px;font-size:14px;line-height:1.55}
@@ -1243,7 +1263,8 @@ html,body{overscroll-behavior-x:none}
 .s-jump select{background:#1d160d;color:inherit;border:1px solid rgba(230,199,122,.35);border-radius:8px;padding:6px}
 .pp-head{flex-wrap:nowrap;gap:8px}.pp-head>div{min-width:0}
 /* sembunyikan kartu program saat pembaca terbuka, agar area baca bersih */
-#page-quran:has(#qReader:not([hidden])) #pkProg,#page-quran:has(#hReader:not([hidden])) #pkProg,#page-quran:has(#sReader:not([hidden])) #pkProg{display:none}
+#page-quran:has(#qReader:not([hidden])) #pkProg,#page-quran:has(#hReader:not([hidden])) #pkProg,#page-quran:has(#sReader:not([hidden])) #pkProg,
+#page-quran:has(#qReader:not([hidden])) #pkGame,#page-quran:has(#hReader:not([hidden])) #pkGame,#page-quran:has(#sReader:not([hidden])) #pkGame{display:none}
 /* Tahap 1 bacaan salat */
 .pp-stage{border:1px solid var(--line,rgba(127,127,127,.25));border-radius:16px;padding:10px 12px;margin:10px 0;display:block}
 .pp-stage>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
@@ -1276,7 +1297,7 @@ html,body{overscroll-behavior-x:none}
 .bl-done{color:#3a9b5c;font-weight:700;margin:0}.bl-skip{margin-top:6px}.bl-hm{margin:6px 0}
 [data-theme=pink] .bl-node.done .bl-dot{background:#c98b98}
 /* ===== Pustaka home: 3 ikon + program; sub-tampilan dengan tombol Kembali (v40) ===== */
-#page-quran:not([data-pk="home"]) #pkHome,#page-quran:not([data-pk="home"]) #pkProg{display:none!important}
+#page-quran:not([data-pk="home"]) #pkHome,#page-quran:not([data-pk="home"]) #pkProg,#page-quran:not([data-pk="home"]) #pkGame{display:none!important}
 #page-quran[data-pk="home"] #qIndex,#page-quran[data-pk="home"] #qReader{display:none!important}
 .pk-home{margin:0 0 14px}
 .pk-hh{margin:0 0 12px}
@@ -2438,7 +2459,7 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
         <!-- t66: Dompet Berkah strip (below Salat Berikutnya) -->
         <div class="bm-dompet" id="bmDompet" role="region" aria-label="Dompet Berkah"></div>
         <div id="bmTargetHost" data-bm="hari-ini"></div>
-        <!-- t82: growth share/invite/smart-notif (bm-growth). t81: Qur'an target. -->
+        <!-- t83: Akademi Game-first; t82: growth share/invite/smart-notif (bm-growth). t81: Qur'an target. -->
         <!-- t47: kartu "Jadwal salat hari ini" dihapus dari Beranda; jadwal lengkap dibuka lewat kartu "Salat berikutnya" (halaman Jadwal tetap utuh) -->
         <!-- t61: Masjid Terdekat dipindah ke halaman Jadwal (di bawah Buka Kompas Kiblat) -->
         <!-- t62: Al-Qur'an Lanjutkan Membaca dihapus dari Beranda (tetap di tab Qur'an) -->
@@ -5849,23 +5870,28 @@ function bClick(e){ const g=s=>e.target.closest(s); let a;
   if((a=g("[data-bpr]"))){ window.go&&window.go("hafalan"); setTimeout(()=>{ try{ window.RKHafalan&&window.RKHafalan.open(a.dataset.bpr); }catch(_){} },80); return true; }
   return false; }
 let pSeq=0;
+let ppFoldOpen=false;
+function ppSum(n,extra){ const pctN=Math.max(0,Math.min(100,Math.round((n||0)*100/3))); return `<summary class="pp-sum"><span class="pp-sum-t">🌱 ${t("pName")} · <b>${NUM(n||0)}/3</b>${extra||""}</span><span class="pp-sum-bar" aria-hidden="true"><i style="width:${pctN}%"></i></span><span class="pp-sum-go">▾</span></summary>`; }
 async function pRender(){ const el=$("#pkProg"); if(!el) return; const my=++pSeq; el.dir=lang()==="ar"?"rtl":"ltr"; let P=pGet();
-  if(!P||P.st==="off"){ el.className="card pp pp-inv"; el.innerHTML=`<div class="eyebrow">🌱 ${t("pName")}</div><h3 class="pp-h">${t("pInvite")}</h3><small class="dim">${t("pSub")}</small><p class="muted pp-inv-tx">${t("pInvTx")}</p><div class="pp-row"><button class="btn gold" type="button" data-pp="join">${P?t("rejoin"):t("pStart")}</button></div>`; return; }
+  const fold=(sum,body,cls)=>{ el.className="card pp pp-compact "+(cls||""); el.innerHTML=`<details class="pp-fold"${ppFoldOpen?" open":""}>${sum}<div class="pp-fold-body">${body}</div></details>`; const d=el.querySelector("details.pp-fold"); if(d) d.addEventListener("toggle",()=>{ ppFoldOpen=d.open; }); };
+  if(!P||P.st==="off"){ fold(ppSum(0,` · ${t("pInvite")}`),`<h3 class="pp-h">${t("pInvite")}</h3><small class="dim">${t("pSub")}</small><p class="muted pp-inv-tx">${t("pInvTx")}</p><div class="pp-row"><button class="btn gold" type="button" data-pp="join">${P?t("rejoin"):t("pStart")}</button></div>`,"pp-inv"); return; }
   P=pRoll(P); const st=pStats(P), td=(P.done||{})[dk()]||{}, n=["a","h","s"].filter(k=>td[k]).length;
   const menu=`<details class="pp-menu"><summary aria-label="${t("menu")}">⋯</summary><div class="pp-mbox">${P.st==="on"?`<button type="button" data-pp="pause">⏸ ${t("pause")}</button>`:`<button type="button" data-pp="resume">▶ ${t("resume")}</button>`}<button type="button" data-pp="stop">⏹ ${t("stop")}</button><button type="button" data-pp="reset">↺ ${t("reset")}</button></div></details>`;
   const head=`<div class="row v2-sb pp-head"><div><div class="eyebrow">🌱 ${t("pName")}</div><small class="dim">${t("pSub")}</small></div>${menu}</div>`;
-  if(P.st==="pause"){ el.className="card pp pp-paused"; el.innerHTML=head+`<p class="muted">⏸ ${t("paused")}</p><div class="pp-bars">${["a","h","s"].map(k=>pBar(k,P)).join("")}</div><button class="btn gold" type="button" data-pp="resume">▶ ${t("resume")}</button>`; return; }
+  if(P.st==="pause"){ fold(ppSum(n,` · ⏸ ${t("pause")}`),head+`<p class="muted">⏸ ${t("paused")}</p><div class="pp-bars">${["a","h","s"].map(k=>pBar(k,P)).join("")}</div><button class="btn gold" type="button" data-pp="resume">▶ ${t("resume")}</button>`,"pp-paused"); return; }
   const S1=""; /* t50: Tahap 1 dipindah ke alur Mulai Salat Khusyuk (langkah 6) */ if(false){ el.className="card lit pp pp-t1"; el.innerHTML=head+`<div class="pp-top"><div class="pp-st"><div class="pp-streak">🔥 <b>${NUM(st.cur)}</b> ${t("streak")}</div></div></div>`+S1+`<div class="pp-stage pp-s2 pp-lock"><b>🔒 ${tb("s2")}</b><small class="dim">${tb("s2Lock")}</small></div>`+pBdg(); return; }
-  el.className="card lit pp ak-studycard"+(n>=3?" pp-all":""); el.innerHTML=head+S1+`<p class="dim">${t("loading")}</p>`;
-  let A,Hh,S; try{ [A,Hh,S]=await Promise.all([ayahAt(Math.min(P.a.t,TOT.a)),hadAt(Math.min(P.h.t,TOT.h)),sirAt(P.s.t)]); }catch(e){ if(my===pSeq) el.innerHTML=head+S1+`<p class="dim">${t("offline")}</p>`; return; }
+  el.className="card lit pp pp-compact ak-studycard"+(n>=3?" pp-all":"");
+  el.innerHTML=`<details class="pp-fold"${ppFoldOpen?" open":""}>${ppSum(n)}<div class="pp-fold-body">${head}${S1}<p class="dim">${t("loading")}</p></div></details>`;
+  let A,Hh,S; try{ [A,Hh,S]=await Promise.all([ayahAt(Math.min(P.a.t,TOT.a)),hadAt(Math.min(P.h.t,TOT.h)),sirAt(P.s.t)]); }catch(e){ if(my===pSeq){ fold(ppSum(n),head+S1+`<p class="dim">${t("offline")}</p>`,"lit pp-compact ak-studycard"); } return; }
   if(my!==pSeq) return;
   const it=(k,ic,lab,pos,body,open)=>`<div class="pp-it${td[k]?" on":""}" data-ppk="${k}"><button type="button" class="pk-ck" data-ppm="${k}" aria-pressed="${!!td[k]}" aria-label="${td[k]?t("undo"):t("mark")}">${td[k]?"✓":""}</button><div class="pp-bd"><small>${ic} ${lab} · <b>${pos}</b></small>${body}<div class="pp-acts"><button type="button" class="btn ghost pp-sm" ${open}>${t("openR")} →</button>${td[k]?`<button type="button" class="pp-link" data-ppx="${k}">+ ${t("more")}</button>`:""}</div></div></div>`;
-  el.innerHTML=head+S1+`<details class="pp-stage pp-s2" open><summary><b>📚 ${tb("s2")}</b></summary><div class="pp-top"><div class="pp-ringw">${ring(n)}</div><div class="pp-st"><small class="${n?"dim":"pp-remind"}">${n>=3?t("doneAll"):(n?t("keep"):t("notYet"))}</small></div></div>
+  const body=head+S1+`<details class="pp-stage pp-s2" open><summary><b>📚 ${tb("s2")}</b></summary><div class="pp-top"><div class="pp-ringw">${ring(n)}</div><div class="pp-st"><small class="${n?"dim":"pp-remind"}">${n>=3?t("doneAll"):(n?t("keep"):t("notYet"))}</small></div></div>
    ${it("a","📖",t("tA"),`${NUM(P.a.t)}/${NUM(TOT.a)}`,`<span class="pk-ar" lang="ar" dir="rtl">${esc(A.ar)}</span>${A.tr?`<span class="pk-tr">${esc(A.tr)}</span>`:""}<em>QS. ${esc(A.name)} ${NUM(A.s)}:${NUM(A.a)}</em>`,`data-hiq="${A.s}:${A.a}"`)}
    ${it("h","📜",t("tH"),`${NUM(P.h.t)}/${NUM(TOT.h)}`,`${Hh.id?`<span class="pk-tr pk-clip3">${esc(Hh.id)}</span><small class="pk-draft">${t("trDraft")}</small>`:`<span class="pk-ar pk-clip" lang="ar" dir="rtl">${esc(Hh.ar||t("empty"))}</span>`}<em>${t("hEy")} ${NUM(Hh.n)} · ${esc(Hh.kn)}</em>`,`data-hopen="${Hh.k}:${Hh.n}" data-hihub="h"`)}
    ${S.w?it("s","🌙",t("tS"),`${NUM(P.s.t)}/${NUM(S.tot)}`,`<b>${esc(S.title)}</b><em>${t("sEy")} · ${t("pgN")} ${NUM(S.n)}</em>`,`data-sopen="${S.n}" data-hihub="s"`):`<div class="pp-it"><div class="pp-bd"><small>🌙 ${t("tS")} · ${NUM(P.s.t)}/${NUM(S.tot)}</small><span class="dim">${t("sirahSoon")}</span></div></div>`}
    <div class="pp-bars">${["a","h","s"].map(k=>pBar(k,P)).join("")}</div>
-   </details>`; /* t52: lencana, poin & streak dipindah ke ruang "Main & Uji Hafalan" (src/ak50) — Akademi tetap tenang */ }
+   </details>`;
+  fold(ppSum(n),body,"lit pp-compact ak-studycard"+(n>=3?" pp-all":"")); /* t83: collapsed under Game; t52 badges in Game */ }
 const pBdg=()=>`<div class="eyebrow pp-bdh">${t("badges")}</div><div class="pp-badges">${window.KusyuBadges.list().map(b=>`<span class="pp-bdg${b.on?" on":""}" data-b="${esc(b.id)}" data-src="${esc(b.src)}" title="${esc(b.n[L()]||b.n[0])}">${b.on?b.ic:"🔒"} ${esc(b.n[L()]||b.n[0])}</span>`).join("")}</div><small class="dim ks-small">+3 ${t("pts")} / ${tb("day").toLowerCase()} · ${tb("draftB")}</small>`;
 function pBar(k,P){ const tot=k==="s"?((SR.idx&&SR.idx.pages)||49):TOT[k]; const v=pct(P[k].p,tot); return `<div class="pp-bar"><span>${t({a:"tA",h:"tH",s:"tS"}[k])} ${NUM(P[k].p-1)}/${NUM(tot)}</span><i><b style="width:${Math.max(v,0.6)}%"></b></i><em>${NUM(v)}%</em></div>`; }
 async function pHome(c){ /* versi ringkas Beranda untuk peserta */ const P=pRoll(pGet()); const st=pStats(P), td=(P.done||{})[dk()]||{}, n=["a","h","s"].filter(k=>td[k]).length;
@@ -5881,16 +5907,19 @@ function pClick(e){ if(bClick(e)) return true; const a=e.target.closest("[data-p
     if(v==="join"){ const P=pGet(); if(P){ P.st="on"; pSet(P); pRender(); homeCard(); } else { pSet(pNew()); pRender(); homeCard(); } }
     else if(v==="pause") pState("pause"); else if(v==="resume") pState("on"); else if(v==="stop") pState("off");
     else if(v==="reset"){ if(confirm(t("resetQ"))){ pSet(Object.assign(pNew(),{st:(pGet()||{}).st==="pause"?"on":"on"})); pRender(); homeCard(); } }
-    else if(v==="goto"){ window.go&&window.go("quran"); setTab("home",{push:false}); setTimeout(()=>{ const p=$("#pkProg"); p&&p.scrollIntoView({block:"start"}); },60); }
+    else if(v==="goto"){ window.go&&window.go("quran"); setTab("home",{push:false}); setTimeout(()=>{ ppFoldOpen=true; const p=$("#pkProg"); const d=p&&p.querySelector("details.pp-fold"); if(d) d.open=true; p&&p.scrollIntoView({block:"start"}); },60); }
     return true; }
   const m=e.target.closest("[data-ppm]"); if(m){ pMark(m.dataset.ppm); if(m.closest("#pkToday")) homeCard(); return true; }
   const x=e.target.closest("[data-ppx]"); if(x){ pMore(x.dataset.ppx); return true; } return false; }
 
 function inject(){ const pg=$("#page-quran"); if(!pg||$("#pkHome")) return; pg.dataset.pk="home";
+  /* t83: header+4 tiles at top, then Game, then collapsed program */
   const home=document.createElement("div"); home.id="pkHome"; home.className="pk-home";
+  const gm=document.createElement("div"); gm.id="pkGame"; gm.className="pk-game"; gm.setAttribute("aria-label","Main & Uji Hafalan");
+  const pp=document.createElement("div"); pp.id="pkProg"; pp.className="card pp pp-compact";
   const K3=(n,e)=>window.K3D?K3D.icon(n,46):e;
   home.innerHTML=`<div class="pk-hh"><div class="eyebrow" data-pt="libEy"></div><h1 data-pt="libT"></h1><p class="muted pk-lead" data-pt="libLead"></p></div><div class="pk-grid">${[["q","quran","📖","tabQ","tileQ"],["h","hadis","📚","tabH","tileH"],["s","sirah","📜","tabS","tileS"]].map(([k,n,i,l,sb])=>`<button class="v2-tile pk-tile" type="button" data-pk="${k}"><i aria-hidden="true">${K3(n,i)}</i><b data-pt="${l}"></b><small data-pt="${sb}"></small></button>`).join("")}<button class="v2-tile pk-tile pk-hq" type="button" data-go="hafalan" id="pkHafalan"><i aria-hidden="true">${K3("hafalan","🎙️")}</i><b data-pt="tabHq"></b><small data-pt="tileHq"></small></button></div>`;
-  pg.prepend(home); const pp=document.createElement("div"); pp.id="pkProg"; pp.className="card pp"; home.after(pp);
+  pg.prepend(home); home.after(gm); gm.after(pp);
   const bb=document.createElement("div"); bb.id="pkBack"; bb.className="pk-backbar"; bb.innerHTML=`<button type="button" class="pk-back" data-pkback="1"><span aria-hidden="true">${lang()==="ar"?"→":"←"}</span> <span data-pt="back"></span></button>`; pp.after(bb);
   const h=document.createElement("div"); h.id="pkHadis"; h.className="pk-pane"; h.innerHTML=`<div class="stack" id="hIndex"><div class="q-hero"><div class="eyebrow" data-pt="hEy"></div><div class="q-hero-ar h-hero-ar" lang="ar" dir="rtl">صَحِيحُ الْبُخَارِيِّ</div><p class="muted" data-pt="hLead"></p></div>
    <div id="hCont"></div><div class="q-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="hSearch" type="search" autocomplete="off" data-pph="hSearch"></div>
@@ -6755,11 +6784,16 @@ const PEND="ks_ak_pend";
 function pendGet(){ const o=store.get(PEND,null); return o&&o.d===PK().dk()?o.k||{}:{}; }
 function pendSet(k,from,to){ const d=PK().dk(); const o=store.get(PEND,null); const x=o&&o.d===d?o:{d,k:{}}; const c=x.k[k]; x.k[k]=c?[Math.min(c[0],from),Math.max(c[1],to)]:[from,to]; store.set(PEND,x); }
 
-/* ---------- t52: Ruang "Main & Uji Hafalan" — terpisah dari ruang belajar Akademi ---------- */
-function openGame(){ let o=$("#akGame"); if(!o){ o=document.createElement("div"); o.id="akGame"; o.className="ak-game"; o.setAttribute("role","dialog"); o.setAttribute("aria-modal","true"); document.body.appendChild(o); o.addEventListener("click",gmClick); requestAnimationFrame(()=>o.classList.add("on")); }
+/* ---------- t52/t83: Ruang "Main & Uji Hafalan" — inline di #pkGame (atas Akademi); overlay tetap untuk fokus ---------- */
+function gameHost(){ return $("#pkGame")||$("#akGame"); }
+function openGame(){ /* t83: scroll ke panel Game di atas; overlay hanya bila host belum ada */
+  const host=$("#pkGame"); if(host){ host.scrollIntoView({block:"start",behavior:"smooth"}); renderGame(); return host; }
+  let o=$("#akGame"); if(!o){ o=document.createElement("div"); o.id="akGame"; o.className="ak-game"; o.setAttribute("role","dialog"); o.setAttribute("aria-modal","true"); document.body.appendChild(o); o.addEventListener("click",gmClick); requestAnimationFrame(()=>o.classList.add("on")); }
   o.dir=lang()==="ar"?"rtl":"ltr"; renderGame(); return o; }
 function closeGame(){ const o=$("#akGame"); if(o) o.remove(); }
-function renderGame(){ const o=$("#akGame"); if(!o) return; const P=prog()||{}, d=PK().dk(), qz=(P.qz&&P.qz[d])||{}, td=(P.done||{})[d]||{}, pe=pendGet();
+function renderGame(){ const o=gameHost(); if(!o) return; const inline=o.id==="pkGame";
+  if(inline){ o.dir=lang()==="ar"?"rtl":"ltr"; if(!o._gmBound){ o.addEventListener("click",gmClick); o._gmBound=true; } }
+  const P=prog()||{}, d=PK().dk(), qz=(P.qz&&P.qz[d])||{}, td=(P.done||{})[d]||{}, pe=pendGet();
   let st={cur:0}; try{ st=PK().pStats(); }catch(e){} let pts=null; try{ const s=window.KusyuIbadah&&KusyuIbadah.stats&&KusyuIbadah.stats(); if(s&&s.total!=null) pts=s.total; }catch(e){}
   const BL=(window.KusyuBadges&&KusyuBadges.list())||[], bn=BL.filter(b=>b.on).length;
   const C=window.KusyuBacaan||[], BD=(P.b&&P.b.d)||{}, rq=C.filter(x=>!x.opt), nd=rq.filter(x=>BD[x.id]).length, nx=C.findIndex(x=>!x.opt&&!BD[x.id]);
@@ -6770,8 +6804,10 @@ function renderGame(){ const o=$("#akGame"); if(!o) return; const P=prog()||{}, 
     else right=`<em class="ak-gs">${td[k]?"—":tt("gNotRead")}</em>`;
     return `<div class="ak-gq" data-gk="${k}"><span class="ak-gi">${ic}</span><b>${esc(tk(0,k))}</b><span class="ak-gr">${right}</span></div>`; };
   const nur2=DU()&&DU().nur?DU().nur("idle",72):`<span aria-hidden="true">🏮</span>`;
+  const xBtn=inline?"":`<button type="button" class="ak-x" data-gx="1" aria-label="${tt("close")}">✕</button>`;
+  const foot=inline?"":`<div class="ak-gfoot"><button type="button" class="ak-skip" data-gx="1">${tt("skip")} · ${tt("back")}</button></div>`;
   o.innerHTML=`<div class="ak-game-in">
-   <div class="ak-gh"><div><b>🎮 ${tt("game")}</b><small>${tt("gameSub")}</small></div><button type="button" class="ak-mute" data-qmute="1" aria-pressed="${muted()}" aria-label="${tt("mute")}">${muted()?"🔇":"🔊"}</button><button type="button" class="ak-x" data-gx="1" aria-label="${tt("close")}">✕</button></div>
+   <div class="ak-gh"><div><b>🎮 ${tt("game")}</b><small>${tt("gameSub")}</small></div><button type="button" class="ak-mute" data-qmute="1" aria-pressed="${muted()}" aria-label="${tt("mute")}">${muted()?"🔇":"🔊"}</button>${xBtn}</div>
    <div class="ak-gbody">
    <div class="ak-gnur">${nur2}<div class="ak-bub"><b>${tt("gHi")}</b></div></div>
    <div class="ak-gstat"><span>🔥 <b>${NUM(st.cur||0)}</b> ${tt("gStreak")}</span>${pts!=null?`<span>✨ <b>${NUM(pts)}</b> ${tt("gPts")}</span>`:""}<span>🏅 <b>${NUM(bn)}</b> ${tt("gBadges")}</span></div>
@@ -6782,25 +6818,27 @@ function renderGame(){ const o=$("#akGame"); if(!o) return; const P=prog()||{}, 
     <button type="button" class="ak-playbtn wide" data-duo="${esc((C[nx>=0?nx:0]||{}).id||"")}">▶ ${nd&&nx>=0?tt("resume"):(nx<0?tt("gPract"):tt("gPlay"))} · ${tt("gGame")}</button></section>
    <section class="ak-gsec"><h4>🏅 ${tt("gBadges")}</h4><div class="pp-badges">${BL.map(b=>`<span class="pp-bdg${b.on?" on":""}" data-b="${esc(b.id)}" title="${esc(b.n[L()]||b.n[0])}">${b.on?b.ic:"🔒"} ${esc(b.n[L()]||b.n[0])}</span>`).join("")}</div><small class="dim">${tt("gPtsNote")}</small></section>
    </div>
-   <div class="ak-gfoot"><button type="button" class="ak-skip" data-gx="1">${tt("skip")} · ${tt("back")}</button></div></div>`; }
+   ${foot}</div>`; }
 function gmClick(e){ if(e.target.closest("[data-gx]")){ closeGame(); return; }
   const m=e.target.closest("[data-qmute]"); if(m){ store.set("ks_duo_mute",!muted()); m.textContent=muted()?"🔇":"🔊"; m.setAttribute("aria-pressed",String(muted())); return; }
   const q=e.target.closest("[data-gq]"); if(q){ const [k,f,t]=q.dataset.gq.split(":"); quiz(k,+f,+t); return; } }
 /* render ulang ruang game setelah kuis/pelajaran ditutup */
-new MutationObserver(()=>{ if($("#akGame")&&!$("#akQz")) renderGame(); }).observe(document.body,{childList:true});
-document.addEventListener("click",e=>{ if(e.target.closest("#duoOv [data-dx]")&&$("#akGame")) setTimeout(renderGame,350); });
+new MutationObserver(ms=>{ const gone=ms.some(m=>[...m.removedNodes].some(n=>n.id==="akQz"||(n.id&&String(n.id).startsWith("duo"))));
+  if(!gone) return; if(gameHost()&&!$("#akQz")) renderGame(); }).observe(document.body,{childList:true});
+document.addEventListener("click",e=>{ if(e.target.closest("#duoOv [data-dx]")&&gameHost()) setTimeout(renderGame,350); });
 
-/* ---------- Dekorasi kartu program ---------- */
-function decorate(){ const pp=$("#pkProg"); if(!pp||pp._akBusy) return; pp._akBusy=true; try{ const P=prog(); if(!P||P.st!=="on") return;
+/* ---------- Dekorasi kartu program (t83: Game di #pkGame, bukan tombol di dalam program) ---------- */
+function decorate(){ const pp=$("#pkProg"); if(!pp||pp._akBusy) return; pp._akBusy=true; try{
+  renderGame();
+  const P=prog(); if(!P||P.st!=="on") return;
   pp.querySelectorAll(".pp-it[data-ppk]").forEach(it=>{ if(it.querySelector(".ak-acts")) return; const k=it.dataset.ppk; const box=document.createElement("div"); box.className="ak-acts";
     const later=P[k]&&P[k].later; box.innerHTML=`<button type="button" class="btn gold pp-sm" data-akt="${k}">📖 ${later?tt("resume"):tt("track")}</button>${later?`<small class="ak-later">${tt("laterTag")}</small>`:""}`; (it.querySelector(".pp-bd")||it).appendChild(box); });
   const s2=pp.querySelector("details.pp-s2"); if(s2&&!s2.querySelector(".ak-skipday")){ const td=(P.done||{})[PK().dk()]||{}; if(!["a","h","s"].every(x=>td[x])){ const b=document.createElement("button"); b.type="button"; b.className="ak-skipday"; b.dataset.akskip="1"; b.textContent=tt("skipDay"); const bars=s2.querySelector(".pp-bars"); bars?bars.before(b):s2.appendChild(b); } }
-  if(!pp.querySelector(".ak-gameentry")){ const pe=pendGet(), d=PK().dk(), qz=(P.qz&&P.qz[d])||{}, n=Object.keys(pe).filter(k=>qz[k]==null).length; const b=document.createElement("button"); b.type="button"; b.className="ak-gameentry"; b.dataset.akgame="1";
-    b.innerHTML=`<span class="ak-ge-ic">🎮</span><span><b>${tt("game")}</b><small>${tt("gameSub")}</small></span>${n?`<em class="ak-ge-n">${NUM(n)}</em>`:""}<span class="ak-ge-go">→</span>`; pp.appendChild(b); }
+  /* t83: no .ak-gameentry inside program — Game lives in #pkGame above */
  } finally { setTimeout(()=>{ pp._akBusy=false; },0); } }
 document.addEventListener("click",e=>{ const g=e.target.closest("[data-akgame]"); if(g){ e.preventDefault(); e.stopPropagation(); openGame(); return; } const a=e.target.closest("[data-akt]"); if(a){ e.preventDefault(); e.stopPropagation(); openTrack(a.dataset.akt); return; }
   const s=e.target.closest("[data-akskip]"); if(s){ e.preventDefault(); e.stopPropagation(); toast(tt("skipped")); const det=s.closest("details"); if(det) det.open=false; } },true);
-function boot(){ const pp=$("#pkProg"); if(!pp) return setTimeout(boot,300); new MutationObserver(()=>{ if(!pp._akBusy) decorate(); }).observe(pp,{childList:true,subtree:true}); decorate(); }
+function boot(){ const host=$("#pkGame")||$("#pkProg"); if(!host) return setTimeout(boot,300); const pp=$("#pkProg"); if(pp) new MutationObserver(()=>{ if(!pp._akBusy) decorate(); }).observe(pp,{childList:true,subtree:true}); decorate(); renderGame(); }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
 window.KusyuAk50={onDone,openTrack,quiz,closeTk,closeQz,decorate,openGame,closeGame,renderGame,pend:pendGet,state:()=>QZ};
 })();
