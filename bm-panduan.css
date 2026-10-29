@@ -1,4 +1,4 @@
-/* Best Muslim v95 — Panduan Pengguna (in-app guide book) */
+/* Best Muslim v96 — Panduan Pengguna (in-app guide book) */
 #page-panduan.on{display:block;padding:0;max-width:none}
 html:has(#page-panduan.on) #nav,
 body:has(#page-panduan.on) #nav,
@@ -97,10 +97,16 @@ body:has(#page-panduan.on) #view{padding-bottom:0!important}
   color:var(--gold,#d9b86a);text-decoration:none;background:transparent;border:0;padding:0;cursor:pointer;
 }
 .bm-pd-shot{
-  display:block;width:100%;margin-top:12px;border-radius:12px;overflow:hidden;
-  border:1px solid var(--line,rgba(255,255,255,.1));background:#000;
+  display:block;width:100%;height:fit-content;max-height:none;margin-top:12px;
+  border-radius:12px;overflow:hidden;line-height:0;
+  border:1px solid var(--line,rgba(255,255,255,.1));
+  background:transparent;aspect-ratio:auto;min-height:0;
 }
-.bm-pd-shot img{display:block;width:100%;height:auto}
+.bm-pd-shot img{
+  display:block;width:100%;height:auto;max-height:none;
+  object-fit:contain;object-position:top center;
+  vertical-align:top;aspect-ratio:auto;
+}
 
 .bm-pd-more{
   appearance:none;border:0;background:transparent;color:inherit;opacity:.55;

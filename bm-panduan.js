@@ -1,4 +1,4 @@
-/*! Best Muslim v95 — Panduan Pengguna (in-app guide book).
+/*! Best Muslim v96 — Panduan Pengguna (in-app guide book).
  * Inspired by a “library book” reading UX; original BM theme (dark/light/Dusty Pink).
  * Body: id + en. Arabic UI chrome translated; ar body falls back to id (no MT of religious text).
  */
@@ -515,8 +515,8 @@
           id: "about",
           title: { id: "Penerbit & kontak", en: "Publisher & contact" },
           body: {
-            id: "Best Muslim diterbitkan oleh PT East Kedaton Jayaland. Saran & pertanyaan: halo@bestmuslim.app · https://bestmuslim.app. Panduan ini diperbarui seiring fitur di aplikasi (v95).",
-            en: "Best Muslim is published by PT East Kedaton Jayaland. Feedback: halo@bestmuslim.app · https://bestmuslim.app. This guide tracks features in the app (v95)."
+            id: "Best Muslim diterbitkan oleh PT East Kedaton Jayaland. Saran & pertanyaan: halo@bestmuslim.app · https://bestmuslim.app. Panduan ini diperbarui seiring fitur di aplikasi (v96).",
+            en: "Best Muslim is published by PT East Kedaton Jayaland. Feedback: halo@bestmuslim.app · https://bestmuslim.app. This guide tracks features in the app (v96)."
           }
         }
       ]
@@ -578,7 +578,7 @@
       '<div class="bm-pd-scroll" id="bmPdScroll">' +
       (arNote ? '<p class="bm-pd-sec-t" style="font-style:normal;opacity:.8">' + esc(arNote) + "</p>" : "") +
       '<div class="bm-pd-cover" id="bmPdCover">' +
-      '<div class="bm-pd-kicker">GUIDE · v95</div>' +
+      '<div class="bm-pd-kicker">GUIDE · v96</div>' +
       "<h1>" +
       esc(LB(UI.title)) +
       "</h1>" +
