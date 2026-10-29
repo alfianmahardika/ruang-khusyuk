@@ -1,4 +1,4 @@
-/* Best Muslim v89 — Panel Admin (local moderation prototype). No real auth. */
+/* Best Muslim v92 — Panel Admin (local moderation prototype). No real auth. */
 (function () {
   "use strict";
   const PAGE = "admin";
@@ -6,6 +6,9 @@
   const SK_FILTER = "rk_jn_filter_v1";
   const SK_TRUST = "rk_jn_trust_v1";
   const SK_POSTS = "rk_jn_posts_v1";
+  const SK_APPS = "rk_jn_creator_apps_v1";
+  const SK_CREATORS = "rk_jn_creators_v1";
+  const SK_CMT_REPORTS = "rk_jn_cmt_reports_v1";
 
   const UI = {
     id: {
@@ -46,11 +49,30 @@
       ignored: "Diabaikan",
       blocked: "Pengguna diblokir (uji)",
       back: "Kembali",
-      verHint: "Best Muslim · v89 · prototipe",
+      verHint: "Best Muslim · v92 · prototipe",
       verLong: "Tahan lama untuk Panel Admin (uji)",
       author: "Penulis",
       type: "Jenis",
-      noPhoto: "Tanpa foto"
+      noPhoto: "Tanpa foto",
+      tabCreators: "Kreator",
+      creatorsEy: "Pengajuan kreator",
+      creatorsEmpty: "Tidak ada pengajuan menunggu.",
+      creatorsVerified: "Kreator terverifikasi",
+      creatorsNone: "Belum ada kreator terverifikasi.",
+      revoke: "Cabut verifikasi",
+      revoked: "Verifikasi dicabut",
+      approveCreator: "Setujui kreator",
+      rejectCreator: "Tolak",
+      creatorApproved: "Kreator disetujui",
+      creatorRejected: "Kreator ditolak",
+      reasonIncomplete: "Data tidak lengkap",
+      reasonUnclear: "Bukti kurang jelas",
+      reasonGuideline: "Tidak sesuai pedoman",
+      cmtReportsEy: "Komentar dilaporkan",
+      cmtReportsEmpty: "Belum ada komentar dilaporkan.",
+      proof: "Bukti",
+      sample: "Contoh konten",
+      appBio: "Latar belakang"
     },
     en: {
       title: "Admin Panel",
@@ -90,11 +112,30 @@
       ignored: "Dismissed",
       blocked: "User blocked (demo)",
       back: "Back",
-      verHint: "Best Muslim · v89 · prototype",
+      verHint: "Best Muslim · v92 · prototype",
       verLong: "Long-press for Admin Panel (demo)",
       author: "Author",
       type: "Type",
-      noPhoto: "No photo"
+      noPhoto: "No photo",
+      tabCreators: "Creators",
+      creatorsEy: "Creator applications",
+      creatorsEmpty: "No applications waiting.",
+      creatorsVerified: "Verified creators",
+      creatorsNone: "No verified creators yet.",
+      revoke: "Revoke verification",
+      revoked: "Verification revoked",
+      approveCreator: "Approve creator",
+      rejectCreator: "Reject",
+      creatorApproved: "Creator approved",
+      creatorRejected: "Creator rejected",
+      reasonIncomplete: "Incomplete data",
+      reasonUnclear: "Unclear proof",
+      reasonGuideline: "Against guidelines",
+      cmtReportsEy: "Reported comments",
+      cmtReportsEmpty: "No reported comments.",
+      proof: "Proof",
+      sample: "Sample content",
+      appBio: "Background"
     },
     ar: {
       title: "لوحة الإدارة",
@@ -134,11 +175,30 @@
       ignored: "متجاهل",
       blocked: "حُظر المستخدم (تجربة)",
       back: "رجوع",
-      verHint: "Best Muslim · v89 · نموذج",
+      verHint: "Best Muslim · v92 · نموذج",
       verLong: "اضغط مطولًا للوحة الإدارة",
       author: "الكاتب",
       type: "النوع",
-      noPhoto: "بدون صورة"
+      noPhoto: "بدون صورة",
+      tabCreators: "المنشئون",
+      creatorsEy: "طلبات المنشئين",
+      creatorsEmpty: "لا طلبات بانتظار.",
+      creatorsVerified: "منشئون موثّقون",
+      creatorsNone: "لا منشئين موثّقين بعد.",
+      revoke: "إلغاء التوثيق",
+      revoked: "أُلغي التوثيق",
+      approveCreator: "موافقة المنشئ",
+      rejectCreator: "رفض",
+      creatorApproved: "وُثّق المنشئ",
+      creatorRejected: "رُفض المنشئ",
+      reasonIncomplete: "بيانات ناقصة",
+      reasonUnclear: "إثبات غير واضح",
+      reasonGuideline: "يخالف الإرشادات",
+      cmtReportsEy: "تعليقات مبلَّغ عنها",
+      cmtReportsEmpty: "لا تعليقات مبلَّغ عنها.",
+      proof: "إثبات",
+      sample: "مثال المحتوى",
+      appBio: "الخلفية"
     }
   };
 
@@ -255,6 +315,7 @@
           <button type="button" data-ad-tab="reports" data-ad-i="tabReports"></button>
           <button type="button" data-ad-tab="filter" data-ad-i="tabFilter"></button>
           <button type="button" data-ad-tab="trust" data-ad-i="tabTrust"></button>
+          <button type="button" data-ad-tab="creators" data-ad-i="tabCreators"></button>
         </div>
         <div id="adView"></div>
       </div>`;
@@ -420,6 +481,127 @@
       }`;
   }
 
+
+  function typeLab(type) {
+    const map = { ustadz: "Ustadz/Ustadzah", lembaga: "Lembaga", influencer: "Influencer Kebaikan" };
+    return map[type] || type || "";
+  }
+  function apps() {
+    return storeGet(SK_APPS, []) || [];
+  }
+  function saveApps(a) {
+    storeSet(SK_APPS, a || []);
+  }
+  function creatorsList() {
+    let list = storeGet(SK_CREATORS, null);
+    if (!list || !list.length) {
+      list = [
+        { id: "cr_ustadz_ahmad", handle: "ustadzahmad", name: "Ustadz Ahmad Nur", type: "ustadz", av: "AN", verified: true },
+        { id: "cr_lembaga_cahaya", handle: "cahayaummah", name: "Yayasan Cahaya Ummah", type: "lembaga", av: "CU", verified: true },
+        { id: "cr_inf_nurul", handle: "nurulkebaikan", name: "Nurul Kebaikan", type: "influencer", av: "NK", verified: true }
+      ];
+      storeSet(SK_CREATORS, list);
+      storeSet("rk_jn_creators_seed_v1", true);
+    }
+    return list;
+  }
+  function saveCreatorsList(c) {
+    storeSet(SK_CREATORS, c || []);
+  }
+  function cmtReports() {
+    return storeGet(SK_CMT_REPORTS, []) || [];
+  }
+  function saveCmtReports(r) {
+    storeSet(SK_CMT_REPORTS, r || []);
+  }
+  function ensureSeedCreatorApp() {
+    if (storeGet("rk_jn_admin_creator_seed_v1", false)) return;
+    const A = apps();
+    if (!A.some((x) => x.status === "pending")) {
+      A.unshift({
+        id: "app_demo_pending",
+        handle: "hambaallah",
+        name: "Hamba Allah",
+        type: "influencer",
+        bio: "Belajar dakwah digital, fokus konten istiqamah harian (contoh uji).",
+        proof: "https://example.com/bukti-contoh",
+        sample: "Refleksi singkat setelah subuh + ayat pilihan.",
+        agreed: true,
+        status: "pending",
+        rejectReason: "",
+        at: Date.now() - 1800000,
+        av: "HA"
+      });
+      saveApps(A);
+    }
+    storeSet("rk_jn_admin_creator_seed_v1", true);
+  }
+  function renderCreators(view) {
+    ensureSeedCreatorApp();
+    const pending = apps().filter((a) => a.status === "pending");
+    const verified = creatorsList().filter((c) => c.verified !== false);
+    const pendHtml = pending.length
+      ? pending
+          .map(
+            (a) => `<article class="ad-card flat" data-ad-app="${esc(a.id)}">
+          <div class="ad-body" style="padding-inline-start:0">
+            <div class="ad-meta"><b>${esc(a.name)}</b><span>@${esc(a.handle)} · ${esc(typeLab(a.type))}</span></div>
+            <p class="ad-text"><b>${esc(t("appBio"))}:</b> ${esc(a.bio || "")}</p>
+            <p class="ad-text"><b>${esc(t("proof"))}:</b> <code>${esc(a.proof || "")}</code></p>
+            <p class="ad-text"><b>${esc(t("sample"))}:</b> ${esc(a.sample || "")}</p>
+            <div class="ad-acts">
+              <button type="button" class="btn sm gold" data-ad-act="approve-creator">${esc(t("approveCreator"))}</button>
+              <button type="button" class="btn sm ghost" data-ad-act="reject-creator-open">${esc(t("rejectCreator"))}</button>
+            </div>
+            <div class="ad-reasons" hidden>
+              <button type="button" data-ad-creason="incomplete">${esc(t("reasonIncomplete"))}</button>
+              <button type="button" data-ad-creason="unclear">${esc(t("reasonUnclear"))}</button>
+              <button type="button" data-ad-creason="guideline">${esc(t("reasonGuideline"))}</button>
+              <button type="button" data-ad-creason="other">${esc(t("reasonOther"))}</button>
+            </div>
+          </div>
+        </article>`
+          )
+          .join("")
+      : `<p class="dim">${esc(t("creatorsEmpty"))}</p>`;
+    const verHtml = verified.length
+      ? verified
+          .map(
+            (c) => `<article class="ad-card flat" data-ad-creator="${esc(c.handle)}">
+          <div class="ad-body" style="padding-inline-start:0">
+            <div class="ad-meta"><b>${esc(c.name)}</b><span>@${esc(c.handle)} · ${esc(typeLab(c.type))} · ✓</span></div>
+            <div class="ad-acts">
+              <button type="button" class="btn sm ghost" data-ad-act="revoke">${esc(t("revoke"))}</button>
+            </div>
+          </div>
+        </article>`
+          )
+          .join("")
+      : `<p class="dim">${esc(t("creatorsNone"))}</p>`;
+    const cmtOpen = cmtReports().filter((r) => r.status === "open");
+    const cmtHtml = cmtOpen.length
+      ? cmtOpen
+          .map(
+            (r) => `<article class="ad-card flat" data-ad-cmtrep="${esc(r.id)}">
+          <div class="ad-body" style="padding-inline-start:0">
+            <div class="ad-meta"><b>${esc(r.author || "?")}</b><span>@${esc(r.handle || "")} · post ${esc(r.postId || "")}</span></div>
+            <p class="ad-text">${esc(r.text || "")}</p>
+            <div class="ad-acts">
+              <button type="button" class="btn sm" data-ad-act="cmt-hide">${esc(t("hide"))}</button>
+              <button type="button" class="btn sm ghost" data-ad-act="cmt-ignore">${esc(t("ignore"))}</button>
+              <button type="button" class="btn sm ghost" data-ad-act="cmt-block">${esc(t("block"))}</button>
+            </div>
+          </div>
+        </article>`
+          )
+          .join("")
+      : `<p class="dim">${esc(t("cmtReportsEmpty"))}</p>`;
+    view.innerHTML = `<div class="eyebrow">${esc(t("creatorsEy"))}</div><div class="ad-list">${pendHtml}</div>
+      <div class="eyebrow" style="margin-top:18px">${esc(t("creatorsVerified"))}</div><div class="ad-list">${verHtml}</div>
+      <div class="eyebrow" style="margin-top:18px">${esc(t("cmtReportsEy"))}</div><div class="ad-list">${cmtHtml}</div>`;
+  }
+
+
   async function render() {
     applyI18n();
     $$("[data-ad-tab]").forEach((b) => b.classList.toggle("on", b.dataset.adTab === state.tab));
@@ -428,6 +610,7 @@
     if (state.tab === "queue") await renderQueue(view);
     else if (state.tab === "reports") await renderReports(view);
     else if (state.tab === "filter") renderFilter(view);
+    else if (state.tab === "creators") renderCreators(view);
     else renderTrust(view);
   }
 
@@ -515,14 +698,115 @@
         render();
         return;
       }
-      if (a === "addword") {
-        const inp = $("#adWord");
-        const w = (inp && inp.value.trim().toLowerCase()) || "";
-        if (!w) return;
-        const f = filters();
-        if (!f.words.includes(w)) f.words.push(w);
-        saveFilters(f);
-        if (inp) inp.value = "";
+    }
+    if (act && act.dataset.adAct === "addword") {
+      e.preventDefault();
+      const inp = $("#adWord");
+      const w = (inp && inp.value.trim().toLowerCase()) || "";
+      if (!w) return;
+      const f = filters();
+      if (!f.words.includes(w)) f.words.push(w);
+      saveFilters(f);
+      if (inp) inp.value = "";
+      render();
+      return;
+    }
+    const appCard = g("[data-ad-app]");
+    if (appCard && act) {
+      e.preventDefault();
+      const id = appCard.dataset.adApp;
+      const a = act.dataset.adAct;
+      if (a === "approve-creator") {
+        const A = apps();
+        const app = A.find((x) => x.id === id);
+        if (app) {
+          app.status = "approved";
+          saveApps(A);
+          const C = creatorsList().filter((c) => String(c.handle).toLowerCase() !== String(app.handle).toLowerCase());
+          C.unshift({
+            id: "cr_" + app.handle,
+            handle: app.handle,
+            name: app.name,
+            type: app.type,
+            av: app.av || "CR",
+            bio: app.bio || "",
+            verified: true,
+            verifiedAt: Date.now()
+          });
+          saveCreatorsList(C);
+          toast(t("creatorApproved"));
+        }
+        render();
+        try { if (window.RKJejakNur && RKJejakNur.render) RKJejakNur.render(); } catch (err) {}
+        return;
+      }
+      if (a === "reject-creator-open") {
+        const box = appCard.querySelector(".ad-reasons");
+        if (box) box.hidden = !box.hidden;
+        return;
+      }
+    }
+    const creason = g("[data-ad-creason]");
+    if (creason && appCard) {
+      e.preventDefault();
+      const id = appCard.dataset.adApp;
+      const A = apps();
+      const app = A.find((x) => x.id === id);
+      if (app) {
+        app.status = "rejected";
+        app.rejectReason = creason.dataset.adCreason;
+        saveApps(A);
+        toast(t("creatorRejected"));
+      }
+      render();
+      return;
+    }
+    const crCard = g("[data-ad-creator]");
+    if (crCard && act && act.dataset.adAct === "revoke") {
+      e.preventDefault();
+      const h = crCard.dataset.adCreator;
+      saveCreatorsList(creatorsList().filter((c) => String(c.handle).toLowerCase() !== String(h).toLowerCase()));
+      toast(t("revoked"));
+      render();
+      try { if (window.RKJejakNur && RKJejakNur.render) RKJejakNur.render(); } catch (err) {}
+      return;
+    }
+    const cmtCard = g("[data-ad-cmtrep]");
+    if (cmtCard && act) {
+      e.preventDefault();
+      const rid = cmtCard.dataset.adCmtrep;
+      const R = cmtReports();
+      const r = R.find((x) => x.id === rid);
+      const aa = act.dataset.adAct;
+      if (r && aa === "cmt-hide") {
+        r.status = "hidden";
+        /* hide comment in map */
+        try {
+          const m = storeGet("rk_jn_comments_v1", {}) || {};
+          const arr = m[r.postId] || [];
+          const c = arr.find((x) => x.id === r.commentId);
+          if (c) c.hidden = true;
+          storeSet("rk_jn_comments_v1", m);
+        } catch (err) {}
+        saveCmtReports(R);
+        toast(t("hidden"));
+        render();
+        return;
+      }
+      if (r && aa === "cmt-ignore") {
+        r.status = "ignored";
+        saveCmtReports(R);
+        toast(t("ignored"));
+        render();
+        return;
+      }
+      if (r && aa === "cmt-block") {
+        r.status = "blocked";
+        const bl = storeGet("rk_jn_blocked_v1", []) || [];
+        if (r.handle && !bl.includes(r.handle)) bl.push(r.handle);
+        storeSet("rk_jn_blocked_v1", bl);
+        saveCmtReports(R);
+        toast(t("blocked"));
         render();
         return;
       }
@@ -690,7 +974,7 @@
     if (st) obs.observe(st, { childList: true, subtree: true });
   }
 
-  window.RKAdmin = { open: showPage, render, t };
+  window.RKAdmin = { open: showPage, render, t, renderCreators };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();

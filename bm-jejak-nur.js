@@ -6,6 +6,14 @@
   const SK_REACT = "rk_jn_react_v1";
   const SK_PROF = "rk_jn_prof_v1";
   const SK_SEED = "rk_jn_seed_v1";
+  const SK_SEED2 = "rk_jn_seed_v2";
+  const SK_CREATORS = "rk_jn_creators_v1";
+  const SK_APPS = "rk_jn_creator_apps_v1";
+  const SK_COMMENTS = "rk_jn_comments_v1";
+  const SK_BLOCKED = "rk_jn_blocked_v1";
+  const SK_SAVED = "rk_jn_saved_v1";
+  const SK_CMT_REPORTS = "rk_jn_cmt_reports_v1";
+  const SK_TOS = "rk_jn_tos_v1";
 
   const UI = {
     id: {
@@ -122,7 +130,52 @@
       adminPanel: "Panel Admin",
       pesanBadge: "Pesan",
       verLong: "Tahan judul menu untuk Panel Admin (uji)",
-      fabAria: "Tulis jejak"
+
+      fabAria: "Tulis jejak",
+      fabApply: "Ajukan jadi Kreator",
+      fabApplyAria: "Ajukan jadi Kreator",
+      applyEy: "Kreator terverifikasi",
+      applyT: "Ajukan jadi Kreator",
+      applyLead: "Hanya ustadz, lembaga resmi, dan influencer kebaikan yang boleh mengunggah konten. Pengguna lain tetap bisa bereaksi dan berkomentar.",
+      applyName: "Nama lengkap / nama lembaga",
+      applyType: "Jenis kreator",
+      typeUstadz: "Ustadz / Ustadzah",
+      typeLembaga: "Lembaga terverifikasi",
+      typeInfluencer: "Influencer Kebaikan",
+      applyBio: "Latar belakang dakwah",
+      applyBioPh: "Ceritakan singkat perjalanan dakwah atau fokus konten…",
+      applyProof: "Tautan bukti (sosmed / website / legalitas)",
+      applyProofPh: "https://…",
+      applySample: "Contoh konten",
+      applySamplePh: "Ringkas contoh konten yang ingin dibagikan…",
+      applyAgree: "Saya menyetujui Pedoman Konten Jamaah (konten kebaikan, tanpa fitnah, tanpa riba/iklan haram).",
+      applySubmit: "Kirim pengajuan",
+      applyNeed: "Lengkapi semua kolom dan centang persetujuan",
+      applySent: "Pengajuan terkirim · menunggu tinjauan",
+      applyPending: "Pengajuan menunggu tinjauan",
+      applyRejected: "Pengajuan ditolak",
+      applyApproved: "Anda kreator terverifikasi",
+      applyStatus: "Status pengajuan",
+      verifiedBadge: "Terverifikasi",
+      onlyCreator: "Hanya kreator terverifikasi yang dapat mengunggah. Ajukan dulu ya.",
+      feedPrompt: "Jamaah menjaga konten Islam yang terverifikasi. Reaksi & komentar terbuka untuk semua.",
+      feedPromptCta: "Ajukan jadi Kreator",
+      comments: "Komentar",
+      commentPh: "Tulis komentar kebaikan…",
+      commentSend: "Kirim",
+      commentEmpty: "Belum ada komentar. Jadilah yang pertama.",
+      commentBlocked: "Komentar ditahan: mengandung kata/tautan yang tidak diizinkan.",
+      commentOk: "Komentar ditambahkan",
+      commentReport: "Laporkan",
+      commentBlock: "Blokir",
+      commentReported: "Komentar dilaporkan ke Panel Admin",
+      commentBlockedUser: "Pengguna diblokir (uji lokal)",
+      savePost: "Simpan",
+      sharePost: "Bagikan",
+      savedOk: "Disimpan (lokal)",
+      sharedOk: "Tautan disalin (uji)",
+      creatorBanner: "Konten dari kreator terverifikasi"
+
     },
     en: {
       ey: "Community",
@@ -238,7 +291,52 @@
       adminPanel: "Admin Panel",
       pesanBadge: "Messages",
       verLong: "Long-press menu title for Admin Panel (demo)",
-      fabAria: "Write a trail"
+
+      fabAria: "Write a trail",
+      fabApply: "Apply as Creator",
+      fabApplyAria: "Apply as Creator",
+      applyEy: "Verified creators",
+      applyT: "Apply as Creator",
+      applyLead: "Only scholars, verified institutions, and goodness influencers may upload. Everyone else can still react and comment.",
+      applyName: "Full name / institution name",
+      applyType: "Creator type",
+      typeUstadz: "Scholar (Ustadz/ah)",
+      typeLembaga: "Verified institution",
+      typeInfluencer: "Goodness influencer",
+      applyBio: "Dawah background",
+      applyBioPh: "Briefly share your dawah journey or content focus…",
+      applyProof: "Proof link (social / website / legal docs)",
+      applyProofPh: "https://…",
+      applySample: "Sample content",
+      applySamplePh: "Summarize the kind of content you will share…",
+      applyAgree: "I agree to the Jamaah Content Guidelines (goodness only, no slander, no riba/haram ads).",
+      applySubmit: "Submit application",
+      applyNeed: "Fill every field and accept the guidelines",
+      applySent: "Application sent · awaiting review",
+      applyPending: "Application awaiting review",
+      applyRejected: "Application rejected",
+      applyApproved: "You are a verified creator",
+      applyStatus: "Application status",
+      verifiedBadge: "Verified",
+      onlyCreator: "Only verified creators can upload. Please apply first.",
+      feedPrompt: "Jamaah keeps Islam content verified. Reactions & comments stay open to all.",
+      feedPromptCta: "Apply as Creator",
+      comments: "Comments",
+      commentPh: "Write a kind comment…",
+      commentSend: "Send",
+      commentEmpty: "No comments yet. Be the first.",
+      commentBlocked: "Comment held: blocked word or link.",
+      commentOk: "Comment added",
+      commentReport: "Report",
+      commentBlock: "Block",
+      commentReported: "Comment reported to Admin Panel",
+      commentBlockedUser: "User blocked (local demo)",
+      savePost: "Save",
+      sharePost: "Share",
+      savedOk: "Saved (local)",
+      sharedOk: "Link copied (demo)",
+      creatorBanner: "Content from verified creators"
+
     },
     ar: {
       ey: "المجتمع",
@@ -354,7 +452,52 @@
       adminPanel: "لوحة الإدارة",
       pesanBadge: "الرسائل",
       verLong: "اضغط مطولًا على عنوان القائمة للوحة الإدارة",
-      fabAria: "اكتب أثرًا"
+
+      fabAria: "اكتب أثرًا",
+      fabApply: "قدّم كمنشئ موثّق",
+      fabApplyAria: "قدّم كمنشئ موثّق",
+      applyEy: "منشئون موثّقون",
+      applyT: "قدّم كمنشئ موثّق",
+      applyLead: "فقط العلماء والمؤسسات الموثّقة ومؤثّرو الخير يمكنهم النشر. الباقون يتفاعلون ويعلّقون.",
+      applyName: "الاسم الكامل / اسم المؤسسة",
+      applyType: "نوع المنشئ",
+      typeUstadz: "عالم / عالمة",
+      typeLembaga: "مؤسسة موثّقة",
+      typeInfluencer: "مؤثّر خير",
+      applyBio: "خلفية الدعوة",
+      applyBioPh: "نبذة قصيرة عن رحلتك الدعوية…",
+      applyProof: "رابط إثبات (وسائل / موقع / وثائق)",
+      applyProofPh: "https://…",
+      applySample: "مثال المحتوى",
+      applySamplePh: "لخّص نوع المحتوى الذي ستنشره…",
+      applyAgree: "أوافق على إرشادات محتوى الجماعة (خير فقط، بلا نميمة، بلا ربا/إعلانات محرّمة).",
+      applySubmit: "إرسال الطلب",
+      applyNeed: "أكمل كل الحقول ووافق على الإرشادات",
+      applySent: "أُرسل الطلب · بانتظار المراجعة",
+      applyPending: "الطلب بانتظار المراجعة",
+      applyRejected: "رُفض الطلب",
+      applyApproved: "أنت منشئ موثّق",
+      applyStatus: "حالة الطلب",
+      verifiedBadge: "موثّق",
+      onlyCreator: "المنشئون الموثّقون فقط يمكنهم النشر. قدّم أولًا.",
+      feedPrompt: "الجماعة تحفظ المحتوى الإسلامي الموثّق. التفاعل والتعليق للجميع.",
+      feedPromptCta: "قدّم كمنشئ",
+      comments: "التعليقات",
+      commentPh: "اكتب تعليقًا طيبًا…",
+      commentSend: "إرسال",
+      commentEmpty: "لا تعليقات بعد. كن الأول.",
+      commentBlocked: "تعليق معلّق: كلمة أو رابط محظور.",
+      commentOk: "أُضيف التعليق",
+      commentReport: "إبلاغ",
+      commentBlock: "حظر",
+      commentReported: "أُبلغ عن التعليق للوحة الإدارة",
+      commentBlockedUser: "حُظر المستخدم (تجربة محلية)",
+      savePost: "حفظ",
+      sharePost: "مشاركة",
+      savedOk: "حُفظ (محليًا)",
+      sharedOk: "نُسخ الرابط (تجريبي)",
+      creatorBanner: "محتوى من منشئين موثّقين"
+
     }
   };
 
@@ -365,13 +508,26 @@
     { id: "doa", ic: "🤲", t: "tPray", s: "tPrayS" }
   ];
 
-  /* Sample posts — generic names only */
+  /* Sample posts — verified creators only (demo names) */
+  const CREATOR_TYPES = [
+    { id: "ustadz", t: "typeUstadz" },
+    { id: "lembaga", t: "typeLembaga" },
+    { id: "influencer", t: "typeInfluencer" }
+  ];
+  const SEED_CREATORS = [
+    { id: "cr_ustadz_ahmad", handle: "ustadzahmad", name: "Ustadz Ahmad Nur", type: "ustadz", av: "AN", bio: "Pengajar tafsir & adab · konten contoh", verified: true },
+    { id: "cr_lembaga_cahaya", handle: "cahayaummah", name: "Yayasan Cahaya Ummah", type: "lembaga", av: "CU", bio: "Lembaga dakwah & pendidikan · konten contoh", verified: true },
+    { id: "cr_inf_nurul", handle: "nurulkebaikan", name: "Nurul Kebaikan", type: "influencer", av: "NK", bio: "Konten hijrah & kebiasaan baik · contoh", verified: true }
+  ];
   const SEED = [
     {
       id: "s1",
       type: "hijrah",
-      author: "Hamba Allah",
-      av: "HA",
+      author: "Ustadz Ahmad Nur",
+      handle: "ustadzahmad",
+      av: "AN",
+      creatorType: "ustadz",
+      verified: true,
       age: "2j",
       text: {
         id: "Dulu aku menunda salat. Sekarang azan pertama jadi pengingat paling manis. Semoga istiqamah.",
@@ -388,47 +544,41 @@
           ar: "إنني أنا الله لا إله إلا أنا فاعبدني وأقم الصلاة لذكري"
         }
       },
-      counts: { j: 12, a: 4, d: 7 },
+      counts: { j: 42, a: 18, d: 27 },
       pending: false,
-      own: false
+      own: false,
+      comments: [
+        { id: "c_s1_1", author: "Hamba Allah", handle: "hambaallah", text: "Barakallah, ustadz. Semoga istiqamah.", at: Date.now() - 7200000 }
+      ]
     },
     {
       id: "s2",
       type: "pencapaian",
-      author: "Sahabat Nur",
-      av: "SN",
+      author: "Yayasan Cahaya Ummah",
+      handle: "cahayaummah",
+      av: "CU",
+      creatorType: "lembaga",
+      verified: true,
       age: "5j",
       text: {
-        id: "Alhamdulillah streak tilawah 30 hari. Bukan karena sempurna — karena Allah memberi kekuatan sedikit demi sedikit.",
-        en: "Alhamdulillah — 30-day tilawah streak. Not because I am perfect — Allah gave strength little by little.",
-        ar: "الحمد لله — سلسلة تلاوة ٣٠ يومًا. لست كاملًا؛ الله أعطى القوة شيئًا فشيئًا."
+        id: "Alhamdulillah program tilawah 30 hari bersama 120 santri selesai. Bukan karena sempurna — karena Allah memberi kekuatan sedikit demi sedikit.",
+        en: "Alhamdulillah — 30-day tilawah with 120 students done. Not because we are perfect — Allah gave strength little by little.",
+        ar: "الحمد لله — برنامج تلاوة ٣٠ يومًا مع ١٢٠ طالبًا. لسنا كاملين؛ الله أعطى القوة شيئًا فشيئًا."
       },
       achievement: { streak: 30 },
-      counts: { j: 28, a: 9, d: 15 },
+      counts: { j: 88, a: 29, d: 45 },
       pending: false,
       own: false
     },
     {
       id: "s3",
-      type: "doa",
-      author: "Hamba Allah",
-      av: "HA",
-      age: "8j",
-      text: {
-        id: "Mohon doanya, sedang berjuang menjaga mata dan hati di tengah hiruk kerja. Semoga Allah menjaga kita semua.",
-        en: "Please keep me in your du'a — striving to guard eyes and heart at work. May Allah protect us all.",
-        ar: "ادعوا لي — أجاهد لحفظ العين والقلب في العمل. حفظنا الله جميعًا."
-      },
-      counts: { j: 6, a: 31, d: 22 },
-      pending: false,
-      own: false
-    },
-    {
-      id: "s4",
       type: "refleksi",
-      author: "Sahabat Nur",
-      av: "SN",
-      age: "1h",
+      author: "Nurul Kebaikan",
+      handle: "nurulkebaikan",
+      av: "NK",
+      creatorType: "influencer",
+      verified: true,
+      age: "8j",
       text: {
         id: "Hari ini belajar: khusyuk bukan suasana — tapi pilihan untuk hadir di hadapan Allah, satu ayat demi satu ayat.",
         en: "Today's lesson: khushu' is not a mood — it is choosing to be present before Allah, one ayah at a time.",
@@ -444,39 +594,67 @@
           ar: "إنما الأعمال بالنيات"
         }
       },
-      counts: { j: 9, a: 3, d: 5 },
+      counts: { j: 56, a: 14, d: 22 },
+      pending: false,
+      own: false,
+      comments: [
+        { id: "c_s3_1", author: "Sahabat Nur", handle: "sahabatnur", text: "Masyaallah, tepat banget.", at: Date.now() - 5400000 },
+        { id: "c_s3_2", author: "Hamba Allah", handle: "hambaallah", text: "Aamiin, semoga hati selalu hadir.", at: Date.now() - 3600000 }
+      ]
+    },
+    {
+      id: "s4",
+      type: "doa",
+      author: "Ustadz Ahmad Nur",
+      handle: "ustadzahmad",
+      av: "AN",
+      creatorType: "ustadz",
+      verified: true,
+      age: "1h",
+      text: {
+        id: "Mohon doanya untuk para thullabul ilmi yang sedang ujian. Semoga Allah menjaga mata dan hati kita semua.",
+        en: "Please keep students of knowledge in your du'a during exams. May Allah protect our eyes and hearts.",
+        ar: "ادعوا لطلاب العلم في الامتحانات. حفظ الله أعيننا وقلوبنا جميعًا."
+      },
+      counts: { j: 16, a: 91, d: 62 },
       pending: false,
       own: false
     },
     {
       id: "s5",
       type: "pencapaian",
-      author: "Hamba Allah",
-      av: "HA",
+      author: "Yayasan Cahaya Ummah",
+      handle: "cahayaummah",
+      av: "CU",
+      creatorType: "lembaga",
+      verified: true,
       age: "Kemarin",
       text: {
-        id: "Baru selesai khatam juz 1–5 bulan ini. Pelan tapi konsisten. Yuk saling menguatkan.",
-        en: "Just finished juz 1–5 this month. Slow but steady. Let's strengthen each other.",
-        ar: "أتممت الأجزاء ١–٥ هذا الشهر. ببطء وثبات. لنشدّ بعضنا."
+        id: "Baru selesai khatam juz 1–5 bersama kelas tahsin. Pelan tapi konsisten. Yuk saling menguatkan.",
+        en: "Just finished juz 1–5 with the tahsin class. Slow but steady. Let's strengthen each other.",
+        ar: "أتممنا الأجزاء ١–٥ مع فصل التحسين. ببطء وثبات. لنشدّ بعضنا."
       },
       achievement: { khatam: 5 },
-      counts: { j: 17, a: 6, d: 8 },
+      counts: { j: 37, a: 16, d: 18 },
       pending: false,
       own: false
     },
     {
       id: "s6",
       type: "hijrah",
-      author: "Sahabat Nur",
-      av: "SN",
+      author: "Nurul Kebaikan",
+      handle: "nurulkebaikan",
+      av: "NK",
+      creatorType: "influencer",
+      verified: true,
       age: "Baru",
       text: {
-        id: "Akun baru di Jejak Nur. Sedang belajar menata niat. Mohon doanya agar konten ini bermanfaat.",
-        en: "New on Jejak Nur. Learning to set intention. Please pray this content benefits others.",
-        ar: "حساب جديد في أثر النور. أتعلّم تصحيح النيّة. ادعوا أن ينفع هذا المحتوى."
+        id: "Langkah kecil: matikan notifikasi saat tilawah. Semoga hati lebih hadir. Mohon doanya.",
+        en: "Small step: mute notifications during tilawah. May the heart be more present. Please pray for me.",
+        ar: "خطوة صغيرة: أوقف التنبيهات أثناء التلاوة. ليحضر القلب. ادعوا لي."
       },
-      counts: { j: 0, a: 1, d: 2 },
-      pending: true,
+      counts: { j: 12, a: 8, d: 9 },
+      pending: false,
       own: false
     }
   ];
@@ -702,11 +880,187 @@
     console.log("[jn]", m);
   };
 
+
+  function creators() {
+    ensureCreators();
+    return storeGet(SK_CREATORS, SEED_CREATORS.slice());
+  }
+  function saveCreators(list) {
+    storeSet(SK_CREATORS, list || []);
+  }
+  function ensureCreators() {
+    if (!storeGet("rk_jn_creators_seed_v1", false)) {
+      storeSet(SK_CREATORS, SEED_CREATORS.slice());
+      storeSet("rk_jn_creators_seed_v1", true);
+    }
+  }
+  function myHandle() {
+    const P = storeGet(SK_PROF, {}) || {};
+    return String(P.handle || "hambaallah").replace(/^@/, "").toLowerCase();
+  }
+  function creatorOfHandle(handle) {
+    const h = String(handle || "").replace(/^@/, "").toLowerCase();
+    return creators().find((c) => c.verified && String(c.handle || "").toLowerCase() === h) || null;
+  }
+  function isVerifiedCreator(handle) {
+    return !!creatorOfHandle(handle || myHandle());
+  }
+  function myApplication() {
+    const apps = storeGet(SK_APPS, []) || [];
+    const h = myHandle();
+    return apps.find((a) => String(a.handle || "").toLowerCase() === h) || null;
+  }
+  function creatorTypeLabel(type) {
+    const x = CREATOR_TYPES.find((z) => z.id === type);
+    return x ? t(x.t) : "";
+  }
+  function verifiedBadgeHtml(size) {
+    const s = size || 16;
+    /* Original crescent + check — not a brand copy */
+    return `<span class="jn-vbadge" title="${esc(t("verifiedBadge"))}" aria-label="${esc(t("verifiedBadge"))}"><svg viewBox="0 0 24 24" width="${s}" height="${s}" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--accent,#e6c77a)"/><path d="M7.2 8.8c2.8-3.4 8.2-3.2 10.4.6 1.6 2.7.8 6.1-1.7 7.9-3.2 2.3-7.8 1.2-9.4-2.1" fill="none" stroke="#1a1208" stroke-width="1.5" stroke-linecap="round"/><path d="M8.2 12.2l2.2 2.2 5-5" fill="none" stroke="#1a1208" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>`;
+  }
+  function authorLineHtml(p) {
+    const verified = !!(p.verified || (p.handle && isVerifiedCreator(p.handle)) || (p.own && isVerifiedCreator()));
+    const ctype = p.creatorType || (p.handle && (creatorOfHandle(p.handle) || {}).type) || (p.own && (creatorOfHandle(myHandle()) || {}).type) || "";
+    const typeLab = ctype ? creatorTypeLabel(ctype) : "";
+    return `<b class="jn-name-row">${esc(p.author || "Hamba Allah")}${verified ? verifiedBadgeHtml(15) : ""}</b>
+      <span class="jn-ig-handle">${esc(p.handle ? "@" + String(p.handle).replace(/^@/, "") : handleOf(storeGet(SK_PROF, {})))}${typeLab ? " · " + esc(typeLab) : ""}</span>`;
+  }
+  function commentsMap() {
+    return storeGet(SK_COMMENTS, {}) || {};
+  }
+  function saveCommentsMap(m) {
+    storeSet(SK_COMMENTS, m || {});
+  }
+  function commentsFor(postId) {
+    const m = commentsMap();
+    const blocked = new Set((storeGet(SK_BLOCKED, []) || []).map((x) => String(x).toLowerCase()));
+    return (m[postId] || []).filter((c) => !c.hidden && !blocked.has(String(c.handle || "").toLowerCase()));
+  }
+  function seedCommentsFromPosts() {
+    if (storeGet("rk_jn_cmt_seed_v1", false)) return;
+    const m = commentsMap();
+    const list = storeGet(SK_POSTS, []) || [];
+    let changed = false;
+    for (const p of list) {
+      if (p && p.comments && p.comments.length && !m[p.id]) {
+        m[p.id] = p.comments.slice();
+        changed = true;
+      }
+    }
+    if (changed) saveCommentsMap(m);
+    storeSet("rk_jn_cmt_seed_v1", true);
+  }
+  function filterCommentText(text) {
+    const raw = String(text || "").trim();
+    if (!raw) return { ok: false, reason: "empty" };
+    const f = storeGet("rk_jn_filter_v1", null) || { words: ["judi", "porn", "crypto scam", "pinjol ilegal"], holdLinks: true };
+    const lower = raw.toLowerCase();
+    for (const w of f.words || []) {
+      if (w && lower.includes(String(w).toLowerCase())) return { ok: false, reason: "word" };
+    }
+    if (f.holdLinks !== false && /https?:\/\/|www\.|bit\.ly|t\.co\//i.test(raw)) return { ok: false, reason: "link" };
+    return { ok: true, text: raw.slice(0, 280) };
+  }
+  function addComment(postId, text) {
+    const chk = filterCommentText(text);
+    if (!chk.ok) return chk;
+    const P = storeGet(SK_PROF, {}) || {};
+    const m = commentsMap();
+    const arr = m[postId] || [];
+    arr.push({
+      id: "c_" + Date.now(),
+      author: P.name || "Hamba Allah",
+      handle: myHandle(),
+      text: chk.text,
+      at: Date.now()
+    });
+    m[postId] = arr;
+    saveCommentsMap(m);
+    return { ok: true };
+  }
+  function reportComment(postId, commentId) {
+    const m = commentsMap();
+    const arr = m[postId] || [];
+    const c = arr.find((x) => x.id === commentId);
+    if (!c) return;
+    c.reported = true;
+    saveCommentsMap(m);
+    const R = storeGet(SK_CMT_REPORTS, []) || [];
+    R.unshift({
+      id: "cr_" + commentId,
+      postId,
+      commentId,
+      text: c.text,
+      author: c.author,
+      handle: c.handle,
+      at: Date.now(),
+      status: "open"
+    });
+    storeSet(SK_CMT_REPORTS, R);
+  }
+  function blockHandle(handle) {
+    const h = String(handle || "").replace(/^@/, "").toLowerCase();
+    if (!h) return;
+    const list = storeGet(SK_BLOCKED, []) || [];
+    if (!list.includes(h)) list.push(h);
+    storeSet(SK_BLOCKED, list);
+  }
+  function isBlockedHandle(handle) {
+    const h = String(handle || "").replace(/^@/, "").toLowerCase();
+    return (storeGet(SK_BLOCKED, []) || []).map((x) => String(x).toLowerCase()).includes(h);
+  }
+  function hasAcceptedTos() {
+    const v = storeGet(SK_TOS, null);
+    return !!(v && v.accepted);
+  }
+  function acceptTos() {
+    storeSet(SK_TOS, { accepted: true, at: Date.now(), ver: "jamaah-tos-v1" });
+  }
+  function openTos(thenAction) {
+    state._tosThen = thenAction || null;
+    openSheet(
+      t("tosT"),
+      `<div class="jn-tos">
+        <p class="dim">${esc(t("tosLead"))}</p>
+        <ul class="jn-tos-list">
+          <li>${esc(t("tos1"))}</li>
+          <li>${esc(t("tos2"))}</li>
+          <li>${esc(t("tos3"))}</li>
+          <li>${esc(t("tos4"))}</li>
+        </ul>
+        <label class="jn-agree"><input type="checkbox" id="jnTosAgree"> <span>${esc(t("tosAccept"))}</span></label>
+        <div class="row" style="gap:8px;margin-top:14px;justify-content:flex-end">
+          <button type="button" class="btn ghost" data-jn="sheetx">${esc(t("cancel"))}</button>
+          <button type="button" class="btn gold" data-jn="tosok">${esc(t("tosAccept"))}</button>
+        </div>
+      </div>`
+    );
+  }
+  function requireTos(thenAction) {
+    if (hasAcceptedTos()) {
+      if (typeof thenAction === "function") thenAction();
+      return true;
+    }
+    openTos(thenAction);
+    return false;
+  }
+
+
   function ensureSeed() {
-    if (!storeGet(SK_SEED, false)) {
+    ensureCreators();
+    /* v2 seed: verified-creator demo feed (reseed once) */
+    if (!storeGet(SK_SEED2, false)) {
+      storeSet(SK_POSTS, SEED.slice());
+      storeSet(SK_SEED, true);
+      storeSet(SK_SEED2, true);
+      storeSet("rk_jn_own_demo_v1", true); /* skip old own-demo for regular users */
+      storeSet("rk_jn_cmt_seed_v1", false);
+    } else if (!storeGet(SK_SEED, false)) {
       storeSet(SK_POSTS, SEED.slice());
       storeSet(SK_SEED, true);
     }
+    seedCommentsFromPosts();
     if (!storeGet(SK_PROF, null)) {
       storeSet(SK_PROF, defaultProf());
     } else {
@@ -742,8 +1096,12 @@
     };
   }
   function seedOwnDemo() {
-    /* Ensure a few own posts exist for grid demo (once) */
+    /* Own demo posts only for verified creators (once) */
     if (storeGet("rk_jn_own_demo_v1", false)) return;
+    if (!isVerifiedCreator()) {
+      storeSet("rk_jn_own_demo_v1", true);
+      return;
+    }
     const list = storeGet(SK_POSTS, SEED.slice());
     const hasOwn = list.some((p) => p.own);
     if (!hasOwn) {
@@ -922,9 +1280,24 @@
     if (back) back.textContent = "← " + t("back");
     const msg = $('[data-jn="pesan"]');
     if (msg) msg.setAttribute("aria-label", t("pesan"));
-    const fabBtn = $('.jn-fab [data-jn="compose"]');
-    if (fabBtn) fabBtn.setAttribute("aria-label", t("fabAria"));
+    syncFab();
     applyEntry();
+  }
+
+  function syncFab() {
+    let fab = $(".jn-fab");
+    if (!fab) return;
+    if (state.tab === "prof") {
+      fab.style.display = "none";
+      return;
+    }
+    fab.style.display = "";
+    const verified = isVerifiedCreator();
+    const label = verified ? t("compose") : t("fabApply");
+    const aria = verified ? t("fabAria") : t("fabApplyAria");
+    const act = verified ? "compose" : "apply";
+    const ic = verified ? "+" : "✦";
+    fab.innerHTML = `<button type="button" data-jn="${act}" class="${verified ? "" : "jn-fab-apply"}" aria-label="${esc(aria)}"><span aria-hidden="true">${ic}</span><span class="jn-fab-lab">${esc(label)}</span></button>`;
   }
 
   function patchPages() {
@@ -980,8 +1353,7 @@
   function syncProfChrome() {
     const root = $("#jnRoot");
     if (root) root.classList.toggle("is-prof", state.tab === "prof");
-    const fab = $(".jn-fab");
-    if (fab) fab.style.display = state.tab === "prof" ? "none" : "";
+    syncFab();
     const top = $(".jn-top", root || document);
     const sample = $(".jn-sample", root || document);
     if (top) top.hidden = state.tab === "prof";
@@ -1014,13 +1386,40 @@
     return `<div class="jn-cap" data-cap="${esc(id)}"><span class="jn-cap-body" data-full="${esc(full)}" data-short="${esc(snip)}">${esc(snip)}</span> <button type="button" class="jn-more" data-jn-more="${esc(id)}">${esc(t("more"))}</button></div>`;
   }
 
+  function commentsHtml(postId) {
+    const list = commentsFor(postId);
+    const items = list.length
+      ? list
+          .map(
+            (c) => `<div class="jn-cmt" data-cmt="${esc(c.id)}" data-cmt-handle="${esc(c.handle || "")}">
+          <div class="jn-cmt-hd"><b>${esc(c.author || "")}</b><span>@${esc(c.handle || "")}</span></div>
+          <p>${esc(c.text || "")}</p>
+          <div class="jn-cmt-acts">
+            <button type="button" data-jn-cmt-report="${esc(c.id)}">${esc(t("commentReport"))}</button>
+            <button type="button" data-jn-cmt-block="${esc(c.handle || "")}">${esc(t("commentBlock"))}</button>
+          </div>
+        </div>`
+          )
+          .join("")
+      : `<p class="jn-cmt-empty dim">${esc(t("commentEmpty"))}</p>`;
+    return `<div class="jn-cmts" data-jn-cmts="${esc(postId)}">
+      <div class="jn-cmts-lab">${esc(t("comments"))} · ${list.length}</div>
+      <div class="jn-cmts-list">${items}</div>
+      <div class="jn-cmt-compose">
+        <input type="text" maxlength="280" placeholder="${esc(t("commentPh"))}" data-jn-cmt-in="${esc(postId)}">
+        <button type="button" class="btn sm gold" data-jn-cmt-send="${esc(postId)}">${esc(t("commentSend"))}</button>
+      </div>
+    </div>`;
+  }
+
   function igCardHtml(p, R, opts) {
     opts = opts || {};
     const my = R[p.id] || {};
     const counts = Object.assign({ j: 0, a: 0, d: 0 }, p.counts || {});
     const body = L3(p.text);
     const P = storeGet(SK_PROF, {});
-    const handle = p.own ? handleOf(P) : "@" + slugHandle(p.author || "user");
+    const handleStr = p.own ? handleOf(P) : "@" + String(p.handle || slugHandle(p.author || "user")).replace(/^@/, "");
+    if (!p.handle && !p.own) p.handle = slugHandle(p.author || "user");
     const av = p.own && P.avatarUrl
       ? `<span class="jn-av sm has-img"><img src="${esc(P.avatarUrl)}" alt=""></span>`
       : `<span class="jn-av sm">${esc(p.av || initials(p.author))}</span>`;
@@ -1032,12 +1431,12 @@
     const dalil = p.dalil
       ? `<div class="jn-dalil"><div class="ar" dir="rtl" lang="ar">${esc(p.dalil.ar)}</div><div class="mn">${esc(L3(p.dalil.mn))}</div><div class="lb">${esc(p.dalil.ref)}</div></div>`
       : "";
+    const saved = (storeGet(SK_SAVED, []) || []).includes(p.id);
     return `<article class="jn-ig" data-id="${esc(p.id)}" ${opts.anchor ? 'id="jn-anchor-' + esc(p.id) + '"' : ""}>
       <header class="jn-ig-hd">
         ${av}
         <div class="jn-ig-who">
-          <b>${esc(p.author || "Hamba Allah")}</b>
-          <span class="jn-ig-handle">${esc(handle)}</span>
+          ${authorLineHtml(p)}
         </div>
         <span class="jn-type chip">${esc(typeLabel(p.type))}</span>
         <time class="jn-ig-time">${esc(p.age || "")}</time>
@@ -1047,25 +1446,39 @@
         <button type="button" data-jn-react="j" class="${my.j ? "on" : ""}">🤍 ${esc(t("reactJ"))} · ${counts.j + (my.j ? 1 : 0)}</button>
         <button type="button" data-jn-react="a" class="${my.a ? "on" : ""}">🤲 ${esc(t("reactA"))} · ${counts.a + (my.a ? 1 : 0)}</button>
         <button type="button" data-jn-react="d" class="${my.d ? "on" : ""}">🕊️ ${esc(t("reactD"))} · ${counts.d + (my.d ? 1 : 0)}</button>
+        <button type="button" data-jn-save="1" class="${saved ? "on" : ""}">🔖 ${esc(t("savePost"))}</button>
+        <button type="button" data-jn-share="1">↗ ${esc(t("sharePost"))}</button>
       </div>
       ${captionHtml(body, p.id)}
       ${dalil}
       ${p.pending ? `<div class="jn-pending">⏳ ${esc(t("pending"))}</div>` : ""}
-      ${opts.compact ? "" : `<div class="jn-chips">
-        <button type="button" data-jn-chip="1">${esc(t("chip1"))}</button>
-        <button type="button" data-jn-chip="2">${esc(t("chip2"))}</button>
-        <button type="button" data-jn-chip="3">${esc(t("chip3"))}</button>
-        <button type="button" data-jn-chip="4">${esc(t("chip4"))}</button>
-      </div>
-      <div class="jn-card-ft"><button type="button" class="jn-rep" data-jn-report="1">${esc(t("report"))}</button></div>`}
+      ${opts.compact ? "" : commentsHtml(p.id) + `
+      <div class="jn-card-ft">
+        <button type="button" class="jn-rep" data-jn-report="1">${esc(t("report"))}</button>
+        ${!p.own ? `<button type="button" class="jn-rep" data-jn-block-author="${esc(p.handle || slugHandle(p.author || ""))}">${esc(t("commentBlock"))}</button>` : ""}
+      </div>`}
     </article>`;
   }
 
   function renderFeed(view) {
-    const list = posts().filter((p) => !p.hidden && p.status !== "rejected");
+    const list = posts().filter((p) => {
+      if (p.hidden || p.status === "rejected") return false;
+      if (!p.own && isBlockedHandle(p.handle || slugHandle(p.author || ""))) return false;
+      return p.verified || p.own || p.pending;
+    });
+    /* Prefer verified posts in public feed; keep own pending visible */
+    const pub = list.filter((p) => p.verified || (p.own && isVerifiedCreator()) || p.pending);
+    const use = pub.length ? pub : list;
     const R = reacts();
-    view.innerHTML = `<div class="jn-feed jn-ig-feed">` + list.map((p) => igCardHtml(p, R)).join("") + `</div>`;
+    const prompt = isVerifiedCreator()
+      ? ""
+      : `<div class="jn-creator-prompt">
+          <div><b>${esc(t("creatorBanner"))}</b><p>${esc(t("feedPrompt"))}</p></div>
+          <button type="button" class="btn sm gold" data-jn="apply">${esc(t("feedPromptCta"))}</button>
+        </div>`;
+    view.innerHTML = prompt + `<div class="jn-feed jn-ig-feed">` + use.map((p) => igCardHtml(p, R)).join("") + `</div>`;
     hydrateImgs(view);
+    syncFab();
   }
 
   function avHtml(P, cls) {
@@ -1104,9 +1517,10 @@
       </div>
       <div class="jn-prof-head">
         ${avHtml(P, "jn-av lg")}
-        <h2 class="jn-disp">${esc(P.name || "Hamba Allah")}</h2>
-        <div class="jn-handle">${esc(handleOf(P))}</div>
+        <h2 class="jn-disp jn-disp-row">${esc(P.name || "Hamba Allah")}${isVerifiedCreator() ? verifiedBadgeHtml(18) : ""}</h2>
+        <div class="jn-handle">${esc(handleOf(P))}${isVerifiedCreator() && creatorOfHandle(myHandle()) ? " · " + esc(creatorTypeLabel(creatorOfHandle(myHandle()).type)) : ""}</div>
         <p class="jn-bio">${bio ? esc(bio) : `<span class="dim">${esc(t("bioPh"))}</span>`}</p>
+        ${creatorStatusHtml()}
         <div class="jn-pills">
           <button type="button" class="jn-pill has-dot" data-jn="orders" aria-label="${esc(t("ordersYours"))}">
             <svg class="jn-pill-ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7.5 7V6a4.5 4.5 0 0 1 9 0v1H19a1.5 1.5 0 0 1 1.5 1.5v11A2.5 2.5 0 0 1 18 22H6a2.5 2.5 0 0 1-2.5-2.5v-11A1.5 1.5 0 0 1 5 7h2.5zm1.75 0h5.5V6a2.75 2.75 0 0 0-5.5 0v1z"/></svg><span class="jn-pill-tx">${esc(t("ordersYours"))}</span><i class="jn-pill-dot" aria-hidden="true"></i>
@@ -1142,6 +1556,106 @@
     </div>`;
     hydrateImgs(view);
   }
+
+
+  function creatorStatusHtml() {
+    if (isVerifiedCreator()) {
+      const cr = creatorOfHandle(myHandle());
+      return `<div class="jn-creator-status ok">${verifiedBadgeHtml(18)} <span>${esc(t("applyApproved"))}${cr && cr.type ? " · " + esc(creatorTypeLabel(cr.type)) : ""}</span></div>`;
+    }
+    const app = myApplication();
+    if (app && app.status === "pending") {
+      return `<div class="jn-creator-status pend">⏳ ${esc(t("applyPending"))}</div>`;
+    }
+    if (app && app.status === "rejected") {
+      return `<div class="jn-creator-status rej">✕ ${esc(t("applyRejected"))}${app.rejectReason ? ": " + esc(app.rejectReason) : ""}
+        <button type="button" class="btn sm gold" data-jn="apply" style="margin-top:8px">${esc(t("fabApply"))}</button></div>`;
+    }
+    return `<div class="jn-creator-status">
+      <p>${esc(t("applyLead"))}</p>
+      <button type="button" class="btn gold" data-jn="apply">${esc(t("fabApply"))}</button>
+    </div>`;
+  }
+
+  function openApplyForm() {
+    const app = myApplication();
+    if (isVerifiedCreator()) {
+      toast(t("applyApproved"));
+      return;
+    }
+    if (app && app.status === "pending") {
+      toast(t("applyPending"));
+      return;
+    }
+    if (!hasAcceptedTos()) {
+      requireTos(() => openApplyForm());
+      return;
+    }
+    const P = storeGet(SK_PROF, {}) || {};
+    const prev = app && app.status === "rejected" ? app : {};
+    openSheet(
+      t("applyT"),
+      `<div class="jn-apply">
+        <p class="dim jn-apply-lead">${esc(t("applyLead"))}</p>
+        <label class="jn-field"><span>${esc(t("applyName"))}</span>
+          <input type="text" id="jnAppName" maxlength="60" value="${esc(prev.name || P.name || "")}">
+        </label>
+        <div class="eyebrow" style="margin-top:8px">${esc(t("applyType"))}</div>
+        <div class="jn-types jn-app-types">${CREATOR_TYPES.map(
+          (x) => `<button type="button" data-jn-app-type="${x.id}" class="${(prev.type || "ustadz") === x.id ? "on" : ""}"><b>${esc(t(x.t))}</b></button>`
+        ).join("")}</div>
+        <input type="hidden" id="jnAppType" value="${esc(prev.type || "ustadz")}">
+        <label class="jn-field"><span>${esc(t("applyBio"))}</span>
+          <textarea id="jnAppBio" maxlength="400" rows="3" placeholder="${esc(t("applyBioPh"))}">${esc(prev.bio || "")}</textarea>
+        </label>
+        <label class="jn-field"><span>${esc(t("applyProof"))}</span>
+          <input type="url" id="jnAppProof" maxlength="200" placeholder="${esc(t("applyProofPh"))}" value="${esc(prev.proof || "")}">
+        </label>
+        <label class="jn-field"><span>${esc(t("applySample"))}</span>
+          <textarea id="jnAppSample" maxlength="400" rows="3" placeholder="${esc(t("applySamplePh"))}">${esc(prev.sample || "")}</textarea>
+        </label>
+        <label class="jn-agree"><input type="checkbox" id="jnAppAgree"> <span>${esc(t("applyAgree"))}</span></label>
+        <div class="row" style="gap:8px;margin-top:14px;justify-content:flex-end">
+          <button type="button" class="btn ghost" data-jn="sheetx">${esc(t("cancel"))}</button>
+          <button type="button" class="btn gold" data-jn="submitapply">${esc(t("applySubmit"))}</button>
+        </div>
+      </div>`
+    );
+  }
+
+  function submitApply() {
+    const name = ($("#jnAppName") && $("#jnAppName").value.trim()) || "";
+    const type = ($("#jnAppType") && $("#jnAppType").value) || "ustadz";
+    const bio = ($("#jnAppBio") && $("#jnAppBio").value.trim()) || "";
+    const proof = ($("#jnAppProof") && $("#jnAppProof").value.trim()) || "";
+    const sample = ($("#jnAppSample") && $("#jnAppSample").value.trim()) || "";
+    const agree = $("#jnAppAgree") && $("#jnAppAgree").checked;
+    if (!name || !bio || !proof || !sample || !agree) {
+      toast(t("applyNeed"));
+      return;
+    }
+    const apps = (storeGet(SK_APPS, []) || []).filter((a) => String(a.handle || "").toLowerCase() !== myHandle());
+    apps.unshift({
+      id: "app_" + Date.now(),
+      handle: myHandle(),
+      name,
+      type,
+      bio,
+      proof,
+      sample,
+      agreed: true,
+      status: "pending",
+      rejectReason: "",
+      at: Date.now(),
+      av: initials(name)
+    });
+    storeSet(SK_APPS, apps);
+    closeSheet();
+    toast(t("applySent"));
+    if (state.tab === "prof") render();
+    else syncFab();
+  }
+
 
   function openProfMenu() {
     openSheet(
@@ -1360,6 +1874,11 @@
   }
 
   function openCompose() {
+    if (!isVerifiedCreator()) {
+      toast(t("onlyCreator"));
+      openApplyForm();
+      return;
+    }
     state.compose = { type: state.compose.type || "refleksi", text: "", img: null, dalil: null };
     paintCompose();
   }
@@ -1514,10 +2033,12 @@
         hasImg = true;
       }
     }
+    const cr = creatorOfHandle(myHandle());
     const post = {
       id: id,
       type: state.compose.type,
       author: P.name || "Hamba Allah",
+      handle: myHandle(),
       av: P.av || initials(P.name),
       age: "Baru",
       text: { id: text || " ", en: text || " ", ar: text || " " },
@@ -1526,7 +2047,9 @@
       imgKey: hasImg ? id : null,
       counts: { j: 0, a: 0, d: 0 },
       pending: true,
-      own: true
+      own: true,
+      verified: !!cr,
+      creatorType: cr ? cr.type : ""
     };
     try {
       const trust = storeGet("rk_jn_trust_v1", []) || [];
@@ -1666,9 +2189,8 @@
       e.preventDefault();
       state.tab = "prof";
       try { sessionStorage.setItem("rk_jn_tab", "prof"); } catch (err) {}
-      const fab = $(".jn-fab");
-      if (fab) fab.style.display = "none";
-      $$("#nav button").forEach((b) => b.classList.toggle("on", b.dataset.p === "profil"));
+      syncFab();
+      $("#nav button").forEach((b) => b.classList.toggle("on", b.dataset.p === "profil"));
       try { history.replaceState(history.state, "", "#profil"); } catch (err) {}
       render();
       return;
@@ -1677,9 +2199,8 @@
       e.preventDefault();
       state.tab = "feed";
       try { sessionStorage.setItem("rk_jn_tab", "feed"); } catch (err) {}
-      const fab = $(".jn-fab");
-      if (fab) fab.style.display = "";
-      $$("#nav button").forEach((b) => b.classList.toggle("on", b.dataset.p === "jejak-nur"));
+      syncFab();
+      $("#nav button").forEach((b) => b.classList.toggle("on", b.dataset.p === "jejak-nur"));
       try { history.replaceState(history.state, "", "#jejak-nur"); } catch (err) {}
       render();
       return;
@@ -1687,6 +2208,108 @@
     if (g("[data-jn=compose]")) {
       e.preventDefault();
       openCompose();
+      return;
+    }
+    if (g("[data-jn=apply]")) {
+      e.preventDefault();
+      openApplyForm();
+      return;
+    }
+    if (g("[data-jn=submitapply]")) {
+      e.preventDefault();
+      submitApply();
+      return;
+    }
+    const appType = g("[data-jn-app-type]");
+    if (appType) {
+      e.preventDefault();
+      const hid = $("#jnAppType");
+      if (hid) hid.value = appType.dataset.jnAppType;
+      $("[data-jn-app-type]").forEach((b) => b.classList.toggle("on", b === appType));
+      return;
+    }
+    const cmtSend = g("[data-jn-cmt-send]");
+    if (cmtSend) {
+      e.preventDefault();
+      const pid = cmtSend.dataset.jnCmtSend;
+      const inp = document.querySelector('[data-jn-cmt-in="' + pid + '"]');
+      const draft = inp ? inp.value : "";
+      const send = () => {
+        const res = addComment(pid, draft);
+        if (!res.ok) {
+          toast(res.reason === "empty" ? t("needText") : t("commentBlocked"));
+          return;
+        }
+        toast(t("commentOk"));
+        render();
+      };
+      if (!hasAcceptedTos()) {
+        requireTos(send);
+        return;
+      }
+      send();
+      return;
+    }
+    if (g("[data-jn=tosok]")) {
+      e.preventDefault();
+      const box = $("#jnTosAgree");
+      if (!box || !box.checked) {
+        toast(t("tosNeed"));
+        return;
+      }
+      acceptTos();
+      toast(t("tosOk"));
+      const then = state._tosThen;
+      state._tosThen = null;
+      closeSheet();
+      if (typeof then === "function") setTimeout(then, 50);
+      return;
+    }
+    const cmtRep = g("[data-jn-cmt-report]");
+    if (cmtRep) {
+      e.preventDefault();
+      const card = g(".jn-ig[data-id]");
+      if (card) reportComment(card.dataset.id, cmtRep.dataset.jnCmtReport);
+      toast(t("commentReported"));
+      return;
+    }
+    const cmtBlk = g("[data-jn-cmt-block]");
+    if (cmtBlk) {
+      e.preventDefault();
+      blockHandle(cmtBlk.dataset.jnCmtBlock);
+      toast(t("userBlockedOk"));
+      render();
+      return;
+    }
+    const blkAuth = g("[data-jn-block-author]");
+    if (blkAuth) {
+      e.preventDefault();
+      blockHandle(blkAuth.dataset.jnBlockAuthor);
+      toast(t("userBlockedOk"));
+      render();
+      return;
+    }
+    if (g("[data-jn-save]")) {
+      e.preventDefault();
+      const card = g(".jn-ig[data-id]");
+      if (!card) return;
+      const id = card.dataset.id;
+      let saved = storeGet(SK_SAVED, []) || [];
+      if (saved.includes(id)) saved = saved.filter((x) => x !== id);
+      else saved.unshift(id);
+      storeSet(SK_SAVED, saved);
+      toast(t("savedOk"));
+      render();
+      return;
+    }
+    if (g("[data-jn-share]")) {
+      e.preventDefault();
+      const card = g(".jn-ig[data-id]");
+      try {
+        const url = location.origin + "/#jejak-nur";
+        if (navigator.clipboard) navigator.clipboard.writeText(url);
+      } catch (err) {}
+      toast(t("sharedOk"));
       return;
     }
     if (g("[data-jn=sheetx]")) {
@@ -1984,5 +2607,25 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 
-  window.RKJejakNur = { open: showPage, render, t, openPesan, openCompose, loadPostImage, savePostImage, postHasImg, migrateInlineImages, posts };
+  window.RKJejakNur = {
+    open: showPage,
+    render,
+    t,
+    openPesan,
+    openCompose,
+    openApplyForm,
+    loadPostImage,
+    savePostImage,
+    postHasImg,
+    migrateInlineImages,
+    posts,
+    creators,
+    isVerifiedCreator,
+    myApplication,
+    commentsFor,
+    reportComment,
+    SK_APPS,
+    SK_CREATORS,
+    SK_CMT_REPORTS
+  };
 })();
