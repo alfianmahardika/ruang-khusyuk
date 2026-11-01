@@ -136,6 +136,7 @@
         if (neut() || ++n > 100) clearInterval(iv2);
       }, 300);
     }
+    document.addEventListener("bm:module", () => { neut(); });
   }
 
   function patchMuslimPay() {
