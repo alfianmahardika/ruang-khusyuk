@@ -150,8 +150,7 @@
     hookApplyV();
     setTimeout(hookApplyV, 500);
     setTimeout(hookApplyV, 2000);
-    /* Prefetch rest in background */
-    LANGS.forEach(l => { if (l !== lang && l !== DEFAULT) loadOne(l); });
+    /* Other locales load in setLang when the user picks them. */
     document.addEventListener("rk:lang", (e) => {
       const l = normalize(e && e.detail);
       if (l && l !== lang) {

@@ -185,13 +185,8 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 <script>/* AUTO-LANG: first visit only; manual choice saved in rk_lang always wins */(function(){try{if(localStorage.getItem("rk_lang")!=null)return;var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(function(x){return String(x).toLowerCase();});var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var p=(ls[0]||"").slice(0,2),l;var AR=/^Asia\/(Riyadh|Dubai|Qatar|Kuwait|Bahrain|Muscat|Aden|Baghdad|Amman|Damascus|Beirut|Gaza|Hebron)$|^Africa\/(Cairo|Tripoli|Tunis|Algiers|Casablanca|Khartoum|Nouakchott)$/;if(p==="id"||p==="ms")l="id";else if(p==="ar")l="ar";else if(p==="en"&&!/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz)&&!AR.test(tz))l="en";else if(/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz))l="id";else if(AR.test(tz))l="ar";else if(ls.some(function(x){return /^(id|ms)/.test(x)}))l="id";else if(ls.some(function(x){return /^ar/.test(x)}))l="ar";else l="en";localStorage.setItem("rk_lang",JSON.stringify(l));localStorage.setItem("rk_lang_auto","1");}catch(e){}})();</script><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="stylesheet" href="bm-lang.css">
 <link rel="stylesheet" href="bm-salat-ux.css">
 <link rel="stylesheet" href="bm-kata-quran.css">
-<link rel="stylesheet" href="bm-target-harian.css">
-<link rel="stylesheet" href="bm-growth.css">
-<link rel="stylesheet" href="bm-jejak-nur.css">
-<link rel="stylesheet" href="bm-admin89.css">
 <link rel="stylesheet" href="bm-muslim-pay.css">
 <link rel="stylesheet" href="bm-nav88.css">
-<link rel="stylesheet" href="bm-panduan.css">
 </head><body>
 <title>Best Muslim</title>
 <meta name="description" content="Best Muslim — checklist ibadah harian & kehadiran hati dalam salat">
@@ -201,8 +196,7 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 <link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="icon-180.png" sizes="180x180">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="fonts/bm-fonts.css">
 <style>
 /* Layout: one-screen app shell — sticky glass header, scrolling view, fixed bottom tab bar.
    Dark Zen: a lamp-lit prayer room before Fajr. Single deliberate dark theme. */
@@ -3902,13 +3896,9 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",sta
 <script src="bm-lang.js" defer></script>
 <script src="bm-salat-ux.js" defer></script>
 <script src="bm-kata-quran.js" defer></script>
-<script src="bm-target-harian.js" defer></script>
-<script src="bm-growth.js" defer></script>
-<script src="bm-jejak-nur.js" defer></script>
-<script src="bm-admin89.js" defer></script>
 <script src="bm-muslim-pay.js" defer></script>
 <script src="bm-nav88.js" defer></script>
-<script src="bm-panduan.js" defer></script>
+<script src="bm-lazy.js" defer></script>
 </body></html>
 <script>
 /* =========================================================
@@ -4252,8 +4242,8 @@ function msg(s){ const e=$("#jdMsg"); if(e) e.textContent=s||""; }
 async function reverse(lat,lng){ try{ const r=await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=10&lat=${lat}&lon=${lng}&accept-language=${getLang()}`); const j=await r.json(); const a=j.address||{};
   return {name:[a.city||a.town||a.county||a.village||a.state_district,a.state,a.country].filter(Boolean).join(", ")||j.display_name, cc:(a.country_code||"").toLowerCase()}; }catch(e){ return {name:"",cc:""}; } }
 async function setLoc(lat,lng,name,cc){ lat=+lat; lng=+lng; if(!isFinite(lat)||!isFinite(lng)||Math.abs(lat)>90||Math.abs(lng)>180) return;
-  const l={lat,lng,name:name||(lat.toFixed(3)+", "+lng.toFixed(3)),cc:cc||""}; store.set("rk_loc",l); render();
-  if(!name||!cc){ const g=await reverse(lat,lng); if(g.name||g.cc){ l.name=g.name||l.name; l.cc=g.cc; store.set("rk_loc",l); render(); } } }
+  const l={lat,lng,name:name||(lat.toFixed(3)+", "+lng.toFixed(3)),cc:cc||""}; store.set("rk_loc",l); render(); try{ document.dispatchEvent(new Event("rk:loc")); }catch(e){}
+  if(!name||!cc){ const g=await reverse(lat,lng); if(g.name||g.cc){ l.name=g.name||l.name; l.cc=g.cc; store.set("rk_loc",l); render(); try{ document.dispatchEvent(new Event("rk:loc")); }catch(e){} } } }
 function gps(){ if(!navigator.geolocation){ msg(t("locErr")); return; } msg(t("locating"));
   navigator.geolocation.getCurrentPosition(p=>{ msg(""); setLoc(p.coords.latitude,p.coords.longitude); },()=>{ msg(t("locErr")); $("#jdMan").hidden=false; },{enableHighAccuracy:false,timeout:15000,maximumAge:600000}); }
 async function search(){ const q=$("#jdQ").value.trim(); if(!q) return; const box=$("#jdRes"); box.innerHTML="…";
@@ -4365,7 +4355,9 @@ function init(){
   document.addEventListener("rk:lang",()=>setTimeout(render,0));
   { const jp=$("#page-jadwal"); if(jp&&window.MutationObserver){ let was=jp.classList.contains("on"); new MutationObserver(()=>{ const on=jp.classList.contains("on"); if(on&&!was) setTimeout(render,0); was=on; }).observe(jp,{attributes:true,attributeFilter:["class"]}); } }
   render(); azRender(); if(!store.get("rk_loc",null)) msg(t("noLoc"));
-  setInterval(()=>{ if(dkey(sel)!==dkey(new Date())&&!render.userSel){} if($("#page-jadwal").classList.contains("on")) render(); },30000); setInterval(tickNotif,10000);
+  setInterval(()=>{ if(document.hidden) return; if(dkey(sel)!==dkey(new Date())&&!render.userSel){} if($("#page-jadwal").classList.contains("on")) render(); },30000);
+  let _nt=0; const armNotif=()=>{ clearInterval(_nt); _nt=0; if(document.hidden) return; tickNotif(); _nt=setInterval(tickNotif,20000); };
+  document.addEventListener("visibilitychange", armNotif); armNotif();
 }
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
 })();
@@ -4998,7 +4990,11 @@ const Masjid={ list:null, busy:false, note:"", at:null, pend:false,
     const bind=()=>{ const box=$("#v2Masjid"); if(box&&!box._mBound){ box._mBound=1; box.addEventListener("click",e=>{ const b=e.target.closest("[data-mv]"); if(!b) return; store.set("rk_masjid_view",b.dataset.mv); this.render(); }); }
       [["#v2MasjidBtn","#rkJdMasjid"]].flatMap(x=>typeof x==="string"?[x]:x).forEach(sel=>{ const el=$(sel); if(el&&!el._mFind){ el._mFind=1; el.addEventListener("click",e=>{ e.preventDefault(); this.find(); }); } }); };
     bind(); setTimeout(bind,800);
-    window.addEventListener("storage",e=>{ if(e.key==="rk_loc") this.sync(); }); window.addEventListener("hashchange",()=>this.sync()); setInterval(()=>this.sync(),1500); } };
+    window.addEventListener("storage",e=>{ if(e.key==="rk_loc") this.sync(); }); window.addEventListener("hashchange",()=>this.sync());
+    document.addEventListener("rk:loc",()=>this.sync());
+    const masjidPoll=()=>{ if(document.hidden) return; const pg=document.getElementById("page-jadwal"); if(pg&&pg.classList.contains("on")) this.sync(); };
+    setInterval(masjidPoll,30000);
+    document.addEventListener("visibilitychange",()=>{ if(!document.hidden) this.sync(); }); } };
 
 /* ---------- Hafalan AI ---------- */
 const AR_DIAC=/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g;
@@ -5206,7 +5202,10 @@ function init(){
   // re-render beranda when leaving other pages
   $$("#nav button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.p==="beranda") renderAll(); if(b.dataset.p!=="hafalan") Haf.stop(); }));
   // observe location changes made in the Jadwal add-on
-  let lastLoc=JSON.stringify(loc()); setInterval(()=>{ const n=JSON.stringify(loc()); if(n!==lastLoc){ lastLoc=n; renderAll(); } else { renderNext(); } },15000);
+  let lastLoc=JSON.stringify(loc());
+  const homeTick=()=>{ if(document.hidden) return; const home=$("#page-beranda"); if(!home||!home.classList.contains("on")) return; const n=JSON.stringify(loc()); if(n!==lastLoc){ lastLoc=n; renderAll(); } else renderNext(); };
+  setInterval(homeTick,60000);
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden) homeTick(); });
   const _go=window.go; window.go=function(p){ _go(p); if(p==="beranda"||p==="settings"||p==="premium") renderAll(); if(p!=="hafalan") Haf.stop(); };
   applyV(); splash();
   window.RKV2={Flow,Haf,Masjid,renderAll,v,setProgOpen,toggleProg,renderPromo,initHeroCar};
@@ -7791,7 +7790,7 @@ const LOCAL=[
  [["Input terakhir kalkulator zakat (angka & harga emas)","Last zakat calculator inputs (figures & gold price)","آخر مدخلات حاسبة الزكاة (الأرقام وسعر الذهب)"],"rk_zakat"],
  [["Rekaman suara saat hafalan diproses langsung di HP dan tidak diunggah","Voice recordings during memorisation are processed on the phone and never uploaded","تُعالج التسجيلات الصوتية على الهاتف ولا تُرفع"],""],
  [["Foto Jamaah / Jejak Nur di IndexedDB perangkat (tidak diunggah ke server Best Muslim)","Jamaah / Jejak Nur photos in on-device IndexedDB (not uploaded to Best Muslim servers)","صور الجماعة / أثر النور في IndexedDB على الجهاز (لا تُرفع إلى خوادم Best Muslim)"],"jn_* / IndexedDB"],
- [["Font web (Amiri, Manrope, dll.) dari Google Fonts saat online","Web fonts (Amiri, Manrope, etc.) from Google Fonts when online","خطوط الويب من Google Fonts عند الاتصال"],""],
+ [["Font web (Amiri, Manrope, Cormorant, Noto Naskh) di-host bersama aplikasi","Web fonts (Amiri, Manrope, Cormorant, Noto Naskh) are hosted with the app","خطوط الويب مستضافة مع التطبيق"],""],
  [["Konten buatan pengguna (UGC) lokal: unggahan Jamaah, komentar, laporan — tetap di perangkat kecuali Anda memakai fitur berbagi sistem","Local UGC: Jamaah posts, comments, reports — stay on device unless you use the system share sheet","محتوى المستخدم محليًا: منشورات الجماعة والتعليقات والتقارير — يبقى على الجهاز"],"rk_jn_*"],
  [["Jadwal alarm azan tepat (native): izin SCHEDULE_EXACT_ALARM; jika ditolak, pengingat tetap jalan dengan jadwal tidak tepat + edukasi di aplikasi","Exact azan alarms (native): SCHEDULE_EXACT_ALARM; if denied, reminders continue inexactly with in-app education","إنذارات الأذان الدقيقة: SCHEDULE_EXACT_ALARM مع بديل غير دقيق وتعليم داخل التطبيق"],""],
  [["Minat creator / Premium / toko (daftar minat lokal, bukan pembayaran)","Creator / Premium / shop interest (local interest list, not a payment)","اهتمام المنشئ / بريميوم / المتجر (قائمة اهتمام محلية وليست دفعًا)"],"rk_store_interest_v1, rk_premium_interest, rk_jn_creator_*"]
@@ -7799,7 +7798,6 @@ const LOCAL=[
 const NET=[
  ["Nominatim (OpenStreetMap)",["Mencari nama kota & mengubah koordinat jadi nama tempat; koordinat dikirim","City search & turning coordinates into a place name; coordinates are sent","البحث عن المدن وتحويل الإحداثيات إلى اسم مكان؛ تُرسل الإحداثيات"]],
  ["Overpass API, Photon (OpenStreetMap)",["Mencari masjid terdekat saat Anda menekan Cari; koordinat dikirim","Finding nearby mosques when you tap Find; coordinates are sent","البحث عن المساجد القريبة عند الضغط على بحث؛ تُرسل الإحداثيات"]],
- ["Google Fonts (fonts.googleapis.com, fonts.gstatic.com)",["Memuat huruf (Amiri, Manrope, dll.)","Loading fonts (Amiri, Manrope, etc.)","تحميل الخطوط"]],
  ["mp3quran.net, quranicaudio.com",["Audio murattal, hanya saat Anda menekan putar","Recitation audio, only when you press play","صوت التلاوة عند الضغط على تشغيل فقط"]],
  ["everyayah.com",["Audio per ayat di Hafalan, hanya saat Anda menekan putar","Per-ayah audio in Memorisation, only when you press play","صوت الآيات في الحفظ عند التشغيل فقط"]],
  ["cdn.jsdelivr.net, huggingface.co",["Mengunduh pustaka & model AI hafalan (sekali, ±233 MB) hanya jika Anda mengaktifkannya. Suara Anda tidak dikirim","Downloading the memorisation AI library & model (once, ~233 MB) only if you enable it. Your voice is not sent","تنزيل مكتبة ونموذج الحفظ (مرة واحدة ~233MB) عند التفعيل فقط. لا يُرسل صوتك"]],
@@ -8557,8 +8555,9 @@ function init(){ swInit(); settings();
  const q=new URLSearchParams(URL0.split("#")[0]); const fromTap=q.get("doa-azan")!=null||URL0.endsWith("#doa-azan");
  if(fromTap){ const k=q.get("doa-azan")||""; try{ history.replaceState(history.state,"",location.pathname+"#beranda"); }catch(e){} const n=k.replace(/^\d{4}-\d\d-\d\d/,""); setTimeout(()=>show({key:k,n:PN[n]?n:"",time:""}),400); }
  else setTimeout(checkReturn,1500);
- setInterval(tick,5000);
- document.addEventListener("visibilitychange",()=>{ if(vis()){ tick(); checkReturn(); } else scheduleTriggers(); });
+ let _dt=0; const armDoa=()=>{ clearInterval(_dt); _dt=0; if(document.hidden) return; tick(); _dt=setInterval(tick,15000); };
+ document.addEventListener("visibilitychange",()=>{ if(vis()){ armDoa(); checkReturn(); } else { clearInterval(_dt); _dt=0; scheduleTriggers(); } });
+ armDoa();
  window.addEventListener("hashchange",()=>{ if(location.hash==="#doa-azan") fromUrl(); });
  document.addEventListener("rk:lang",()=>setTimeout(()=>{ settings(); const ov=document.getElementById("daPop"); if(ov&&!ov.hidden) ov.innerHTML=html(ov._info); },0));
  document.addEventListener("click",e=>{ if(e.target.closest&&e.target.closest("[data-l]")) setTimeout(settings,80); });

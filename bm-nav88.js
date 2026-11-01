@@ -304,7 +304,9 @@
       pages.forEach((s) => s.classList.toggle("on", s.id === "page-jejak-nur"));
       try { history.replaceState(history.state, "", "#profil"); } catch (e) {}
     }
-    if (window.RKJejakNur && RKJejakNur.open) RKJejakNur.open("prof");
+    const run = () => { if (window.RKJejakNur && RKJejakNur.open) RKJejakNur.open("prof"); };
+    if (window.BMLazy) BMLazy.ensure("jejak").then(run);
+    else run();
     hilite("profil");
   }
 
@@ -314,7 +316,9 @@
     } catch (e) {}
     document.querySelectorAll(".page").forEach((s) => s.classList.toggle("on", s.id === "page-jejak-nur"));
     try { history.replaceState(history.state, "", "#jejak-nur"); } catch (e) {}
-    if (window.RKJejakNur && RKJejakNur.open) RKJejakNur.open("feed");
+    const run = () => { if (window.RKJejakNur && RKJejakNur.open) RKJejakNur.open("feed"); };
+    if (window.BMLazy) BMLazy.ensure("jejak").then(run);
+    else run();
     hilite("jejak-nur");
   }
 
@@ -344,11 +348,15 @@
         if (p === "jejak-nur") {
           const r = inner.apply(this, arguments);
           setTimeout(() => {
-            try {
-              const tab = sessionStorage.getItem("rk_jn_tab") || "feed";
-              if (window.RKJejakNur) RKJejakNur.open(tab);
-            } catch (e) {}
-            hilite("jejak-nur");
+            const open = () => {
+              try {
+                const tab = sessionStorage.getItem("rk_jn_tab") || "feed";
+                if (window.RKJejakNur) RKJejakNur.open(tab);
+              } catch (e) {}
+              hilite("jejak-nur");
+            };
+            if (window.BMLazy) BMLazy.ensure("jejak").then(open);
+            else open();
           }, 30);
           return r;
         }
