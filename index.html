@@ -185,7 +185,6 @@ window.RKHijri={parts:parts,fmt:fmt,monthYear:function(d,l){return fmt(d,l,true)
 <script>/* AUTO-LANG: first visit only; manual choice saved in rk_lang always wins */(function(){try{if(localStorage.getItem("rk_lang")!=null)return;var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(function(x){return String(x).toLowerCase();});var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var p=(ls[0]||"").slice(0,2),l;var AR=/^Asia\/(Riyadh|Dubai|Qatar|Kuwait|Bahrain|Muscat|Aden|Baghdad|Amman|Damascus|Beirut|Gaza|Hebron)$|^Africa\/(Cairo|Tripoli|Tunis|Algiers|Casablanca|Khartoum|Nouakchott)$/;if(p==="id"||p==="ms")l="id";else if(p==="ar")l="ar";else if(p==="en"&&!/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz)&&!AR.test(tz))l="en";else if(/^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/.test(tz))l="id";else if(AR.test(tz))l="ar";else if(ls.some(function(x){return /^(id|ms)/.test(x)}))l="id";else if(ls.some(function(x){return /^ar/.test(x)}))l="ar";else l="en";localStorage.setItem("rk_lang",JSON.stringify(l));localStorage.setItem("rk_lang_auto","1");}catch(e){}})();</script><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="stylesheet" href="bm-lang.css">
 <link rel="stylesheet" href="bm-salat-ux.css">
 <link rel="stylesheet" href="bm-kata-quran.css">
-<link rel="stylesheet" href="bm-ar-qibla.css">
 <link rel="stylesheet" href="bm-target-harian.css">
 <link rel="stylesheet" href="bm-growth.css">
 <link rel="stylesheet" href="bm-jejak-nur.css">
@@ -2756,9 +2755,6 @@ svg.k3{display:block;overflow:visible;filter:drop-shadow(0 3px 5px rgba(0,0,0,.1
             </svg></div>
             <div class="qb-ind" id="qbInd"><svg viewBox="0 0 30 30"><rect x="1" y="3" width="28" height="25" rx="2" fill="#111" stroke="#d9b86a"/><rect x="1" y="9" width="28" height="5" fill="#d9b86a"/></svg><span id="qbIndTx"></span></div>
             <button class="btn sm gold" id="qbStart" type="button" data-jd="startCompass"></button>
-            <div class="bm-ar-entry">
-              <button class="btn sm" id="bmArOpen" type="button">Mode AR (kamera)</button>
-            </div>
             <p class="dim" style="font-size:12px;text-align:center" id="qbNote"></p>
             <p class="dim" style="font-size:11.5px;text-align:center" data-jd="calib"></p>
           </div></div>
@@ -3906,7 +3902,6 @@ document.readyState==="loading"?document.addEventListener("DOMContentLoaded",sta
 <script src="bm-lang.js" defer></script>
 <script src="bm-salat-ux.js" defer></script>
 <script src="bm-kata-quran.js" defer></script>
-<script src="bm-ar-qibla.js" defer></script>
 <script src="bm-target-harian.js" defer></script>
 <script src="bm-growth.js" defer></script>
 <script src="bm-jejak-nur.js" defer></script>
@@ -7781,7 +7776,7 @@ const X={
  delB:["Hapus semua data di HP ini","Delete all data on this phone","احذف كل البيانات على هذا الهاتف"],
  conf:["Yakin hapus semua data Best Muslim di HP ini? Progres dan hafalan akan hilang permanen.","Delete all Best Muslim data on this phone? Progress and memorisation will be lost permanently.","هل تريد حذف كل بيانات Best Muslim على هذا الهاتف؟ سيضيع التقدم والحفظ نهائيًا."],
  done:["Data sudah dihapus.","Data deleted.","تم حذف البيانات."],
- upd:["Terakhir diperbarui: 29 Oktober 2026","Last updated: 29 October 2026","آخر تحديث: 29 أكتوبر 2026"],
+ upd:["Terakhir diperbarui: 1 November 2026","Last updated: 1 November 2026","آخر تحديث: 1 نوفمبر 2026"],
  back:["← Pengaturan","← Settings","← الإعدادات"],
  foot:["Privasi","Privacy","الخصوصية"]
 };
@@ -7795,7 +7790,6 @@ const LOCAL=[
  [["Pengaturan azan, metode & cache masjid","Azan settings, method & mosque cache","إعدادات الأذان والطريقة وذاكرة المساجد"],"rk_azan, rk_pt_*, rk_masjid_cache"],
  [["Input terakhir kalkulator zakat (angka & harga emas)","Last zakat calculator inputs (figures & gold price)","آخر مدخلات حاسبة الزكاة (الأرقام وسعر الذهب)"],"rk_zakat"],
  [["Rekaman suara saat hafalan diproses langsung di HP dan tidak diunggah","Voice recordings during memorisation are processed on the phone and never uploaded","تُعالج التسجيلات الصوتية على الهاتف ولا تُرفع"],""],
- [["Kamera (opsional) untuk kompas Kiblat AR — pratinjau langsung, tidak disimpan","Camera (optional) for AR Qibla compass — live preview only, not saved","الكاميرا (اختياري) لبوصلة القبلة بالواقع المعزز — معاينة مباشرة دون حفظ"],""],
  [["Foto Jamaah / Jejak Nur di IndexedDB perangkat (tidak diunggah ke server Best Muslim)","Jamaah / Jejak Nur photos in on-device IndexedDB (not uploaded to Best Muslim servers)","صور الجماعة / أثر النور في IndexedDB على الجهاز (لا تُرفع إلى خوادم Best Muslim)"],"jn_* / IndexedDB"],
  [["Font web (Amiri, Manrope, dll.) dari Google Fonts saat online","Web fonts (Amiri, Manrope, etc.) from Google Fonts when online","خطوط الويب من Google Fonts عند الاتصال"],""],
  [["Konten buatan pengguna (UGC) lokal: unggahan Jamaah, komentar, laporan — tetap di perangkat kecuali Anda memakai fitur berbagi sistem","Local UGC: Jamaah posts, comments, reports — stay on device unless you use the system share sheet","محتوى المستخدم محليًا: منشورات الجماعة والتعليقات والتقارير — يبقى على الجهاز"],"rk_jn_*"],

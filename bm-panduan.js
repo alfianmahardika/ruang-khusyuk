@@ -227,7 +227,7 @@
     },
     {
       id: "kiblat",
-      title: { id: "Kiblat & kamera AR", en: "Qibla & AR camera" },
+      title: { id: "Kiblat", en: "Qibla" },
       cards: [
         {
           id: "kiblat1",
@@ -238,14 +238,6 @@
           },
           go: "kiblat",
           shot: "panduan/shots/kiblat.jpg"
-        },
-        {
-          id: "ar",
-          title: { id: "Pratinjau kamera AR", en: "AR camera preview" },
-          body: {
-            id: "Opsi kamera AR menampilkan pratinjau langsung di layar untuk membantu mengarah. Bingkai tidak disimpan ke galeri atau server Best Muslim.",
-            en: "The AR camera option shows a live preview to help you aim. Frames are not saved to your gallery or Best Muslim servers."
-          }
         }
       ]
     },
